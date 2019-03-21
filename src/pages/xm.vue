@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import xm from './components/xm.vue'
+import HelloWorld from '../components/HelloWorld.vue'
+import xm from '../components/xm.vue'
 
 export default {
   name: 'app',
