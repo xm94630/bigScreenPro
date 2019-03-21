@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <xm/>
+    <HelloWorld msg="欢迎使用"/>
+    <!--<img alt="Vue logo" src="./assets/logo.png">-->
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import xm from './components/xm.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HelloWorld,
+    xm
   }
 }
 </script>
