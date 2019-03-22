@@ -3,6 +3,17 @@
     lal
     <xm/>
     <HelloWorld msg="欢迎使用"/>
+    <el-row :gutter="15" class="m-header">
+      <el-col :span="8">
+        111
+      </el-col>
+      <el-col :span="8">
+        222
+      </el-col>
+      <el-col :span="8">
+        3333
+      </el-col>
+    </el-row>
     <!--<img alt="Vue logo" src="./assets/logo.png">-->
   </div>
 </template>
