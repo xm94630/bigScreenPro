@@ -2,7 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import pageA from './pages/a.vue';
 import pageB from './pages/b.vue';
-import pageIndex from './pages/xm.vue';
+import createBigScreen from './pages/b.vue';
+import pageIndex from './pages/indexPage.vue';
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,9 @@ const routes = [
     },{
         path:'/pageb',
         component:pageB
+    },{
+        path:'/createBigScreen',
+        component:createBigScreen
     }
 ]
 

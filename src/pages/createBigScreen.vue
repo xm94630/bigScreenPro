@@ -1,6 +1,6 @@
 <template>
   <div>
-    pagea
+    新建
   </div>
 </template>
 
