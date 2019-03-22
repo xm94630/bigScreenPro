@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    lal
     <xm/>
     <HelloWorld msg="欢迎使用"/>
     <!--<img alt="Vue logo" src="./assets/logo.png">-->
@@ -19,7 +20,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -27,5 +28,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.a{
+  color:#111;
+  .b{
+    color:#bbb
+  }
 }
 </style>
