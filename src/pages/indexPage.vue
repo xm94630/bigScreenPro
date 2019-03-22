@@ -92,6 +92,10 @@ export default {
 //   margin-top: 60px;
 // }
 
+.el-container {
+  height: 100%;
+}
+
 .el-header{
   background:lightseagreen;
   font-size:20px;
