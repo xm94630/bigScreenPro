@@ -44,7 +44,9 @@
         </el-aside>
         
         <el-main>
-          <router-link to="/createBigScreen">新建</router-link>
+          <router-link to="/createBigScreen">
+            <add-btn></add-btn>
+          </router-link>
         </el-main>
 
       </el-container>
@@ -55,12 +57,14 @@
 <script>
 import headTitle from '../components/HeadTitle.vue'
 import xm from '../components/xm.vue'
+import addBtn from '../components/addBtn.vue'
 
 export default {
   name: 'app',
   components: {
     headTitle,
-    xm
+    xm,
+    addBtn
   },
   data() {
     return {
