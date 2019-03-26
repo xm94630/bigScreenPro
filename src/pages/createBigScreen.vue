@@ -93,6 +93,7 @@ export default {
   .canvasBox{
     height:500px;
     position:relative;
+    overflow:hidden;
   }
   .canvas{
     background:#555;
