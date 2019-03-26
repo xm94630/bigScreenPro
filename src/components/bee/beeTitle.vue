@@ -1,6 +1,6 @@
 <template>
   <div class="beeTitle">
-    <div @click="myFun" v-bind:class="{ 'canControl': isActive,'baseBox':true}">
+    <div @click="myFun" v-bind:class="{ 'canControl': isActive,'baseBox':true}" v-drag>
       <div class="wenzi">我是标题</div>
       <div class="miniDot dot1"></div>
       <div class="miniDot dot2"></div>
@@ -10,7 +10,7 @@
       <div class="miniDot dot7"></div>
       <div class="miniDot dot8"></div>
       <div class="miniDot dot9"></div>
-      <div class="showPosition">100,100</div>
+      <div class="showPosition">{{x}},{{y}},{{positionX}}</div>
     </div>
   </div>
 </template>
@@ -23,7 +23,11 @@ export default {
   },
   data(){
     return{
-        isActive:false
+      x:0,
+      y:0,
+      positionX:0,
+      positionY:0,
+      isActive:false
     }
   },
   methods: {
@@ -32,6 +36,39 @@ export default {
       console.log(this.isActive)
     }
   },
+  directives: {
+        drag: {
+            // 指令的定义
+            bind: function (el) {
+                let that = this;
+                let odiv = el;   //获取当前元素
+                odiv.onmousedown = (e) => {
+                    //算出鼠标相对元素的位置
+                    let disX = e.clientX - odiv.offsetLeft;
+                    let disY = e.clientY - odiv.offsetTop;
+                    
+                    document.onmousemove = (e)=>{
+                        //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
+                        let left = e.clientX - disX;    
+                        let top = e.clientY - disY;
+                      
+                        //绑定元素位置到positionX和positionY上面
+                        //that.positionX = top;
+                        //that.positionY = left;
+                
+                        //移动当前元素
+                        console.log(left+" "+top)
+                        odiv.style.left = left + 'px';
+                        odiv.style.top = top + 'px';
+                    };
+                    document.onmouseup = (e) => {
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+                    };
+                };
+            }
+        }
+    }
   
 }
 </script>

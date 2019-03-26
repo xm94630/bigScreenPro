@@ -67,12 +67,14 @@ export default {
   },
   methods:{
     newTitle(){
-      console.log('新建标题')
+      //console.log('新建标题')
       import('../components/bee/beeTitle').then(cmp => {
         mountCmp.call(this, cmp, {title: 123456}, document.querySelector('.canvas'))
       })
     }
-  }
+  },
+  
+
 }
 </script>
 
