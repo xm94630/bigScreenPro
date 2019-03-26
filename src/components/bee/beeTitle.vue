@@ -1,6 +1,6 @@
 <template>
   <div class="beeTitle">
-    <div @click="myFun" v-bind:class="{ 'canControl': isActive,'baseBox':true}" v-drag>
+    <div @click="myFun" v-bind:class="{ 'canControl': isActive,'baseBox':true}" v-drag='changeData'>
       <div class="wenzi">我是标题</div>
       <div class="miniDot dot1"></div>
       <div class="miniDot dot2"></div>
@@ -34,12 +34,21 @@ export default {
     myFun(){
       this.isActive = !this.isActive;
       console.log(this.isActive)
+    },
+    changeData(x,y){
+      this.x = x;
+      this.y = y;
     }
   },
   directives: {
         drag: {
             // 指令的定义
-            bind: function (el) {
+            bind: function (el,binding,bl) {
+
+                //binding.value = 1000
+                
+              
+
                 let that = this;
                 let odiv = el;   //获取当前元素
                 odiv.onmousedown = (e) => {
@@ -55,9 +64,10 @@ export default {
                         //绑定元素位置到positionX和positionY上面
                         //that.positionX = top;
                         //that.positionY = left;
+                        binding.value(top,left);
                 
                         //移动当前元素
-                        console.log(left+" "+top)
+                        //console.log(left+" "+top)
                         odiv.style.left = left + 'px';
                         odiv.style.top = top + 'px';
                     };
