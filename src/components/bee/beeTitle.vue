@@ -1,6 +1,6 @@
 <template>
   <div class="beeTitle">
-    <div @click="myFun" v-bind:class="{ 'canControl': isActive,'baseBox':true}" v-drag='changeData'>
+    <div @click="myFun" v-bind:class="{ 'canControl': isActive,'baseBox':true}" v-drag='{"changeData":changeData,"xxx":x}' :carList='x'>
       <div class="wenzi">我是标题</div>
       <div class="miniDot dot1"></div>
       <div class="miniDot dot2"></div>
@@ -42,21 +42,36 @@ export default {
   },
   directives: {
         drag: {
+            update:function(el,binding,bl){
+
+            },
             // 指令的定义
             bind: function (el,binding,bl) {
 
-                //binding.value = 1000
+                // console.log(el)
+                // console.log(binding)
+                // console.log(bl)
+
                 
               
 
                 let that = this;
                 let odiv = el;   //获取当前元素
                 odiv.onmousedown = (e) => {
+
+                  
                     //算出鼠标相对元素的位置
                     let disX = e.clientX - odiv.offsetLeft;
                     let disY = e.clientY - odiv.offsetTop;
                     
                     document.onmousemove = (e)=>{
+                      
+                      //console.log(binding)
+                      let isActive = bl.context.isActive
+
+                      //let isActive = binding.value.xxx
+
+                      if(isActive){
                         //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
                         let left = e.clientX - disX;    
                         let top = e.clientY - disY;
@@ -64,12 +79,14 @@ export default {
                         //绑定元素位置到positionX和positionY上面
                         //that.positionX = top;
                         //that.positionY = left;
-                        binding.value(top,left);
+                        binding.value.changeData(top,left);
                 
                         //移动当前元素
                         //console.log(left+" "+top)
                         odiv.style.left = left + 'px';
                         odiv.style.top = top + 'px';
+                      }
+
                     };
                     document.onmouseup = (e) => {
                         document.onmousemove = null;
