@@ -56,14 +56,12 @@
 
 <script>
 import headTitle from '../components/HeadTitle.vue'
-import xm from '../components/xm.vue'
 import addBtn from '../components/addBtn.vue'
 
 export default {
   name: 'app',
   components: {
     headTitle,
-    xm,
     addBtn
   },
   data() {
@@ -73,10 +71,10 @@ export default {
   },
   methods: {
     handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+
     },
     handleClose(key, keyPath) {
-      console.log(key, keyPath);
+
     }
   }
 }
