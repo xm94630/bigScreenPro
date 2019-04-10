@@ -57,11 +57,14 @@ export default {
         text: "上海会员物流拣货工作量",
         x: 100,
         y: 100,
-        width: 300,
+        width: 400,
         height: 200,
-        color: "#000",
-        "font-size": 12,
-        align: "center"
+        color: "red",
+        "font-size": 50,
+        border:"solid 1px red",
+        padding:"20px",
+        align: "center",
+        background: "orange",
       }
     };
     import("../components/bee/title.vue").then(cmp => {
@@ -76,4 +79,7 @@ export default {
 </script>
 
 <style scoped>
+.myReportCanvas{
+  position: relative;
+}
 </style>
