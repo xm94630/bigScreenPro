@@ -40,9 +40,11 @@
       </el-aside>
 
       <el-main>
-        <router-link to="/myReport?code=">
-          <div class="myReport">永辉大屏</div>
-        </router-link>
+        <template v-for="(one) in reportList">
+          <router-link :to="'/myReport?code='+one.code" :key="one.code">
+            <div class="myReport">{{one.describe}}</div>
+          </router-link>
+        </template>
 
         <router-link to="/createBigScreen">
           <add-btn></add-btn>
@@ -57,7 +59,7 @@ import headTitle from "../components/HeadTitle.vue";
 import addBtn from "../components/addBtn.vue";
 import axios from "axios";
 
-let baseUrl = '';
+let baseUrl = "";
 
 export default {
   name: "app",
@@ -67,7 +69,8 @@ export default {
   },
   data() {
     return {
-      isCollapse: true
+      isCollapse: true,
+      reportList: null
     };
   },
   methods: {
@@ -76,14 +79,11 @@ export default {
   },
   mounted: function() {
     //获取已经存在的数据
-    axios
-      .get(
-        baseUrl +"/koa/getReportList"
-      )
-      .then(response => {
-        this.total.E.total = response.data.data.total;
-        this.total.E.finish = response.data.data.finish;
-      });
+    axios.get(baseUrl + "/koa/getReportList").then(response => {
+      this.reportList = response.data.data;
+    });
+  },
+  computed:{
   }
 };
 </script>
