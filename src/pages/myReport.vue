@@ -8,6 +8,7 @@
 import axios from "axios";
 import reportShow from "../components/reportShow.vue";
 
+
 let baseUrl='';
 
 export default {
