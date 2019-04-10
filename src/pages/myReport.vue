@@ -1,19 +1,34 @@
 <template>
-  <div>
-    我的页面
+  <div class="myReportBox">
+    <reportShow :reportConfig='data' />
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import reportShow from "../components/reportShow.vue";
+
+let baseUrl='';
+
 export default {
-  name: 'xm',
+  name: 'myReport',
+  components:{
+    reportShow
+  },
   props: {
-    msg: String
   },
   data(){
     return{
-        xxx:'大屏展示'
+      data:null
     }
+  },
+  mounted(){
+    //获取已经存在的数据
+    let code = this.$route.query.code;
+    axios.get(baseUrl + "/koa/getReportByCode?code="+code).then(response => {
+      console.log(response.data.data)
+      this.data = response.data.data;
+    });
   }
 }
 </script>
