@@ -28,5 +28,7 @@ export default {
   text-align:center;
   border:dashed 2px lightseagreen;
   display:inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
 }
 </style>
