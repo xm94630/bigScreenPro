@@ -50,7 +50,7 @@ export default {
       return str;
     }
   },
-  mounted() {
+  updated() {
     let title_propsConfig = {
       myConfig: {
         id: "componentId_00001",
