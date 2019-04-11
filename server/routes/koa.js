@@ -44,7 +44,7 @@ router.get('/getReportByCode', async (ctx, next) => {
         'title': [{
           id: "componentId_00001",
           text: "猜猜我是哪个页面吧",
-          x: 10,
+          x: 100,
           y: 0,
           width: 500,
           height: 250,
