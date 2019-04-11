@@ -51,35 +51,31 @@ export default {
     }
   },
   updated() {
-
-    
     //title组件的数据（单个）
-    let titleData = this.reportConfig.components.title[0];
+    let titleData = this.reportConfig.components.title;
+    let len = titleData.length;
 
-    let title_propsConfig = {
-      myConfig:titleData
-      // myConfig: {
-      //   id: "componentId_00001",
-      //   text: "上海会员物流拣货工作量",
-      //   x: 100,
-      //   y: 100,
-      //   width: 400,
-      //   height: 200,
-      //   padding: 20,
-      //   "font-size": 50,
-      //   color: "red",
-      //   border:"solid 1px red",
-      //   background: "orange",
-      //   "text-align": "center",
-      // }
-    };
-    import("../components/bee/title.vue").then(cmp => {
-      mountCmp(
-        cmp,
-        title_propsConfig,
-        document.querySelector(".myReportCanvas")
-      );
-    });
+    console.log(len)
+
+    //循环输出title
+    for(let i=0;i<len;i++){
+      let title_propsConfig = {
+        myConfig: titleData[i]
+      };
+      import("../components/bee/title.vue").then(cmp => {
+        mountCmp(
+          cmp,
+          title_propsConfig,
+          document.querySelector(".myReportCanvas")
+        );
+      });
+    }
+
+
+
+
+
+
   }
 };
 </script>
