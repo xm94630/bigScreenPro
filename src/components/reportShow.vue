@@ -51,21 +51,27 @@ export default {
     }
   },
   updated() {
+
+    
+    //title组件的数据（单个）
+    let titleData = this.reportConfig.components.title[0];
+
     let title_propsConfig = {
-      myConfig: {
-        id: "componentId_00001",
-        text: "上海会员物流拣货工作量",
-        x: 100,
-        y: 100,
-        width: 400,
-        height: 200,
-        color: "red",
-        "font-size": 50,
-        border:"solid 1px red",
-        padding:"20px",
-        align: "center",
-        background: "orange",
-      }
+      myConfig:titleData
+      // myConfig: {
+      //   id: "componentId_00001",
+      //   text: "上海会员物流拣货工作量",
+      //   x: 100,
+      //   y: 100,
+      //   width: 400,
+      //   height: 200,
+      //   padding: 20,
+      //   "font-size": 50,
+      //   color: "red",
+      //   border:"solid 1px red",
+      //   background: "orange",
+      //   "text-align": "center",
+      // }
     };
     import("../components/bee/title.vue").then(cmp => {
       mountCmp(
@@ -79,7 +85,7 @@ export default {
 </script>
 
 <style scoped>
-.myReportCanvas{
+.myReportCanvas {
   position: relative;
 }
 </style>

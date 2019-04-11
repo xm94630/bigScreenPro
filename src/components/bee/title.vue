@@ -36,7 +36,7 @@ export default {
       str +=  "top:" + this.myConfig.y + "px;"
       str += "color:"+ this.myConfig.color+";"
       str += "font-size:"+this.myConfig['font-size']+"px;"
-      str += "text-align:"+this.myConfig['align']+";"
+      str += "text-align:"+this.myConfig['text-align']+";"
       str += "padding:"+this.myConfig['padding']+";"
       str += "background:"+this.myConfig['background']+";"
 
