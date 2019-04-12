@@ -70,6 +70,23 @@ export default {
           });
         }
       }
+      //渲染全部的“line”组件进行渲染
+      if ("line" == key) {
+        let data = this.reportConfig.components.line;
+        let len = data.length;
+        for (let i = 0; i < len; i++) {
+          let title_propsConfig = {
+            chartData: data[i]
+          };
+          import("../components/bee/line.vue").then(cmp => {
+            mountCmp(
+              cmp,
+              title_propsConfig,
+              document.querySelector(".myReportCanvas")
+            );
+          });
+        }
+      }
     }
   }
 };
