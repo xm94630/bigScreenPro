@@ -73,6 +73,23 @@ export default {
           });
         }
       }
+      //渲染全部的“ dater ”组件进行渲染
+      if ("dater" == key) {
+        let data = this.reportConfig.components.dater;
+        let len = data.length;
+        for (let i = 0; i < len; i++) {
+          let propsConfig = {
+            myConfig: data[i]
+          };
+          import("../components/bee/dater.vue").then(cmp => {
+            mountCmp(
+              cmp,
+              propsConfig,
+              document.querySelector(".myReportCanvas")
+            );
+          });
+        }
+      }
       //渲染全部的“line”组件进行渲染
       if ("line" == key) {
         let data = this.reportConfig.components.line;

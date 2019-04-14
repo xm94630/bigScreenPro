@@ -142,15 +142,18 @@ router.get('/getReportByCode', async (ctx, next) => {
           'color': ['#666'],
           'dataUrl': 'koaData/yonghui_bar2',
         }],
-        'timer': [{
+        'dater': [{
           'id': 'id_00005',
-          'x': 100,
-          'y': 100,
-          'width': 300,
-          'height': 200,
+          'x': 800,
+          'y': 10,
+          'width': 180,
+          'height': 14,
+          'border': 'none',
+          'padding':0,
+          'background':'#fff',
           'color': '#000',
-          'font-size': 12,
-          'align': 'center',
+          'font-size': 14,
+          'text-align': 'center',
         }]
       },
     }
