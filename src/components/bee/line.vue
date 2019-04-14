@@ -10,6 +10,14 @@ import echarts from "echarts";
 
 //获取饼图option配置
 function getOption(data) {
+
+  //追加类型
+  let series = data.series;
+  series.forEach(function(one){
+    one.type='line';
+  })
+
+  //构建option
   let option = {
     color: data.color,
     title: {
@@ -27,8 +35,7 @@ function getOption(data) {
     xAxis: {
       type: "category",
       boundaryGap: false,
-      //data: data.xAxisData
-      data: ["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00"]
+      data: data.xAxis
     },
     yAxis: {
       type: "value"
@@ -47,21 +54,7 @@ function getOption(data) {
             saveAsImage: {}
         }
     },
-    series: [
-      {
-        //data: data.seriesData,
-        name:'昨天',
-        data: [100,200,120,200,210,250,120,350,200],
-        type: "line",
-        areaStyle: {}
-      },{
-        //data: data.seriesData,
-        name:'今天',
-        data: [41,52,42,32,62,75,52,41,31],
-        type: "line",
-        areaStyle: {}
-      }
-    ]
+    series: series
   };
 
   return option;

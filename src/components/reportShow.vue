@@ -9,6 +9,9 @@
 
 <script>
 import Vue from "vue";
+import axios from "axios";
+
+let baseUrl = "";
 
 function mountCmp(cmp, props, parent) {
   if (cmp.default) {
@@ -58,13 +61,13 @@ export default {
         let titleData = this.reportConfig.components.title;
         let len = titleData.length;
         for (let i = 0; i < len; i++) {
-          let title_propsConfig = {
+          let propsConfig = {
             myConfig: titleData[i]
           };
           import("../components/bee/title.vue").then(cmp => {
             mountCmp(
               cmp,
-              title_propsConfig,
+              propsConfig,
               document.querySelector(".myReportCanvas")
             );
           });
@@ -75,15 +78,27 @@ export default {
         let data = this.reportConfig.components.line;
         let len = data.length;
         for (let i = 0; i < len; i++) {
-          let title_propsConfig = {
+          //组件基本样式数据
+          let propsConfig = {
             chartData: data[i]
           };
-          import("../components/bee/line.vue").then(cmp => {
-            mountCmp(
-              cmp,
-              title_propsConfig,
-              document.querySelector(".myReportCanvas")
-            );
+
+          //获取数据源
+          axios.get(baseUrl + "/koaData/yonghui_line").then(response => {
+            this.reportList = response.data.data;
+            propsConfig.chartData.xAxis = response.data.data.xAxis;
+            propsConfig.chartData.series = response.data.data.series;
+
+            console.log(propsConfig.chartData)
+
+            //构建组件
+            import("../components/bee/line.vue").then(cmp => {
+              mountCmp(
+                cmp,
+                propsConfig,
+                document.querySelector(".myReportCanvas")
+              );
+            });
           });
         }
       }
