@@ -148,6 +148,37 @@ export default {
           });
         }
       }
+      //渲染全部的“ card ”组件进行渲染
+      if ("card" == key) {
+        let data = this.reportConfig.components.card;
+        let len = data.length;
+        for (let i = 0; i < len; i++) {
+          //组件基本样式数据
+          let propsConfig = {
+            chartData: data[i]
+          };
+          let dataUrl = data[i].dataUrl;
+
+          //获取数据源
+          axios.get(baseUrl + dataUrl).then(response => {
+
+            propsConfig.chartData.data1 = response.data.data[0];
+            propsConfig.chartData.data2 = response.data.data[1];
+
+
+            console.log(propsConfig)
+
+            //构建组件
+            import("../components/bee/card.vue").then(cmp => {
+              mountCmp(
+                cmp,
+                propsConfig,
+                document.querySelector(".myReportCanvas")
+              );
+            });
+          });
+        }
+      }
     }
   }
 };

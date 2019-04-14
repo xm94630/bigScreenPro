@@ -1,5 +1,5 @@
 <template>
-  <div class="cardBox" v-bind:class="classObject">
+  <div class="cardBox" v-bind:class="classObject" :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;'">
     <div class="cardBoxT">{{title}}</div>
     <div class="cardBoxM">
       <div>{{(cardData&&cardData[0]&&cardData[0].value) || data1 || 0}}</div>
@@ -16,30 +16,43 @@
 export default {
   name: "card",
   props: {
-    title: String,
-    text1: String,
-    text2: String,
-    data1: null,
-    data2: null,
-    cardData: Object,
-    state: String
+    chartData: null
   },
   data: function() {
     return {
-      classObject: {
-        green: this.state == "1" ? true : false,
-        orange: this.state == "2" ? true : false,
-        red: this.state == "3" ? true : false
-      }
+      title: this.chartData.title,
+      text1: this.chartData.text1,
+      text2: this.chartData.text2,
+      data1: this.chartData.data1,
+      data2: this.chartData.data2,
+      state: this.chartData.state,
+      cardData: this.chartData,
+
+      width: this.chartData.width,
+      height: this.chartData.height,
+      x: this.chartData.x,
+      y: this.chartData.y,
+
     };
   },
-  mounted: function() {}
+  computed:{
+    classObject:function(){
+      return {
+        green: this.state == 1 ? true : false,
+        orange: this.state == 2 ? true : false,
+        red: this.state == 3 ? true : false
+      }
+    }
+  },
+  mounted: function() {
+  }
 };
 </script>
 
 <style lang="scss">
 //卡片的全部样式
 .cardBox {
+  position:absolute;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

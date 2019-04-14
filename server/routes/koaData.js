@@ -112,4 +112,31 @@ router.get('/yonghui_bar2', async (ctx) => {
 })
 
 
+//card数据格式
+router.get('/yonghui_card1', async (ctx) => {
+  let data = [222,888]
+  ctx.body = {
+    data: data
+  }
+})
+
+router.get('/yonghui_card2', async (ctx) => {
+  let data = [23,398]
+  ctx.body = {
+    data: data
+  }
+})
+router.get('/yonghui_card3', async (ctx) => {
+  let data = [1,198]
+  ctx.body = {
+    data: data
+  }
+})
+router.get('/yonghui_card4', async (ctx) => {
+  let data = [21,92]
+  ctx.body = {
+    data: data
+  }
+})
+
 module.exports = router
