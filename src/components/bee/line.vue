@@ -1,5 +1,5 @@
 <template>
-  <div class="bingTuCon" :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;border:'+border+';padding:'+padding+'px;'">
+  <div class="bingTuCon" :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;border:'+border+';padding:'+padding+'px;background:'+background">
     <div class="bingTuBox" :id="chartData.id"></div>
   </div>
 </template>
@@ -11,7 +11,7 @@ import echarts from "echarts";
 //获取饼图option配置
 function getOption(data) {
   let option = {
-    color: ["#fd9f82"],
+    color: data.color,
     title: {
       show: true,
       text: data.title.text,
@@ -25,7 +25,7 @@ function getOption(data) {
       type: "category",
       boundaryGap: false,
       //data: data.xAxisData
-      data: ["xxx","yyy","zzz","ooo"]
+      data: ["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00"]
     },
     yAxis: {
       type: "value"
@@ -33,7 +33,7 @@ function getOption(data) {
     series: [
       {
         //data: data.seriesData,
-        data: [100,200,50,10],
+        data: [100,200,120,200,210,250,120,350,200],
         type: "line",
         areaStyle: {}
       }
@@ -59,6 +59,7 @@ export default {
       x:this.chartData.x,
       border:this.chartData.border,
       padding:this.chartData.padding,
+      background:this.chartData.background,
     };
   },
   mounted: function() {
