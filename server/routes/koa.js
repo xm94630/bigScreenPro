@@ -38,7 +38,7 @@ router.get('/getReportByCode', async (ctx, next) => {
       'canvas': {
         'width': 1000,
         'height': 600,
-        'background': '#f3f3f3',
+        'background': 'yellow',
       },
       'components': {
         'title': [{
@@ -78,14 +78,14 @@ router.get('/getReportByCode', async (ctx, next) => {
           'height': 300,
           'border': 'solid 1px #333',
           'padding':20,
-          'background':'yellow',
+          'background':'#fff',
           'title': {
             'text': '当日拣货任务汇总',
             'color': '#000',
             'font-size': 12,
             'align': 'center',
           },
-          'color': ['#fd9f82'],
+          'color': ['#fd9f82','blue'],
           'dataUrl': 'http://www.xxx.com/data/pickingTaskTotal',
         }],
         'bar': [{

@@ -21,6 +21,9 @@ function getOption(data) {
         color: "#666"
       }
     },
+    // tooltip: {
+    //     trigger: 'axis'
+    // },
     xAxis: {
       type: "category",
       boundaryGap: false,
@@ -30,10 +33,31 @@ function getOption(data) {
     yAxis: {
       type: "value"
     },
+    legend: {
+        data:['昨天','今天']
+    },
+    //  grid: {
+    //     left: '3%',
+    //     right: '4%',
+    //     bottom: '3%',
+    //     containLabel: true
+    // },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
     series: [
       {
         //data: data.seriesData,
+        name:'昨天',
         data: [100,200,120,200,210,250,120,350,200],
+        type: "line",
+        areaStyle: {}
+      },{
+        //data: data.seriesData,
+        name:'今天',
+        data: [41,52,42,32,62,75,52,41,31],
         type: "line",
         areaStyle: {}
       }
