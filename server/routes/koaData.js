@@ -70,7 +70,7 @@ router.get('/yonghui_bar1', async (ctx) => {
       subtext: ''
     },
     xAxis: {
-      data: ['00:00', '01:00', '02:00', '03:00'],
+      data: ['甲', '乙', '丙', '丁'],
     },
     legend: {
       data:['昨天','今天']
@@ -90,5 +90,26 @@ router.get('/yonghui_bar1', async (ctx) => {
     data: data
   }
 })
+router.get('/yonghui_bar2', async (ctx) => {
+  let data = {
+    title: {
+      text: '啦啦',
+      subtext: ''
+    },
+    xAxis: {
+      data: ['甲', '乙', '丙', '丁'],
+    },
+    series: [
+      {
+        name: '今天',
+        data: [10, 52, 200, 334],
+      }
+    ]
+  }
+  ctx.body = {
+    data: data
+  }
+})
+
 
 module.exports = router

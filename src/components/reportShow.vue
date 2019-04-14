@@ -113,21 +113,12 @@ export default {
           };
           let dataUrl = data[i].dataUrl;
 
-          //构建组件
-            import("../components/bee/bar.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-
           //获取数据源
           axios.get(baseUrl + dataUrl).then(response => {
             this.reportList = response.data.data;
-            //propsConfig.chartData.xAxis = response.data.data.xAxis;
-            //propsConfig.chartData.series = response.data.data.series;
-            //propsConfig.chartData.legend = response.data.data.legend;
+            propsConfig.chartData.xAxis = response.data.data.xAxis;
+            propsConfig.chartData.series = response.data.data.series;
+            propsConfig.chartData.legend = response.data.data.legend;
 
             //构建组件
             import("../components/bee/bar.vue").then(cmp => {
