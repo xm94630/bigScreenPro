@@ -43,7 +43,7 @@ router.get('/getReportByCode', async (ctx, next) => {
       'components': {
         'title': [{
           id: "componentId_00001",
-          text: "猜猜我是哪个页面吧",
+          text: "上海会员物流拣货工作量",
           x: 500,
           y: 0,
           width: 400,
@@ -74,7 +74,8 @@ router.get('/getReportByCode', async (ctx, next) => {
           'y': 10,
           'width': 400,
           'height': 300,
-          'border': true,
+          'border': 'solid 1px #333',
+          'padding':20,
           'title': {
             'text': '当日拣货任务汇总',
             'color': '#000',
@@ -240,6 +241,11 @@ router.get('/getReportList', async (ctx, next) => {
     data: data
   }
 })
+
+
+
+
+
 
 
 

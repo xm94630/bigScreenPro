@@ -1,5 +1,5 @@
 <template>
-  <div :style="'width:'+width+'px;height:'+height+'px;position:absolute;top:'+y+'px;left:'+x+'px;'">
+  <div class="bingTuCon" :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;border:'+border+';padding:'+padding+'px;'">
     <div class="bingTuBox" :id="chartData.id"></div>
   </div>
 </template>
@@ -57,6 +57,8 @@ export default {
       height:this.chartData.height,
       y:this.chartData.y,
       x:this.chartData.x,
+      border:this.chartData.border,
+      padding:this.chartData.padding,
     };
   },
   mounted: function() {
@@ -79,6 +81,10 @@ export default {
 
 
 <style scoped>
+.bingTuCon{
+  position:absolute;
+  box-sizing: border-box;
+}
 .bingTuBox {
   width: 100%;
   height: 100%;
