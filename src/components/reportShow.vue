@@ -82,14 +82,16 @@ export default {
           let propsConfig = {
             chartData: data[i]
           };
+          let dataUrl=data[i].dataUrl;
+
+
 
           //获取数据源
-          axios.get(baseUrl + "/koaData/yonghui_line").then(response => {
+          axios.get(baseUrl + dataUrl).then(response => {
             this.reportList = response.data.data;
             propsConfig.chartData.xAxis = response.data.data.xAxis;
             propsConfig.chartData.series = response.data.data.series;
-
-            console.log(propsConfig.chartData)
+            propsConfig.chartData.legend = response.data.data.legend;
 
             //构建组件
             import("../components/bee/line.vue").then(cmp => {
