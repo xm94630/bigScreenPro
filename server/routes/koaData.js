@@ -32,7 +32,6 @@ router.get('/yonghui_line', async (ctx) => {
     data: data
   }
 })
-
 router.get('/yonghui_line2', async (ctx) => {
   let data = {
     title: {
@@ -62,5 +61,34 @@ router.get('/yonghui_line2', async (ctx) => {
 })
 
 
+
+//柱状图数据格式
+router.get('/yonghui_bar1', async (ctx) => {
+  let data = {
+    title: {
+      text: '啦啦',
+      subtext: ''
+    },
+    xAxis: {
+      data: ['00:00', '01:00', '02:00', '03:00'],
+    },
+    legend: {
+      data:['昨天','今天']
+    },
+    series: [
+      {
+        name: '今天',
+        data: [10, 52, 200, 334],
+      },
+      {
+        name: '昨天',
+        data: [150, 200, 170, 110],
+      }
+    ]
+  }
+  ctx.body = {
+    data: data
+  }
+})
 
 module.exports = router

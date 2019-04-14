@@ -107,10 +107,10 @@ router.get('/getReportByCode', async (ctx, next) => {
         }],
         'bar': [{
           'id': 'componentId_00003',
-          'x': 100,
-          'y': 100,
-          'width': 1000,
-          'height': 800,
+          'x': 0,
+          'y': 0,
+          'width': 200,
+          'height': 200,
           'border': true,
           'title': {
             'text': '人工拣货每人拣货量',
@@ -119,13 +119,13 @@ router.get('/getReportByCode', async (ctx, next) => {
             'align': 'center',
           },
           'color': ['#666'],
-          'dataUrl': 'http://www.xxx.com/data/pickingTaskManual',
+          'dataUrl': 'koaData/yonghui_bar1',
         }, {
           'id': 'id_00004',
-          'x': 100,
-          'y': 100,
-          'width': 1000,
-          'height': 800,
+          'x': 400,
+          'y': 400,
+          'width': 200,
+          'height': 200,
           'border': true,
           'title': {
             'text': 'AGV每工位拣货量',
@@ -134,7 +134,7 @@ router.get('/getReportByCode', async (ctx, next) => {
             'align': 'center',
           },
           'color': ['#666'],
-          'dataUrl': 'http://www.xxx.com/data/pickingTaskAGV',
+          'dataUrl': 'koaData/yonghui_bar1',
         }],
         'timer': [{
           'id': 'id_00005',

@@ -82,9 +82,7 @@ export default {
           let propsConfig = {
             chartData: data[i]
           };
-          let dataUrl=data[i].dataUrl;
-
-
+          let dataUrl = data[i].dataUrl;
 
           //获取数据源
           axios.get(baseUrl + dataUrl).then(response => {
@@ -95,6 +93,44 @@ export default {
 
             //构建组件
             import("../components/bee/line.vue").then(cmp => {
+              mountCmp(
+                cmp,
+                propsConfig,
+                document.querySelector(".myReportCanvas")
+              );
+            });
+          });
+        }
+      }
+      //渲染全部的“bar”组件进行渲染
+      if ("bar" == key) {
+        let data = this.reportConfig.components.bar;
+        let len = data.length;
+        for (let i = 0; i < len; i++) {
+          //组件基本样式数据
+          let propsConfig = {
+            chartData: data[i]
+          };
+          let dataUrl = data[i].dataUrl;
+
+          //构建组件
+            import("../components/bee/bar.vue").then(cmp => {
+              mountCmp(
+                cmp,
+                propsConfig,
+                document.querySelector(".myReportCanvas")
+              );
+            });
+
+          //获取数据源
+          axios.get(baseUrl + dataUrl).then(response => {
+            this.reportList = response.data.data;
+            //propsConfig.chartData.xAxis = response.data.data.xAxis;
+            //propsConfig.chartData.series = response.data.data.series;
+            //propsConfig.chartData.legend = response.data.data.legend;
+
+            //构建组件
+            import("../components/bee/bar.vue").then(cmp => {
               mountCmp(
                 cmp,
                 propsConfig,
