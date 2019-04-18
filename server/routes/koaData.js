@@ -138,5 +138,11 @@ router.get('/yonghui_card4', async (ctx) => {
     data: data
   }
 })
+router.get('/yonghui_card5', async (ctx) => {
+  let data = [6829,108812]
+  ctx.body = {
+    data: data
+  }
+})
 
 module.exports = router
