@@ -38,7 +38,7 @@ router.get('/getReportByCode', async (ctx, next) => {
       'canvas': {
         'width': 1000,
         'height': 600,
-        'background': 'yellow',
+        'background': '#d4e157',
       },
       'components': {
         'title': [{
@@ -366,7 +366,7 @@ router.get('/getReportByCode', async (ctx, next) => {
       'canvas': {
         'width': 1200,
         'height': 600,
-        'background': 'yellow',
+        'background': '#d4e157',
       },
       'components': {
         'title': [{
@@ -385,17 +385,17 @@ router.get('/getReportByCode', async (ctx, next) => {
         }],
         'pie1':[{
           chartId:'pie111',
-          'x': 440,
-          'y': 130,
-          'width': 200,
-          'height': 200,
+          'x': 0,
+          'y': 0,
+          'width': 400,
+          'height': 400,
           'border': 'none',
           'padding':5,
           'background':'none',
           'title': {
             'text': '明明哥饼图',
             'color': 'red',
-            'font-size': 14,
+            'font-size': 20,
             'align': 'center',
           },
           'color': ['#a6c87e','#fd9f82'],
@@ -405,15 +405,15 @@ router.get('/getReportByCode', async (ctx, next) => {
           chartId:'pie222',
           'x': 440,
           'y': 130,
-          'width': 200,
-          'height': 200,
+          'width': 400,
+          'height': 400,
           'border': 'none',
           'padding':5,
           'background':'none',
           'title': {
             'text': '饼图哦',
             'color': 'red',
-            'font-size': 14,
+            'font-size': 20,
             'align': 'center',
           },
           'color': ['#a6c87e','#fd9f82'],
