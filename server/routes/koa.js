@@ -154,7 +154,8 @@ router.get('/getReportByCode', async (ctx, next) => {
           'color': '#000',
           'font-size': 14,
           'text-align': 'center',
-        }]
+        }],
+        
       },
     }
   }
@@ -171,7 +172,7 @@ router.get('/getReportByCode', async (ctx, next) => {
       'components': {
         'title': [{
           id: "componentId_00002",
-          text: "上海会员物流拣货工作量",
+          text: "我是一个可爱的模板页面",
           x: 860,
           y: 20,
           width: 320,
@@ -255,7 +256,7 @@ router.get('/getReportByCode', async (ctx, next) => {
           'x': 20,
           'y': 240,
           'width': 410,
-          'height': 340,
+          'height': 300,
           'border': 'solid 1px #333',
           'padding':20,
           'background':'#fff',
@@ -304,6 +305,56 @@ router.get('/getReportByCode', async (ctx, next) => {
           'dataUrl': 'koaData/yonghui_bar2',
         }],
       
+        'pie1':[{
+          chartId:'pie111',
+          'x': 860,
+          'y': 180,
+          'width': 320,
+          'height': 180,
+          'border': 'none',
+          'padding':5,
+          'background':'none',
+          'title': {
+            'text': '明明哥工作完成度',
+            'color': 'red',
+            'font-size': 14,
+            'align': 'center',
+          },
+          'color': ['#a6c87e','#fd9f82'],
+          dataUrl:'koaData/mingming_pie',
+        },],
+        'pie2':[{
+          chartId:'pie222',
+          'x': 860,
+          'y': 360,
+          'width': 320,
+          'height': 220,
+          'border': 'solid 1px red',
+          'padding':5,
+          'background':'none',
+          'title': {
+            'text': '饼图哦',
+            'color': 'red',
+            'font-size': 14,
+            'align': 'center',
+          },
+          'color': ['#a6c87e','#fd9f82'],
+          dataUrl:'koaData/mingming_pie2',
+        },],
+        'dater': [{
+          'id': 'id_00005',
+          'x': 20,
+          'y': 550,
+          'width': 410,
+          'height': 30,
+          'border': 'none',
+          'padding':5,
+          'background':'none',
+          'color': '#000',
+          'font-size': 20,
+          'text-align': 'center',
+        }],
+
       },
     }
   }
@@ -393,7 +444,7 @@ router.get('/getReportList', async (ctx, next) => {
     describe: '永辉大屏幕1'
   }, {
     code: "yonghui2",
-    describe: '永辉大屏幕2'
+    describe: '模板'
   }, {
     code: "mingming",
     describe: '明明哥的大屏'

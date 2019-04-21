@@ -95,6 +95,10 @@ export default {
 
 
 <style scoped>
+.bingTuCon {
+  position: absolute;
+  box-sizing: border-box;
+}
 .bingTuBox {
   width: 100%;
   height: 100%;
