@@ -1,7 +1,7 @@
 <template>
     <div
     class="bingTuCon"
-    :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;border:'+border+';padding:'+padding+'px;background:'+background+';font-size:'+fontSize+'px;text-align:'+textAlign"
+    :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;border:'+border+';padding:'+padding+'px;background:'+background+';font-size:'+fontSize+'px;text-align:'+textAlign+';color:'+color+';'"
   >
       <div class="Dater">{{str}}</div>
   </div>
@@ -30,6 +30,7 @@ export default {
       background: this.myConfig.background,
       fontSize:this.myConfig['font-size'],
       textAlign:this.myConfig['text-align'],
+      color:this.myConfig['color'],
     };
   },
   mounted: function() {
