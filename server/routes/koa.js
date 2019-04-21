@@ -333,9 +333,22 @@ router.get('/getReportByCode', async (ctx, next) => {
           "text-align": "center",
         }],
         'pie1':[{
-          titleText:'明明哥饼图1',
           chartId:'pie111',
-          dataUrl:'koaData/mingming_pie'
+          'x': 440,
+          'y': 130,
+          'width': 200,
+          'height': 200,
+          'border': 'none',
+          'padding':5,
+          'background':'none',
+          'title': {
+            'text': '明明哥饼图',
+            'color': 'red',
+            'font-size': 14,
+            'align': 'center',
+          },
+          'color': ['#a6c87e','#fd9f82'],
+          dataUrl:'koaData/mingming_pie',
         },],
 
       },

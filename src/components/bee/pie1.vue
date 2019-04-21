@@ -1,5 +1,10 @@
 <template>
-  <div class="bingTuBox" :id="chartData.chartId"></div>
+  <div
+    class="bingTuCon"
+    :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;border:'+border+';padding:'+padding+'px;background:'+background"
+  >
+    <div class="bingTuBox" :id="chartData.chartId"></div>
+  </div>
 </template>
 
 
@@ -9,15 +14,15 @@ import echarts from "echarts";
 //获取饼图option配置
 function getOption(data) {
   var option = {
-    //color:['#a6c87e','#fd9f82'],
+    color:data.color || ['#a6c87e','#fd9f82'],
     // 标题组件，包含主标题和副标题
     title: {
       show: true,
-      text: data.titleText,
+      text: data.title.text,
       x: "left",
       textStyle: {
-        fontSize: "18",
-        color: "#666"
+        fontSize: data.title['font-size'],
+        color: data.title['color'],
         //fontWeight:"bold",
       }
     },
@@ -91,12 +96,19 @@ function getOption(data) {
 export default {
   name: "pie",
   props: {
-    chartData: Object
+    chartData: Object,
   },
   data() {
     return {
       bingTu_option: getOption(this.chartData),
-      myChart: null
+      myChart: null,
+      width: this.chartData.width,
+      height: this.chartData.height,
+      y: this.chartData.y,
+      x: this.chartData.x,
+      border: this.chartData.border,
+      padding: this.chartData.padding,
+      background: this.chartData.background,
     };
   },
   mounted: function() {
