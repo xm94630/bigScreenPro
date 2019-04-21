@@ -145,4 +145,14 @@ router.get('/yonghui_card5', async (ctx) => {
   }
 })
 
+router.get('/mingming_pie', async (ctx) => {
+  let data = {
+    percent:0.75,
+  }
+  ctx.body = {
+    data: data
+  }
+})
+
+
 module.exports = router

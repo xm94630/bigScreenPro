@@ -307,6 +307,40 @@ router.get('/getReportByCode', async (ctx, next) => {
       },
     }
   }
+  if ("mingming" == code) {
+    //永辉大屏页面1的配置信息
+    config = {
+      'code': 'yonghui2',
+      'pageId': 'pageId-00001',
+      'canvas': {
+        'width': 1200,
+        'height': 600,
+        'background': 'yellow',
+      },
+      'components': {
+        'title': [{
+          id: "componentId_00002",
+          text: "上海会员物流拣货工作量",
+          x: 860,
+          y: 20,
+          width: 320,
+          height: 150,
+          padding: 20,
+          "font-size": 50,
+          color: "red",
+          border: "solid 1px red",
+          background: "orange",
+          "text-align": "center",
+        }],
+        'pie1':[{
+          titleText:'明明哥饼图1',
+          chartId:'pie111',
+          dataUrl:'koaData/mingming_pie'
+        },],
+
+      },
+    }
+  }
   ctx.body = {
     data: config
   }
@@ -329,6 +363,9 @@ router.get('/getReportList', async (ctx, next) => {
   }, {
     code: "yonghui2",
     describe: '永辉大屏幕2'
+  }, {
+    code: "mingming",
+    describe: '明明哥的大屏'
   }]
   ctx.body = {
     data: data
