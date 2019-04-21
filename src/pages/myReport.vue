@@ -27,7 +27,6 @@ export default {
     //获取已经存在的数据
     let code = this.$route.query.code;
     axios.get(baseUrl + "/koa/getReportByCode?code="+code).then(response => {
-      console.log(response.data.data)
       this.data = response.data.data;
     });
   }
