@@ -350,6 +350,24 @@ router.get('/getReportByCode', async (ctx, next) => {
           'color': ['#a6c87e','#fd9f82'],
           dataUrl:'koaData/mingming_pie',
         },],
+        'pie2':[{
+          chartId:'pie222',
+          'x': 440,
+          'y': 130,
+          'width': 200,
+          'height': 200,
+          'border': 'none',
+          'padding':5,
+          'background':'none',
+          'title': {
+            'text': '饼图哦',
+            'color': 'red',
+            'font-size': 14,
+            'align': 'center',
+          },
+          'color': ['#a6c87e','#fd9f82'],
+          dataUrl:'koaData/mingming_pie2',
+        },],
 
       },
     }

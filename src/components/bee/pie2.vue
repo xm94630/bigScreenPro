@@ -1,5 +1,10 @@
 <template>
-  <div class="bingTuBox" :id="this.chartData.chartId"></div>
+  <div
+    class="bingTuCon"
+    :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;border:'+border+';padding:'+padding+'px;background:'+background"
+  >
+    <div class="bingTuBox" :id="this.chartData.chartId"></div>
+  </div>
 </template>
 
 
@@ -9,14 +14,14 @@ import echarts from "echarts";
 //获取饼图option配置
 function getOption(data) {
   let option = {
-    color: ["#a6c87e", "#ffd385", "#f49999"],
+    //color: ["#a6c87e", "#ffd385", "#f49999"],
     title: {
-      text: data.titleText,
+      text: data.title.text,
       // subtext: '纯属虚构',
       // x:'center'
       textStyle: {
-        fontSize: "18",
-        color: "#666"
+        fontSize: data.title['font-size'],
+        color: data.title['color'],
         //fontWeight:"bold",
       }
     },
@@ -24,11 +29,11 @@ function getOption(data) {
       trigger: "item",
       formatter: "{a} <br/>{b} : {c} ({d}%)"
     },
-    // legend: {
-    //     orient: 'vertical',
-    //     left: 'left',
-    //     data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
-    // },
+    legend: {
+        orient: 'vertical',
+        left: 'right',
+        data: data.legendData
+    },
     series: [
       {
         name: "访问来源",
@@ -59,10 +64,18 @@ export default {
   data() {
     return {
       bingTu_option: getOption(this.chartData),
-      myChart: null
+      myChart: null,
+      width: this.chartData.width,
+      height: this.chartData.height,
+      y: this.chartData.y,
+      x: this.chartData.x,
+      border: this.chartData.border,
+      padding: this.chartData.padding,
+      background: this.chartData.background,
     };
   },
   mounted: function() {
+    console.log(this.chartData)
     // 基于准备好的dom，初始化echarts实例
     this.myChart = echarts.init(
       document.getElementById(this.chartData.chartId)

@@ -154,5 +154,19 @@ router.get('/mingming_pie', async (ctx) => {
   }
 })
 
+router.get('/mingming_pie2', async (ctx) => {
+  let data = {
+    legendData:['已完成','未完成','进行中'],
+    seriesData:[
+      {value:335, name:'已完成'},
+      {value:310, name:'未完成'},
+      {value:234, name:'进行中'},
+    ],
+  }
+  ctx.body = {
+    data: data
+  }
+})
+
 
 module.exports = router
