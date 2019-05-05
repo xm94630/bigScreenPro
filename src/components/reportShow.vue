@@ -54,6 +54,11 @@ export default {
     }
   },
   updated() {
+
+    //获取画布的缩放形式
+    let zoomType = this.reportConfig.canvas['zoom-type'];
+
+
     //对配置的的全部组件进行渲染
     for (let key in this.reportConfig.components) {
       //渲染全部的“title”组件进行渲染

@@ -39,6 +39,7 @@ router.get('/getReportByCode', async (ctx, next) => {
         'width': 1000,
         'height': 600,
         'background': '#d4e157',
+        'zoom-type':1,  //不配置为默认正常显示，1全屏铺满，2等比缩放宽度铺满，3等比缩放高度铺满。
       },
       'components': {
         'title': [{
