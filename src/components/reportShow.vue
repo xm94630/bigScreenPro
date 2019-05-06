@@ -53,10 +53,40 @@ export default {
       return str;
     }
   },
+  methods:{
+    adjustShow(w,h,show_width,show_height){
+
+      const scaleW = show_width / w;
+      const scaleH = show_height / h;
+      const ele = document.querySelector('.myReportCanvas')
+      ele.style.transform = 'scale('+scaleW+','+scaleH+')';
+      ele.style.top = (show_height - h)/2 + "px";
+      if(show_width<w){
+        ele.style.left = (show_width - w)/2 + "px";
+      }
+    },
+  },
+  mounted(){
+  },
   updated() {
 
     //获取画布的缩放形式
     let zoomType = this.reportConfig.canvas['zoom-type'];
+    console.log('zoomType:'+zoomType);
+    if(zoomType===1){
+      const w = this.reportConfig.canvas['width'];
+      const h = this.reportConfig.canvas['height'];
+      const show_width = document.documentElement.clientWidth;
+      const show_height = document.documentElement.clientHeight;
+      const adjustShow = this.adjustShow;
+      adjustShow(w,h,show_width,show_height);
+      window.onresize = function(){
+        const show_width = document.documentElement.clientWidth;
+        const show_height = document.documentElement.clientHeight;
+        adjustShow(w,h,show_width,show_height);
+      }
+    }
+
 
 
     //对配置的的全部组件进行渲染
@@ -248,5 +278,6 @@ export default {
 <style scoped>
 .myReportCanvas {
   position: relative;
+  overflow: hidden;
 }
 </style>
