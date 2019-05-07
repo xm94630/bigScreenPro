@@ -37,7 +37,35 @@ export default {
     return {};
   },
   mounted(){
-    console.log(this.myConfig);
+    //console.log(this.myConfig);
+
+    const conf = this.myConfig;
+    const conditionArr = conf.tableConfig.conditionColumnList;
+    conditionArr.forEach(function(oneCondition){
+      console.log(oneCondition)
+      const isForeign = oneCondition.oneCondition;
+      const dataType = oneCondition.dataType;
+      
+      //是否关联，关联的是下拉列表，不关联的是其他类型
+      if(isForeign){
+        //下拉列表
+      }else{
+        //其他类型的表单组件，dataType的类型
+        //1:字符串 3:日期
+        if(dataType===1){
+          //渲染input输入框
+          console.log(dataType);
+        }
+
+      }
+    })
+
+
+
+
+
+
+
   },
   computed: {
     beeTableStyle() {

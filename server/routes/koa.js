@@ -545,7 +545,7 @@ router.get('/initForView', async (ctx, next) => {
       "checkType":0,
       "isImport":0,
       "isExport":0,
-      "isForeign":0,   //是否关联（关联的是下拉）
+      "isForeign":1,   //是否关联（关联的是下拉）
       "referenceType":0,
       "referenceTable":"",
       "referenceColumn":"",
