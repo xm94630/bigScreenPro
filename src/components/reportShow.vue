@@ -322,5 +322,6 @@ export default {
 .myReportCanvas {
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 </style>

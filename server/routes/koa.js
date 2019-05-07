@@ -442,7 +442,7 @@ router.get('/getReportByCode', async (ctx, next) => {
           'y': 0,
           'width': 1200,
           'height': 600,
-          'padding': 0,
+          'padding': 10,
           'exported': true,
           'showIndexColumn':true,
         }],

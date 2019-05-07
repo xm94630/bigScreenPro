@@ -1,6 +1,15 @@
 <template>
   <div class="beeTable" :style="beeTableStyle">
-    我是table哦
+    <div class="top">
+      <div class="con">
+        条件查询部分
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="con">
+        表格部分
+      </div>
+    </div>
   </div>
 </template>
 
@@ -15,6 +24,7 @@
 // 'padding': 0,
 // 'exported': true,
 // 'showIndexColumn':true,
+// 'tableConfig':...,  //来自后端的配置
 //   ....
 // }
 
@@ -51,5 +61,34 @@ export default {
 <style lang="scss">
 .beeTable {
   color: #000;
+  background: #fff;
+  box-sizing: border-box;
+  .top{
+    box-sizing: border-box;
+    width:100%;
+    background: #fff;
+    padding: 20px;
+    .con{
+      box-sizing: border-box;
+      width:100%;
+      background: #fff;
+      padding: 20px;
+      border: solid 1px #aaa;
+    }
+  }
+  .bottom{
+    box-sizing: border-box;
+    width:100%;
+    background: #fff;
+    margin-top:-20px;
+    padding: 20px;
+    .con{
+      box-sizing: border-box;
+      width:100%;
+      background: #fff;
+      padding: 20px;
+      border: solid 1px #aaa;
+    }
+  }
 }
 </style>
