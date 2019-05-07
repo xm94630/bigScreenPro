@@ -280,6 +280,24 @@ export default {
         }
       }
 
+      //渲染全部的“table”组件进行渲染
+      if ("table" == key) {
+        let tableData = this.reportConfig.components.table;
+        let len = tableData.length;
+        for (let i = 0; i < len; i++) {
+          let propsConfig = {
+            myConfig: tableData[i]
+          };
+          import("../components/bee/table.vue").then(cmp => {
+            mountCmp(
+              cmp,
+              propsConfig,
+              document.querySelector(".myReportCanvas")
+            );
+          });
+        }
+      }
+
 
     }
   }

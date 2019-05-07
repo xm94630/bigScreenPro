@@ -424,6 +424,32 @@ router.get('/getReportByCode', async (ctx, next) => {
       },
     }
   }
+  if ("myTable" == code) {
+    //永辉大屏页面1的配置信息
+    config = {
+      'code': 'myTable',
+      'pageId': 'pageId-00004',
+      'canvas': {
+        'zoom-type':0, 
+        'width': 1200,
+        'height': 600,
+        'background': '#d4e157',
+      },
+      'components': {
+        'table': [{
+          'id': "componentId_00003",
+          'x': 0,
+          'y': 0,
+          'width': 1200,
+          'height': 600,
+          'padding': 0,
+          'exported': true,
+          'showIndexColumn':true,
+        }],
+      },
+    }
+  }
+
   ctx.body = {
     data: config
   }
@@ -449,11 +475,16 @@ router.get('/getReportList', async (ctx, next) => {
   }, {
     code: "mingming",
     describe: '明明哥的大屏'
+  }, {
+    code: "myTable",
+    describe: '自定义二维表'
   }]
   ctx.body = {
     data: data
   }
 })
+
+
 
 
 
