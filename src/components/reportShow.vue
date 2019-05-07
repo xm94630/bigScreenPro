@@ -282,22 +282,36 @@ export default {
 
       //渲染全部的“table”组件进行渲染
       if ("table" == key) {
-        let tableData = this.reportConfig.components.table;
-        let len = tableData.length;
-        for (let i = 0; i < len; i++) {
-          let propsConfig = {
-            myConfig: tableData[i]
-          };
-          import("../components/bee/table.vue").then(cmp => {
-            mountCmp(
-              cmp,
-              propsConfig,
-              document.querySelector(".myReportCanvas")
-            );
-          });
-        }
-      }
 
+          //获取table的配置项目
+          axios.get(baseUrl + '/koa/initForView').then(response => {
+            
+            //来自接口的配置
+            let tableConfig = response.data.data;
+
+            //来自前端自己的配置
+            let conf = this.reportConfig.components.table;
+            let len = conf.length;
+            for (let i = 0; i < len; i++) {
+              
+              //将配置合并到一起，通过 myConfig 传入。
+              let x = conf[i];
+              x.tableConfig = tableConfig;
+              let propsConfig = {
+                myConfig: x
+              };
+              import("../components/bee/table.vue").then(cmp => {
+                mountCmp(
+                  cmp,
+                  propsConfig,
+                  document.querySelector(".myReportCanvas")
+                );
+              });
+            }
+
+          });
+
+      }
 
     }
   }

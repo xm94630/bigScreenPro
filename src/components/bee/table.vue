@@ -26,6 +26,9 @@ export default {
   data() {
     return {};
   },
+  mounted(){
+    console.log(this.myConfig);
+  },
   computed: {
     beeTableStyle() {
       let str = "position:absolute;box-sizing:border-box;";

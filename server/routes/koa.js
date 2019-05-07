@@ -484,7 +484,84 @@ router.get('/getReportList', async (ctx, next) => {
   }
 })
 
-
+//对于二维表而言，需要额外多请求一个接口，用来获取“查询条件”配置的初始化工作哦
+router.get('/initForView', async (ctx, next) => {
+  let data = {
+    //这部分是对table部分的配置
+    "resultColumnList":[{
+      "diyColumnId":190,
+      "diyCoreCode":"print_label_1570",     //
+      "diyCoreName":"yashilandai",
+      "columnName":"consignee_remark",   //列的key   
+      "displayName":"consignee_remark",   //列头  [{"key":},]
+      "dataType":1,   //数据类型 1字符串  
+      "dataLength":0,
+      "decimallength":0,
+      "columnIndex":0,   //列的顺序
+      "defaultValue":"",
+      "isDiy":0,
+      "isReadonly":0,
+      "isResult":1,
+      "isCondition":0,
+      "queryType":0,
+      "queryIndex":0,   
+      "sortRule":0,
+      "isCheck":0,
+      "checkType":0,
+      "isImport":0,
+      "isExport":0,
+      "isForeign":0,  //关联
+      "referenceType":0,
+      "referenceTable":"",
+      "referenceColumn":"",
+      "referenceCondition":"",
+      "referenceDisplayColumn":"",
+      "referenceUrl":"",
+      "creator":"",
+      "createTime":0,
+      "updateUser":"",
+      "updateTime":0
+    }],
+    //这个部分是对查询条件部分的配置
+    "conditionColumnList":[{
+      "diyColumnId":217,
+      "diyCoreCode":"print_label_1570",
+      "diyCoreName":"yashilandai",
+      "columnName":"reservation5",
+      "displayName":"reservation5",
+      "dataType":1,  //大类型
+      "dataLength":0,
+      "decimallength":0,
+      "columnIndex":0,
+      "defaultValue":"",  //输入框、查询框的默认值
+      "isDiy":0,
+      "isReadonly":0,
+      "isResult":1,
+      "isCondition":1,
+      "queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+      "queryIndex":0,  //顺序
+      "sortRule":0,
+      "isCheck":0,
+      "checkType":0,
+      "isImport":0,
+      "isExport":0,
+      "isForeign":0,   //是否关联（关联的是下拉）
+      "referenceType":0,
+      "referenceTable":"",
+      "referenceColumn":"",
+      "referenceCondition":"",
+      "referenceDisplayColumn":"",
+      "referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+      "creator":"",
+      "createTime":0,
+      "updateUser":"",
+      "updateTime":0
+    }]
+  }
+  ctx.body = {
+    data: data
+  }
+})
 
 
 
