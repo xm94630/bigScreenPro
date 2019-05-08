@@ -3,6 +3,7 @@
     <div class="top">
       <div class="topCon">
         条件查询部分
+        <searchCondition :items="items" @search="handleSearch"/>
       </div>
     </div>
     <div class="bottom">
@@ -27,7 +28,8 @@
 // 'tableConfig':...,  //来自后端的配置
 //   ....
 // }
-import Vue from "vue";
+
+import searchCondition from "./table/searchCondition.vue"
 
 export default {
   name: "beeTable",
@@ -36,11 +38,25 @@ export default {
   },
   data() {
     return {
-      "input":'123',
-      who:'el-Input'
+      items:[{
+        span: 12,
+        title: "我是标题哦",
+        name: '这个是用来绑定的',
+        type: 'bee-input',
+        placeholder: '请输入',
+        value: '',
+        rule: {},
+      },],
+
     };
   },
   components:{
+    searchCondition,
+  },
+  methods:{
+    handleSearch(res){
+      console.log(res)
+    }
   },
   mounted(){
     //console.log(this.myConfig);
