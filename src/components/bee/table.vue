@@ -72,10 +72,10 @@ export default {
         rule: {},
       },{
         span: 12,
-        label: "班级",
+        label: "选择日期",
         name: '这个是用来绑定的',
-        type: 'beeInput',
-        placeholder: '请输入',
+        type: 'beeDatePicker',
+        placeholder: '日期选择',
         value: '',
         rule: {},
       },],

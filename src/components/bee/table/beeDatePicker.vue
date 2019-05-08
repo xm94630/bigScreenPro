@@ -2,7 +2,11 @@
     <el-col :span="8">
       <el-form :inline="true" :model="formInline" class="demo-form-inline" label-width="80px">
         <el-form-item :label="item.label">
-          <el-input v-model="formInline.user" :placeholder="item.placeholder"></el-input>
+          <el-date-picker
+            v-model="formInline.user"
+            type="date"
+            :placeholder="item.placeholder">
+          </el-date-picker>
         </el-form-item>
       </el-form>
     </el-col>
