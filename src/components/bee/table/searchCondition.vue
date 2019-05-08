@@ -11,7 +11,11 @@
       ></component>
     </el-row>
     <div class="funBox">
-      <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+      <el-button>重置</el-button>
+
+      <template v-for="(one,index) in searchBtns">
+        <el-button :key="index" type="primary" :diyCoreCode="one.diyCoreCode" @click="submitForm('ruleForm')">{{one.text}}</el-button>
+      </template>
     </div>
   </div>
 </template>
@@ -27,6 +31,7 @@ export default {
   name: "beeTitle",
   props: {
     items:Array,
+    searchBtns:null,
   },
   data() {
     return {};
@@ -40,6 +45,7 @@ export default {
   },
   mounted(){
     console.log(this.items)
+    console.log(this.searchBtns)
   }
   
 };

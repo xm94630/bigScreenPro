@@ -3,7 +3,7 @@
     <div class="top">
       <div class="topCon">
         <!-- 条件查询部分 -->
-        <searchCondition :items="items" @search="handleSearch"/>
+        <searchCondition :items="items" :searchBtns="myConfig.searchBtns" @search="handleSearch"/>
       </div>
     </div>
     <div class="bottom">
