@@ -445,6 +445,8 @@ router.get('/getReportByCode', async (ctx, next) => {
           "padding": 10,
           "exported": true,
           "showIndexColumn":true,
+          "currentPage":1,
+          "pageSize":10,
           "searchBtns":[{
             "text":"按货架查询",
             "dataUrl": "http://172.16.28.85/api_v1/diy/column/initForView",
