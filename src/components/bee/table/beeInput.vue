@@ -1,28 +1,18 @@
 <template>
-  <div>
-    123123
-    <beeInput/>
-
-  </div>
+  <div>我是搜索框</div>
 </template>
 
 <script>
 
 
-import beeInput from './beeInput.vue';
-
 export default {
-  name: "beeTitle",
+  name: "beeInput",
   props: {
-    items:Array,
   },
   data() {
     return {};
   },
   computed: {
-  },
-  components:{
-    beeInput,
   }
 };
 </script>
