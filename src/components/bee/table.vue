@@ -40,7 +40,7 @@ export default {
     return {
       items:[{
         span: 12,
-        title: "我是标题哦",
+        label: "姓名",
         name: '这个是用来绑定的',
         type: 'beeInput',
         placeholder: '请输入',
@@ -48,7 +48,7 @@ export default {
         rule: {},
       },{
         span: 12,
-        title: "我是标题哦",
+        label: "班级",
         name: '这个是用来绑定的',
         type: 'beeInput',
         placeholder: '请输入',
@@ -56,7 +56,7 @@ export default {
         rule: {},
       },{
         span: 12,
-        title: "我是标题哦",
+        label: "班级",
         name: '这个是用来绑定的',
         type: 'beeInput',
         placeholder: '请输入',
@@ -64,7 +64,7 @@ export default {
         rule: {},
       },{
         span: 12,
-        title: "我是标题哦",
+        label: "班级",
         name: '这个是用来绑定的',
         type: 'beeInput',
         placeholder: '请输入',
@@ -72,7 +72,7 @@ export default {
         rule: {},
       },{
         span: 12,
-        title: "我是标题哦",
+        label: "班级",
         name: '这个是用来绑定的',
         type: 'beeInput',
         placeholder: '请输入',

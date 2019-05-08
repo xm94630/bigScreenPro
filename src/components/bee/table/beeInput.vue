@@ -1,8 +1,8 @@
 <template>
     <el-col :span="6">
       <el-form :inline="true" :model="formInline" class="demo-form-inline">
-        <el-form-item label="我是标签">
-          <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+        <el-form-item :label="item.label">
+          <el-input v-model="formInline.user" :placeholder="item.placeholder"></el-input>
         </el-form-item>
       </el-form>
     </el-col>
@@ -14,6 +14,7 @@
 export default {
   name: "beeInput",
   props: {
+    item:Object,
   },
   data() {
     return {
@@ -23,6 +24,8 @@ export default {
     };
   },
   computed: {
+  },
+  mounted(){
   }
 };
 </script>
