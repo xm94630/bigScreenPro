@@ -447,13 +447,14 @@ router.get('/getReportByCode', async (ctx, next) => {
           "showIndexColumn":true,
           "currentPage":1,
           "pageSize":10,
+          "initTableUrl":"http://172.16.28.85:8080/2/api_v1/diy/column/initForView",
           "searchBtns":[{
             "text":"按货架查询",
-            "dataUrl": "http://172.16.28.85/api_v1/diy/column/initForView",
+            "dataUrl": "http://172.16.28.85:8080/2/api_v1/diy/column/initForView",
             "diyCoreCode":"InventoryReportByShelf"
           },{
             "text":"按货位查询",
-            "dataUrl": "http://172.16.28.85/api_v1/diy/column/initForView",
+            "dataUrl": "http://172.16.28.85:8080/2/api_v1/diy/column/initForView",
             "diyCoreCode":"InventoryReportByBin"
           }]
         }],
@@ -471,7 +472,7 @@ router.get('/getReportByCode', async (ctx, next) => {
           "background": "green",
           "text-align": "left",
           //"dataUrl": "/initForView",
-          "dataUrl": "http://172.16.28.85/api_v1/diy/column/initForView",
+          "dataUrl": "http://172.16.28.85:8080/2/api_v1/diy/column/initForView",
           "diyCoreCode":"InventoryReportByWarehouse"
         }]
       }
