@@ -2,7 +2,7 @@
   <div class="beeTable" :style="beeTableStyle">
     <div class="top">
       <div class="topCon">
-        条件查询部分
+        <!-- 条件查询部分 -->
         <searchCondition :items="items" @search="handleSearch"/>
       </div>
     </div>
@@ -42,7 +42,39 @@ export default {
         span: 12,
         title: "我是标题哦",
         name: '这个是用来绑定的',
-        type: 'bee-input',
+        type: 'beeInput',
+        placeholder: '请输入',
+        value: '',
+        rule: {},
+      },{
+        span: 12,
+        title: "我是标题哦",
+        name: '这个是用来绑定的',
+        type: 'beeInput',
+        placeholder: '请输入',
+        value: '',
+        rule: {},
+      },{
+        span: 12,
+        title: "我是标题哦",
+        name: '这个是用来绑定的',
+        type: 'beeInput',
+        placeholder: '请输入',
+        value: '',
+        rule: {},
+      },{
+        span: 12,
+        title: "我是标题哦",
+        name: '这个是用来绑定的',
+        type: 'beeInput',
+        placeholder: '请输入',
+        value: '',
+        rule: {},
+      },{
+        span: 12,
+        title: "我是标题哦",
+        name: '这个是用来绑定的',
+        type: 'beeInput',
         placeholder: '请输入',
         value: '',
         rule: {},
