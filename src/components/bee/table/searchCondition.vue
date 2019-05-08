@@ -21,6 +21,7 @@
 
 import beeInput from './beeInput.vue';
 import beeDatePicker from './beeDatePicker.vue';
+import beeSelect from './beeSelect.vue';
 
 export default {
   name: "beeTitle",
@@ -35,6 +36,7 @@ export default {
   components:{
     beeInput,
     beeDatePicker,
+    beeSelect,
   },
   mounted(){
     console.log(this.items)
