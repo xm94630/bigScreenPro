@@ -427,27 +427,47 @@ router.get('/getReportByCode', async (ctx, next) => {
   if ("myTable" == code) {
     //永辉大屏页面1的配置信息
     config = {
-      'code': 'myTable',
-      'pageId': 'pageId-00004',
-      'canvas': {
-        'zoom-type':0, 
-        'width': 1200,
-        'height': 600,
-        'background': '#d4e157',
+      "code": "myTable",
+      "pageId": "pageId-00004",
+      "canvas": {
+        "zoom-type":0, 
+        "width": 1200,
+        "height": 600,
+        "background": "#d4e157"
       },
-      'components': {
-        'table': [{
-          'id': "componentId_00003",
-          'x': 0,
-          'y': 0,
-          'width': 1200,
-          'height': 600,
-          'padding': 10,
-          'exported': true,
-          'showIndexColumn':true,
+      "components": {
+        "table": [{
+          "id": "componentId_00003",
+          "x": 0,
+          "y": 50,
+          "width": 1200,
+          "height": 550,
+          "padding": 10,
+          "exported": true,
+          "showIndexColumn":true,
+          "diyCoreCode":"InventoryReportByBin"
         }],
-      },
+        "textBar":[{
+          "id": "componentId_00002",
+          "text": "库房总面积：10000 平米 | 总使用体积：5000平米 | 库房利用率：50%",
+          "x": 0,
+          "y": 0,
+          "width": 1200,
+          "height": 40,
+          "padding": 5,
+          "font-size": 20,
+          "color": "yellow",
+          "border": "none",
+          "background": "green",
+          "text-align": "left",
+          //"dataUrl": "/initForView",
+          "dataUrl": "http://192.168.0.1/api_v1/diy/column/initForView",
+          "code":"InventoryReportByWarehouse"
+        }]
+      }
+
     }
+
   }
 
   ctx.body = {

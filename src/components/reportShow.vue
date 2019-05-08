@@ -313,6 +313,24 @@ export default {
 
       }
 
+      //渲染全部的“ textBar ”组件进行渲染
+      if ("textBar" == key) {
+        let data = this.reportConfig.components.textBar;
+        let len = data.length;
+        for (let i = 0; i < len; i++) {
+          let propsConfig = {
+            myConfig: data[i]
+          };
+          import("../components/bee/textBar.vue").then(cmp => {
+            mountCmp(
+              cmp,
+              propsConfig,
+              document.querySelector(".myReportCanvas")
+            );
+          });
+        }
+      }
+
     }
   }
 };
