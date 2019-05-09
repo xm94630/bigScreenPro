@@ -94,11 +94,11 @@ export default {
         if(isForeign){
           //关联的是下拉列表
           item = {
-            label: "XXXX1",
-            name: 'XXXX2',
-            type: 'beeInput',
-            placeholder: 'XXXX3',
-            value: '',
+            label: one.displayName,
+            name: one.columnName,
+            type: 'beeSelect',
+            placeholder: one.placeholder,
+            value: one.defaultValue,
             rule: {},
           }
         }else{
