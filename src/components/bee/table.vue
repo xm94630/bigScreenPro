@@ -94,41 +94,47 @@ export default {
         if(isForeign){
           //关联的是下拉列表
           item = {
-            label: "XXXX",
-            name: 'XXXX',
+            label: "XXXX1",
+            name: 'XXXX2',
             type: 'beeInput',
-            placeholder: 'XXXX',
+            placeholder: 'XXXX3',
             value: '',
             rule: {},
           }
         }else{
           //不关联的是其他类型
-          item = {
-            label: "姓名",
-            name: '这个是用来绑定的',
-            type: 'beeInput',
-            placeholder: '请输入',
-            value: '',
-            rule: {},
-          }
-
+          item = {}
           if(dataType===1){
             //字符串：普通的文字输入框
             item.label = one.displayName;
             item.name = one.columnName;
             item.type = "beeInput";
-            item.placeholder = one.defaultValue;
-            item.value = "";
+            item.placeholder = one.placeholder;
+            item.value = one.defaultValue;
             item.rule = {};
-            
-
+          }else if(dataType===2){
+            //整数：整数输入框
+            item.label = one.displayName;
+            item.name = one.columnName;
+            item.type = "beeInput";
+            item.placeholder = one.placeholder;
+            item.value = one.defaultValue;
+            item.rule = {};
+          }else if(dataType===3){
+            //整数：整数输入框
+            item.label = one.displayName;
+            item.name = one.columnName;
+            item.type = "beeDatePicker";
+            item.placeholder = one.placeholder;
+            item.value = one.defaultValue;
+            item.rule = {};
           }else{
             //其他
             item = {
-              label: "XXXX",
-              name: 'XXXX',
+              label: "XXXX11",
+              name: 'XXXX22',
               type: 'beeInput',
-              placeholder: 'XXXX',
+              placeholder: 'XXXX33',
               value: '',
               rule: {},
             }

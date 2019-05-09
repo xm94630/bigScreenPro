@@ -556,6 +556,24 @@ router.get('/column/initForView', async (ctx, next) => {
       //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
       //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
       //"queryIndex":0,  //组件出现顺序
+    },{
+      "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+      "dataType":2,    //大类型：2是整数（整数输入框）
+      "displayName":"汽车",    //label显示
+      "defaultValue":"",      //默认值
+      "placeholder":"几辆",    //placeholder
+      //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+      //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+      //"queryIndex":0,  //组件出现顺序
+    },{
+      "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+      "dataType":3,    //大类型：3是日期（日期选择框）
+      "displayName":"生日",    //label显示
+      "defaultValue":"",      //默认值
+      "placeholder":"请选择",    //placeholder
+      //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+      //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+      //"queryIndex":0,  //组件出现顺序
     }]
   }
   ctx.body = {
