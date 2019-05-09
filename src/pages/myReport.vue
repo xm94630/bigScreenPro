@@ -25,9 +25,11 @@ export default {
   },
   mounted(){
     //获取已经存在的数据
-    let code = this.$route.query.code;
-    axios.get(baseUrl + "/koa/getReportByCode?code="+code).then(response => {
-      this.data = response.data.data;
+    let code = this.$route.query.diyViewCode;
+    //axios.get(baseUrl + "/koa/getReportByCode?code="+code).then(response => {
+    axios.get(baseUrl + "/2/api_v1/diy/view/info?diyViewCode="+code).then(response => {
+      this.data = response.data.data.config;
+      console.log(this.data)
     });
   }
 }
