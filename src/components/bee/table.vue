@@ -69,7 +69,6 @@ export default {
         value: '',
         rule: {},
       },],
-
     };
   },
   components:{
@@ -78,16 +77,75 @@ export default {
   methods:{
     handleSearch(res){
       console.log(res)
+    },
+    //将服务器的配置数据，转换成我组件所能使用的格式！
+    parseConditionArr(arr){
+
+      console.log("条件配置数据===>")
+      console.log(arr)
+
+      let newArr = [];
+
+      for(let i=0;i<arr.length;i++){
+        let one = arr[i];
+        let item = null;
+        let isForeign = one.isForeign;
+        let dataType = one.dataType;
+        if(isForeign){
+          //关联的是下拉列表
+          item = {
+            label: "XXXX",
+            name: 'XXXX',
+            type: 'beeInput',
+            placeholder: 'XXXX',
+            value: '',
+            rule: {},
+          }
+        }else{
+          //不关联的是其他类型
+          item = {
+            label: "姓名",
+            name: '这个是用来绑定的',
+            type: 'beeInput',
+            placeholder: '请输入',
+            value: '',
+            rule: {},
+          }
+
+          if(dataType===1){
+            //字符串：普通的文字输入框
+            item.label = one.displayName;
+            item.name = one.columnName;
+            item.type = "beeInput";
+            item.placeholder = one.defaultValue;
+            item.value = "";
+            item.rule = {};
+            
+
+          }else{
+            //其他
+            item = {
+              label: "XXXX",
+              name: 'XXXX',
+              type: 'beeInput',
+              placeholder: 'XXXX',
+              value: '',
+              rule: {},
+            }
+          }
+
+        }
+        newArr.push(item);
+      }
+      return newArr;
     }
   },
   mounted(){
+    //console.log('===>')
     //console.log(this.myConfig);
 
-    const conf = this.myConfig;
-    const conditionArr = conf.tableConfig.conditionColumnList;
-    conditionArr.forEach(function(oneCondition){
-    
-    })
+    const conditionArr = this.myConfig.tableConfig.conditionColumnList;
+    this.items = this.parseConditionArr(conditionArr);
 
 
 
