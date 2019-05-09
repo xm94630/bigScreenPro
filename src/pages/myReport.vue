@@ -29,7 +29,6 @@ export default {
     //axios.get(baseUrl + "/koa/getReportByCode?code="+code).then(response => {
     axios.get(baseUrl + "/2/api_v1/diy/view/info?diyViewCode="+code).then(response => {
       this.data = response.data.data.config;
-      console.log(this.data)
     });
   }
 }
