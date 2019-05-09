@@ -2,6 +2,8 @@ const router = require('koa-router')()
 
 router.prefix('/2/api_v1/diy/')
 
+//const url = "http://172.16.28.85:8080";
+const url = "";
 
 //获取大屏位置配置信息
 router.get('/view/info', async (ctx, next) => {
@@ -403,8 +405,6 @@ router.get('/view/info', async (ctx, next) => {
   }
   if ("test1" == code) {
     //永辉大屏页面1的配置信息
-    //const url = "http://172.16.28.85:8080";
-    const url = "";
     
     jsonData = {
       "code": "test1",
@@ -578,9 +578,12 @@ router.get('/column/initForView', async (ctx, next) => {
     },{
       "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
       "dataType":0,    //大类型：3是日期（日期选择框）
-      "displayName":"最爱吃",    //label显示
-      "defaultValue":"",      //默认值
+      "displayName":"最爱",    //label显示
+      "defaultValue":1,      //默认值
       "placeholder":"请选择",    //placeholder
+      "referenceUrl":url+"/2/api_v1/diy/xxx/xxx", //关联URL
+      "referenceColumn":"bbb",  //下拉的值
+      "referenceDisplayColumn":"aaa", //下拉显示
       //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
       //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
       //"queryIndex":0,  //组件出现顺序
@@ -591,6 +594,17 @@ router.get('/column/initForView', async (ctx, next) => {
   }
 })
 
+//关联U
+//创建大屏配置
+router.get('/xxx/xxx', async (ctx, next) => {
+  ctx.body = {
+    data: {
+      'aaa': ["孙悟空","猪八戒"],
+      'bbb': [0,1],
+      'ccc': ["一年级","二年级"],
+    }
+  }
+})
 
 
 

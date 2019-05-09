@@ -36,6 +36,7 @@
 // }
 
 import searchCondition from "./table/searchCondition.vue"
+import axios from "axios";
 
 export default {
   name: "beeTable",
@@ -79,7 +80,7 @@ export default {
       console.log(res)
     },
     //将服务器的配置数据，转换成我组件所能使用的格式！
-    parseConditionArr(arr){
+    async parseConditionArr(arr){
 
       console.log("条件配置数据===>")
       console.log(arr)
@@ -92,6 +93,30 @@ export default {
         let isForeign = one.isForeign;
         let dataType = one.dataType;
         if(isForeign){
+
+          let referenceUrl = one.referenceUrl;
+          
+          let getOptionsData = function() {
+              return new Promise((resolve) => {
+
+                axios.get(referenceUrl).then( async (response) => {
+                  let d = response.data.data;
+                  let referenceDisplayColumn = d[one.referenceDisplayColumn];
+                  let referenceColumn = d[one.referenceColumn];
+                  let options = [];
+                  for(let i=0;i<referenceColumn.length;i++){
+                    options.push({
+                      value:referenceColumn[i],
+                      label:referenceDisplayColumn[i],
+                    })
+                  }
+                  resolve(options);
+                })
+              })
+          }
+
+          let options = await getOptionsData();
+
           //关联的是下拉列表
           item = {
             label: one.displayName,
@@ -100,7 +125,9 @@ export default {
             placeholder: one.placeholder,
             value: one.defaultValue,
             rule: {},
+            options:options,
           }
+
         }else{
           //不关联的是其他类型
           item = {}
@@ -146,12 +173,12 @@ export default {
       return newArr;
     }
   },
-  mounted(){
+  async mounted(){
     //console.log('===>')
     //console.log(this.myConfig);
 
     const conditionArr = this.myConfig.tableConfig.conditionColumnList;
-    this.items = this.parseConditionArr(conditionArr);
+    this.items = await this.parseConditionArr(conditionArr);
 
 
 
