@@ -405,6 +405,7 @@ router.get('/view/info', async (ctx, next) => {
     //永辉大屏页面1的配置信息
     //const url = "http://172.16.28.85:8080";
     const url = "";
+    
     jsonData = {
       "code": "test1",
       "pageId": "pageId-00004",
