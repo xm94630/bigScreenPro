@@ -318,17 +318,21 @@ export default {
         let data = this.reportConfig.components.textBar;
         let len = data.length;
         for (let i = 0; i < len; i++) {
-          let propsConfig = {
-            myConfig: data[i]
-          };
 
           const dataUrl = data[i].dataUrl;
           const diyCoreCode = data[i].diyCoreCode;
-          const url = dataUrl+"?diyCoreCode="+diyCoreCode;
+          const body = {
+            diyCoreCode
+          }
 
           //获取数据源
-          axios.get(url).then(response => {
-            //console.log(response)
+          axios.post(dataUrl,body).then(response => {
+
+            let propsConfig = {
+              myConfig: data[i]
+            };
+            propsConfig.myConfig.myData=response.data.data;
+
             //构建组件
             import("../components/bee/textBar.vue").then(cmp => {
               mountCmp(

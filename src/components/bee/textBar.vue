@@ -1,5 +1,9 @@
 <template>
-  <div class="beeTitle" :style="beeTitleStyle">{{myConfig.text}}</div>
+  <div class="beeTitle" :style="beeTitleStyle">
+    <template v-for="(one,index) in myConfig.myData">
+      <div :key="index"> 库房整体积：{{one.totalvolume}} | 总体使用体积：{{one.totalusevolume}} | 库房利用率：{{one.totalavailability}}</div>
+    </template>
+  </div>
 </template>
 
 <script>
@@ -39,10 +43,11 @@ export default {
       str += "text-align:"+this.myConfig['text-align']+";"
       str += "padding:"+this.myConfig['padding']+"px;"
       str += "background:"+this.myConfig['background']+";"
-
-
       return str;
     }
+  },
+  mounted(){
+    //console.log(this.myConfig)
   }
 };
 </script>

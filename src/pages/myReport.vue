@@ -29,9 +29,12 @@ export default {
     //axios.get(baseUrl + "/koa/getReportByCode?code="+code).then(response => {
     axios.get(baseUrl + "/2/api_v1/diy/view/info?diyViewCode="+code).then(response => {
       let d = response.data.data.jsonData;
+      
+      //兼容koa本地虚拟的数据（对象类型）、和来自后端那边的数据
       if(typeof(d)!=='object'){
         d = eval('(' + d + ')');
       }
+      
       this.data = d;
     });
   }
