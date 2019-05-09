@@ -401,10 +401,10 @@ router.get('/view/info', async (ctx, next) => {
       },
     }
   }
-  if ("myTable" == code) {
+  if ("test1" == code) {
     //永辉大屏页面1的配置信息
     config = {
-      "code": "myTable",
+      "code": "test1",
       "pageId": "pageId-00004",
       "canvas": {
         "zoom-type":0, 

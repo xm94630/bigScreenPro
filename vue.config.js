@@ -14,6 +14,7 @@ module.exports={
                 },
                 '/2': {
                     target: 'http://localhost:3000',
+                    //target: 'http://172.16.28.85:8080',     // 德柱
                     secure: false, 
                 },
             }

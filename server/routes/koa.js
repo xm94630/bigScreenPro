@@ -424,10 +424,10 @@ router.get('/getReportByCode', async (ctx, next) => {
       },
     }
   }
-  if ("myTable" == code) {
+  if ("test1" == code) {
     //永辉大屏页面1的配置信息
     config = {
-      "code": "myTable",
+      "code": "test1",
       "pageId": "pageId-00004",
       "canvas": {
         "zoom-type":0, 
@@ -507,7 +507,7 @@ router.get('/getReportList', async (ctx, next) => {
     code: "mingming",
     describe: '明明哥的大屏'
   }, {
-    code: "myTable",
+    code: "test1",
     describe: '自定义二维表'
   }]
   ctx.body = {
