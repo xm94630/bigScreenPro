@@ -473,7 +473,7 @@ router.get('/createReport', async (ctx, next) => {
 })
 
 //对于二维表而言，需要额外多请求一个接口，用来获取“查询条件”配置的初始化工作哦
-router.get('/initForView', async (ctx, next) => {
+router.get('/column/initForView', async (ctx, next) => {
   let data = {
     //这部分是对table部分的配置
     "resultColumnList":[{
