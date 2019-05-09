@@ -321,13 +321,24 @@ export default {
           let propsConfig = {
             myConfig: data[i]
           };
-          import("../components/bee/textBar.vue").then(cmp => {
-            mountCmp(
-              cmp,
-              propsConfig,
-              document.querySelector(".myReportCanvas")
-            );
+
+          const dataUrl = data[i].dataUrl;
+          const diyCoreCode = data[i].diyCoreCode;
+          const url = dataUrl+"?diyCoreCode="+diyCoreCode;
+
+          //获取数据源
+          axios.get(url).then(response => {
+            //console.log(response)
+            //构建组件
+            import("../components/bee/textBar.vue").then(cmp => {
+              mountCmp(
+                cmp,
+                propsConfig,
+                document.querySelector(".myReportCanvas")
+              );
+            });
           });
+
         }
       }
 
