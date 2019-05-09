@@ -403,6 +403,8 @@ router.get('/view/info', async (ctx, next) => {
   }
   if ("test1" == code) {
     //永辉大屏页面1的配置信息
+    //const url = "http://172.16.28.85:8080";
+    const url = "";
     jsonData = {
       "code": "test1",
       "pageId": "pageId-00004",
@@ -424,15 +426,15 @@ router.get('/view/info', async (ctx, next) => {
           "showIndexColumn":true,
           "currentPage":1,
           "pageSize":10,
-          "initTableUrl":"http://172.16.28.85:8080/2/api_v1/diy/column/initForView",
-          "dataUrl": "http://172.16.28.85:8080/2/api/diy/report/selectData",
+          "initTableUrl":url+"/2/api_v1/diy/column/initForView",
+          "dataUrl": url+"/2/api/diy/report/selectData",
           "searchBtns":[{
             "text":"按货架查询",
-            "dataUrl": "http://172.16.28.85:8080/2/api/diy/report/selectData",
+            "dataUrl": url+"/2/api/diy/report/selectData",
             "diyCoreCode":"InventoryReportByShelf"
           },{
             "text":"按货位查询",
-            "dataUrl": "http://172.16.28.85:8080/2/api/diy/report/selectData",
+            "dataUrl": url+"/2/api/diy/report/selectData",
             "diyCoreCode":"InventoryReportByBin"
           }]
         }],
@@ -449,7 +451,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "none",
           "background": "green",
           "text-align": "left",
-          "dataUrl": "http://172.16.28.85:8080/2/api/diy/report/selectData",
+          "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":"InventoryReportByWarehouse"
         }]
       }
@@ -566,6 +568,7 @@ router.get('/column/initForView', async (ctx, next) => {
     data: data
   }
 })
+
 
 
 
