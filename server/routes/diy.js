@@ -548,21 +548,14 @@ router.get('/column/initForView', async (ctx, next) => {
       "updateUser":"",
       "updateTime":0
     },{
-      "diyColumnId":217,
-      "dataType":1,  //大类型
-      "defaultValue":"我是默认值哦1",  //输入框、查询框的默认值
-      "queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-      "queryIndex":0,  //顺序
-      "isForeign":1,   //是否关联（关联的是下拉）
-      "referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-    },{
-      "diyColumnId":217,
-      "dataType":1,  //大类型
-      "defaultValue":"我是默认值哦3",  //输入框、查询框的默认值
-      "queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-      "queryIndex":0,  //顺序
-      "isForeign":3,   //是否关联（关联的是下拉）
-      "referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+      "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+      "dataType":1,    //大类型：1是字符串（普通输入框）
+      "displayName":"姓名",    //label显示
+      "defaultValue":"",      //默认值
+      "placeholder":"张三",    //placeholder
+      //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+      //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+      //"queryIndex":0,  //组件出现顺序
     }]
   }
   ctx.body = {

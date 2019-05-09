@@ -13,8 +13,8 @@ module.exports={
                     secure: false,                          // 设置支持https协议的代理
                 },
                 '/2': {
-                    //target: 'http://localhost:3000',
-                    target: 'http://172.16.28.85:8080',     // 德柱
+                    target: 'http://localhost:3000',
+                    //target: 'http://172.16.28.85:8080',     // 德柱
                     secure: false, 
                 },
             }
