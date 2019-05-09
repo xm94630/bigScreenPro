@@ -6,10 +6,10 @@ router.prefix('/2/api_v1/diy/')
 //获取大屏位置配置信息
 router.get('/view/info', async (ctx, next) => {
   let code = ctx.request.query.diyViewCode;
-  let config = null;
+  let jsonData = null;
   if ("yonghui1" == code) {
     //永辉大屏页面1的配置信息
-    config = {
+    jsonData = {
       'code': 'yonghui1',
       'pageId': 'pageId-00001',
       'canvas': {
@@ -139,7 +139,7 @@ router.get('/view/info', async (ctx, next) => {
   }
   if ("yonghui2" == code) {
     //永辉大屏页面1的配置信息
-    config = {
+    jsonData = {
       'code': 'yonghui2',
       'pageId': 'pageId-00001',
       'canvas': {
@@ -338,7 +338,7 @@ router.get('/view/info', async (ctx, next) => {
   }
   if ("mingming" == code) {
     //永辉大屏页面1的配置信息
-    config = {
+    jsonData = {
       'code': 'yonghui2',
       'pageId': 'pageId-00001',
       'canvas': {
@@ -403,7 +403,7 @@ router.get('/view/info', async (ctx, next) => {
   }
   if ("test1" == code) {
     //永辉大屏页面1的配置信息
-    config = {
+    jsonData = {
       "code": "test1",
       "pageId": "pageId-00004",
       "canvas": {
@@ -459,7 +459,7 @@ router.get('/view/info', async (ctx, next) => {
   }
 
   ctx.body = {
-    data: {config}
+    data: {jsonData}
   }
 })
 

@@ -28,9 +28,11 @@ export default {
     let code = this.$route.query.diyViewCode;
     //axios.get(baseUrl + "/koa/getReportByCode?code="+code).then(response => {
     axios.get(baseUrl + "/2/api_v1/diy/view/info?diyViewCode="+code).then(response => {
-      let str = response.data.data.jsonData;
-      var obj = eval('(' + str + ')');
-      this.data = obj;
+      let d = response.data.data.jsonData;
+      if(typeof(d)!=='object'){
+        d = eval('(' + d + ')');
+      }
+      this.data = d;
     });
   }
 }
