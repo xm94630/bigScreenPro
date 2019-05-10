@@ -45,6 +45,7 @@ export default {
   },
   data() {
     return {
+      conditionData:{}, //这个用来保存查询条件的最后结果
       items:[{
         span: 12,
         label: "姓名",
@@ -78,6 +79,14 @@ export default {
   methods:{
     handleSearch(res){
       console.log(res)
+    },
+    //初始化查询条件的值
+    initConditionData(arr){
+      let newArr={};
+      for(let i=0;i<arr.length;i++){
+        newArr[arr[i].columnName] = (arr[i].defaultValue);
+      }
+      return newArr;
     },
     //将服务器的配置数据，转换成我组件所能使用的格式！
     async parseConditionArr(arr){
@@ -179,11 +188,8 @@ export default {
 
     const conditionArr = this.myConfig.tableConfig.conditionColumnList;
     this.items = await this.parseConditionArr(conditionArr);
-
-
-
-
-
+    //初始化查询条件的值
+    this.conditionData = this.initConditionData(conditionArr);
 
 
   },
