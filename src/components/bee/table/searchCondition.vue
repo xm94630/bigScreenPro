@@ -15,7 +15,7 @@
       <el-button @click="resetForm('ruleForm')">重置</el-button>
 
       <template v-for="(one,index) in searchBtns">
-        <el-button :key="index" type="primary" :diyCoreCode="one.diyCoreCode" @click="submitForm(one.diyCoreCode)">{{one.text}}</el-button>
+        <el-button :key="index" type="primary" :diyCoreCode="one.diyCoreCode" @click="submitForm(one.diyCoreCode,one.dataUrl)">{{one.text}}</el-button>
       </template>
     </div>
   </div>
@@ -33,6 +33,8 @@ export default {
   props: {
     items:Array,
     searchBtns:null,
+    currentPage:null,
+    pageSize:null,
   },
   data() {
     return {
@@ -50,8 +52,12 @@ export default {
       console.log(newArr)
       return newArr;
     },
-    submitForm(v){
+    submitForm(code,url){
       console.log("条件查询最终数据")
+      console.log(code)
+      console.log(url)
+      console.log(this.currentPage)
+      console.log(this.pageSize)
       console.log(this.conditionData);
     },
     resetForm(v){
