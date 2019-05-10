@@ -518,13 +518,13 @@ router.get('/column/initForView', async (ctx, next) => {
       "diyColumnId":217,
       "diyCoreCode":"print_label_1570",
       "diyCoreName":"yashilandai",
-      "columnName":"reservation5", //关联字段
+      "columnName":"addr", //关联字段
       "displayName":"XX", //label名称
       "dataType":1,  //大类型
       "dataLength":0,
       "decimallength":0,
       "columnIndex":0,
-      "defaultValue":"我是默认值哦2",  //输入框、查询框的默认值
+      "defaultValue":"2",  //输入框、查询框的默认值
       "isDiy":0,
       "isReadonly":0,
       "isResult":1,

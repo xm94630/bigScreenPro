@@ -34,7 +34,21 @@ export default {
     searchBtns:null,
   },
   data() {
-    return {};
+    return {
+      conditionData:{}, //这个用来保存查询条件的最后结果
+    };
+  },
+  methods:{
+    //初始化查询条件的值
+    initConditionData(arr){
+      let newArr={};
+      for(let i=0;i<arr.length;i++){
+        newArr[arr[i].name] = (arr[i].value);
+      }
+      console.log('条件搜索初始数据===>')
+      console.log(newArr)
+      return newArr;
+    },
   },
   computed: {
   },
@@ -44,8 +58,12 @@ export default {
     beeSelect,
   },
   mounted(){
-    console.log(this.items)
-    console.log(this.searchBtns)
+    //console.log(this.items)
+    //console.log(this.searchBtns)
+  },
+  updated(){
+    //初始化查询条件的值
+    this.conditionData = this.initConditionData(this.items);
   }
   
 };
