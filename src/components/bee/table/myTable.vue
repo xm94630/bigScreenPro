@@ -13,6 +13,13 @@
       </template>
 
     </el-table>
+
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="totalPages"
+      :page-size="pageSize">
+    </el-pagination>
   </div>
 </template>
 
@@ -27,6 +34,7 @@ export default {
     "currentPage":null,
     "pageSize":null,
     "resultColumnList":null,
+    "totalPages":null,
   },
   data() {
     return {
