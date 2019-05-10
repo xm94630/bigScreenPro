@@ -53,8 +53,9 @@ export default {
       return newArr;
     },
     submitForm(code,url){
-      console.log("条件查询最终数据")
-      console.log(this.conditionData);
+      //console.log("条件查询最终数据")
+      //console.log(this.conditionData);
+      
       // console.log(code)
       // console.log(url)
       // console.log(this.currentPage)
@@ -69,8 +70,8 @@ export default {
 
       //获取数据源
       axios.post(url,body).then(response => {
-        console.log('表格数据===>')
-        console.log(response.data.data)
+        // console.log('表格数据===>')
+        // console.log(response.data.data)
         let tableData = response.data.data;
         this.$emit('tableDataOK', tableData, this.conditionData,code,url);
       });

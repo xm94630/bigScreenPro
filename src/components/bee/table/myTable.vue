@@ -1,5 +1,5 @@
 <template>
-  <div>我是表格22</div>
+  <div>我是表格</div>
 </template>
 
 <script>
@@ -20,11 +20,11 @@ export default {
   },
   watch:{
     "tableData":function(){
-      console.log('表格组件接受数据===>更新')
-      console.log(this.tableData)
-      console.log(this.currentSearchOptions)
-      console.log(this.currentUseCode)
-      console.log(this.currentUseUrl)
+      // console.log('表格组件接受数据===>更新')
+      // console.log(this.tableData)
+      // console.log(this.currentSearchOptions)
+      // console.log(this.currentUseCode)
+      // console.log(this.currentUseUrl)
     }
   },
   methods:{
@@ -34,9 +34,9 @@ export default {
   mounted(){
     console.log('表格组件接受数据===>')
     console.log(this.tableData)
-    console.log(this.currentSearchOptions)
-    console.log(this.currentUseCode)
-    console.log(this.currentUseUrl)
+    // console.log(this.currentSearchOptions)
+    // console.log(this.currentUseCode)
+    // console.log(this.currentUseUrl)
   },
 };
 </script>

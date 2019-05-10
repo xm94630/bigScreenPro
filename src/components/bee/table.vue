@@ -93,11 +93,11 @@ export default {
   },
   methods:{
     tableDataOK(tableData,searchOptions,code,url){
-      console.log('==table数据就绪==')
-      console.log(tableData)
-      console.log(searchOptions)
-      console.log(code)
-      console.log(url)
+      // console.log('==table数据就绪==')
+      // console.log(tableData)
+      // console.log(searchOptions)
+      // console.log(code)
+      // console.log(url)
       this.tableData = tableData;
       this.currentSearchOptions = searchOptions;
       this.currentUseCode = code;
