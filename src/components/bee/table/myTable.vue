@@ -3,9 +3,6 @@
 </template>
 
 <script>
-
-
-
 export default {
   name: "myTable",
   props: {
@@ -13,6 +10,8 @@ export default {
     "currentSearchOptions":null,
     "currentUseCode":null,
     "currentUseUrl":null,
+    "currentPage":null,
+    "pageSize":null,
   },
   data() {
     return {

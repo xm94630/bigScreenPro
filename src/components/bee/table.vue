@@ -21,6 +21,9 @@
               :currentSearchOptions="currentSearchOptions"
               :currentUseCode="currentUseCode"
               :currentUseUrl="currentUseUrl"
+
+              :currentPage="myConfig.currentPage"
+              :pageSize="myConfig.pageSize"
             />
           </div>
         </div>
