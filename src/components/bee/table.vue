@@ -8,13 +8,23 @@
         :searchBtns="myConfig.searchBtns" 
         :currentPage="myConfig.currentPage"
         :pageSize="myConfig.pageSize"
-        @search="handleSearch"
+        @tableDataOK="tableDataOK"
         />
       </div>
     </div>
     <div class="bottom">
       <div class="bottomCon">
-        表格部分
+        <div v-if="tableData.length">
+          <div>
+            <myTable 
+              :tableData="tableData"
+              :currentSearchOptions="currentSearchOptions"
+              :currentUseCode="currentUseCode"
+              :currentUseUrl="currentUseUrl"
+            />
+          </div>
+        </div>
+        <div v-else>暂时没有数据</div>
       </div>
     </div>
   </div>
@@ -35,8 +45,9 @@
 //   ....
 // }
 
-import searchCondition from "./table/searchCondition.vue"
 import axios from "axios";
+import searchCondition from "./table/searchCondition.vue"
+import myTable from "./table/table.vue"
 
 export default {
   name: "beeTable",
@@ -70,14 +81,27 @@ export default {
         value: '',
         rule: {},
       },],
+      tableData:[],
+      currentSearchOptions:{},
+      currentUseCode:{},
+      currentUseUrl:{},
     };
   },
   components:{
     searchCondition,
+    myTable,
   },
   methods:{
-    handleSearch(res){
-      console.log(res)
+    tableDataOK(tableData,searchOptions,code,url){
+      console.log('==table数据就绪==')
+      console.log(tableData)
+      console.log(searchOptions)
+      console.log(code)
+      console.log(url)
+      this.tableData = tableData;
+      this.currentSearchOptions = searchOptions;
+      this.currentUseCode = code;
+      this.currentUseUrl = url;
     },
     //将服务器的配置数据，转换成我组件所能使用的格式！
     async parseConditionArr(arr){

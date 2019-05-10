@@ -70,7 +70,9 @@ export default {
       //获取数据源
       axios.post(url,body).then(response => {
         console.log('表格数据===>')
-        console.log(response.data)
+        console.log(response.data.data)
+        let tableData = response.data.data;
+        this.$emit('tableDataOK', tableData, this.conditionData,code,url);
       });
 
     },
