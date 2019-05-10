@@ -5,7 +5,11 @@
           <el-date-picker
             v-model="formInline.user"
             type="date"
-            :placeholder="item.placeholder">
+            :placeholder="item.placeholder"
+            @change="handleChange"
+            format="yyyy 年 MM 月 dd 日"
+            value-format="yyyy-MM-dd"
+            >
           </el-date-picker>
         </el-form-item>
       </el-form>
@@ -30,6 +34,11 @@ export default {
   watch:{
     'item':function(v){
       this.formInline.myInput = v.defaultValue;
+    }
+  },
+  methods:{
+    handleChange(val){
+      this.$emit('sonChange', val, this.item);
     }
   },
   computed: {

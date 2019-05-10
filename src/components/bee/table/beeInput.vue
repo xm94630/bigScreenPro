@@ -2,7 +2,7 @@
     <el-col :span="8">
       <el-form :inline="true" :model="formInline" class="demo-form-inline" label-width="80px">
         <el-form-item :label="item.label">
-          <el-input v-model="formInline.myInput" :placeholder="item.placeholder"></el-input>
+          <el-input v-model="formInline.myInput" :placeholder="item.placeholder" @change="handleChange"></el-input>
         </el-form-item>
       </el-form>
     </el-col>
@@ -27,6 +27,11 @@ export default {
   watch:{
     'item':function(v){
       this.formInline.myInput = v.defaultValue;
+    }
+  },
+  methods:{
+    handleChange(val){
+      this.$emit('sonChange', val, this.item);
     }
   },
   computed: {

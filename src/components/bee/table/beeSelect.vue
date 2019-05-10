@@ -5,7 +5,7 @@
 
         <el-form-item :label="item.label">
           
-          <el-select v-model="formInline.user" :placeholder="item.placeholder">
+          <el-select v-model="formInline.user" :placeholder="item.placeholder"  @change="handleChange">
             <el-option
               v-for="item in item.options"
               :key="item.value"
@@ -42,6 +42,11 @@ export default {
     }
   },
   computed: {
+  },
+  methods:{
+    handleChange(val){
+      this.$emit('sonChange', val, this.item);
+    }
   },
   mounted(){
   },

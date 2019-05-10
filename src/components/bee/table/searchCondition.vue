@@ -8,6 +8,7 @@
       :is="item.type"
       :item="item"
       :ref="item.keyName"
+      @sonChange = "sonChangeHandle"
       ></component>
     </el-row>
     <div class="funBox">
@@ -50,10 +51,15 @@ export default {
       return newArr;
     },
     submitForm(v){
-      alert(v)
+      console.log("条件查询最终数据")
+      console.log(this.conditionData);
     },
     resetForm(v){
       alert('reset')
+    },
+    //接受子组件中值的变化，更新数据
+    sonChangeHandle(v,item){
+      this.conditionData[item.keyName] = v;
     }
   },
   computed: {
