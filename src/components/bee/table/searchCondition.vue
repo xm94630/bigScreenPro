@@ -7,7 +7,7 @@
       :key="index"
       :is="item.type"
       :item="item"
-      :ref="item.name"
+      :ref="item.keyName"
       ></component>
     </el-row>
     <div class="funBox">
@@ -43,7 +43,7 @@ export default {
     initConditionData(arr){
       let newArr={};
       for(let i=0;i<arr.length;i++){
-        newArr[arr[i].name] = (arr[i].value);
+        newArr[arr[i].keyName] = (arr[i].defaultValue);
       }
       console.log('条件搜索初始数据===>')
       console.log(newArr)

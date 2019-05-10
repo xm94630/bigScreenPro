@@ -23,13 +23,16 @@ export default {
   data() {
     return {
       formInline: {
-        user: '',
+        user: this.item.defaultValue,
       }
     };
   },
   computed: {
   },
   mounted(){
+  },
+  updated(){
+    this.formInline.user = this.item.defaultValue;
   }
 };
 </script>

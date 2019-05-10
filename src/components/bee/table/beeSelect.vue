@@ -5,7 +5,7 @@
 
         <el-form-item :label="item.label">
           
-          <el-select v-model="value" :placeholder="item.placeholder">
+          <el-select v-model="formInline.user" :placeholder="item.placeholder">
             <el-option
               v-for="item in item.options"
               :key="item.value"
@@ -32,14 +32,16 @@ export default {
   data() {
     return {
       formInline: {
-        user: '',
+        user: this.item.defaultValue,
       },
-      value: this.item.value
     };
   },
   computed: {
   },
   mounted(){
+  },
+  updated(){
+    this.formInline.user = this.item.defaultValue;
   }
 };
 </script>

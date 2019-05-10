@@ -48,7 +48,7 @@ export default {
       items:[{
         span: 12,
         label: "姓名",
-        name: '这个是用来绑定的',
+        keyName: '这个是用来绑定的',
         type: 'beeInput',
         placeholder: '请输入',
         value: '',
@@ -56,7 +56,7 @@ export default {
       },{
         span: 12,
         label: "喜爱",
-        name: '这个是用来绑定的',
+        keyName: '这个是用来绑定的',
         type: 'beeSelect',
         placeholder: '请输入',
         value: '',
@@ -64,7 +64,7 @@ export default {
       },{
         span: 12,
         label: "选择日期",
-        name: '这个是用来绑定的',
+        keyName: '这个是用来绑定的',
         type: 'beeDatePicker',
         placeholder: '日期选择',
         value: '',
@@ -120,10 +120,10 @@ export default {
           //关联的是下拉列表
           item = {
             label: one.displayName,
-            name: one.columnName,
+            keyName: one.columnName,
             type: 'beeSelect',
             placeholder: one.placeholder,
-            value: one.defaultValue,
+            defaultValue: one.defaultValue,
             rule: {},
             options:options,
           }
@@ -134,35 +134,35 @@ export default {
           if(dataType===1){
             //字符串：普通的文字输入框
             item.label = one.displayName;
-            item.name = one.columnName;
+            item.keyName = one.columnName;
             item.type = "beeInput";
             item.placeholder = one.placeholder;
-            item.value = one.defaultValue;
+            item.defaultValue = one.defaultValue;
             item.rule = {};
           }else if(dataType===2){
             //整数：整数输入框
             item.label = one.displayName;
-            item.name = one.columnName;
+            item.keyName = one.columnName;
             item.type = "beeInput";
             item.placeholder = one.placeholder;
-            item.value = one.defaultValue;
+            item.defaultValue = one.defaultValue;
             item.rule = {};
           }else if(dataType===3){
             //整数：整数输入框
             item.label = one.displayName;
-            item.name = one.columnName;
+            item.keyName = one.columnName;
             item.type = "beeDatePicker";
             item.placeholder = one.placeholder;
-            item.value = one.defaultValue;
+            item.defaultValue = one.defaultValue;
             item.rule = {};
           }else{
             //其他
             item = {
               label: "XXXX11",
-              name: 'XXXX22',
+              keyName: 'XXXX22',
               type: 'beeInput',
               placeholder: 'XXXX33',
-              value: '',
+              defaultValue: '',
               rule: {},
             }
           }
