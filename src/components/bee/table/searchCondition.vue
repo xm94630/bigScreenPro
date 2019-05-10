@@ -22,7 +22,7 @@
 </template>
 
 <script>
-
+import axios from "axios";
 
 import beeInput from './beeInput.vue';
 import beeDatePicker from './beeDatePicker.vue';
@@ -54,11 +54,25 @@ export default {
     },
     submitForm(code,url){
       console.log("条件查询最终数据")
-      console.log(code)
-      console.log(url)
-      console.log(this.currentPage)
-      console.log(this.pageSize)
       console.log(this.conditionData);
+      // console.log(code)
+      // console.log(url)
+      // console.log(this.currentPage)
+      // console.log(this.pageSize)
+
+      const body = {
+        diyCoreCode:code,
+        abc:this.conditionData,
+        currentPage:this.currentPage,
+        pageSize:this.pageSize,
+      }
+
+      //获取数据源
+      axios.post(url,body).then(response => {
+        console.log('表格数据===>')
+        console.log(response.data)
+      });
+
     },
     resetForm(v){
       alert('reset')
