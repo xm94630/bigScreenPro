@@ -425,7 +425,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding": 10,
           "exported": true,
           "showIndexColumn":true,
-          "currentPage":1,
+          "currentPage":2,
           "pageSize":10,
           "initTableUrl":url+"/2/api_v1/diy/column/initForView",
           "dataUrl": url+"/2/api/diy/report/selectData",

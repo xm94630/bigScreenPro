@@ -16,9 +16,10 @@
 
     <el-pagination
       background
-      layout="prev, pager, next"
-      :total="totalPages"
-      :page-size="pageSize">
+      layout = "prev, pager, next"
+      :total = "totalPages"
+      :current-page = "currentPage"
+      :page-size = "pageSize">
     </el-pagination>
   </div>
 </template>
