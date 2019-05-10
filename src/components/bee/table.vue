@@ -133,15 +133,15 @@ export default {
 
                 axios.get(referenceUrl).then( async (response) => {
                   let d = response.data.data;
-                  let referenceDisplayColumn = d[one.referenceDisplayColumn];
-                  let referenceColumn = d[one.referenceColumn];
+
                   let options = [];
-                  for(let i=0;i<referenceColumn.length;i++){
+                  for(let i=0;i<d.length;i++){
                     options.push({
-                      value:referenceColumn[i],
-                      label:referenceDisplayColumn[i],
+                      value:d[i][one.referenceColumn],
+                      label:d[i][one.referenceDisplayColumn]
                     })
                   }
+                  
                   resolve(options);
                 })
               })
