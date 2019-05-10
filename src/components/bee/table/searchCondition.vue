@@ -11,10 +11,10 @@
       ></component>
     </el-row>
     <div class="funBox">
-      <el-button>重置</el-button>
+      <el-button @click="resetForm('ruleForm')">重置</el-button>
 
       <template v-for="(one,index) in searchBtns">
-        <el-button :key="index" type="primary" :diyCoreCode="one.diyCoreCode" @click="submitForm('ruleForm')">{{one.text}}</el-button>
+        <el-button :key="index" type="primary" :diyCoreCode="one.diyCoreCode" @click="submitForm(one.diyCoreCode)">{{one.text}}</el-button>
       </template>
     </div>
   </div>
@@ -49,6 +49,12 @@ export default {
       console.log(newArr)
       return newArr;
     },
+    submitForm(v){
+      alert(v)
+    },
+    resetForm(v){
+      alert('reset')
+    }
   },
   computed: {
   },
