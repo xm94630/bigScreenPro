@@ -518,8 +518,8 @@ router.get('/column/initForView', async (ctx, next) => {
       "diyColumnId":217,
       "diyCoreCode":"print_label_1570",
       "diyCoreName":"yashilandai",
-      "columnName":"reservation5",
-      "displayName":"XX",
+      "columnName":"reservation5", //关联字段
+      "displayName":"XX", //label名称
       "dataType":1,  //大类型
       "dataLength":0,
       "decimallength":0,
@@ -551,6 +551,7 @@ router.get('/column/initForView', async (ctx, next) => {
     },{
       "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
       "dataType":1,    //大类型：1是字符串（普通输入框）
+      "columnName":'name',  //关联字段
       "displayName":"姓名",    //label显示
       "defaultValue":"",      //默认值
       "placeholder":"张三",    //placeholder
@@ -560,6 +561,7 @@ router.get('/column/initForView', async (ctx, next) => {
     },{
       "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
       "dataType":2,    //大类型：2是整数（整数输入框）
+      "columnName":'car',  //关联字段
       "displayName":"汽车",    //label显示
       "defaultValue":"",      //默认值
       "placeholder":"几辆",    //placeholder
@@ -569,6 +571,7 @@ router.get('/column/initForView', async (ctx, next) => {
     },{
       "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
       "dataType":3,    //大类型：3是日期（日期选择框）
+      "columnName":'date',  //关联字段
       "displayName":"生日",    //label显示
       "defaultValue":"",      //默认值
       "placeholder":"请选择",    //placeholder
@@ -578,6 +581,7 @@ router.get('/column/initForView', async (ctx, next) => {
     },{
       "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
       "dataType":0,    //大类型：3是日期（日期选择框）
+      "columnName":'love',  //关联字段
       "displayName":"最爱",    //label显示
       "defaultValue":1,      //默认值
       "placeholder":"请选择",    //placeholder
