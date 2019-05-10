@@ -47,7 +47,7 @@
 
 import axios from "axios";
 import searchCondition from "./table/searchCondition.vue"
-import myTable from "./table/table.vue"
+import myTable from "./table/myTable.vue"
 
 export default {
   name: "beeTable",
