@@ -28,7 +28,6 @@ export default {
   mounted(){
   },
   updated(){
-    this.formInline.myInput = this.item.defaultValue;
   }
 };
 </script>

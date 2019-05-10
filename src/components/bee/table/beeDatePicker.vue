@@ -32,7 +32,6 @@ export default {
   mounted(){
   },
   updated(){
-    this.formInline.user = this.item.defaultValue;
   }
 };
 </script>
