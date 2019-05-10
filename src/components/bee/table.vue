@@ -17,13 +17,15 @@
         <div v-if="tableData.length">
           <div>
             <myTable 
-              :tableData="tableData"
-              :currentSearchOptions="currentSearchOptions"
-              :currentUseCode="currentUseCode"
-              :currentUseUrl="currentUseUrl"
+              :tableData = "tableData"
+              :currentSearchOptions = "currentSearchOptions"
+              :currentUseCode = "currentUseCode"
+              :currentUseUrl = "currentUseUrl"
 
-              :currentPage="myConfig.currentPage"
-              :pageSize="myConfig.pageSize"
+              :currentPage = "myConfig.currentPage"
+              :pageSize = "myConfig.pageSize"
+
+              :resultColumnList = "resultColumnList"
             />
           </div>
         </div>
@@ -204,8 +206,12 @@ export default {
     //console.log('===>')
     //console.log(this.myConfig);
 
+    //条件搜索部分的数据组装
     const conditionArr = this.myConfig.tableConfig.conditionColumnList;
     this.items = await this.parseConditionArr(conditionArr);
+
+    //表头的配置
+    this.resultColumnList = this.myConfig.tableConfig.resultColumnList;
 
   },
   computed: {

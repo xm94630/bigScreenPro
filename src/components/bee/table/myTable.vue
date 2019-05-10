@@ -1,5 +1,19 @@
 <template>
-  <div>我是表格</div>
+  <div>
+    我是表格
+    <el-table :data="tableData" style="width: 100%">
+
+      <template v-for="(one,index) in resultColumnList">
+        <el-table-column
+          :key = "index"
+          :prop = one.columnName 
+          :label= one.displayName
+          width="300">
+        </el-table-column>
+      </template>
+
+    </el-table>
+  </div>
 </template>
 
 <script>
@@ -12,9 +26,11 @@ export default {
     "currentUseUrl":null,
     "currentPage":null,
     "pageSize":null,
+    "resultColumnList":null,
   },
   data() {
     return {
+
     };
   },
   watch:{
@@ -33,6 +49,7 @@ export default {
   mounted(){
     console.log('表格组件接受数据===>')
     console.log(this.tableData)
+    console.log(this.resultColumnList)
     // console.log(this.currentSearchOptions)
     // console.log(this.currentUseCode)
     // console.log(this.currentUseUrl)

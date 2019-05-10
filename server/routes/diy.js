@@ -483,8 +483,8 @@ router.get('/column/initForView', async (ctx, next) => {
       "diyColumnId":190,
       "diyCoreCode":"print_label_1570",     //
       "diyCoreName":"yashilandai",
-      "columnName":"consignee_remark",   //列的key   
-      "displayName":"consignee_remark",   //列头  [{"key":},]
+      "columnName":"date",   //列的key   
+      "displayName":"日期哦",   //列头  [{"key":},]
       "dataType":1,   //数据类型 1字符串  
       "dataLength":0,
       "decimallength":0,
@@ -512,6 +512,14 @@ router.get('/column/initForView', async (ctx, next) => {
       "createTime":0,
       "updateUser":"",
       "updateTime":0
+    },{
+      "columnName":"name",   //列的key   
+      "displayName":"姓名哦",   //列头名字  
+      "columnIndex":0,   //列的顺序
+    },{
+      "columnName":"address",   //列的key   
+      "displayName":"地址哦",   //列头名字  
+      "columnIndex":0,   //列的顺序
     }],
     //这个部分是对查询条件部分的配置
     "conditionColumnList":[{
