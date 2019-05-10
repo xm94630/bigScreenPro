@@ -36,6 +36,11 @@ export default {
       },
     };
   },
+  watch:{
+    'item':function(v){
+      this.formInline.myInput = v.defaultValue;
+    }
+  },
   computed: {
   },
   mounted(){

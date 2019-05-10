@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { setTimeout } from 'timers';
 
 
 export default {
@@ -22,6 +23,11 @@ export default {
         myInput: this.item.defaultValue,
       }
     };
+  },
+  watch:{
+    'item':function(v){
+      this.formInline.myInput = v.defaultValue;
+    }
   },
   computed: {
   },
