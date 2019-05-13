@@ -8,6 +8,7 @@ router.post('/report/selectData', async (ctx, next) => {
 
   let code = ctx.request.body.diyCoreCode;
   let data = {}
+  let totalPage;
 
   if(code==="InventoryReportByWarehouse"){
     data = [{"totalusevolume":500,"totalvolume":1000,"totalavailability":"50%"}]
@@ -25,6 +26,7 @@ router.post('/report/selectData', async (ctx, next) => {
       name: '王小虎3：'+ Math.random(10),
       address: '上海市普陀区金沙江路 1519 弄'
     }]
+    totalPage = 60;
   }else if(code==="InventoryReportByBin"){
     data = [
       {
@@ -41,14 +43,17 @@ router.post('/report/selectData', async (ctx, next) => {
         address: '北京海淀3'
       }
     ]
+    totalPage = 300;
   }else{
     data = {
       
     }
+    totalPage = 200;
   }
 
   ctx.body = {
-    data: data
+    data: data,
+    totalPage: totalPage
   }
 })
 

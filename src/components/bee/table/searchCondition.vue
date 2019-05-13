@@ -73,7 +73,8 @@ export default {
         // console.log('表格数据===>')
         // console.log(response.data.data)
         let tableData = response.data.data;
-        this.$emit('tableDataOK', tableData, this.conditionData,code,url,66); //最后一个是总页数
+        let totalPage = response.data.totalPage;
+        this.$emit('tableDataOK', tableData, this.conditionData,code,url,totalPage); 
       });
 
     },
