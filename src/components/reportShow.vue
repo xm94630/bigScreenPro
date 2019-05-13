@@ -280,6 +280,71 @@ export default {
         }
       }
 
+      //渲染全部的“table”组件进行渲染
+      if ("table" == key) {
+
+          //获取table的配置项目
+          axios.get(baseUrl + '/2/api_v1/diy/column/initForView?diyCoreCode=InventoryReportByShelf').then(response => {
+            
+            //来自接口的配置
+            let tableConfig = response.data.data;
+
+            //来自前端自己的配置
+            let conf = this.reportConfig.components.table;
+            let len = conf.length;
+            for (let i = 0; i < len; i++) {
+              
+              //将配置合并到一起，通过 myConfig 传入。
+              let x = conf[i];
+              x.tableConfig = tableConfig;
+              let propsConfig = {
+                myConfig: x
+              };
+              import("../components/bee/table.vue").then(cmp => {
+                mountCmp(
+                  cmp,
+                  propsConfig,
+                  document.querySelector(".myReportCanvas")
+                );
+              });
+            }
+
+          });
+
+      }
+
+      //渲染全部的“ textBar ”组件进行渲染
+      if ("textBar" == key) {
+        let data = this.reportConfig.components.textBar;
+        let len = data.length;
+        for (let i = 0; i < len; i++) {
+
+          const dataUrl = data[i].dataUrl;
+          const diyCoreCode = data[i].diyCoreCode;
+          const body = {
+            diyCoreCode
+          }
+
+          //获取数据源
+          axios.post(dataUrl,body).then(response => {
+
+            let propsConfig = {
+              myConfig: data[i]
+            };
+            propsConfig.myConfig.myData=response.data.data;
+
+            //构建组件
+            import("../components/bee/textBar.vue").then(cmp => {
+              mountCmp(
+                cmp,
+                propsConfig,
+                document.querySelector(".myReportCanvas")
+              );
+            });
+          });
+
+        }
+      }
 
     }
   }
@@ -290,5 +355,6 @@ export default {
 .myReportCanvas {
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 </style>

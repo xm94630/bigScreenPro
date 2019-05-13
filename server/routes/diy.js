@@ -1,38 +1,17 @@
 const router = require('koa-router')()
 
-router.prefix('/koa')
+router.prefix('/2/api_v1/diy/')
 
-
-//获取数据源url
-router.get('/getDataUrl', async (ctx, next) => {
-  let data = [{
-    'id': 'urlId_00001',
-    'url': 'http://www.xxx.com/data/pickingTaskTotal',
-    'name': '当日拣货任务汇总',
-    'describe': '这个是"当日拣货任务汇总"'
-  }, {
-    'id': 'urlId_00002',
-    'url': 'http://www.xxx.com/data/pickingTaskManual',
-    'name': '人工拣货每人拣货量',
-    'describe': '这个是"人工拣货每人拣货量"'
-  }, {
-    'id': 'urlId_00003',
-    'url': 'http://www.xxx.com/data/pickingTaskAGV',
-    'name': 'AGV每工位拣货量',
-    'describe': '这个是"AGV每工位拣货量"'
-  }]
-  ctx.body = {
-    data: data
-  }
-})
+//const url = "http://172.16.28.85:8080";
+const url = "";
 
 //获取大屏位置配置信息
-router.get('/getReportByCode', async (ctx, next) => {
-  let code = ctx.request.query.code;
-  let config = null;
+router.get('/view/info', async (ctx, next) => {
+  let code = ctx.request.query.diyViewCode;
+  let jsonData = null;
   if ("yonghui1" == code) {
     //永辉大屏页面1的配置信息
-    config = {
+    jsonData = {
       'code': 'yonghui1',
       'pageId': 'pageId-00001',
       'canvas': {
@@ -162,7 +141,7 @@ router.get('/getReportByCode', async (ctx, next) => {
   }
   if ("yonghui2" == code) {
     //永辉大屏页面1的配置信息
-    config = {
+    jsonData = {
       'code': 'yonghui2',
       'pageId': 'pageId-00001',
       'canvas': {
@@ -361,7 +340,7 @@ router.get('/getReportByCode', async (ctx, next) => {
   }
   if ("mingming" == code) {
     //永辉大屏页面1的配置信息
-    config = {
+    jsonData = {
       'code': 'yonghui2',
       'pageId': 'pageId-00001',
       'canvas': {
@@ -426,7 +405,8 @@ router.get('/getReportByCode', async (ctx, next) => {
   }
   if ("test1" == code) {
     //永辉大屏页面1的配置信息
-    config = {
+    
+    jsonData = {
       "code": "test1",
       "pageId": "pageId-00004",
       "canvas": {
@@ -445,16 +425,17 @@ router.get('/getReportByCode', async (ctx, next) => {
           "padding": 10,
           "exported": true,
           "showIndexColumn":true,
-          "currentPage":1,
+          "currentPage":2,
           "pageSize":10,
-          "initTableUrl":"http://172.16.28.85:8080/2/api_v1/diy/column/initForView",
+          "initTableUrl":url+"/2/api_v1/diy/column/initForView",
+          "dataUrl": url+"/2/api/diy/report/selectData",
           "searchBtns":[{
             "text":"按货架查询",
-            "dataUrl": "http://172.16.28.85:8080/2/api_v1/diy/column/initForView",
+            "dataUrl": url+"/2/api/diy/report/selectData",
             "diyCoreCode":"InventoryReportByShelf"
           },{
             "text":"按货位查询",
-            "dataUrl": "http://172.16.28.85:8080/2/api_v1/diy/column/initForView",
+            "dataUrl": url+"/2/api/diy/report/selectData",
             "diyCoreCode":"InventoryReportByBin"
           }]
         }],
@@ -471,8 +452,7 @@ router.get('/getReportByCode', async (ctx, next) => {
           "border": "none",
           "background": "green",
           "text-align": "left",
-          //"dataUrl": "/initForView",
-          "dataUrl": "http://172.16.28.85:8080/2/api_v1/diy/column/initForView",
+          "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":"InventoryReportByWarehouse"
         }]
       }
@@ -482,7 +462,7 @@ router.get('/getReportByCode', async (ctx, next) => {
   }
 
   ctx.body = {
-    data: config
+    data: {jsonData}
   }
 })
 
@@ -495,36 +475,16 @@ router.get('/createReport', async (ctx, next) => {
   }
 })
 
-//该接口用来获取用户现有的全部报表页面
-router.get('/getReportList', async (ctx, next) => {
-  let data = [{
-    code: "yonghui1",
-    describe: '永辉大屏幕1'
-  }, {
-    code: "yonghui2",
-    describe: '模板'
-  }, {
-    code: "mingming",
-    describe: '明明哥的大屏'
-  }, {
-    code: "test1",
-    describe: '自定义二维表'
-  }]
-  ctx.body = {
-    data: data
-  }
-})
-
 //对于二维表而言，需要额外多请求一个接口，用来获取“查询条件”配置的初始化工作哦
-router.get('/initForView', async (ctx, next) => {
+router.get('/column/initForView', async (ctx, next) => {
   let data = {
     //这部分是对table部分的配置
     "resultColumnList":[{
       "diyColumnId":190,
       "diyCoreCode":"print_label_1570",     //
       "diyCoreName":"yashilandai",
-      "columnName":"consignee_remark",   //列的key   
-      "displayName":"consignee_remark",   //列头  [{"key":},]
+      "columnName":"date",   //列的key   
+      "displayName":"日期哦",   //列头  [{"key":},]
       "dataType":1,   //数据类型 1字符串  
       "dataLength":0,
       "decimallength":0,
@@ -552,19 +512,31 @@ router.get('/initForView', async (ctx, next) => {
       "createTime":0,
       "updateUser":"",
       "updateTime":0
+    },{
+      "columnName":"name",   //列的key   
+      "displayName":"姓名哦",   //列头名字  
+      "columnIndex":0,   //列的顺序
+    },{
+      "columnName":"address",   //列的key   
+      "displayName":"地址哦",   //列头名字  
+      "columnIndex":0,   //列的顺序
+    },{
+      "columnName":"age",   //列的key   
+      "displayName":"年龄",   //列头名字  
+      "columnIndex":0,   //列的顺序
     }],
     //这个部分是对查询条件部分的配置
     "conditionColumnList":[{
       "diyColumnId":217,
       "diyCoreCode":"print_label_1570",
       "diyCoreName":"yashilandai",
-      "columnName":"reservation5",
-      "displayName":"reservation5",
+      "columnName":"addr", //关联字段
+      "displayName":"地址", //label名称
       "dataType":1,  //大类型
       "dataLength":0,
       "decimallength":0,
       "columnIndex":0,
-      "defaultValue":"我是默认值哦2",  //输入框、查询框的默认值
+      "defaultValue":"上海",  //输入框、查询框的默认值
       "isDiy":0,
       "isReadonly":0,
       "isResult":1,
@@ -576,7 +548,7 @@ router.get('/initForView', async (ctx, next) => {
       "checkType":0,
       "isImport":0,
       "isExport":0,
-      "isForeign":1,   //是否关联（关联的是下拉）
+      "isForeign":0,   //是否关联（关联的是下拉）
       "referenceType":0,
       "referenceTable":"",
       "referenceColumn":"",
@@ -586,27 +558,76 @@ router.get('/initForView', async (ctx, next) => {
       "creator":"",
       "createTime":0,
       "updateUser":"",
-      "updateTime":0
+      "updateTime":0,
+      "placeholder":"请输入"
     },{
-      "diyColumnId":217,
-      "dataType":1,  //大类型
-      "defaultValue":"我是默认值哦1",  //输入框、查询框的默认值
-      "queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-      "queryIndex":0,  //顺序
-      "isForeign":1,   //是否关联（关联的是下拉）
-      "referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+      "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+      "dataType":1,    //大类型：1是字符串（普通输入框）
+      "columnName":'name',  //关联字段
+      "displayName":"姓名",    //label显示
+      "defaultValue":"张三",      //默认值
+      "placeholder":"请输入",    //placeholder
+      //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+      //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+      //"queryIndex":0,  //组件出现顺序
     },{
-      "diyColumnId":217,
-      "dataType":1,  //大类型
-      "defaultValue":"我是默认值哦3",  //输入框、查询框的默认值
-      "queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-      "queryIndex":0,  //顺序
-      "isForeign":3,   //是否关联（关联的是下拉）
-      "referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+      "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+      "dataType":2,    //大类型：2是整数（整数输入框）
+      "columnName":'car',  //关联字段
+      "displayName":"汽车",    //label显示
+      "defaultValue":"2",      //默认值
+      "placeholder":"请输入",    //placeholder
+      //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+      //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+      //"queryIndex":0,  //组件出现顺序
+    },{
+      "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+      "dataType":3,    //大类型：3是日期（日期选择框）
+      "columnName":'date',  //关联字段
+      "displayName":"生日",    //label显示
+      "defaultValue":"1987-08-01",      //默认值
+      "placeholder":"请选择",    //placeholder
+      //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+      //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+      //"queryIndex":0,  //组件出现顺序
+    },{
+      "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
+      "dataType":0,    //大类型：3是日期（日期选择框）
+      "columnName":'love',  //关联字段
+      "displayName":"最爱",    //label显示
+      "defaultValue":'',      //默认值
+      "placeholder":"请选择",    //placeholder
+      "referenceUrl":url+"/2/api_v1/diy/xxx/xxx", //关联URL
+      "referenceColumn":"playerNameValue",  //下拉的值
+      "referenceDisplayColumn":"playerName", //下拉显示
+      //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+      //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+      //"queryIndex":0,  //组件出现顺序
     }]
   }
   ctx.body = {
     data: data
+  }
+})
+
+//关联U
+//创建大屏配置
+router.get('/xxx/xxx', async (ctx, next) => {
+  ctx.body = {
+    // data: {
+    //   'aaa': ["孙悟空","猪八戒"],
+    //   'bbb': [0,1],
+    // }
+    data:[
+      {
+        "playerName":"孙悟空",
+        "playerNameValue":"1"
+      },
+      {
+        "playerName":"沙和尚",
+        "playerNameValue":"2"
+      },
+    ]
   }
 })
 

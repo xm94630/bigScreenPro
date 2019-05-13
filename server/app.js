@@ -10,6 +10,8 @@ const index = require('./routes/index')
 const users = require('./routes/users')
 const koa = require('./routes/koa')
 const koaData = require('./routes/koaData')
+const diy = require('./routes/diy')
+const diy2 = require('./routes/diy2')
 
 // error handler
 onerror(app)
@@ -39,6 +41,8 @@ app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(koa.routes(), koa.allowedMethods())
 app.use(koaData.routes(), koaData.allowedMethods())
+app.use(diy.routes(), diy.allowedMethods())
+app.use(diy2.routes(), diy2.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
