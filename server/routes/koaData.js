@@ -139,7 +139,7 @@ router.get('/yonghui_card4', async (ctx) => {
   }
 })
 router.get('/yonghui_card5', async (ctx) => {
-  let data = [6829,108812]
+  let data = [6829,1088122]
   ctx.body = {
     data: data
   }
@@ -167,6 +167,49 @@ router.get('/mingming_pie2', async (ctx) => {
     data: data
   }
 })
+
+
+//card新数据格式
+router.get('/lifeng_card', async (ctx) => {
+  let data = [{
+    '总数':100000,
+    '使用量':50000,
+    '未使用':50000,
+  }]
+  ctx.body = {
+    data: data
+  }
+})
+router.get('/lifeng_card2', async (ctx) => {
+  let data = [{
+    '总数':10000,
+    '可用':1000,
+    '已分配':1000,
+    '已冻结':1000,
+  }]
+  ctx.body = {
+    data: data
+  }
+})
+router.get('/lifeng_card3', async (ctx) => {
+  let data = [{
+    '入库单':10000,
+    'SKU':1000,
+  }]
+  ctx.body = {
+    data: data
+  }
+})
+router.get('/lifeng_card4', async (ctx) => {
+  let data = [{
+    '出库单':9000,
+    'SKU':999,
+  }]
+  ctx.body = {
+    data: data
+  }
+})
+
 
 
 module.exports = router

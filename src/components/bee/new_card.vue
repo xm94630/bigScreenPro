@@ -1,0 +1,107 @@
+<template>
+  <div class="cardBox" v-bind:class="classObject" :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;'">
+    <div class="cardBoxT">{{title}}</div>
+    <div class="dataBox">
+      <template v-for="(one,key) in data">
+        <div :key="key">
+          <div class="top">{{one}}</div>
+          <div class="bottom">{{key}}</div>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "card",
+  props: {
+    chartData: null
+  },
+  data: function() {
+    return {
+      title: this.chartData.title,
+      state: this.chartData.state,
+      cardData: this.chartData,
+
+      data:this.chartData.data,
+
+      width: this.chartData.width,
+      height: this.chartData.height,
+      x: this.chartData.x,
+      y: this.chartData.y,
+
+    };
+  },
+  computed:{
+    classObject:function(){
+      return {
+        green: this.state == 1 ? true : false,
+        orange: this.state == 2 ? true : false,
+        red: this.state == 3 ? true : false
+      }
+    }
+  },
+  mounted: function() {
+  }
+};
+</script>
+
+<style lang="scss">
+//卡片的全部样式
+.cardBox {
+  position:absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 5px;
+  background: #fff;
+  border-radius: 5px;
+  border: solid 1px #c0c0c0;
+  overflow: hidden;
+  .cardBoxT {
+    height: 30%;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+    margin-left: 18px;
+  }
+
+
+  .dataBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .top{
+      font-size: 20px;
+    }
+    .bottom{
+      font-size: 12px;
+    }
+  }
+
+}
+
+
+.cardBox.green {
+  border: solid 1px #1a9d14;
+  .cardBoxT {
+    color: #1a9d14;
+  }
+}
+.cardBox.orange {
+  border: solid 1px #ff7200;
+  .cardBoxT {
+    color: #ff7200;
+  }
+}
+.cardBox.red {
+  border: solid 1px #e42525;
+  .cardBoxT {
+    color: #e42525;
+  }
+}
+
+</style>

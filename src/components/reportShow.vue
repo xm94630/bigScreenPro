@@ -346,6 +346,43 @@ export default {
         }
       }
 
+      //渲染全部的“ new_card ”组件进行渲染
+      if ("new_card" == key) {
+
+        console.log('===>')
+
+        let data = this.reportConfig.components.new_card;
+        let len = data.length;
+        for (let i = 0; i < len; i++) {
+          //组件基本样式数据
+          let propsConfig = {
+            chartData: data[i]
+          };
+          let dataUrl = data[i].dataUrl;
+
+          //获取数据源
+          axios.get(baseUrl + dataUrl).then(response => {
+
+            //propsConfig.chartData.data1 = response.data.data[0];
+            //propsConfig.chartData.data2 = response.data.data[1];
+
+            propsConfig.chartData.data = response.data.data[0];
+
+
+            console.log(propsConfig)
+
+            //构建组件
+            import("../components/bee/new_card.vue").then(cmp => {
+              mountCmp(
+                cmp,
+                propsConfig,
+                document.querySelector(".myReportCanvas")
+              );
+            });
+          });
+        }
+      }
+
     }
   }
 };
