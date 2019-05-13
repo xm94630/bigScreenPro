@@ -32,15 +32,18 @@ router.post('/report/selectData', async (ctx, next) => {
       {
         date: '2016-05-02',
         name: '王小虎1：' + Math.random(10),
-        address: '北京海淀1'
+        address: '北京海淀1',
+        age: '101',
       }, {
         date: '2016-05-04',
         name: '王小虎2：'+ Math.random(10),
-        address: '北京海淀2'
+        address: '北京海淀2',
+        age: '102',
       }, {
         date: '2016-05-01',
         name: '王小虎3：'+ Math.random(10),
-        address: '北京海淀3'
+        address: '北京海淀3',
+        age: '103',
       }
     ]
     totalPage = 300;

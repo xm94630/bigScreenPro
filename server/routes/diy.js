@@ -520,6 +520,10 @@ router.get('/column/initForView', async (ctx, next) => {
       "columnName":"address",   //列的key   
       "displayName":"地址哦",   //列头名字  
       "columnIndex":0,   //列的顺序
+    },{
+      "columnName":"age",   //列的key   
+      "displayName":"年龄",   //列头名字  
+      "columnIndex":0,   //列的顺序
     }],
     //这个部分是对查询条件部分的配置
     "conditionColumnList":[{
