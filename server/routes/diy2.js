@@ -28,18 +28,17 @@ router.post('/report/selectData', async (ctx, next) => {
   }else if(code==="InventoryReportByBin"){
     data = [
       {
-        "birthday": null,
-        "password": "96e79218965eb72c92a549dd5a330112",
-        "external": "",
-        "gender": null,
-        "department_id": null,
-        "telephone": "",
-        "company": "",
-        "remark": null,
-        "id": 1,
-        "username": "admin",
-        "realname": "管理员",
-        "status": 1
+        date: '2016-05-02',
+        name: '王小虎1：' + Math.random(10),
+        address: '北京海淀1'
+      }, {
+        date: '2016-05-04',
+        name: '王小虎2：'+ Math.random(10),
+        address: '北京海淀2'
+      }, {
+        date: '2016-05-01',
+        name: '王小虎3：'+ Math.random(10),
+        address: '北京海淀3'
       }
     ]
   }else{
