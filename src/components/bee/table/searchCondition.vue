@@ -15,7 +15,15 @@
       <el-button @click="resetForm('ruleForm')">重置</el-button>
 
       <template v-for="(one,index) in searchBtns">
-        <el-button :key="index" type="primary" :diyCoreCode="one.diyCoreCode" @click="submitForm(one.diyCoreCode,one.dataUrl)">{{one.text}}</el-button>
+        <el-button 
+        ref = "searchBrn"
+        :key= "index" 
+        type= "primary" 
+        :diyCoreCode= "one.diyCoreCode" 
+        @click="submitForm(one.diyCoreCode,one.dataUrl)"
+        >
+          {{one.text}}
+        </el-button>
       </template>
     </div>
   </div>
@@ -27,6 +35,7 @@ import axios from "axios";
 import beeInput from './beeInput.vue';
 import beeDatePicker from './beeDatePicker.vue';
 import beeSelect from './beeSelect.vue';
+import { setTimeout } from 'timers';
 
 export default {
   name: "beeTitle",
@@ -96,6 +105,10 @@ export default {
   mounted(){
     //console.log(this.items)
     //console.log(this.searchBtns)
+    //console.log(this.$refs['searchBrn'][0])
+    setTimeout(()=>{
+      this.$refs['searchBrn'][0].$el.click();
+    },0)
   },
   updated(){
     //初始化查询条件的值
