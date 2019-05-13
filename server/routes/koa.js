@@ -509,6 +509,9 @@ router.get('/getReportList', async (ctx, next) => {
   }, {
     code: "test1",
     describe: '自定义二维表'
+  }, {
+    code: "lifeng",
+    describe: '利丰大屏'
   }]
   ctx.body = {
     data: data

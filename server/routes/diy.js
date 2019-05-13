@@ -460,6 +460,35 @@ router.get('/view/info', async (ctx, next) => {
     }
 
   }
+  if ("lifeng" == code) {
+    //永辉大屏页面1的配置信息
+    jsonData = {
+      'code': 'yonghui2',
+      'pageId': 'pageId-00001',
+      'canvas': {
+        'width': 1200,
+        'height': 600,
+        'background': '#d4e157',
+      },
+      'components': {
+        'title': [{
+          id: "",
+          text: "利丰大屏",
+          x: 1100,
+          y: 0,
+          width: 100,
+          height: 20,
+          padding: 0,
+          //"font-size": 20,
+          color: "red",
+          border: "solid 1px red",
+          background: "orange",
+          "text-align": "center",
+        }],
+        
+      },
+    }
+  }
 
   ctx.body = {
     data: {jsonData}
