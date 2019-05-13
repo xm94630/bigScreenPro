@@ -47,7 +47,8 @@ export default {
     };
   },
   watch:{
-    "tableData":function(){
+    "tableData":function(newData){
+      this.myTableData = newData;
       // console.log('表格组件接受数据===>更新')
       // console.log(this.tableData)
       // console.log(this.currentSearchOptions)
