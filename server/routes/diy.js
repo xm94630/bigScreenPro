@@ -482,7 +482,7 @@ router.get('/view/info', async (ctx, next) => {
           "font-size": 12,
           color: "red",
           border: "solid 1px red",
-          background: "orange",
+          background: "#f3f3f3",
           "text-align": "center",
         },{
           id: "",
@@ -672,7 +672,21 @@ router.get('/view/info', async (ctx, next) => {
           'padding':20,
           'background':'#fff',
           'dataUrl': 'koaData/lifeng_card4',
-        },]
+        },],
+
+        'new_pie_1':[{
+          chartId:'pie111',
+          'x': 350,
+          'y': 20,
+          'width': 200,
+          'height': 150,
+          'border': 'none',
+          'padding':10,
+          'background':'none',
+          'title': {},
+          'color': ['#a6c87e','#fd9f82'],
+          dataUrl:'koaData/lifeng_pie',
+        },],
 
       },
     }

@@ -210,6 +210,16 @@ router.get('/lifeng_card4', async (ctx) => {
   }
 })
 
+//利丰 新pie数据格式
+router.get('/lifeng_pie', async (ctx) => {
+  let data = [{
+    percent:0.55,
+  }]
+  ctx.body = {
+    data: data
+  }
+})
+
 
 
 module.exports = router

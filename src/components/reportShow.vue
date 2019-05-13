@@ -383,6 +383,33 @@ export default {
         }
       }
 
+      //渲染全部的“ new_pie_1 ”组件进行渲染
+      if ("new_pie_1" == key) {
+        let data = this.reportConfig.components.new_pie_1;
+        let len = data.length;
+        for (let i = 0; i < len; i++) {
+
+          //组件基本样式数据
+          let propsConfig = {
+            chartData: data[i]
+          };
+          let dataUrl = data[i].dataUrl;
+
+          //获取数据源
+          axios.get(baseUrl + dataUrl).then(response => {
+            propsConfig.chartData.percent = response.data.data[0].percent;
+            //构建组件
+            import("../components/bee/new_pie_1.vue").then(cmp => {
+              mountCmp(
+                cmp,
+                propsConfig,
+                document.querySelector(".myReportCanvas")
+              );
+            });
+          });
+        }
+      }
+
     }
   }
 };
