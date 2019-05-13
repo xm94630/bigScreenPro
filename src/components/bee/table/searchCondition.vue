@@ -85,7 +85,6 @@ export default {
         let totalPage = response.data.totalPage;
         this.$emit('tableDataOK', tableData, this.conditionData,code,url,totalPage); 
       });
-
     },
     resetForm(v){
       alert('reset')
