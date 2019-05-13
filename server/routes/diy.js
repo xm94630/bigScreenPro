@@ -466,8 +466,8 @@ router.get('/view/info', async (ctx, next) => {
       'code': 'yonghui2',
       'pageId': 'pageId-00001',
       'canvas': {
-        'width': 1200,
-        'height': 600,
+        'width': 1400,
+        'height': 800,
         'background': '#d4e157',
       },
       'components': {
@@ -477,15 +477,15 @@ router.get('/view/info', async (ctx, next) => {
           x: 1100,
           y: 0,
           width: 100,
-          height: 20,
+          //height: 20,
           padding: 0,
-          //"font-size": 20,
+          "font-size": 12,
           color: "red",
           border: "solid 1px red",
           background: "orange",
           "text-align": "center",
         }],
-        
+
       },
     }
   }
