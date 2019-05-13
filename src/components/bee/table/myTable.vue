@@ -1,7 +1,7 @@
 <template>
   <div>
     我是表格
-    <el-table :data="tableData" style="width: 100%">
+    <el-table :data="myTableData" style="width: 100%">
 
       <template v-for="(one,index) in resultColumnList">
         <el-table-column
@@ -19,12 +19,16 @@
       layout = "prev, pager, next"
       :total = "totalPages"
       :current-page = "currentPage"
-      :page-size = "pageSize">
+      :page-size = "pageSize"
+      @current-change = pageChangeFun
+    >
     </el-pagination>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "myTable",
   props: {
@@ -39,7 +43,7 @@ export default {
   },
   data() {
     return {
-
+      myTableData:this.tableData
     };
   },
   watch:{
@@ -52,6 +56,18 @@ export default {
     }
   },
   methods:{
+    pageChangeFun(currentPage){
+      const body = {
+        diyCoreCode:this.currentUseCode,
+        abc:this.currentSearchOptions,
+        currentPage:currentPage,
+        pageSize:this.pageSize,
+      }
+      //根据点击分页，更新数据
+      axios.post(this.currentUseUrl,body).then(response => {
+        this.myTableData =  response.data.data;
+      });
+    }
   },
   computed: {
   },
