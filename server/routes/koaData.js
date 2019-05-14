@@ -191,6 +191,14 @@ router.get('/lifeng_card2', async (ctx) => {
     data: data
   }
 })
+router.get('/lifeng_card2-2', async (ctx) => {
+  let data = [{
+    '总数':9999999,
+  }]
+  ctx.body = {
+    data: data
+  }
+})
 router.get('/lifeng_card3', async (ctx) => {
   let data = [{
     '入库单':10000,

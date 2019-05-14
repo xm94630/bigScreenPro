@@ -550,10 +550,10 @@ router.get('/view/info', async (ctx, next) => {
           "text-align": "center",
         },{
           id: "",
-          text: "机器人",
+          text: "机器人（总数：9999）",
           x: 350,
           y: 525,
-          width: 100,
+          width: 200,
           height: 50,
           padding: 0,
           "font-size": 18,
@@ -629,7 +629,7 @@ router.get('/view/info', async (ctx, next) => {
           'border': 'solid 1px #333',
           'padding':20,
           'background':'#fff',
-          'dataUrl': 'koaData/lifeng_card2',
+          'dataUrl': 'koaData/lifeng_card2-2',
         },
       
         {
@@ -733,7 +733,9 @@ router.get('/view/info', async (ctx, next) => {
           'border': 'none',
           'padding':10,
           'background':'none',
-          'title': {},
+          'title': {
+            text:'使用占比'
+          },
           'color': ['#a6c87e','#fd9f82'],
           dataUrl:'koaData/lifeng_pie',
         },{
@@ -745,7 +747,9 @@ router.get('/view/info', async (ctx, next) => {
           'border': 'none',
           'padding':10,
           'background':'none',
-          'title': {},
+          'title': {
+            text:'使用占比'
+          },
           'color': ['#a6c87e','#fd9f82'],
           dataUrl:'koaData/lifeng_pie',
         },{
@@ -757,7 +761,9 @@ router.get('/view/info', async (ctx, next) => {
           'border': 'none',
           'padding':10,
           'background':'none',
-          'title': {},
+          'title': {
+            text:'使用占比'
+          },
           'color': ['#a6c87e','#fd9f82'],
           dataUrl:'koaData/lifeng_pie',
         },{
@@ -769,7 +775,9 @@ router.get('/view/info', async (ctx, next) => {
           'border': 'none',
           'padding':10,
           'background':'none',
-          'title': {},
+          'title': {
+            text:'使用占比'
+          },
           'color': ['#a6c87e','#fd9f82'],
           dataUrl:'koaData/lifeng_pie',
         },],
