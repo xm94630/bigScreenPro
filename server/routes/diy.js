@@ -801,7 +801,8 @@ router.get('/view/info', async (ctx, next) => {
           dataUrl:'koaData/lifeng_pie2',
         },],
 
-        'bar': [{
+
+        'new_bar': [{
           'id': 'componentId_bar001',
           'x': 650,
           'y': 330,
