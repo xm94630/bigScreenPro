@@ -13,6 +13,18 @@ import echarts from "echarts";
 
 //获取饼图option配置
 function getOption(data) {
+
+  //这个是接口的数据，还需要我们进行组装
+  let apiData = data.apiData[0];
+  let legendData = Object.keys(apiData);
+  let seriesData = [];
+  for(let key in apiData){
+    seriesData.push({
+      value:apiData[key],
+      name:key,
+    })
+  }
+
   let option = {
     //color: ["#a6c87e", "#ffd385", "#f49999"],
     title: {
@@ -32,7 +44,7 @@ function getOption(data) {
     legend: {
         orient: 'vertical',
         left: 'right',
-        data: data.legendData
+        data: legendData
     },
     series: [
       {
@@ -40,7 +52,7 @@ function getOption(data) {
         type: "pie",
         radius: "55%",
         center: ["50%", "60%"],
-        data: data.seriesData
+        data: seriesData
         // itemStyle: {
         //     emphasis: {
         //         shadowBlur: 10,
@@ -75,7 +87,7 @@ export default {
     };
   },
   mounted: function() {
-    console.log(this.chartData)
+    //console.log(this.chartData)
     // 基于准备好的dom，初始化echarts实例
     this.myChart = echarts.init(
       document.getElementById(this.chartData.chartId)

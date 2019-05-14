@@ -418,8 +418,9 @@ export default {
 
           //获取数据源
           axios.get(baseUrl + dataUrl).then(response => {
-            propsConfig.chartData.seriesData = response.data.data.seriesData;
-            propsConfig.chartData.legendData = response.data.data.legendData;
+
+            propsConfig.chartData.apiData = response.data.data;
+            
             //构建组件
             import("../components/bee/new_pie_2.vue").then(cmp => {
               mountCmp(

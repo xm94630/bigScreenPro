@@ -222,15 +222,14 @@ router.get('/lifeng_pie', async (ctx) => {
 
 //利丰 新pie数据格式
 router.get('/lifeng_pie2', async (ctx) => {
-  let data = {
-    legendData:['工作中','异常','空闲','充电中'],
-    seriesData:[
-      {value:1200, name:'工作中'},
-      {value:310, name:'异常'},
-      {value:234, name:'空闲'},
-      {value:234, name:'充电中'},
-    ],
-  }
+
+  let data = [{
+    '工作中':800,
+    '异常':300,
+    '空闲':200,
+    '充电中':500,
+  }]
+
   ctx.body = {
     data: data
   }
