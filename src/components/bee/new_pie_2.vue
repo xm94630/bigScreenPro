@@ -49,6 +49,10 @@ function getOption(data) {
     series: [
       {
         name: "访问来源",
+        label:{
+          //formatter: '{b}: {@2012} ({d}%)'
+          formatter: '{@2012}'
+        },
         type: "pie",
         radius: "55%",
         center: ["50%", "60%"],
