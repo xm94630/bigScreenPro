@@ -251,19 +251,19 @@ router.get('/lifeng_bar', async (ctx) => {
       subtext: ''
     },
     xAxis: {
-      data: ['出库单', '已完成', '已分配', '系统报缺'],
+      data: ['JIT', 'B2C', 'B2B'],
     },
     legend: {
-      data:['出库单','SKU']
+      data: ['出库单', 'SKU', ],
     },
     series: [
       {
         name: '出库单',
-        data: [10, 52, 200, 334],
+        data: [10, 52,100],
       },
       {
         name: 'SKU',
-        data: [150, 200, 170, 110],
+        data: [150, 200,100],
       }
     ]
   }
