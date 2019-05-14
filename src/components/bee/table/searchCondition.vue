@@ -44,6 +44,7 @@ export default {
     searchBtns:null,
     currentPage:null,
     pageSize:null,
+    showPage:null,
   },
   data() {
     return {
@@ -73,18 +74,28 @@ export default {
       const body = {
         diyCoreCode:code,
         abc:this.conditionData,
-        currentPage:this.currentPage,
-        pageSize:this.pageSize,
       }
 
-      //获取数据源
-      axios.post(url,body).then(response => {
-        // console.log('表格数据===>')
-        // console.log(response.data.data)
-        let tableData = response.data.data;
-        let totalPage = response.data.totalPage;
-        this.$emit('tableDataOK', tableData, this.conditionData,code,url,totalPage); 
-      });
+      //如果需要显示分页，要带上这两个参数
+      if(this.showPage){
+        body.currentPage=this.currentPage
+        body.pageSize=this.pageSize
+        //获取数据源
+        axios.post(url,body).then(response => {
+          let tableData = response.data.data.recordList;
+          let totalPage = response.data.data.recordCount;
+          this.$emit('tableDataOK', tableData, this.conditionData,code,url,totalPage); 
+        });
+      }else{
+        //获取数据源
+        axios.post(url,body).then(response => {
+          let tableData = response.data.data;
+          let totalPage = -1;
+          this.$emit('tableDataOK', tableData, this.conditionData,code,url,totalPage); 
+        });
+      }
+
+
     },
     resetForm(v){
       alert('reset')
@@ -105,6 +116,7 @@ export default {
     //console.log(this.items)
     //console.log(this.searchBtns)
     //console.log(this.$refs['searchBrn'][0])
+    console.log()
     setTimeout(()=>{
       this.$refs['searchBrn'][0].$el.click();
     },0)

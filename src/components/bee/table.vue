@@ -8,6 +8,7 @@
         :searchBtns="myConfig.searchBtns" 
         :currentPage="myConfig.currentPage"
         :pageSize="myConfig.pageSize"
+        :showPage="myConfig.showPage"
         @tableDataOK="tableDataOK"
         />
       </div>
@@ -25,6 +26,7 @@
               :currentPage = "myConfig.currentPage"
               :pageSize = "myConfig.pageSize"
               :totalPage = "totalPage"
+              :showPage="myConfig.showPage"
 
               :resultColumnList = "resultColumnList"
             />

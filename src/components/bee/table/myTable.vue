@@ -15,6 +15,7 @@
     </el-table>
 
     <el-pagination
+      v-if="showPage"
       background
       layout = "prev, pager, next"
       :total = "totalPage"
@@ -36,8 +37,11 @@ export default {
     "currentSearchOptions":null,
     "currentUseCode":null,
     "currentUseUrl":null,
+    
     "currentPage":null,
     "pageSize":null,
+    "showPage":null,
+
     "resultColumnList":null,
     "totalPage":null,
   },
@@ -58,16 +62,29 @@ export default {
   },
   methods:{
     pageChangeFun(currentPage){
+
       const body = {
         diyCoreCode:this.currentUseCode,
         abc:this.currentSearchOptions,
-        currentPage:currentPage,
-        pageSize:this.pageSize,
       }
-      //根据点击分页，更新数据
-      axios.post(this.currentUseUrl,body).then(response => {
-        this.myTableData =  response.data.data;
-      });
+
+
+      //如果需要显示分页，要带上这两个参数
+      if(this.showPage){
+        body.currentPage=this.currentPage
+        body.pageSize=this.pageSize
+        //根据点击分页，更新数据
+        axios.post(this.currentUseUrl,body).then(response => {
+          this.myTableData =  response.data.data.recordList;
+        });
+      }else{
+        //根据点击分页，更新数据
+        axios.post(this.currentUseUrl,body).then(response => {
+          this.myTableData =  response.data.data;
+        });
+      }
+
+
     }
   },
   computed: {
