@@ -246,39 +246,39 @@ router.get('/lifeng_pie2', async (ctx) => {
 //利丰 新柱状图数据格式
 router.get('/lifeng_bar', async (ctx) => {
   
-  let data = {
-    xAxis: {
-      data: ['JIT', 'B2C', 'B2B'],
-    },
-    legend: {
-      data: ['出库单', 'SKU', ],
-    },
-    series: [
-      {
-        name: '出库单',
-        data: [10, 52,100],
-      },
-      {
-        name: 'SKU',
-        data: [150, 200,100],
-      }
-    ]
-  }
+  // let data = {
+  //   xAxis: {
+  //     data: ['JIT', 'B2C', 'B2B'],
+  //   },
+  //   legend: {
+  //     data: ['出库单', 'SKU', ],
+  //   },
+  //   series: [
+  //     {
+  //       name: '出库单',
+  //       data: [10, 52,100],
+  //     },
+  //     {
+  //       name: 'SKU',
+  //       data: [150, 200,100],
+  //     }
+  //   ]
+  // }
 
-  // let data = [
-  //   {"JIT":{
-  //     "出库单":222,
-  //     "SKU":222,
-  //   }},
-  //   {"B2C":{
-  //     "出库单":222,
-  //     "SKU":222,
-  //   }},
-  //   {"B2B":{
-  //     "出库单":222,
-  //     "SKU":222,
-  //   }},
-  // ];
+  let data = [
+    {"JIT":{
+      "出库单":222,
+      "SKU":222,
+    }},
+    {"B2C":{
+      "出库单":222,
+      "SKU":222,
+    }},
+    {"B2B":{
+      "出库单":222,
+      "SKU":222,
+    }},
+  ];
   
   ctx.body = {
     data: data

@@ -447,10 +447,11 @@ export default {
           //获取数据源
           axios.get(baseUrl + dataUrl).then(response => {
 
-            propsConfig.chartData.xAxis = response.data.data.xAxis;
-            propsConfig.chartData.series = response.data.data.series;
-            propsConfig.chartData.legend = response.data.data.legend;
-
+            //propsConfig.chartData.xAxis = response.data.data.xAxis;
+            //propsConfig.chartData.series = response.data.data.series;
+            //propsConfig.chartData.legend = response.data.data.legend;
+            propsConfig.chartData.apiData = response.data.data;
+            
             //构建组件
             import("../components/bee/new_bar.vue").then(cmp => {
               mountCmp(

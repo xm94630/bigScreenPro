@@ -13,27 +13,49 @@ import echarts from "echarts";
 
 //获取饼图option配置
 function getOption(data) {
+  console.log('======================>')
+  console.log(data.apiData)
 
-  // data.xAxis.data = ['JIT', 'B2C', 'B2B']
-  // data.legend.data = ['出库单', 'SKU', ]
-  // data.series = [
-  //     {
-  //       name: '出库单',
-  //       data: [10, 52,100],
-  //     },
-  //     {
-  //       name: 'SKU',
-  //       data: [150, 200,100],
-  //     }
-  //   ]
+  let apiData = data.apiData;
+
+  // 数据格式转换：
+  // let data = [
+  //   {"JIT":{
+  //     "出库单":222,
+  //     "SKU":222,
+  //   }},
+  //   {"B2C":{
+  //     "出库单":222,
+  //     "SKU":222,
+  //   }},
+  //   {"B2B":{
+  //     "出库单":222,
+  //     "SKU":222,
+  //   }},
+  // ];
+
+  let xAxis = {
+    "data":['JIT', 'B2C', 'B2B']
+  }
+  let legend = {
+    "data":['出库单', 'SKU', ]
+  }
+  let series = [
+    {
+      name: '出库单',
+      data: [10, 52,100],
+    },
+    {
+      name: 'SKU',
+      data: [150, 200,100],
+    }
+  ]
 
 
-  
-  //追加类型
-  let series = data.series;
-  series.forEach(function(one) {
-    one.type = "bar";
-  });
+    //追加类型
+    series.forEach(function(one) {
+      one.type = "bar";
+    });
 
   let option = {
     //color: ["#6ddfe2"],
@@ -50,7 +72,7 @@ function getOption(data) {
     tooltip: {
       trigger: "axis"
     },
-    legend: data.legend,
+    legend: legend,
     grid: {
       left: "3%",
       right: "4%",
@@ -62,7 +84,7 @@ function getOption(data) {
         saveAsImage: {}
       }
     },
-    xAxis: data.xAxis,
+    xAxis: xAxis,
     yAxis: {
         type: 'value'
     },
