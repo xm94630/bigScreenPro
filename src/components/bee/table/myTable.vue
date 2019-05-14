@@ -17,7 +17,7 @@
     <el-pagination
       background
       layout = "prev, pager, next"
-      :total = "totalPages"
+      :total = "totalPage"
       :current-page = "currentPage"
       :page-size = "pageSize"
       @current-change = pageChangeFun
@@ -39,7 +39,7 @@ export default {
     "currentPage":null,
     "pageSize":null,
     "resultColumnList":null,
-    "totalPages":null,
+    "totalPage":null,
   },
   data() {
     return {

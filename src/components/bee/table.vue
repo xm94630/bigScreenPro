@@ -24,7 +24,7 @@
 
               :currentPage = "myConfig.currentPage"
               :pageSize = "myConfig.pageSize"
-              :totalPages = "totalPages"
+              :totalPage = "totalPage"
 
               :resultColumnList = "resultColumnList"
             />
@@ -91,7 +91,7 @@ export default {
       currentSearchOptions:{},
       currentUseCode:{},
       currentUseUrl:{},
-      totalPages:0,
+      totalPage:0,
     };
   },
   components:{
@@ -99,7 +99,7 @@ export default {
     myTable,
   },
   methods:{
-    tableDataOK(tableData,searchOptions,code,url,totalPages){
+    tableDataOK(tableData,searchOptions,code,url,totalPage){
       //console.log('==table数据就绪==')
       // console.log(tableData)
       // console.log(searchOptions)
@@ -109,7 +109,7 @@ export default {
       this.currentSearchOptions = searchOptions;
       this.currentUseCode = code;
       this.currentUseUrl = url;
-      this.totalPages = totalPages;
+      this.totalPage = totalPage;
     },
     //将服务器的配置数据，转换成我组件所能使用的格式！
     async parseConditionArr(arr){
