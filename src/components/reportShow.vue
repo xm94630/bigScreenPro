@@ -211,9 +211,6 @@ export default {
             propsConfig.chartData.data1 = response.data.data[0];
             propsConfig.chartData.data2 = response.data.data[1];
 
-
-            console.log(propsConfig)
-
             //构建组件
             import("../components/bee/card.vue").then(cmp => {
               mountCmp(
@@ -367,9 +364,6 @@ export default {
             //propsConfig.chartData.data2 = response.data.data[1];
 
             propsConfig.chartData.data = response.data.data[0];
-
-
-            console.log(propsConfig)
 
             //构建组件
             import("../components/bee/new_card.vue").then(cmp => {
