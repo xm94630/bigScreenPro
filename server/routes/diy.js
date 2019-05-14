@@ -724,6 +724,25 @@ router.get('/view/info', async (ctx, next) => {
           dataUrl:'koaData/lifeng_pie',
         },],
 
+        'new_pie_2':[{
+          chartId:'piex',
+          'x': 360,
+          'y': 550,
+          'width': 240,
+          'height': 210,
+          'border': 'solid 1px #ccc',
+          'padding':10,
+          'background':'#fff',
+          'title': {
+            'text': '机器人',
+            'color': '#666',
+            'font-size': 16,
+            'align': 'center',
+          },
+          'color': ['#a6c87e','#fd9f82'],
+          dataUrl:'koaData/lifeng_pie2',
+        },],
+
       },
     }
   }
