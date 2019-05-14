@@ -235,6 +235,35 @@ router.get('/lifeng_pie2', async (ctx) => {
   }
 })
 
+//利丰 新柱状图数据格式
+router.get('/lifeng_bar', async (ctx) => {
+  let data = {
+    title: {
+      text: '啦啦',
+      subtext: ''
+    },
+    xAxis: {
+      data: ['出库单', '已完成', '已分配', '系统报缺'],
+    },
+    legend: {
+      data:['出库单','SKU']
+    },
+    series: [
+      {
+        name: '出库单',
+        data: [10, 52, 200, 334],
+      },
+      {
+        name: 'SKU',
+        data: [150, 200, 170, 110],
+      }
+    ]
+  }
+  ctx.body = {
+    data: data
+  }
+})
+
 
 
 module.exports = router

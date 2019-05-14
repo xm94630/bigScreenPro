@@ -651,7 +651,7 @@ router.get('/view/info', async (ctx, next) => {
           'background':'#fff',
           'dataUrl': 'koaData/lifeng_card4',
         },{
-          'title':'作业中',
+          'title':'已分配',
           'state':0,
           'x': 1010,
           'y': 210,
@@ -662,7 +662,7 @@ router.get('/view/info', async (ctx, next) => {
           'background':'#fff',
           'dataUrl': 'koaData/lifeng_card4',
         },{
-          'title':'未开始',
+          'title':'系统报缺',
           'state':0,
           'x': 1190,
           'y': 210,
@@ -742,6 +742,25 @@ router.get('/view/info', async (ctx, next) => {
           'color': ['#a6c87e','#fd9f82'],
           dataUrl:'koaData/lifeng_pie2',
         },],
+
+        'bar': [{
+          'id': 'componentId_bar001',
+          'x': 650,
+          'y': 330,
+          'width': 710,
+          'height': 430,
+          'border': 'none',
+          'padding':10,
+          'background':'#fff',
+          'title': {
+            'text': '图表',
+            'color': '#000',
+            'font-size': 16,
+            'align': 'center',
+          },
+          'color': ['#666'],
+          'dataUrl': 'koaData/lifeng_bar',
+        }],
 
       },
     }
