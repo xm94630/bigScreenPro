@@ -251,7 +251,6 @@ export default {
 
       //渲染全部的“ pie1 ”组件进行渲染
       if ("pie2" == key) {
-        console.log('++>')
         let data = this.reportConfig.components.pie2;
         let len = data.length;
         for (let i = 0; i < len; i++) {
@@ -346,8 +345,6 @@ export default {
       //渲染全部的“ new_card ”组件进行渲染
       if ("new_card" == key) {
 
-        console.log('===>')
-
         let data = this.reportConfig.components.new_card;
         let len = data.length;
         for (let i = 0; i < len; i++) {
@@ -406,7 +403,6 @@ export default {
 
       //渲染全部的“ new_pie_2 ”组件进行渲染
       if ("new_pie_2" == key) {
-        console.log('++>')
         let data = this.reportConfig.components.new_pie_2;
         let len = data.length;
         for (let i = 0; i < len; i++) {

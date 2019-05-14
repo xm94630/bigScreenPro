@@ -10,52 +10,66 @@
 
 <script>
 import echarts from "echarts";
+import _ from "lodash";
 
 //获取饼图option配置
 function getOption(data) {
-  console.log('======================>')
-  console.log(data.apiData)
-
-  let apiData = data.apiData;
 
   // 数据格式转换：
   // let data = [
-  //   {"JIT":{
-  //     "出库单":222,
-  //     "SKU":222,
-  //   }},
-  //   {"B2C":{
-  //     "出库单":222,
-  //     "SKU":222,
-  //   }},
-  //   {"B2B":{
-  //     "出库单":222,
-  //     "SKU":222,
-  //   }},
-  // ];
+  //   {"出库单":1,"sku":4,"type":"JIT"},
+  //   {"出库单":2,"sku":5,"type":"B2C"},
+  //   {"出库单":3,"sku":6,"type":"B2B"}
+  // ]
 
-  let xAxis = {
-    "data":['JIT', 'B2C', 'B2B']
+  // 从上面的格式，转变成下面的这种..
+
+  // let xAxis = {
+  //   "data":['JIT', 'B2C', 'B2B']
+  // }
+  // let legend = {
+  //   "data":['出库单', 'SKU', ]
+  // }
+  // let series = [
+  //   {
+  //     name: '出库单',
+  //     data: [1, 2, 3],
+  //   },
+  //   {
+  //     name: 'SKU',
+  //     data: [4, 5, 6],
+  //   }
+  // ]
+
+
+  //组装数据
+  let apiData = data.apiData;
+  let keys = _.keys(apiData && apiData[0]);
+  var index = keys.indexOf('type');
+  if (index > -1) {
+    keys.splice(index, 1);
   }
+  
   let legend = {
-    "data":['出库单', 'SKU', ]
+    "data":keys
   }
-  let series = [
-    {
-      name: '出库单',
-      data: [10, 52,100],
-    },
-    {
-      name: 'SKU',
-      data: [150, 200,100],
-    }
-  ]
+  let xAxis = {
+    "data":_.map(apiData,'type')
+  }
+  
+  let series = []
+  for(let i=0;i<legend.data.length;i++){
+    series.push({
+      name:legend.data[i],
+      data:_.map(apiData,legend.data[i]),
+    })
+  }
 
 
-    //追加类型
-    series.forEach(function(one) {
-      one.type = "bar";
-    });
+  //追加类型
+  series.forEach(function(one) {
+    one.type = "bar";
+  });
 
   let option = {
     //color: ["#6ddfe2"],
