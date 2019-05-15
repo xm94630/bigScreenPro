@@ -510,7 +510,7 @@ router.get('/getReportList', async (ctx, next) => {
     code: "test1",
     describe: '自定义二维表'
   }, {
-    code: "lifeng",
+    code: "lifeng-ReportScreen",
     describe: '利丰大屏'
   }]
   ctx.body = {

@@ -461,7 +461,7 @@ router.get('/view/info', async (ctx, next) => {
     }
 
   }
-  if ("lifeng" == code) {
+  if ("lifeng-ReportScreen" == code) {
     //永辉大屏页面1的配置信息
     jsonData = {
       "code": "lifeng",
