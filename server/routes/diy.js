@@ -573,7 +573,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#666",
-          //"dataUrl": "koaData/lifeng_card"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-BinUseA'
         },{
@@ -586,7 +585,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#666",
-          //"dataUrl": "koaData/lifeng_card"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-BinUseB'
         },{
@@ -599,7 +597,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#666",
-          //"dataUrl": "koaData/lifeng_card"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-ShelfUseA'
         },{
@@ -612,7 +609,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          //"dataUrl": "koaData/lifeng_card"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-ShelfUseB'
         },
@@ -627,7 +623,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          //"dataUrl": "koaData/lifeng_card2"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-InventoryPool'
         },{
@@ -640,7 +635,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          //"dataUrl": "koaData/lifeng_card2-2"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-SKUPool'
         },
@@ -655,7 +649,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          //"dataUrl": "koaData/lifeng_card3"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-ReceiptIn'
         },{
@@ -668,7 +661,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          //"dataUrl": "koaData/lifeng_card3"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-ReceiptCopleted'
         },{
@@ -681,7 +673,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          //"dataUrl": "koaData/lifeng_card3"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-ReceiptWorking'
         },{
@@ -694,7 +685,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          //"dataUrl": "koaData/lifeng_card3"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-ReceiptNotStart'
         },
@@ -709,7 +699,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          //"dataUrl": "koaData/lifeng_card4"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-OutOrderIn'
         },{
@@ -722,7 +711,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          //"dataUrl": "koaData/lifeng_card4"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-OutOrderComplete'
         },{
@@ -735,7 +723,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          //"dataUrl": "koaData/lifeng_card4"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-OutOrderAllocated'
         },{
@@ -748,7 +735,6 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          //"dataUrl": "koaData/lifeng_card4"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-OutOrderLack'
         }],
@@ -766,7 +752,6 @@ router.get('/view/info', async (ctx, next) => {
             "text":"使用占比"
           },
           "color": ["#a6c87e","#fd9f82"],
-          //"dataUrl":"koaData/lifeng_pie"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-BinUseScaleA'
         },{
@@ -782,7 +767,6 @@ router.get('/view/info', async (ctx, next) => {
             "text":"使用占比"
           },
           "color": ["#a6c87e","#fd9f82"],
-          //"dataUrl":"koaData/lifeng_pie"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-BinUseScaleB'
         },{
@@ -798,7 +782,6 @@ router.get('/view/info', async (ctx, next) => {
             "text":"使用占比"
           },
           "color": ["#a6c87e","#fd9f82"],
-          //"dataUrl":"koaData/lifeng_pie"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-ShelfUseScaleA'
         },{
@@ -814,7 +797,6 @@ router.get('/view/info', async (ctx, next) => {
             "text":"使用占比"
           },
           "color": ["#a6c87e","#fd9f82"],
-          //"dataUrl":"koaData/lifeng_pie"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-ShelfUseScaleB'
         }],
@@ -835,7 +817,6 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#a6c87e","#fd9f82"],
-          //"dataUrl":"koaData/lifeng_pie2"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-robot'
         }],
@@ -857,7 +838,6 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#666"],
-          //"dataUrl": "koaData/lifeng_bar"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-HistogramOutOrder'
         },{
@@ -876,7 +856,6 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#666"],
-          //"dataUrl": "koaData/lifeng_bar"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-HistogramOutOrderCompleted'
         },{
@@ -895,7 +874,6 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#666"],
-          //"dataUrl": "koaData/lifeng_bar"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-HistogramOutOrderAllocated'
         },{
@@ -914,7 +892,6 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#666"],
-          //"dataUrl": "koaData/lifeng_bar"
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":'lifeng-HistogramOutOrderAllocated'
         }]
