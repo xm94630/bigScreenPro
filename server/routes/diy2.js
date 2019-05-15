@@ -10,6 +10,7 @@ router.post('/report/selectData', async (ctx, next) => {
   let pageSize = ctx.request.body.pageSize;
   let data = {}
 
+  //雅思兰黛 二维表
   if(code==="InventoryReportByWarehouse"){
     data = [{"totalusevolume":500,"totalvolume":1000,"totalavailability":"50%"}]
   }else if(code==="InventoryReportByShelf"){
@@ -62,11 +63,58 @@ router.post('/report/selectData', async (ctx, next) => {
         address: '上海市普陀区金沙江路 1517 弄'
       }]
     }
-  }else{
-    data = {
-      
-    }
   }
+
+  //利丰大屏幕
+  if(
+    code==="lifeng-BinUseA" ||
+    code==="lifeng-BinUseB" ||
+    code==="lifeng-ShelfUseA" ||
+    code==="lifeng-ShelfUseB" 
+  ){
+    data = [{
+      '总数':100000,
+      '使用量':50000,
+      '未使用':50000,
+    }]
+  }
+  if(code==="lifeng-InventoryPool"){
+    data = [{
+      '总数':10000,
+      '可用':1000,
+      '已分配':1000,
+      '已冻结':1000,
+    }]
+  }
+  if(code==="lifeng-SKUPool"){
+    data = [{
+      '总数':9999999,
+    }]
+  }
+  if(
+    code==="lifeng-ReceiptIn" ||
+    code==="lifeng-ReceiptCopleted" ||
+    code==="lifeng-ReceiptWorking" ||
+    code==="lifeng-ReceiptNotStart" 
+  ){
+    data = [{
+      '入库单':10000,
+      'SKU':1000,
+    }]
+  }
+  if(
+    code==="lifeng-OutOrderIn" ||
+    code==="lifeng-OutOrderComplete" ||
+    code==="lifeng-OutOrderAllocated" ||
+    code==="lifeng-OutOrderLack" 
+  ){
+    data = [{
+      '出库单':9000,
+      'SKU':999,
+    }]
+  }
+
+
 
   ctx.body = {
     data: data,

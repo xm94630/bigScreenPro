@@ -353,9 +353,12 @@ export default {
             chartData: data[i]
           };
           let dataUrl = data[i].dataUrl;
+          let diyCoreCode = data[i].diyCoreCode;
 
           //获取数据源
-          axios.get(baseUrl + dataUrl).then(response => {
+          axios.post(baseUrl + dataUrl,{
+            diyCoreCode:diyCoreCode
+          }).then(response => {
 
             //propsConfig.chartData.data1 = response.data.data[0];
             //propsConfig.chartData.data2 = response.data.data[1];

@@ -573,7 +573,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#666",
-          "dataUrl": "koaData/lifeng_card"
+          //"dataUrl": "koaData/lifeng_card"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-BinUseA'
         },{
           "title":"B类/衣服",
           "state":0,
@@ -584,7 +586,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#666",
-          "dataUrl": "koaData/lifeng_card"
+          //"dataUrl": "koaData/lifeng_card"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-BinUseB'
         },{
           "title":"A类/鞋",
           "state":0,
@@ -595,7 +599,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#666",
-          "dataUrl": "koaData/lifeng_card"
+          //"dataUrl": "koaData/lifeng_card"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-ShelfUseA'
         },{
           "title":"B类/衣服",
           "state":0,
@@ -606,7 +612,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": "koaData/lifeng_card"
+          //"dataUrl": "koaData/lifeng_card"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-ShelfUseB'
         },
         
         {
@@ -619,7 +627,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": "koaData/lifeng_card2"
+          //"dataUrl": "koaData/lifeng_card2"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-InventoryPool'
         },{
           "title":"SKU",
           "state":0,
@@ -630,7 +640,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": "koaData/lifeng_card2-2"
+          //"dataUrl": "koaData/lifeng_card2-2"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-SKUPool'
         },
       
         {
@@ -643,7 +655,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": "koaData/lifeng_card3"
+          //"dataUrl": "koaData/lifeng_card3"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-ReceiptIn'
         },{
           "title":"已完成",
           "state":0,
@@ -654,7 +668,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": "koaData/lifeng_card3"
+          //"dataUrl": "koaData/lifeng_card3"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-ReceiptCopleted'
         },{
           "title":"作业中",
           "state":0,
@@ -665,7 +681,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": "koaData/lifeng_card3"
+          //"dataUrl": "koaData/lifeng_card3"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-ReceiptWorking'
         },{
           "title":"未开始",
           "state":0,
@@ -676,7 +694,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": "koaData/lifeng_card3"
+          //"dataUrl": "koaData/lifeng_card3"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-ReceiptNotStart'
         },
       
         {
@@ -689,7 +709,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": "koaData/lifeng_card4"
+          //"dataUrl": "koaData/lifeng_card4"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-OutOrderIn'
         },{
           "title":"已完成",
           "state":0,
@@ -700,7 +722,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": "koaData/lifeng_card4"
+          //"dataUrl": "koaData/lifeng_card4"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-OutOrderComplete'
         },{
           "title":"已分配",
           "state":0,
@@ -711,7 +735,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": "koaData/lifeng_card4"
+          //"dataUrl": "koaData/lifeng_card4"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-OutOrderAllocated'
         },{
           "title":"系统报缺",
           "state":0,
@@ -722,7 +748,9 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": "koaData/lifeng_card4"
+          //"dataUrl": "koaData/lifeng_card4"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-OutOrderLack'
         }],
   
         "new_pie_1":[{
