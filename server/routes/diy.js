@@ -766,7 +766,9 @@ router.get('/view/info', async (ctx, next) => {
             "text":"使用占比"
           },
           "color": ["#a6c87e","#fd9f82"],
-          "dataUrl":"koaData/lifeng_pie"
+          //"dataUrl":"koaData/lifeng_pie"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-BinUseScaleA'
         },{
           "chartId":"pie222",
           "x": 350,
@@ -780,7 +782,9 @@ router.get('/view/info', async (ctx, next) => {
             "text":"使用占比"
           },
           "color": ["#a6c87e","#fd9f82"],
-          "dataUrl":"koaData/lifeng_pie"
+          //"dataUrl":"koaData/lifeng_pie"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-BinUseScaleB'
         },{
           "chartId":"pie333",
           "x": 350,
@@ -794,7 +798,9 @@ router.get('/view/info', async (ctx, next) => {
             "text":"使用占比"
           },
           "color": ["#a6c87e","#fd9f82"],
-          "dataUrl":"koaData/lifeng_pie"
+          //"dataUrl":"koaData/lifeng_pie"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-ShelfUseScaleA'
         },{
           "chartId":"pie444",
           "x": 350,
@@ -808,7 +814,9 @@ router.get('/view/info', async (ctx, next) => {
             "text":"使用占比"
           },
           "color": ["#a6c87e","#fd9f82"],
-          "dataUrl":"koaData/lifeng_pie"
+          //"dataUrl":"koaData/lifeng_pie"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-ShelfUseScaleB'
         }],
   
         "new_pie_2":[{
@@ -827,7 +835,9 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#a6c87e","#fd9f82"],
-          "dataUrl":"koaData/lifeng_pie2"
+          //"dataUrl":"koaData/lifeng_pie2"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-robot'
         }],
   
   

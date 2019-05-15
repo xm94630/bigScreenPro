@@ -388,9 +388,12 @@ export default {
             chartData: data[i]
           };
           let dataUrl = data[i].dataUrl;
+          let diyCoreCode = data[i].diyCoreCode;
 
           //获取数据源
-          axios.get(baseUrl + dataUrl).then(response => {
+          axios.post(baseUrl + dataUrl,{
+            diyCoreCode:diyCoreCode
+          }).then(response => {
             propsConfig.chartData.percent = response.data.data[0].percent;
             //构建组件
             import("../components/bee/new_pie_1.vue").then(cmp => {
@@ -414,9 +417,12 @@ export default {
             chartData: data[i]
           };
           let dataUrl = data[i].dataUrl;
+          let diyCoreCode = data[i].diyCoreCode;
 
           //获取数据源
-          axios.get(baseUrl + dataUrl).then(response => {
+          axios.post(baseUrl + dataUrl,{
+            diyCoreCode:diyCoreCode
+          }).then(response => {
 
             propsConfig.chartData.apiData = response.data.data;
 

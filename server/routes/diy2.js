@@ -65,7 +65,7 @@ router.post('/report/selectData', async (ctx, next) => {
     }
   }
 
-  //利丰大屏幕
+  //利丰大屏幕 - 卡片
   if(
     code==="lifeng-BinUseA" ||
     code==="lifeng-BinUseB" ||
@@ -114,6 +114,25 @@ router.post('/report/selectData', async (ctx, next) => {
     }]
   }
 
+  //利丰大屏幕 - 饼图
+  if(
+    code==="lifeng-BinUseScaleA" ||
+    code==="lifeng-BinUseScaleB" ||
+    code==="lifeng-ShelfUseScaleA" ||
+    code==="lifeng-ShelfUseScaleB" 
+  ){
+    data = [{
+      percent:0.55,
+    }]
+  }
+  if(code==="lifeng-robot"){
+    data = [{
+      '工作中':800,
+      '异常':300,
+      '空闲':200,
+      '充电中':500,
+    }]
+  }
 
 
   ctx.body = {
