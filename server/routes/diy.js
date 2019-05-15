@@ -464,7 +464,7 @@ router.get('/view/info', async (ctx, next) => {
   if ("lifeng-ReportScreen" == code) {
     //永辉大屏页面1的配置信息
     jsonData = {
-      "code": "lifeng",
+      "code": "lifeng-ReportScreen",
       "pageId": "pageId-00001",
       "canvas": {
         "width": 1400,
@@ -562,7 +562,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "none",
           "text-align": "center"
         }],
-  
+    
         "new_card": [{
           "title":"A类/鞋",
           "state":0,
@@ -574,7 +574,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#666",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-BinUseA'
+          "diyCoreCode":"lifeng-BinUseA"
         },{
           "title":"B类/衣服",
           "state":0,
@@ -586,7 +586,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#666",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-BinUseB'
+          "diyCoreCode":"lifeng-BinUseB"
         },{
           "title":"A类/鞋",
           "state":0,
@@ -598,7 +598,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#666",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-ShelfUseA'
+          "diyCoreCode":"lifeng-ShelfUseA"
         },{
           "title":"B类/衣服",
           "state":0,
@@ -610,7 +610,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#fff",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-ShelfUseB'
+          "diyCoreCode":"lifeng-ShelfUseB"
         },
         
         {
@@ -624,7 +624,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#fff",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-InventoryPool'
+          "diyCoreCode":"lifeng-InventoryPool"
         },{
           "title":"SKU",
           "state":0,
@@ -636,7 +636,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#fff",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-SKUPool'
+          "diyCoreCode":"lifeng-SKUPool"
         },
       
         {
@@ -650,7 +650,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#fff",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-ReceiptIn'
+          "diyCoreCode":"lifeng-ReceiptIn"
         },{
           "title":"已完成",
           "state":0,
@@ -662,7 +662,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#fff",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-ReceiptCopleted'
+          "diyCoreCode":"lifeng-ReceiptCopleted"
         },{
           "title":"作业中",
           "state":0,
@@ -674,7 +674,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#fff",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-ReceiptWorking'
+          "diyCoreCode":"lifeng-ReceiptWorking"
         },{
           "title":"未开始",
           "state":0,
@@ -686,7 +686,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#fff",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-ReceiptNotStart'
+          "diyCoreCode":"lifeng-ReceiptNotStart"
         },
       
         {
@@ -700,7 +700,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#fff",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-OutOrderIn'
+          "diyCoreCode":"lifeng-OutOrderIn"
         },{
           "title":"已完成",
           "state":0,
@@ -712,7 +712,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#fff",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-OutOrderComplete'
+          "diyCoreCode":"lifeng-OutOrderComplete"
         },{
           "title":"已分配",
           "state":0,
@@ -724,7 +724,7 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#fff",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-OutOrderAllocated'
+          "diyCoreCode":"lifeng-OutOrderAllocated"
         },{
           "title":"系统报缺",
           "state":0,
@@ -736,9 +736,9 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#fff",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-OutOrderLack'
+          "diyCoreCode":"lifeng-OutOrderLack"
         }],
-  
+    
         "new_pie_1":[{
           "chartId":"pie111",
           "x": 350,
@@ -753,7 +753,7 @@ router.get('/view/info', async (ctx, next) => {
           },
           "color": ["#a6c87e","#fd9f82"],
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-BinUseScaleA'
+          "diyCoreCode":"lifeng-BinUseScaleA"
         },{
           "chartId":"pie222",
           "x": 350,
@@ -768,7 +768,7 @@ router.get('/view/info', async (ctx, next) => {
           },
           "color": ["#a6c87e","#fd9f82"],
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-BinUseScaleB'
+          "diyCoreCode":"lifeng-BinUseScaleB"
         },{
           "chartId":"pie333",
           "x": 350,
@@ -783,7 +783,7 @@ router.get('/view/info', async (ctx, next) => {
           },
           "color": ["#a6c87e","#fd9f82"],
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-ShelfUseScaleA'
+          "diyCoreCode":"lifeng-ShelfUseScaleA"
         },{
           "chartId":"pie444",
           "x": 350,
@@ -798,9 +798,9 @@ router.get('/view/info', async (ctx, next) => {
           },
           "color": ["#a6c87e","#fd9f82"],
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-ShelfUseScaleB'
+          "diyCoreCode":"lifeng-ShelfUseScaleB"
         }],
-  
+    
         "new_pie_2":[{
           "chartId":"piex",
           "x": 360,
@@ -818,10 +818,10 @@ router.get('/view/info', async (ctx, next) => {
           },
           "color": ["#a6c87e","#fd9f82"],
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-robot'
+          "diyCoreCode":"lifeng-robot"
         }],
-  
-  
+    
+    
         "new_bar": [{
           "id": "componentId_bar001",
           "x": 650,
@@ -839,7 +839,7 @@ router.get('/view/info', async (ctx, next) => {
           },
           "color": ["#666"],
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-HistogramOutOrder'
+          "diyCoreCode":"lifeng-HistogramOutOrder"
         },{
           "id": "componentId_bar002",
           "x": 1010,
@@ -857,7 +857,7 @@ router.get('/view/info', async (ctx, next) => {
           },
           "color": ["#666"],
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-HistogramOutOrderCompleted'
+          "diyCoreCode":"lifeng-HistogramOutOrderCompleted"
         },{
           "id": "componentId_bar003",
           "x": 650,
@@ -875,7 +875,7 @@ router.get('/view/info', async (ctx, next) => {
           },
           "color": ["#666"],
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-HistogramOutOrderAllocated'
+          "diyCoreCode":"lifeng-HistogramOutOrderAllocated"
         },{
           "id": "componentId_bar004",
           "x": 1010,
@@ -893,12 +893,12 @@ router.get('/view/info', async (ctx, next) => {
           },
           "color": ["#666"],
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":'lifeng-HistogramOutOrderAllocated'
+          "diyCoreCode":"lifeng-HistogramOutOrderLack"
         }]
-  
+    
       }
     }
-
+    
     
   }
 

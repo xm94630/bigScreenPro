@@ -139,7 +139,7 @@ router.post('/report/selectData', async (ctx, next) => {
     code==="lifeng-HistogramOutOrder" ||
     code==="lifeng-HistogramOutOrderCompleted" ||
     code==="lifeng-HistogramOutOrderAllocated" ||
-    code==="lifeng-HistogramOutOrderAllocated" 
+    code==="lifeng-HistogramOutOrderLack" 
   ){
     data = data = [
       {"出库单":1,"sku":4,"type":"JIT"},
