@@ -121,9 +121,10 @@ router.post('/report/selectData', async (ctx, next) => {
     code==="lifeng-ShelfUseScaleA" ||
     code==="lifeng-ShelfUseScaleB" 
   ){
-    data = [{
-      percent:0.55,
-    }]
+    // data = [{
+    //   percent:0.55,
+    // }]
+    data = [{占用率: 0.55}]
   }
   if(code==="lifeng-robot"){
     data = [{

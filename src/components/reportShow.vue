@@ -394,7 +394,7 @@ export default {
           axios.post(baseUrl + dataUrl,{
             diyCoreCode:diyCoreCode
           }).then(response => {
-            propsConfig.chartData.percent = response.data.data[0].percent;
+            propsConfig.chartData.urlData = response.data.data;
             //构建组件
             import("../components/bee/new_pie_1.vue").then(cmp => {
               mountCmp(

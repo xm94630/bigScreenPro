@@ -14,6 +14,13 @@ import echarts from "echarts";
 //获取饼图option配置
 function getOption(data) {
 
+  let urlData = data.urlData[0];
+  let percent = 1;
+  for(let key in urlData){
+    percent = urlData[key];
+    break;
+  }
+
   var option = {
     color:data.color || ['#a6c87e','#fd9f82'],
     // 标题组件，包含主标题和副标题
@@ -62,7 +69,7 @@ function getOption(data) {
         data: [
           {
             // 数据值
-            value: 100 * data.percent,
+            value: 100 * percent,
             // 数据项名称
             name: data.title.text,
             //该数据项是否被选中
@@ -80,7 +87,7 @@ function getOption(data) {
             }
           },
           {
-            value: 100 * (1 - data.percent),
+            value: 100 * (1 - percent),
             label: {
               normal: {
                 show: false
