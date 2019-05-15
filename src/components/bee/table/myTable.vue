@@ -29,6 +29,7 @@
 
 <script>
 import axios from "axios";
+import _ from "lodash";
 
 export default {
   name: "myTable",
@@ -42,7 +43,8 @@ export default {
     "pageSize":null,
     "showPage":null,
 
-    "resultColumnList":null,
+    "resultColumnList":null,   //表头数据
+    
     "totalPage":null,
   },
   data() {
@@ -58,7 +60,7 @@ export default {
       // console.log(this.currentSearchOptions)
       // console.log(this.currentUseCode)
       // console.log(this.currentUseUrl)
-    }
+    },
   },
   methods:{
     pageChangeFun(currentPage){

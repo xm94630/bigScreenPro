@@ -226,7 +226,7 @@ export default {
     this.items = await this.parseConditionArr(conditionArr);
 
     //表头的配置
-    this.resultColumnList = this.myConfig.tableConfig.resultColumnList;
+    this.resultColumnList = _.orderBy(this.myConfig.tableConfig.resultColumnList,'columnIndex','asc');
 
   },
   computed: {
