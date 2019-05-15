@@ -624,7 +624,13 @@ router.get('/view/info', async (ctx, next) => {
           "padding":20,
           "background":"#fff",
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-InventoryPool"
+          "diyCoreCode":"lifeng-InventoryPool",
+          "keyOrder":{
+            "总数"  :0,
+            "可用"  :1,
+            "可分配":2,
+            "已冻结":3,
+          }
         },{
           "title":"SKU",
           "state":0,
