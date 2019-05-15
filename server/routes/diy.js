@@ -958,7 +958,7 @@ router.get('/column/initForView', async (ctx, next) => {
       "isResult":1,
       "isCondition":1,
       "queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-      "queryIndex":2,  //顺序
+      "queryIndex":0,  //顺序
       "sortRule":0,
       "isCheck":0,
       "checkType":0,
@@ -985,7 +985,7 @@ router.get('/column/initForView', async (ctx, next) => {
       "placeholder":"请输入",    //placeholder
       //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
       //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-      //"queryIndex":0,  //组件出现顺序
+      "queryIndex":1,  //组件出现顺序
     },{
       "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
       "dataType":2,    //大类型：2是整数（整数输入框）
@@ -995,7 +995,7 @@ router.get('/column/initForView', async (ctx, next) => {
       "placeholder":"请输入",    //placeholder
       //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
       //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-      //"queryIndex":0,  //组件出现顺序
+      "queryIndex":2,  //组件出现顺序
     },{
       "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
       "dataType":3,    //大类型：3是日期（日期选择框）
@@ -1005,7 +1005,7 @@ router.get('/column/initForView', async (ctx, next) => {
       "placeholder":"请选择",    //placeholder
       //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
       //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-      //"queryIndex":0,  //组件出现顺序
+      "queryIndex":4,  //组件出现顺序
     },{
       "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
       "dataType":0,    //大类型：3是日期（日期选择框）
@@ -1018,7 +1018,7 @@ router.get('/column/initForView', async (ctx, next) => {
       "referenceDisplayColumn":"playerName", //下拉显示
       //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
       //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-      //"queryIndex":0,  //组件出现顺序
+      "queryIndex":3,  //组件出现顺序
     }]
   }
   ctx.body = {

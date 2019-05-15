@@ -54,8 +54,10 @@
 // }
 
 import axios from "axios";
+import _ from "lodash";
 import searchCondition from "./table/searchCondition.vue"
 import myTable from "./table/myTable.vue"
+
 
 export default {
   name: "beeTable",
@@ -159,7 +161,8 @@ export default {
             placeholder: one.placeholder,
             defaultValue: one.defaultValue,
             rule: {},
-            options:options,
+            options: options,
+            queryIndex: one.queryIndex,
           }
 
         }else{
@@ -173,6 +176,7 @@ export default {
             item.placeholder = one.placeholder;
             item.defaultValue = one.defaultValue;
             item.rule = {};
+            item.queryIndex= one.queryIndex;
           }else if(dataType===2){
             //整数：整数输入框
             item.label = one.displayName;
@@ -181,6 +185,7 @@ export default {
             item.placeholder = one.placeholder;
             item.defaultValue = one.defaultValue;
             item.rule = {};
+            item.queryIndex= one.queryIndex;
           }else if(dataType===3){
             //整数：整数输入框
             item.label = one.displayName;
@@ -189,6 +194,7 @@ export default {
             item.placeholder = one.placeholder;
             item.defaultValue = one.defaultValue;
             item.rule = {};
+            item.queryIndex= one.queryIndex;
           }else{
             //其他
             item = {
@@ -198,12 +204,16 @@ export default {
               placeholder: 'XXXX33',
               defaultValue: '',
               rule: {},
+              queryIndex: one.queryIndex
             }
           }
 
         }
         newArr.push(item);
       }
+
+      newArr = _.orderBy(newArr,'queryIndex','asc');  
+
       return newArr;
     }
   },
