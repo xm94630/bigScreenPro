@@ -134,6 +134,20 @@ router.post('/report/selectData', async (ctx, next) => {
     }]
   }
 
+  //利丰大屏幕 - 柱状图
+  if(
+    code==="lifeng-HistogramOutOrder" ||
+    code==="lifeng-HistogramOutOrderCompleted" ||
+    code==="lifeng-HistogramOutOrderAllocated" ||
+    code==="lifeng-HistogramOutOrderAllocated" 
+  ){
+    data = data = [
+      {"出库单":1,"sku":4,"type":"JIT"},
+      {"出库单":2,"sku":5,"type":"B2C"},
+      {"出库单":3,"sku":6,"type":"B2B"}
+    ]
+  }
+
 
   ctx.body = {
     data: data,

@@ -857,7 +857,9 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#666"],
-          "dataUrl": "koaData/lifeng_bar"
+          //"dataUrl": "koaData/lifeng_bar"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-HistogramOutOrder'
         },{
           "id": "componentId_bar002",
           "x": 1010,
@@ -874,7 +876,9 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#666"],
-          "dataUrl": "koaData/lifeng_bar"
+          //"dataUrl": "koaData/lifeng_bar"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-HistogramOutOrderCompleted'
         },{
           "id": "componentId_bar003",
           "x": 650,
@@ -891,7 +895,9 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#666"],
-          "dataUrl": "koaData/lifeng_bar"
+          //"dataUrl": "koaData/lifeng_bar"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-HistogramOutOrderAllocated'
         },{
           "id": "componentId_bar004",
           "x": 1010,
@@ -908,7 +914,9 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#666"],
-          "dataUrl": "koaData/lifeng_bar"
+          //"dataUrl": "koaData/lifeng_bar"
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":'lifeng-HistogramOutOrderAllocated'
         }]
   
       }

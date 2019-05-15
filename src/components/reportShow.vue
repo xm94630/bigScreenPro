@@ -448,9 +448,12 @@ export default {
             chartData: data[i]
           };
           let dataUrl = data[i].dataUrl;
+          let diyCoreCode = data[i].diyCoreCode;
 
           //获取数据源
-          axios.get(baseUrl + dataUrl).then(response => {
+          axios.post(baseUrl + dataUrl,{
+            diyCoreCode:diyCoreCode
+          }).then(response => {
 
             //propsConfig.chartData.xAxis = response.data.data.xAxis;
             //propsConfig.chartData.series = response.data.data.series;
