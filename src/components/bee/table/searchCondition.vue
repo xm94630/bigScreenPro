@@ -97,8 +97,8 @@ export default {
 
 
     },
-    resetForm(v){
-      alert('reset')
+    resetForm(){
+      this.$emit('reset');
     },
     //接受子组件中值的变化，更新数据
     sonChangeHandle(v,item){

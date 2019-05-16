@@ -4,12 +4,14 @@
       <div class="topCon">
         <!-- 条件查询部分 -->
         <searchCondition 
+        v-if="hackReset"
         :items="items" 
         :searchBtns="myConfig.searchBtns" 
         :currentPage="myConfig.currentPage"
         :pageSize="myConfig.pageSize"
         :showPage="myConfig.showPage"
-        @tableDataOK="tableDataOK"
+        @reset = "resetFun"
+        @tableDataOK = "tableDataOK"
         />
       </div>
     </div>
@@ -66,6 +68,11 @@ export default {
   },
   data() {
     return {
+
+      //重置用
+      //通过子组件发送事件，在本组件中，控制v-if来显示隐藏的变化，从而完成组件的重新加载！1
+      hackReset:true,
+
       items:[{
         span: 12,
         label: "姓名",
@@ -103,6 +110,12 @@ export default {
     myTable,
   },
   methods:{
+    resetFun(){      
+      this.hackReset = false;
+      this.$nextTick(() => {
+        this.hackReset = true
+      })
+    },
     tableDataOK(tableData,searchOptions,code,url,totalPage){
       //console.log('==table数据就绪==')
       // console.log(tableData)
