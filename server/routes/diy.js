@@ -573,7 +573,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#666",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseA"
         },{
           "title":"B类/衣服",
@@ -585,7 +585,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#666",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseB"
         },{
           "title":"A类/鞋",
@@ -597,7 +597,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#666",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseA"
         },{
           "title":"B类/衣服",
@@ -609,7 +609,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseB"
         },
         
@@ -623,7 +623,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-InventoryPool",
           "keyOrder":["总数","已分配","已冻结","可用"]
         },{
@@ -636,7 +636,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-SKUPool"
         },
       
@@ -650,7 +650,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptIn"
         },{
           "title":"已完成",
@@ -662,7 +662,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptCopleted"
         },{
           "title":"作业中",
@@ -674,7 +674,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptWorking"
         },{
           "title":"未开始",
@@ -686,7 +686,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptNotStart"
         },
       
@@ -700,7 +700,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderIn"
         },{
           "title":"已完成",
@@ -712,7 +712,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderComplete"
         },{
           "title":"已分配",
@@ -724,7 +724,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderAllocated"
         },{
           "title":"系统报缺",
@@ -736,7 +736,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "solid 1px #333",
           "padding":20,
           "background":"#fff",
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderLack"
         }],
     
@@ -753,7 +753,7 @@ router.get('/view/info', async (ctx, next) => {
             "text":"使用占比"
           },
           "color": ["#a6c87e","#fd9f82"],
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseScaleA"
         },{
           "chartId":"pie222",
@@ -768,7 +768,7 @@ router.get('/view/info', async (ctx, next) => {
             "text":"使用占比"
           },
           "color": ["#a6c87e","#fd9f82"],
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseScaleB"
         },{
           "chartId":"pie333",
@@ -783,7 +783,7 @@ router.get('/view/info', async (ctx, next) => {
             "text":"使用占比"
           },
           "color": ["#a6c87e","#fd9f82"],
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseScaleA"
         },{
           "chartId":"pie444",
@@ -798,7 +798,7 @@ router.get('/view/info', async (ctx, next) => {
             "text":"使用占比"
           },
           "color": ["#a6c87e","#fd9f82"],
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseScaleB"
         }],
     
@@ -818,7 +818,7 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#a6c87e","#fd9f82"],
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-robot"
         }],
     
@@ -839,7 +839,7 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#666"],
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-HistogramOutOrder"
         },{
           "id": "componentId_bar002",
@@ -857,7 +857,7 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#666"],
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-HistogramOutOrderCompleted"
         },{
           "id": "componentId_bar003",
@@ -875,7 +875,7 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#666"],
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-HistogramOutOrderAllocated"
         },{
           "id": "componentId_bar004",
@@ -893,7 +893,7 @@ router.get('/view/info', async (ctx, next) => {
             "align": "center"
           },
           "color": ["#666"],
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-HistogramOutOrderLack"
         }],
     
@@ -911,9 +911,9 @@ router.get('/view/info', async (ctx, next) => {
           "background": "none",
           "text-align": "left",
           "z-index":999,
-          "dataUrl": url+"/2/api/diy/report/selectData",
+          "dataUrl": "/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-robotTote"
-        }],
+        }]
       }
     }
     
