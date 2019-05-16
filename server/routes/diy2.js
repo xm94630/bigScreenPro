@@ -149,7 +149,7 @@ router.post('/report/selectData', async (ctx, next) => {
     ]
   }
 
-  if(code==="lifeng-zongshu"){
+  if(code==="lifeng-robotTote"){
     data = [{
       '总数':999,
     }]

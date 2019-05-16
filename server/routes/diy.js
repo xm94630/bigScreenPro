@@ -912,7 +912,7 @@ router.get('/view/info', async (ctx, next) => {
           "text-align": "left",
           "z-index":999,
           "dataUrl": url+"/2/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-zongshu"
+          "diyCoreCode":"lifeng-robotTote"
         }],
       }
     }
