@@ -13,6 +13,7 @@ import echarts from "echarts";
 
 //获取饼图option配置
 function getOption(data) {
+
   let option = {
     //color: ["#a6c87e", "#ffd385", "#f49999"],
     title: {

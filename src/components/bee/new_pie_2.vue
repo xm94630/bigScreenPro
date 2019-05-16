@@ -14,8 +14,11 @@ import echarts from "echarts";
 //获取饼图option配置
 function getOption(data) {
 
+  //兼容字符串形式
+  let apiData = typeof(data.apiData)=='string'?eval('(' + data.apiData + ')'):data.apiData;
+  
   //这个是接口的数据，还需要我们进行组装
-  let apiData = data.apiData[0];
+  apiData = apiData[0];
   let legendData = Object.keys(apiData);
   let seriesData = [];
   for(let key in apiData){
@@ -24,6 +27,8 @@ function getOption(data) {
       name:key,
     })
   }
+
+  console.log(seriesData)
 
   let option = {
     //color: ["#a6c87e", "#ffd385", "#f49999"],
