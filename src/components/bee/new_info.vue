@@ -26,14 +26,15 @@ export default {
   data() {
     return {
       template:this.myData.template,
-      infoData:this.myData.apiData[0]
     };
   },
   computed: {
     showData(){
       let d='';
-      for(let key in this.infoData){
-        d = this.infoData[key];
+      //兼容字符串数据
+      let infoData = typeof(this.myData.apiData)=='string'?eval('('+this.myData.apiData+')')[0]:this.myData.apiData[0]
+      for(let key in infoData){
+        d = infoData[key];
       }
       let a = this.template.replace(/{{(\w)*}}/g,d);
       return a;
