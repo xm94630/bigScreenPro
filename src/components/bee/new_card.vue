@@ -24,7 +24,7 @@ export default {
       state: this.chartData.state,
       cardData: this.chartData,
 
-      data:this.chartData.data,
+      data:this.orderFun(this.chartData.data),
 
       width: this.chartData.width,
       height: this.chartData.height,
@@ -32,6 +32,23 @@ export default {
       y: this.chartData.y,
 
     };
+  },
+  methods:{
+    //对数据进行排序，排序的顺序可以在json中配置。
+    //这个方法还不是很完美，先这样子实现。
+    orderFun(data){
+      console.log(data);
+      let keyOrder = this.chartData.keyOrder;
+      let orderData = {};
+      if(keyOrder){
+        keyOrder.forEach(function(key){
+          orderData[key] = data[key]
+        })
+        return orderData;
+      }else{
+        return data;
+      }
+    }
   },
   computed:{
     classObject:function(){
@@ -43,6 +60,7 @@ export default {
     }
   },
   mounted: function() {
+   
   }
 };
 </script>
