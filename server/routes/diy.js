@@ -551,16 +551,16 @@ router.get('/view/info', async (ctx, next) => {
           "text-align": "center"
         },{
           "id": "",
-          "text": "机器人（总数：9999）",
-          "x": 350,
+          "text": "机器人",
+          "x": 370,
           "y": 525,
           "width": 200,
-          "height": 50,
+          "height": 30,
           "padding": 0,
           "font-size": 18,
           "color": "#666",
-          "border": "none",
-          "text-align": "center"
+          "border": "",
+          "text-align": "left"
         }],
     
         "new_card": [{
@@ -895,8 +895,25 @@ router.get('/view/info', async (ctx, next) => {
           "color": ["#666"],
           "dataUrl": url+"/2/api/diy/report/selectData",
           "diyCoreCode":"lifeng-HistogramOutOrderLack"
-        }]
+        }],
     
+        "new_info": [{
+          "id": "",
+          "template": "总数:{{data}}",
+          "x": 380,
+          "y": 560,
+          "width": 100,
+          "height": 20,
+          "padding": 0,
+          "font-size": 14,
+          "color": "#000",
+          "border": "none",
+          "background": "none",
+          "text-align": "left",
+          "z-index":999,
+          "dataUrl": url+"/2/api/diy/report/selectData",
+          "diyCoreCode":"lifeng-zongshu"
+        }],
       }
     }
     

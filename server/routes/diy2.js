@@ -149,6 +149,11 @@ router.post('/report/selectData', async (ctx, next) => {
     ]
   }
 
+  if(code==="lifeng-zongshu"){
+    data = [{
+      '总数':999,
+    }]
+  }
 
   ctx.body = {
     data: data,

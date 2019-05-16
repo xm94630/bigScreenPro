@@ -472,6 +472,40 @@ export default {
         }
       }
 
+      //渲染全部的“new_info”组件进行渲染
+      if ("new_info" == key) {
+        let myData = this.reportConfig.components.new_info;
+        let len = myData.length;
+        for (let i = 0; i < len; i++) {
+ 
+          //组件基本样式数据
+          let propsConfig = {
+            myData: myData[i]
+          };
+          let dataUrl = myData[i].dataUrl;
+          let diyCoreCode = myData[i].diyCoreCode;
+
+          //获取数据源
+          axios.post(baseUrl + dataUrl,{
+            diyCoreCode:diyCoreCode
+          }).then(response => {
+
+
+            propsConfig.myData.apiData = response.data.data;
+
+            import("../components/bee/new_info.vue").then(cmp => {
+              mountCmp(
+                cmp,
+                propsConfig,
+                document.querySelector(".myReportCanvas")
+              );
+            });
+
+          });
+
+        }
+      }
+
 
     }
   }
