@@ -10,6 +10,7 @@
 <script>
 import Vue from "vue";
 import axios from "axios";
+import { setInterval } from 'timers';
 
 let baseUrl = "";
 
@@ -81,6 +82,10 @@ export default {
     },
   },
   mounted(){
+    //五分钟刷新，这个方法很简陋，有空优化
+    setInterval(()=>{
+      window.location.reload()
+    },1000*60*5)
   },
   updated() {
 
