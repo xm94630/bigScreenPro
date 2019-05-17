@@ -67,8 +67,12 @@ export default {
     },
   },
   methods:{
+
+    //导出
     exportFun(){
-      
+      axios.post(this.currentUseUrl,body).then(response => {
+        this.myTableData =  response.data.data.recordList;
+      });
     },
     pageChangeFun(currentPage){
 
