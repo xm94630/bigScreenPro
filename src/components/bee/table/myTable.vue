@@ -1,6 +1,11 @@
 <template>
   <div>
-    我是表格
+
+    <div>
+      我是表格
+      <el-button type= "primary" @click="exportFun">导出</el-button>
+    </div>
+
     <el-table :data="myTableData" style="width: 100%">
 
       <template v-for="(one,index) in resultColumnList">
@@ -63,6 +68,9 @@ export default {
     },
   },
   methods:{
+    exportFun(){
+      
+    },
     pageChangeFun(currentPage){
 
       const body = {

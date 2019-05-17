@@ -1,6 +1,12 @@
 module.exports={
-    runtimeCompiler:true,
 
+    //注意，以后记得把这个配置上
+    //这样子，我们的前端页面中的内容走的就是相对路径，而不是以网站的根目录去走
+    publicPath: './',
+    outputDir: 'datas_build',  
+    assetsDir: 'static',
+
+    runtimeCompiler:true,
     configureWebpack: {
         devServer: {
             proxy: {
@@ -13,8 +19,8 @@ module.exports={
                     secure: false,                          // 设置支持https协议的代理
                 },
                 '/2': {
-                    //target: 'http://localhost:3000',
-                    target: 'http://172.16.28.85:8080',     // 德柱
+                    target: 'http://localhost:3000',
+                    //target: 'http://172.16.28.85:8080',     // 德柱
                     secure: false, 
                 },
             }
