@@ -1,8 +1,7 @@
 <template>
   <div>
 
-    <div>
-      我是表格
+    <div class="exportBar">
       <el-button type= "primary" @click="exportFun">导出</el-button>
     </div>
 
@@ -111,4 +110,7 @@ export default {
 </script>
 
 <style lang="scss">
+.exportBar{
+  text-align: right;
+}
 </style>
