@@ -35,7 +35,7 @@ table   待删除
 epimetheus-fe-test-3.0.1 这个是对应上”利丰大屏“的测试环境
 
 [数据切换]
-如何在前端的数据环境和真实的数据环境之间切换呢，需要修改几处：
+如何在前端的数据环境和真实（或者测试）的数据环境之间切换呢，需要修改几处：
 1）vue.congfig 中，代理 target url 切换成 后端的。
 2）大屏的配置json，要拷贝给后端，进行保存；同时，需要修改json中的所有数据源url为后端的。
    大屏的code也要和后端确认保持一致。
@@ -47,8 +47,5 @@ epimetheus-fe-test-3.0.1 这个是对应上”利丰大屏“的测试环境
 3 其他
 另外，前端在使用promise的时候也要捕获错误，这样可以快速定位问题。
 
-[上仿真环境]
-需要把之前的接口改成：
-/2/api_v1/diy/view/info?diyViewCode=lifeng-ReportScreen
-改成：
-/epimetheus/api_v1/diy/view/info?diyViewCode=lifeng-ReportScreen
+[上仿真环境、真实环境]
+目前有一个名为 apiUrl.config 的配置文件，用来方便的控制切换，在上线的时候，一定要注意切换哦！

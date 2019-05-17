@@ -7,9 +7,7 @@
 <script>
 import axios from "axios";
 import reportShow from "../components/reportShow.vue";
-
-
-let baseUrl='';
+import {baseUrl,path} from '../../apiUrl.config';
 
 export default {
   name: 'myReport',
@@ -28,8 +26,7 @@ export default {
     let code = this.$route.query.diyViewCode;
     //axios.get(baseUrl + "/koa/getReportByCode?code="+code).then(response => {
     
-    //axios.get(baseUrl + "/2/api_v1/diy/view/info?diyViewCode="+code).then(response => {
-    axios.get(baseUrl + "/epimetheus/api_v1/diy/view/info?diyViewCode="+code).then(response => {
+    axios.get(baseUrl + path + "/api_v1/diy/view/info?diyViewCode="+code).then(response => {
       let d = response.data.data.jsonData;
       
       //兼容koa本地虚拟的数据（对象类型）、和来自后端那边的数据
