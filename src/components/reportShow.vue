@@ -285,7 +285,8 @@ export default {
       if ("table" == key) {
 
           //获取table的配置项目
-          axios.get(baseUrl + '/2/api_v1/diy/column/initForView?diyCoreCode=InventoryReportByShelf').then(response => {
+          //axios.get(baseUrl + '/2/api_v1/diy/column/initForView?diyCoreCode=InventoryReportByShelf').then(response => {
+          axios.get(baseUrl + '/epimetheus/api_v1/diy/column/initForView?diyCoreCode=InventoryReportByShelf').then(response => {
             
             //来自接口的配置
             let tableConfig = response.data.data;
