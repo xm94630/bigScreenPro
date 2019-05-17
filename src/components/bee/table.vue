@@ -59,6 +59,7 @@ import axios from "axios";
 import _ from "lodash";
 import searchCondition from "./table/searchCondition.vue"
 import myTable from "./table/myTable.vue"
+import { debug } from 'util';
 
 
 export default {
@@ -68,6 +69,8 @@ export default {
   },
   data() {
     return {
+
+      resultColumnList:[], //注意，默认值还是要的，要不然就会报错。
 
       //重置用
       //通过子组件发送事件，在本组件中，控制v-if来显示隐藏的变化，从而完成组件的重新加载！1
@@ -131,11 +134,9 @@ export default {
     //将服务器的配置数据，转换成我组件所能使用的格式！
     async parseConditionArr(arr){
 
-      console.log("条件配置数据===>")
+      console.log("搜索条件配置数据===>")
       console.log(arr)
-
       let newArr = [];
-
       for(let i=0;i<arr.length;i++){
         let one = arr[i];
         let item = null;
@@ -147,7 +148,6 @@ export default {
           
           let getOptionsData = function() {
               return new Promise((resolve) => {
-
                 axios.get(referenceUrl).then( async (response) => {
                   let d = response.data.data;
 
@@ -160,6 +160,8 @@ export default {
                   }
 
                   resolve(options);
+                }).catch((err)=>{
+                  alert("下拉关联的接口存在问题："+err)
                 })
               })
           }
