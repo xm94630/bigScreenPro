@@ -32,6 +32,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 [分支说明]
 master  目前是完成table的大体功能。
 table   待删除
+epimetheus-fe-test-3.0.1 这个是对应上”利丰大屏“的测试环境
 
 [数据切换]
 如何在前端的数据环境和真实的数据环境之间切换呢，需要修改几处：
@@ -45,3 +46,9 @@ table   待删除
 2 下拉关联的接口
 3 其他
 另外，前端在使用promise的时候也要捕获错误，这样可以快速定位问题。
+
+[上仿真环境]
+需要把之前的接口改成：
+/2/api_v1/diy/view/info?diyViewCode=lifeng-ReportScreen
+改成：
+/epimetheus/api_v1/diy/view/info?diyViewCode=lifeng-ReportScreen
