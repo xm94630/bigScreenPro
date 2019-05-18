@@ -404,11 +404,11 @@ router.get('/view/info', async (ctx, next) => {
       },
     }
   }
-  if ("test1" == code) {
+  if ("report-InventoryVolume" == code) {
     //永辉大屏页面1的配置信息
     
     jsonData = {
-      "code": "test1",
+      "code": "report-InventoryVolume",
       "pageId": "pageId-00004",
       "canvas": {
         "zoom-type":0, 

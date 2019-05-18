@@ -59,7 +59,6 @@ import axios from "axios";
 import _ from "lodash";
 import searchCondition from "./table/searchCondition.vue"
 import myTable from "./table/myTable.vue"
-import { debug } from 'util';
 
 
 export default {
@@ -105,6 +104,7 @@ export default {
       currentSearchOptions:{},
       currentUseCode:{},
       currentUseUrl:{},
+    
       totalPage:0,
     };
   },

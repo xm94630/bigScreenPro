@@ -46,10 +46,9 @@ export default {
     "currentPage":null,
     "pageSize":null,
     "showPage":null,
+    "totalPage":null,
 
     "resultColumnList":null,   //表头数据
-    
-    "totalPage":null,
   },
   data() {
     return {
@@ -79,11 +78,10 @@ export default {
         abc:this.currentSearchOptions,
       }
 
-
       //如果需要显示分页，要带上这两个参数
       if(this.showPage){
-        body.currentPage=currentPage
-        body.pageSize=this.pageSize
+        body.abc.currentPage=currentPage
+        body.abc.pageSize=this.pageSize
         //根据点击分页，更新数据
         axios.post(this.currentUseUrl,body).then(response => {
           this.myTableData =  response.data.data.recordList;
