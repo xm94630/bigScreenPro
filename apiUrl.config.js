@@ -4,7 +4,7 @@ module.exports = {
   baseUrl:"", 
   
   /* 这个在本地、测试都用上面这个，上线的时候要用下面的 */
-  path:"/2", 
-  //path:"/epimetheus", 
+  //path:"/2", 
+  path:"/epimetheus", 
 
 }

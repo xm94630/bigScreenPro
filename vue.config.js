@@ -18,9 +18,10 @@ module.exports={
                     //changeOrigin: true,                   // target是域名的话，需要这个参数
                     secure: false,                          // 设置支持https协议的代理
                 },
-                '/2': {
-                    target: 'http://localhost:3000',
-                    //target: 'http://172.16.28.85:8080',     // 德柱
+                '/epimetheus': {
+                    //target: 'http://localhost:3000',
+                    target: 'http://172.16.28.85:80',     // 德柱
+                    changeOrigin: true, // 是否跨域
                     secure: false, 
                 },
             }

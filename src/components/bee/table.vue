@@ -149,7 +149,12 @@ export default {
           let getOptionsData = function() {
               return new Promise((resolve) => {
                 axios.get(referenceUrl).then( async (response) => {
+                  
                   let d = response.data.data;
+
+                  console.log('====???')
+                  console.log(referenceUrl)
+                  console.log(d)
 
                   let options = [];
                   for(let i=0;i<d.length;i++){
