@@ -78,8 +78,8 @@ export default {
 
       //如果需要显示分页，要带上这两个参数
       if(this.showPage){
-        body.abc.currentPage=this.currentPage
-        body.abc.pageSize=this.pageSize
+        body.currentPage=this.currentPage
+        body.pageSize=this.pageSize
         //获取数据源
         axios.post(url,body).then(response => {
           let tableData = response.data.data.recordList;

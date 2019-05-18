@@ -80,8 +80,8 @@ export default {
 
       //如果需要显示分页，要带上这两个参数
       if(this.showPage){
-        body.abc.currentPage=currentPage
-        body.abc.pageSize=this.pageSize
+        body.currentPage=currentPage
+        body.pageSize=this.pageSize
         //根据点击分页，更新数据
         axios.post(this.currentUseUrl,body).then(response => {
           this.myTableData =  response.data.data.recordList;
