@@ -70,10 +70,7 @@ export default {
 
     //导出
     exportFun(){
-      axios.get(baseUrl+path+'/api_v1/diy/view/template/list').then(response => {
-        console.log('=====>')
-        console.log(response)
-      });
+      window.open(baseUrl+path+'/api_v1/diy/view/template/list');
     },
     pageChangeFun(currentPage){
 
