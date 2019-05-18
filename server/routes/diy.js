@@ -463,7 +463,7 @@ router.get('/view/info', async (ctx, next) => {
 
   }
   if ("lifeng-ReportScreen" == code) {
-    //永辉大屏页面1的配置信息
+    //利丰
     jsonData = {
       "code": "lifeng-ReportScreen",
       "pageId": "pageId-00001",
@@ -471,7 +471,7 @@ router.get('/view/info', async (ctx, next) => {
         "width": 1400,
         "height": 800,
         "background": "#aaa",
-        'zoom-type':1,
+        "zoom-type":1
       },
       "components": {
         "title": [{
