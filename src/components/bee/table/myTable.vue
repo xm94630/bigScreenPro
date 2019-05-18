@@ -76,10 +76,13 @@ export default {
     },
     pageChangeFun(currentPage){
 
-      const body = {
-        diyCoreCode:this.currentUseCode,
-        abc:this.currentSearchOptions,
-      }
+      // const body = {
+      //   diyCoreCode:this.currentUseCode,
+      //   abc:this.currentSearchOptions,
+      // }
+
+      let abc = this.currentSearchOptions;
+      let body = Object.assign({diyCoreCode:this.currentUseCode},abc);
 
       //如果需要显示分页，要带上这两个参数
       if(this.showPage){

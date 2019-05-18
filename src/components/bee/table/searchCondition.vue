@@ -56,7 +56,10 @@ export default {
     initConditionData(arr){
       let newArr={};
       for(let i=0;i<arr.length;i++){
-        newArr[arr[i].keyName] = (arr[i].defaultValue);
+        //不为空的时候才添加，否则就会查询为空字符串的情况
+        if(arr[i].defaultValue!==''){
+          newArr[arr[i].keyName] = (arr[i].defaultValue);
+        }
       }
       console.log('条件搜索初始数据===>')
       console.log(newArr)
@@ -71,10 +74,9 @@ export default {
       // console.log(this.currentPage)
       // console.log(this.pageSize)
 
-      const body = {
-        diyCoreCode:code,
-        abc:this.conditionData,
-      }
+
+      let abc = this.conditionData;
+      let body = Object.assign({diyCoreCode:code},abc);
 
       //如果需要显示分页，要带上这两个参数
       if(this.showPage){
@@ -116,7 +118,6 @@ export default {
     //console.log(this.items)
     //console.log(this.searchBtns)
     //console.log(this.$refs['searchBrn'][0])
-    console.log()
     setTimeout(()=>{
       this.$refs['searchBrn'][0].$el.click();
     },0)
@@ -124,6 +125,12 @@ export default {
   updated(){
     //初始化查询条件的值
     this.conditionData = this.initConditionData(this.items);
+  },
+  watch:{
+    // 'conditionData':function(v){
+    //   console.log('conditionData======>被改变拉')
+    //   console.log(v)
+    // }
   }
   
 };
