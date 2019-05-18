@@ -151,11 +151,6 @@ export default {
                 axios.get(referenceUrl).then( async (response) => {
                   
                   let d = response.data.data;
-
-                  console.log('====???')
-                  console.log(referenceUrl)
-                  console.log(d)
-
                   let options = [];
                   for(let i=0;i<d.length;i++){
                     options.push({
