@@ -72,7 +72,7 @@ function getOption(data) {
   });
 
   let option = {
-    //color: ["#6ddfe2"],
+    color: data.color || ["#83b5b9","#db8460","#9ec794","#eada80"],
     title: {
       show: true,
       text: data.title.text,

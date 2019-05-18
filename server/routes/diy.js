@@ -66,7 +66,7 @@ router.get('/view/info', async (ctx, next) => {
             'font-size': 12,
             'align': 'center',
           },
-          'color': ['#fd9f82','blue'],
+          'color': ['#db8460','blue'],
           'dataUrl': 'koaData/yonghui_line',
         },
         // {
@@ -84,7 +84,7 @@ router.get('/view/info', async (ctx, next) => {
         //     'font-size': 12,
         //     'align': 'center',
         //   },
-        //   'color': ['#fd9f82','blue'],
+        //   'color': ['#db8460','blue'],
         //   'dataUrl': 'koaData/yonghui_line2',
         // }
       ],
@@ -247,7 +247,7 @@ router.get('/view/info', async (ctx, next) => {
             'font-size': 12,
             'align': 'center',
           },
-          'color': ['#fd9f82','blue'],
+          'color': ['#db8460','blue'],
           'dataUrl': 'koaData/yonghui_line',
         },],
         'bar': [{
@@ -301,7 +301,7 @@ router.get('/view/info', async (ctx, next) => {
             'font-size': 20,
             'align': 'center',
           },
-          'color': ['#a6c87e','#fd9f82'],
+          'color': ['#83b5b9','#db8460'],
           dataUrl:'koaData/mingming_pie',
         },],
         'pie2':[{
@@ -319,7 +319,7 @@ router.get('/view/info', async (ctx, next) => {
             'font-size': 16,
             'align': 'center',
           },
-          'color': ['#a6c87e','#fd9f82'],
+          'color': ['#83b5b9','#db8460'],
           dataUrl:'koaData/mingming_pie2',
         },],
         'dater': [{
@@ -379,7 +379,7 @@ router.get('/view/info', async (ctx, next) => {
             'font-size': 20,
             'align': 'center',
           },
-          'color': ['#a6c87e','#fd9f82'],
+          'color': ['#83b5b9','#db8460'],
           dataUrl:'koaData/mingming_pie',
         },],
         'pie2':[{
@@ -397,7 +397,7 @@ router.get('/view/info', async (ctx, next) => {
             'font-size': 20,
             'align': 'center',
           },
-          'color': ['#a6c87e','#fd9f82'],
+          'color': ['#83b5b9','#db8460'],
           dataUrl:'koaData/mingming_pie2',
         },],
 
@@ -470,7 +470,8 @@ router.get('/view/info', async (ctx, next) => {
       "canvas": {
         "width": 1400,
         "height": 800,
-        "background": "#aaa"
+        "background": "#aaa",
+        'zoom-type':1,
       },
       "components": {
         "title": [{
@@ -753,7 +754,7 @@ router.get('/view/info', async (ctx, next) => {
           "title": {
             "text":"使用占比"
           },
-          "color": ["#a6c87e","#fd9f82"],
+          "color": ["#83b5b9","#db8460"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseScaleA"
         },{
@@ -768,7 +769,7 @@ router.get('/view/info', async (ctx, next) => {
           "title": {
             "text":"使用占比"
           },
-          "color": ["#a6c87e","#fd9f82"],
+          "color": ["#83b5b9","#db8460"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseScaleB"
         },{
@@ -783,7 +784,7 @@ router.get('/view/info', async (ctx, next) => {
           "title": {
             "text":"使用占比"
           },
-          "color": ["#a6c87e","#fd9f82"],
+          "color": ["#83b5b9","#db8460"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseScaleA"
         },{
@@ -798,7 +799,7 @@ router.get('/view/info', async (ctx, next) => {
           "title": {
             "text":"使用占比"
           },
-          "color": ["#a6c87e","#fd9f82"],
+          "color": ["#83b5b9","#db8460"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseScaleB"
         }],
@@ -818,7 +819,7 @@ router.get('/view/info', async (ctx, next) => {
             "font-size": 16,
             "align": "center"
           },
-          "color": ["#a6c87e","#fd9f82"],
+          "color": ["#83b5b9","#db8460","#9ec794","#eada80"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-robot"
         }],
@@ -839,7 +840,7 @@ router.get('/view/info', async (ctx, next) => {
             "font-size": 16,
             "align": "center"
           },
-          "color": ["#666"],
+          "color": ["#83b5b9","#db8460","#9ec794","#eada80"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-HistogramOutOrder"
         },{
@@ -857,7 +858,7 @@ router.get('/view/info', async (ctx, next) => {
             "font-size": 16,
             "align": "center"
           },
-          "color": ["#666"],
+          "color": ["#83b5b9","#db8460","#9ec794","#eada80"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-HistogramOutOrderCompleted"
         },{
@@ -875,7 +876,7 @@ router.get('/view/info', async (ctx, next) => {
             "font-size": 16,
             "align": "center"
           },
-          "color": ["#666"],
+          "color": ["#83b5b9","#db8460","#9ec794","#eada80"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-HistogramOutOrderAllocated"
         },{
@@ -893,7 +894,7 @@ router.get('/view/info', async (ctx, next) => {
             "font-size": 16,
             "align": "center"
           },
-          "color": ["#666"],
+          "color": ["#83b5b9","#db8460","#9ec794","#eada80"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-HistogramOutOrderLack"
         }],

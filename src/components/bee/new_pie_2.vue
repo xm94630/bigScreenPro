@@ -31,7 +31,7 @@ function getOption(data) {
   console.log(seriesData)
 
   let option = {
-    //color: ["#a6c87e", "#ffd385", "#f49999"],
+    color: data.color || ["#83b5b9","#db8460","#9ec794","#eada80"],
     title: {
       text: data.title.text,
       // subtext: '纯属虚构',
