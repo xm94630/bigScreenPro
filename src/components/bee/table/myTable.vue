@@ -69,7 +69,10 @@ export default {
 
     //导出
     exportFun(){
-      window.open(baseUrl+path+'/api_v1/diy/view/excel/export');
+      let exportUrl = baseUrl+path+'/api_v1/diy/view/excel/export';
+      exportUrl += "?diyCoreCode=" + this.currentUseCode;
+      exportUrl += "?diyCoreCode=" + this.currentUseCode;
+      window.open(exportUrl);
     },
     pageChangeFun(currentPage){
 
