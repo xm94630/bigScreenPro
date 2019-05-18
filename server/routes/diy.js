@@ -1094,7 +1094,8 @@ router.get('/xxx/xxx', async (ctx, next) => {
 
 
 //下载表格
-router.get('/view/template/list', async (ctx, next) => {
+
+router.get('/view/excel/export', async (ctx, next) => {
   
   // ctx.set('Content-Type', 'application/pdf')
   // ctx.set('Content-Disposition', contentDisposition('/aaa.pdf'))

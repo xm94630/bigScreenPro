@@ -69,7 +69,7 @@ export default {
 
     //导出
     exportFun(){
-      window.open(baseUrl+path+'/api_v1/diy/view/template/list');
+      window.open(baseUrl+path+'/api_v1/diy/view/excel/export');
     },
     pageChangeFun(currentPage){
 
