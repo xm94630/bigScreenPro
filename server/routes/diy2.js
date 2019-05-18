@@ -1,6 +1,6 @@
 const router = require('koa-router')()
 
-router.prefix('/2/api/diy/')
+router.prefix('/epimetheus/api/diy/')
 
 
 //数据源
