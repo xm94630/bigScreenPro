@@ -33,7 +33,7 @@
 
 <script>
 import axios from "axios";
-import _ from "lodash";
+import {baseUrl,path} from '@/apiUrl.config';
 
 export default {
   name: "myTable",
@@ -70,8 +70,9 @@ export default {
 
     //导出
     exportFun(){
-      axios.post(this.currentUseUrl,body).then(response => {
-        this.myTableData =  response.data.data.recordList;
+      axios.get(baseUrl+path+'/api_v1/diy/view/template/list').then(response => {
+        console.log('=====>')
+        console.log(response)
       });
     },
     pageChangeFun(currentPage){

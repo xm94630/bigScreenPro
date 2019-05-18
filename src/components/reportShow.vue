@@ -11,7 +11,7 @@
 import Vue from "vue";
 import axios from "axios";
 import { setInterval } from 'timers';
-import {baseUrl,path} from '../../apiUrl.config';
+import {baseUrl,path} from '@/apiUrl.config';
 
 
 function mountCmp(cmp, props, parent) {

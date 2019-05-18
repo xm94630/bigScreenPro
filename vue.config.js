@@ -24,7 +24,14 @@ module.exports={
                     secure: false, 
                 },
             }
-        }
+        },
+        resolve: {
+            //extensions: ['.js', '.vue', '.json'],
+            alias: {
+              '@': __dirname
+            }
+        },
+        
     }
 
 
