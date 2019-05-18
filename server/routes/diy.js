@@ -1,4 +1,5 @@
 const router = require('koa-router')()
+const send = require('koa-send')
 
 router.prefix('/2/api_v1/diy/')
 
@@ -1090,6 +1091,20 @@ router.get('/xxx/xxx', async (ctx, next) => {
   }
 })
 
+
+//下载表格
+router.get('/view/template/list', async (ctx, next) => {
+  
+  // ctx.set('Content-Type', 'application/pdf')
+  // ctx.set('Content-Disposition', contentDisposition('/aaa.pdf'))
+  // ctx.body = {}
+
+  const path = "download/1.txt";
+  ctx.attachment(path);
+  await send(ctx, path);
+
+
+})
 
 
 
