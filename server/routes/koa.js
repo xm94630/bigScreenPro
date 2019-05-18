@@ -424,10 +424,10 @@ router.get('/getReportByCode', async (ctx, next) => {
       },
     }
   }
-  if ("test1" == code) {
+  if ("report-InventoryVolume" == code) {
     //永辉大屏页面1的配置信息
     config = {
-      "code": "test1",
+      "code": "report-InventoryVolume",
       "pageId": "pageId-00004",
       "canvas": {
         "zoom-type":0, 
@@ -507,7 +507,7 @@ router.get('/getReportList', async (ctx, next) => {
     code: "mingming",
     describe: '明明哥的大屏'
   }, {
-    code: "test1",
+    code: "report-InventoryVolume",
     describe: '自定义二维表'
   }, {
     code: "lifeng-ReportScreen",
