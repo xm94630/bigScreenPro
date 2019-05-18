@@ -33,6 +33,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 master  目前是完成table的大体功能。
 table   待删除
 epimetheus-fe-test-3.0.1 这个是对应上”利丰大屏“的测试环境
+[tag说明]
+epimetheus-fe-release-3.0.1.0.1
+这个是后端要求的格式，名字中不用出现“lifeng”这样子的说明。版本号是5位，这个tag是从“epimetheus-fe-test-3.0.1”这个测试版本拉取的。
 
 [数据切换]
 如何在前端的数据环境和真实（或者测试）的数据环境之间切换呢，需要修改几处：
@@ -58,5 +61,14 @@ epimetheus-fe-test-3.0.1 这个是对应上”利丰大屏“的测试环境
 [坑]
 二维表的项目，如果连后端的接口，发现页面有报错，页面中下拉没有正常显示，通常就是后端的initview的接口中的数据有问题，而且那部分
 多次出现错误，需要警惕。
+
+[打包上线过程]
+（前提，本项目我一直是在master上开发）
+1 首先本项目切换到分支 epimetheus-fe-test-3.0.1，合并master，提交
+2 build，生成目标文件
+3 最终上线的是公司的git： http://***/FED/epimetheus-fe-build.git
+4 公司git 切换到同名的分支，放入build文件，提交
+5 以上述分支打tag，命名如：epimetheus-fe-release-3.0.1.0.1
+6 把最终的tag告诉后端就行
 
 
