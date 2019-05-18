@@ -7,7 +7,7 @@
 <script>
 import axios from "axios";
 import reportShow from "../components/reportShow.vue";
-import {baseUrl,path} from '../../apiUrl.config';
+import {baseUrl,path} from '@/apiUrl.config';
 
 export default {
   name: 'myReport',
