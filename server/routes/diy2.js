@@ -19,11 +19,13 @@ router.post('/report/selectData', async (ctx, next) => {
         "recordList":[{
           date: '2016-05-02',
           name: '王小虎1：' + Math.random(10),
-          address: '上海市普陀区金沙江路 1518 弄'
+          address: '上海市普陀区金沙江路 1518 弄',
+          age:12
         }, {
           date: '2016-05-04',
           name: '王小虎2：'+ Math.random(10),
-          address: '上海市普陀区金沙江路 1517 弄'
+          address: '上海市普陀区金沙江路 1517 弄',
+          age:13
         }],
         "recordCount": 60
       }
@@ -31,11 +33,13 @@ router.post('/report/selectData', async (ctx, next) => {
       data = [{
         date: '2016-05-02',
         name: '王小虎1：' + Math.random(10),
-        address: '上海市普陀区金沙江路 1518 弄'
+        address: '上海市普陀区金沙江路 1518 弄',
+        age:12,
       }, {
         date: '2016-05-04',
         name: '王小虎2：'+ Math.random(10),
-        address: '上海市普陀区金沙江路 1517 弄'
+        address: '上海市普陀区金沙江路 1517 弄',
+        age:13
       }]
     }
   }else if(code==="InventoryReportByBin"){
