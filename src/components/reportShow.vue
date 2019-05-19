@@ -12,6 +12,7 @@ import Vue from "vue";
 import axios from "axios";
 import { setInterval } from 'timers';
 import {baseUrl,path} from '@/apiUrl.config';
+import _ from "lodash";
 
 
 function mountCmp(cmp, props, parent) {
@@ -308,7 +309,8 @@ export default {
             
             //resultColumnList属性，对应的放回searchBtns中
             for(let k=0;k<searchBtns.length;k++){
-              searchBtns[k].resultColumnList=values[k].data.data.resultColumnList;
+              //表头排序
+              searchBtns[k].resultColumnList=_.orderBy(values[k].data.data.resultColumnList,'columnIndex','asc');
             }
          
             myConfig.initTableConfig = values[0].data.data; //来自接口的配置(用于条件查询)，不同小表都共用它！   
