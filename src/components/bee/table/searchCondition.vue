@@ -20,7 +20,7 @@
         :key= "index" 
         type= "primary" 
         :diyCoreCode= "one.diyCoreCode" 
-        @click="submitForm(one.diyCoreCode,one.dataUrl)"
+        @click="submitForm(one.diyCoreCode,one.dataUrl,one.resultColumnList)"
         >
           {{one.text}}
         </el-button>
@@ -65,7 +65,7 @@ export default {
       console.log(newArr)
       return newArr;
     },
-    submitForm(code,url){
+    submitForm(code,url,resultColumnList){
       //console.log("条件查询最终数据")
       //console.log(this.conditionData);
       
@@ -86,14 +86,14 @@ export default {
         axios.post(url,body).then(response => {
           let tableData = response.data.data.recordList;
           let totalPage = response.data.data.recordCount;
-          this.$emit('tableDataOK', tableData, this.conditionData,code,url,totalPage); 
+          this.$emit('tableDataOK', tableData, this.conditionData,code,url,totalPage,resultColumnList); 
         });
       }else{
         //获取数据源
         axios.post(url,body).then(response => {
           let tableData = response.data.data;
           let totalPage = -1;
-          this.$emit('tableDataOK', tableData, this.conditionData,code,url,totalPage); 
+          this.$emit('tableDataOK', tableData, this.conditionData,code,url,totalPage,resultColumnList); 
         });
       }
 

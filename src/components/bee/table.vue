@@ -51,7 +51,7 @@
 // 'padding': 0,
 // 'exported': true,
 // 'showIndexColumn':true,
-// 'tableConfig':...,  //来自后端的配置
+// 'initTableConfig':...,  //来自后端的配置
 //   ....
 // }
 
@@ -119,7 +119,7 @@ export default {
         this.hackReset = true
       })
     },
-    tableDataOK(tableData,searchOptions,code,url,totalPage){
+    tableDataOK(tableData,searchOptions,code,url,totalPage,resultColumnList){
       //console.log('==table数据就绪==')
       // console.log(tableData)
       // console.log(searchOptions)
@@ -130,6 +130,7 @@ export default {
       this.currentUseCode = code;
       this.currentUseUrl = url;
       this.totalPage = totalPage;
+      this.resultColumnList = resultColumnList;
     },
     //将服务器的配置数据，转换成我组件所能使用的格式！
     async parseConditionArr(arr){
@@ -237,11 +238,11 @@ export default {
     //console.log(this.myConfig);
 
     //条件搜索部分的数据组装
-    const conditionArr = this.myConfig.tableConfig.conditionColumnList;
+    const conditionArr = this.myConfig.initTableConfig.conditionColumnList;
     this.items = await this.parseConditionArr(conditionArr);
 
     //表头的配置
-    this.resultColumnList = _.orderBy(this.myConfig.tableConfig.resultColumnList,'columnIndex','asc');
+    this.resultColumnList = _.orderBy(this.myConfig.initTableConfig.resultColumnList,'columnIndex','asc');
 
   },
   computed: {

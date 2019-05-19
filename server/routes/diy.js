@@ -431,13 +431,16 @@ router.get('/view/info', async (ctx, next) => {
           "showPage":true,
           "initTableUrl":url+"/epimetheus/api_v1/diy/column/initForView",
           "dataUrl": url+"/epimetheus/api/diy/report/selectData",
+          "initUrl": url+"/epimetheus/api_v1/diy/column/initForView",
           "searchBtns":[{
             "text":"按货架查询",
             "dataUrl": url+"/epimetheus/api/diy/report/selectData",
+            "initUrl": url+"/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"InventoryReportByShelf"
           },{
             "text":"按货位查询",
             "dataUrl": url+"/epimetheus/api/diy/report/selectData",
+            "initUrl": url+"/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"InventoryReportByBin"
           }]
         }],
@@ -1113,10 +1116,6 @@ router.get('/column/initForView', async (ctx, next) => {
         "columnName":"address",   //列的key   
         "displayName":"地址哦",   //列头名字  
         "columnIndex":2,   //列的顺序
-      },{
-        "columnName":"age",   //列的key   
-        "displayName":"年龄",   //列头名字  
-        "columnIndex":1,   //列的顺序
       }],
       //这个部分是对查询条件部分的配置
       "conditionColumnList":[{

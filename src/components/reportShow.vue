@@ -284,33 +284,51 @@ export default {
       //渲染全部的“table”组件进行渲染
       if ("table" == key) {
 
-          //获取table的配置项目
-          axios.get(baseUrl + path + '/api_v1/diy/column/initForView?diyCoreCode=InventoryReportByShelf').then(response => {
-            
-            //来自接口的配置
-            let tableConfig = response.data.data;
+        let conf = this.reportConfig.components.table;
+        let len = conf.length;
 
-            //来自前端自己的配置
-            let conf = this.reportConfig.components.table;
-            let len = conf.length;
-            for (let i = 0; i < len; i++) {
-              
-              //将配置合并到一起，通过 myConfig 传入。
-              let x = conf[i];
-              x.tableConfig = tableConfig;
-              let propsConfig = {
-                myConfig: x
-              };
-              import("../components/bee/table.vue").then(cmp => {
-                mountCmp(
-                  cmp,
-                  propsConfig,
-                  document.querySelector(".myReportCanvas")
-                );
-              });
+        for (let i = 0; i < len; i++) {
+
+          //来自前端自己的配置
+          let myConfig = conf[i];
+          let searchBtns = myConfig.searchBtns
+
+          //请求各个小表的“初始配置数据”
+          let arr = [];
+          for(let j=0;j<searchBtns.length;j++){
+            arr[j] = new Promise((resolve) => {
+                axios.get(searchBtns[j].initUrl+'?diyCoreCode='+searchBtns[j].diyCoreCode).then(response => {
+                  resolve(response);
+                })
+            })            
+          }
+          
+          //完成所有异步动作之后，拿到数据之后，就可以做实例化。
+          Promise.all(arr).then(function(values) {
+            
+            //resultColumnList属性，对应的放回searchBtns中
+            for(let k=0;k<searchBtns.length;k++){
+              searchBtns[k].resultColumnList=values[k].data.data.resultColumnList;
             }
+         
+            myConfig.initTableConfig = values[0].data.data; //来自接口的配置(用于条件查询)，不同小表都共用它！   
+            myConfig.searchBtns = searchBtns;               //更新searchBtns，包含了表头的配置！
+            let propsConfig = {
+              myConfig: myConfig
+            };
+            import("../components/bee/table.vue").then(cmp => {
+              mountCmp(
+                cmp,
+                propsConfig,
+                document.querySelector(".myReportCanvas")
+              );
+            });
 
           });
+
+
+        
+        }
 
       }
 
