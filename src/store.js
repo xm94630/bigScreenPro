@@ -4,24 +4,18 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  count: 1
+  store_currentPage: 0
 }
 
 const mutations = {
-  increment(state){
-    state.count++;
+  setCurrentPage(state,page){
+    state.store_currentPage = page;
   },
-  decreament(state){
-    state.count--;
-  }
 }
 
 const actions = {
-  increment:({commit})=>{
-    commit('increment')
-  },
-  decreament:({commit})=>{
-    commit('increment')
+  setCurrentPage:({commit},page)=>{
+    commit('setCurrentPage',page)
   },
 }
 

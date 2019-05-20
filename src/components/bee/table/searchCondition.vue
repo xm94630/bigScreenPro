@@ -13,7 +13,6 @@
     </el-row>
     <div class="funBox">
 
-      {{store.state.count}}
       <el-button @click="resetForm('ruleForm')">重置</el-button>
 
       <template v-for="(one,index) in searchBtns">
@@ -86,8 +85,8 @@ export default {
 
       //如果需要显示分页，要带上这两个参数
       if(this.showPage){
-        body.currentPage=this.currentPage
-        body.pageSize=this.pageSize
+        body.currentPage = store.state.store_currentPage || this.currentPage;
+        body.pageSize = this.pageSize
         //获取数据源
         axios.post(url,body).then(response => {
           let tableData = response.data.data.recordList;

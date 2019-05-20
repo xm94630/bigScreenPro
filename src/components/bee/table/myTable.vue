@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="exportBar">
-      {{store.state.count}}
       <el-button type= "primary" @click="exportFun">导出</el-button>
     </div>
 
@@ -34,7 +33,6 @@
 <script>
 import axios from "axios";
 import {baseUrl,path} from '@/apiUrl.config';
-import {mapActions} from 'vuex';
 import store from '@/src/store';
 
 export default {
@@ -72,7 +70,6 @@ export default {
   methods:{
     //导出
     exportFun(){
-      store.dispatch("increment")
       let exportUrl = baseUrl+path+'/api_v1/diy/view/excel/export?';
       exportUrl += "diyCoreCode=" + this.currentUseCode;
       exportUrl += "&pageSize=" + this.pageSize;
@@ -84,12 +81,15 @@ export default {
         }
       }
 
-      //window.open(exportUrl);
+      window.open(exportUrl);
     },
     pageChangeFun(thisPage){
 
       //更新分页
       this.myCurrentPage = thisPage;
+
+      //把当前分页，记录在store，和查询条件共享
+      store.dispatch("setCurrentPage",thisPage);
 
       // const body = {
       //   diyCoreCode:this.currentUseCode,
