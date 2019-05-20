@@ -143,6 +143,7 @@ export default {
         let item = null;
         let isForeign = one.isForeign;
         let dataType = one.dataType;
+        let queryType = one.queryType;
         if(isForeign){
 
           let referenceUrl = one.referenceUrl;
@@ -225,6 +226,18 @@ export default {
           }
 
         }
+
+        //queryType为2，说明是范围区间的输入框
+        if(queryType==2){
+            item.label = one.displayName;
+            item.keyName = one.columnName;
+            item.type = "beeInputRange";
+            item.placeholder = one.placeholder;
+            item.defaultValue = one.defaultValue;
+            item.rule = {};
+            item.queryIndex= one.queryIndex;
+        }
+
         newArr.push(item);
       }
 

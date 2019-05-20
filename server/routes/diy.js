@@ -1297,41 +1297,18 @@ router.get('/column/initForView', async (ctx, next) => {
         "columnIndex":3,   //列的顺序
       }],
       //这个部分是对查询条件部分的配置
-      "conditionColumnList":[{
-        "diyColumnId":217,
-        "diyCoreCode":"print_label_1570",
-        "diyCoreName":"yashilandai",
-        "columnName":"addr", //关联字段
-        "displayName":"地址", //label名称
-        "dataType":1,  //大类型
-        "dataLength":0,
-        "decimallength":0,
-        "columnIndex":0,
-        "defaultValue":"",  //输入框、查询框的默认值
-        "isDiy":0,
-        "isReadonly":0,
-        "isResult":1,
-        "isCondition":1,
-        "queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-        "queryIndex":0,  //顺序
-        "sortRule":0,
-        "isCheck":0,
-        "checkType":0,
-        "isImport":0,
-        "isExport":0,
-        "isForeign":0,   //是否关联（关联的是下拉）
-        "referenceType":0,
-        "referenceTable":"",
-        "referenceColumn":"",
-        "referenceCondition":"",
-        "referenceDisplayColumn":"",
-        "referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-        "creator":"",
-        "createTime":0,
-        "updateUser":"",
-        "updateTime":0,
-        "placeholder":"请输入"
-      },{
+      "conditionColumnList":[
+        {
+          "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+          "dataType":1,    //大类型：1是字符串（普通输入框）
+          "columnName":'range',  //关联字段
+          "displayName":"范围",    //label显示
+          "defaultValue":"1-200",      //默认值
+          "placeholder":"请输入",    //placeholder
+          "queryType":2,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+          "queryIndex":0,  //组件出现顺序
+        },{
         "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
         "dataType":1,    //大类型：1是字符串（普通输入框）
         "columnName":'name',  //关联字段
@@ -1355,6 +1332,8 @@ router.get('/column/initForView', async (ctx, next) => {
         //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
         "queryIndex":3,  //组件出现顺序
       }]
+
+
     }
   }
   ctx.body = {

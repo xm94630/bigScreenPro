@@ -34,6 +34,7 @@
 import axios from "axios";
 
 import beeInput from './beeInput.vue';
+import beeInputRange from './beeInputRange.vue';
 import beeDatePicker from './beeDatePicker.vue';
 import beeSelect from './beeSelect.vue';
 import { setTimeout } from 'timers';
@@ -71,6 +72,7 @@ export default {
       console.log(newArr)
       return newArr;
     },
+
     submitForm(code,url,resultColumnList){
       //console.log("条件查询最终数据")
       //console.log(this.conditionData);
@@ -117,6 +119,7 @@ export default {
   },
   components:{
     beeInput,
+    beeInputRange,
     beeDatePicker,
     beeSelect,
   },
