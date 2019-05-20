@@ -12,6 +12,8 @@
       ></component>
     </el-row>
     <div class="funBox">
+
+      {{store.state.count}}
       <el-button @click="resetForm('ruleForm')">重置</el-button>
 
       <template v-for="(one,index) in searchBtns">
@@ -37,6 +39,9 @@ import beeDatePicker from './beeDatePicker.vue';
 import beeSelect from './beeSelect.vue';
 import { setTimeout } from 'timers';
 
+import store from '@/src/store';
+
+
 export default {
   name: "beeTitle",
   props: {
@@ -48,6 +53,7 @@ export default {
   },
   data() {
     return {
+      store,
       conditionData:{}, //这个用来保存查询条件的最后结果
     };
   },

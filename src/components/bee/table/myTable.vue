@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="exportBar">
-      <el-button type= "primary" @click="exportFun">导出{{store.state}}</el-button>
+      {{store.state.count}}
+      <el-button type= "primary" @click="exportFun">导出</el-button>
     </div>
 
     <el-table :data="myTableData" style="width: 100%">
@@ -53,7 +54,7 @@ export default {
   },
   data() {
     return {
-      store,
+      store:store,
       myTableData:this.tableData,
       myCurrentPage:this.currentPage,
     };
@@ -69,12 +70,9 @@ export default {
     },
   },
   methods:{
-    ...mapActions([
-      'increment',
-      'decrement',
-    ]),
     //导出
     exportFun(){
+      store.dispatch("increment")
       let exportUrl = baseUrl+path+'/api_v1/diy/view/excel/export?';
       exportUrl += "diyCoreCode=" + this.currentUseCode;
       exportUrl += "&pageSize=" + this.pageSize;
@@ -86,7 +84,7 @@ export default {
         }
       }
 
-      window.open(exportUrl);
+      //window.open(exportUrl);
     },
     pageChangeFun(thisPage){
 
