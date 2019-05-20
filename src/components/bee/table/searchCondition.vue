@@ -123,9 +123,11 @@ export default {
     //console.log(this.items)
     //console.log(this.searchBtns)
     //console.log(this.$refs['searchBrn'][0])
+    
+    //延时处理，等查询条件完成渲染。再模拟点击
     setTimeout(()=>{
       this.$refs['searchBrn'][0].$el.click();
-    },0)
+    },1000)
   },
   updated(){
     //初始化查询条件的值
