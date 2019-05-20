@@ -3,9 +3,9 @@
       <el-form :inline="true" :model="formInline" class="demo-form-inline" label-width="80px">
         <el-form-item :label="item.label">
 
-           <el-input class="inputRange" v-model="formInline.myInput" :placeholder="item.placeholder" @change="handleChange"></el-input>
+           <el-input class="inputRange" type="number" v-model="formInline.myInput1" :placeholder="item.placeholder" @change="handleChange"></el-input>
            -
-           <el-input class="inputRange" v-model="formInline.myInput" :placeholder="item.placeholder" @change="handleChange"></el-input>
+           <el-input class="inputRange" type="number" v-model="formInline.myInput2" :placeholder="item.placeholder" @change="handleChange"></el-input>
 
         </el-form-item>
       </el-form>
@@ -23,18 +23,21 @@ export default {
   data() {
     return {
       formInline: {
-        myInput: this.item.defaultValue,
+        myInput1: this.item.defaultValue.split('-')[0],
+        myInput2: this.item.defaultValue.split('-')[1],
       }
     };
   },
   watch:{
     'item':function(v){
-      this.formInline.myInput = v.defaultValue;
+      this.formInline.myInput1 = v.defaultValue.split('-')[0];
+      this.formInline.myInput2 = v.defaultValue.split('-')[1];
     }
   },
   methods:{
-    handleChange(val){
-      this.$emit('sonChange', val, this.item);
+    handleChange(){
+      let str = (this.formInline.myInput1||'') + '-' + (this.formInline.myInput2||'')
+      this.$emit('sonChange', str, this.item);
     }
   },
   computed: {

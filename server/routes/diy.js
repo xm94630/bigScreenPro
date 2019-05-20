@@ -1303,7 +1303,7 @@ router.get('/column/initForView', async (ctx, next) => {
           "dataType":1,    //大类型：1是字符串（普通输入框）
           "columnName":'range',  //关联字段
           "displayName":"范围",    //label显示
-          "defaultValue":"1-200",      //默认值
+          "defaultValue":"",      //默认值
           "placeholder":"请输入",    //placeholder
           "queryType":2,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
