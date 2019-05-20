@@ -1259,7 +1259,7 @@ router.get('/column/initForView', async (ctx, next) => {
         "diyCoreCode":"print_label_1570",     //
         "diyCoreName":"yashilandai",
         "columnName":"date",   //列的key   
-        "displayName":"日期哦",   //列头  [{"key":},]
+        "displayName":"访问地球时间",   //列头  [{"key":},]
         "dataType":1,   //数据类型 1字符串  
         "dataLength":0,
         "decimallength":0,
@@ -1289,11 +1289,11 @@ router.get('/column/initForView', async (ctx, next) => {
         "updateTime":0
       },{
         "columnName":"name",   //列的key   
-        "displayName":"姓名哦",   //列头名字  
+        "displayName":"奥特曼",   //列头名字  
         "columnIndex":2,   //列的顺序
       },{
         "columnName":"address",   //列的key   
-        "displayName":"最新的地址",   //列头名字  
+        "displayName":"星云",   //列头名字  
         "columnIndex":3,   //列的顺序
       }],
       //这个部分是对查询条件部分的配置
