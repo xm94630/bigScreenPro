@@ -1,5 +1,5 @@
 <template>
-  <div class="cardBox" v-bind:class="classObject" :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;'">
+  <div class="cardBox" v-bind:class="classObject" :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;background:'+background+';color:'+color+';'">
     <div class="cardBoxT">{{title}}</div>
     <div class="dataBox">
       <template v-for="(one,key) in data">
@@ -30,6 +30,8 @@ export default {
       height: this.chartData.height,
       x: this.chartData.x,
       y: this.chartData.y,
+      background: this.chartData.background || '#fff',
+      color: this.chartData.color || '#000',
 
     };
   },
@@ -74,7 +76,7 @@ export default {
   text-align: center;
   box-sizing: border-box;
   padding: 5px;
-  background: #fff;
+  //background: #fff;
   border-radius: 5px;
   border: solid 1px #c0c0c0;
   overflow: hidden;
