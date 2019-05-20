@@ -1126,7 +1126,7 @@ router.get('/column/initForView', async (ctx, next) => {
         "queryIndex":3,  //组件出现顺序
       }]
     }
-  }else{
+  }else if("InventoryReportByBin"==code){
     data = {
       //这部分是对table部分的配置
       "resultColumnList":[{
@@ -1236,6 +1236,111 @@ router.get('/column/initForView', async (ctx, next) => {
         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
         //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
         "queryIndex":4,  //组件出现顺序
+      },{
+        "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
+        "dataType":0,    //大类型：3是日期（日期选择框）
+        "columnName":'love',  //关联字段
+        "displayName":"最爱",    //label显示
+        "defaultValue":'',      //默认值
+        "placeholder":"请选择",    //placeholder
+        "referenceUrl":url+"/epimetheus/api_v1/diy/xxx/xxx", //关联URL
+        "referenceColumn":"playerNameValue",  //下拉的值
+        "referenceDisplayColumn":"playerName", //下拉显示
+        //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+        //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+        "queryIndex":3,  //组件出现顺序
+      }]
+    }
+  }else if("SkuHot"==code){
+    data = {
+      //这部分是对table部分的配置
+      "resultColumnList":[{
+        "diyColumnId":190,
+        "diyCoreCode":"print_label_1570",     //
+        "diyCoreName":"yashilandai",
+        "columnName":"date",   //列的key   
+        "displayName":"日期哦",   //列头  [{"key":},]
+        "dataType":1,   //数据类型 1字符串  
+        "dataLength":0,
+        "decimallength":0,
+        "columnIndex":0,   //列的顺序
+        "defaultValue":"",
+        "isDiy":0,
+        "isReadonly":0,
+        "isResult":1,
+        "isCondition":0,
+        "queryType":0,
+        "queryIndex":0,   
+        "sortRule":0,
+        "isCheck":0,
+        "checkType":0,
+        "isImport":0,
+        "isExport":0,
+        "isForeign":0,  //关联
+        "referenceType":0,
+        "referenceTable":"",
+        "referenceColumn":"",
+        "referenceCondition":"",
+        "referenceDisplayColumn":"",
+        "referenceUrl":"",
+        "creator":"",
+        "createTime":0,
+        "updateUser":"",
+        "updateTime":0
+      },{
+        "columnName":"name",   //列的key   
+        "displayName":"姓名哦",   //列头名字  
+        "columnIndex":2,   //列的顺序
+      },{
+        "columnName":"address",   //列的key   
+        "displayName":"最新的地址",   //列头名字  
+        "columnIndex":3,   //列的顺序
+      }],
+      //这个部分是对查询条件部分的配置
+      "conditionColumnList":[{
+        "diyColumnId":217,
+        "diyCoreCode":"print_label_1570",
+        "diyCoreName":"yashilandai",
+        "columnName":"addr", //关联字段
+        "displayName":"地址", //label名称
+        "dataType":1,  //大类型
+        "dataLength":0,
+        "decimallength":0,
+        "columnIndex":0,
+        "defaultValue":"",  //输入框、查询框的默认值
+        "isDiy":0,
+        "isReadonly":0,
+        "isResult":1,
+        "isCondition":1,
+        "queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+        "queryIndex":0,  //顺序
+        "sortRule":0,
+        "isCheck":0,
+        "checkType":0,
+        "isImport":0,
+        "isExport":0,
+        "isForeign":0,   //是否关联（关联的是下拉）
+        "referenceType":0,
+        "referenceTable":"",
+        "referenceColumn":"",
+        "referenceCondition":"",
+        "referenceDisplayColumn":"",
+        "referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+        "creator":"",
+        "createTime":0,
+        "updateUser":"",
+        "updateTime":0,
+        "placeholder":"请输入"
+      },{
+        "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+        "dataType":1,    //大类型：1是字符串（普通输入框）
+        "columnName":'name',  //关联字段
+        "displayName":"姓名",    //label显示
+        "defaultValue":"可可",      //默认值
+        "placeholder":"请输入",    //placeholder
+        //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+        //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+        "queryIndex":1,  //组件出现顺序
       },{
         "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
         "dataType":0,    //大类型：3是日期（日期选择框）
