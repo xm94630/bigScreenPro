@@ -617,8 +617,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
-          "color":"#000",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseA"
         },{
@@ -630,7 +630,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseB"
         },{
@@ -642,7 +643,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseA"
         },{
@@ -654,7 +656,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseB"
         },
@@ -668,7 +671,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-InventoryPool",
           "keyOrder":["总数","已分配","已冻结","可用"]
@@ -681,7 +685,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-SKUPool"
         },
@@ -695,7 +700,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptIn"
         },{
@@ -707,7 +713,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptCopleted"
         },{
@@ -719,7 +726,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptWorking"
         },{
@@ -731,7 +739,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptNotStart"
         },
@@ -745,7 +754,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderIn"
         },{
@@ -757,7 +767,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderComplete"
         },{
@@ -769,7 +780,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderAllocated"
         },{
@@ -781,7 +793,8 @@ router.get('/view/info', async (ctx, next) => {
           "height": 100,
           "border": "solid 1px #333",
           "padding":20,
-          "background":"#fff",
+          "background":"#1e2647",
+          "color":"#f8f594",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderLack"
         }],
