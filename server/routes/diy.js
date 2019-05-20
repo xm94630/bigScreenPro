@@ -404,16 +404,16 @@ router.get('/view/info', async (ctx, next) => {
       },
     }
   }
-  if ("report-InventoryVolume" == code) {
-    //永辉大屏页面1的配置信息
-    
+
+  //雅思兰黛1
+  if ("report-InventoryVolume" == code) {    
     jsonData = {
       "code": "report-InventoryVolume",
       "pageId": "pageId-00004",
       "canvas": {
         "zoom-type":0, 
         "width": 1200,
-        "height": 600,
+        "height": 1200,
         "background": "#d4e157"
       },
       "components": {
@@ -465,6 +465,46 @@ router.get('/view/info', async (ctx, next) => {
     }
 
   }
+  //雅思兰黛2
+  if ("report-SkuHot" == code) {    
+    jsonData = {
+      "code": "report-SkuHot",
+      "pageId": "pageId-00004",
+      "canvas": {
+        "zoom-type":0, 
+        "width": 1200,
+        "height": 1200,
+        "background": "#d4e157"
+      },
+      "components": {
+        "table": [{
+          "id": "componentId_00003",
+          "x": 0,
+          "y": 50,
+          "width": 1200,
+          "height": 550,
+          "padding": 10,
+          "exported": true,
+          "showIndexColumn":true,
+          "currentPage":2,
+          "pageSize":10,
+          "showPage":true,
+          "initTableUrl":url+"/epimetheus/api_v1/diy/column/initForView",
+          "dataUrl": url+"/epimetheus/api/diy/report/selectData",
+          "initUrl": url+"/epimetheus/api_v1/diy/column/initForView",
+          "searchBtns":[{
+            "text":"查询",
+            "dataUrl": url+"/epimetheus/api/diy/report/selectData",
+            "initUrl": url+"/epimetheus/api_v1/diy/column/initForView",
+            "diyCoreCode":"SkuHot"
+          }]
+        }],
+      }
+
+    }
+
+  }
+
   if ("lifeng-ReportScreen" == code) {
     //利丰
     jsonData = {
