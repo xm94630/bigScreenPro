@@ -52,7 +52,8 @@ export default {
   },
   data() {
     return {
-      myTableData:this.tableData
+      myTableData:this.tableData,
+      myCurrentPage:this.currentPage,
     };
   },
   watch:{
@@ -72,7 +73,7 @@ export default {
       let exportUrl = baseUrl+path+'/api_v1/diy/view/excel/export?';
       exportUrl += "diyCoreCode=" + this.currentUseCode;
       exportUrl += "&pageSize=" + this.pageSize;
-      exportUrl += "&currentPage=" + this.currentPage;
+      exportUrl += "&currentPage=" + this.myCurrentPage;
 
       for(let key in this.currentSearchOptions){
         if (key!==''){
@@ -82,7 +83,10 @@ export default {
 
       window.open(exportUrl);
     },
-    pageChangeFun(currentPage){
+    pageChangeFun(thisPage){
+
+      //更新分页
+      this.myCurrentPage = thisPage;
 
       // const body = {
       //   diyCoreCode:this.currentUseCode,
@@ -94,8 +98,8 @@ export default {
 
       //如果需要显示分页，要带上这两个参数
       if(this.showPage){
-        body.currentPage=currentPage
-        body.pageSize=this.pageSize
+        body.currentPage = this.myCurrentPage;
+        body.pageSize = this.pageSize
         //根据点击分页，更新数据
         axios.post(this.currentUseUrl,body).then(response => {
           this.myTableData =  response.data.data.recordList;
