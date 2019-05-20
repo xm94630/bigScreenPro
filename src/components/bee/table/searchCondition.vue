@@ -127,7 +127,12 @@ export default {
     //延时处理，等查询条件完成渲染。再模拟点击
     setTimeout(()=>{
       this.$refs['searchBrn'][0].$el.click();
-    },1000)
+    },0)
+  },
+  //这个一定要加，否者”重置“的时候，就会出现查询条件没有带上的bug
+  created(){
+    //初始化查询条件的值
+    this.conditionData = this.initConditionData(this.items);
   },
   updated(){
     //初始化查询条件的值
