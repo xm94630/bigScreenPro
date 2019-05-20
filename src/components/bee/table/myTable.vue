@@ -1,8 +1,7 @@
 <template>
   <div>
-
     <div class="exportBar">
-      <el-button type= "primary" @click="exportFun">导出</el-button>
+      <el-button type= "primary" @click="exportFun">导出{{store.state}}</el-button>
     </div>
 
     <el-table :data="myTableData" style="width: 100%">
@@ -34,6 +33,8 @@
 <script>
 import axios from "axios";
 import {baseUrl,path} from '@/apiUrl.config';
+import {mapActions} from 'vuex';
+import store from '@/src/store';
 
 export default {
   name: "myTable",
@@ -52,6 +53,7 @@ export default {
   },
   data() {
     return {
+      store,
       myTableData:this.tableData,
       myCurrentPage:this.currentPage,
     };
@@ -67,7 +69,10 @@ export default {
     },
   },
   methods:{
-
+    ...mapActions([
+      'increment',
+      'decrement',
+    ]),
     //导出
     exportFun(){
       let exportUrl = baseUrl+path+'/api_v1/diy/view/excel/export?';
@@ -115,6 +120,7 @@ export default {
     }
   },
   computed: {
+   
   },
   mounted(){
     console.log('表格组件接受数据===>')
@@ -124,6 +130,7 @@ export default {
     // console.log(this.currentUseCode)
     // console.log(this.currentUseUrl)
   },
+
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    pageb
+    <router-view></router-view>
   </div>
 </template>
 
@@ -15,6 +15,10 @@ export default {
         xxx:'大屏展示'
     }
   },
+  created(){
+    console.log('------>')
+    console.log(this.$store)
+  }
 }
 </script>
 

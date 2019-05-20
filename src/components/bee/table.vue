@@ -233,7 +233,9 @@ export default {
       return newArr;
     }
   },
+
   async mounted(){
+    
     //console.log('===>')
     //console.log(this.myConfig);
 

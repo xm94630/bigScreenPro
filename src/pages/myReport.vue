@@ -36,7 +36,8 @@ export default {
       
       this.data = d;
     });
-  }
+
+  },
 }
 </script>
 

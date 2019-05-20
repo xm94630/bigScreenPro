@@ -7,8 +7,15 @@ import 'element-ui/lib/theme-chalk/reset.css'
 import 'element-ui/lib/theme-chalk/index.css'
 
 
-Vue.use(ElementUI)
+import store from '@/src/store'
+
 Vue.config.productionTip = false
+
+Vue.use(ElementUI)
+
 new Vue({
-  router
+  store,
+  router,
 }).$mount('#app')
+
+
