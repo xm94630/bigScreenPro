@@ -13,7 +13,7 @@
     </el-row>
     <div class="funBox">
 
-      <el-button @click="resetForm('ruleForm')">重置</el-button>
+      <el-button @click="resetForm('ruleForm')" :disabled="resetBtnDisabled">重置</el-button>
 
       <template v-for="(one,index) in searchBtns">
         <el-button 
@@ -54,6 +54,7 @@ export default {
     return {
       store,
       conditionData:{}, //这个用来保存查询条件的最后结果
+      resetBtnDisabled:true, //默认一开始不让使用reset，只有一定延时后才能用。
     };
   },
   methods:{
@@ -127,6 +128,10 @@ export default {
     //延时处理，等查询条件完成渲染。再模拟点击
     setTimeout(()=>{
       this.$refs['searchBrn'][0].$el.click();
+    },1000)
+
+    setTimeout(()=>{
+      this.resetBtnDisabled = false;
     },1000)
   },
   //这个一定要加，否者”重置“的时候，就会出现查询条件没有带上的bug
