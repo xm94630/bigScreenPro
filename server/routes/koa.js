@@ -508,7 +508,10 @@ router.get('/getReportList', async (ctx, next) => {
     describe: '明明哥的大屏'
   }, {
     code: "report-InventoryVolume",
-    describe: '自定义二维表'
+    describe: '雅思兰黛1'
+  }, {
+    code: "report-SkuHot",
+    describe: '雅思兰黛2'
   }, {
     code: "lifeng-ReportScreen",
     describe: '利丰大屏'

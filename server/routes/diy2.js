@@ -67,6 +67,31 @@ router.post('/report/selectData', async (ctx, next) => {
         address: '上海市普陀区金沙江路 1517 弄'
       }]
     }
+  }else if(code==="SkuHot"){
+    if(pageSize){
+      data = {
+        "recordList":[{
+          date: '2016-05-02',
+          name: '雷欧：' + Math.random(10),
+          address: 'M77'
+        }, {
+          date: '2016-05-04',
+          name: '爱迪：'+ Math.random(10),
+          address: 'M87'
+        }],
+        "recordCount": 600
+      }
+    }else{
+      data = [{
+        date: '2016-05-02',
+        name: '雷欧：' + Math.random(10),
+        address: 'M77'
+      }, {
+        date: '2016-05-04',
+        name: '爱迪：'+ Math.random(10),
+        address: 'M87'
+      }]
+    }
   }
 
   //利丰大屏幕 - 卡片

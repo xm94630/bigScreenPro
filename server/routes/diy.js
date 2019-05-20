@@ -480,7 +480,7 @@ router.get('/view/info', async (ctx, next) => {
         "table": [{
           "id": "componentId_00003",
           "x": 0,
-          "y": 50,
+          "y": 0,
           "width": 1200,
           "height": 550,
           "padding": 10,
