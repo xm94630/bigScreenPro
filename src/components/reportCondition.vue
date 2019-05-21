@@ -40,6 +40,7 @@ import beeInputRange from './bee/table/beeInputRange.vue';
 import beeDatePicker from './bee/table/beeDatePicker.vue';
 import beeDatePickerRange from './bee/table/beeDatePickerRange.vue';
 import beeSelect from './bee/table/beeSelect.vue';
+import store from '@/src/store';
 
 export default {
   name: 'xm',
@@ -75,8 +76,9 @@ export default {
       this.conditionData[item.keyName] = v;
     },
     OkFun(){
-      console.log("this.conditionData");
-      console.log(this.conditionData);
+      //存到全局
+      store.dispatch("setGlobalContion",this.conditionData);
+      this.showCon = false;
     }
   },
   mounted(){

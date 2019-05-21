@@ -509,24 +509,14 @@ router.get('/view/info', async (ctx, next) => {
     
     //利丰
     jsonData = {
-      "globalCondition":[
-        {
-          "dataType":997788,  //997788表示为时间期间组件
-          "keyName":["timer1","timer2"],
-          "defaultValue":['',''],
-          "label":"出生年份",
-          "queryIndex":1,
-          "placeholder":['开始','结束'],
-        },
-        {
-          "dataType":3,
-          "keyName":"timer",
-          "defaultValue":"",
-          "label":"上任期间",
-          "queryIndex":2,
-          "placeholder":'',
-        }
-      ],
+      "globalCondition":[{
+        "dataType":997788,  //997788表示为时间期间组件
+        "keyName":["timer1","timer2"],
+        "defaultValue":['',''],
+        "label":"出生年份",
+        "queryIndex":1,
+        "placeholder":['开始','结束'],
+      }],
       "code": "lifeng-ReportScreen",
       "pageId": "pageId-00001",
       "canvas": {
