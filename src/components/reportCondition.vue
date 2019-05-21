@@ -79,6 +79,8 @@ export default {
       //存到全局
       store.dispatch("setGlobalContion",this.conditionData);
       this.showCon = false;
+      //通知
+      this.$emit('globalConditionUpdate');
     }
   },
   mounted(){

@@ -3,8 +3,9 @@
     <reportContion 
       v-if = "showGlobalContion" 
       :globalContion = "globalContion"
+      @globalConditionUpdate = "globalConditionUpdateFun"
     />
-    <reportShow :reportConfig='data' />
+    <reportShow :reportConfig='data' v-if="hackReset"/>
   </div>
 </template>
 
@@ -27,6 +28,16 @@ export default {
       data:null,
       showGlobalContion:false,
       globalContion:[],
+      hackReset:true,
+    }
+  },
+  methods:{
+    globalConditionUpdateFun(){
+      //刷新大屏
+      this.hackReset = false;
+      this.$nextTick(() => {
+        this.hackReset = true
+      })
     }
   },
   mounted(){

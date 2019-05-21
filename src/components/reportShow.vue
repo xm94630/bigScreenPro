@@ -79,460 +79,468 @@ export default {
           ele.style.left = (show_width - w)/2 + "px";
         }
       }
-
     },
-  },
-  mounted(){
-    //五分钟刷新，这个方法很简陋，有空优化
-    setInterval(()=>{
-      window.location.reload()
-    },1000*60*5)
-  },
-  updated() {
 
-    //获取画布的缩放形式
-    const zoomType = this.reportConfig.canvas['zoom-type'];
-    const w = this.reportConfig.canvas['width'];
-    const h = this.reportConfig.canvas['height'];
-    const show_width = document.documentElement.clientWidth;
-    const show_height = document.documentElement.clientHeight;
-    const adjustShow = this.adjustShow;
-
-    adjustShow(w,h,show_width,show_height,zoomType);
-    window.onresize = function(){
-      const show_width = document.documentElement.clientWidth;
-      const show_height = document.documentElement.clientHeight;
-      adjustShow(w,h,show_width,show_height,zoomType);
-    }
-
-
-    //对配置的的全部组件进行渲染
-    for (let key in this.reportConfig.components) {
-      //渲染全部的“title”组件进行渲染
-      if ("title" == key) {
-        let titleData = this.reportConfig.components.title;
-        let len = titleData.length;
-        for (let i = 0; i < len; i++) {
-          let propsConfig = {
-            myConfig: titleData[i]
-          };
-          import("../components/bee/title.vue").then(cmp => {
-            mountCmp(
-              cmp,
-              propsConfig,
-              document.querySelector(".myReportCanvas")
-            );
-          });
-        }
-      }
-      //渲染全部的“ dater ”组件进行渲染
-      if ("dater" == key) {
-        let data = this.reportConfig.components.dater;
-        let len = data.length;
-        for (let i = 0; i < len; i++) {
-          let propsConfig = {
-            myConfig: data[i]
-          };
-          import("../components/bee/dater.vue").then(cmp => {
-            mountCmp(
-              cmp,
-              propsConfig,
-              document.querySelector(".myReportCanvas")
-            );
-          });
-        }
-      }
-      //渲染全部的“line”组件进行渲染
-      if ("line" == key) {
-        let data = this.reportConfig.components.line;
-        let len = data.length;
-        for (let i = 0; i < len; i++) {
-          //组件基本样式数据
-          let propsConfig = {
-            chartData: data[i]
-          };
-          let dataUrl = data[i].dataUrl;
-
-          //获取数据源
-          axios.get(baseUrl + dataUrl).then(response => {
-            this.reportList = response.data.data;
-            propsConfig.chartData.xAxis = response.data.data.xAxis;
-            propsConfig.chartData.series = response.data.data.series;
-            propsConfig.chartData.legend = response.data.data.legend;
-
-            //构建组件
-            import("../components/bee/line.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-          });
-        }
-      }
-      //渲染全部的“bar”组件进行渲染
-      if ("bar" == key) {
-        let data = this.reportConfig.components.bar;
-        let len = data.length;
-        for (let i = 0; i < len; i++) {
-          //组件基本样式数据
-          let propsConfig = {
-            chartData: data[i]
-          };
-          let dataUrl = data[i].dataUrl;
-
-          //获取数据源
-          axios.get(baseUrl + dataUrl).then(response => {
-            this.reportList = response.data.data;
-            propsConfig.chartData.xAxis = response.data.data.xAxis;
-            propsConfig.chartData.series = response.data.data.series;
-            propsConfig.chartData.legend = response.data.data.legend;
-
-            //构建组件
-            import("../components/bee/bar.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-          });
-        }
-      }
-      //渲染全部的“ card ”组件进行渲染
-      if ("card" == key) {
-        let data = this.reportConfig.components.card;
-        let len = data.length;
-        for (let i = 0; i < len; i++) {
-          //组件基本样式数据
-          let propsConfig = {
-            chartData: data[i]
-          };
-          let dataUrl = data[i].dataUrl;
-
-          //获取数据源
-          axios.get(baseUrl + dataUrl).then(response => {
-
-            propsConfig.chartData.data1 = response.data.data[0];
-            propsConfig.chartData.data2 = response.data.data[1];
-
-            //构建组件
-            import("../components/bee/card.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-          });
-        }
-      }
+    loadAll(){
       
-      //渲染全部的“ pie1 ”组件进行渲染
-      if ("pie1" == key) {
-        let data = this.reportConfig.components.pie1;
-        let len = data.length;
-        for (let i = 0; i < len; i++) {
-          //组件基本样式数据
-          let propsConfig = {
-            chartData: data[i]
-          };
-          let dataUrl = data[i].dataUrl;
+      if(this.reportConfig){
 
-          //获取数据源
-          axios.get(baseUrl + dataUrl).then(response => {
-            propsConfig.chartData.percent = response.data.data.percent;
-            //构建组件
-            import("../components/bee/pie1.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-          });
+        //获取画布的缩放形式
+        const zoomType = this.reportConfig.canvas['zoom-type'];
+        const w = this.reportConfig.canvas['width'];
+        const h = this.reportConfig.canvas['height'];
+        const show_width = document.documentElement.clientWidth;
+        const show_height = document.documentElement.clientHeight;
+        const adjustShow = this.adjustShow;
+
+        adjustShow(w,h,show_width,show_height,zoomType);
+        window.onresize = function(){
+          const show_width = document.documentElement.clientWidth;
+          const show_height = document.documentElement.clientHeight;
+          adjustShow(w,h,show_width,show_height,zoomType);
         }
-      }
 
-      //渲染全部的“ pie1 ”组件进行渲染
-      if ("pie2" == key) {
-        let data = this.reportConfig.components.pie2;
-        let len = data.length;
-        for (let i = 0; i < len; i++) {
-          //组件基本样式数据
-          let propsConfig = {
-            chartData: data[i]
-          };
-          let dataUrl = data[i].dataUrl;
 
-          //获取数据源
-          axios.get(baseUrl + dataUrl).then(response => {
-            propsConfig.chartData.seriesData = response.data.data.seriesData;
-            propsConfig.chartData.legendData = response.data.data.legendData;
-            //构建组件
-            import("../components/bee/pie2.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-          });
-        }
-      }
+        //对配置的的全部组件进行渲染
+        for (let key in this.reportConfig.components) {
+          //渲染全部的“title”组件进行渲染
+          if ("title" == key) {
+            let titleData = this.reportConfig.components.title;
+            let len = titleData.length;
+            for (let i = 0; i < len; i++) {
+              let propsConfig = {
+                myConfig: titleData[i]
+              };
+              import("../components/bee/title.vue").then(cmp => {
+                mountCmp(
+                  cmp,
+                  propsConfig,
+                  document.querySelector(".myReportCanvas")
+                );
+              });
+            }
+          }
+          //渲染全部的“ dater ”组件进行渲染
+          if ("dater" == key) {
+            let data = this.reportConfig.components.dater;
+            let len = data.length;
+            for (let i = 0; i < len; i++) {
+              let propsConfig = {
+                myConfig: data[i]
+              };
+              import("../components/bee/dater.vue").then(cmp => {
+                mountCmp(
+                  cmp,
+                  propsConfig,
+                  document.querySelector(".myReportCanvas")
+                );
+              });
+            }
+          }
+          //渲染全部的“line”组件进行渲染
+          if ("line" == key) {
+            let data = this.reportConfig.components.line;
+            let len = data.length;
+            for (let i = 0; i < len; i++) {
+              //组件基本样式数据
+              let propsConfig = {
+                chartData: data[i]
+              };
+              let dataUrl = data[i].dataUrl;
 
-      //渲染全部的“table”组件进行渲染
-      if ("table" == key) {
+              //获取数据源
+              axios.get(baseUrl + dataUrl).then(response => {
+                this.reportList = response.data.data;
+                propsConfig.chartData.xAxis = response.data.data.xAxis;
+                propsConfig.chartData.series = response.data.data.series;
+                propsConfig.chartData.legend = response.data.data.legend;
 
-        let conf = this.reportConfig.components.table;
-        let len = conf.length;
+                //构建组件
+                import("../components/bee/line.vue").then(cmp => {
+                  mountCmp(
+                    cmp,
+                    propsConfig,
+                    document.querySelector(".myReportCanvas")
+                  );
+                });
+              });
+            }
+          }
+          //渲染全部的“bar”组件进行渲染
+          if ("bar" == key) {
+            let data = this.reportConfig.components.bar;
+            let len = data.length;
+            for (let i = 0; i < len; i++) {
+              //组件基本样式数据
+              let propsConfig = {
+                chartData: data[i]
+              };
+              let dataUrl = data[i].dataUrl;
 
-        for (let i = 0; i < len; i++) {
+              //获取数据源
+              axios.get(baseUrl + dataUrl).then(response => {
+                this.reportList = response.data.data;
+                propsConfig.chartData.xAxis = response.data.data.xAxis;
+                propsConfig.chartData.series = response.data.data.series;
+                propsConfig.chartData.legend = response.data.data.legend;
 
-          //来自前端自己的配置
-          let myConfig = conf[i];
-          let searchBtns = myConfig.searchBtns
+                //构建组件
+                import("../components/bee/bar.vue").then(cmp => {
+                  mountCmp(
+                    cmp,
+                    propsConfig,
+                    document.querySelector(".myReportCanvas")
+                  );
+                });
+              });
+            }
+          }
+          //渲染全部的“ card ”组件进行渲染
+          if ("card" == key) {
+            let data = this.reportConfig.components.card;
+            let len = data.length;
+            for (let i = 0; i < len; i++) {
+              //组件基本样式数据
+              let propsConfig = {
+                chartData: data[i]
+              };
+              let dataUrl = data[i].dataUrl;
 
-          //请求各个小表的“初始配置数据”
-          let arr = [];
-          for(let j=0;j<searchBtns.length;j++){
-            arr[j] = new Promise((resolve) => {
-                axios.get(searchBtns[j].initUrl+'?diyCoreCode='+searchBtns[j].diyCoreCode).then(response => {
-                  resolve(response);
-                })
-            })            
+              //获取数据源
+              axios.get(baseUrl + dataUrl).then(response => {
+
+                propsConfig.chartData.data1 = response.data.data[0];
+                propsConfig.chartData.data2 = response.data.data[1];
+
+                //构建组件
+                import("../components/bee/card.vue").then(cmp => {
+                  mountCmp(
+                    cmp,
+                    propsConfig,
+                    document.querySelector(".myReportCanvas")
+                  );
+                });
+              });
+            }
           }
           
-          //完成所有异步动作之后，拿到数据之后，就可以做实例化。
-          Promise.all(arr).then(function(values) {
-            
-            //resultColumnList属性，对应的放回searchBtns中
-            for(let k=0;k<searchBtns.length;k++){
-              //表头排序
-              searchBtns[k].resultColumnList=_.orderBy(values[k].data.data.resultColumnList,'columnIndex','asc');
+          //渲染全部的“ pie1 ”组件进行渲染
+          if ("pie1" == key) {
+            let data = this.reportConfig.components.pie1;
+            let len = data.length;
+            for (let i = 0; i < len; i++) {
+              //组件基本样式数据
+              let propsConfig = {
+                chartData: data[i]
+              };
+              let dataUrl = data[i].dataUrl;
+
+              //获取数据源
+              axios.get(baseUrl + dataUrl).then(response => {
+                propsConfig.chartData.percent = response.data.data.percent;
+                //构建组件
+                import("../components/bee/pie1.vue").then(cmp => {
+                  mountCmp(
+                    cmp,
+                    propsConfig,
+                    document.querySelector(".myReportCanvas")
+                  );
+                });
+              });
             }
-         
-            myConfig.initTableConfig = values[0].data.data; //来自接口的配置(用于条件查询)，不同小表都共用它！   
-            myConfig.searchBtns = searchBtns;               //更新searchBtns，包含了表头的配置！
-            let propsConfig = {
-              myConfig: myConfig
-            };
-            import("../components/bee/table.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-
-          });
-
-
-        
-        }
-
-      }
-
-      //渲染全部的“ textBar ”组件进行渲染
-      if ("textBar" == key) {
-        let data = this.reportConfig.components.textBar;
-        let len = data.length;
-        for (let i = 0; i < len; i++) {
-
-          const dataUrl = data[i].dataUrl;
-          const diyCoreCode = data[i].diyCoreCode;
-          const body = {
-            diyCoreCode
           }
 
-          //获取数据源
-          axios.post(dataUrl,body).then(response => {
+          //渲染全部的“ pie1 ”组件进行渲染
+          if ("pie2" == key) {
+            let data = this.reportConfig.components.pie2;
+            let len = data.length;
+            for (let i = 0; i < len; i++) {
+              //组件基本样式数据
+              let propsConfig = {
+                chartData: data[i]
+              };
+              let dataUrl = data[i].dataUrl;
 
-            let propsConfig = {
-              myConfig: data[i]
-            };
-            propsConfig.myConfig.myData=response.data.data;
+              //获取数据源
+              axios.get(baseUrl + dataUrl).then(response => {
+                propsConfig.chartData.seriesData = response.data.data.seriesData;
+                propsConfig.chartData.legendData = response.data.data.legendData;
+                //构建组件
+                import("../components/bee/pie2.vue").then(cmp => {
+                  mountCmp(
+                    cmp,
+                    propsConfig,
+                    document.querySelector(".myReportCanvas")
+                  );
+                });
+              });
+            }
+          }
 
-            //构建组件
-            import("../components/bee/textBar.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-          });
+          //渲染全部的“table”组件进行渲染
+          if ("table" == key) {
 
-        }
-      }
+            let conf = this.reportConfig.components.table;
+            let len = conf.length;
 
-      //渲染全部的“ new_card ”组件进行渲染
-      if ("new_card" == key) {
+            for (let i = 0; i < len; i++) {
 
-        let data = this.reportConfig.components.new_card;
-        let len = data.length;
-        for (let i = 0; i < len; i++) {
-          //组件基本样式数据
-          let propsConfig = {
-            chartData: data[i]
-          };
-          let dataUrl = data[i].dataUrl;
-          let diyCoreCode = data[i].diyCoreCode;
+              //来自前端自己的配置
+              let myConfig = conf[i];
+              let searchBtns = myConfig.searchBtns
 
-          //获取数据源
-          axios.post(baseUrl + dataUrl,{
-            diyCoreCode:diyCoreCode
-          }).then(response => {
-
-            //propsConfig.chartData.data1 = response.data.data[0];
-            //propsConfig.chartData.data2 = response.data.data[1];
-
-            propsConfig.chartData.data = response.data.data[0];
-
-            //构建组件
-            import("../components/bee/new_card.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-          });
-        }
-      }
-
-      //渲染全部的“ new_pie_1 ”组件进行渲染
-      if ("new_pie_1" == key) {
-        let data = this.reportConfig.components.new_pie_1;
-        let len = data.length;
-        for (let i = 0; i < len; i++) {
-
-          //组件基本样式数据
-          let propsConfig = {
-            chartData: data[i]
-          };
-          let dataUrl = data[i].dataUrl;
-          let diyCoreCode = data[i].diyCoreCode;
-
-          //获取数据源
-          axios.post(baseUrl + dataUrl,{
-            diyCoreCode:diyCoreCode
-          }).then(response => {
-            propsConfig.chartData.urlData = response.data.data;
-            //构建组件
-            import("../components/bee/new_pie_1.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-          });
-        }
-      }
-
-      //渲染全部的“ new_pie_2 ”组件进行渲染
-      if ("new_pie_2" == key) {
-        let data = this.reportConfig.components.new_pie_2;
-        let len = data.length;
-        for (let i = 0; i < len; i++) {
-          //组件基本样式数据
-          let propsConfig = {
-            chartData: data[i]
-          };
-          let dataUrl = data[i].dataUrl;
-          let diyCoreCode = data[i].diyCoreCode;
-
-          //获取数据源
-          axios.post(baseUrl + dataUrl,{
-            diyCoreCode:diyCoreCode
-          }).then(response => {
-
-            propsConfig.chartData.apiData = response.data.data;
-
-            //构建组件
-            import("../components/bee/new_pie_2.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-          });
-        }
-      }
-
-      //渲染全部的“bar”组件进行渲染
-      if ("new_bar" == key) {
-        let data = this.reportConfig.components.new_bar;
-        let len = data.length;
-        for (let i = 0; i < len; i++) {
-          //组件基本样式数据
-          let propsConfig = {
-            chartData: data[i]
-          };
-          let dataUrl = data[i].dataUrl;
-          let diyCoreCode = data[i].diyCoreCode;
-
-          //获取数据源
-          axios.post(baseUrl + dataUrl,{
-            diyCoreCode:diyCoreCode
-          }).then(response => {
-
-            //propsConfig.chartData.xAxis = response.data.data.xAxis;
-            //propsConfig.chartData.series = response.data.data.series;
-            //propsConfig.chartData.legend = response.data.data.legend;
-            propsConfig.chartData.apiData = response.data.data;
+              //请求各个小表的“初始配置数据”
+              let arr = [];
+              for(let j=0;j<searchBtns.length;j++){
+                arr[j] = new Promise((resolve) => {
+                    axios.get(searchBtns[j].initUrl+'?diyCoreCode='+searchBtns[j].diyCoreCode).then(response => {
+                      resolve(response);
+                    })
+                })            
+              }
+              
+              //完成所有异步动作之后，拿到数据之后，就可以做实例化。
+              Promise.all(arr).then(function(values) {
+                
+                //resultColumnList属性，对应的放回searchBtns中
+                for(let k=0;k<searchBtns.length;k++){
+                  //表头排序
+                  searchBtns[k].resultColumnList=_.orderBy(values[k].data.data.resultColumnList,'columnIndex','asc');
+                }
             
-            //构建组件
-            import("../components/bee/new_bar.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-          });
+                myConfig.initTableConfig = values[0].data.data; //来自接口的配置(用于条件查询)，不同小表都共用它！   
+                myConfig.searchBtns = searchBtns;               //更新searchBtns，包含了表头的配置！
+                let propsConfig = {
+                  myConfig: myConfig
+                };
+                import("../components/bee/table.vue").then(cmp => {
+                  mountCmp(
+                    cmp,
+                    propsConfig,
+                    document.querySelector(".myReportCanvas")
+                  );
+                });
+
+              });
+
+
+            
+            }
+
+          }
+
+          //渲染全部的“ textBar ”组件进行渲染
+          if ("textBar" == key) {
+            let data = this.reportConfig.components.textBar;
+            let len = data.length;
+            for (let i = 0; i < len; i++) {
+
+              const dataUrl = data[i].dataUrl;
+              const diyCoreCode = data[i].diyCoreCode;
+              const body = {
+                diyCoreCode
+              }
+
+              //获取数据源
+              axios.post(dataUrl,body).then(response => {
+
+                let propsConfig = {
+                  myConfig: data[i]
+                };
+                propsConfig.myConfig.myData=response.data.data;
+
+                //构建组件
+                import("../components/bee/textBar.vue").then(cmp => {
+                  mountCmp(
+                    cmp,
+                    propsConfig,
+                    document.querySelector(".myReportCanvas")
+                  );
+                });
+              });
+
+            }
+          }
+
+          //渲染全部的“ new_card ”组件进行渲染
+          if ("new_card" == key) {
+
+            let data = this.reportConfig.components.new_card;
+            let len = data.length;
+            for (let i = 0; i < len; i++) {
+              //组件基本样式数据
+              let propsConfig = {
+                chartData: data[i]
+              };
+              let dataUrl = data[i].dataUrl;
+              let diyCoreCode = data[i].diyCoreCode;
+
+              //获取数据源
+              axios.post(baseUrl + dataUrl,{
+                diyCoreCode:diyCoreCode
+              }).then(response => {
+
+                //propsConfig.chartData.data1 = response.data.data[0];
+                //propsConfig.chartData.data2 = response.data.data[1];
+
+                propsConfig.chartData.data = response.data.data[0];
+
+                //构建组件
+                import("../components/bee/new_card.vue").then(cmp => {
+                  mountCmp(
+                    cmp,
+                    propsConfig,
+                    document.querySelector(".myReportCanvas")
+                  );
+                });
+              });
+            }
+          }
+
+          //渲染全部的“ new_pie_1 ”组件进行渲染
+          if ("new_pie_1" == key) {
+            let data = this.reportConfig.components.new_pie_1;
+            let len = data.length;
+            for (let i = 0; i < len; i++) {
+
+              //组件基本样式数据
+              let propsConfig = {
+                chartData: data[i]
+              };
+              let dataUrl = data[i].dataUrl;
+              let diyCoreCode = data[i].diyCoreCode;
+
+              //获取数据源
+              axios.post(baseUrl + dataUrl,{
+                diyCoreCode:diyCoreCode
+              }).then(response => {
+                propsConfig.chartData.urlData = response.data.data;
+                //构建组件
+                import("../components/bee/new_pie_1.vue").then(cmp => {
+                  mountCmp(
+                    cmp,
+                    propsConfig,
+                    document.querySelector(".myReportCanvas")
+                  );
+                });
+              });
+            }
+          }
+
+          //渲染全部的“ new_pie_2 ”组件进行渲染
+          if ("new_pie_2" == key) {
+            let data = this.reportConfig.components.new_pie_2;
+            let len = data.length;
+            for (let i = 0; i < len; i++) {
+              //组件基本样式数据
+              let propsConfig = {
+                chartData: data[i]
+              };
+              let dataUrl = data[i].dataUrl;
+              let diyCoreCode = data[i].diyCoreCode;
+
+              //获取数据源
+              axios.post(baseUrl + dataUrl,{
+                diyCoreCode:diyCoreCode
+              }).then(response => {
+
+                propsConfig.chartData.apiData = response.data.data;
+
+                //构建组件
+                import("../components/bee/new_pie_2.vue").then(cmp => {
+                  mountCmp(
+                    cmp,
+                    propsConfig,
+                    document.querySelector(".myReportCanvas")
+                  );
+                });
+              });
+            }
+          }
+
+          //渲染全部的“bar”组件进行渲染
+          if ("new_bar" == key) {
+            let data = this.reportConfig.components.new_bar;
+            let len = data.length;
+            for (let i = 0; i < len; i++) {
+              //组件基本样式数据
+              let propsConfig = {
+                chartData: data[i]
+              };
+              let dataUrl = data[i].dataUrl;
+              let diyCoreCode = data[i].diyCoreCode;
+
+              //获取数据源
+              axios.post(baseUrl + dataUrl,{
+                diyCoreCode:diyCoreCode
+              }).then(response => {
+
+                //propsConfig.chartData.xAxis = response.data.data.xAxis;
+                //propsConfig.chartData.series = response.data.data.series;
+                //propsConfig.chartData.legend = response.data.data.legend;
+                propsConfig.chartData.apiData = response.data.data;
+                
+                //构建组件
+                import("../components/bee/new_bar.vue").then(cmp => {
+                  mountCmp(
+                    cmp,
+                    propsConfig,
+                    document.querySelector(".myReportCanvas")
+                  );
+                });
+              });
+            }
+          }
+
+          //渲染全部的“new_info”组件进行渲染
+          if ("new_info" == key) {
+            let myData = this.reportConfig.components.new_info;
+            let len = myData.length;
+            for (let i = 0; i < len; i++) {
+    
+              //组件基本样式数据
+              let propsConfig = {
+                myData: myData[i]
+              };
+              let dataUrl = myData[i].dataUrl;
+              let diyCoreCode = myData[i].diyCoreCode;
+
+              //获取数据源
+              axios.post(baseUrl + dataUrl,{
+                diyCoreCode:diyCoreCode
+              }).then(response => {
+
+
+                propsConfig.myData.apiData = response.data.data;
+
+                import("../components/bee/new_info.vue").then(cmp => {
+                  mountCmp(
+                    cmp,
+                    propsConfig,
+                    document.querySelector(".myReportCanvas")
+                  );
+                });
+
+              });
+
+            }
+          }
         }
+    
       }
-
-      //渲染全部的“new_info”组件进行渲染
-      if ("new_info" == key) {
-        let myData = this.reportConfig.components.new_info;
-        let len = myData.length;
-        for (let i = 0; i < len; i++) {
- 
-          //组件基本样式数据
-          let propsConfig = {
-            myData: myData[i]
-          };
-          let dataUrl = myData[i].dataUrl;
-          let diyCoreCode = myData[i].diyCoreCode;
-
-          //获取数据源
-          axios.post(baseUrl + dataUrl,{
-            diyCoreCode:diyCoreCode
-          }).then(response => {
-
-
-            propsConfig.myData.apiData = response.data.data;
-
-            import("../components/bee/new_info.vue").then(cmp => {
-              mountCmp(
-                cmp,
-                propsConfig,
-                document.querySelector(".myReportCanvas")
-              );
-            });
-
-          });
-
-        }
-      }
-
 
     }
+
+  },
+  updated(){
+    this.loadAll();
+    //五分钟刷新，这个方法很简陋，有空优化
+    // setInterval(()=>{
+    //   window.location.reload()
+    // },1000*60*5)
+  },
+  mounted() {
+    this.loadAll();
   }
 };
 </script>
