@@ -41,13 +41,16 @@ export default {
     }
   },
   mounted(){
+
     //获取已经存在的数据
     let code = this.$route.query.diyViewCode;
     //axios.get(baseUrl + "/koa/getReportByCode?code="+code).then(response => {
     
     axios.get(baseUrl + path + "/api_v1/diy/view/info?diyViewCode="+code).then(response => {
-      let d = response.data.data.jsonData;
 
+      let d = response.data.data.jsonData;
+      d = typeof(d)=='string'?eval('(' + d + ')'):d;
+      
       //全局条件查询
       this.showGlobalContion = d.globalCondition;
       this.globalContion = d.globalCondition;

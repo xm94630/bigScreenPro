@@ -510,12 +510,12 @@ router.get('/view/info', async (ctx, next) => {
     //利丰
     jsonData = {
       "globalCondition":[{
-        "dataType":997788,  //997788表示为时间期间组件
+        "dataType":997788,
         "keyName":["startTime","endTime"],
-        "defaultValue":['',''],
+        "defaultValue":["",""],
         "label":"出生年份",
         "queryIndex":1,
-        "placeholder":['开始','结束'],
+        "placeholder":["开始时间","结束时间"]
       }],
       "code": "lifeng-ReportScreen",
       "pageId": "pageId-00001",
