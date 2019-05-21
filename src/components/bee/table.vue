@@ -227,8 +227,8 @@ export default {
 
         }
 
-        //queryType为2，说明是范围区间的输入框
-        if(queryType==2){
+        //queryType为7，说明是范围区间的输入框
+        if(queryType==7){
             item.label = one.displayName;
             item.keyName = one.columnName;
             item.type = "beeInputRange";
