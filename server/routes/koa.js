@@ -495,31 +495,6 @@ router.get('/createReport', async (ctx, next) => {
   }
 })
 
-//该接口用来获取用户现有的全部报表页面
-router.get('/getReportList', async (ctx, next) => {
-  let data = [{
-    code: "yonghui1",
-    describe: '永辉大屏幕1'
-  }, {
-    code: "yonghui2",
-    describe: '模板'
-  }, {
-    code: "mingming",
-    describe: '明明哥的大屏'
-  }, {
-    code: "report-InventoryVolume",
-    describe: '雅思兰黛1'
-  }, {
-    code: "report-SkuHot",
-    describe: '雅思兰黛2'
-  }, {
-    code: "lifeng-ReportScreen",
-    describe: '利丰大屏'
-  }]
-  ctx.body = {
-    data: data
-  }
-})
 
 //对于二维表而言，需要额外多请求一个接口，用来获取“查询条件”配置的初始化工作哦
 router.get('/initForView', async (ctx, next) => {

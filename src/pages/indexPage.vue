@@ -58,8 +58,8 @@
 import headTitle from "../components/HeadTitle.vue";
 import addBtn from "../components/addBtn.vue";
 import axios from "axios";
+import {baseUrl,path} from '@/apiUrl.config';
 
-let baseUrl = "";
 
 export default {
   name: "app",
@@ -79,7 +79,7 @@ export default {
   },
   mounted: function() {
     //获取已经存在的数据
-    axios.get(baseUrl + "/koa/getReportList").then(response => {
+    axios.get(baseUrl + path + "/api_v1/diy/view/template/list").then(response => {
       this.reportList = response.data.data;
     });
   },

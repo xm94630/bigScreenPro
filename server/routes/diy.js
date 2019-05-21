@@ -984,6 +984,32 @@ router.get('/view/info', async (ctx, next) => {
   }
 })
 
+//获取大屏列表
+router.get('/view/template/list', async (ctx, next) => {
+  let data = [{
+    code: "yonghui1",
+    describe: '永辉大屏幕1'
+  }, {
+    code: "yonghui2",
+    describe: '模板'
+  }, {
+    code: "mingming",
+    describe: '明明哥的大屏'
+  }, {
+    code: "report-InventoryVolume",
+    describe: '雅思兰黛1'
+  }, {
+    code: "report-SkuHot",
+    describe: '雅思兰黛2'
+  }, {
+    code: "lifeng-ReportScreen",
+    describe: '利丰大屏'
+  }]
+  ctx.body = {
+    data: data
+  }
+})
+
 //创建大屏配置
 router.get('/createReport', async (ctx, next) => {
   ctx.body = {
