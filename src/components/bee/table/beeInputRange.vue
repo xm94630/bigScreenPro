@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style lang="scss">
-.inputRange{
+.demo-form-inline .inputRange{
   width:100px;
 }
 </style>
