@@ -511,7 +511,7 @@ router.get('/view/info', async (ctx, next) => {
     jsonData = {
       "globalCondition":[{
         "dataType":997788,  //997788表示为时间期间组件
-        "keyName":["timer1","timer2"],
+        "keyName":["startTime","endTime"],
         "defaultValue":['',''],
         "label":"出生年份",
         "queryIndex":1,

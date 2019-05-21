@@ -52,7 +52,7 @@ export default {
   },
   data(){
     return{
-      showCon:true,
+      showCon:false,
       conditionData:{},
       items:[]
     }
