@@ -43,37 +43,16 @@ import beeSelect from './bee/table/beeSelect.vue';
 export default {
   name: 'xm',
   props: {
-    msg: String
+    msg: String,
+    globalContion:Array,
+  },
+  watch:{
   },
   data(){
     return{
       showCon:true,
       conditionData:{},
-      items:[{
-        span: 12,
-        label: "姓名",
-        keyName: '这个是用来绑定的',
-        type: 'beeInput',
-        placeholder: '请输入',
-        value: '',
-        rule: {},
-      },{
-        span: 12,
-        label: "喜爱",
-        keyName: '这个是用来绑定的',
-        type: 'beeSelect',
-        placeholder: '请输入',
-        value: '',
-        rule: {},
-      },{
-        span: 12,
-        label: "选择日期",
-        keyName: '这个是用来绑定的',
-        type: 'beeDatePicker',
-        placeholder: '日期选择',
-        value: '',
-        rule: {},
-      },],
+      items:[]
     }
   },
   components:{
@@ -94,8 +73,42 @@ export default {
       this.conditionData[item.keyName] = v;
     },
     OkFun(){
-      alert(123);
+      console.log("this.conditionData");
+      console.log(this.conditionData);
     }
+  },
+  mounted(){
+    let arr = this.globalContion;
+    let items = [];
+    for(let i=0;i<arr.length;i++){
+      let one = arr[i];
+      let dataType = one.dataType;
+      let item = {}
+      if(dataType===3){
+        item.label = one.label;
+        item.keyName = one.keyName;
+        item.type = "beeDatePicker";
+        item.placeholder = one.placeholder;
+        item.defaultValue = one.defaultValue;
+        item.rule = {};
+        item.queryIndex= one.queryIndex;
+      }else{
+        //其他
+        item = {
+          label: "XXXX11",
+          keyName: 'XXXX22',
+          type: 'beeInput',
+          placeholder: 'XXXX33',
+          defaultValue: '',
+          rule: {},
+          queryIndex: one.queryIndex
+        }
+
+      }
+      items.push(item);
+
+    }
+    this.items=items;
   }
 }
 </script>

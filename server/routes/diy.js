@@ -506,11 +506,26 @@ router.get('/view/info', async (ctx, next) => {
   }
 
   if ("lifeng-ReportScreen" == code) {
+    
     //利丰
     jsonData = {
       "globalCondition":[
-        {"datatype":3,"key":"timer1","defaultValue":"","label":"开始时间","index":1},
-        {"datatype":3,"key":"timer2","defaultValue":"","label":"结束时间","index":2},
+        {
+          "dataType":3,
+          "keyName":"timer1",
+          "defaultValue":"",
+          "label":"开始时间",
+          "queryIndex":1,
+          "placeholder":'',
+        },
+        {
+          "dataType":3,
+          "keyName":"timer2",
+          "defaultValue":"",
+          "label":"结束时间",
+          "queryIndex":2,
+          "placeholder":'',
+        },
       ],
       "code": "lifeng-ReportScreen",
       "pageId": "pageId-00001",
