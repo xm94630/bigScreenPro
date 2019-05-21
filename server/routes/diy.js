@@ -511,10 +511,10 @@ router.get('/view/info', async (ctx, next) => {
     jsonData = {
       "globalCondition":[
         {
-          "dataType":3,
+          "dataType":997788,  //997788表示为时间期间组件
           "keyName":"timer1",
           "defaultValue":"",
-          "label":"开始时间",
+          "label":"出生年份",
           "queryIndex":1,
           "placeholder":'',
         },
@@ -522,10 +522,10 @@ router.get('/view/info', async (ctx, next) => {
           "dataType":3,
           "keyName":"timer2",
           "defaultValue":"",
-          "label":"结束时间",
+          "label":"上任期间",
           "queryIndex":2,
           "placeholder":'',
-        },
+        }
       ],
       "code": "lifeng-ReportScreen",
       "pageId": "pageId-00001",

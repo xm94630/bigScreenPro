@@ -38,6 +38,7 @@
 import beeInput from './bee/table/beeInput.vue';
 import beeInputRange from './bee/table/beeInputRange.vue';
 import beeDatePicker from './bee/table/beeDatePicker.vue';
+import beeDatePickerRange from './bee/table/beeDatePickerRange.vue';
 import beeSelect from './bee/table/beeSelect.vue';
 
 export default {
@@ -60,6 +61,7 @@ export default {
     beeInputRange,
     beeDatePicker,
     beeSelect,
+    beeDatePickerRange,
   },
   methods:{
     clickFun(){
@@ -88,6 +90,14 @@ export default {
         item.label = one.label;
         item.keyName = one.keyName;
         item.type = "beeDatePicker";
+        item.placeholder = one.placeholder;
+        item.defaultValue = one.defaultValue;
+        item.rule = {};
+        item.queryIndex= one.queryIndex;
+      }else if(dataType===997788){
+        item.label = one.label;
+        item.keyName = one.keyName;
+        item.type = "beeDatePickerRange";
         item.placeholder = one.placeholder;
         item.defaultValue = one.defaultValue;
         item.rule = {};
