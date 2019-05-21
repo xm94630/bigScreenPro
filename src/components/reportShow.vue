@@ -13,6 +13,7 @@ import axios from "axios";
 import { setInterval } from 'timers';
 import {baseUrl,path} from '@/apiUrl.config';
 import _ from "lodash";
+import store from '@/src/store';
 
 
 function mountCmp(cmp, props, parent) {
@@ -375,10 +376,11 @@ export default {
               let dataUrl = data[i].dataUrl;
               let diyCoreCode = data[i].diyCoreCode;
 
+              //把参数都带上（包括store中的全局搜索条件）
+              let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+
               //获取数据源
-              axios.post(baseUrl + dataUrl,{
-                diyCoreCode:diyCoreCode
-              }).then(response => {
+              axios.post(baseUrl + dataUrl,params).then(response => {
 
                 //propsConfig.chartData.data1 = response.data.data[0];
                 //propsConfig.chartData.data2 = response.data.data[1];
@@ -410,10 +412,11 @@ export default {
               let dataUrl = data[i].dataUrl;
               let diyCoreCode = data[i].diyCoreCode;
 
+              //把参数都带上（包括store中的全局搜索条件）
+              let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+
               //获取数据源
-              axios.post(baseUrl + dataUrl,{
-                diyCoreCode:diyCoreCode
-              }).then(response => {
+              axios.post(baseUrl + dataUrl,params).then(response => {
                 propsConfig.chartData.urlData = response.data.data;
                 //构建组件
                 import("../components/bee/new_pie_1.vue").then(cmp => {
@@ -439,10 +442,11 @@ export default {
               let dataUrl = data[i].dataUrl;
               let diyCoreCode = data[i].diyCoreCode;
 
+              //把参数都带上（包括store中的全局搜索条件）
+              let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+
               //获取数据源
-              axios.post(baseUrl + dataUrl,{
-                diyCoreCode:diyCoreCode
-              }).then(response => {
+              axios.post(baseUrl + dataUrl,params).then(response => {
 
                 propsConfig.chartData.apiData = response.data.data;
 
@@ -470,10 +474,11 @@ export default {
               let dataUrl = data[i].dataUrl;
               let diyCoreCode = data[i].diyCoreCode;
 
+              //把参数都带上（包括store中的全局搜索条件）
+              let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+
               //获取数据源
-              axios.post(baseUrl + dataUrl,{
-                diyCoreCode:diyCoreCode
-              }).then(response => {
+              axios.post(baseUrl + dataUrl,params).then(response => {
 
                 //propsConfig.chartData.xAxis = response.data.data.xAxis;
                 //propsConfig.chartData.series = response.data.data.series;
