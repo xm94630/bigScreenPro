@@ -1,5 +1,6 @@
 <template>
   <div class="myReportBox">
+    <reportContion />
     <reportShow :reportConfig='data' />
   </div>
 </template>
@@ -7,12 +8,14 @@
 <script>
 import axios from "axios";
 import reportShow from "../components/reportShow.vue";
+import reportContion from "../components/reportCondition.vue";
 import {baseUrl,path} from '@/apiUrl.config';
 
 export default {
   name: 'myReport',
   components:{
-    reportShow
+    reportShow,
+    reportContion,
   },
   props: {
   },
