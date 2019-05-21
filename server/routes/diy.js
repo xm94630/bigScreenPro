@@ -1002,22 +1002,22 @@ router.get('/view/template/list', async (ctx, next) => {
   // viewName: "print_label_1570"
 
   let data = [{
-    diyCoreName: "yonghui1",
+    diyViewCode: "yonghui1",
     viewName: '永辉大屏幕1'
   }, {
-    diyCoreName: "yonghui2",
+    diyViewCode: "yonghui2",
     viewName: '模板'
   }, {
-    diyCoreName: "mingming",
+    diyViewCode: "mingming",
     viewName: '明明哥的大屏'
   }, {
-    diyCoreName: "report-InventoryVolume",
+    diyViewCode: "report-InventoryVolume",
     viewName: '雅思兰黛1'
   }, {
-    diyCoreName: "report-SkuHot",
+    diyViewCode: "report-SkuHot",
     viewName: '雅思兰黛2'
   }, {
-    diyCoreName: "lifeng-ReportScreen",
+    diyViewCode: "lifeng-ReportScreen",
     viewName: '利丰大屏'
   }]
   ctx.body = {
@@ -1047,7 +1047,7 @@ router.get('/column/initForView', async (ctx, next) => {
         "diyCoreName":"yashilandai",
         "columnName":"date",   //列的key   
         "displayName":"日期哦",   //列头  [{"key":},]
-        "dataType":1,   //数据类型 1字符串  
+        "dataType":1,   //数据类型 1字符串 2整型 3日期 4小数 50字典 
         "dataLength":0,
         "decimallength":0,
         "columnIndex":0,   //列的顺序
@@ -1056,7 +1056,7 @@ router.get('/column/initForView', async (ctx, next) => {
         "isReadonly":0,
         "isResult":1,
         "isCondition":0,
-        "queryType":0,
+        "queryType":0,   // 1大于 2等于 3小于 4大于等于 5小于等于 6包含 7范围 8不等于 9模糊 10不包含
         "queryIndex":0,   
         "sortRule":0,
         "isCheck":0,
