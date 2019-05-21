@@ -81,6 +81,11 @@ export default {
       this.showCon = false;
       //通知
       this.$emit('globalConditionUpdate');
+      //提示
+      this.$message({
+          message: '设置成功！',
+          type: 'success'
+      });
     }
   },
   mounted(){
