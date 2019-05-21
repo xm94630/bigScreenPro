@@ -1,8 +1,16 @@
 <template>
   <div class="reportConditionBox">
-    <div class="reportConditionBtn">
+ 
+    <div class="reportConditionBtn" @click="clickFun">
       <i class="el-icon-edit"></i>
     </div>
+
+    <div v-if="showCon" class="reportConditionCon">
+      <div class="reportConditionBtn" @click="clickFun2">
+        <i class="el-icon-close"></i>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -14,9 +22,17 @@ export default {
   },
   data(){
     return{
-        xxx:'大屏展示'
+      showCon:false,
     }
   },
+  methods:{
+    clickFun(){
+      this.showCon = true;
+    },
+    clickFun2(){
+      this.showCon = false;
+    }
+  }
 }
 </script>
 
@@ -26,6 +42,8 @@ export default {
   top:0;
   left:0;
   z-index:1;
+  width: 100%;
+  height: 100%;
 }
 .reportConditionBtn{
   width: 50px;
@@ -36,5 +54,12 @@ export default {
   cursor: pointer;
   color:#fff;
   font-size: 30px;
+}
+.reportConditionCon{
+  width: 100%;
+  height:100%;
+  background-color:rgba(0,0,0,0.8);
+  position: absolute;
+  top:0;
 }
 </style>

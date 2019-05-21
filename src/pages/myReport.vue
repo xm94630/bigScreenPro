@@ -1,6 +1,9 @@
 <template>
   <div class="myReportBox">
-    <reportContion />
+    <reportContion 
+      v-if = "showGlobalContion" 
+      :globalContion = "globalContion"
+    />
     <reportShow :reportConfig='data' />
   </div>
 </template>
@@ -21,7 +24,9 @@ export default {
   },
   data(){
     return{
-      data:null
+      data:null,
+      showGlobalContion:false,
+      globalContion:[],
     }
   },
   mounted(){
@@ -31,6 +36,10 @@ export default {
     
     axios.get(baseUrl + path + "/api_v1/diy/view/info?diyViewCode="+code).then(response => {
       let d = response.data.data.jsonData;
+
+      //全局条件查询
+      this.showGlobalContion = d.globalCondition;
+      this.globalContion = d.globalCondition;
       
       //兼容koa本地虚拟的数据（对象类型）、和来自后端那边的数据
       if(typeof(d)!=='object'){
