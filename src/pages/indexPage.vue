@@ -41,7 +41,7 @@
 
       <el-main>
         <template v-for="(one) in reportList">
-          <router-link :to="'/myReport?diyViewCode='+one.diyCoreName" :key="one.code">
+          <router-link :to="'/myReport?diyViewCode='+one.diyViewCode" :key="one.diyViewCode">
             <div class="myReport">{{one.viewName}}</div>
           </router-link>
         </template>
