@@ -986,24 +986,39 @@ router.get('/view/info', async (ctx, next) => {
 
 //获取大屏列表
 router.get('/view/template/list', async (ctx, next) => {
+
+  // businessType: 3
+  // createTime: 0
+  // creator: "1"
+  // diyCoreCode: "print_label_1570"
+  // diyCoreName: "yashilandai"
+  // diyViewCode: "leave"
+  // diyViewId: 7
+  // jsonData: "function formatTimeESTEELAUDER(timestamp) {↵			if (timestamp) {↵			var timestamp = parseInt(timestamp);↵			var t = new Date(timestamp);↵			var date =↵			((t.getHours()) < 10 ? "0" + t.getHours() : t.getHours()) + ":" +↵			((t.getMinutes()) < 10 ? "0" + t.getMinutes() : t.getMinutes()) + ":" +↵			((t.getSeconds()) < 10 ? "0" + t.getSeconds() : t.getSeconds()) + " " +↵			((t.getDate()) < 10 ? "0" + t.getDate() : t.getDate()) + "." +↵			((t.getMonth() + 1) < 10 ? "0" + (t.getMonth() + 1) : (t.getMonth() + 1)) + "." +↵			t.getFullYear();↵			return date;↵			} else {↵			return '';↵			}↵			};↵			LODOP.SET_PRINT_PAGESIZE(1, 1000, 1500, "10x15cm");↵			LODOP.SET_PRINT_MODE("PRINT_NOCOLLATE", 1);↵			LODOP.ADD_PRINT_RECT(7, 4, 360, 440, 0, 1);↵			LODOP.ADD_PRINT_LINE(96, 4, 95, 364, 0, 1);↵			LODOP.ADD_PRINT_LINE(216, 4, 215, 364, 0, 1);↵			LODOP.ADD_PRINT_LINE(332, 4, 331, 364, 0, 1);↵			LODOP.ADD_PRINT_LINE(95, 171, 7, 172, 0, 1);↵			LODOP.ADD_PRINT_LINE(447, 200, 95, 201, 0, 1);↵			LODOP.ADD_PRINT_SHAPE(4, 109, 200, 163, 19, 0, 1, "#000000");↵			LODOP.ADD_PRINT_SHAPE(4, 308, 308, 56, 23, 0, 1, "#000000");↵			LODOP.ADD_PRINT_BARCODE(134, 207, 149, 76, "128Auto", data.reservation8); //"SORT HK003"↵			LODOP.SET_PRINT_STYLEA(0, "ShowBarText", 0);↵			LODOP.ADD_PRINT_BARCODE(476, 8, 347, 71, "128Auto", data.outOrderCode);//"(00)200050507097206944"↵			LODOP.SET_PRINT_STYLEA(0, "ShowBarText", 0);↵			LODOP.ADD_PRINT_TEXT(453, 8, 355, 20, data.outOrderCode);//"(00)200050507097206944"↵			LODOP.SET_PRINT_STYLEA(0, "FontSize", 16);↵			LODOP.SET_PRINT_STYLEA(0, "Alignment", 2);↵			LODOP.ADD_PRINT_TEXT(550, 26, 323, 15, formatTimeESTEELAUDER(new Date().getTime()));//14:27:43 24.01.2019↵			LODOP.SET_PRINT_STYLEA(0, "Alignment", 3);↵			LODOP.ADD_PRINT_TEXT(11, 8, 162, 84, "FROM:\n" + data.consignorAddress);↵			LODOP.ADD_PRINT_TEXT(9, 170, 194, 85, "Delivery Instructions:\n"+ data.consigneeRemark);↵			LODOP.SET_PRINT_STYLEA(0, "Alignment", 2);↵			LODOP.ADD_PRINT_TEXT(96, 8, 191, 116, "TO:\n\n"+ data.consigneeAddress);↵			LODOP.SET_PRINT_STYLEA(0, "LineSpacing", -5);↵			LODOP.ADD_PRINT_TEXT(113, 201, 162, 14, "SORT "+data.reservation8); //"SORT HK003"↵			LODOP.SET_PRINT_STYLEA(0, "FontColor", "#FFFFFF");↵			LODOP.SET_PRINT_STYLEA(0, "Alignment", 2);↵			LODOP.ADD_PRINT_TEXT(313, 311, 52, 14, "END");↵			LODOP.SET_PRINT_STYLEA(0, "FontSize", 10);↵			LODOP.SET_PRINT_STYLEA(0, "FontColor", "#FFFFFF");↵			LODOP.SET_PRINT_STYLEA(0, "Alignment", 2);↵			LODOP.ADD_PRINT_TEXT(218, 7, 66, 116, "CUST PO#:\n\n\n\nBRAND:\n\n\n\nCASE:");↵			LODOP.SET_PRINT_STYLEA(0, "LineSpacing", -5);↵			LODOP.ADD_PRINT_TEXT(334, 8, 76, 107, "\n\nWS:\n\n\n\n\n\nRDD:");//"START ZONE:\nWAVE #:\nWS:\n\n\n\n\n\nRDD:"↵			LODOP.SET_PRINT_STYLEA(0, "LineSpacing", -5);↵			LODOP.ADD_PRINT_TEXT(430, 83, 119, 15, data.reservation5);↵			LODOP.SET_PRINT_STYLEA(0, "LineSpacing", -5);↵			LODOP.ADD_PRINT_TEXT(333, 203, 159, 107, "");//"END ZONE: 123123133"↵			LODOP.SET_PRINT_STYLEA(0, "LineSpacing", -5);↵			LODOP.ADD_PRINT_TEXT(218, 82, 119, 49, data.reservation11);↵			LODOP.SET_PRINT_STYLEA(0, "LineSpacing", -5);↵			LODOP.ADD_PRINT_TEXT(266, 83, 119, 42, data.reservation10);↵			LODOP.SET_PRINT_STYLEA(0, "LineSpacing", -5);↵			LODOP.ADD_PRINT_TEXT(314, 83, 119, 15, data.dict.containerTypeMap[data.designatedContainerType]);↵			LODOP.SET_PRINT_STYLEA(0, "LineSpacing", -5);↵			LODOP.ADD_PRINT_TEXT(334, 84, 114, 94, "\n\n"+data.reservation7);↵			LODOP.SET_PRINT_STYLEA(0, "LineSpacing", -5);↵			LODOP.ADD_PRINT_TEXT(218, 202, 66, 116, "DELIVERY:\n\nROUTE:\n\nCARTON:");↵			LODOP.SET_PRINT_STYLEA(0, "LineSpacing", -5);↵			LODOP.ADD_PRINT_TEXT(218, 268, 93, 116, data.outWaveCode+"\n\n"+data.carrierLineCode+"\n\n"+data.reservation9);↵			LODOP.SET_PRINT_STYLEA(0, "LineSpacing", -5);"
+  // remark: ""
+  // updateTime: 20190510160447
+  // updateUser: ""
+  // url: ""
+  // viewName: "print_label_1570"
+
   let data = [{
-    code: "yonghui1",
-    describe: '永辉大屏幕1'
+    diyCoreName: "yonghui1",
+    viewName: '永辉大屏幕1'
   }, {
-    code: "yonghui2",
-    describe: '模板'
+    diyCoreName: "yonghui2",
+    viewName: '模板'
   }, {
-    code: "mingming",
-    describe: '明明哥的大屏'
+    diyCoreName: "mingming",
+    viewName: '明明哥的大屏'
   }, {
-    code: "report-InventoryVolume",
-    describe: '雅思兰黛1'
+    diyCoreName: "report-InventoryVolume",
+    viewName: '雅思兰黛1'
   }, {
-    code: "report-SkuHot",
-    describe: '雅思兰黛2'
+    diyCoreName: "report-SkuHot",
+    viewName: '雅思兰黛2'
   }, {
-    code: "lifeng-ReportScreen",
-    describe: '利丰大屏'
+    diyCoreName: "lifeng-ReportScreen",
+    viewName: '利丰大屏'
   }]
   ctx.body = {
     data: data
