@@ -151,7 +151,7 @@ export default {
 }
 .reportConditionConBox{
   background: #fff;
-  width:1000px;
+  width:1200px;
   margin: 0 auto;
   padding:20px;
   min-height:200px;

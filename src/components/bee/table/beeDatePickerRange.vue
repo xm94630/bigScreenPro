@@ -2,15 +2,19 @@
     <el-col :span="8">
       <el-form :inline="true" :model="formInline" class="demo-form-inline" label-width="80px">
         <el-form-item :label="item.label">
-          <el-date-picker
-            v-model="formInline.user"
-            type="date"
-            :placeholder="item.placeholder"
+          
+          <!-- 日期区间选择 -->
+          <el-date-picker style="max-width:300px;"
+            v-model="formInline.date"
+            type="daterange"
+            range-separator="至"
+            :start-placeholder="myItem.placeholder[0]"
+            :end-placeholder="myItem.placeholder[1]"
             @change="handleChange"
-            format="yyyy 年 MM 月 dd 日"
             value-format="yyyy-MM-dd"
-            >
+          >
           </el-date-picker>
+
         </el-form-item>
       </el-form>
     </el-col>
@@ -26,19 +30,27 @@ export default {
   },
   data() {
     return {
+      myItem:this.item,
+      keyNames:this.item.keyName,
       formInline: {
-        user: this.item.defaultValue,
+        date: this.item.defaultValue,
       }
     };
   },
   watch:{
     'item':function(v){
-      this.formInline.myInput = v.defaultValue;
+      this.formInline.date = v.defaultValue;
     }
   },
   methods:{
     handleChange(val){
-      this.$emit('sonChange', val, this.item);
+      //分两次分发
+      this.$emit('sonChange', val[0], {
+        keyName:this.keyNames[0]
+      });
+      this.$emit('sonChange', val[1], {
+        keyName:this.keyNames[1]
+      });
     }
   },
   computed: {
