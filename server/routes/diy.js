@@ -508,6 +508,10 @@ router.get('/view/info', async (ctx, next) => {
   if ("lifeng-ReportScreen" == code) {
     //利丰
     jsonData = {
+      "globalCondition":[
+        {"datatype":3,"key":"timer1","defaultValue":"","label":"开始时间","index":1},
+        {"datatype":3,"key":"timer2","defaultValue":"","label":"结束时间","index":2},
+      ],
       "code": "lifeng-ReportScreen",
       "pageId": "pageId-00001",
       "canvas": {
