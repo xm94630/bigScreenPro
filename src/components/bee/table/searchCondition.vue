@@ -131,9 +131,9 @@ export default {
     //console.log(this.$refs['searchBrn'][0])
     
     //延时处理，等查询条件完成渲染。再模拟点击
-    setTimeout(()=>{
-      this.$refs['searchBrn'][0].$el.click();
-    },1000)
+    // setTimeout(()=>{
+    //   this.$refs['searchBrn'][0].$el.click();
+    // },1000)
 
     setTimeout(()=>{
       this.resetBtnDisabled = false;
