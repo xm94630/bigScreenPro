@@ -414,7 +414,10 @@ router.get('/view/info', async (ctx, next) => {
         "zoom-type":0, 
         "width": 1200,
         "height": 1200,
-        "background": "#d4e157"
+        "background": "#d4e157",
+        "formFormat":{
+          "labelPosition":"top"
+        }
       },
       "components": {
         "table": [{
@@ -474,7 +477,10 @@ router.get('/view/info', async (ctx, next) => {
         "zoom-type":0, 
         "width": 1200,
         "height": 1200,
-        "background": "#d4e157"
+        "background": "#d4e157",
+        "formFormat":{
+          "labelPosition":"top"
+        }
       },
       "components": {
         "table": [{
@@ -523,7 +529,10 @@ router.get('/view/info', async (ctx, next) => {
         "width": 1400,
         "height": 800,
         "background": "#000",
-        "zoom-type":1
+        "zoom-type":1,
+        "formFormat":{
+          "labelPosition":"top"
+        }
       },
       "components": {
         "title": [{

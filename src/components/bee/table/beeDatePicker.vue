@@ -1,6 +1,6 @@
 <template>
     <el-col :span="8">
-      <el-form :inline="true" :model="formInline" class="demo-form-inline" label-width="80px">
+      <el-form  :label-position="labelPosition" :inline="true" :model="formInline" class="demo-form-inline" label-width="80px">
         <el-form-item :label="item.label">
           <el-date-picker
             v-model="formInline.user"
@@ -22,6 +22,7 @@ export default {
   name: "beeInput",
   props: {
     item:Object,
+    labelPosition:null,
   },
   data() {
     return {

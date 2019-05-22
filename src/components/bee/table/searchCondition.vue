@@ -8,6 +8,7 @@
       :is="item.type"
       :item="item"
       :ref="item.keyName"
+      :labelPosition="store.state.store_labelPosition"
       @sonChange = "sonChangeHandle"
       ></component>
     </el-row>

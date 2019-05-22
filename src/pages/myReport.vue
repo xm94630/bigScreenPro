@@ -14,6 +14,9 @@ import axios from "axios";
 import reportShow from "../components/reportShow.vue";
 import reportContion from "../components/reportCondition.vue";
 import {baseUrl,path} from '@/apiUrl.config';
+import store from '@/src/store';
+
+
 
 export default {
   name: 'myReport',
@@ -54,6 +57,10 @@ export default {
       //全局条件查询
       this.showGlobalContion = d.globalCondition;
       this.globalContion = d.globalCondition;
+
+      //保存到全局store
+      let labelPosition = d.canvas.formFormat && d.canvas.formFormat.labelPosition;
+      store.dispatch("setLabelPosition", labelPosition||'left');
       
       //兼容koa本地虚拟的数据（对象类型）、和来自后端那边的数据
       if(typeof(d)!=='object'){
