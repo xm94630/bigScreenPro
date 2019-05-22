@@ -8,7 +8,6 @@
             :placeholder="item.placeholder"
             @change="handleChange"
             format="yyyy 年 MM 月 dd 日"
-            value-format="yyyy-MM-dd"
             >
           </el-date-picker>
         </el-form-item>
@@ -38,7 +37,8 @@ export default {
   },
   methods:{
     handleChange(val){
-      this.$emit('sonChange', val, this.item);
+      let a = (new Date(val)).valueOf();
+      this.$emit('sonChange', a, this.item);
     }
   },
   computed: {

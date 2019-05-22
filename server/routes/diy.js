@@ -513,7 +513,7 @@ router.get('/view/info', async (ctx, next) => {
         "dataType":997788,
         "keyName":["startTime","endTime"],
         "defaultValue":["",""],
-        "label":"出生年份",
+        "label":"时间",
         "queryIndex":1,
         "placeholder":["开始时间","结束时间"]
       }],

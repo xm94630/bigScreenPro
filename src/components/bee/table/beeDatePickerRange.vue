@@ -11,7 +11,6 @@
             :start-placeholder="myItem.placeholder[0]"
             :end-placeholder="myItem.placeholder[1]"
             @change="handleChange"
-            value-format="yyyy-MM-dd"
           >
           </el-date-picker>
 
@@ -44,13 +43,18 @@ export default {
   },
   methods:{
     handleChange(val){
+      
+      let a = (new Date(val[0])).valueOf();
+      let b = (new Date(val[1])).valueOf();
+
       //分两次分发
-      this.$emit('sonChange', val[0], {
+      this.$emit('sonChange', a, {
         keyName:this.keyNames[0]
       });
-      this.$emit('sonChange', val[1], {
+      this.$emit('sonChange', b, {
         keyName:this.keyNames[1]
       });
+      
     }
   },
   computed: {
