@@ -1,7 +1,7 @@
 <template>
 
   <div class="conditionBox">
-    <el-row>
+    <el-row :gutter="10">
       <component
       v-for="(item, index) in items"
       :key="index"
