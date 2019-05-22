@@ -1162,7 +1162,7 @@ router.get('/column/initForView', async (ctx, next) => {
         "dataType":3,    //大类型：3是日期（日期选择框）
         "columnName":'date',  //关联字段
         "displayName":"生日",    //label显示
-        "defaultValue":"1987-08-01",      //默认值
+        "defaultValue":"",      //默认值
         "placeholder":"请选择",    //placeholder
         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
         //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
@@ -1287,7 +1287,7 @@ router.get('/column/initForView', async (ctx, next) => {
         "dataType":3,    //大类型：3是日期（日期选择框）
         "columnName":'date',  //关联字段
         "displayName":"生日",    //label显示
-        "defaultValue":"1987-08-01",      //默认值
+        "defaultValue":"",      //默认值
         "placeholder":"请选择",    //placeholder
         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
         //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
@@ -1344,7 +1344,7 @@ router.get('/column/initForView', async (ctx, next) => {
           "dataType":3,    //大类型：3是日期（日期选择框）
           "columnName":'completedTime',  //关联字段
           "displayName":"OutDate",    //label显示
-          "defaultValue":"1987-08-01",      //默认值
+          "defaultValue":"",      //默认值
           "placeholder":"请选择",    //placeholder
           //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
