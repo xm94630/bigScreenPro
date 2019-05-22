@@ -1,5 +1,5 @@
 <template>
-    <el-col :span="8">
+    <el-col :span="colSpan">
       <el-form :label-position="labelPosition" :inline="true" :model="formInline" class="demo-form-inline" label-width="80px">
         <el-form-item :label="item.label">
 
@@ -20,6 +20,7 @@ export default {
   props: {
     item:Object,
     labelPosition:null,
+    colSpan:null,
   },
   data() {
     return {

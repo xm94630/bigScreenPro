@@ -479,7 +479,8 @@ router.get('/view/info', async (ctx, next) => {
         "height": 1200,
         "background": "#d4e157",
         "formFormat":{
-          "labelPosition":"top"
+          "labelPosition":"top",
+          "colSpan":8,
         }
       },
       "components": {
@@ -510,10 +511,9 @@ router.get('/view/info', async (ctx, next) => {
     }
 
   }
-
+  //利丰
   if ("lifeng-ReportScreen" == code) {
     
-    //利丰
     jsonData = {
       "globalCondition":[{
         "dataType":997788,

@@ -21,6 +21,7 @@
           :item="item"
           :ref="item.keyName"
           :labelPosition="store.state.store_labelPosition"
+          :colSpan="store.state.store_colSpan"
           @sonChange = "sonChangeHandle"
           ></component>
         </el-row>

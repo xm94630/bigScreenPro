@@ -60,7 +60,9 @@ export default {
 
       //保存到全局store
       let labelPosition = d.canvas.formFormat && d.canvas.formFormat.labelPosition;
+      let colSpan = d.canvas.formFormat && d.canvas.formFormat.colSpan;
       store.dispatch("setLabelPosition", labelPosition||'left');
+      store.dispatch("setColSpan", colSpan||8);
       
       //兼容koa本地虚拟的数据（对象类型）、和来自后端那边的数据
       if(typeof(d)!=='object'){
