@@ -530,9 +530,6 @@ router.get('/view/info', async (ctx, next) => {
         "height": 800,
         "background": "#000",
         "zoom-type":1,
-        "formFormat":{
-          "labelPosition":"top"
-        }
       },
       "components": {
         "title": [{
