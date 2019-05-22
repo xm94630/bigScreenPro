@@ -42,7 +42,7 @@ import beeSelect from './beeSelect.vue';
 import { setTimeout } from 'timers';
 
 import store from '@/src/store';
-
+import bee from '@/src/tools/bee.js';
 
 export default {
   name: "beeTitle",
@@ -85,7 +85,7 @@ export default {
       // console.log(this.pageSize)
 
 
-      let abc = this.conditionData;
+      let abc = bee.effectiveKeys(this.conditionData);
       let body = Object.assign({diyCoreCode:code},abc);
 
       //如果需要显示分页，要带上这两个参数
