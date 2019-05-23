@@ -44,8 +44,6 @@ export default {
   methods:{
     handleChange(val){
 
-      alert(val[0],val[1])
-
       let a,b;
       
       //如果时间输入框有值，就使用现成选择的值

@@ -86,8 +86,10 @@ export default {
             this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=new Date(v[0]).getTime();
             this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=new Date(v[1]).getTime();
           }else{
-            this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=1;
-            this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=2;
+            let a = new Date(new Date().toLocaleDateString()).getTime(); //今天0点开始的时间
+            let b = new Date().getTime() //当前时间
+            this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=a;
+            this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=b;
           }
         }
       }

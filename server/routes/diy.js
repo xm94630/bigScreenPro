@@ -526,7 +526,7 @@ router.get('/view/info', async (ctx, next) => {
       "globalCondition":[{
         "dataType":997788,
         "keyName":["startTime","endTime"],
-        "defaultValue":["1970-01-01","1970-01-02"],
+        "defaultValue":["",""],
         "label":"时间",
         "queryIndex":1,
         "placeholder":["开始时间","结束时间"]

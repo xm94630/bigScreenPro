@@ -81,13 +81,10 @@ export default {
     },
     //接受子组件中值的变化，更新数据
     sonChangeHandle(v,item){
-      console.log('===>')
-      console.log(item)
-      console.log(v)
       this.conditionData[item.keyName] = v;
     },
     OkFun(){
-      console.log('==>??')
+      console.log('全局的条件选择')
       console.log(this.conditionData)
       //存到全局
       store.dispatch("setGlobalContion",this.conditionData);
