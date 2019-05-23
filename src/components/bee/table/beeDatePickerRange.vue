@@ -48,8 +48,8 @@ export default {
       
       //如果时间输入框有值，就使用现成选择的值
       if(val){
-        a = (new Date(val[0])).valueOf();
-        b = (new Date(val[1])).valueOf(); 
+        a = (new Date(val[0])).getTime();
+        b = (new Date(val[1])).getTime(); 
       }else{
         //如果清空时间选择，我们可以提供当天的时间。
         console.log('默认使用当天的时间区间');
@@ -83,7 +83,7 @@ export default {
     }else{
       this.formInline.date = [a,b];
     }
-    //在刚分两次分发
+    //在分两次分发
     this.$emit('sonChange', this.formInline.date[0], {
       keyName:this.keyNames[0]
     });

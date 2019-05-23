@@ -39,7 +39,7 @@ export default {
   },
   methods:{
     handleChange(val){
-      let a = (new Date(val)).valueOf();
+      let a = (new Date(val)).getTime();
       this.$emit('sonChange', a, this.item);
     }
   },
