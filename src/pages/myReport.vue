@@ -8,6 +8,7 @@
     />
 
     <reportShow :reportConfig='data' v-if="hackReset"/>
+    
   </div>
 </template>
 
