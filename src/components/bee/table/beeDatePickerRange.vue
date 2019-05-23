@@ -21,6 +21,7 @@
 
 <script>
 
+import bee from "@/src/tools/bee"
 
 export default {
   name: "beeInput",
@@ -45,9 +46,19 @@ export default {
   },
   methods:{
     handleChange(val){
+
+      let a,b;
       
-      let a = (new Date(val[0])).valueOf();
-      let b = (new Date(val[1])).valueOf();
+      //如果时间输入框有值，就使用现成选择的值
+      if(val){
+        a = (new Date(val[0])).valueOf();
+        b = (new Date(val[1])).valueOf(); 
+      }else{
+        //如果清空时间选择，我们可以提供当天的时间。
+        console.log('默认使用当天的时间区间');
+        a = new Date(new Date().toLocaleDateString()).getTime();
+        b = new Date().getTime()
+      }
 
       //分两次分发
       this.$emit('sonChange', a, {
@@ -55,8 +66,8 @@ export default {
       });
       this.$emit('sonChange', b, {
         keyName:this.keyNames[1]
-      });
-      
+      });  
+            
     }
   },
   computed: {

@@ -10,7 +10,14 @@ bee = (function(){
         }
         return obj;
     }
+
+
+
+
     return bee;
 })(bee)
 
 export default bee;
+
+
+
