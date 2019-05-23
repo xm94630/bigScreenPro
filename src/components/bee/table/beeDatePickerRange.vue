@@ -44,17 +44,19 @@ export default {
   methods:{
     handleChange(val){
 
+      alert(val[0],val[1])
+
       let a,b;
       
       //如果时间输入框有值，就使用现成选择的值
       if(val){
-        a = (new Date(val[0])).getTime();
-        b = (new Date(val[1])).getTime(); 
+        a = val[0].getTime();
+        b = val[1].getTime();
       }else{
         //如果清空时间选择，我们可以提供当天的时间。
         console.log('默认使用当天的时间区间');
-        a = new Date(new Date().toLocaleDateString()).getTime();
-        b = new Date().getTime()
+        a = new Date(new Date().toLocaleDateString()).getTime(); //今天0点开始的时间
+        b = new Date().getTime() //当前时间
       }
 
       //分两次分发
