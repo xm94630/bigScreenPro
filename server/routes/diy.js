@@ -417,7 +417,7 @@ router.get('/view/info', async (ctx, next) => {
         "background": "#d4e157",
         "formFormat":{
           "labelPosition":"top",
-          "colSpan":8,
+          "colSpan":8
         }
       },
       "components": {
@@ -433,18 +433,18 @@ router.get('/view/info', async (ctx, next) => {
           "currentPage":1,
           "pageSize":10,
           "showPage":true,
-          "initTableUrl":url+"/epimetheus/api_v1/diy/column/initForView",
-          "dataUrl": url+"/epimetheus/api/diy/report/selectData",
-          "initUrl": url+"/epimetheus/api_v1/diy/column/initForView",
+          "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
+          "dataUrl": "/epimetheus/api/diy/report/selectData",
+          "initUrl": "/epimetheus/api_v1/diy/column/initForView",
           "searchBtns":[{
             "text":"按货架查询",
-            "dataUrl": url+"/epimetheus/api/diy/report/selectData",
-            "initUrl": url+"/epimetheus/api_v1/diy/column/initForView",
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"InventoryReportByShelf"
           },{
             "text":"按货位查询",
-            "dataUrl": url+"/epimetheus/api/diy/report/selectData",
-            "initUrl": url+"/epimetheus/api_v1/diy/column/initForView",
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"InventoryReportByBin"
           }]
         }],
@@ -461,7 +461,7 @@ router.get('/view/info', async (ctx, next) => {
           "border": "none",
           "background": "green",
           "text-align": "left",
-          "dataUrl": url+"/epimetheus/api/diy/report/selectData",
+          "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"InventoryReportByWarehouse"
         }]
       }
@@ -481,7 +481,7 @@ router.get('/view/info', async (ctx, next) => {
         "background": "#d4e157",
         "formFormat":{
           "labelPosition":"top",
-          "colSpan":8,
+          "colSpan":8
         }
       },
       "components": {
@@ -497,16 +497,16 @@ router.get('/view/info', async (ctx, next) => {
           "currentPage":1,
           "pageSize":10,
           "showPage":true,
-          "initTableUrl":url+"/epimetheus/api_v1/diy/column/initForView",
-          "dataUrl": url+"/epimetheus/api/diy/report/selectData",
-          "initUrl": url+"/epimetheus/api_v1/diy/column/initForView",
+          "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
+          "dataUrl": "/epimetheus/api/diy/report/selectData",
+          "initUrl": "/epimetheus/api_v1/diy/column/initForView",
           "searchBtns":[{
             "text":"查询",
-            "dataUrl": url+"/epimetheus/api/diy/report/selectData",
-            "initUrl": url+"/epimetheus/api_v1/diy/column/initForView",
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"SkuHot"
           }]
-        }],
+        }]
       }
 
     }
@@ -533,7 +533,7 @@ router.get('/view/info', async (ctx, next) => {
         "zoom-type":1,
         "formFormat":{
           "labelPosition":"left",
-          "colSpan":8,
+          "colSpan":8
         }
       },
       "components": {
