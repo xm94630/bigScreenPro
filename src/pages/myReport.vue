@@ -1,10 +1,12 @@
 <template>
   <div class="myReportBox">
+
     <reportContion 
       v-if = "showGlobalContion" 
       :globalContion = "globalContion"
       @globalConditionUpdate = "globalConditionUpdateFun"
     />
+
     <reportShow :reportConfig='data' v-if="hackReset"/>
   </div>
 </template>
