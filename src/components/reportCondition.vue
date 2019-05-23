@@ -1,4 +1,5 @@
 <template>
+  <!------------------------- 大屏全局搜索 --------------------------->
   <div class="reportConditionBox">
  
     <div class="reportConditionBtn" @click="clickFun">
@@ -48,7 +49,7 @@ export default {
   name: 'xm',
   props: {
     msg: String,
-    globalContion:Array,
+    globalContion:Array,  //来自json的配置
   },
   watch:{
   },
@@ -56,7 +57,7 @@ export default {
     return{
       store,
       showCon:false,
-      conditionData:{},
+      conditionData:{},  //这里是存放的是大屏整体的条件查询
       items:[]
     }
   },
@@ -76,6 +77,9 @@ export default {
     },
     //接受子组件中值的变化，更新数据
     sonChangeHandle(v,item){
+      console.log('===>')
+      console.log(item)
+      console.log(v)
       this.conditionData[item.keyName] = v;
     },
     OkFun(){

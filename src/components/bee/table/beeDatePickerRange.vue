@@ -81,12 +81,12 @@ export default {
       this.formInline.date = [a,b];
     }
     //在刚分两次分发
-    // this.$emit('sonChange', a, {
-    //   keyName:this.keyNames[0]
-    // });
-    // this.$emit('sonChange', b, {
-    //   keyName:this.keyNames[1]
-    // });  
+    this.$emit('sonChange', a, {
+      keyName:this.keyNames[0]
+    });
+    this.$emit('sonChange', b, {
+      keyName:this.keyNames[1]
+    });  
 
   },
   updated(){
