@@ -20,9 +20,6 @@
 </template>
 
 <script>
-
-import bee from "@/src/tools/bee"
-
 export default {
   name: "beeInput",
   props: {
@@ -35,7 +32,7 @@ export default {
       myItem:this.item,
       keyNames:this.item.keyName,
       formInline: {
-        date: this.item.defaultValue,
+        date: '',
       }
     };
   },
@@ -73,6 +70,24 @@ export default {
   computed: {
   },
   mounted(){
+
+    //初始设置 在不配置的情况下，默认设置成当日
+    let dateArr = this.item.defaultValue;
+    let a = new Date(new Date().toLocaleDateString()).getTime();
+    let b = new Date().getTime()
+    if(dateArr && dateArr[0]!=='' && dateArr[1]!==''){
+      this.formInline.date = dateArr;
+    }else{
+      this.formInline.date = [a,b];
+    }
+    //在刚分两次分发
+    // this.$emit('sonChange', a, {
+    //   keyName:this.keyNames[0]
+    // });
+    // this.$emit('sonChange', b, {
+    //   keyName:this.keyNames[1]
+    // });  
+
   },
   updated(){
   }
