@@ -1,12 +1,14 @@
 <template>
   <div class="myReportBox">
 
+    <!-- 大屏全局的条件查询 -->
     <reportContion 
       v-if = "showGlobalContion" 
       :globalContion = "globalContion"
       @globalConditionUpdate = "globalConditionUpdateFun"
     />
 
+    <!-- 整个画面显示 -->
     <reportShow :reportConfig='data' v-if="hackReset"/>
     
   </div>
