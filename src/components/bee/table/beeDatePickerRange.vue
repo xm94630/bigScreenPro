@@ -50,8 +50,8 @@ export default {
       
       //如果时间输入框有值，就使用现成选择的值
       if(val){
-        a = val[0].getTime();
-        b = val[1].getTime();
+        a = val[0].getTime()+28800000;
+        b = val[1].getTime()+28800000;
       }else{
         //如果清空时间选择，我们可以提供当天的时间。
         console.log('默认使用当天的时间区间');
@@ -85,7 +85,8 @@ export default {
     }else{
       this.formInline.date = [a,b];
     }
-    //在分两次分发
+    //分两次分发
+    //这样子在父级组件中就有这两个时间的默认值了。
     this.$emit('sonChange', this.formInline.date[0], {
       keyName:this.keyNames[0]
     });
