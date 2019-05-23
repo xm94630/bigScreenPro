@@ -13,6 +13,7 @@ router.get('/view/info', async (ctx, next) => {
   if ("yonghui1" == code) {
     //永辉大屏页面1的配置信息
     jsonData = {
+      "version":"20190523",
       'code': 'yonghui1',
       'pageId': 'pageId-00001',
       'canvas': {
@@ -143,6 +144,7 @@ router.get('/view/info', async (ctx, next) => {
   if ("yonghui2" == code) {
     //永辉大屏页面1的配置信息
     jsonData = {
+      "version":"20190523",
       'code': 'yonghui2',
       'pageId': 'pageId-00001',
       'canvas': {
@@ -342,6 +344,7 @@ router.get('/view/info', async (ctx, next) => {
   if ("mingming" == code) {
     //永辉大屏页面1的配置信息
     jsonData = {
+      "version":"20190523",
       'code': 'yonghui2',
       'pageId': 'pageId-00001',
       'canvas': {
@@ -408,6 +411,7 @@ router.get('/view/info', async (ctx, next) => {
   //雅思兰黛1
   if ("report-InventoryVolume" == code) {    
     jsonData = {
+      "version":"20190523",
       "code": "report-InventoryVolume",
       "pageId": "pageId-00004",
       "canvas": {
@@ -472,6 +476,7 @@ router.get('/view/info', async (ctx, next) => {
   //雅思兰黛2
   if ("report-SkuHot" == code) {    
     jsonData = {
+      "version":"20190523",
       "code": "report-SkuHot",
       "pageId": "pageId-00004",
       "canvas": {
@@ -516,6 +521,7 @@ router.get('/view/info', async (ctx, next) => {
   if ("lifeng-ReportScreen" == code) {
     
     jsonData = {
+      "version":"20190523",
       "globalCondition":[{
         "dataType":997788,
         "keyName":["startTime","endTime"],
