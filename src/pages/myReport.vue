@@ -44,6 +44,7 @@ export default {
     }
   },
   mounted(){
+    let that = this;
 
     //获取已经存在的数据
     let code = this.$route.query.diyViewCode;
@@ -57,6 +58,14 @@ export default {
       //全局条件查询
       this.showGlobalContion = d.globalCondition;
       this.globalContion = d.globalCondition;
+
+      //刷新页面
+      let refreshTime = d.refreshTime;
+      if(refreshTime){
+        setInterval(() => {
+          that.globalConditionUpdateFun();
+        }, refreshTime);
+      }
 
       //保存到全局store
       let labelPosition = d.canvas.formFormat && d.canvas.formFormat.labelPosition;
