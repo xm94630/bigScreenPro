@@ -28,7 +28,7 @@ function getOption(data) {
     })
   }
 
-  console.log(seriesData)
+  //console.log(seriesData)
 
   let option = {
     color: data.color || ["#83b5b9","#db8460","#9ec794","#eada80"],
