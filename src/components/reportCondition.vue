@@ -2,11 +2,15 @@
   <!------------------------- 大屏全局搜索 --------------------------->
   <div class="reportConditionBox">
  
+    <!-- 搜索条件配置 -->
     <div class="reportConditionBtn" @click="clickFun">
       <i class="el-icon-edit"></i>
     </div>
 
-    <div v-if="showCon" class="reportConditionCon">
+    <!-- 内容区 -->
+    <div v-show="showCon" class="reportConditionCon">
+      
+      <!-- 关闭按钮 -->
       <div class="reportConditionBtn" @click="clickFun2">
         <i class="el-icon-close"></i>
       </div>
