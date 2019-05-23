@@ -75,16 +75,19 @@ export default {
     let dateArr = this.item.defaultValue;
     let a = new Date(new Date().toLocaleDateString()).getTime();
     let b = new Date().getTime()
-    if(dateArr && dateArr[0]!=='' && dateArr[1]!==''){
-      this.formInline.date = dateArr;
+    if(dateArr && dateArr[0] && dateArr[1]){
+      this.formInline.date = [
+        new Date(dateArr[0]).getTime(),
+        new Date(dateArr[1]).getTime()
+      ];
     }else{
       this.formInline.date = [a,b];
     }
     //在刚分两次分发
-    this.$emit('sonChange', a, {
+    this.$emit('sonChange', this.formInline.date[0], {
       keyName:this.keyNames[0]
     });
-    this.$emit('sonChange', b, {
+    this.$emit('sonChange', this.formInline.date[1], {
       keyName:this.keyNames[1]
     });  
 

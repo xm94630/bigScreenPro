@@ -87,6 +87,8 @@ export default {
       this.conditionData[item.keyName] = v;
     },
     OkFun(){
+      console.log('==>??')
+      console.log(this.conditionData)
       //存到全局
       store.dispatch("setGlobalContion",this.conditionData);
       this.showCon = false;
