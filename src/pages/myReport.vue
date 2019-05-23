@@ -35,7 +35,8 @@ export default {
     return{
       data:null,
       showGlobalContion:false,
-      globalContion:[],
+      globalContion:[],         //经过选择表单选择之后的结果
+      defaultGlobalContion:[],  //这个是默认的条件结果，没有使用表单选择之前的使用。
       hackReset:true,
     }
   },
@@ -50,6 +51,10 @@ export default {
   },
   mounted(){
     let that = this;
+
+    /**********************************************************
+     * 这里是最初获取到大屏配置的地方，有很多重要的逻辑处理
+     **********************************************************/
 
     //获取已经存在的数据
     let code = this.$route.query.diyViewCode;
@@ -71,6 +76,23 @@ export default {
           that.globalConditionUpdateFun();
         }, refreshTime);
       }
+
+      //这里有一个把大批默认值配置到 store 的工作
+      for(let i=0;i<d.globalCondition.length;i++){
+        //是个时间组件
+        if(d.globalCondition[i].dataType===997788){
+          let v = d.globalCondition[i].defaultValue;
+          if(v && v[0] && v[1]){
+            this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=new Date(v[0]).getTime();
+            this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=new Date(v[1]).getTime();
+          }else{
+            this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=1;
+            this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=2;
+          }
+        }
+      }
+      //把默认的全局条件查询值，存到store
+      store.dispatch("setGlobalContion",this.defaultGlobalContion);
 
       //保存到全局store
       let labelPosition = d.canvas.formFormat && d.canvas.formFormat.labelPosition;
