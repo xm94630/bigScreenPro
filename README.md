@@ -31,8 +31,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 [分支说明]
 master  目前是完成table的大体功能。
-table   待删除
 epimetheus-fe-test-3.0.1 这个是对应上”利丰大屏“的测试环境
+bee-20190524 这个版本陆续完成了永辉、雅诗兰黛、利丰大屏。做的过程中分出一些不同版本的组件，如 bar、new_bar。
 [tag说明]
 epimetheus-fe-release-3.0.1.0.1
 这个是后端要求的格式，名字中不用出现“lifeng”这样子的说明。版本号是5位，这个tag是从“epimetheus-fe-test-3.0.1”这个测试版本拉取的。
