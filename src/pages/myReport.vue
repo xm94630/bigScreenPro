@@ -78,23 +78,25 @@ export default {
       }
 
       //这里有一个把大批默认值配置到 store 的工作
-      for(let i=0;i<d.globalCondition.length;i++){
-        //是个时间组件
-        if(d.globalCondition[i].dataType===997788){
-          let v = d.globalCondition[i].defaultValue;
-          if(v && v[0] && v[1]){
-            this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=new Date(v[0]).getTime();
-            this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=new Date(v[1]).getTime();
-          }else{
-            let a = new Date(new Date().toLocaleDateString()).getTime(); //今天0点开始的时间
-            let b = new Date().getTime() //当前时间
-            this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=a;
-            this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=b;
+      if(d.globalCondition){
+        for(let i=0;i<d.globalCondition.length;i++){
+          //是个时间组件
+          if(d.globalCondition[i].dataType===997788){
+            let v = d.globalCondition[i].defaultValue;
+            if(v && v[0] && v[1]){
+              this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=new Date(v[0]).getTime();
+              this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=new Date(v[1]).getTime();
+            }else{
+              let a = new Date(new Date().toLocaleDateString()).getTime(); //今天0点开始的时间
+              let b = new Date().getTime() //当前时间
+              this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=a;
+              this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=b;
+            }
           }
         }
+        //把默认的全局条件查询值，存到store
+        store.dispatch("setGlobalContion",this.defaultGlobalContion);
       }
-      //把默认的全局条件查询值，存到store
-      store.dispatch("setGlobalContion",this.defaultGlobalContion);
 
       //保存到全局store
       let labelPosition = d.canvas.formFormat && d.canvas.formFormat.labelPosition;
