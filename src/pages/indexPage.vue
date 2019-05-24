@@ -5,6 +5,7 @@
     </el-header>
 
     <el-container>
+      
       <el-aside width="200px">
         <el-menu
           default-active="1-1"
@@ -49,6 +50,16 @@
         <router-link to="/createBigScreen">
           <add-btn></add-btn>
         </router-link>
+        
+        <div class="child">
+                <p>Child router path: {{ $route.fullPath }}</p>
+                <ul>
+                    <li><router-link to="/foo">/foo</router-link></li>
+                    <li><router-link to="/bar">/bar</router-link></li>
+                </ul>
+                <router-view/>
+                </div>
+                
       </el-main>
     </el-container>
   </el-container>
