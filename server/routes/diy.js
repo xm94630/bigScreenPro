@@ -521,8 +521,8 @@ router.get('/view/info', async (ctx, next) => {
   if ("lifeng-ReportScreen" == code) {
     
     jsonData = {
-      "refreshTime":"200000",
-      "version":"20190523",
+      "refreshTime":"600000",
+      "version":"20190524",
       "globalCondition":[{
         "dataType":997788,
         "keyName":["startTime","endTime"],
