@@ -15,7 +15,15 @@
     </el-row>
     <div class="funBox">
 
-      <el-button @click="resetForm('ruleForm')" :disabled="resetBtnDisabled">重置</el-button>
+      <template v-for="one in resetBtn">
+        <el-button 
+          :key= "one.text" 
+          @click="resetForm('ruleForm')" 
+          :disabled="resetBtnDisabled"
+        >
+          {{one.text}}
+        </el-button>
+      </template>
 
       <template v-for="(one,index) in searchBtns">
         <el-button 
@@ -49,6 +57,7 @@ export default {
   props: {
     items:Array,
     searchBtns:null,
+    resetBtn:null,
     currentPage:null,
     pageSize:null,
     showPage:null,

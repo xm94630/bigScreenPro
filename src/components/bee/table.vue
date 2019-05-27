@@ -7,6 +7,7 @@
         v-if="hackReset"
         :items="items" 
         :searchBtns="myConfig.searchBtns" 
+        :resetBtn="myConfig.resetBtn" 
         :currentPage="myConfig.currentPage"
         :pageSize="myConfig.pageSize"
         :showPage="myConfig.showPage"
