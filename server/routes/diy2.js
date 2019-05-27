@@ -10,7 +10,7 @@ router.post('/report/selectData', async (ctx, next) => {
   let pageSize = ctx.request.body.pageSize;
   let data = {}
 
-  //雅思兰黛 二维表
+  //雅诗兰黛 二维表
   if(code==="InventoryReportByWarehouse"){
     data = [{"totalusevolume":500,"totalvolume":1000,"totalavailability":"50%"}]
   }else if(code==="InventoryReportByShelf"){

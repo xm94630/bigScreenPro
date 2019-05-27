@@ -11,7 +11,7 @@ router.get('/view/info', async (ctx, next) => {
   let code = ctx.request.query.diyViewCode;
   let jsonData = null;
 
-  //雅思兰黛1
+  //雅诗兰黛1
   if ("report-InventoryVolume" == code) {    
     jsonData = {
       "version":"20190523",
@@ -76,7 +76,7 @@ router.get('/view/info', async (ctx, next) => {
     }
 
   }
-  //雅思兰黛2
+  //雅诗兰黛2
   if ("report-SkuHot" == code) {    
     jsonData = {
       "version":"20190523",
@@ -633,10 +633,10 @@ router.get('/view/template/list', async (ctx, next) => {
 
   let data = [{
     diyViewCode: "report-InventoryVolume",
-    viewName: '雅思兰黛1'
+    viewName: '雅诗兰黛1'
   }, {
     diyViewCode: "report-SkuHot",
-    viewName: '雅思兰黛2'
+    viewName: '雅诗兰黛2'
   }, {
     diyViewCode: "lifeng-ReportScreen",
     viewName: '利丰大屏'
