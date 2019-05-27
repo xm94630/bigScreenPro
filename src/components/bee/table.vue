@@ -15,10 +15,11 @@
         />
       </div>
     </div>
-    <div class="bottom">
-      <div class="bottomCon">
-        <div v-if="tableData.length">
-          <div>
+
+
+    <div v-if="tableData.length">
+      <div class="bottom">
+        <div class="bottomCon">
             <myTable 
               :tableData = "tableData"
               :currentSearchOptions = "currentSearchOptions"
@@ -32,11 +33,10 @@
 
               :resultColumnList = "resultColumnList"
             />
-          </div>
         </div>
-        <div v-else>暂时没有数据</div>
       </div>
     </div>
+
   </div>
 </template>
 

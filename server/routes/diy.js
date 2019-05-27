@@ -21,7 +21,7 @@ router.get('/view/info', async (ctx, next) => {
         "zoom-type":0, 
         "width": 1200,
         "height": 1200,
-        "background": "#d4e157",
+        "background": "#f3f3f3",
         "formFormat":{
           "labelPosition":"top",
           "colSpan":8
@@ -33,7 +33,6 @@ router.get('/view/info', async (ctx, next) => {
           "x": 0,
           "y": 50,
           "width": 1200,
-          "height": 550,
           "padding": 10,
           "exported": true,
           "showIndexColumn":true,
@@ -90,7 +89,7 @@ router.get('/view/info', async (ctx, next) => {
         "zoom-type":0, 
         "width": 1200,
         "height": 1200,
-        "background": "#d4e157",
+        "background": "#f3f3f3",
         "formFormat":{
           "labelPosition":"top",
           "colSpan":8
@@ -102,7 +101,6 @@ router.get('/view/info', async (ctx, next) => {
           "x": 0,
           "y": 0,
           "width": 1200,
-          "height": 550,
           "padding": 10,
           "exported": true,
           "showIndexColumn":true,
