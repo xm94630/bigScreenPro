@@ -52,13 +52,13 @@
         </router-link>
         
         <div class="child">
-                <p>Child router path: {{ $route.fullPath }}</p>
-                <ul>
-                    <li><router-link to="/foo">/foo</router-link></li>
-                    <li><router-link to="/bar">/bar</router-link></li>
-                </ul>
-                <router-view/>
-                </div>
+          <p>全路径: {{ $route.fullPath }}</p>
+          <ul>
+              <li><router-link to="/index/posts">去posts子页面</router-link></li>
+              <li><router-link to="/index/profile">去profile子页面</router-link></li>
+          </ul>
+          <router-view/>
+        </div>
                 
       </el-main>
     </el-container>
