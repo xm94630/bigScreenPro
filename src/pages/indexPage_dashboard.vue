@@ -1,6 +1,6 @@
 <template>
   <div>
-    bashbord
+    bashboard
   </div>
 </template>
 

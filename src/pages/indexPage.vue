@@ -23,8 +23,8 @@
               <span>我的可视化</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="/index/posts">我的大屏</el-menu-item>
-              <el-menu-item index="/index/profile">我的面板</el-menu-item>
+              <el-menu-item index="/index/bigscreen">我的大屏</el-menu-item>
+              <el-menu-item index="/index/dashboard">我的面板</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 

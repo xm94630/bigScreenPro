@@ -5,7 +5,7 @@ import VueRouter from 'vue-router';
 import createBigScreen from './pages/createBigScreen.vue';
 import pageIndex from './pages/indexPage.vue';
 import myReport from './pages/myReport.vue';
-import pageIndexDashbord from './pages/indexPage_dashbord.vue';
+import pageIndexDashboard from './pages/indexPage_dashboard.vue';
 import pageIndexBigScreen from './pages/indexPage_bigScreen.vue';
 
 
@@ -14,13 +14,13 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
     routes:[
-        {path:'/',redirect: '/index/posts'},
+        {path:'/',redirect: '/index/bigscreen'},
         {
           path:'/index',
           component:pageIndex,
           children: [
-            {path: 'profile',component: pageIndexDashbord},
-            {path: 'posts',component: pageIndexBigScreen}
+            {path: 'bigscreen',component: pageIndexBigScreen},
+            {path: 'dashboard',component: pageIndexDashboard},
           ]
         },
         {path:'/createBigScreen',component:createBigScreen},
