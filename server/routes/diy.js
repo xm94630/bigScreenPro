@@ -57,7 +57,11 @@ router.get('/view/info', async (ctx, next) => {
         }],
         "textBar":[{
           "id": "componentId_00002",
-          "text": "库房总面积：10000 平米 | 总使用体积：5000平米 | 库房利用率：50%",
+          "options":{
+            "totalvolume":"库房整体积哦",
+            "totalusevolume":"总体使用体积",
+            "totalavailability":"库房利用率",
+          },
           "x": 0,
           "y": 0,
           "width": 1200,

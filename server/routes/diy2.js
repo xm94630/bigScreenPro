@@ -12,7 +12,7 @@ router.post('/report/selectData', async (ctx, next) => {
 
   //雅诗兰黛 二维表
   if(code==="InventoryReportByWarehouse"){
-    data = [{"totalusevolume":500,"totalvolume":1000,"totalavailability":"50%"}]
+    data = [{"totalusevolume":510,"totalvolume":1000,"totalavailability":"51%"}]
   }else if(code==="InventoryReportByShelf"){
     if(pageSize){
       data = {

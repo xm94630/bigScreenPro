@@ -1,30 +1,14 @@
 <template>
   <div class="beeTitle" :style="beeTitleStyle">
-    <template v-for="(one,index) in myConfig.myData">
-      <div :key="index"> 
-        库房整体积：{{one.totalvolume}} | 
-        总体使用体积：{{one.totalusevolume}} | 
-        库房利用率：{{one.totalavailability}}
-      </div>
-    </template>
+      <template v-for="(value, name) in myConfig.options">
+        <span :key="name"> 
+          {{value}}:{{myConfig.myData[0][name]}} | 
+        </span>
+      </template>
   </div>
 </template>
 
 <script>
-// myConfig 数据格式
-// {
-//   id: undefined,
-//   text: "默认文字",
-//   x: 0,
-//   y: 0,
-//   width: 100,
-//   height: 12,
-//   color: "#000",
-//   "font-size": 12,
-//   border:"solid 1px red",
-//   align: "center"
-//   ....
-// }
 
 export default {
   name: "beeTitle",
