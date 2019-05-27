@@ -617,6 +617,100 @@ router.get('/view/info', async (ctx, next) => {
     
   }
 
+  //香奈儿1
+  if ("chanel-OutboundEfficiency" == code) {    
+    jsonData = {
+      "version":"20190523",
+      "code": "chanel-OutboundEfficiency",
+      "pageId": "pageId-004",
+      "canvas": {
+        "zoom-type":0, 
+        "width": 1200,
+        "height": 1200,
+        "background": "#f3f3f3",
+        "formFormat":{
+          "labelPosition":"top",
+          "colSpan":8
+        }
+      },
+      "components": {
+        "table": [{
+          "id": "componentId_001",
+          "x": 0,
+          "y": 0,
+          "width": 1200,
+          "padding": 10,
+          "exported": true,
+          "showIndexColumn":true,
+          "currentPage":1,
+          "pageSize":10,
+          "showPage":true,
+          "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
+          "dataUrl": "/epimetheus/api/diy/report/selectData",
+          "initUrl": "/epimetheus/api_v1/diy/column/initForView",
+          "resetBtn":[{
+            "text":"重置"
+          }],
+          "searchBtns":[{
+            "text":"查询",
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
+            "diyCoreCode":"chanel-OutboundEfficiency"
+          }]
+        }]
+      }
+
+    }
+
+  }
+
+   //香奈儿2
+   if ("chanel-InboundEfficiency" == code) {    
+    jsonData = {
+      "version":"20190523",
+      "code": "report-SkuHot",
+      "pageId": "pageId-00004",
+      "canvas": {
+        "zoom-type":0, 
+        "width": 1200,
+        "height": 1200,
+        "background": "#f3f3f3",
+        "formFormat":{
+          "labelPosition":"top",
+          "colSpan":8
+        }
+      },
+      "components": {
+        "table": [{
+          "id": "componentId_00003",
+          "x": 0,
+          "y": 0,
+          "width": 1200,
+          "padding": 10,
+          "exported": true,
+          "showIndexColumn":true,
+          "currentPage":1,
+          "pageSize":10,
+          "showPage":true,
+          "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
+          "dataUrl": "/epimetheus/api/diy/report/selectData",
+          "initUrl": "/epimetheus/api_v1/diy/column/initForView",
+          "resetBtn":[{
+            "text":"重置"
+          }],
+          "searchBtns":[{
+            "text":"查询",
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
+            "diyCoreCode":"chanel-InboundEfficiency"
+          }]
+        }]
+      }
+
+    }
+
+  }
+
   ctx.body = {
     data: {jsonData}
   }
@@ -1032,6 +1126,104 @@ router.get('/column/initForView', async (ctx, next) => {
           "queryType":7,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
           "queryIndex":5,  //组件出现顺序
+        },
+      
+      ]
+
+
+    }
+  }else if("chanel-OutboundEfficiency"==code){
+    data = {
+      //这部分是对table部分的配置
+      "resultColumnList":[{
+        "columnName":"date",   //列的key   
+        "displayName":"香奈儿出库日期",   //列头[{"key":},]
+        "columnIndex":0,   //列的顺序
+      },{
+        "columnName":"name",   //列的key   
+        "displayName":"货主",   //列头名字  
+        "columnIndex":2,   //列的顺序
+      },{
+        "columnName":"address",   //列的key   
+        "displayName":"工作站",   //列头名字  
+        "columnIndex":3,   //列的顺序
+      }],
+      //这个部分是对查询条件部分的配置
+      "conditionColumnList":[
+        {
+          "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
+          "dataType":0,    //大类型：3是日期（日期选择框）
+          "columnName":'customerCode',  //关联字段
+          "displayName":"香奈儿1 货主",    //label显示
+          "defaultValue":'1',      //默认值
+          "placeholder":"请选择",    //placeholder
+          "referenceUrl":url+"/epimetheus/api_v1/diy/yyy/yyy", //关联URL
+          "referenceColumn":"playerNameValue",  //下拉的值
+          "referenceDisplayColumn":"playerName", //下拉显示
+          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+          "queryIndex":0,  //组件出现顺序
+        },
+
+        {
+          "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+          "dataType":1,    //大类型：1是字符串（普通输入框）
+          "columnName":'skuCode',  //关联字段
+          "displayName":"操作人",    //label显示
+          "defaultValue":"",      //默认值
+          "placeholder":"请输入",    //placeholder
+          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+          "queryIndex":2,  //组件出现顺序
+        },
+      
+      ]
+
+
+    }
+  }else if("chanel-InboundEfficiency"==code){
+    data = {
+      //这部分是对table部分的配置
+      "resultColumnList":[{
+        "columnName":"date",   //列的key   
+        "displayName":"香奈儿出库日期",   //列头[{"key":},]
+        "columnIndex":0,   //列的顺序
+      },{
+        "columnName":"name",   //列的key   
+        "displayName":"货主",   //列头名字  
+        "columnIndex":2,   //列的顺序
+      },{
+        "columnName":"address",   //列的key   
+        "displayName":"工作站",   //列头名字  
+        "columnIndex":3,   //列的顺序
+      }],
+      //这个部分是对查询条件部分的配置
+      "conditionColumnList":[
+        {
+          "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
+          "dataType":0,    //大类型：3是日期（日期选择框）
+          "columnName":'customerCode',  //关联字段
+          "displayName":"香奈儿2 货主",    //label显示
+          "defaultValue":'1',      //默认值
+          "placeholder":"请选择",    //placeholder
+          "referenceUrl":url+"/epimetheus/api_v1/diy/yyy/yyy", //关联URL
+          "referenceColumn":"playerNameValue",  //下拉的值
+          "referenceDisplayColumn":"playerName", //下拉显示
+          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+          "queryIndex":0,  //组件出现顺序
+        },
+
+        {
+          "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+          "dataType":1,    //大类型：1是字符串（普通输入框）
+          "columnName":'skuCode',  //关联字段
+          "displayName":"操作人",    //label显示
+          "defaultValue":"",      //默认值
+          "placeholder":"请输入",    //placeholder
+          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+          "queryIndex":2,  //组件出现顺序
         },
       
       ]

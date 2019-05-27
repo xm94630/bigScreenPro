@@ -92,6 +92,31 @@ router.post('/report/selectData', async (ctx, next) => {
         address: 'M87'
       }]
     }
+  }else{
+    if(pageSize){
+      data = {
+        "recordList":[{
+          date: '2016-05-02',
+          name: '王小虎1：' + Math.random(10),
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-04',
+          name: '王小虎2：'+ Math.random(10),
+          address: '上海市普陀区金沙江路 1517 弄'
+        }],
+        "recordCount": 600
+      }
+    }else{
+      data = [{
+        date: '2016-05-02',
+        name: '王小虎1：' + Math.random(10),
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-04',
+        name: '王小虎2：'+ Math.random(10),
+        address: '上海市普陀区金沙江路 1517 弄'
+      }]
+    }
   }
 
   //利丰大屏幕 - 卡片
