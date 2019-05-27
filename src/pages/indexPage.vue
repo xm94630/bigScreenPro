@@ -115,4 +115,11 @@ export default {
   box-sizing: border-box;
   font-size: 20px;
 }
+
+.el-aside {
+  background-color:  rgb(84, 92, 100);
+  color: #333;
+  text-align: center;
+  line-height: 200px;
+}
 </style>
