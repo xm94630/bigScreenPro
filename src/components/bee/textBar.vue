@@ -1,7 +1,11 @@
 <template>
   <div class="beeTitle" :style="beeTitleStyle">
     <template v-for="(one,index) in myConfig.myData">
-      <div :key="index"> 库房整体积：{{one.totalvolume}} | 总体使用体积：{{one.totalusevolume}} | 库房利用率：{{one.totalavailability}}</div>
+      <div :key="index"> 
+        库房整体积：{{one.totalvolume}} | 
+        总体使用体积：{{one.totalusevolume}} | 
+        库房利用率：{{one.totalavailability}}
+      </div>
     </template>
   </div>
 </template>

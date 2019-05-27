@@ -640,6 +640,12 @@ router.get('/view/template/list', async (ctx, next) => {
   }, {
     diyViewCode: "lifeng-ReportScreen",
     viewName: '利丰大屏'
+  }, {
+    diyViewCode: "chanel-OutboundEfficiency",
+    viewName: '香奈儿-出库效率'
+  }, {
+    diyViewCode: "chanel-InboundEfficiency",
+    viewName: '香奈儿-入库效率'
   }]
   ctx.body = {
     data: data
