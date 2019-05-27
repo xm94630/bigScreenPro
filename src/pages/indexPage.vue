@@ -8,7 +8,8 @@
       
       <el-aside width="200px">
         <el-menu
-          default-active="1-1"
+          router
+          :default-active = "$route.path"
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
@@ -16,14 +17,14 @@
           text-color="#fff"
           active-text-color="#ffd04b"
         >
-          <el-submenu index="1">
+          <el-submenu index="/index">
             <template slot="title">
               <i class="el-icon-view"></i>
               <span>我的可视化</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">我的大屏</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
+              <el-menu-item index="/index/posts">我的大屏</el-menu-item>
+              <el-menu-item index="/index/profile">我的面板</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 
@@ -41,24 +42,8 @@
       </el-aside>
 
       <el-main>
-        <template v-for="(one) in reportList">
-          <router-link :to="'/myReport?diyViewCode='+one.diyViewCode" :key="one.diyViewCode">
-            <div class="myReport">{{one.viewName}}</div>
-          </router-link>
-        </template>
-
-        <router-link to="/createBigScreen">
-          <add-btn></add-btn>
-        </router-link>
         
-        <div class="child">
-          <p>全路径: {{ $route.fullPath }}</p>
-          <ul>
-              <li><router-link to="/index/posts">去posts子页面</router-link></li>
-              <li><router-link to="/index/profile">去profile子页面</router-link></li>
-          </ul>
-          <router-view/>
-        </div>
+        <router-view/>
                 
       </el-main>
     </el-container>
@@ -67,16 +52,11 @@
 
 <script>
 import headTitle from "../components/HeadTitle.vue";
-import addBtn from "../components/addBtn.vue";
-import axios from "axios";
-import {baseUrl,path} from '@/apiUrl.config';
-
 
 export default {
   name: "app",
   components: {
     headTitle,
-    addBtn
   },
   data() {
     return {
@@ -85,14 +65,10 @@ export default {
     };
   },
   methods: {
-    handleOpen(key, keyPath) {},
-    handleClose(key, keyPath) {}
+    handleOpen() {},
+    handleClose() {}
   },
   mounted: function() {
-    //获取已经存在的数据
-    axios.get(baseUrl + path + "/api_v1/diy/view/template/list").then(response => {
-      this.reportList = response.data.data;
-    });
   },
   computed:{
   }
