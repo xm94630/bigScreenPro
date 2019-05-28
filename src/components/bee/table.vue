@@ -30,7 +30,9 @@
               :currentPage = "myConfig.currentPage"
               :pageSize = "myConfig.pageSize"
               :totalPage = "totalPage"
-              :showPage="myConfig.showPage"
+              :showPage = "myConfig.showPage"
+              
+              :tableColumnWidth = "myConfig.tableColumnWidth"
 
               :resultColumnList = "resultColumnList"
             />

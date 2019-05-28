@@ -11,7 +11,8 @@
           :key = "index"
           :prop = one.columnName 
           :label= one.displayName
-          width="300">
+          :width= "tableColumnWidth"
+        >
         </el-table-column>
       </template>
 
@@ -47,6 +48,8 @@ export default {
     "pageSize":null,
     "showPage":null,
     "totalPage":null,
+
+    "tableColumnWidth":null,
 
     "resultColumnList":null,   //表头数据
   },
