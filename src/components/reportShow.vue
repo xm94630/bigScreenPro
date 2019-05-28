@@ -10,8 +10,7 @@
 <script>
 import Vue from "vue";
 import axios from "axios";
-import { setInterval } from 'timers';
-import {baseUrl,path} from '@/apiUrl.config';
+import {baseUrl} from '@/apiUrl.config';
 import _ from "lodash";
 import store from '@/src/store';
 

@@ -41,12 +41,11 @@ export default {
   directives: {
         drag: {
             update:function(el,binding,bl){
-
+              console.log(el,binding,bl);
             },
             // 指令的定义
             bind: function (el,binding,bl) {
 
-                let that = this;
                 let odiv = el;   //获取当前元素
                 odiv.onmousedown = (e) => {
                   
@@ -72,7 +71,7 @@ export default {
                       }
 
                     };
-                    document.onmouseup = (e) => {
+                    document.onmouseup = () => {
                         document.onmousemove = null;
                         document.onmouseup = null;
                     };
