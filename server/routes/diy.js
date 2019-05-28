@@ -668,7 +668,7 @@ router.get('/view/info', async (ctx, next) => {
    if ("chanel-InboundEfficiency" == code) {    
     jsonData = {
       "version":"20190523",
-      "code": "report-SkuHot",
+      "code": "chanel-InboundEfficiency",
       "pageId": "pageId-00004",
       "canvas": {
         "zoom-type":0, 
