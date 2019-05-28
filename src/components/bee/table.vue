@@ -204,8 +204,8 @@ export default {
             item.defaultValue = one.defaultValue;
             item.rule = {};
             item.queryIndex= one.queryIndex;
-          }else if(dataType===3){
-            //整数：整数输入框
+          }else if(dataType===3 && queryType!==7){
+            //时间戳：日期选择
             item.label = one.displayName;
             item.keyName = one.columnName;
             item.type = "beeDatePicker";
@@ -228,11 +228,20 @@ export default {
 
         }
 
-        //queryType为7，说明是范围区间的输入框
-        if(queryType==7){
+        //queryType为7，并且类型不是时间，说明是范围区间的输入框
+        if(queryType==7 && dataType!==3){
             item.label = one.displayName;
             item.keyName = one.columnName;
             item.type = "beeInputRange";
+            item.placeholder = one.placeholder;
+            item.defaultValue = one.defaultValue;
+            item.rule = {};
+            item.queryIndex= one.queryIndex;
+        }else if(queryType==7 && dataType==3){
+            //时间范围
+            item.label = one.displayName;
+            item.keyName = one.columnName;
+            item.type = "beeDatePickerRange2";
             item.placeholder = one.placeholder;
             item.defaultValue = one.defaultValue;
             item.rule = {};

@@ -46,6 +46,7 @@ import axios from "axios";
 import beeInput from './beeInput.vue';
 import beeInputRange from './beeInputRange.vue';
 import beeDatePicker from './beeDatePicker.vue';
+import beeDatePickerRange2 from './beeDatePickerRange2.vue';
 import beeSelect from './beeSelect.vue';
 import { setTimeout } from 'timers';
 
@@ -133,6 +134,7 @@ export default {
     beeInputRange,
     beeDatePicker,
     beeSelect,
+    beeDatePickerRange2,
   },
   mounted(){
     //console.log(this.items)
