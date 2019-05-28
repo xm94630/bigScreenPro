@@ -21,7 +21,10 @@ module.exports={
                 '/epimetheus': {
                     //target: 'http://localhost:3000',
                     //target: 'http://172.16.28.85:80',     // 德柱
-                    target: 'http:// 172.18.1.118:8083',     // 苏州 志超
+                    
+                    target: 'http://172.18.1.118:8083',     // 苏州 志超
+                    pathRewrite: {'^/epimetheus' : ''}, 
+                    
                     secure: false, 
                 },
             }
