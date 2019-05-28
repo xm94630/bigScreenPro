@@ -75,6 +75,20 @@ export default {
     initConditionData(arr){
       let newArr={};
       for(let i=0;i<arr.length;i++){
+
+        //对时间范围的组件的默认值做处理
+        let defaultValue = arr[i].defaultValue;
+        if(arr[i].type==='beeDatePickerRange2' && defaultValue){
+          //如果默认值存在
+          if(Array.isArray(defaultValue)){
+            let a = defaultValue.map(function(one){
+              return new Date(one).getTime()-28800000;
+            }).join('-');
+
+            arr[i].defaultValue =a;
+          }
+        }
+
         //不为空的时候才添加，否则就会查询为空字符串的情况
         if(arr[i].defaultValue!==''){
           newArr[arr[i].keyName] = (arr[i].defaultValue);
@@ -153,11 +167,11 @@ export default {
   //这个一定要加，否者”重置“的时候，就会出现查询条件没有带上的bug
   created(){
     //初始化查询条件的值
-    //this.conditionData = this.initConditionData(this.items);
+    this.conditionData = this.initConditionData(this.items);
   },
   updated(){
     //初始化查询条件的值
-    //this.conditionData = this.initConditionData(this.items);
+    this.conditionData = this.initConditionData(this.items);
   },
   watch:{
   }

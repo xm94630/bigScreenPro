@@ -60,21 +60,9 @@ export default {
   computed: {
   },
   mounted(){
+    //设置初始值
     let defaultValue = this.item.defaultValue;
-    //如果默认值存在
-    if(Array.isArray(defaultValue)){
-      this.formInline.date = defaultValue;
-      let defaultValue2 = defaultValue.map(function(one){
-        return new Date(one).getTime();
-      }).join('-');
-      //分发默认时间区间
-      this.$emit('sonChange', defaultValue2, {
-        keyName:this.keyNames
-      });
-    }
-
-
-
+    this.formInline.date = defaultValue;
   },
   updated(){
   }
