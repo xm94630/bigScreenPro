@@ -65,6 +65,7 @@ export default {
     this.formInline.date = defaultValue;
   },
   updated(){
+    
   }
 };
 </script>

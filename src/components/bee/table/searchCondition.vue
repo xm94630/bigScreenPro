@@ -73,6 +73,10 @@ export default {
   methods:{
     //初始化查询条件的值
     initConditionData(arr){
+
+      //深度拷贝。否者原对象会被改变。
+      arr = JSON.parse(JSON.stringify(arr))
+
       let newArr={};
       for(let i=0;i<arr.length;i++){
 
