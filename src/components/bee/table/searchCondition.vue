@@ -82,7 +82,7 @@ export default {
           //如果默认值存在
           if(Array.isArray(defaultValue)){
             let a = defaultValue.map(function(one){
-              return new Date(one).getTime()-28800000;
+              return new Date(one).getTime();
             }).join('-');
 
             arr[i].defaultValue =a;

@@ -46,7 +46,7 @@ export default {
       let val2='';
       if(val){
         val2 = val.map(function(one){
-          return one.getTime();
+          return one.getTime()+28800000;
         }).join('-');
       }
 
