@@ -44,53 +44,34 @@ export default {
   methods:{
     handleChange(val){
 
-      let a,b;
-      
-      //如果时间输入框有值，就使用现成选择的值
-      if(val){
-        a = val[0].getTime()+28800000;
-        b = val[1].getTime()+28800000;
-      }else{
-        //如果清空时间选择，我们可以提供当天的时间。
-        console.log('默认使用当天的时间区间');
-        a = new Date(new Date().toLocaleDateString()).getTime(); //今天0点开始的时间
-        b = new Date().getTime() //当前时间
-      }
+      let val2 = val.map(function(one){
+        return one.getTime();
+      }).join('-');
 
-      //分两次分发
-      this.$emit('sonChange', a, {
-        keyName:this.keyNames[0]
+      //分发默认时间区间
+      this.$emit('sonChange', val2, {
+        keyName:this.keyNames
       });
-      this.$emit('sonChange', b, {
-        keyName:this.keyNames[1]
-      });  
             
     }
   },
   computed: {
   },
   mounted(){
-
-    //初始设置 在不配置的情况下，默认设置成当日
-    let dateArr = this.item.defaultValue;
-    let a = new Date(new Date().toLocaleDateString()).getTime();
-    let b = new Date().getTime()
-    if(dateArr && dateArr[0] && dateArr[1]){
-      this.formInline.date = [
-        new Date(dateArr[0]).getTime(),
-        new Date(dateArr[1]).getTime()
-      ];
-    }else{
-      this.formInline.date = [a,b];
+    let defaultValue = this.item.defaultValue;
+    //如果默认值存在
+    if(Array.isArray(defaultValue)){
+      this.formInline.date = defaultValue;
+      let defaultValue2 = defaultValue.map(function(one){
+        return new Date(one).getTime();
+      }).join('-');
+      //分发默认时间区间
+      this.$emit('sonChange', defaultValue2, {
+        keyName:this.keyNames
+      });
     }
-    //分两次分发
-    //这样子在父级组件中就有这两个时间的默认值了。
-    this.$emit('sonChange', this.formInline.date[0], {
-      keyName:this.keyNames[0]
-    });
-    this.$emit('sonChange', this.formInline.date[1], {
-      keyName:this.keyNames[1]
-    });  
+
+
 
   },
   updated(){
