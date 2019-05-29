@@ -35,16 +35,7 @@ function getOption(data) {
 
   let option = {
     color: data.color || ["#83b5b9","#db8460","#9ec794","#eada80"],
-    title: {
-      text: data.title.text,
-      // subtext: '纯属虚构',
-      // x:'center'
-      textStyle: {
-        fontSize: data.title['font-size'],
-        color: data.title['color'],
-        //fontWeight:"bold",
-      }
-    },
+    title: data.title,
     tooltip: {
       trigger: "item",
       formatter: "{a} <br/>{b} : {c} ({d}%)"
