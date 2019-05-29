@@ -95,5 +95,5 @@ new Date("Thu Jan 01 1970 08:00:00 GMT+0800 (中国标准时间)").getTime()  //
 需要注意。
 
 
-
-
+[拖拽]
+https://www.npmjs.com/package/vuedraggable
