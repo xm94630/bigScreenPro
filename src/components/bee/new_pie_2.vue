@@ -19,7 +19,7 @@ function getOption(data) {
   
   //这个是接口的数据，还需要我们进行组装
   apiData = apiData[0];
-  let legendData = Object.keys(apiData);
+  let legendData = {data:Object.keys(apiData)};
   let seriesData = [];
   for(let key in apiData){
     seriesData.push({
@@ -27,6 +27,9 @@ function getOption(data) {
       name:key,
     })
   }
+
+  //legend样式部分
+  let legend = data.legend;
 
   //console.log(seriesData)
 
@@ -46,14 +49,7 @@ function getOption(data) {
       trigger: "item",
       formatter: "{a} <br/>{b} : {c} ({d}%)"
     },
-    legend: {
-        orient: 'vertical',
-        left: 'right',
-        data: legendData,
-        "textStyle": {
-          "color": "#f8f4a0"
-        }
-    },
+    legend: Object.assign({},legend,legendData),
     series: [
       {
         name: "访问来源",

@@ -518,6 +518,13 @@ router.get('/view/info', async (ctx, next) => {
             "font-size": 16,
             "align": "center"
           },
+          "legend": {
+            "orient": "vertical",
+            "left": "right",
+            "textStyle": {
+              "color": "#f8f4a0"
+            }
+          },
           "color": ["#4f8ff9","#38c3ec","#a2fdff","#c0f8ff"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-robot"
