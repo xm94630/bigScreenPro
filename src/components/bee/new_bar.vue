@@ -50,11 +50,23 @@ function getOption(data) {
     keys.splice(index, 1);
   }
   
+
+  console.log(keys)
+
   let legend = {
-    "data":keys
+    "data":keys,
+    "textStyle": {
+      "color": "#f8f4a0"
+    }
   }
   let xAxis = {
-    "data":_.map(apiData,'type')
+    "data":_.map(apiData,'type'),
+    axisLabel: {
+        show: true,
+        textStyle: {
+            color: '#f8f4a0'
+        }
+    }
   }
   
   let series = []
@@ -79,7 +91,7 @@ function getOption(data) {
       x: "left",
       textStyle: {
         fontSize: data.title['font-size'],
-        color: "#666"
+        color: "#f8f4a0"
         //fontWeight:"bold",
       }
     },
@@ -100,7 +112,13 @@ function getOption(data) {
     },
     xAxis: xAxis,
     yAxis: {
-        type: 'value'
+        type: 'value',
+        axisLabel: {
+            show: true,
+            textStyle: {
+                color: '#f8f4a0'
+            }
+        }
     },
     series: series
   };

@@ -49,7 +49,10 @@ function getOption(data) {
     legend: {
         orient: 'vertical',
         left: 'right',
-        data: legendData
+        data: legendData,
+        "textStyle": {
+          "color": "#f8f4a0"
+        }
     },
     series: [
       {

@@ -439,7 +439,7 @@ router.get('/view/info', async (ctx, next) => {
     
         "new_pie_1":[{
           "chartId":"pie111",
-          "x": 350,
+          "x": 380,
           "y": 20,
           "width": 200,
           "height": 150,
@@ -447,14 +447,15 @@ router.get('/view/info', async (ctx, next) => {
           "padding":10,
           "background":"none",
           "title": {
-            "text":"使用占比"
+            "text":"使用占比",
+            "color":"#f8f4a0"
           },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseScaleA"
         },{
           "chartId":"pie222",
-          "x": 350,
+          "x": 380,
           "y": 140,
           "width": 200,
           "height": 150,
@@ -462,14 +463,15 @@ router.get('/view/info', async (ctx, next) => {
           "padding":10,
           "background":"none",
           "title": {
-            "text":"使用占比"
+            "text":"使用占比",
+            "color":"#f8f4a0"
           },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseScaleB"
         },{
           "chartId":"pie333",
-          "x": 350,
+          "x": 380,
           "y": 270,
           "width": 200,
           "height": 150,
@@ -477,14 +479,15 @@ router.get('/view/info', async (ctx, next) => {
           "padding":10,
           "background":"none",
           "title": {
-            "text":"使用占比"
+            "text":"使用占比",
+            "color":"#f8f4a0"
           },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseScaleA"
         },{
           "chartId":"pie444",
-          "x": 350,
+          "x": 380,
           "y": 380,
           "width": 200,
           "height": 150,
@@ -492,7 +495,8 @@ router.get('/view/info', async (ctx, next) => {
           "padding":10,
           "background":"none",
           "title": {
-            "text":"使用占比"
+            "text":"使用占比",
+            "color":"#f8f4a0"
           },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -507,7 +511,7 @@ router.get('/view/info', async (ctx, next) => {
           "height": 210,
           "border": "solid 1px #ccc",
           "padding":10,
-          "background":"#fff",
+          "background":"#1e2647",
           "title": {
             "text": "",
             "color": "#666",
@@ -528,7 +532,7 @@ router.get('/view/info', async (ctx, next) => {
           "height": 200,
           "border": "none",
           "padding":10,
-          "background":"#fff",
+          "background":"#1e2647",
           "title": {
             "text": "出库单",
             "color": "#000",
@@ -546,7 +550,7 @@ router.get('/view/info', async (ctx, next) => {
           "height": 200,
           "border": "none",
           "padding":10,
-          "background":"#fff",
+          "background":"#1e2647",
           "title": {
             "text": "已完成",
             "color": "#000",
@@ -564,7 +568,7 @@ router.get('/view/info', async (ctx, next) => {
           "height": 200,
           "border": "none",
           "padding":10,
-          "background":"#fff",
+          "background":"#1e2647",
           "title": {
             "text": "已分配",
             "color": "#000",
@@ -582,7 +586,7 @@ router.get('/view/info', async (ctx, next) => {
           "height": 200,
           "border": "none",
           "padding":10,
-          "background":"#fff",
+          "background":"#1e2647",
           "title": {
             "text": "系统报缺",
             "color": "#000",
@@ -603,7 +607,7 @@ router.get('/view/info', async (ctx, next) => {
           "height": 20,
           "padding": 0,
           "font-size": 14,
-          "color": "#000",
+          "color": "#f8f4a0",
           "border": "none",
           "background": "none",
           "text-align": "left",
