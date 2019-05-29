@@ -456,6 +456,15 @@ router.get('/view/info', async (ctx, next) => {
               "fontWeight":"bold",
             }
           },
+          "label":{
+            "normal": {
+              "show": true,
+              "color":'#f8f4a0',
+              "position": "center",
+              "fontSize": 14,
+              "formatter": "{b}\n{d}%"
+            }
+          },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseScaleA"
@@ -476,6 +485,15 @@ router.get('/view/info', async (ctx, next) => {
               "fontSize": "12px",
               "color": "#1e2647",
               "fontWeight":"bold",
+            }
+          },
+          "label":{
+            "normal": {
+              "show": true,
+              "color":'#f8f4a0',
+              "position": "center",
+              "fontSize": 14,
+              "formatter": "{b}\n{d}%"
             }
           },
           "color": ["#4f8ff9","#38c3ec"],
@@ -500,6 +518,15 @@ router.get('/view/info', async (ctx, next) => {
               "fontWeight":"bold",
             }
           },
+          "label":{
+            "normal": {
+              "show": true,
+              "color":'#f8f4a0',
+              "position": "center",
+              "fontSize": 14,
+              "formatter": "{b}\n{d}%"
+            }
+          },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseScaleA"
@@ -520,6 +547,15 @@ router.get('/view/info', async (ctx, next) => {
               "fontSize": "12px",
               "color": "#1e2647",
               "fontWeight":"bold",
+            }
+          },
+          "label":{
+            "normal": {
+              "show": true,
+              "color":'#f8f4a0',
+              "position": "center",
+              "fontSize": 14,
+              "formatter": "{b}\n{d}%"
             }
           },
           "color": ["#4f8ff9","#38c3ec"],
