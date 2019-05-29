@@ -61,12 +61,7 @@ function getOption(data) {
   }
   let xAxis = {
     "data":_.map(apiData,'type'),
-    axisLabel: {
-        show: true,
-        textStyle: {
-            color: '#f8f4a0'
-        }
-    }
+    axisLabel:data.axisLabel
   }
   
   let series = []
@@ -85,16 +80,7 @@ function getOption(data) {
 
   let option = {
     color: data.color || ["#83b5b9","#db8460","#9ec794","#eada80"],
-    title: {
-      show: true,
-      text: data.title.text,
-      x: "left",
-      textStyle: {
-        fontSize: data.title['font-size'],
-        color: "#f8f4a0"
-        //fontWeight:"bold",
-      }
-    },
+    title: data.title,
     tooltip: {
       trigger: "axis"
     },
@@ -113,12 +99,7 @@ function getOption(data) {
     xAxis: xAxis,
     yAxis: {
         type: 'value',
-        axisLabel: {
-            show: true,
-            textStyle: {
-                color: '#f8f4a0'
-            }
-        }
+        axisLabel:data.axisLabel
     },
     series: series
   };

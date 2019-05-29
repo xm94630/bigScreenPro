@@ -601,10 +601,19 @@ router.get('/view/info', async (ctx, next) => {
           "padding":10,
           "background":"#1e2647",
           "title": {
+            "show": true,
             "text": "出库单",
-            "color": "#000",
-            "font-size": 16,
-            "align": "center"
+            "x": "left",
+            "textStyle": {
+              "fontSize": 16,
+              "color": "#f8f4a0"
+            }
+          },
+          "axisLabel": {
+            "show": true,
+            "textStyle": {
+              "color": '#f8f4a0'
+            }
           },
           "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -619,10 +628,19 @@ router.get('/view/info', async (ctx, next) => {
           "padding":10,
           "background":"#1e2647",
           "title": {
+            "show": true,
             "text": "已完成",
-            "color": "#000",
-            "font-size": 16,
-            "align": "center"
+            "x": "left",
+            "textStyle": {
+              "fontSize": 16,
+              "color": "#f8f4a0"
+            }
+          },
+          "axisLabel": {
+            "show": true,
+            "textStyle": {
+              "color": '#f8f4a0'
+            }
           },
           "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -637,10 +655,19 @@ router.get('/view/info', async (ctx, next) => {
           "padding":10,
           "background":"#1e2647",
           "title": {
+            "show": true,
             "text": "已分配",
-            "color": "#000",
-            "font-size": 16,
-            "align": "center"
+            "x": "left",
+            "textStyle": {
+              "fontSize": 16,
+              "color": "#f8f4a0"
+            }
+          },
+          "axisLabel": {
+            "show": true,
+            "textStyle": {
+              "color": '#f8f4a0'
+            }
           },
           "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -655,10 +682,19 @@ router.get('/view/info', async (ctx, next) => {
           "padding":10,
           "background":"#1e2647",
           "title": {
+            "show": true,
             "text": "系统报缺",
-            "color": "#000",
-            "font-size": 16,
-            "align": "center"
+            "x": "left",
+            "textStyle": {
+              "fontSize": 16,
+              "color": "#f8f4a0"
+            }
+          },
+          "axisLabel": {
+            "show": true,
+            "textStyle": {
+              "color": '#f8f4a0'
+            }
           },
           "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
