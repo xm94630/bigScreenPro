@@ -79,6 +79,7 @@ function getOption(data) {
               normal: {
                 // 是显示标签
                 show: true,
+                color:'#f8f4a0',
                 position: "center",
                 fontSize: 14,
                 // 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行

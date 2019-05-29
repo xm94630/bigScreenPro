@@ -448,7 +448,7 @@ router.get('/view/info', async (ctx, next) => {
           "background":"none",
           "title": {
             "text":"使用占比",
-            "color":"#f8f4a0"
+            "color":"#1e2647"
           },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -464,7 +464,7 @@ router.get('/view/info', async (ctx, next) => {
           "background":"none",
           "title": {
             "text":"使用占比",
-            "color":"#f8f4a0"
+            "color":"#1e2647"
           },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -480,7 +480,7 @@ router.get('/view/info', async (ctx, next) => {
           "background":"none",
           "title": {
             "text":"使用占比",
-            "color":"#f8f4a0"
+            "color":"#1e2647"
           },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -496,7 +496,7 @@ router.get('/view/info', async (ctx, next) => {
           "background":"none",
           "title": {
             "text":"使用占比",
-            "color":"#f8f4a0"
+            "color":"#1e2647"
           },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
