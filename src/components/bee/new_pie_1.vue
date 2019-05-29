@@ -24,16 +24,7 @@ function getOption(data) {
   var option = {
     color:data.color || ["#83b5b9","#db8460"],
     // 标题组件，包含主标题和副标题
-    title: {
-      show: true,
-      text: data.title.text,
-      x: "left",
-      textStyle: {
-        fontSize: data.title['font-size'],
-        color: data.title['color'],
-        //fontWeight:"bold",
-      }
-    },
+    title: data.title,
     //  提示框组件
     tooltip: {
       //是否显示提示框组件，包括提示框浮层和 axisPointe

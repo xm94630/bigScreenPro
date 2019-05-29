@@ -447,8 +447,14 @@ router.get('/view/info', async (ctx, next) => {
           "padding":10,
           "background":"none",
           "title": {
-            "text":"使用占比",
-            "color":"#1e2647"
+            "show": true,
+            "text": "使用占比",
+            "x": "left",
+            "textStyle": {
+              "fontSize": "12px",
+              "color": "#1e2647",
+              "fontWeight":"bold",
+            }
           },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -463,8 +469,14 @@ router.get('/view/info', async (ctx, next) => {
           "padding":10,
           "background":"none",
           "title": {
-            "text":"使用占比",
-            "color":"#1e2647"
+            "show": true,
+            "text": "使用占比",
+            "x": "left",
+            "textStyle": {
+              "fontSize": "12px",
+              "color": "#1e2647",
+              "fontWeight":"bold",
+            }
           },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -479,8 +491,14 @@ router.get('/view/info', async (ctx, next) => {
           "padding":10,
           "background":"none",
           "title": {
-            "text":"使用占比",
-            "color":"#1e2647"
+            "show": true,
+            "text": "使用占比",
+            "x": "left",
+            "textStyle": {
+              "fontSize": "12px",
+              "color": "#1e2647",
+              "fontWeight":"bold",
+            }
           },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -495,8 +513,14 @@ router.get('/view/info', async (ctx, next) => {
           "padding":10,
           "background":"none",
           "title": {
-            "text":"使用占比",
-            "color":"#1e2647"
+            "show": true,
+            "text": "使用占比",
+            "x": "left",
+            "textStyle": {
+              "fontSize": "12px",
+              "color": "#1e2647",
+              "fontWeight":"bold",
+            }
           },
           "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
