@@ -8,8 +8,8 @@
             v-model="formInline.date"
             type="daterange"
             range-separator="至"
-            :start-placeholder="myItem.placeholder[0]"
-            :end-placeholder="myItem.placeholder[1]"
+            :start-placeholder="startPlaceholder"
+            :end-placeholder="endPlaceholder"
             @change="handleChange"
           >
           </el-date-picker>
@@ -33,7 +33,9 @@ export default {
       keyNames:this.item.keyName,
       formInline: {
         date: '',
-      }
+      },
+      startPlaceholder:'',
+      endPlaceholder:'',
     };
   },
   watch:{
@@ -63,6 +65,9 @@ export default {
     //设置初始值
     let defaultValue = this.item.defaultValue;
     this.formInline.date = defaultValue;
+
+    this.startPlaceholder = this.item.placeholder && this.myItem.placeholder[0]
+    this.endPlaceholder = this.item.placeholder && this.myItem.placeholder[1]
   },
   updated(){
     
