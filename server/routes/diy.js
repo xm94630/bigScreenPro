@@ -133,7 +133,7 @@ router.get('/view/info', async (ctx, next) => {
     
     jsonData = {
       "refreshTime":"600000",
-      "version":"20190524",
+      "version":"20190529",
       "globalCondition":[{
         "dataType":997788,
         "keyName":["startTime","endTime"],
@@ -453,13 +453,13 @@ router.get('/view/info', async (ctx, next) => {
             "textStyle": {
               "fontSize": "12px",
               "color": "#1e2647",
-              "fontWeight":"bold",
+              "fontWeight":"bold"
             }
           },
           "label":{
             "normal": {
               "show": true,
-              "color":'#f8f4a0',
+              "color":"#f8f4a0",
               "position": "center",
               "fontSize": 14,
               "formatter": "{b}\n{d}%"
@@ -484,13 +484,13 @@ router.get('/view/info', async (ctx, next) => {
             "textStyle": {
               "fontSize": "12px",
               "color": "#1e2647",
-              "fontWeight":"bold",
+              "fontWeight":"bold"
             }
           },
           "label":{
             "normal": {
               "show": true,
-              "color":'#f8f4a0',
+              "color":"#f8f4a0",
               "position": "center",
               "fontSize": 14,
               "formatter": "{b}\n{d}%"
@@ -515,13 +515,13 @@ router.get('/view/info', async (ctx, next) => {
             "textStyle": {
               "fontSize": "12px",
               "color": "#1e2647",
-              "fontWeight":"bold",
+              "fontWeight":"bold"
             }
           },
           "label":{
             "normal": {
               "show": true,
-              "color":'#f8f4a0',
+              "color":"#f8f4a0",
               "position": "center",
               "fontSize": 14,
               "formatter": "{b}\n{d}%"
@@ -546,13 +546,13 @@ router.get('/view/info', async (ctx, next) => {
             "textStyle": {
               "fontSize": "12px",
               "color": "#1e2647",
-              "fontWeight":"bold",
+              "fontWeight":"bold"
             }
           },
           "label":{
             "normal": {
               "show": true,
-              "color":'#f8f4a0',
+              "color":"#f8f4a0",
               "position": "center",
               "fontSize": 14,
               "formatter": "{b}\n{d}%"
@@ -612,7 +612,7 @@ router.get('/view/info', async (ctx, next) => {
           "axisLabel": {
             "show": true,
             "textStyle": {
-              "color": '#f8f4a0'
+              "color": "#f8f4a0"
             }
           },
           "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
@@ -639,7 +639,7 @@ router.get('/view/info', async (ctx, next) => {
           "axisLabel": {
             "show": true,
             "textStyle": {
-              "color": '#f8f4a0'
+              "color": "#f8f4a0"
             }
           },
           "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
@@ -666,7 +666,7 @@ router.get('/view/info', async (ctx, next) => {
           "axisLabel": {
             "show": true,
             "textStyle": {
-              "color": '#f8f4a0'
+              "color": "#f8f4a0"
             }
           },
           "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
@@ -693,7 +693,7 @@ router.get('/view/info', async (ctx, next) => {
           "axisLabel": {
             "show": true,
             "textStyle": {
-              "color": '#f8f4a0'
+              "color": "#f8f4a0"
             }
           },
           "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],

@@ -50,9 +50,6 @@ function getOption(data) {
     keys.splice(index, 1);
   }
   
-
-  console.log(keys)
-
   let legend = {
     "data":keys,
     "textStyle": {
