@@ -1052,7 +1052,7 @@ router.get('/view/info', async (ctx, next) => {
               "type": "20",
               "typeScribe": "beeSelect",
               "placeholder": "请选择",
-              "defaultValue": "2",
+              "defaultValue": "",
               "rule": {},
               "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx",
               "referenceColumn": "playerNameValue",
