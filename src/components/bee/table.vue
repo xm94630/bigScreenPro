@@ -256,6 +256,37 @@ export default {
       newArr = _.orderBy(newArr,'queryIndex','asc');  
 
       return newArr;
+    },
+
+    getOptionsData (one) {
+      return new Promise((resolve) => {
+        axios.get(one.referenceUrl).then( async (response) => {
+          let d = response.data.data;
+          let options = [];
+          for(let i=0;i<d.length;i++){
+            options.push({
+              value:d[i][one.referenceColumn],
+              label:d[i][one.referenceDisplayColumn]
+            })
+          }
+          resolve(options);
+        }).catch((err)=>{
+          alert("下拉关联的接口存在问题："+err)
+        })
+      })
+    },
+
+    async parseConditionArr2(arr){
+      console.log("搜索条件配置数据===>")
+      console.log(arr)
+      arr.forEach(async (one)=>{
+        if(one.type=='beeSelect'){
+          let options = await this.getOptionsData(one);
+          one.options=options;
+        }
+      })
+      arr = _.orderBy(arr,'queryIndex','asc');  
+      return arr;
     }
   },
 
@@ -264,9 +295,12 @@ export default {
     //console.log('===>')
     //console.log(this.myConfig);
 
+    const conditionArr = this.myConfig.initForView.conditionColumnList;
+    this.items = await this.parseConditionArr2(conditionArr);
+
     //条件搜索部分的数据组装
-    const conditionArr = this.myConfig.initTableConfig.conditionColumnList;
-    this.items = await this.parseConditionArr(conditionArr);
+    //const conditionArr = this.myConfig.initTableConfig.conditionColumnList;
+    //this.items = await this.parseConditionArr(conditionArr);
 
     //表头的配置
     //this.resultColumnList = _.orderBy(this.myConfig.initTableConfig.resultColumnList,'columnIndex','asc');
@@ -288,7 +322,8 @@ export default {
       str += "background:"+this.myConfig['background']+";"
       return str;
     }
-  }
+  },
+
 };
 </script>
 

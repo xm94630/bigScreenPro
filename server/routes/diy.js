@@ -55,7 +55,43 @@ router.get('/view/info', async (ctx, next) => {
             "dataUrl": "/epimetheus/api/diy/report/selectData",
             "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"InventoryReportByBin"
-          }]
+          }],
+          "initForView":{
+            "conditionColumnList":[{
+              "label": "姓名",
+              "keyName": "name",
+              "type": "beeInput",
+              "typeScribe": "beeInput",
+              "placeholder": "请输入",
+              "defaultValue": "张三",
+              "rule": {},
+              "queryIndex": 0
+            },{
+              "label": "最爱",
+              "keyName": "love",
+              "type": "beeSelect",
+              "typeScribe": "beeSelect",
+              "placeholder": "请选择",
+              "defaultValue": "2",
+              "rule": {},
+              "referenceUrl":"/epimetheus/api_v1/diy/xxx/xxx",
+              "referenceColumn": "playerNameValue",
+              "referenceDisplayColumn": "playerName",
+              "queryIndex": 1
+            }, {
+              "label": "生日",
+              "keyName": "date",
+              "type": "beeDatePicker",
+              "typeScribe": "beeDatePicker",
+              "placeholder": "请选择",
+              "defaultValue": "",
+              "rule": {},
+              "queryIndex": 2
+            }],
+            "resultColumnList":[{
+              bbb:222
+            }]
+          }
         }],
         "textBar":[{
           "id": "componentId_00002",

@@ -5,7 +5,7 @@
 
         <el-form-item :label="item.label">
           
-          <el-select clearable filterable v-model="formInline.user" :placeholder="item.placeholder"  @change="handleChange">
+          <el-select clearable filterable  v-model="formInline.user" :placeholder="item.placeholder"  @change="handleChange">
             <el-option
               v-for="item in item.options"
               :key="item.value"
@@ -39,9 +39,6 @@ export default {
     };
   },
   watch:{
-    'item':function(v){
-      this.formInline.myInput = v.defaultValue;
-    }
   },
   computed: {
   },
@@ -51,8 +48,10 @@ export default {
     }
   },
   mounted(){
+
   },
   updated(){
+    this.formInline.user = this.item.defaultValue;
   }
 };
 </script>
