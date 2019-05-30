@@ -48,10 +48,11 @@ export default {
     }
   },
   mounted(){
-
+   
   },
   updated(){
-    this.formInline.user = this.item.defaultValue;
+    //props的改变会更新组件，但不会刷新 data 中的数据。
+    this.formInline.user = this.item.defaultValue; 
   }
 };
 </script>
