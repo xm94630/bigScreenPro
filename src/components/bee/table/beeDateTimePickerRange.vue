@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: "beeDateTimePickerRange",
+  name: "beebeeDateTimePickerRange",
   props: {
     item:Object,
     labelPosition:null,

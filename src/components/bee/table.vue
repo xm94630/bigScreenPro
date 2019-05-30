@@ -292,8 +292,8 @@ export default {
           "20":"beeSelect",
           "30":"beeDatePicker",
           "31":"beeDatePickerRange2",
-          "40":"DateTimePicker",
-          "41":"DateTimePickerRange",
+          "40":"beeDateTimePicker",
+          "41":"beeDateTimePickerRange",
           "100":"beeDatePickerRange",
         }
         arr[i].type = map[arr[i].type];
