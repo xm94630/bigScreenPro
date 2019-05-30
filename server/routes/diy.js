@@ -106,8 +106,17 @@ router.get('/view/info', async (ctx, next) => {
               "rule": {},
               "queryIndex": 4
             }, {
-              "label": "日期时间（范围） (type:41)",
+              "label": "日期时间 (type:40)",
               "keyName": "date3",
+              "type": "DateTimePicker",
+              "typeScribe": "DateTimePicker",
+              "placeholder": "请选择",
+              "defaultValue": "",
+              "rule": {},
+              "queryIndex": 6
+            }, {
+              "label": "日期时间（范围） (type:41)",
+              "keyName": "date4",
               "type": "DateTimePickerRange",
               "typeScribe": "DateTimePickerRange",
               "placeholder": ['开始','结束'],

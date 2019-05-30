@@ -50,6 +50,7 @@ import beeDatePicker from './beeDatePicker.vue';
 import beeDatePickerRange2 from './beeDatePickerRange2.vue';
 import beeSelect from './beeSelect.vue';
 import DateTimePickerRange from './DateTimePickerRange.vue';
+import DateTimePicker from './DateTimePicker.vue';
 import { setTimeout } from 'timers';
 
 import store from '@/src/store';
@@ -156,6 +157,7 @@ export default {
     beeSelect,
     beeDatePickerRange2,
     DateTimePickerRange,
+    DateTimePicker
   },
   mounted(){
     //console.log(this.items)
