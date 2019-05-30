@@ -279,12 +279,21 @@ export default {
     async parseConditionArr2(arr){
       console.log("搜索条件配置数据===>")
       console.log(arr)
-      arr.forEach(async (one)=>{
-        if(one.type=='beeSelect'){
-          let options = await this.getOptionsData(one);
-          one.options=options;
+      
+      // 以后千万不要踩这个坑啊！ forEach、async 的组合，会死人的。
+      // arr.forEach(async (one)=>{
+      //   if(one.type=='beeSelect'){
+      //     let options = await this.getOptionsData(one);
+      //     one.options=options;
+      //   }
+      // })
+      
+      for(let i=0;i<arr.length;i++){
+        if(arr[i].type=='beeSelect'){
+          let options = await this.getOptionsData(arr[i]);
+          arr[i].options=options;
         }
-      })
+      }
       arr = _.orderBy(arr,'queryIndex','asc');  
       return arr;
     }
