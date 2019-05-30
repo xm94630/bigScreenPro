@@ -7,6 +7,8 @@
           
           <el-select clearable filterable  v-model="formInline.user" :placeholder="item.placeholder"  @change="handleChange">
             <el-option
+              filterable
+              remote
               v-for="item in item.options"
               :key="item.value"
               :label="item.label"
@@ -48,6 +50,7 @@ export default {
     }
   },
   mounted(){
+    console.log(this.item)
    
   },
   updated(){
