@@ -88,7 +88,7 @@ router.get('/view/info', async (ctx, next) => {
               "referenceDisplayColumn": "playerName",
               "queryIndex": 1
             }, {
-              "label": "单天日期选择 (type:30)",
+              "label": "日期 (type:30)",
               "keyName": "date",
               "type": "beeDatePicker",
               "typeScribe": "beeDatePicker",
@@ -97,11 +97,20 @@ router.get('/view/info', async (ctx, next) => {
               "rule": {},
               "queryIndex": 2
             }, {
-              "label": "日期范围选择 (type:32)",
+              "label": "日期（范围） (type:31)",
               "keyName": "date",
               "type": "beeDatePickerRange2",
               "typeScribe": "beeDatePickerRange2",
-              "placeholder": "请选择",
+              "placeholder": ['开始','结束'],
+              "defaultValue": "",
+              "rule": {},
+              "queryIndex": 2
+            }, {
+              "label": "日期时间（范围） (type:41)",
+              "keyName": "date",
+              "type": "DateTimePickerRange",
+              "typeScribe": "DateTimePickerRange",
+              "placeholder": ['开始','结束'],
               "defaultValue": "",
               "rule": {},
               "queryIndex": 2
