@@ -281,7 +281,7 @@ export default {
       // })
       
       for(let i=0;i<arr.length;i++){
-        if(arr[i].type=='beeSelect'){
+        if(arr[i].type==20){
           let options = await this.getOptionsData(arr[i]);
           arr[i].options=options;
         }
@@ -311,6 +311,9 @@ export default {
 
     const conditionArr = this.myConfig.initForView.conditionColumnList;
     this.items = await this.parseConditionArr2(conditionArr);
+
+    //console.log('===>>>>')
+    //console.log(this.items);
 
     //条件搜索部分的数据组装
     //const conditionArr = this.myConfig.initTableConfig.conditionColumnList;
