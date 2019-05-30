@@ -58,16 +58,25 @@ router.get('/view/info', async (ctx, next) => {
           }],
           "initForView":{
             "conditionColumnList":[{
-              "label": "姓名",
+              "label": "普通输入框 (type:10)",
               "keyName": "name",
               "type": "beeInput",
               "typeScribe": "beeInput",
               "placeholder": "请输入",
-              "defaultValue": "张三",
+              "defaultValue": "",
               "rule": {},
               "queryIndex": 0
             },{
-              "label": "最爱",
+              "label": "范围输入框 (type:11)",
+              "keyName": "name",
+              "type": "beeInputRange",
+              "typeScribe": "beeInputRange",
+              "placeholder": "请输入",
+              "defaultValue": "",
+              "rule": {},
+              "queryIndex": 0
+            },{
+              "label": "普通下拉 (type:20)",
               "keyName": "love",
               "type": "beeSelect",
               "typeScribe": "beeSelect",
@@ -79,10 +88,19 @@ router.get('/view/info', async (ctx, next) => {
               "referenceDisplayColumn": "playerName",
               "queryIndex": 1
             }, {
-              "label": "生日",
+              "label": "单天日期选择 (type:30)",
               "keyName": "date",
               "type": "beeDatePicker",
               "typeScribe": "beeDatePicker",
+              "placeholder": "请选择",
+              "defaultValue": "",
+              "rule": {},
+              "queryIndex": 2
+            }, {
+              "label": "日期范围选择 (type:32)",
+              "keyName": "date",
+              "type": "beeDatePickerRange2",
+              "typeScribe": "beeDatePickerRange2",
               "placeholder": "请选择",
               "defaultValue": "",
               "rule": {},
