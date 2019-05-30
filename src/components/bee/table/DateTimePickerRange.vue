@@ -6,7 +6,7 @@
           <!-- 日期区间选择 -->
           <el-date-picker style="max-width:300px;"
             v-model="formInline.date"
-            type="daterange"
+            type="datetimerange"
             range-separator="至"
             :start-placeholder="startPlaceholder"
             :end-placeholder="endPlaceholder"

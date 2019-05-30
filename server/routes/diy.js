@@ -59,7 +59,7 @@ router.get('/view/info', async (ctx, next) => {
           "initForView":{
             "conditionColumnList":[{
               "label": "普通输入框 (type:10)",
-              "keyName": "name",
+              "keyName": "name1",
               "type": "beeInput",
               "typeScribe": "beeInput",
               "placeholder": "请输入",
@@ -68,13 +68,13 @@ router.get('/view/info', async (ctx, next) => {
               "queryIndex": 0
             },{
               "label": "范围输入框 (type:11)",
-              "keyName": "name",
+              "keyName": "name2",
               "type": "beeInputRange",
               "typeScribe": "beeInputRange",
               "placeholder": "请输入",
               "defaultValue": "",
               "rule": {},
-              "queryIndex": 0
+              "queryIndex": 1
             },{
               "label": "普通下拉 (type:20)",
               "keyName": "love",
@@ -86,34 +86,34 @@ router.get('/view/info', async (ctx, next) => {
               "referenceUrl":"/epimetheus/api_v1/diy/xxx/xxx",
               "referenceColumn": "playerNameValue",
               "referenceDisplayColumn": "playerName",
-              "queryIndex": 1
+              "queryIndex": 2
             }, {
               "label": "日期 (type:30)",
-              "keyName": "date",
+              "keyName": "date1",
               "type": "beeDatePicker",
               "typeScribe": "beeDatePicker",
               "placeholder": "请选择",
               "defaultValue": "",
               "rule": {},
-              "queryIndex": 2
+              "queryIndex": 3
             }, {
               "label": "日期（范围） (type:31)",
-              "keyName": "date",
+              "keyName": "date2",
               "type": "beeDatePickerRange2",
               "typeScribe": "beeDatePickerRange2",
               "placeholder": ['开始','结束'],
               "defaultValue": "",
               "rule": {},
-              "queryIndex": 2
+              "queryIndex": 4
             }, {
               "label": "日期时间（范围） (type:41)",
-              "keyName": "date",
+              "keyName": "date3",
               "type": "DateTimePickerRange",
               "typeScribe": "DateTimePickerRange",
               "placeholder": ['开始','结束'],
               "defaultValue": "",
               "rule": {},
-              "queryIndex": 2
+              "queryIndex": 5
             }],
             "resultColumnList":[{
               bbb:222
