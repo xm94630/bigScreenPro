@@ -80,7 +80,7 @@ export default {
 
       items:[{
         span: 12,
-        label: "姓名",
+        label: "配置有点问题哦",
         keyName: '这个是用来绑定的',
         type: 'beeInput',
         placeholder: '请输入',
@@ -88,15 +88,7 @@ export default {
         rule: {},
       },{
         span: 12,
-        label: "喜爱",
-        keyName: '这个是用来绑定的',
-        type: 'beeSelect',
-        placeholder: '请输入',
-        value: '',
-        rule: {},
-      },{
-        span: 12,
-        label: "选择日期",
+        label: "警告",
         keyName: '这个是用来绑定的',
         type: 'beeDatePicker',
         placeholder: '日期选择',
