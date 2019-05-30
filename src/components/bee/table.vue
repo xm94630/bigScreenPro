@@ -281,7 +281,7 @@ export default {
       // })
       
       for(let i=0;i<arr.length;i++){
-        if(arr[i].type==20){
+        if(arr[i].type==20 || arr[i].type==21){
           let options = await this.getOptionsData(arr[i]);
           arr[i].options=options;
         }
@@ -290,6 +290,7 @@ export default {
           "10":"beeInput",
           "11":"beeInputRange",
           "20":"beeSelect",
+          "21":"beeSelectSearch",
           "30":"beeDatePicker",
           "31":"beeDatePickerRange2",
           "40":"beeDateTimePicker",

@@ -88,6 +88,18 @@ router.get('/view/info', async (ctx, next) => {
               "referenceDisplayColumn": "playerName",
               "queryIndex": 2
             }, {
+              "label": "下拉搜索 (type:21)",
+              "keyName": "love2",
+              "type": "21",
+              "typeScribe": "beeSelectSearch",
+              "placeholder": "请选择",
+              "defaultValue": "2",
+              "rule": {},
+              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx",
+              "referenceColumn": "playerNameValue",
+              "referenceDisplayColumn": "playerName",
+              "queryIndex": 2
+            }, {
               "label": "日期 (type:30)",
               "keyName": "date1",
               "type": "30",
