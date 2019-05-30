@@ -60,7 +60,7 @@ router.get('/view/info', async (ctx, next) => {
             "conditionColumnList":[{
               "label": "普通输入框 (type:10)",
               "keyName": "name1",
-              "type": "beeInput",
+              "type": "10",
               "typeScribe": "beeInput",
               "placeholder": "请输入",
               "defaultValue": "",
@@ -69,7 +69,7 @@ router.get('/view/info', async (ctx, next) => {
             },{
               "label": "范围输入框 (type:11)",
               "keyName": "name2",
-              "type": "beeInputRange",
+              "type": "11",
               "typeScribe": "beeInputRange",
               "placeholder": "请输入",
               "defaultValue": "",
@@ -78,7 +78,7 @@ router.get('/view/info', async (ctx, next) => {
             },{
               "label": "普通下拉 (type:20)",
               "keyName": "love",
-              "type": "beeSelect",
+              "type": "20",
               "typeScribe": "beeSelect",
               "placeholder": "请选择",
               "defaultValue": "2",
@@ -90,7 +90,7 @@ router.get('/view/info', async (ctx, next) => {
             }, {
               "label": "日期 (type:30)",
               "keyName": "date1",
-              "type": "beeDatePicker",
+              "type": "30",
               "typeScribe": "beeDatePicker",
               "placeholder": "请选择",
               "defaultValue": "",
@@ -99,7 +99,7 @@ router.get('/view/info', async (ctx, next) => {
             }, {
               "label": "日期（范围） (type:31)",
               "keyName": "date2",
-              "type": "beeDatePickerRange2",
+              "type": "31",
               "typeScribe": "beeDatePickerRange2",
               "placeholder": ['开始','结束'],
               "defaultValue": "",
@@ -108,7 +108,7 @@ router.get('/view/info', async (ctx, next) => {
             }, {
               "label": "日期时间 (type:40)",
               "keyName": "date3",
-              "type": "DateTimePicker",
+              "type": "40",
               "typeScribe": "DateTimePicker",
               "placeholder": "请选择",
               "defaultValue": "",
@@ -117,7 +117,7 @@ router.get('/view/info', async (ctx, next) => {
             }, {
               "label": "日期时间（范围） (type:41)",
               "keyName": "date4",
-              "type": "DateTimePickerRange",
+              "type": "41",
               "typeScribe": "DateTimePickerRange",
               "placeholder": ['开始','结束'],
               "defaultValue": "",

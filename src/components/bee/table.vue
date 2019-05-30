@@ -285,6 +285,19 @@ export default {
           let options = await this.getOptionsData(arr[i]);
           arr[i].options=options;
         }
+
+        let map = {
+          "10":"beeInput",
+          "11":"beeInputRange",
+          "20":"beeSelect",
+          "30":"beeDatePicker",
+          "31":"beeDatePickerRange2",
+          "40":"DateTimePicker",
+          "41":"DateTimePickerRange",
+          "100":"beeDatePickerRange",
+        }
+        arr[i].type = map[arr[i].type];
+
       }
       arr = _.orderBy(arr,'queryIndex','asc');  
       return arr;
