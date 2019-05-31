@@ -83,7 +83,7 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": "请选择",
               "defaultValue": "2",
               "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx",
+              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
               "referenceColumn": "playerNameValue",
               "referenceDisplayColumn": "playerName",
               "queryIndex": 2
@@ -95,7 +95,7 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": "请选择",
               "defaultValue": "",
               "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx",
+              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
               "referenceColumn": "playerNameValue",
               "referenceDisplayColumn": "playerName",
               "queryIndex": 2
@@ -233,7 +233,7 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": "请选择",
               "defaultValue": "2",
               "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx",
+              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
               "referenceColumn": "playerNameValue",
               "referenceDisplayColumn": "playerName",
               "queryIndex": 2
@@ -947,7 +947,7 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": "请选择",
               "defaultValue": "2",
               "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx",
+              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
               "referenceColumn": "playerNameValue",
               "referenceDisplayColumn": "playerName",
               "queryIndex": 2
@@ -1066,7 +1066,7 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": "请选择",
               "defaultValue": "",
               "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx",
+              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
               "referenceColumn": "playerNameValue",
               "referenceDisplayColumn": "playerName",
               "queryIndex": 2
@@ -1295,7 +1295,7 @@ router.get('/column/initForView', async (ctx, next) => {
         "displayName":"最爱",    //label显示
         "defaultValue":'',      //默认值
         "placeholder":"请选择",    //placeholder
-        "referenceUrl":url+"/epimetheus/api_v1/diy/xxx/xxx", //关联URL
+        "referenceUrl":url+"/epimetheus/api_v1/diy/xxx/xxx?code=", //关联URL
         "referenceColumn":"playerNameValue",  //下拉的值
         "referenceDisplayColumn":"playerName", //下拉显示
         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
@@ -1420,7 +1420,7 @@ router.get('/column/initForView', async (ctx, next) => {
         "displayName":"最爱",    //label显示
         "defaultValue":'',      //默认值
         "placeholder":"请选择",    //placeholder
-        "referenceUrl":url+"/epimetheus/api_v1/diy/xxx/xxx", //关联URL
+        "referenceUrl":url+"/epimetheus/api_v1/diy/xxx/xxx?code=", //关联URL
         "referenceColumn":"playerNameValue",  //下拉的值
         "referenceDisplayColumn":"playerName", //下拉显示
         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
@@ -1670,18 +1670,24 @@ router.get('/column/initForView', async (ctx, next) => {
 //关联U
 //创建大屏配置
 router.get('/xxx/xxx', async (ctx, next) => {
+
+  let code = ctx.query.code;
+  
   ctx.body = {
     data:[
       {
-        "playerName":"孙悟空",
+        "playerName":"孙悟空"+code,
         "playerNameValue":"1"
       },
       {
-        "playerName":"沙和尚",
+        "playerName":"沙和尚"+code,
         "playerNameValue":"2"
       },
     ]
   }
+  
+
+
 })
 router.get('/yyy/yyy', async (ctx, next) => {
   ctx.body = {

@@ -281,7 +281,7 @@ export default {
       // })
       
       for(let i=0;i<arr.length;i++){
-        if(arr[i].type==20 || arr[i].type==21 ){
+        if(arr[i].type==20){
           let options = await this.getOptionsData(arr[i]);
           arr[i].options=options;
         }

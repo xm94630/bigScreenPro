@@ -31,6 +31,7 @@
 
 <script>
 
+import axios from "axios";
 
 export default {
   name: "beeInput",
@@ -42,6 +43,10 @@ export default {
   data() {
     return {
       myItem:this.item,
+      referenceUrl:this.item.referenceUrl,
+      referenceColumn:this.item.referenceColumn,
+      referenceDisplayColumn:this.item.referenceDisplayColumn,
+      
       loading:false,
       formInline: {
         user: this.item.defaultValue,
@@ -60,10 +65,20 @@ export default {
     remoteMethod(query) {
       if (query !== '') {
         this.loading = true;
-        setTimeout(() => {
+        let url = this.referenceUrl + query;
+        axios.get(url).then( async (response) => {
           this.loading = false;
-          this.myItem.options = this.states
-        }, 200);
+          let d = response.data.data;
+          let options = [];
+          for(let i=0;i<d.length;i++){
+            options.push({
+              value:d[i][this.referenceColumn],
+              label:d[i][this.referenceDisplayColumn]
+            })
+          }
+          this.myItem.options = options;
+        })
+
       } else {
         this.options = [];
       }
