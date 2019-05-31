@@ -93,7 +93,7 @@ router.get('/view/info', async (ctx, next) => {
               "type": "21",
               "typeScribe": "beeSelectSearch",
               "placeholder": "请选择",
-              "defaultValue": "2",
+              "defaultValue": "",
               "rule": {},
               "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx",
               "referenceColumn": "playerNameValue",

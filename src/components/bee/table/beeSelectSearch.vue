@@ -5,11 +5,17 @@
 
         <el-form-item :label="item.label">
           
-          <el-select clearable filterable  v-model="formInline.user" :placeholder="item.placeholder"  @change="handleChange">
+          <el-select 
+            filterable
+            remote
+            clearable 
+            :remote-method="remoteMethod"
+            :loading="loading"
+            v-model="formInline.user" 
+            :placeholder="item.placeholder"  
+            @change="handleChange">
             <el-option
-              filterable
-              remote
-              v-for="item in item.options"
+              v-for="item in myItem.options"
               :key="item.value"
               :label="item.label"
               :value="item.value">
@@ -35,9 +41,12 @@ export default {
   },
   data() {
     return {
+      myItem:this.item,
+      loading:false,
       formInline: {
         user: this.item.defaultValue,
       },
+      states: [{ value: 'a', label: 'a' }]
     };
   },
   watch:{
@@ -47,6 +56,17 @@ export default {
   methods:{
     handleChange(val){
       this.$emit('sonChange', val, this.item);
+    },
+    remoteMethod(query) {
+      if (query !== '') {
+        this.loading = true;
+        setTimeout(() => {
+          this.loading = false;
+          this.myItem.options = this.states
+        }, 200);
+      } else {
+        this.options = [];
+      }
     }
   },
   mounted(){
