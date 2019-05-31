@@ -75,8 +75,10 @@ export default {
     exportFun(){
       let exportUrl = baseUrl+path+'/api_v1/diy/view/excel/export?';
       exportUrl += "diyCoreCode=" + this.currentUseCode;
-      exportUrl += "&pageSize=" + this.pageSize;
-      exportUrl += "&currentPage=" + this.myCurrentPage;
+      
+      //不需要这个参数
+      //exportUrl += "&pageSize=" + this.pageSize;
+      //exportUrl += "&currentPage=" + this.myCurrentPage;
 
       for(let key in this.currentSearchOptions){
         if (key!==''){
