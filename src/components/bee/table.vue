@@ -1,6 +1,10 @@
 <template>
   <div class="beeTable" :style="beeTableStyle">
+        
     <div class="top">
+      
+      <div class="tableTitle">{{myConfig.tableTitle}}</div>
+
       <div class="topCon">
         <div class="foldBtn" @click="foldBtnFun">{{foldBtnText}}</div>
         <!-- 条件查询部分 -->
@@ -73,6 +77,7 @@ export default {
   },
   data() {
     return {
+      tableTitle:"xxx",
 
       foldBtnText:"-",
       isShow:true,
@@ -375,6 +380,10 @@ export default {
     width:100%;
     background: #fff;
     padding: 20px;
+    .tableTitle{
+      font-size: 20px;
+      margin-bottom:5px;
+    }
     .topCon{
       position: relative;
       box-sizing: border-box;
