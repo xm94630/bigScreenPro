@@ -4,7 +4,7 @@
         <el-form-item :label="item.label">
           
           <!-- 日期区间选择 -->
-          <el-date-picker style="max-width:300px;"
+          <el-date-picker
             v-model="formInline.date"
             type="datetimerange"
             range-separator="至"
