@@ -129,8 +129,14 @@ export default {
       })
     },
     tableDataOK(tableData,searchOptions,code,url,totalPage,resultColumnList){
-      //console.log('==table数据就绪==')
-      // console.log(tableData)
+      console.log('==table数据就绪==')
+      console.log(tableData)
+
+      //增加一列ID的数据
+      for(let i=0;i<tableData.length;i++){
+        tableData[i].ID = i+1;
+      }
+
       // console.log(searchOptions)
       // console.log(code)
       // console.log(url)
