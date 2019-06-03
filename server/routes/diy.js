@@ -881,6 +881,125 @@ router.get('/view/info', async (ctx, next) => {
   }
 
   //香奈儿1
+  if ("chanel-InboundEfficiency" == code) {    
+    jsonData = {
+      "version":"20190523",
+      "code": "chanel-InboundEfficiency",
+      "pageId": "pageId-00004",
+      "canvas": {
+        "zoom-type":0, 
+        "width": 1200,
+        "height": 1200,
+        "background": "#f3f3f3",
+        "formFormat":{
+          "labelPosition":"top",
+          "colSpan":8
+        }
+      },
+      "components": {
+        "table": [{
+          "id": "componentId_00003",
+          "x": 0,
+          "y": 0,
+          "width": 1200,
+          "padding": 10,
+          "exported": true,
+          "showIndexColumn":true,
+          "currentPage":1,
+          "pageSize":10,
+          "showPage":true,
+          "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
+          "dataUrl": "/epimetheus/api/diy/report/selectData",
+          "initUrl": "/epimetheus/api_v1/diy/column/initForView",
+          "resetBtn":[{
+            "text":"重置"
+          }],
+          "searchBtns":[{
+            "text":"查询",
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
+            "diyCoreCode":"chanel-InboundEfficiency"
+          }],
+          "initForView":{
+            "conditionColumnList": [{
+              "label": "普通输入框 (type:10)",
+              "keyName": "name1",
+              "type": "10",
+              "typeScribe": "beeInput",
+              "placeholder": "请输入",
+              "defaultValue": "",
+              "rule": {},
+              "queryIndex": 0
+            }, {
+              "label": "范围输入框 (type:11)",
+              "keyName": "name2",
+              "type": "11",
+              "typeScribe": "beeInputRange",
+              "placeholder": "请输入",
+              "defaultValue": "",
+              "rule": {},
+              "queryIndex": 1
+            }, {
+              "label": "普通下拉 (type:20)",
+              "keyName": "love",
+              "type": "20",
+              "typeScribe": "beeSelect",
+              "placeholder": "请选择",
+              "defaultValue": "",
+              "rule": {},
+              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+              "referenceColumn": "playerNameValue",
+              "referenceDisplayColumn": "playerName",
+              "queryIndex": 2
+            }, {
+              "label": "日期 (type:30)",
+              "keyName": "date1",
+              "type": "30",
+              "typeScribe": "beeDatePicker",
+              "placeholder": "请选择",
+              "defaultValue": "",
+              "rule": {},
+              "queryIndex": 3
+            }, {
+              "label": "日期（范围） (type:31)",
+              "keyName": "date2",
+              "type": "31",
+              "typeScribe": "beeDatePickerRange2",
+              "placeholder": ["开始", "结束"],
+              "defaultValue": "",
+              "rule": {},
+              "queryIndex": 4
+            }, {
+              "label": "日期时间 (type:40)",
+              "keyName": "date3",
+              "type": "40",
+              "typeScribe": "beeDateTimePicker",
+              "placeholder": "请选择",
+              "defaultValue": "",
+              "rule": {},
+              "queryIndex": 6
+            }, {
+              "label": "日期时间（范围） (type:41)",
+              "keyName": "date4",
+              "type": "41",
+              "typeScribe": "beeDateTimePickerRange",
+              "placeholder": ["开始", "结束"],
+              "defaultValue": "",
+              "rule": {},
+              "queryIndex": 5
+            }],
+            "resultColumnList": [{
+              "bbb": 222
+            }]
+          }
+        }]
+      }
+
+    }
+
+  }
+
+  //香奈儿2
   if ("chanel-OutboundEfficiency" == code) {    
     jsonData = {
       "version":"20190523",
@@ -999,124 +1118,7 @@ router.get('/view/info', async (ctx, next) => {
 
   }
 
-   //香奈儿2
-   if ("chanel-InboundEfficiency" == code) {    
-    jsonData = {
-      "version":"20190523",
-      "code": "chanel-InboundEfficiency",
-      "pageId": "pageId-00004",
-      "canvas": {
-        "zoom-type":0, 
-        "width": 1200,
-        "height": 1200,
-        "background": "#f3f3f3",
-        "formFormat":{
-          "labelPosition":"top",
-          "colSpan":8
-        }
-      },
-      "components": {
-        "table": [{
-          "id": "componentId_00003",
-          "x": 0,
-          "y": 0,
-          "width": 1200,
-          "padding": 10,
-          "exported": true,
-          "showIndexColumn":true,
-          "currentPage":1,
-          "pageSize":10,
-          "showPage":true,
-          "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
-          "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "initUrl": "/epimetheus/api_v1/diy/column/initForView",
-          "resetBtn":[{
-            "text":"重置"
-          }],
-          "searchBtns":[{
-            "text":"查询",
-            "dataUrl": "/epimetheus/api/diy/report/selectData",
-            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
-            "diyCoreCode":"chanel-InboundEfficiency"
-          }],
-          "initForView":{
-            "conditionColumnList": [{
-              "label": "普通输入框 (type:10)",
-              "keyName": "name1",
-              "type": "10",
-              "typeScribe": "beeInput",
-              "placeholder": "请输入",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 0
-            }, {
-              "label": "范围输入框 (type:11)",
-              "keyName": "name2",
-              "type": "11",
-              "typeScribe": "beeInputRange",
-              "placeholder": "请输入",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 1
-            }, {
-              "label": "普通下拉 (type:20)",
-              "keyName": "love",
-              "type": "20",
-              "typeScribe": "beeSelect",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
-              "referenceColumn": "playerNameValue",
-              "referenceDisplayColumn": "playerName",
-              "queryIndex": 2
-            }, {
-              "label": "日期 (type:30)",
-              "keyName": "date1",
-              "type": "30",
-              "typeScribe": "beeDatePicker",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 3
-            }, {
-              "label": "日期（范围） (type:31)",
-              "keyName": "date2",
-              "type": "31",
-              "typeScribe": "beeDatePickerRange2",
-              "placeholder": ["开始", "结束"],
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 4
-            }, {
-              "label": "日期时间 (type:40)",
-              "keyName": "date3",
-              "type": "40",
-              "typeScribe": "beeDateTimePicker",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 6
-            }, {
-              "label": "日期时间（范围） (type:41)",
-              "keyName": "date4",
-              "type": "41",
-              "typeScribe": "beeDateTimePickerRange",
-              "placeholder": ["开始", "结束"],
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 5
-            }],
-            "resultColumnList": [{
-              "bbb": 222
-            }]
-          }
-        }]
-      }
 
-    }
-
-  }
 
   ctx.body = {
     data: {jsonData}
