@@ -7,7 +7,7 @@
           <el-date-picker
             v-model="formInline.date"
             type="datetimerange"
-            range-separator="至"
+            range-separator="-"
             :start-placeholder="startPlaceholder"
             :end-placeholder="endPlaceholder"
             @change="handleChange"

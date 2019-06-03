@@ -890,7 +890,7 @@ router.get('/view/info', async (ctx, next) => {
         "zoom-type":0, 
         "width": 1300,
         "height": 2000,
-        "background": "#f3f3f3",
+        "background": "#dfdfdf",
         "formFormat":{
           "labelPosition":"top",
           "colSpan":8
@@ -1011,7 +1011,7 @@ router.get('/view/info', async (ctx, next) => {
         "zoom-type":0, 
         "width": 1300,
         "height": 2000,
-        "background": "#f3f3f3",
+        "background": "#dfdfdf",
         "formFormat":{
           "labelPosition":"top",
           "colSpan":8
