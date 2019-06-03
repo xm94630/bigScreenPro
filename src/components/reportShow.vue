@@ -194,8 +194,16 @@ export default {
                 
                 //resultColumnList属性，对应的放回searchBtns中
                 for(let k=0;k<searchBtns.length;k++){
+                  
+                  //增加一列
+                  let resultColumnList = values[k].data.data.resultColumnList
+                  resultColumnList = resultColumnList.concat({
+                    "columnName":"ID",   //列的key   
+                    "displayName":"ID",   //列头名字  
+                    "columnIndex":-1,   //列的顺序
+                  })
                   //表头排序
-                  searchBtns[k].resultColumnList=_.orderBy(values[k].data.data.resultColumnList,'columnIndex','asc');
+                  searchBtns[k].resultColumnList=_.orderBy(resultColumnList,'columnIndex','asc');
                 }
             
                 myConfig.initTableConfig = values[0].data.data; //来自接口的配置(用于条件查询)，不同小表都共用它！   
