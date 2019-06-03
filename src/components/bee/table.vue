@@ -41,10 +41,13 @@
               :tableColumnWidth = "myConfig.tableColumnWidth"
 
               :resultColumnList = "resultColumnList"
+              
+              :noDataInfo = "myConfig.noDataInfo"
             />
         </div>
       </div>
     </div>
+ 
 
   </div>
 </template>
@@ -111,6 +114,8 @@ export default {
       currentUseUrl:{},
     
       totalPage:0,
+
+      noDataInfo:this.myConfig.noDataInfo
     };
   },
   components:{
@@ -136,6 +141,7 @@ export default {
     tableDataOK(tableData,searchOptions,code,url,totalPage,resultColumnList){
       console.log('==table数据就绪==')
       console.log(tableData)
+      
 
       //增加一列ID的数据
       for(let i=0;i<tableData.length;i++){

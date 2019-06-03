@@ -1,33 +1,43 @@
 <template>
   <div>
-    <div class="exportBar">
-      <el-button type= "primary" @click="exportFun">{{exportBtnText}}</el-button>
+    <div v-if="false">
+
+      <!-- 导出按钮 -->
+      <div class="exportBar">
+        <el-button type= "primary" @click="exportFun">{{exportBtnText}}</el-button>
+      </div>
+
+      <!-- 表格 -->
+      <el-table :data="myTableData" style="width: 100%">
+        <template v-for="(one,index) in resultColumnList">
+          <el-table-column
+            :key = "index"
+            :prop = one.columnName 
+            :label= one.displayName
+            :width= "tableColumnWidth"
+          >
+          </el-table-column>
+        </template>
+      </el-table>
+
+      <!-- 分页 -->
+      <el-pagination
+        v-if="showPage"
+        background
+        layout = "prev, pager, next"
+        :total = "totalPage"
+        :current-page = "currentPage"
+        :page-size = "pageSize"
+        @current-change = pageChangeFun
+      >
+      </el-pagination>
+
+    </div>    
+    <div v-else>
+      {{noDataInfo2}}
     </div>
 
-    <el-table :data="myTableData" style="width: 100%">
 
-      <template v-for="(one,index) in resultColumnList">
-        <el-table-column
-          :key = "index"
-          :prop = one.columnName 
-          :label= one.displayName
-          :width= "tableColumnWidth"
-        >
-        </el-table-column>
-      </template>
-
-    </el-table>
-
-    <el-pagination
-      v-if="showPage"
-      background
-      layout = "prev, pager, next"
-      :total = "totalPage"
-      :current-page = "currentPage"
-      :page-size = "pageSize"
-      @current-change = pageChangeFun
-    >
-    </el-pagination>
   </div>
 </template>
 
@@ -52,6 +62,7 @@ export default {
     "tableColumnWidth":null,
 
     "resultColumnList":null,   //表头数据
+    "noDataInfo":null,         //没有数据的时候的提示文字
 
   },
   data() {
@@ -61,6 +72,7 @@ export default {
       myCurrentPage:this.currentPage,
 
       "exportBtnText":"Export",
+      "noDataInfo2":this.noDataInfo || "数据不存在"
     };
   },
   watch:{

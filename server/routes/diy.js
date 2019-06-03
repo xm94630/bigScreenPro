@@ -898,6 +898,7 @@ router.get('/view/info', async (ctx, next) => {
       },
       "components": {
         "table": [{
+          "noDataInfo":"Data does not exist.",
           "tableTitle":"我是表的名字哦1",
           "tableColumnWidth":300,
           "id": "componentId_00003",
@@ -1019,6 +1020,7 @@ router.get('/view/info', async (ctx, next) => {
       },
       "components": {
         "table": [{
+          "noDataInfo":"Data does not exist.",
           "tableTitle":"我是表的名字哦2",
           "id": "componentId_001",
           "x": 0,
