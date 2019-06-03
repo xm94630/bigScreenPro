@@ -888,8 +888,8 @@ router.get('/view/info', async (ctx, next) => {
       "pageId": "pageId-00004",
       "canvas": {
         "zoom-type":0, 
-        "width": 1200,
-        "height": 1200,
+        "width": 1300,
+        "height": 2000,
         "background": "#f3f3f3",
         "formFormat":{
           "labelPosition":"top",
@@ -902,7 +902,7 @@ router.get('/view/info', async (ctx, next) => {
           "id": "componentId_00003",
           "x": 0,
           "y": 0,
-          "width": 1200,
+          "width": 1300,
           "padding": 10,
           "exported": true,
           "showIndexColumn":true,
@@ -1008,8 +1008,8 @@ router.get('/view/info', async (ctx, next) => {
       "pageId": "pageId-004",
       "canvas": {
         "zoom-type":0, 
-        "width": 1200,
-        "height": 1200,
+        "width": 1300,
+        "height": 2000,
         "background": "#f3f3f3",
         "formFormat":{
           "labelPosition":"top",
@@ -1021,7 +1021,7 @@ router.get('/view/info', async (ctx, next) => {
           "id": "componentId_001",
           "x": 0,
           "y": 0,
-          "width": 1200,
+          "width": 1300,
           "padding": 10,
           "exported": true,
           "showIndexColumn":true,
