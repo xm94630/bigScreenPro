@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="false">
+    <div v-if="tableData.length">
 
       <!-- 导出按钮 -->
       <div class="exportBar">
