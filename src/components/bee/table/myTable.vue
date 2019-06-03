@@ -113,12 +113,22 @@ export default {
         body.pageSize = this.pageSize
         //根据点击分页，更新数据
         axios.post(this.currentUseUrl,body).then(response => {
-          this.myTableData =  response.data.data.recordList;
+          let myTableData = response.data.data.recordList;
+          //增加一列ID的数据
+          for(let i=0;i<myTableData.length;i++){
+            myTableData[i].ID = i+1;
+          }
+          this.myTableData =  myTableData;
         });
       }else{
         //根据点击分页，更新数据
         axios.post(this.currentUseUrl,body).then(response => {
-          this.myTableData =  response.data.data;
+          let myTableData = response.data.data;
+          //增加一列ID的数据
+          for(let i=0;i<myTableData.length;i++){
+            myTableData[i].ID = i+1;
+          }
+          this.myTableData =  myTableData;
         });
       }
 
