@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="exportBar">
-      <el-button type= "primary" @click="exportFun">导出</el-button>
+      <el-button type= "primary" @click="exportFun">{{exportBtnText}}</el-button>
     </div>
 
     <el-table :data="myTableData" style="width: 100%">
@@ -52,12 +52,15 @@ export default {
     "tableColumnWidth":null,
 
     "resultColumnList":null,   //表头数据
+
   },
   data() {
     return {
       store:store,
       myTableData:this.tableData,
       myCurrentPage:this.currentPage,
+
+      "exportBtnText":"Export",
     };
   },
   watch:{
