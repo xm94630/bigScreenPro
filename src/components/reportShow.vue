@@ -85,6 +85,16 @@ export default {
       
       if(this.reportConfig){
 
+
+        let lang = this.reportConfig.lang;
+        if(lang){
+          import('element-ui/lib/locale/lang/'+lang).then((lang)=>{
+            import('element-ui/lib/locale').then((locale)=>{
+              locale.default.use(lang.default)
+            })
+          })
+        }
+
         //获取画布的缩放形式
         const zoomType = this.reportConfig.canvas['zoom-type'];
         const w = this.reportConfig.canvas['width'];

@@ -886,6 +886,7 @@ router.get('/view/info', async (ctx, next) => {
       "version":"20190523",
       "code": "chanel-InboundEfficiency",
       "pageId": "pageId-00004",
+      "lang":"en",
       "canvas": {
         "zoom-type":0, 
         "width": 1300,
@@ -1008,6 +1009,7 @@ router.get('/view/info', async (ctx, next) => {
       "version":"20190523",
       "code": "chanel-OutboundEfficiency",
       "pageId": "pageId-004",
+      "lang":"en",
       "canvas": {
         "zoom-type":0, 
         "width": 1300,
