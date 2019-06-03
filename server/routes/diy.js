@@ -898,6 +898,7 @@ router.get('/view/info', async (ctx, next) => {
       },
       "components": {
         "table": [{
+          "tableColumnWidth":300,
           "id": "componentId_00003",
           "x": 0,
           "y": 0,
