@@ -18,7 +18,7 @@
 import axios from "axios";
 import reportShow from "../components/reportShow.vue";
 import reportContion from "../components/reportCondition.vue";
-import {baseUrl,path} from '@/apiUrl.config';
+import {baseUrl,path} from '@/bee.config';
 import store from '@/src/store';
 
 

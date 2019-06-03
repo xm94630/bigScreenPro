@@ -10,7 +10,7 @@
 <script>
 import Vue from "vue";
 import axios from "axios";
-import {baseUrl} from '@/apiUrl.config';
+import {baseUrl} from '@/bee.config';
 import _ from "lodash";
 import store from '@/src/store';
 

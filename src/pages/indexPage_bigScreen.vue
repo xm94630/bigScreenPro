@@ -16,7 +16,7 @@
 
 <script>
 import axios from "axios";
-import {baseUrl,path} from '@/apiUrl.config';
+import {baseUrl,path} from '@/bee.config';
 import addBtn from "../components/addBtn.vue";
 
 
