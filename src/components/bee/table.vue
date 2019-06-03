@@ -2,8 +2,10 @@
   <div class="beeTable" :style="beeTableStyle">
     <div class="top">
       <div class="topCon">
+        <div class="foldBtn" @click="foldBtnFun">{{foldBtnText}}</div>
         <!-- 条件查询部分 -->
-        <searchCondition 
+        <searchCondition
+        v-show="isShow" 
         v-if="hackReset"
         :items="items" 
         :searchBtns="myConfig.searchBtns" 
@@ -72,6 +74,9 @@ export default {
   data() {
     return {
 
+      foldBtnText:"-",
+      isShow:true,
+
       resultColumnList:[], //注意，默认值还是要的，要不然就会报错。
 
       //重置用
@@ -108,6 +113,15 @@ export default {
     myTable,
   },
   methods:{
+    foldBtnFun(){
+      if(this.foldBtnText=='+'){
+        this.foldBtnText='-';
+        this.isShow = true;
+      }else{
+        this.foldBtnText='+'
+        this.isShow = false;
+      }
+    },
     resetFun(){      
       this.hackReset = false;
       this.$nextTick(() => {
@@ -356,11 +370,26 @@ export default {
     background: #fff;
     padding: 20px;
     .topCon{
+      position: relative;
       box-sizing: border-box;
       width:100%;
       background: #fff;
       padding: 20px;
       border: solid 1px #aaa;
+        .foldBtn{
+          z-index: 33;
+          color:#fff;
+          font-size: 40px;
+          text-align: center;
+          line-height: 30px;
+          position:absolute;
+          top:0px;
+          right:0px;
+          width: 40px;
+          height:40px;
+          background: #409EFF;
+          cursor:pointer;
+        }
     }
   }
   .bottom{

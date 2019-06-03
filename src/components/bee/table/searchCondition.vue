@@ -1,7 +1,7 @@
 <template>
 
   <!-- 二维表组件 条件搜索 -->
-  <div class="conditionBox">
+  <div class="conditionBox">   
     <el-row :gutter="10">
       <component
       v-for="(item, index) in items"
@@ -14,6 +14,7 @@
       @sonChange = "sonChangeHandle"
       ></component>
     </el-row>
+
     <div class="funBox">
 
       <template v-for="one in resetBtn">
@@ -192,6 +193,7 @@ export default {
 
 <style lang="scss">
 .conditionBox{
+  position: relative;
   .funBox{
     text-align:right; 
   }
