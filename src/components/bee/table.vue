@@ -82,9 +82,7 @@ export default {
   data() {
     return {
       tableTitle:"xxx",
-
-      foldBtnText:"-",
-      isShow:true,
+      isShow:false,
 
       resultColumnList:[], //注意，默认值还是要的，要不然就会报错。
 
@@ -128,11 +126,9 @@ export default {
   },
   methods:{
     foldBtnFun(){
-      if(this.foldBtnText=='+'){
-        this.foldBtnText='-';
+      if(this.foldBtnText=='-'){
         this.isShow = true;
       }else{
-        this.foldBtnText='+'
         this.isShow = false;
       }
     },
@@ -374,7 +370,16 @@ export default {
       str += "padding:"+this.myConfig['padding']+";"
       str += "background:"+this.myConfig['background']+";"
       return str;
+    },
+    foldBtnText(){
+      if(this.isShow){
+        return "+"
+      }else{
+        return "-"
+      }
+
     }
+
   },
 
 };
