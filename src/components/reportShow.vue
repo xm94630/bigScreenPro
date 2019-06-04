@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <template v-if="reportConfig==null">数据有误，无法渲染</template>
+  <div class="reportShow">
+    <!-- <template v-if="reportConfig==null">数据有误，无法渲染</template> -->
+    <template v-if="reportConfig==null"><div class="loadingCanvas">Loading...</div></template>
     <template v-else>
       <div class="myReportCanvas" :style="canvasStyle"></div>
     </template>
@@ -457,10 +458,21 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
 .myReportCanvas {
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
 }
+
+.reportShow{
+  height:100%;
+  .loadingCanvas{
+    height:100%;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+  }
+}
+
 </style>

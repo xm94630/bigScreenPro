@@ -117,4 +117,7 @@ export default {
 </script>
 
 <style scoped>
+.myReportBox{
+  height:100%;
+}
 </style>
