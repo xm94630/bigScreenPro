@@ -91,23 +91,26 @@ export default {
       //通过子组件发送事件，在本组件中，控制v-if来显示隐藏的变化，从而完成组件的重新加载！1
       hackReset:true,
 
-      items:[{
-        span: 12,
-        label: "配置有点问题哦",
-        keyName: '这个是用来绑定的',
-        type: 'beeInput',
-        placeholder: '请输入',
-        value: '',
-        rule: {},
-      },{
-        span: 12,
-        label: "警告",
-        keyName: '这个是用来绑定的',
-        type: 'beeDatePicker',
-        placeholder: '日期选择',
-        value: '',
-        rule: {},
-      },],
+      items:[
+        // 这个部分时间长了可以删除，因为因为版本的时候，会出现闪现，体验可不好
+        // {
+        //   span: 12,
+        //   label: "配置有点问题哦",
+        //   keyName: '这个是用来绑定的',
+        //   type: 'beeInput',
+        //   placeholder: '请输入',
+        //   value: '',
+        //   rule: {},
+        // },{
+        //   span: 12,
+        //   label: "警告",
+        //   keyName: '这个是用来绑定的',
+        //   type: 'beeDatePicker',
+        //   placeholder: '日期选择',
+        //   value: '',
+        //   rule: {},
+        // },
+      ],
       tableData:[],
       currentSearchOptions:{},
       currentUseCode:{},
