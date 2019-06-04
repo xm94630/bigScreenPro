@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="myTableBox">
     <div v-if="tableData.length">
 
       <!-- 导出按钮 -->
@@ -162,8 +162,14 @@ export default {
 };
 </script>
 
+
 <style lang="scss">
 .exportBar{
   text-align: right;
+}
+.myTableBox{
+  .el-table .cell{
+    word-break: break-word;
+  }
 }
 </style>
