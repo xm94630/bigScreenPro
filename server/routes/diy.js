@@ -899,6 +899,7 @@ router.get('/view/info', async (ctx, next) => {
       },
       "components": {
         "table": [{
+          "foldSearchPanel":true,
           "autoSearch":true,
           "noDataInfo":"No data",
           "tableTitle":"我是表的名字哦1",
@@ -1023,6 +1024,7 @@ router.get('/view/info', async (ctx, next) => {
       },
       "components": {
         "table": [{
+          "foldSearchPanel":true,
           "autoSearch":true,
           "noDataInfo":"No data",
           "tableTitle":"我是表的名字哦2",

@@ -15,6 +15,7 @@
 	},
 	"components": {
 		"table": [{
+			"foldSearchPanel":true,
 			"autoSearch":true,
 			"noDataInfo":"Data does not exist.",
 			"tableTitle":"Outbound Efficiency Report",

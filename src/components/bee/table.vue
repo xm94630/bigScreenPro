@@ -82,7 +82,7 @@ export default {
   data() {
     return {
       tableTitle:"xxx",
-      isShow:false,
+      isShow:!this.myConfig.foldSearchPanel,
 
       resultColumnList:[], //注意，默认值还是要的，要不然就会报错。
 
