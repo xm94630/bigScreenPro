@@ -126,7 +126,7 @@ export default {
   },
   methods:{
     foldBtnFun(){
-      if(this.foldBtnText=='-'){
+      if(this.foldBtnText=='+'){
         this.isShow = true;
       }else{
         this.isShow = false;
@@ -373,9 +373,9 @@ export default {
     },
     foldBtnText(){
       if(this.isShow){
-        return "+"
-      }else{
         return "-"
+      }else{
+        return "+"
       }
 
     }
