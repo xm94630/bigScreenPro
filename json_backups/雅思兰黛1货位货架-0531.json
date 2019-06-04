@@ -1,0 +1,109 @@
+{
+	"version":"20190603",
+	"code": "report-InventoryVolume",
+	"pageId": "pageId-00004",
+	"canvas": {
+		"zoom-type": 0,
+		"width": 1200,
+		"height": 1200,
+		"background": "#d4e157",
+		"formFormat": {
+			"labelPosition": "top",
+			"colSpan": 8
+		}
+	},
+	"components": {
+		"table": [{
+			"id": "componentId_00003",
+			"x": 0,
+			"y": 50,
+			"width": 1200,
+			"height": 550,
+			"padding": 10,
+			"exported": true,
+			"showIndexColumn": true,
+			"currentPage": 1,
+			"pageSize": 10,
+			"showPage": true,
+			"initTableUrl": "/epimetheus/api_v1/diy/column/initForView",
+			"dataUrl": "/epimetheus/api/diy/report/selectData",
+			"initUrl": "/epimetheus/api_v1/diy/column/initForView",
+			"searchBtns": [{
+				"text": "按货架查询",
+				"dataUrl": "/epimetheus/api/diy/report/selectData",
+				"initUrl": "/epimetheus/api_v1/diy/column/initForView",
+				"diyCoreCode": "InventoryReportByShelf"
+			}, {
+				"text": "按货位查询",
+				"dataUrl": "/epimetheus/api/diy/report/selectData",
+				"initUrl": "/epimetheus/api_v1/diy/column/initForView",
+				"diyCoreCode": "InventoryReportByBin"
+			}],
+			"initForView": {
+				"conditionColumnList": [
+
+					{
+						"label": "shelf",
+						"keyName": "shelf_code",
+						"type": "21",
+						"typeScribe": "beeSelectSearch",
+						"placeholder": "",
+						"defaultValue": "",
+						"rule": {},
+						"referenceUrl": "http://172.16.41.120/beetle/api_v1/repository/queryShelfsByShelfCode?shelfCode=",
+						"referenceColumn": "shelfCode",
+						"referenceDisplayColumn": "shelfCode",
+						"queryIndex": 1
+					},
+					{
+						"label": "bin",
+						"keyName": "bin_code",
+						"type": "21",
+						"typeScribe": "beeSelectSearch",
+						"placeholder": "",
+						"defaultValue": "",
+						"rule": {},
+						"referenceUrl": "http://172.16.41.120/beetle/api_v1/repository/queryBinsByBinCode?binCode=",
+						"referenceColumn": "binCode",
+						"referenceDisplayColumn": "binCode",
+						"queryIndex": 2
+					},
+					{
+						"label": "Owner",
+						"keyName": "customer_code",
+						"type": "20",
+						"typeScribe": "beeSelect",
+						"placeholder": "",
+						"defaultValue": "",
+						"rule": {},
+						"referenceUrl": "http://172.16.41.120/beetle/api_v1/customer/queryCsrNameAndCode",
+						"referenceColumn": "customerCode",
+						"referenceDisplayColumn": "customerName",
+						"queryIndex": 2
+					}
+				],
+				"resultColumnList": [{
+					"bbb": 222
+				}]
+			}
+
+		}],
+		"textBar": [{
+			"id": "componentId_00002",
+			"text": "库房总面积：10000 平米 | 总使用体积：5000平米 | 库房利用率：50%",
+			"x": 0,
+			"y": 0,
+			"width": 1200,
+			"height": 40,
+			"padding": 5,
+			"font-size": 20,
+			"color": "yellow",
+			"border": "none",
+			"background": "green",
+			"text-align": "left",
+			"dataUrl": "/epimetheus/api/diy/report/selectData",
+			"diyCoreCode": "InventoryReportByWarehouse"
+		}]
+	}
+
+}

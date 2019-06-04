@@ -1,0 +1,112 @@
+{
+	"version": "20190603",
+	"code": "chanel-OutboundEfficiency",
+	"pageId": "pageId-02",
+	"lang":"en",
+	"canvas": {
+		"zoom-type": 0,
+		"width": 1300,
+		"height": 2000,
+		"background": "#dfdfdf",
+		"formFormat": {
+			"labelPosition": "top",
+			"colSpan": 8
+		}
+	},
+	"components": {
+		"table": [{
+			"noDataInfo":"Data does not exist.",
+			"tableTitle":"Outbound Efficiency Report",
+			"tableColumnWidth":100,
+			"id": "componentId_001",
+			"x": 0,
+			"y": 0,
+			"width": 1300,
+			"padding": 10,
+			"exported": true,
+			"showIndexColumn": true,
+			"currentPage": 1,
+			"pageSize": 10,
+			"showPage": true,
+			"initTableUrl": "/epimetheus/api_v1/diy/column/initForView",
+			"dataUrl": "/epimetheus/api/diy/report/selectData",
+			"initUrl": "/epimetheus/api_v1/diy/column/initForView",
+			"resetBtn": [{
+				"text": "Reset"
+			}],
+			"searchBtns": [{
+				"text": "Search",
+				"dataUrl": "/epimetheus/api/diy/report/selectData",
+				"initUrl": "/epimetheus/api_v1/diy/column/initForView",
+				"diyCoreCode": "chanel-OutboundEfficiency"
+			}],
+			"initForView": {
+				"conditionColumnList": [
+					{
+						"label": "Owner",
+						"keyName": "owner_code",
+						"type": "20",
+						"typeScribe": "beeSelect",
+						"placeholder": "Please choose",
+						"defaultValue": "",
+						"rule": {},
+						"referenceUrl": "http://172.16.42.3:8080/beetle/api_v1/customer/queryCsrNameAndCode",
+						"referenceColumn": "customerCode",
+						"referenceDisplayColumn": "customerName",
+						"queryIndex": 0
+					},
+					{
+						"label": "Outbound time",
+						"keyName": "completed_time",
+						"type": "41",
+						"typeScribe": "DateTimePickerRange",
+						"placeholder": ["start", "end"],
+						"defaultValue": "",
+						"rule": {},
+						"queryIndex": 1
+					},
+					{
+						"label": "Workstation",
+						"keyName": "workstation_no",
+						"type": "20",
+						"typeScribe": "beeSelect",
+						"placeholder": "Please choose",
+						"defaultValue": "",
+						"rule": {},
+						"referenceUrl": "http://172.16.42.3:8080/beetle/api_v1/dict/queryDetails?objectCode=workstation_ids",
+						"referenceColumn": "fieldCode",
+						"referenceDisplayColumn": "",
+						"queryIndex": 2
+					},
+					{
+						"label": "Type",
+						"keyName": "order_type_code",
+						"type": "20",
+						"typeScribe": "beeSelect",
+						"placeholder": "Please choose",
+						"defaultValue": "",
+						"rule": {},
+						"referenceUrl": "http://172.16.42.3:8080/beetle/api_v1/dict/queryDetails?objectCode=pick_order_type",
+						"referenceColumn": "fieldCode",
+						"referenceDisplayColumn": "description",
+						"queryIndex": 3
+					},
+					{
+						"label": "Operater",
+						"keyName": "picker",
+						"type": "10",
+						"typeScribe": "beeInput",
+						"placeholder": "Please enter",
+						"defaultValue": "",
+						"rule": {},
+						"queryIndex": 4
+					}
+				],
+				"resultColumnList": [{
+					"bbb": 222
+				}]
+			}
+		}]
+	}
+
+}

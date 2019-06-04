@@ -1,0 +1,125 @@
+{
+	"version":"20190603",
+	"code": "report-SkuHot",
+	"pageId": "pageId-00004",
+	"canvas": {
+		"zoom-type": 0,
+		"width": 1200,
+		"height": 1200,
+		"background": "#d4e157",
+		"formFormat": {
+			"labelPosition": "top",
+			"colSpan": 8
+		}
+	},
+	"components": {
+		"table": [{
+			"id": "componentId_00003",
+			"x": 0,
+			"y": 0,
+			"width": 1200,
+			"height": 550,
+			"padding": 10,
+			"exported": true,
+			"showIndexColumn": true,
+			"currentPage": 1,
+			"pageSize": 10,
+			"showPage": true,
+			"initTableUrl": "/epimetheus/api_v1/diy/column/initForView",
+			"dataUrl": "/epimetheus/api/diy/report/selectData",
+			"initUrl": "/epimetheus/api_v1/diy/column/initForView",
+			"searchBtns": [{
+				"text": "查询",
+				"dataUrl": "/epimetheus/api/diy/report/selectData",
+				"initUrl": "/epimetheus/api_v1/diy/column/initForView",
+				"diyCoreCode": "SkuHot"
+			}],
+			"initForView": {
+				"conditionColumnList": [
+
+					{
+						"label": "Owner",
+						"keyName": "customerCode",
+						"type": "20",
+						"typeScribe": "beeSelect",
+						"placeholder": "请选择",
+						"defaultValue": "",
+						"rule": {},
+						"referenceUrl": "http://172.16.41.120/beetle/api_v1/customer/queryCsrNameAndCode",
+						"referenceColumn": "customerCode",
+						"referenceDisplayColumn": "customerName",
+						"queryIndex": 1
+					},
+					{
+						"label": "Outbound(Date)",
+						"keyName": "completedTime",
+						"type": "41",
+						"typeScribe": "beeDateTimePickerRange",
+						"placeholder": ["-", "-"],
+						"defaultValue": "",
+						"rule": {},
+						"queryIndex": 2
+					},
+					{
+						"label": "OutBatch",
+						"keyName": "outBatchCode",
+						"type": "10",
+						"typeScribe": "beeInput",
+						"placeholder": "",
+						"defaultValue": "",
+						"rule": {},
+						"queryIndex": 3
+					},
+					{
+						"label": "OutBatch",
+						"keyName": "outBatchCode",
+						"type": "10",
+						"typeScribe": "beeInput",
+						"placeholder": "",
+						"defaultValue": "",
+						"rule": {},
+						"queryIndex": 4
+					},
+					{
+						"label": "Bin",
+						"keyName": "binCode",
+						"type": "21",
+						"typeScribe": "beeSelectSearch",
+						"placeholder": "",
+						"defaultValue": "",
+						"rule": {},
+						"referenceUrl": "http://172.16.41.120/beetle/api_v1/repository/queryBinsByBinCode?binCode=",
+						"referenceColumn": "binCode",
+						"referenceDisplayColumn": "",
+						"queryIndex": 5
+					},
+					{
+						"label": "Pikcing Frequency(Total)",
+						"keyName": "HitTimes",
+						"type": "11",
+						"typeScribe": "beeInputRange",
+						"placeholder": "",
+						"defaultValue": "",
+						"rule": {},
+						"queryIndex": 6
+					},
+					{
+						"label": "Pikcing Quantity(Total)",
+						"keyName": "HitAmount",
+						"type": "11",
+						"typeScribe": "beeInputRange",
+						"placeholder": "",
+						"defaultValue": "",
+						"rule": {},
+						"queryIndex": 7
+					}
+				],
+				"resultColumnList": [{
+					"bbb": 222
+				}]
+			}
+
+		}]
+	}
+
+}
