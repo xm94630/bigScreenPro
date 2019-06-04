@@ -15,7 +15,7 @@
 	},
 	"components": {
 		"table": [{
-			"foldSearchPanel":true,
+			"foldSearchPanel":false,
 			"autoSearch":true,
 			"noDataInfo":"Data does not exist.",
 			"tableTitle":"Inbound Efficiency Report",
