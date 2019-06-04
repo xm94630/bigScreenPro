@@ -67,6 +67,7 @@ export default {
     currentPage:null,
     pageSize:null,
     showPage:null,
+    autoSearch:null, //默认进来是查询的
   },
   data() {
     return {
@@ -168,9 +169,11 @@ export default {
     //console.log(this.$refs['searchBrn'][0])
     
     //延时处理，等查询条件完成渲染。再模拟点击
-    // setTimeout(()=>{
-    //   this.$refs['searchBrn'][0].$el.click();
-    // },1000)
+    if(this.autoSearch){
+      setTimeout(()=>{
+        this.$refs['searchBrn'][0].$el.click();
+      },1000)
+    }
 
     setTimeout(()=>{
       this.resetBtnDisabled = false;

@@ -17,6 +17,7 @@
         :currentPage="myConfig.currentPage"
         :pageSize="myConfig.pageSize"
         :showPage="myConfig.showPage"
+        :autoSearch="myConfig.autoSearch"
         @reset = "resetFun"
         @tableDataOK = "tableDataOK"
         />

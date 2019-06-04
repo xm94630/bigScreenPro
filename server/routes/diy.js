@@ -899,6 +899,7 @@ router.get('/view/info', async (ctx, next) => {
       },
       "components": {
         "table": [{
+          "autoSearch":true,
           "noDataInfo":"No data",
           "tableTitle":"我是表的名字哦1",
           "tableColumnWidth":300,
@@ -1022,6 +1023,7 @@ router.get('/view/info', async (ctx, next) => {
       },
       "components": {
         "table": [{
+          "autoSearch":true,
           "noDataInfo":"No data",
           "tableTitle":"我是表的名字哦2",
           "id": "componentId_001",
