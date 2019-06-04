@@ -15,6 +15,7 @@
 	},
 	"components": {
 		"table": [{
+			"autoSearch":true,
 			"noDataInfo":"Data does not exist.",
 			"tableTitle":"Inbound Efficiency Report",
 			"tableColumnWidth":100,
