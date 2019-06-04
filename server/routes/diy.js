@@ -1024,7 +1024,7 @@ router.get('/view/info', async (ctx, next) => {
       },
       "components": {
         "table": [{
-          "foldSearchPanel":false,
+          "foldSearchPanel":true,
           "autoSearch":true,
           "noDataInfo":"No data",
           "tableTitle":"我是表的名字哦2",
