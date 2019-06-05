@@ -1,6 +1,6 @@
 {
   "refreshTime":"600000",
-  "version":"20190529",
+  "version":"20190604",
   "globalCondition":[{
     "dataType":997788,
     "keyName":["startTime","endTime"],
