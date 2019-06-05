@@ -60,10 +60,6 @@ router.get('/view/info', async (ctx, next) => {
           "initForView":{
             "conditionColumnList": [
             {
-              "type": "0",
-              "typeScribe": "占位，什么也不渲染",
-              "queryIndex": 0
-            },{
               "label": "普通输入框 (type:10)",
               "keyName": "name1",
               "type": "10",
@@ -71,7 +67,7 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": "请输入",
               "defaultValue": "",
               "rule": {},
-              "queryIndex": 1
+              "queryIndex": 0
             }, {
               "label": "范围输入框 (type:11)",
               "keyName": "name2",
@@ -80,8 +76,9 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": "请输入",
               "defaultValue": "",
               "rule": {},
-              "queryIndex": 2
-            }, {
+              "queryIndex": 1
+            }, 
+            {
               "label": "普通下拉 (type:20)",
               "keyName": "love",
               "type": "20",
@@ -92,8 +89,9 @@ router.get('/view/info', async (ctx, next) => {
               "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
               "referenceColumn": "playerNameValue",
               "referenceDisplayColumn": "playerName",
-              "queryIndex": 3
-            }, {
+              "queryIndex": 2
+            }, 
+            {
               "label": "下拉搜索 (type:21)",
               "keyName": "love2",
               "type": "21",
@@ -104,8 +102,14 @@ router.get('/view/info', async (ctx, next) => {
               "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
               "referenceColumn": "playerNameValue",
               "referenceDisplayColumn": "playerName",
+              "queryIndex": 3
+            },
+            {
+              "type": "0",
+              "typeScribe": "占位，什么也不渲染",
               "queryIndex": 4
-            }, {
+            },
+             {
               "label": "日期 (type:30)",
               "keyName": "date1",
               "type": "30",

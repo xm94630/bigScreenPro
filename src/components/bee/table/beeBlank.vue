@@ -1,6 +1,16 @@
 <template>
     <el-col :span="colSpan">
-      <div class="blackBox">占位栏</div>
+      <el-form 
+      class="demo-form-inline blackBox" 
+      :label-position="labelPosition" 
+      :inline="true"
+      :model="formInline"
+      label-width="80px"
+      >
+        <el-form-item label="标签名字">
+          <el-input v-model="formInline.myInput" placeholder=""></el-input>
+        </el-form-item>
+      </el-form>
     </el-col>
 </template>
 
@@ -14,7 +24,9 @@ export default {
   },
   data() {
     return {
-      
+      formInline:{
+        myInput:''
+      }
     }
   },
   watch:{
