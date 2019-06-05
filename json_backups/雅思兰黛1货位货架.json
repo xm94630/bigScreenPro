@@ -5,8 +5,8 @@
 	"lang":"en",
 	"canvas": {
 		"zoom-type": 0,
-		"width": 1200,
-		"height": 1200,
+		"width": 1300,
+		"height": 1300,
 		"background": "#fff",
 		"formFormat": {
 			"labelPosition": "top",
@@ -18,7 +18,7 @@
 			"id": "componentId_00003",
 			"x": 0,
 			"y": 50,
-			"width": 1200,
+			"width": 1300,
 			"height": 550,
 			"padding": 10,
 			"exported": true,
@@ -94,7 +94,7 @@
 			"text": "库房总面积：10000 平米 | 总使用体积：5000平米 | 库房利用率：50%",
 			"x": 0,
 			"y": 0,
-			"width": 1200,
+			"width": 1300,
 			"height": 40,
 			"padding": 5,
 			"font-size": 20,

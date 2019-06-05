@@ -5,8 +5,8 @@
 	"lang":"en",
 	"canvas": {
 		"zoom-type": 0,
-		"width": 1200,
-		"height": 1200,
+		"width": 1300,
+		"height": 1300,
 		"background": "#fff",
 		"formFormat": {
 			"labelPosition": "top",
@@ -18,7 +18,7 @@
 			"id": "componentId_00003",
 			"x": 0,
 			"y": 0,
-			"width": 1200,
+			"width": 1300,
 			"height": 550,
 			"padding": 10,
 			"exported": true,
