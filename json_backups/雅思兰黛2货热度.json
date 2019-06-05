@@ -61,8 +61,8 @@
 						"queryIndex": 2
 					},
 					{
-						"label": "OutBatch",
-						"keyName": "outBatchCode",
+						"label": "SKU",
+						"keyName": "skuCode",
 						"type": "10",
 						"typeScribe": "beeInput",
 						"placeholder": "",
