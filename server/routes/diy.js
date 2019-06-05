@@ -29,6 +29,7 @@ router.get('/view/info', async (ctx, next) => {
       },
       "components": {
         "table": [{
+          "noDataInfo":"No data",
           "id": "componentId_00003",
           "x": 0,
           "y": 50,
@@ -189,6 +190,7 @@ router.get('/view/info', async (ctx, next) => {
       },
       "components": {
         "table": [{
+          "noDataInfo":"No data",
           "id": "componentId_00003",
           "x": 0,
           "y": 0,

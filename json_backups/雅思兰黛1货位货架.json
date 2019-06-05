@@ -2,6 +2,7 @@
 	"version":"20190605",
 	"code": "report-InventoryVolume",
 	"pageId": "pageId-00004",
+	"lang":"en",
 	"canvas": {
 		"zoom-type": 0,
 		"width": 1200,

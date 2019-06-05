@@ -2,6 +2,7 @@
 	"version":"20190605",
 	"code": "report-SkuHot",
 	"pageId": "pageId-00004",
+	"lang":"en",
 	"canvas": {
 		"zoom-type": 0,
 		"width": 1200,
@@ -42,7 +43,7 @@
 						"keyName": "customerCode",
 						"type": "20",
 						"typeScribe": "beeSelect",
-						"placeholder": "请选择",
+						"placeholder": "",
 						"defaultValue": "",
 						"rule": {},
 						"referenceUrl": "http://172.16.41.120/beetle/api_v1/customer/queryCsrNameAndCode",
@@ -55,7 +56,7 @@
 						"keyName": "completedTime",
 						"type": "41",
 						"typeScribe": "beeDateTimePickerRange",
-						"placeholder": ["-", "-"],
+						"placeholder": ["", ""],
 						"defaultValue": "",
 						"rule": {},
 						"queryIndex": 2
@@ -68,7 +69,7 @@
 						"placeholder": "",
 						"defaultValue": "",
 						"rule": {},
-						"queryIndex": 3
+						"queryIndex": 4
 					},
 					{
 						"label": "OutBatch",
@@ -78,7 +79,7 @@
 						"placeholder": "",
 						"defaultValue": "",
 						"rule": {},
-						"queryIndex": 4
+						"queryIndex": 5
 					},
 					{
 						"label": "Bin",
@@ -91,7 +92,7 @@
 						"referenceUrl": "http://172.16.41.120/beetle/api_v1/repository/queryBinsByBinCode?binCode=",
 						"referenceColumn": "binCode",
 						"referenceDisplayColumn": "",
-						"queryIndex": 5
+						"queryIndex": 6
 					},
 					{
 						"label": "Pikcing Frequency(Total)",
@@ -101,7 +102,7 @@
 						"placeholder": "",
 						"defaultValue": "",
 						"rule": {},
-						"queryIndex": 6
+						"queryIndex": 7
 					},
 					{
 						"label": "Pikcing Quantity(Total)",
@@ -111,7 +112,7 @@
 						"placeholder": "",
 						"defaultValue": "",
 						"rule": {},
-						"queryIndex": 7
+						"queryIndex": 8
 					}
 				],
 				"resultColumnList": [{
