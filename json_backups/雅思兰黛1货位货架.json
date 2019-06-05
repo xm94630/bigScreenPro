@@ -1,12 +1,12 @@
 {
-	"version":"20190603",
+	"version":"20190605",
 	"code": "report-InventoryVolume",
 	"pageId": "pageId-00004",
 	"canvas": {
 		"zoom-type": 0,
 		"width": 1200,
 		"height": 1200,
-		"background": "#d4e157",
+		"background": "#fff",
 		"formFormat": {
 			"labelPosition": "top",
 			"colSpan": 8
@@ -99,7 +99,7 @@
 			"font-size": 20,
 			"color": "yellow",
 			"border": "none",
-			"background": "green",
+			"background": "#409EFF",
 			"text-align": "left",
 			"dataUrl": "/epimetheus/api/diy/report/selectData",
 			"diyCoreCode": "InventoryReportByWarehouse"

@@ -156,7 +156,7 @@ router.get('/view/info', async (ctx, next) => {
           "font-size": 20,
           "color": "yellow",
           "border": "none",
-          "background": "green",
+          "background": "#409EFF",
           "text-align": "left",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"InventoryReportByWarehouse"

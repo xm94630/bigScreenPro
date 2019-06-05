@@ -1,12 +1,12 @@
 {
-	"version":"20190603",
+	"version":"20190605",
 	"code": "report-SkuHot",
 	"pageId": "pageId-00004",
 	"canvas": {
 		"zoom-type": 0,
 		"width": 1200,
 		"height": 1200,
-		"background": "#d4e157",
+		"background": "#fff",
 		"formFormat": {
 			"labelPosition": "top",
 			"colSpan": 8
