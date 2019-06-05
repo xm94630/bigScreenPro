@@ -57,7 +57,12 @@ router.get('/view/info', async (ctx, next) => {
             "diyCoreCode":"InventoryReportByBin"
           }],
           "initForView":{
-            "conditionColumnList": [{
+            "conditionColumnList": [
+            {
+              "type": "0",
+              "typeScribe": "占位，什么也不渲染",
+              "queryIndex": 0
+            },{
               "label": "普通输入框 (type:10)",
               "keyName": "name1",
               "type": "10",
@@ -65,7 +70,7 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": "请输入",
               "defaultValue": "",
               "rule": {},
-              "queryIndex": 0
+              "queryIndex": 1
             }, {
               "label": "范围输入框 (type:11)",
               "keyName": "name2",
@@ -74,7 +79,7 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": "请输入",
               "defaultValue": "",
               "rule": {},
-              "queryIndex": 1
+              "queryIndex": 2
             }, {
               "label": "普通下拉 (type:20)",
               "keyName": "love",
@@ -86,7 +91,7 @@ router.get('/view/info', async (ctx, next) => {
               "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
               "referenceColumn": "playerNameValue",
               "referenceDisplayColumn": "playerName",
-              "queryIndex": 2
+              "queryIndex": 3
             }, {
               "label": "下拉搜索 (type:21)",
               "keyName": "love2",
@@ -98,7 +103,7 @@ router.get('/view/info', async (ctx, next) => {
               "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
               "referenceColumn": "playerNameValue",
               "referenceDisplayColumn": "playerName",
-              "queryIndex": 2
+              "queryIndex": 4
             }, {
               "label": "日期 (type:30)",
               "keyName": "date1",
@@ -107,7 +112,7 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": "请选择",
               "defaultValue": "",
               "rule": {},
-              "queryIndex": 3
+              "queryIndex": 5
             }, {
               "label": "日期（范围） (type:31)",
               "keyName": "date2",
@@ -116,7 +121,7 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": ["开始", "结束"],
               "defaultValue": "",
               "rule": {},
-              "queryIndex": 4
+              "queryIndex": 6
             }, {
               "label": "日期时间 (type:40)",
               "keyName": "date3",
@@ -125,7 +130,7 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": "请选择",
               "defaultValue": "",
               "rule": {},
-              "queryIndex": 6
+              "queryIndex": 7
             }, {
               "label": "日期时间（范围） (type:41)",
               "keyName": "date4",
@@ -134,7 +139,7 @@ router.get('/view/info', async (ctx, next) => {
               "placeholder": ["开始", "结束"],
               "defaultValue": "",
               "rule": {},
-              "queryIndex": 5
+              "queryIndex": 8
             }],
             "resultColumnList": [{
               "bbb": 222

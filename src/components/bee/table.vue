@@ -318,6 +318,7 @@ export default {
         }
 
         let map = {
+          "0":"beeBlank",
           "10":"beeInput",
           "11":"beeInputRange",
           "20":"beeSelect",

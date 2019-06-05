@@ -45,6 +45,7 @@
 <script>
 import axios from "axios";
 
+import beeBlank from './beeBlank.vue';
 import beeInput from './beeInput.vue';
 import beeInputRange from './beeInputRange.vue';
 import beeDatePicker from './beeDatePicker.vue';
@@ -154,6 +155,7 @@ export default {
   computed: {
   },
   components:{
+    beeBlank,
     beeInput,
     beeInputRange,
     beeDatePicker,
