@@ -5,8 +5,8 @@
 	"lang":"en",
 	"canvas": {
 		"zoom-type": 0,
-		"width": 1300,
-		"height": 1300,
+		"width": 1200,
+		"height": 1200,
 		"background": "#fff",
 		"formFormat": {
 			"labelPosition": "top",
@@ -15,10 +15,11 @@
 	},
 	"components": {
 		"table": [{
+			"noDataInfo":"No data",
 			"id": "componentId_00003",
 			"x": 0,
 			"y": 0,
-			"width": 1300,
+			"width": 1200,
 			"height": 550,
 			"padding": 10,
 			"exported": true,
@@ -61,6 +62,11 @@
 						"rule": {},
 						"queryIndex": 2
 					},
+					{
+						"type": "0",
+						"typeScribe": "占位，什么也不渲染",
+						"queryIndex": 3
+					  },
 					{
 						"label": "SKU",
 						"keyName": "skuCode",
