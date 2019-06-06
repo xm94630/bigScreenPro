@@ -3,7 +3,7 @@
       <el-form :label-position="labelPosition" :inline="true" :model="formInline" class="demo-form-inline" label-width="80px">
         <el-form-item :label="item.label">
           
-          <!-- 日期区间选择 -->
+          <!-- 日期时间 区间选择 -->
           <el-date-picker
             v-model="formInline.date"
             type="datetimerange"
@@ -49,7 +49,8 @@ export default {
       let val2='';
       if(val){
         val2 = val.map(function(one){
-          return one.getTime()+28800000;
+          //return one.getTime()+28800000;
+          return one.getTime();
         }).join('-');
       }
 
