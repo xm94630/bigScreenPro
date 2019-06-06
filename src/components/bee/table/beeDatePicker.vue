@@ -7,7 +7,6 @@
             type="date"
             :placeholder="item.placeholder"
             @change="handleChange"
-            format="yyyy 年 MM 月 dd 日"
             >
           </el-date-picker>
         </el-form-item>
