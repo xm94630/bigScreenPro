@@ -134,11 +134,15 @@ export default {
           this.$emit('tableDataOK', tableData, this.conditionData,code,url,totalPage,resultColumnList); 
         });
       }else{
+        //通知出现进度条
+        this.$emit('showLoadingBox');
         //获取数据源
         axios.post(url,body).then(response => {
           let tableData = response.data.data;
           let totalPage = -1;
           this.$emit('tableDataOK', tableData, this.conditionData,code,url,totalPage,resultColumnList); 
+          //通知隐藏进度条
+          this.$emit('hideLoadingBox');
         });
       }
 
