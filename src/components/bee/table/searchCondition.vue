@@ -49,7 +49,7 @@ import beeBlank from './beeBlank.vue';
 import beeInput from './beeInput.vue';
 import beeInputRange from './beeInputRange.vue';
 import beeDatePicker from './beeDatePicker.vue';
-import beeDatePickerRange2 from './beeDatePickerRange2.vue';
+import beeDatePickerRange from './beeDatePickerRange.vue';
 import beeSelect from './beeSelect.vue';
 import beeSelectSearch from './beeSelectSearch.vue';
 import beeDateTimePickerRange from './beeDateTimePickerRange.vue';
@@ -89,7 +89,7 @@ export default {
 
         //对时间范围的组件的默认值做处理
         let defaultValue = arr[i].defaultValue;
-        if(arr[i].type==='beeDatePickerRange2' && defaultValue){
+        if(arr[i].type==='beeDatePickerRange' && defaultValue){
           //如果默认值存在
           if(Array.isArray(defaultValue)){
             let a = defaultValue.map(function(one){
@@ -165,7 +165,7 @@ export default {
     beeDatePicker,
     beeSelect,
     beeSelectSearch,
-    beeDatePickerRange2,
+    beeDatePickerRange,
     beeDateTimePickerRange,
     beeDateTimePicker
   },

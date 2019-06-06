@@ -266,7 +266,7 @@ export default {
             //时间范围
             item.label = one.displayName;
             item.keyName = one.columnName;
-            item.type = "beeDatePickerRange2";
+            item.type = "beeDatePickerRange";
             item.placeholder = one.placeholder;
             item.defaultValue = one.defaultValue;
             item.rule = {};
@@ -324,7 +324,7 @@ export default {
           "20":"beeSelect",
           "21":"beeSelectSearch",
           "30":"beeDatePicker",
-          "31":"beeDatePickerRange2",
+          "31":"beeDatePickerRange",
           "40":"beeDateTimePicker",
           "41":"beeDateTimePickerRange",
           "100":"beeDatePickerRange",
