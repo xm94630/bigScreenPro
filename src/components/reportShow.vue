@@ -256,7 +256,10 @@ export default {
                 let propsConfig = {
                   myConfig: data[i]
                 };
-                propsConfig.myConfig.myData=response.data.data;
+
+                let d = response.data.data;
+                d = typeof(d)=='string'?eval('(' + d + ')'):d;
+                propsConfig.myConfig.myData=d;
 
                 //构建组件
                 import("../components/bee/textBar.vue").then(cmp => {

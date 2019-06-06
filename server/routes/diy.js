@@ -154,9 +154,9 @@ router.get('/view/info', async (ctx, next) => {
         "textBar":[{
           "id": "componentId_00002",
           "options":{
-            "totalvolume":"库房整体积哦",
-            "totalusevolume":"总体使用体积",
-            "totalavailability":"库房利用率",
+            "TotalVolume":"TotalVolume哦",
+            "TotalUseVolume":"TotalUseVolume",
+            "TotalAvailability":"TotalAvailability",
           },
           "x": 0,
           "y": 0,
