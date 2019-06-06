@@ -52,7 +52,7 @@
 						"placeholder": "Please choose",
 						"defaultValue": "",
 						"rule": {},
-						"referenceUrl": "http://172.16.42.3:8080/beetle/api_v1/customer/queryCsrNameAndCode",
+						"referenceUrl": "/beetle/api_v1/customer/queryCsrNameAndCode",
 						"referenceColumn": "customerCode",
 						"referenceDisplayColumn": "customerName",
 						"queryIndex": 0
@@ -75,7 +75,7 @@
 						"placeholder": "Please choose",
 						"defaultValue": "",
 						"rule": {},
-						"referenceUrl": "http://172.16.42.3:8080/beetle/api_v1/dict/queryDetails?objectCode=workstation_ids",
+						"referenceUrl": "/beetle/api_v1/dict/queryDetails?objectCode=workstation_ids",
 						"referenceColumn": "fieldCode",
 						"referenceDisplayColumn": "",
 						"queryIndex": 2
@@ -88,7 +88,7 @@
 						"placeholder": "Please choose",
 						"defaultValue": "",
 						"rule": {},
-						"referenceUrl": "http://172.16.42.3:8080/beetle/api_v1/dict/queryDetails?objectCode=pick_order_type",
+						"referenceUrl": "/beetle/api_v1/dict/queryDetails?objectCode=pick_order_type",
 						"referenceColumn": "fieldCode",
 						"referenceDisplayColumn": "description",
 						"queryIndex": 3

@@ -47,7 +47,7 @@
 						"placeholder": "",
 						"defaultValue": "",
 						"rule": {},
-						"referenceUrl": "http://172.16.41.120/beetle/api_v1/customer/queryCsrNameAndCode",
+						"referenceUrl": "/beetle/api_v1/customer/queryCsrNameAndCode",
 						"referenceColumn": "customerCode",
 						"referenceDisplayColumn": "customerName",
 						"queryIndex": 1
@@ -95,7 +95,7 @@
 						"placeholder": "",
 						"defaultValue": "",
 						"rule": {},
-						"referenceUrl": "http://172.16.41.120/beetle/api_v1/repository/queryBinsByBinCode?binCode=",
+						"referenceUrl": "/beetle/api_v1/repository/queryBinsByBinCode?binCode=",
 						"referenceColumn": "binCode",
 						"referenceDisplayColumn": "",
 						"queryIndex": 6

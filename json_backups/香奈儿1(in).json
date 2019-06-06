@@ -1,5 +1,5 @@
 {
-	"version": "20190603",
+	"version": "20190606",
 	"code": "chanel-InboundEfficiency",
 	"pageId": "pageId-01",
 	"lang":"en",
@@ -53,7 +53,7 @@
 						"placeholder": "Please choose",
 						"defaultValue": "",
 						"rule": {},
-						"referenceUrl": "http://172.16.42.3:8080/beetle/api_v1/customer/queryCsrNameAndCode",
+						"referenceUrl": "/beetle/api_v1/customer/queryCsrNameAndCode",
 						"referenceColumn": "customerCode",
 						"referenceDisplayColumn": "customerName",
 						"queryIndex": 0
@@ -76,7 +76,7 @@
 						"placeholder": "Please choose",
 						"defaultValue": "",
 						"rule": {},
-						"referenceUrl": "http://172.16.42.3:8080/beetle/api_v1/dict/queryDetails?objectCode=workstation_ids",
+						"referenceUrl": "/beetle/api_v1/dict/queryDetails?objectCode=workstation_ids",
 						"referenceColumn": "fieldCode",
 						"referenceDisplayColumn": "",
 						"queryIndex": 2
@@ -89,7 +89,7 @@
 						"placeholder": "Please choose",
 						"defaultValue": "",
 						"rule": {},
-						"referenceUrl": "http://172.16.42.3:8080/beetle/api_v1/dict/queryDetails?objectCode=strategy_receipt_rule_ordertype",
+						"referenceUrl": "/beetle/api_v1/dict/queryDetails?objectCode=strategy_receipt_rule_ordertype",
 						"referenceColumn": "fieldCode",
 						"referenceDisplayColumn": "description",
 						"queryIndex": 3
