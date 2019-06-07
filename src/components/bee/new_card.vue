@@ -1,5 +1,5 @@
 <template>
-  <div class="cardBox" v-bind:class="classObject" :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;background:'+background+';color:'+color+';'">
+  <div class="cardBox" v-bind:class="classObject" :style="myCss">
     <div class="cardBoxT">{{title}}</div>
     <div class="dataBox">
       <template v-for="(one,key) in data">
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import bee from '@/src/tools/bee.js';
+
 export default {
   name: "card",
   props: {
@@ -23,16 +25,7 @@ export default {
       title: this.chartData.title,
       state: this.chartData.state,
       cardData: this.chartData,
-
       data:this.orderFun(this.chartData.data),
-
-      width: this.chartData.width,
-      height: this.chartData.height,
-      x: this.chartData.x,
-      y: this.chartData.y,
-      background: this.chartData.background || '#fff',
-      color: this.chartData.color || '#000',
-
     };
   },
   methods:{
@@ -52,6 +45,12 @@ export default {
     }
   },
   computed:{
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      let cssObj = bee.replaceKey(this.chartData.css,map);
+      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
+      return cssStr;
+    },
     classObject:function(){
       return {
         green: this.state == 1 ? true : false,
