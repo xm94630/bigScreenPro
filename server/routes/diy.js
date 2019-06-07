@@ -10,6 +10,36 @@ const url = "";
 router.get('/view/info', async (ctx, next) => {
   let code = ctx.request.query.diyViewCode;
   let jsonData = null;
+  
+  //Demo
+  if ("Demo" == code) {
+  
+    jsonData = {
+      "refreshTime":"600000",
+      "version":"20190529",
+      "code": "lifeng-ReportScreen",
+      "pageId": "pageId-00001",
+      "canvas": {
+        "width": 1400,
+        "height": 800,
+        "background": "#f3f3f3",
+        "zoom-type":1,
+        "formFormat":{
+          "labelPosition":"left",
+          "colSpan":8
+        }
+      },
+      "components": {
+        "dater":[{
+          "css":{
+            "color":"red"
+          }
+        }]
+      }
+    }
+    
+    
+  }
 
   //雅诗兰黛1
   if ("report-InventoryVolume" == code) {    
@@ -1236,7 +1266,12 @@ router.get('/view/template/list', async (ctx, next) => {
   // url: ""
   // viewName: "print_label_1570"
 
-  let data = [{
+  let data = [
+  {
+    diyViewCode: "Demo",
+    viewName: 'Demo'
+  },
+  {
     diyViewCode: "report-InventoryVolume",
     viewName: '雅诗兰黛1'
   }, {

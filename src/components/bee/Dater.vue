@@ -1,14 +1,10 @@
 <template>
-    <div
-    class="bingTuCon"
-    :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;border:'+border+';padding:'+padding+'px;background:'+background+';font-size:'+fontSize+'px;text-align:'+textAlign+';color:'+color+';'"
-  >
-      <div class="Dater">{{str}}</div>
-  </div>
+  <div class="Dater" :style="myCss">{{str}}</div>
 </template>
 
 
 <script>
+import bee from '@/src/tools/bee.js';
 import moment from "moment";
 
 export default {
@@ -19,19 +15,15 @@ export default {
   data() {
     return {
       str: moment().format("YYYY-MM-DD HH:mm:ss"),
-
-
-      width: this.myConfig.width,
-      height: this.myConfig.height,
-      y: this.myConfig.y,
-      x: this.myConfig.x,
-      border: this.myConfig.border,
-      padding: this.myConfig.padding,
-      background: this.myConfig.background,
-      fontSize:this.myConfig['font-size'],
-      textAlign:this.myConfig['text-align'],
-      color:this.myConfig['color'],
     };
+  },
+  computed: {
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      let cssObj = bee.replaceKey(this.myConfig.css,map);
+      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
+      return cssStr;
+    }
   },
   mounted: function() {
     setInterval(() => {
@@ -42,18 +34,6 @@ export default {
 </script>
 
 
-<style scoped>
-.Dater {
-}
-.bingTuCon {
-  position: absolute;
-  box-sizing: border-box;
-}
-.bingTuBox {
-  width: 100%;
-  height: 100%;
-}
+<style lang="scss">
 </style>
-
-
 
