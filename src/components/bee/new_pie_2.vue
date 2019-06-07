@@ -1,7 +1,7 @@
 <template>
   <div
     class="bingTuCon"
-    :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;border:'+border+';padding:'+padding+'px;background:'+background"
+    :style="myCss"
   >
     <div class="bingTuBox" :id="this.chartData.chartId"></div>
   </div>
@@ -9,6 +9,7 @@
 
 
 <script>
+import bee from '@/src/tools/bee.js';
 import echarts from "echarts";
 
 //获取饼图option配置
@@ -99,6 +100,14 @@ export default {
         this.myChart.setOption(getOption(val));
       },
       deep: true
+    }
+  },
+  computed: {
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      let cssObj = bee.replaceKey(this.chartData.css,map);
+      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
+      return cssStr;
     }
   }
 };

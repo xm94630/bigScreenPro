@@ -740,13 +740,15 @@ router.get('/view/info', async (ctx, next) => {
     
         "new_pie_2":[{
           "chartId":"piex",
-          "x": 360,
-          "y": 550,
-          "width": 240,
-          "height": 210,
-          "border": "solid 1px #ccc",
-          "padding":10,
-          "background":"#1e2647",
+          "css":{
+            "x": 360,
+            "y": 550,
+            "width": 240,
+            "height": 210,
+            "border": "solid 1px #ccc",
+            "padding":10,
+            "background":"#1e2647",
+          },
           "title": {
             "text": "",
             "color": "#666",
