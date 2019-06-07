@@ -44,7 +44,8 @@
 
 <script>
 import axios from "axios";
-
+import store from '@/src/store';
+import bee from '@/src/tools/bee.js';
 import beeBlank from './beeBlank.vue';
 import beeInput from './beeInput.vue';
 import beeInputRange from './beeInputRange.vue';
@@ -55,9 +56,6 @@ import beeSelectSearch from './beeSelectSearch.vue';
 import beeDateTimePickerRange from './beeDateTimePickerRange.vue';
 import beeDateTimePicker from './beeDateTimePicker.vue';
 import { setTimeout } from 'timers';
-
-import store from '@/src/store';
-import bee from '@/src/tools/bee.js';
 
 export default {
   name: "beeTitle",

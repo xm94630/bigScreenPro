@@ -17,6 +17,7 @@
 //   align: "center"
 //   ....
 // }
+import bee from '@/src/tools/bee.js';
 
 export default {
   name: "beeTitle",
@@ -40,21 +41,10 @@ export default {
       return a;
     },
     beeTitleStyle() {
-      let str = "position:absolute;box-sizing:border-box;";
-      str += "border:" + this.myData.border + ";" 
-      str += "width:" + this.myData.width + "px;" 
-      str += "height:" + this.myData.height + "px;" 
-      str += "left:" + this.myData.x + "px;" 
-      str +=  "top:" + this.myData.y + "px;"
-      str += "color:"+ this.myData.color+";"
-      str += "font-size:"+this.myData['font-size']+"px;"
-      str += "text-align:"+this.myData['text-align']+";"
-      str += "padding:"+this.myData['padding']+";"
-      str += "background:"+this.myData['background']+";"
-      str += "z-index:"+this.myData['z-index']+";"
-
-
-      return str;
+      let map = {"x":"left","y":"top"};
+      let cssObj = bee.replaceKey(this.myData.css,map);
+      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
+      return cssStr;
     }
   }
 };
