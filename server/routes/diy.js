@@ -331,92 +331,106 @@ router.get('/view/info', async (ctx, next) => {
         "title": [{
           "id": "",
           "text": "基础数据",
-          "x": 10,
-          "y": 10,
-          "width": 600,
-          "height": 780,
-          "padding": 0,
-          "font-size": 26,
-          "color": "#f8f594",
-          "border": "solid 1px #fff",
-          "background": "#1e264a",
-          "text-align": "center"
+          "css":{
+            "x": 10,
+            "y": 10,
+            "width": 600,
+            "height": 780,
+            "padding": 0,
+            "font-size": 26,
+            "color": "#f8f594",
+            "border": "solid 1px #fff",
+            "background": "#1e264a",
+            "text-align": "center"
+          }
         },{
           "id": "",
           "text": "入库数据",
-          "x": 620,
-          "y": 10,
-          "width": 770,
-          "height": 150,
-          "padding": 0,
-          "font-size": 24,
-          "color": "#f8f594",
-          "border": "solid 1px #fff",
-          "background": "#1e264a",
-          "text-align": "center"
+          "css":{
+            "x": 620,
+            "y": 10,
+            "width": 770,
+            "height": 150,
+            "padding": 0,
+            "font-size": 24,
+            "color": "#f8f594",
+            "border": "solid 1px #fff",
+            "background": "#1e264a",
+            "text-align": "center"
+          }
         },{
           "id": "",
           "text": "出库数据",
-          "x": 620,
-          "y": 170,
-          "width": 770,
-          "height": 620,
-          "padding": 0,
-          "font-size": 24,
-          "color": "#f8f594",
-          "border": "solid 1px #fff",
-          "background": "#1e264a",
-          "text-align": "center"
+          "css":{
+            "x": 620,
+            "y": 170,
+            "width": 770,
+            "height": 620,
+            "padding": 0,
+            "font-size": 24,
+            "color": "#f8f594",
+            "border": "solid 1px #fff",
+            "background": "#1e264a",
+            "text-align": "center"
+          }
         }
       
         ,{
           "id": "",
           "text": "货位",
-          "x": 50,
-          "y": 25,
-          "width": 50,
-          "height": 50,
-          "padding": 0,
-          "font-size": 18,
-          "color": "#f8f594",
-          "border": "none",
-          "text-align": "center"
+          "css":{
+            "x": 50,
+            "y": 25,
+            "width": 50,
+            "height": 50,
+            "padding": 0,
+            "font-size": 18,
+            "color": "#f8f594",
+            "border": "none",
+            "text-align": "center"
+          }
         },{
           "id": "",
           "text": "货架",
-          "x": 50,
-          "y": 275,
-          "width": 50,
-          "height": 50,
-          "padding": 0,
-          "font-size": 18,
-          "color": "#f8f594",
-          "border": "none",
-          "text-align": "center"
+          "css":{
+            "x": 50,
+            "y": 275,
+            "width": 50,
+            "height": 50,
+            "padding": 0,
+            "font-size": 18,
+            "color": "#f8f594",
+            "border": "none",
+            "text-align": "center"
+          }
         },{
           "id": "",
           "text": "库存",
-          "x": 50,
-          "y": 525,
-          "width": 50,
-          "height": 50,
-          "padding": 0,
-          "font-size": 18,
-          "color": "#f8f594",
-          "border": "none",
-          "text-align": "center"
+          "css":{
+            "x": 50,
+            "y": 525,
+            "width": 50,
+            "height": 50,
+            "padding": 0,
+            "font-size": 18,
+            "color": "#f8f594",
+            "border": "none",
+            "text-align": "center"
+          }
         },{
           "id": "",
           "text": "机器人",
-          "x": 370,
-          "y": 525,
-          "width": 200,
-          "height": 30,
-          "padding": 0,
-          "font-size": 18,
-          "color": "#f8f594",
-          "border": "",
-          "text-align": "left"
+          "css":{
+            "x": 370,
+            "y": 525,
+            "width": 200,
+            "height": 30,
+            "padding": 0,
+            "font-size": 18,
+            "color": "#f8f594",
+            "border": "",
+            "text-align": "left"
+          }
         }],
     
         "new_card": [{
