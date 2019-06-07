@@ -148,9 +148,9 @@ export default {
               });
             }
           }
-          //渲染全部的“line”组件进行渲染
-          if ("line" == key) {
-            let data = this.reportConfig.components.line;
+          //渲染全部的“new_line”组件进行渲染
+          if ("new_line" == key) {
+            let data = this.reportConfig.components.new_line;
             let len = data.length;
             for (let i = 0; i < len; i++) {
               //组件基本样式数据
@@ -158,16 +158,24 @@ export default {
                 chartData: data[i]
               };
               let dataUrl = data[i].dataUrl;
+              let diyCoreCode = data[i].diyCoreCode;
+
+              //把参数都带上（包括store中的全局搜索条件）
+              let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
 
               //获取数据源
-              axios.get(baseUrl + dataUrl).then(response => {
-                this.reportList = response.data.data;
-                propsConfig.chartData.xAxis = response.data.data.xAxis;
-                propsConfig.chartData.series = response.data.data.series;
-                propsConfig.chartData.legend = response.data.data.legend;
+              axios.post(baseUrl + dataUrl,params).then(response => {
+
+                //propsConfig.chartData.xAxis = response.data.data.xAxis;
+                //propsConfig.chartData.series = response.data.data.series;
+                //propsConfig.chartData.legend = response.data.data.legend;
+                propsConfig.chartData.apiData = response.data.data;
+                
+                console.log('====>')
+                console.log(propsConfig)
 
                 //构建组件
-                import("../components/bee/line.vue").then(cmp => {
+                import("../components/bee/new_line.vue").then(cmp => {
                   mountCmp(
                     cmp,
                     propsConfig,

@@ -209,6 +209,21 @@ router.post('/report/selectData', async (ctx, next) => {
     }]
   }
 
+  if(code==="demo_line"){
+    data=[{
+        name:'邮件营销',
+        type:'line',
+        stack: '总量',
+        data:[120, 132, 101, 134, 90, 230, 210]
+    },
+    {
+        name:'联盟广告',
+        type:'line',
+        stack: '总量',
+        data:[220, 182, 191, 234, 290, 330, 310]
+    }]
+  }
+
   ctx.body = {
     data: data,
   }

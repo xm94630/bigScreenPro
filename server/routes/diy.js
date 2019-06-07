@@ -23,7 +23,7 @@ router.get('/view/info', async (ctx, next) => {
         "width": 1400,
         "height": 800,
         "background": "#f3f3f3",
-        "zoom-type":1,
+        "zoom-type":0,
         "formFormat":{
           "labelPosition":"left",
           "colSpan":8
@@ -34,6 +34,36 @@ router.get('/view/info', async (ctx, next) => {
           "css":{
             "color":"red"
           }
+        }],
+        "new_line":[{
+          "id": "componentId_line001",
+          "css":{
+            "x": 20,
+            "y": 20,
+            "width": 500,
+            "height": 300,
+            "border": "none",
+            "padding":10,
+            "background":"#fff"
+          },
+          "title": {
+            "show": true,
+            "text": "出库单",
+            "x": "left",
+            "textStyle": {
+              "fontSize": 16,
+              "color": "#f8f4a0"
+            }
+          },
+          "axisLabel": {
+            "show": true,
+            "textStyle": {
+              "color": "#f8f4a0"
+            }
+          },
+          "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
+          "dataUrl": "/epimetheus/api/diy/report/selectData",
+          "diyCoreCode":"demo_line"
         }]
       }
     }
