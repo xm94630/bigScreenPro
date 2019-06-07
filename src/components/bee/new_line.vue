@@ -64,15 +64,7 @@ function getOption(data) {
   //构建option
   let option = {
     color: data.color,
-    title: {
-      show: true,
-      text: data.title.text,
-      x: "left",
-      textStyle: {
-        fontSize: "18",
-        color: "#666"
-      }
-    },
+    title: data.title,
     tooltip: {
       trigger: "axis"
     },
@@ -90,11 +82,7 @@ function getOption(data) {
         saveAsImage: {}
       }
     },
-    xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['周一','周二','周三','周四','周五','周六','周日']
-    },
+    xAxis: data.xAxis,
     yAxis: {
       type: "value"
     },

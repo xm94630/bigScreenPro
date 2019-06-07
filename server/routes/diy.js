@@ -55,11 +55,10 @@ router.get('/view/info', async (ctx, next) => {
               "color": "#f8f4a0"
             }
           },
-          "axisLabel": {
-            "show": true,
-            "textStyle": {
-              "color": "#f8f4a0"
-            }
+          "xAxis": {
+            "type": "category",
+            "boundaryGap": false,
+            "data": ["周一","周二","周三","周四","周五","周六","周日"]
           },
           "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
