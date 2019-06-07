@@ -99,7 +99,7 @@ export default {
         }
 
         //不为空的时候才添加，否则就会查询为空字符串的情况
-        if(arr[i].defaultValue!==''){
+        if(arr[i].defaultValue){
           newArr[arr[i].keyName] = (arr[i].defaultValue);
         }
       }
