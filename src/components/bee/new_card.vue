@@ -18,21 +18,21 @@ import bee from '@/src/tools/bee.js';
 export default {
   name: "card",
   props: {
-    chartData: null
+    myConfig: null
   },
   data: function() {
     return {
-      title: this.chartData.title,
-      state: this.chartData.state,
-      cardData: this.chartData,
-      data:this.orderFun(this.chartData.data),
+      title: this.myConfig.title,
+      state: this.myConfig.state,
+      cardData: this.myConfig,
+      data:this.orderFun(this.myConfig.data),
     };
   },
   methods:{
     //对数据进行排序，排序的顺序可以在json中配置。
     //这个方法还不是很完美，先这样子实现。
     orderFun(data){
-      let keyOrder = this.chartData.keyOrder;
+      let keyOrder = this.myConfig.keyOrder;
       let orderData = {};
       if(keyOrder){
         keyOrder.forEach(function(key){
@@ -47,7 +47,7 @@ export default {
   computed:{
     myCss() {
       let map = {"x":"left","y":"top"};
-      let cssObj = bee.replaceKey(this.chartData.css,map);
+      let cssObj = bee.replaceKey(this.myConfig.css,map);
       let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
       return cssStr;
     },

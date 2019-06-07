@@ -155,7 +155,7 @@ export default {
             for (let i = 0; i < len; i++) {
               //组件基本样式数据
               let propsConfig = {
-                chartData: data[i]
+                myConfig: data[i]
               };
               let dataUrl = data[i].dataUrl;
               let diyCoreCode = data[i].diyCoreCode;
@@ -165,7 +165,7 @@ export default {
 
               //获取数据源
               axios.post(baseUrl + dataUrl,params).then(response => {
-                propsConfig.chartData.apiData = response.data.data;
+                propsConfig.myConfig.apiData = response.data.data;
                 //构建组件
                 import("../components/bee/new_line.vue").then(cmp => {
                   mountCmp(
@@ -282,7 +282,7 @@ export default {
             for (let i = 0; i < len; i++) {
               //组件基本样式数据
               let propsConfig = {
-                chartData: data[i]
+                myConfig: data[i]
               };
               let dataUrl = data[i].dataUrl;
               let diyCoreCode = data[i].diyCoreCode;
@@ -293,10 +293,10 @@ export default {
               //获取数据源
               axios.post(baseUrl + dataUrl,params).then(response => {
 
-                //propsConfig.chartData.data1 = response.data.data[0];
-                //propsConfig.chartData.data2 = response.data.data[1];
+                //propsConfig.myConfig.data1 = response.data.data[0];
+                //propsConfig.myConfig.data2 = response.data.data[1];
 
-                propsConfig.chartData.data = response.data.data[0];
+                propsConfig.myConfig.data = response.data.data[0];
 
                 //构建组件
                 import("../components/bee/new_card.vue").then(cmp => {
@@ -318,7 +318,7 @@ export default {
 
               //组件基本样式数据
               let propsConfig = {
-                chartData: data[i]
+                myConfig: data[i]
               };
               let dataUrl = data[i].dataUrl;
               let diyCoreCode = data[i].diyCoreCode;
@@ -328,7 +328,7 @@ export default {
 
               //获取数据源
               axios.post(baseUrl + dataUrl,params).then(response => {
-                propsConfig.chartData.urlData = response.data.data;
+                propsConfig.myConfig.urlData = response.data.data;
                 //构建组件
                 import("../components/bee/new_pie_1.vue").then(cmp => {
                   mountCmp(
@@ -348,7 +348,7 @@ export default {
             for (let i = 0; i < len; i++) {
               //组件基本样式数据
               let propsConfig = {
-                chartData: data[i]
+                myConfig: data[i]
               };
               let dataUrl = data[i].dataUrl;
               let diyCoreCode = data[i].diyCoreCode;
@@ -359,7 +359,7 @@ export default {
               //获取数据源
               axios.post(baseUrl + dataUrl,params).then(response => {
 
-                propsConfig.chartData.apiData = response.data.data;
+                propsConfig.myConfig.apiData = response.data.data;
 
                 //构建组件
                 import("../components/bee/new_pie_2.vue").then(cmp => {
@@ -380,7 +380,7 @@ export default {
             for (let i = 0; i < len; i++) {
               //组件基本样式数据
               let propsConfig = {
-                chartData: data[i]
+                myConfig: data[i]
               };
               let dataUrl = data[i].dataUrl;
               let diyCoreCode = data[i].diyCoreCode;
@@ -391,10 +391,10 @@ export default {
               //获取数据源
               axios.post(baseUrl + dataUrl,params).then(response => {
 
-                //propsConfig.chartData.xAxis = response.data.data.xAxis;
-                //propsConfig.chartData.series = response.data.data.series;
-                //propsConfig.chartData.legend = response.data.data.legend;
-                propsConfig.chartData.apiData = response.data.data;
+                //propsConfig.myConfig.xAxis = response.data.data.xAxis;
+                //propsConfig.myConfig.series = response.data.data.series;
+                //propsConfig.myConfig.legend = response.data.data.legend;
+                propsConfig.myConfig.apiData = response.data.data;
                 
                 //构建组件
                 import("../components/bee/new_bar.vue").then(cmp => {

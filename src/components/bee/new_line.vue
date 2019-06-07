@@ -1,6 +1,6 @@
 <template>
   <div class="bingTuCon" :style="myCss">
-    <div class="bingTuBox" :id="chartData.id"></div>
+    <div class="bingTuBox" :id="myConfig.id"></div>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import echarts from "echarts";
 
 //收到的数据
 // {
-// 	"chartData": {
+// 	"myConfig": {
 // 		"id": "componentId_line001",
 // 		"css": {
 // 			"x": 20,
@@ -96,29 +96,29 @@ export default {
   name: "beeLine", //这个名字不能和浏览器默认的的标签相同，比如“line”
   props: {
     percent: Number,
-    chartData: Object
+    myConfig: Object
   },
   data() {
     return {
-      bingTu_option: getOption(this.chartData),
+      bingTu_option: getOption(this.myConfig),
       myChart: null,
     };
   },
   mounted: function() {
     // 基于准备好的dom，初始化echarts实例
-    this.myChart = echarts.init(document.getElementById(this.chartData.id));
+    this.myChart = echarts.init(document.getElementById(this.myConfig.id));
     this.myChart.setOption(this.bingTu_option);
   },
   computed: {
     myCss() {
       let map = {"x":"left","y":"top"};
-      let cssObj = bee.replaceKey(this.chartData.css,map);
+      let cssObj = bee.replaceKey(this.myConfig.css,map);
       let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
       return cssStr;
     }
   },
   watch: {
-    chartData: {
+    myConfig: {
       handler: function(val) {
         this.myChart.setOption(getOption(val));
       },

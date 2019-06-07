@@ -3,7 +3,7 @@
     class="bingTuCon"
     :style="myCss"
   >
-    <div class="bingTuBox" :id="chartData.id"></div>
+    <div class="bingTuBox" :id="myConfig.id"></div>
   </div>
 </template>
 
@@ -109,18 +109,18 @@ export default {
   name: "pie",
   props: {
     percent: Number,
-    chartData: Object
+    myConfig: Object
   },
   data() {
     return {
-      bingTu_option: getOption(this.chartData),
+      bingTu_option: getOption(this.myConfig),
       myChart: null,
     };
   },
   computed: {
     myCss() {
       let map = {"x":"left","y":"top"};
-      let cssObj = bee.replaceKey(this.chartData.css,map);
+      let cssObj = bee.replaceKey(this.myConfig.css,map);
       let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
       return cssStr;
     }
@@ -128,12 +128,12 @@ export default {
   mounted: function() {
     // 基于准备好的dom，初始化echarts实例
     this.myChart = echarts.init(
-      document.getElementById(this.chartData.id)
+      document.getElementById(this.myConfig.id)
     );
     this.myChart.setOption(this.bingTu_option);
   },
   watch: {
-    chartData: {
+    myConfig: {
       handler: function(val) {
         this.myChart.setOption(getOption(val));
       },

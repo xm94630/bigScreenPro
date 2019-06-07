@@ -3,7 +3,7 @@
     class="bingTuCon"
     :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;border:'+border+';padding:'+padding+'px;background:'+background"
   >
-    <div class="bingTuBox" :id="chartData.id"></div>
+    <div class="bingTuBox" :id="myConfig.id"></div>
   </div>
 </template>
 
@@ -60,28 +60,28 @@ export default {
   name: "pie",
   props: {
     percent: Number,
-    chartData: Object
+    myConfig: Object
   },
   data() {
     return {
-      bingTu_option: getOption(this.chartData),
+      bingTu_option: getOption(this.myConfig),
       myChart: null,
-      width: this.chartData.width,
-      height: this.chartData.height,
-      y: this.chartData.y,
-      x: this.chartData.x,
-      border: this.chartData.border,
-      padding: this.chartData.padding,
-      background: this.chartData.background
+      width: this.myConfig.width,
+      height: this.myConfig.height,
+      y: this.myConfig.y,
+      x: this.myConfig.x,
+      border: this.myConfig.border,
+      padding: this.myConfig.padding,
+      background: this.myConfig.background
     };
   },
   mounted: function() {
     // 基于准备好的dom，初始化echarts实例
-    this.myChart = echarts.init(document.getElementById(this.chartData.id));
+    this.myChart = echarts.init(document.getElementById(this.myConfig.id));
     this.myChart.setOption(this.bingTu_option);
   },
   watch: {
-    chartData: {
+    myConfig: {
       handler: function(val) {
         this.myChart.setOption(getOption(val));
       },
