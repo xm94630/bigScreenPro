@@ -91,13 +91,6 @@ export default {
     return {
       bingTu_option: getOption(this.chartData),
       myChart: null,
-      width: this.chartData.width,
-      height: this.chartData.height,
-      y: this.chartData.y,
-      x: this.chartData.x,
-      border: this.chartData.border,
-      padding: this.chartData.padding,
-      background: this.chartData.background,
     };
   },
   mounted: function() {
