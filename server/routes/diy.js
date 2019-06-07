@@ -31,10 +31,12 @@ router.get('/view/info', async (ctx, next) => {
         "table": [{
           "noDataInfo":"No data",
           "id": "componentId_00003",
-          "x": 0,
-          "y": 50,
-          "width": 1200,
-          "padding": 10,
+          "css":{
+            "x": 0,
+            "y": 50,
+            "width": 1200,
+            "padding": 10
+          },
           "exported": true,
           "showIndexColumn":true,
           "currentPage":1,
@@ -196,10 +198,12 @@ router.get('/view/info', async (ctx, next) => {
         "table": [{
           "noDataInfo":"No data",
           "id": "componentId_00003",
-          "x": 0,
-          "y": 0,
-          "width": 1200,
-          "padding": 10,
+          "css":{
+            "x": 0,
+            "y": 0,
+            "width": 1200,
+            "padding": 10
+          },
           "exported": true,
           "showIndexColumn":true,
           "currentPage":1,
@@ -928,10 +932,12 @@ router.get('/view/info', async (ctx, next) => {
           "tableTitle":"我是表的名字哦1",
           "tableColumnWidth":300,
           "id": "componentId_00003",
-          "x": 0,
-          "y": 0,
-          "width": 1300,
-          "padding": 10,
+          "css":{
+            "x": 0,
+            "y": 0,
+            "width": 1300,
+            "padding": 10
+          },
           "exported": true,
           "showIndexColumn":true,
           "currentPage":1,
@@ -1052,10 +1058,12 @@ router.get('/view/info', async (ctx, next) => {
           "noDataInfo":"No data",
           "tableTitle":"我是表的名字哦2",
           "id": "componentId_001",
-          "x": 0,
-          "y": 0,
-          "width": 1300,
-          "padding": 10,
+          "css":{
+            "x": 0,
+            "y": 0,
+            "width": 1300,
+            "padding": 10
+          },
           "exported": true,
           "showIndexColumn":true,
           "currentPage":1,

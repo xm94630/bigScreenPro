@@ -1,5 +1,5 @@
 <template>
-  <div class="beeTable" :style="beeTableStyle">
+  <div class="beeTable" :style="myCss">
         
     <div class="top">
       
@@ -54,20 +54,7 @@
 </template>
 
 <script>
-// myConfig 数据格式
-// {
-// 'id': "componentId_00003",
-// 'x': 0,
-// 'y': 0,
-// 'width': 1200,
-// 'height': 600,
-// 'padding': 0,
-// 'exported': true,
-// 'showIndexColumn':true,
-// 'initTableConfig':...,  //来自后端的配置
-//   ....
-// }
-
+import bee from '@/src/tools/bee.js';
 import axios from "axios";
 import _ from "lodash";
 import searchCondition from "./table/searchCondition.vue"
@@ -358,19 +345,11 @@ export default {
 
   },
   computed: {
-    beeTableStyle() {
-      let str = "position:absolute;box-sizing:border-box;";
-      str += "border:" + this.myConfig.border + ";" 
-      str += "width:" + this.myConfig.width + "px;" 
-      str += "height:" + this.myConfig.height + "px;" 
-      str += "left:" + this.myConfig.x + "px;" 
-      str +=  "top:" + this.myConfig.y + "px;"
-      str += "color:"+ this.myConfig.color+";"
-      str += "font-size:"+this.myConfig['font-size']+"px;"
-      str += "text-align:"+this.myConfig['text-align']+";"
-      str += "padding:"+this.myConfig['padding']+";"
-      str += "background:"+this.myConfig['background']+";"
-      return str;
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      let cssObj = bee.replaceKey(this.myConfig.css,map);
+      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
+      return cssStr;
     },
     foldBtnText(){
       if(this.isShow){
