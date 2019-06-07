@@ -93,7 +93,7 @@ function getOption(data) {
 }
 
 export default {
-  name: "line",
+  name: "beeLine", //这个名字不能和浏览器默认的的标签相同，比如“line”
   props: {
     percent: Number,
     chartData: Object
