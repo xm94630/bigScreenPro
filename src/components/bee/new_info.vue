@@ -16,7 +16,7 @@ export default {
     showData(){
       //兼容字符串数据
       let infoData = typeof(this.myData.apiData)=='string'?eval('('+this.myData.apiData+')')[0]:this.myData.apiData[0]
-      return this.myData.template.replace(/{{(\w)*}}/g, Object.keys(infoData)[0]);
+      return this.myData.template.replace(/{{(\w)*}}/g, infoData[Object.keys(infoData)[0]]);
     },
     beeTitleStyle() {
       let map = {"x":"left","y":"top"};
