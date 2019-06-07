@@ -818,13 +818,15 @@ router.get('/view/info', async (ctx, next) => {
     
         "new_bar": [{
           "id": "componentId_bar001",
-          "x": 650,
-          "y": 330,
-          "width": 350,
-          "height": 200,
-          "border": "none",
-          "padding":10,
-          "background":"#1e2647",
+          "css":{
+            "x": 650,
+            "y": 330,
+            "width": 350,
+            "height": 200,
+            "border": "none",
+            "padding":10,
+            "background":"#1e2647"
+          },
           "title": {
             "show": true,
             "text": "出库单",
@@ -845,13 +847,15 @@ router.get('/view/info', async (ctx, next) => {
           "diyCoreCode":"lifeng-HistogramOutOrder"
         },{
           "id": "componentId_bar002",
-          "x": 1010,
-          "y": 330,
-          "width": 350,
-          "height": 200,
-          "border": "none",
-          "padding":10,
-          "background":"#1e2647",
+          "css":{
+            "x": 1010,
+            "y": 330,
+            "width": 350,
+            "height": 200,
+            "border": "none",
+            "padding":10,
+            "background":"#1e2647",
+          },
           "title": {
             "show": true,
             "text": "已完成",
@@ -872,13 +876,15 @@ router.get('/view/info', async (ctx, next) => {
           "diyCoreCode":"lifeng-HistogramOutOrderCompleted"
         },{
           "id": "componentId_bar003",
-          "x": 650,
-          "y": 540,
-          "width": 350,
-          "height": 200,
-          "border": "none",
-          "padding":10,
-          "background":"#1e2647",
+          "css":{
+            "x": 650,
+            "y": 540,
+            "width": 350,
+            "height": 200,
+            "border": "none",
+            "padding":10,
+            "background":"#1e2647"
+          },
           "title": {
             "show": true,
             "text": "已分配",
@@ -899,13 +905,15 @@ router.get('/view/info', async (ctx, next) => {
           "diyCoreCode":"lifeng-HistogramOutOrderAllocated"
         },{
           "id": "componentId_bar004",
-          "x": 1010,
-          "y": 540,
-          "width": 350,
-          "height": 200,
-          "border": "none",
-          "padding":10,
-          "background":"#1e2647",
+          "css":{
+            "x": 1010,
+            "y": 540,
+            "width": 350,
+            "height": 200,
+            "border": "none",
+            "padding":10,
+            "background":"#1e2647"
+          },
           "title": {
             "show": true,
             "text": "系统报缺",

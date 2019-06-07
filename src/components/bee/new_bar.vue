@@ -1,7 +1,7 @@
 <template>
   <div
     class="bingTuCon"
-    :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;border:'+border+';padding:'+padding+'px;background:'+background"
+    :style="myCss"
   >
     <div class="bingTuBox" :id="chartData.id"></div>
   </div>
@@ -9,6 +9,7 @@
 
 
 <script>
+import bee from '@/src/tools/bee.js';
 import echarts from "echarts";
 import _ from "lodash";
 
@@ -114,14 +115,15 @@ export default {
     return {
       bingTu_option: getOption(this.chartData),
       myChart: null,
-      width: this.chartData.width,
-      height: this.chartData.height,
-      y: this.chartData.y,
-      x: this.chartData.x,
-      border: this.chartData.border,
-      padding: this.chartData.padding,
-      background: this.chartData.background
     };
+  },
+  computed: {
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      let cssObj = bee.replaceKey(this.chartData.css,map);
+      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
+      return cssStr;
+    }
   },
   mounted: function() {
     // 基于准备好的dom，初始化echarts实例
