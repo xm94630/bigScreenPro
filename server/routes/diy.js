@@ -13,7 +13,6 @@ router.get('/view/info', async (ctx, next) => {
   
   //Demo
   if ("Demo" == code) {
-  
     jsonData = {
       "refreshTime":"600000",
       "version":"20190529",
@@ -63,11 +62,39 @@ router.get('/view/info', async (ctx, next) => {
           "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"demo_line"
+        }],
+        "new_bar": [{
+          "id": "componentId_bar001",
+          "css":{
+            "x": 550,
+            "y": 20,
+            "width": 500,
+            "height": 300,
+            "border": "none",
+            "padding":10,
+            "background":"#1e2647"
+          },
+          "title": {
+            "show": true,
+            "text": "出库单",
+            "x": "left",
+            "textStyle": {
+              "fontSize": 16,
+              "color": "#f8f4a0"
+            }
+          },
+          "axisLabel": {
+            "show": true,
+            "textStyle": {
+              "color": "#f8f4a0"
+            }
+          },
+          "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
+          "dataUrl": "/epimetheus/api/diy/report/selectData",
+          "diyCoreCode":"lifeng-HistogramOutOrder"
         }]
       }
     }
-    
-    
   }
 
   //雅诗兰黛1
