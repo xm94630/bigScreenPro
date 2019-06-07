@@ -606,13 +606,15 @@ router.get('/view/info', async (ctx, next) => {
     
         "new_pie_1":[{
           "chartId":"pie111",
-          "x": 380,
-          "y": 20,
-          "width": 200,
-          "height": 150,
-          "border": "none",
-          "padding":10,
-          "background":"none",
+          "css":{
+            "x": 380,
+            "y": 20,
+            "width": 200,
+            "height": 150,
+            "border": "none",
+            "padding":10,
+            "background":"none",
+          },
           "title": {
             "show": true,
             "text": "使用占比",
@@ -637,13 +639,15 @@ router.get('/view/info', async (ctx, next) => {
           "diyCoreCode":"lifeng-BinUseScaleA"
         },{
           "chartId":"pie222",
-          "x": 380,
-          "y": 140,
-          "width": 200,
-          "height": 150,
-          "border": "none",
-          "padding":10,
-          "background":"none",
+          "css":{
+            "x": 380,
+            "y": 140,
+            "width": 200,
+            "height": 150,
+            "border": "none",
+            "padding":10,
+            "background":"none",
+          },
           "title": {
             "show": true,
             "text": "使用占比",
@@ -668,13 +672,15 @@ router.get('/view/info', async (ctx, next) => {
           "diyCoreCode":"lifeng-BinUseScaleB"
         },{
           "chartId":"pie333",
-          "x": 380,
-          "y": 270,
-          "width": 200,
-          "height": 150,
-          "border": "none",
-          "padding":10,
-          "background":"none",
+          "css":{
+            "x": 380,
+            "y": 270,
+            "width": 200,
+            "height": 150,
+            "border": "none",
+            "padding":10,
+            "background":"none",
+          },
           "title": {
             "show": true,
             "text": "使用占比",
@@ -699,13 +705,15 @@ router.get('/view/info', async (ctx, next) => {
           "diyCoreCode":"lifeng-ShelfUseScaleA"
         },{
           "chartId":"pie444",
-          "x": 380,
-          "y": 380,
-          "width": 200,
-          "height": 150,
-          "border": "none",
-          "padding":10,
-          "background":"none",
+          "css":{
+            "x": 380,
+            "y": 380,
+            "width": 200,
+            "height": 150,
+            "border": "none",
+            "padding":10,
+            "background":"none",
+          },
           "title": {
             "show": true,
             "text": "使用占比",

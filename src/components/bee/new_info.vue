@@ -1,5 +1,5 @@
 <template>
-  <div class="beeTitle" :style="beeTitleStyle">{{showData}}</div>
+  <div class="beeTitle" :style="myCss">{{showData}}</div>
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
       let infoData = typeof(this.myData.apiData)=='string'?eval('('+this.myData.apiData+')')[0]:this.myData.apiData[0]
       return this.myData.template.replace(/{{(\w)*}}/g, infoData[Object.keys(infoData)[0]]);
     },
-    beeTitleStyle() {
+    myCss() {
       let map = {"x":"left","y":"top"};
       let cssObj = bee.replaceKey(this.myData.css,map);
       let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
