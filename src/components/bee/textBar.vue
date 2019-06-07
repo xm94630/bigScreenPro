@@ -1,5 +1,5 @@
 <template>
-  <div class="beeTitle" :style="beeTitleStyle">
+  <div class="beeTitle" :style="myCss">
       <template v-for="(value, name) in myConfig.options">
         <span :key="name"> 
           {{value}}:{{myConfig.myData[0][name]}} | 
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import bee from '@/src/tools/bee.js';
 
 export default {
   name: "beeTitle",
@@ -19,23 +20,14 @@ export default {
     return {};
   },
   computed: {
-    beeTitleStyle() {
-      let str = "position:absolute;box-sizing:border-box;";
-      str += "border:" + this.myConfig.border + ";" 
-      str += "width:" + this.myConfig.width + "px;" 
-      str += "height:" + this.myConfig.height + "px;" 
-      str += "left:" + this.myConfig.x + "px;" 
-      str +=  "top:" + this.myConfig.y + "px;"
-      str += "color:"+ this.myConfig.color+";"
-      str += "font-size:"+this.myConfig['font-size']+"px;"
-      str += "text-align:"+this.myConfig['text-align']+";"
-      str += "padding:"+this.myConfig['padding']+"px;"
-      str += "background:"+this.myConfig['background']+";"
-      return str;
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      let cssObj = bee.replaceKey(this.myConfig.css,map);
+      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
+      return cssStr;
     }
   },
   mounted(){
-    //console.log(this.myConfig)
   }
 };
 </script>
