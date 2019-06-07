@@ -64,7 +64,7 @@ router.get('/view/info', async (ctx, next) => {
           "diyCoreCode":"demo_line"
         }],
         "new_bar": [{
-          "id": "componentId_bar001",
+          "id": "bar01",
           "css":{
             "x": 550,
             "y": 20,

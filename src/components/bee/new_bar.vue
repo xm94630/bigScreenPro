@@ -1,9 +1,6 @@
 <template>
-  <div
-    class="bingTuCon"
-    :style="myCss"
-  >
-    <div class="bingTuBox" :id="myConfig.id"></div>
+  <div class="widgetBox" :style="myCss">
+    <div class="widgetCon" :id="myConfig.id"></div>
   </div>
 </template>
 
@@ -105,53 +102,41 @@ function getOption(data) {
   return option;
 }
 
+
 export default {
-  name: "pie",
+  name: "bar",
   props: {
     percent: Number,
     myConfig: Object
   },
   data() {
     return {
-      bingTu_option: getOption(this.myConfig),
-      myChart: null,
+      option: getOption(this.myConfig)
     };
   },
   computed: {
     myCss() {
       let map = {"x":"left","y":"top"};
-      let cssObj = bee.replaceKey(this.myConfig.css,map);
-      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
-      return cssStr;
+      return bee.objToCSS( bee.replaceKey(this.myConfig.css,map) );
     }
   },
   mounted: function() {
-    // 基于准备好的dom，初始化echarts实例
-    this.myChart = echarts.init(
-      document.getElementById(this.myConfig.id)
-    );
-    this.myChart.setOption(this.bingTu_option);
+    echarts
+      .init(document.getElementById(this.myConfig.id))
+      .setOption(this.option);
   },
-  watch: {
-    myConfig: {
-      handler: function(val) {
-        this.myChart.setOption(getOption(val));
-      },
-      deep: true
-    }
-  }
 };
 </script>
 
 
-<style scoped>
-.bingTuCon {
+<style lang="scss">
+.widgetBox {
   position: absolute;
   box-sizing: border-box;
-}
-.bingTuBox {
-  width: 100%;
-  height: 100%;
+  .widgetCon {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>
 
