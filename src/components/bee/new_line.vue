@@ -9,6 +9,53 @@
 import bee from '@/src/tools/bee.js';
 import echarts from "echarts";
 
+//收到的数据
+// {
+// 	"chartData": {
+// 		"id": "componentId_line001",
+// 		"css": {
+// 			"x": 20,
+// 			"y": 20,
+// 			"width": 500,
+// 			"height": 300,
+// 			"border": "none",
+// 			"padding": 10,
+// 			"background": "#fff"
+// 		},
+// 		"title": {
+// 			"show": true,
+// 			"text": "出库单",
+// 			"x": "left",
+// 			"textStyle": {
+// 				"fontSize": 16,
+// 				"color": "#f8f4a0"
+// 			}
+// 		},
+// 		"axisLabel": {
+// 			"show": true,
+// 			"textStyle": {
+// 				"color": "#f8f4a0"
+// 			}
+// 		},
+// 		"color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
+// 		"dataUrl": "/epimetheus/api/diy/report/selectData",
+// 		"diyCoreCode": "demo_line",
+// 		"apiData": [{
+// 			"name": "邮件营销",
+// 			"type": "line",
+// 			"stack": "总量",
+// 			"data": [120, 132, 101, 134, 90, 230, 210]
+// 		}, {
+// 			"name": "联盟广告",
+// 			"type": "line",
+// 			"stack": "总量",
+// 			"data": [220, 182, 191, 234, 290, 330, 310]
+// 		}]
+// 	}
+// }
+
+
+
 //获取饼图option配置
 function getOption(data) {
 

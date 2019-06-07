@@ -165,15 +165,7 @@ export default {
 
               //获取数据源
               axios.post(baseUrl + dataUrl,params).then(response => {
-
-                //propsConfig.chartData.xAxis = response.data.data.xAxis;
-                //propsConfig.chartData.series = response.data.data.series;
-                //propsConfig.chartData.legend = response.data.data.legend;
                 propsConfig.chartData.apiData = response.data.data;
-                
-                console.log('====>')
-                console.log(propsConfig)
-
                 //构建组件
                 import("../components/bee/new_line.vue").then(cmp => {
                   mountCmp(
