@@ -212,11 +212,11 @@ router.post('/report/selectData', async (ctx, next) => {
   //注意，这个line组件的数据，还尚未和后端确定，所以就这个格式走，未来有调整再说。
   if(code==="demo_line"){
     data=[{
-        name:'邮件营销',
+        name:'出库单',
         data:[120, 132, 101, 134, 90, 230, 210]
     },
     {
-        name:'联盟广告',
+        name:'入库单',
         data:[220, 182, 191, 234, 290, 330, 310]
     }]
   }

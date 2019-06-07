@@ -48,7 +48,7 @@ router.get('/view/info', async (ctx, next) => {
           },
           "title": {
             "show": true,
-            "text": "出库单",
+            "text": "按周统计",
             "x": "left",
             "textStyle": {
               "fontSize": 16,

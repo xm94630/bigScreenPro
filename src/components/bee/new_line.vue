@@ -41,14 +41,10 @@ import echarts from "echarts";
 // 		"dataUrl": "/epimetheus/api/diy/report/selectData",
 // 		"diyCoreCode": "demo_line",
 // 		"apiData": [{
-// 			"name": "邮件营销",
-// 			"type": "line",
-// 			"stack": "总量",
+// 			"name": "出库单",
 // 			"data": [120, 132, 101, 134, 90, 230, 210]
 // 		}, {
-// 			"name": "联盟广告",
-// 			"type": "line",
-// 			"stack": "总量",
+// 			"name": "入库单",
 // 			"data": [220, 182, 191, 234, 290, 330, 310]
 // 		}]
 // 	}
@@ -58,10 +54,6 @@ import echarts from "echarts";
 
 //获取饼图option配置
 function getOption(data) {
-
-
-
-
 
   //追加类型
   let series = data.apiData;
@@ -85,7 +77,7 @@ function getOption(data) {
       trigger: "axis"
     },
     legend: {
-        data:['邮件营销','联盟广告']
+        data:['出库单','入库单']
     },
     grid: {
       left: "3%",
@@ -113,7 +105,7 @@ function getOption(data) {
 }
 
 export default {
-  name: "pie",
+  name: "line",
   props: {
     percent: Number,
     chartData: Object
@@ -125,8 +117,6 @@ export default {
     };
   },
   mounted: function() {
-    console.log('==>')
-    console.log(this.chartData)
     // 基于准备好的dom，初始化echarts实例
     this.myChart = echarts.init(document.getElementById(this.chartData.id));
     this.myChart.setOption(this.bingTu_option);
