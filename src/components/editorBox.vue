@@ -19,6 +19,9 @@
             background-color="#333"
             text-color="#999"
             :default-openeds ="defaultOpeneds"
+            class="el-menu-vertical-demo"
+            active-text-color="red"
+            @select="selectFun"
           >
             <template v-for="(widgets,key) in json">
 
@@ -26,7 +29,7 @@
                 <template slot="title">{{key}}</template>
 
                 <template v-for="(widget) in widgets">
-                  <el-menu-item :key="widget.id" index="widget.id" @click="selectWidget(widget)">id_{{widget.id}}</el-menu-item>
+                  <el-menu-item :key="widget.id" :index="widget.id" @click="selectWidget(widget)">id_{{widget.id}}</el-menu-item>
                 </template>
               </el-submenu>
             
@@ -182,10 +185,15 @@ export default {
         this.$set(this.json,name,[thisConfigTemplate])
       }
       //打开对应的菜单，提升用户体验
-      this.defaultOpeneds = [name]
+      this.defaultOpeneds = [name,thisConfigTemplate.id]
     },
+    //子菜单的点击
     selectWidget(widget){
       this.widget = widget;
+    },
+    //父菜单中处理select事件，控制菜单的展开收拢
+    selectFun(index,indexPath){
+      this.defaultOpeneds = indexPath;
     }
   },
   mounted(){
