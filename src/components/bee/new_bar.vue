@@ -10,34 +10,126 @@ import bee from '@/src/tools/bee.js';
 import echarts from "echarts";
 import _ from "lodash";
 
+
+// 这个是本组件对外配置的默认值。
+let widgetOption = {
+  "id": "bar"+Math.random(),
+  "css":{
+    "x": 20,
+    "y": 20,
+    "width": 400,
+    "height": 300,
+    "border": "none",
+    "padding":10,
+    "background":"#1e2647"
+  },
+  "echartOption":{
+    "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
+    "title": {
+      "text": "出库单",
+      "textStyle": {
+        "fontSize": 16,
+        "color": "#f8f4a0"
+      }
+    },
+    "axisLabel": {
+      "show": true,
+      "textStyle": {
+        "color": "#f8f4a0"
+      }
+    },
+    "legend":{
+      "show": true,
+      "textStyle": {
+        "color": "#f8f4a0"
+      }
+    },
+  },
+  "dataUrl": "/epimetheus/api/diy/report/selectData",
+  "diyCoreCode":"lifeng-HistogramOutOrder"
+}
+
+/***********************************
+// 这个是echart最终配置好的数据的格式。
+let myOption = {
+  "color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
+	"title": {
+		"text": "出库单",
+		"textStyle": {
+			"fontSize": 16,
+			"color": "#f8f4a0"
+		}
+	},
+	"legend": {
+		"data": ["出库单", "sku"],
+		"textStyle": {
+			"color": "#f8f4a0"
+		}
+	},
+	"xAxis": {
+		"data": ["JIT", "B2C", "B2B"],
+		"axisLabel": {
+			"show": true,
+			"textStyle": {
+				"color": "#f8f4a0"
+			}
+		}
+	},
+	"yAxis": {
+		"type": "value",
+		"axisLabel": {
+			"show": true,
+			"textStyle": {
+				"color": "#f8f4a0"
+			}
+		}
+	},
+	"series": [{
+		"name": "出库单",
+		"data": [1, 2, 3],
+		"type": "bar"
+	}, {
+		"name": "sku",
+		"data": [4, 5, 6],
+		"type": "bar"
+  }],
+  "tooltip": {"trigger": "axis"}, 
+  "toolbox": {"feature": {"saveAsImage": {}}}
+}
+************************************/
+
+/************************************* 
+数据格式转换：
+let data = [
+  {"出库单":1,"sku":4,"type":"JIT"},
+  {"出库单":2,"sku":5,"type":"B2C"},
+  {"出库单":3,"sku":6,"type":"B2B"}
+]
+
+从上面的格式，转变成下面的这种..
+
+let xAxis = {
+  "data":['JIT', 'B2C', 'B2B']
+}
+let legend = {
+  "data":['出库单', 'SKU', ]
+}
+let series = [
+  {
+    name: '出库单',
+    data: [1, 2, 3],
+  },
+  {
+    name: 'SKU',
+    data: [4, 5, 6],
+  }
+]
+**************************************/
+
 //获取饼图option配置
 function getOption(data) {
 
-  // 数据格式转换：
-  // let data = [
-  //   {"出库单":1,"sku":4,"type":"JIT"},
-  //   {"出库单":2,"sku":5,"type":"B2C"},
-  //   {"出库单":3,"sku":6,"type":"B2B"}
-  // ]
-
-  // 从上面的格式，转变成下面的这种..
-
-  // let xAxis = {
-  //   "data":['JIT', 'B2C', 'B2B']
-  // }
-  // let legend = {
-  //   "data":['出库单', 'SKU', ]
-  // }
-  // let series = [
-  //   {
-  //     name: '出库单',
-  //     data: [1, 2, 3],
-  //   },
-  //   {
-  //     name: 'SKU',
-  //     data: [4, 5, 6],
-  //   }
-  // ]
+  
 
 
   //组装数据
@@ -48,15 +140,13 @@ function getOption(data) {
     keys.splice(index, 1);
   }
   
-  let legend = {
-    "data":keys,
-    "textStyle": {
-      "color": "#f8f4a0"
-    }
-  }
+
+  let legend = Object.assign({},{"data":keys},data.echartOption.legend)
+
+
   let xAxis = {
     "data":_.map(apiData,'type'),
-    axisLabel:data.axisLabel
+    axisLabel:data.echartOption.axisLabel
   }
   
   let series = []
@@ -74,8 +164,8 @@ function getOption(data) {
   });
 
   let option = {
-    color: data.color || ["#83b5b9","#db8460","#9ec794","#eada80"],
-    title: data.title,
+    color: data.echartOption.color || ["#83b5b9","#db8460","#9ec794","#eada80"],
+    title: data.echartOption.title,
     tooltip: {
       trigger: "axis"
     },
@@ -94,10 +184,12 @@ function getOption(data) {
     xAxis: xAxis,
     yAxis: {
         type: 'value',
-        axisLabel:data.axisLabel
+        axisLabel:data.echartOption.axisLabel
     },
     series: series
   };
+
+  //console.log(JSON.stringify(option))
 
   return option;
 }

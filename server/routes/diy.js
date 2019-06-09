@@ -74,22 +74,29 @@ router.get('/view/info', async (ctx, next) => {
             "padding":10,
             "background":"#1e2647"
           },
-          "title": {
-            "show": true,
-            "text": "出库单",
-            "x": "left",
-            "textStyle": {
-              "fontSize": 16,
-              "color": "#f8f4a0"
-            }
+          "echartOption":{
+            "title": {
+              "show": true,
+              "text": "出库单",
+              "textStyle": {
+                "fontSize": 16,
+                "color": "#f8f4a0"
+              }
+            },
+            "axisLabel": {
+              "show": true,
+              "textStyle": {
+                "color": "#f8f4a0"
+              }
+            },
+            "legend":{
+              "show": true,
+              "textStyle": {
+                "color": "#f8f4a0"
+              }
+            },
+            "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
           },
-          "axisLabel": {
-            "show": true,
-            "textStyle": {
-              "color": "#f8f4a0"
-            }
-          },
-          "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-HistogramOutOrder"
         }]
