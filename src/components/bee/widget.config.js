@@ -33,7 +33,7 @@ export default {
         "textStyle": {
           "color": "#f8f4a0"
         }
-      },
+      }
     },
     "dataUrl": "/epimetheus/api/diy/report/selectData",
     "diyCoreCode":"lifeng-HistogramOutOrder"
