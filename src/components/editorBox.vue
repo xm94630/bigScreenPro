@@ -1,5 +1,15 @@
 <template>
   <div class="editorBox">
+    <div class="toolBar">
+      点击添加组件：
+      <el-button size="mini" type="primary" round>bar</el-button>
+      <el-button size="mini" type="primary" round>line</el-button>
+      <el-button size="mini" type="primary" round>pie</el-button>
+      <el-button size="mini" type="primary" round>title</el-button>
+      <el-button size="mini" type="primary" round>table</el-button>
+      <el-button size="mini" type="primary" round>card</el-button>
+      <el-button size="mini" type="primary" round>textBar</el-button>
+    </div>
     <el-row :gutter="20">
       <!--左侧-->
       <el-col :span="8">
@@ -139,7 +149,10 @@ export default {
 .editorBox{
   background: #1b1e25;
   height:100%;
-  .el-row{
+  .toolBar{
+    padding:10px;
+  }
+  .el-row{ 
     height:100%;
     .el-col{
       height:100%;
