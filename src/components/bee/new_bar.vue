@@ -11,7 +11,7 @@ import echarts from "echarts";
 import _ from "lodash";
 
 
-// 这个是本组件对外配置的默认值。
+// 这个是本组件对外配置的默认值
 let widgetOption = {
   "id": "bar"+Math.random(),
   "css":{
@@ -49,8 +49,7 @@ let widgetOption = {
   "diyCoreCode":"lifeng-HistogramOutOrder"
 }
 
-
-// 这个是echart的默认配置。
+// 这个是echart实例的默认配置
 let defaultOption = {
   "color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
 	"title": {
@@ -98,63 +97,59 @@ let defaultOption = {
   "grid": {"left": "3%","right": "4%","bottom": "3%","containLabel": true},
 }
 
+// 获取数据源数据，结合默认echart数据，进行最新样式的组装。
+function getNewOption(data) {
 
-/************************************* 
-数据格式转换：
-let data = [
-  {"出库单":1,"sku":4,"type":"JIT"},
-  {"出库单":2,"sku":5,"type":"B2C"},
-  {"出库单":3,"sku":6,"type":"B2B"}
-]
+  /************************************* 
+  数据格式转换：
+  let data = [
+    {"出库单":1,"sku":4,"type":"JIT"},
+    {"出库单":2,"sku":5,"type":"B2C"},
+    {"出库单":3,"sku":6,"type":"B2B"}
+  ]
 
-从上面的格式，转变成下面的这种..
-
-let xAxis = {
-  "data":['JIT', 'B2C', 'B2B']
-}
-let legend = {
-  "data":['出库单', 'SKU', ]
-}
-let series = [
-  {
-    name: '出库单',
-    data: [1, 2, 3],
-  },
-  {
-    name: 'SKU',
-    data: [4, 5, 6],
-  }
-]
-**************************************/
-
-//获取饼图option配置
-function getOption(data) {
-
-  
-
-
-  //组装数据
-  let apiData = data.apiData;
-  let keys = _.keys(apiData && apiData[0]);
-  var index = keys.indexOf('type');
-  if (index > -1) {
-    keys.splice(index, 1);
-  }
-  
-
-  let legend = Object.assign({},{"data":keys},data.echartOption.legend)
-
+  从上面的格式，转变成下面的这种..
 
   let xAxis = {
-    "data":_.map(apiData,'type'),
-    axisLabel:data.echartOption.axisLabel
+    "data":['JIT', 'B2C', 'B2B']
+  }
+  let legend = {
+    "data":['出库单', 'SKU', ]
+  }
+  let series = [
+    {
+      name: '出库单',
+      data: [1, 2, 3],
+    },
+    {
+      name: 'SKU',
+      data: [4, 5, 6],
+    }
+  ]
+  **************************************/
+
+  //获取数据源数据
+  let apiData = data.apiData;
+  
+  // legend 配置
+  let keys = _.keys(apiData && apiData[0]);
+  var index = keys.indexOf('type');
+  if (index > -1) {keys.splice(index, 1);}
+  let legend = Object.assign({},{"data":keys},data.echartOption.legend)
+
+  // xAxis 配置
+  let xAxis = {
+    "data":_.map(apiData,"type"),
+    "axisLabel":data.echartOption.axisLabel
   }
 
+  // yAxis 配置
   let yAxis = {
-        type: 'value',
-        axisLabel:data.echartOption.axisLabel
+    "type": "value",
+    "axisLabel":data.echartOption.axisLabel
   }
   
+  // series 配置
   let series = []
   for(let i=0;i<legend.data.length;i++){
     series.push({
@@ -162,9 +157,6 @@ function getOption(data) {
       data:_.map(apiData,legend.data[i]),
     })
   }
-
-
-  //追加类型
   series.forEach(function(one) {
     one.type = "bar";
   });
@@ -180,7 +172,6 @@ function getOption(data) {
   return defaultOption;
 }
 
-
 export default {
   name: "bar",
   props: {
@@ -189,7 +180,7 @@ export default {
   },
   data() {
     return {
-      option: getOption(this.myConfig)
+      option: getNewOption(this.myConfig)
     };
   },
   computed: {
