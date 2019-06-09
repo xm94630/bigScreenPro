@@ -171,7 +171,9 @@ export default {
   },
   watch:{
     "widget":{
-      handler: function (v) {console.log(v)},
+      handler: function (v) {
+        //console.log(v)
+      },
       deep: true
     }
   },
@@ -186,6 +188,8 @@ export default {
       }
       //打开对应的菜单，提升用户体验
       this.defaultOpeneds = [name,thisConfigTemplate.id]
+      
+      //this.$emit('getWidgetConfig',thisConfigTemplate)
     },
     //子菜单的点击
     selectWidget(widget){
