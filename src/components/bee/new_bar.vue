@@ -49,9 +49,9 @@ let widgetOption = {
   "diyCoreCode":"lifeng-HistogramOutOrder"
 }
 
-/***********************************
-// 这个是echart最终配置好的数据的格式。
-let myOption = {
+
+// 这个是echart的默认配置。
+let defaultOption = {
   "color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
 	"title": {
 		"text": "出库单",
@@ -94,9 +94,10 @@ let myOption = {
 		"type": "bar"
   }],
   "tooltip": {"trigger": "axis"}, 
-  "toolbox": {"feature": {"saveAsImage": {}}}
+  "toolbox": {"feature": {"saveAsImage": {}}},
+  "grid": {"left": "3%","right": "4%","bottom": "3%","containLabel": true},
 }
-************************************/
+
 
 /************************************* 
 数据格式转换：
@@ -148,6 +149,11 @@ function getOption(data) {
     "data":_.map(apiData,'type'),
     axisLabel:data.echartOption.axisLabel
   }
+
+  let yAxis = {
+        type: 'value',
+        axisLabel:data.echartOption.axisLabel
+  }
   
   let series = []
   for(let i=0;i<legend.data.length;i++){
@@ -163,35 +169,15 @@ function getOption(data) {
     one.type = "bar";
   });
 
-  let option = {
-    color: data.echartOption.color || ["#83b5b9","#db8460","#9ec794","#eada80"],
-    title: data.echartOption.title,
-    tooltip: {
-      trigger: "axis"
-    },
-    legend: legend,
-    grid: {
-      left: "3%",
-      right: "4%",
-      bottom: "3%",
-      containLabel: true
-    },
-    toolbox: {
-      feature: {
-        saveAsImage: {}
-      }
-    },
-    xAxis: xAxis,
-    yAxis: {
-        type: 'value',
-        axisLabel:data.echartOption.axisLabel
-    },
-    series: series
-  };
 
-  //console.log(JSON.stringify(option))
+  defaultOption.color = data.echartOption.color;
+  defaultOption.title = data.echartOption.title;
+  defaultOption.legend = legend;
+  defaultOption.xAxis = xAxis;
+  defaultOption.yAxis = yAxis;
+  defaultOption.series = series;
 
-  return option;
+  return defaultOption;
 }
 
 
