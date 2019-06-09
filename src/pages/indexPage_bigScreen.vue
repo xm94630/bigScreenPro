@@ -7,7 +7,10 @@
       </router-link>
     </template>
 
-    <router-link to="/createBigScreen">
+    <!-- <router-link to="/createBigScreen">
+      <add-btn></add-btn>
+    </router-link> -->
+    <router-link to="/createBigScreen2">
       <add-btn></add-btn>
     </router-link>
 
