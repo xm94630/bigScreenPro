@@ -2,7 +2,7 @@
   <div class="editorBox">
     <div class="toolBar">
       点击添加组件：
-      <el-button size="mini" type="primary" round>bar</el-button>
+      <el-button size="mini" type="primary" round @click="createWidgetFun('new_bar')">bar</el-button>
       <el-button size="mini" type="primary" round>line</el-button>
       <el-button size="mini" type="primary" round>pie</el-button>
       <el-button size="mini" type="primary" round>title</el-button>
@@ -14,7 +14,18 @@
       <!--左侧-->
       <el-col :span="8">
         <div class="leftBox">
-          123
+          
+          <template v-for="(widgets,key) in json">
+            <div :key="key" >
+              <div>{{key}}</div>
+              <template v-for="(widget) in widgets">
+                <div :key="widget.id" >
+                  <div @click="selectWidget(widget)">id_{{widget.id}}</div>
+                </div>
+              </template>
+            </div>
+          </template>
+        
         </div>
       </el-col>
       
@@ -115,8 +126,8 @@
 
 <script>
 import bee from "@/src/tools/bee";
-import widgetConfig from "./bee/widget.config"
-let barWidgetConfig = widgetConfig['new_bar']
+import getWidgetConfig from "./bee/widget.config"
+//let barWidgetConfig = widgetConfig['new_bar']
 
 export default {
   name: 'editorBox',
@@ -126,9 +137,11 @@ export default {
   },
   data(){
     return{
-      widget:barWidgetConfig,
+      json:{
+        //"new_bar":[{id:"111"},{id:"222"}],"new_pie":[{id:"333"},{id:"444"}],
+      },
+      widget:{},
       bee:bee,
-      xxx:123
     }
   },
   watch:{
@@ -138,6 +151,18 @@ export default {
     }
   },
   methods:{
+    createWidgetFun(name){
+      let thisConfigTemplate =  JSON.parse(JSON.stringify(getWidgetConfig()[name]));
+      console.log(this.json)
+      if(this.json[name]){
+        this.json[name].push(thisConfigTemplate);
+      }else{
+        this.$set(this.json,name,[thisConfigTemplate])
+      }
+    },
+    selectWidget(widget){
+      this.widget = widget;
+    }
   },
   mounted(){
 
