@@ -12,25 +12,28 @@
       <el-col :span="16">
         <div class="rightBox">
 
-          <el-form ref="form" :model="widget" label-width="80px" :inline="true">
+          <el-form ref="form" :model="widget" label-width="100px" :inline="true">
           <template v-for="(value,key) in widget">
             <div :key="key">
 
               <template v-if="bee.isObject(value)">
                 
-                <div class="_1thLine">{{key}}
+                <div class="_1thLine">
+                <div class="title1">{{key}}</div>
                 <template v-for="(value2,key2) in value">
                   <div :key="key2">
 
                     <template v-if="bee.isObject(value2)">
                       
-                      <div class="_2thLine">{{key2}}
+                      <div class="_2thLine">
+                      <div class="title2">{{key2}}</div>
                       <template v-for="(value3,key3) in value2">
                         <div :key="key3">
 
                           <template v-if="bee.isObject(value3)">
                             
-                            <div class="_3thLine">{{key3}}
+                            <div class="_3thLine">
+                            <div class="title3">{{key3}}</div>
                             <template v-for="(value4,key4) in value3">
                               <div :key="key4">
 
@@ -152,25 +155,38 @@ export default {
     overflow: auto;
   }
   ._1thLine{
-    background:red;
+    background:#333;
     margin-left:0px;
-    border:solid 1px #000;
-    line-height:40px;
+    cursor:pointer;
   }
   ._2thLine{
-    background:green;
+    background:#444;
     margin-left:10px;
-    border:solid 1px #000;
   }
   ._3thLine{
-    background:yellow;
+    background:#555;
     margin-left:10px;
-    border:solid 1px #000;
   }
   ._4thLine{
-    background:blue;
+    background:#666;
     margin-left:10px;
-    border:solid 1px #000;
+  }
+
+  .title1,.title2,.title3,.title4{
+    height:52px;
+    line-height:52px;
+    width:100px;
+    box-sizing: border-box;
+    padding-right:10px;
+    text-align: right;
+  }
+
+  .el-form-item {
+    margin-bottom:0px;
+    padding:5px 0;
+    .el-form-item__label{
+      color:unset;
+    }
   }
 }
 </style>
