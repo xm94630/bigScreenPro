@@ -3,7 +3,7 @@
     <div class="toolBar">
       点击添加组件：
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_bar')">bar</el-button>
-      <el-button size="mini" type="primary" round>line</el-button>
+      <el-button size="mini" type="primary" round @click="createWidgetFun('new_line')">line</el-button>
       <el-button size="mini" type="primary" round>pie</el-button>
       <el-button size="mini" type="primary" round>title</el-button>
       <el-button size="mini" type="primary" round>table</el-button>
@@ -13,19 +13,38 @@
     <el-row :gutter="20">
       <!--左侧-->
       <el-col :span="8">
+
         <div class="leftBox">
-          
-          <template v-for="(widgets,key) in json">
-            <div :key="key" >
-              <div>{{key}}</div>
+          <el-menu
+            background-color="#333"
+            text-color="#999"
+            :default-openeds ="defaultOpeneds"
+          >
+            <template v-for="(widgets,key) in json">
+
+              <el-submenu :index="key" :key="key">
+                <template slot="title">{{key}}</template>
+
+                <template v-for="(widget) in widgets">
+                  <el-menu-item :key="widget.id" index="widget.id" @click="selectWidget(widget)">id_{{widget.id}}</el-menu-item>
+                </template>
+              </el-submenu>
+            
+            </template>
+          </el-menu>
+
+          <!-- 自己写的，不用el-submenu -->
+          <!-- <template v-for="(widgets,key) in json">
+            <div :key="key">
+              <div class="typeName">{{key}}</div>
               <template v-for="(widget) in widgets">
                 <div :key="widget.id" >
                   <div @click="selectWidget(widget)">id_{{widget.id}}</div>
                 </div>
               </template>
             </div>
-          </template>
-        
+          </template> -->
+
         </div>
       </el-col>
       
@@ -142,6 +161,9 @@ export default {
       },
       widget:{},
       bee:bee,
+      //动态打开标签的控制。数组形式，可以支持多个一起打开。
+      //这个被坑了很久，文档中居然没有这个！！有个比较混淆的default-active，这个似乎不支持动态控制！
+      defaultOpeneds:[], 
     }
   },
   watch:{
@@ -159,6 +181,8 @@ export default {
       }else{
         this.$set(this.json,name,[thisConfigTemplate])
       }
+      //打开对应的菜单，提升用户体验
+      this.defaultOpeneds = [name]
     },
     selectWidget(widget){
       this.widget = widget;
@@ -186,6 +210,10 @@ export default {
   .leftBox{
     height:100%;
     background: #1b1e25;
+    .typeName{
+      height:50px;
+      background:rebeccapurple;
+    }
   }
   .rightBox{
     height:100%;

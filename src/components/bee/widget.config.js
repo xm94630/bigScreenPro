@@ -38,6 +38,9 @@ export default function(){
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"lifeng-HistogramOutOrder"
+    },
+    "new_line":{
+      "id": bee.guidGenerator()
     }
   }
 }
