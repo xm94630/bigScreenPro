@@ -10,45 +10,6 @@ import bee from '@/src/tools/bee.js';
 import echarts from "echarts";
 import _ from "lodash";
 
-
-// 这个是本组件对外配置的默认值
-let widgetOption = {
-  "id": "bar"+Math.random(),
-  "css":{
-    "x": 20,
-    "y": 20,
-    "width": 400,
-    "height": 300,
-    "border": "none",
-    "padding":10,
-    "background":"#1e2647"
-  },
-  "echartOption":{
-    "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
-    "title": {
-      "text": "出库单",
-      "textStyle": {
-        "fontSize": 16,
-        "color": "#f8f4a0"
-      }
-    },
-    "axisLabel": {
-      "show": true,
-      "textStyle": {
-        "color": "#f8f4a0"
-      }
-    },
-    "legend":{
-      "show": true,
-      "textStyle": {
-        "color": "#f8f4a0"
-      }
-    },
-  },
-  "dataUrl": "/epimetheus/api/diy/report/selectData",
-  "diyCoreCode":"lifeng-HistogramOutOrder"
-}
-
 // 这个是echart实例的默认配置
 let defaultOption = {
   "color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
@@ -176,6 +137,7 @@ export default {
       .setOption(this.option);
   },
 };
+
 </script>
 
 

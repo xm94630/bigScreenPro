@@ -40,6 +40,17 @@ var bee = (function(bee){
         return str;
     };
 
+    //随机生成8位十六进制的字符串
+    bee.guidGenerator = function() {
+        function getStr(){
+            let n = Math.random();  
+            n = (1+n)*0x10000|0;
+            n = n.toString(16);
+            n = n.substring(1);
+            return n;
+        }
+        return getStr()+'-'+getStr();
+    }
 
 
 
