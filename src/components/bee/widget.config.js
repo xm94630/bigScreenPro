@@ -1,9 +1,9 @@
-import {guidGenerator} from "@/src/tools/bee";
+import bee from "@/src/tools/bee";
 
 //用于可视化的默认配置。
 export default {
   "new_bar":{
-    "id": guidGenerator(),
+    "id": bee.guidGenerator(),
     "css":{
       "x": 20,
       "y": 20,
