@@ -53,8 +53,6 @@ var bee = (function(bee){
     }
 
     bee.isObject = function(obj){
-        console.log(obj)
-        console.log(Object.prototype.toString.call(obj)=== '[object Object]')
         return Object.prototype.toString.call(obj)=== '[object Object]';
     }
 

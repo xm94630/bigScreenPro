@@ -14,7 +14,7 @@ export default {
       "background":"#1e2647"
     },
     "echartOption":{
-      "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
+      "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
       "title": {
         "text": "出库单",
         "textStyle": {
@@ -23,13 +23,13 @@ export default {
         }
       },
       "axisLabel": {
-        "show": true,
+        "show": "true",
         "textStyle": {
           "color": "#f8f4a0"
         }
       },
       "legend":{
-        "show": true,
+        "show": "true",
         "textStyle": {
           "color": "#f8f4a0"
         }

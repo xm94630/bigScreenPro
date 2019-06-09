@@ -12,34 +12,39 @@
       <el-col :span="16">
         <div class="rightBox">
 
-          <template v-for="(one,key) in widget">
+          <el-form ref="form" :model="widget" label-width="80px" :inline="true">
+          <template v-for="(value,key) in widget">
             <div :key="key">
 
-              <template v-if="bee.isObject(one)">
+              <template v-if="bee.isObject(value)">
                 
                 <div class="_1thLine">{{key}}
-                <template v-for="(one2,key2) in one">
+                <template v-for="(value2,key2) in value">
                   <div :key="key2">
 
-                    <template v-if="bee.isObject(one2)">
+                    <template v-if="bee.isObject(value2)">
                       
                       <div class="_2thLine">{{key2}}
-                      <template v-for="(one3,key3) in one2">
+                      <template v-for="(value3,key3) in value2">
                         <div :key="key3">
 
-                          <template v-if="bee.isObject(one3)">
+                          <template v-if="bee.isObject(value3)">
                             
                             <div class="_3thLine">{{key3}}
-                            <template v-for="(one4,key4) in one3">
+                            <template v-for="(value4,key4) in value3">
                               <div :key="key4">
 
-                                <template v-if="bee.isObject(one4)">
+                                <template v-if="bee.isObject(value4)">
                                   配置数据不允许超过4个层级哦
                                 </template>
 
                                 <template v-else>
                                   <!-- 第4层级 -->
-                                  <div class="_4thLine">{{key4}}:{{one4}}</div>
+                                  <div class="_4thLine">
+                                    <el-form-item :label="key4">
+                                      <el-input v-model="value3[key4]"></el-input>  
+                                    </el-form-item>   
+                                  </div>
                                 </template>
 
                               </div>
@@ -49,7 +54,11 @@
                           </template>
                           <template v-else>
                             <!-- 第3层级 -->
-                            <div class="_3thLine">{{key3}}:{{one3}}</div>
+                            <div class="_3thLine">
+                              <el-form-item :label="key3">
+                                <el-input v-model="value2[key3]"></el-input>  
+                              </el-form-item>    
+                            </div>
                           </template>
 
                         </div>
@@ -59,7 +68,11 @@
                     </template>
                     <template v-else>
                       <!-- 第2层级 -->
-                      <div class="_2thLine">{{key2}}:{{one2}}</div>
+                      <div class="_2thLine">                        
+                        <el-form-item :label="key2">
+                          <el-input v-model="value[key2]"></el-input>  
+                        </el-form-item>    
+                      </div>
                     </template>
 
                   </div>
@@ -69,11 +82,16 @@
                </template>
               <template v-else>
                 <!-- 第1层级 -->
-                <div class="_1thLine">{{key}}:{{one}}</div>
+                <div class="_1thLine">
+                  <el-form-item :label="key">
+                    <el-input v-model="widget[key]"></el-input>  
+                  </el-form-item>  
+                </div>
               </template>
 
             </div>
           </template>
+          </el-form>
 
         </div>
       </el-col>
@@ -89,14 +107,21 @@ let barWidgetConfig = widgetConfig['new_bar']
 
 export default {
   name: 'editorBox',
-  components: {
+  compvaluents: {
   },
   props: {
   },
   data(){
     return{
       widget:barWidgetConfig,
-      bee:bee
+      bee:bee,
+      xxx:123
+    }
+  },
+  watch:{
+    "widget":{
+      handler: function (v) {console.log(v)},
+      deep: true
     }
   },
   methods:{
