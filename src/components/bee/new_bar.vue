@@ -97,79 +97,60 @@ let defaultOption = {
   "grid": {"left": "3%","right": "4%","bottom": "3%","containLabel": true},
 }
 
-// 获取数据源数据，结合默认echart数据，进行最新样式的组装。
+// 结合数据源和默认echart数据，进行最新样式的组装。
 function getNewOption(data) {
 
-  /************************************* 
-  数据格式转换：
-  let data = [
-    {"出库单":1,"sku":4,"type":"JIT"},
-    {"出库单":2,"sku":5,"type":"B2C"},
-    {"出库单":3,"sku":6,"type":"B2B"}
-  ]
-
-  从上面的格式，转变成下面的这种..
-
-  let xAxis = {
-    "data":['JIT', 'B2C', 'B2B']
-  }
-  let legend = {
-    "data":['出库单', 'SKU', ]
-  }
-  let series = [
-    {
-      name: '出库单',
-      data: [1, 2, 3],
-    },
-    {
-      name: 'SKU',
-      data: [4, 5, 6],
-    }
-  ]
-  **************************************/
-
-  //获取数据源数据
+  // 获取数据源数据，固定格式为：
+  // [{"出库单":1,"sku":4,"type":"JIT"},
+  //  {"出库单":2,"sku":5,"type":"B2C"},
+  //  {"出库单":3,"sku":6,"type":"B2B"}]
   let apiData = data.apiData;
   
-  // legend 配置
-  let keys = _.keys(apiData && apiData[0]);
-  var index = keys.indexOf('type');
-  if (index > -1) {keys.splice(index, 1);}
-  let legend = Object.assign({},{"data":keys},data.echartOption.legend)
-
-  // xAxis 配置
-  let xAxis = {
-    "data":_.map(apiData,"type"),
-    "axisLabel":data.echartOption.axisLabel
-  }
-
-  // yAxis 配置
-  let yAxis = {
-    "type": "value",
-    "axisLabel":data.echartOption.axisLabel
-  }
+  // 提取type的所有值为一个数组。例如["JIT"、"B2C"、"B2B"]
+  let types = _.map(apiData,"type");
   
-  // series 配置
+  // keys，例如['出库单','sku','type']
+  let keys = _.keys(apiData && apiData[0]);
+  
+  // 有效的keys（排除type），例如['出库单','sku']
+  let effectiveKeys = keys.slice(0);
+  let index = effectiveKeys.indexOf('type');
+  if (index > -1) {effectiveKeys.splice(index, 1)}
+
+  // series 配置，例如 
+  // [{name: '出库单',data: [1, 2, 3]},
+  //  {name: 'sku',  data: [4, 5, 6]}]
   let series = []
-  for(let i=0;i<legend.data.length;i++){
+  for(let i=0;i<effectiveKeys.length;i++){
     series.push({
-      name:legend.data[i],
-      data:_.map(apiData,legend.data[i]),
+      name:effectiveKeys[i],
+      data:_.map(apiData,effectiveKeys[i]),
+      type:"bar"
     })
   }
-  series.forEach(function(one) {
-    one.type = "bar";
-  });
+  // legend 配置
+  let legend = Object.assign({},{"data":effectiveKeys},data.echartOption.legend)
+  // xAxis、yAxis 配置
+  let axisLabel = data.echartOption.axisLabel
+  let xAxis = {
+    "axisLabel":axisLabel,
+    "data":types
+  }
+  let yAxis = {
+    "axisLabel":axisLabel,
+    "type": "value"
+  }
 
+  // 最新的配置
+  let newOption = JSON.parse(JSON.stringify(defaultOption));
+  newOption.color = data.echartOption.color;
+  newOption.title = data.echartOption.title;
+  newOption.series = series;
+  newOption.legend = legend;
+  newOption.xAxis = xAxis;
+  newOption.yAxis = yAxis;
 
-  defaultOption.color = data.echartOption.color;
-  defaultOption.title = data.echartOption.title;
-  defaultOption.legend = legend;
-  defaultOption.xAxis = xAxis;
-  defaultOption.yAxis = yAxis;
-  defaultOption.series = series;
-
-  return defaultOption;
+  return newOption;
 }
 
 export default {
