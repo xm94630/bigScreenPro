@@ -5,6 +5,7 @@ export default function(){
   return {
     "new_bar":{
       "id": bee.guidGenerator(),
+      "type":"new_bar",
       "css":{
         "x": 20,
         "y": 20,
@@ -37,8 +38,7 @@ export default function(){
         }
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"lifeng-HistogramOutOrder",
-      "apiData":""
+      "diyCoreCode":"lifeng-HistogramOutOrder"
     },
     "new_line":{
       "id": bee.guidGenerator()

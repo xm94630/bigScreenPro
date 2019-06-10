@@ -9,6 +9,11 @@
 import bee from '@/src/tools/bee.js';
 import echarts from "echarts";
 import _ from "lodash";
+import axios from "axios";
+import {baseUrl} from '@/bee.config';
+import store from '@/src/store';
+
+
 
 // 这个是echart实例的默认配置
 let defaultOption = {
@@ -59,13 +64,13 @@ let defaultOption = {
 }
 
 // 结合数据源和默认echart数据，进行最新样式的组装。
-function getNewOption(data) {
+function getNewOption(myConfig,apiData) {
 
   // 获取数据源数据，固定格式为：
   // [{"出库单":1,"sku":4,"type":"JIT"},
   //  {"出库单":2,"sku":5,"type":"B2C"},
   //  {"出库单":3,"sku":6,"type":"B2B"}]
-  let apiData = eval('('+data.apiData+')');
+  let data = myConfig;
   
   // 提取type的所有值为一个数组。例如["JIT"、"B2C"、"B2B"]
   let types = _.map(apiData,"type");
@@ -117,6 +122,8 @@ function getNewOption(data) {
   newOption.xAxis = xAxis;
   newOption.yAxis = yAxis;
 
+  console.log(newOption)
+
   return newOption;
 }
 
@@ -129,7 +136,6 @@ export default {
   },
   data() {
     return {
-      option: getNewOption(this.myConfig),
       myEchart:null,
     };
   },
@@ -149,9 +155,31 @@ export default {
     
   },
   mounted: function() {
-    this.myEchart = echarts.init(document.getElementById(this.myConfig.id))
-    this.myEchart.setOption(this.option);
+
+    //组件基本样式数据
+    let dataUrl = this.myConfig.dataUrl;
+    let diyCoreCode = this.myConfig.diyCoreCode;
+    let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+    //获取数据源
+    axios.post(baseUrl + dataUrl,params).then(response => {
+      let apiData = response.data.data;
+      this.myEchart = echarts.init(document.getElementById(this.myConfig.id))
+      this.myEchart.setOption(getNewOption(this.myConfig,apiData));
+    });
+
   },
+  updated(){
+    //组件基本样式数据
+    let dataUrl = this.myConfig.dataUrl;
+    let diyCoreCode = this.myConfig.diyCoreCode;
+    let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+    //获取数据源
+    axios.post(baseUrl + dataUrl,params).then(response => {
+      let apiData = response.data.data;
+      this.myEchart = echarts.init(document.getElementById(this.myConfig.id))
+      this.myEchart.setOption(getNewOption(this.myConfig,apiData));
+    });
+  }
 };
 
 </script>

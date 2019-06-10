@@ -17,9 +17,7 @@
 <script>
 import Vue from "vue";
 import editorBox from "../components/editorBox"
-import axios from "axios";
-import {baseUrl} from '@/bee.config';
-import store from '@/src/store';
+
 
 function mountCmp(cmp, props, parent) {
   if (cmp.default) {
@@ -52,11 +50,11 @@ export default {
     "wigetConfig.diyCoreCode":{
       handler: function (newCode) {
         //更新数据
-        let dataUrl = this.wigetConfig.dataUrl;
-        let params = Object.assign({},{diyCoreCode:newCode},store.state.store_globalContion);
-        axios.post(baseUrl + dataUrl,params).then(response => {
-          this.wigetConfig.apiData = JSON.stringify(response.data.data);
-        });
+        // let dataUrl = this.wigetConfig.dataUrl;
+        // let params = Object.assign({},{diyCoreCode:newCode},store.state.store_globalContion);
+        // axios.post(baseUrl + dataUrl,params).then(response => {
+        //   this.wigetConfig.apiData = JSON.stringify(response.data.data);
+        // });
       },
       deep: true
     }
@@ -67,26 +65,13 @@ export default {
       this.randerWidget(wigetConfig);
     },
     randerWidget(wigetConfig){
-      let data = wigetConfig
-      //组件基本样式数据
-      let propsConfig = {
-        myConfig: data
-      };
-      let dataUrl = data.dataUrl;
-      let diyCoreCode = data.diyCoreCode;
-      //把参数都带上（包括store中的全局搜索条件）
-      let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
-      //获取数据源
-      axios.post(baseUrl + dataUrl,params).then(response => {
-        propsConfig.myConfig.apiData = JSON.stringify(response.data.data);
-        //构建组件
-        import("../components/bee/new_bar.vue").then(cmp => {
-          mountCmp(
-            cmp,
-            propsConfig,
-            document.querySelector(".myReportCanvas")
-          );
-        });
+      //构建组件
+      import("../components/bee/new_bar.vue").then(cmp => {
+        mountCmp(
+          cmp,
+          {myConfig: wigetConfig},
+          document.querySelector(".myReportCanvas")
+        );
       });
     }
   },
