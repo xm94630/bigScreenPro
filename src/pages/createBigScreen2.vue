@@ -45,10 +45,25 @@ export default {
   },
   data(){
     return{
+      wigetConfig:null,
+    }
+  },
+  watch:{
+    "wigetConfig.diyCoreCode":{
+      handler: function (newCode) {
+        //更新数据
+        let dataUrl = this.wigetConfig.dataUrl;
+        let params = Object.assign({},{diyCoreCode:newCode},store.state.store_globalContion);
+        axios.post(baseUrl + dataUrl,params).then(response => {
+          this.wigetConfig.apiData = JSON.stringify(response.data.data);
+        });
+      },
+      deep: true
     }
   },
   methods:{
     getWidgetConfig(wigetConfig){
+      this.wigetConfig = wigetConfig;
       this.randerWidget(wigetConfig);
     },
     randerWidget(wigetConfig){

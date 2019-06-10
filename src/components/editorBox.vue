@@ -170,17 +170,10 @@ export default {
     }
   },
   watch:{
-    "widget":{
-      handler: function (v) {
-        //console.log(v)
-      },
-      deep: true
-    }
   },
   methods:{
     createWidgetFun(name){
       let thisConfigTemplate =  JSON.parse(JSON.stringify(getWidgetConfig()[name]));
-      console.log(this.json)
       if(this.json[name]){
         this.json[name].push(thisConfigTemplate);
       }else{
@@ -201,7 +194,6 @@ export default {
     }
   },
   mounted(){
-
   }
 }
 </script>
