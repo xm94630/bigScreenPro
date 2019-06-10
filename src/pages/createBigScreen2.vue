@@ -86,6 +86,8 @@ export default {
   height: 100%;
   background:#2b2e33;
   color:#afbcc6;
+  background: url("../assets/bgImg.png") repeat;
+  user-select: none;
   .el-row{
     height:100%;
     .el-col{
@@ -94,9 +96,10 @@ export default {
   }
   .myReportCanvas{
     width:600px;
-    height:300px;
-    margin:0 auto;
-    background: #999;
+    height:400px;
+    background: #142a41;
+    margin:20px 0 0 20px;
+    box-shadow: rgba(0,0,0,.5) 0 0 30px 0;
   }
 }
 

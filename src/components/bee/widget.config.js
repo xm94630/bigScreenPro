@@ -12,7 +12,7 @@ export default function(){
         "height": 200,
         "border": "none",
         "padding":10,
-        "background":"#1e2647"
+        "background":"#142a41"
       },
       "echartOption":{
         "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
