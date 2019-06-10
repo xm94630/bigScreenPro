@@ -91,7 +91,8 @@ function getNewOption(data) {
   }
   // legend 配置
   let legend = Object.assign({},{"data":effectiveKeys},data.echartOption.legend)
-  legend.show = JSON.parse(legend.show); //将字符串转成布尔
+  //将字符串转成布尔
+  legend.show = legend.show==="false"?false:true;
   // xAxis、yAxis 配置
   let axisLabel = Object.assign({},data.echartOption.axisLabel);
   axisLabel.show = JSON.parse(axisLabel.show); //将字符串转成布尔
@@ -128,7 +129,8 @@ export default {
   },
   data() {
     return {
-      option: getNewOption(this.myConfig)
+      option: getNewOption(this.myConfig),
+      myEchart:null,
     };
   },
   computed: {
@@ -137,10 +139,18 @@ export default {
       return bee.objToCSS( bee.replaceKey(this.myConfig.css,map) );
     }
   },
+  watch:{
+    "myConfig":{
+      handler:function(val){
+        this.myEchart.setOption( getNewOption(val) );
+      },
+      deep: true
+    },
+    
+  },
   mounted: function() {
-    echarts
-      .init(document.getElementById(this.myConfig.id))
-      .setOption(this.option);
+    this.myEchart = echarts.init(document.getElementById(this.myConfig.id))
+    this.myEchart.setOption(this.option);
   },
 };
 
