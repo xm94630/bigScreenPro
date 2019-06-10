@@ -207,63 +207,66 @@ export default {
 </script>
 
 <style lang="scss">
-.editorBox{
-  background: #1b1e25;
-  height:100%;
-  .toolBar{
-    padding:10px;
-  }
-  .el-row{ 
+.createPage{
+  .editorBox{
+    background: #1b1e25;
     height:100%;
-    .el-col{
+    .toolBar{
+      padding:10px;
+    }
+    .el-row{ 
+      height:calc(100% - 48px);
+      .el-col{
+        height:100%;
+      }
+    }
+    .leftBox{
       height:100%;
+      background: #1b1e25;
+      overflow: auto;
+      .typeName{
+        height:50px;
+        background:rebeccapurple;
+      }
     }
-  }
-  .leftBox{
-    height:100%;
-    background: #1b1e25;
-    .typeName{
-      height:50px;
-      background:rebeccapurple;
+    .rightBox{
+      height:100%;
+      background: #1b1e25;
+      overflow: auto;
     }
-  }
-  .rightBox{
-    height:100%;
-    background: #1b1e25;
-    overflow: auto;
-  }
-  ._1thLine{
-    background:#333;
-    margin-left:0px;
-    cursor:pointer;
-  }
-  ._2thLine{
-    background:#444;
-    margin-left:10px;
-  }
-  ._3thLine{
-    background:#555;
-    margin-left:10px;
-  }
-  ._4thLine{
-    background:#666;
-    margin-left:10px;
-  }
+    ._1thLine{
+      background:#333;
+      margin-left:0px;
+      cursor:pointer;
+    }
+    ._2thLine{
+      background:#444;
+      margin-left:10px;
+    }
+    ._3thLine{
+      background:#555;
+      margin-left:10px;
+    }
+    ._4thLine{
+      background:#666;
+      margin-left:10px;
+    }
 
-  .title1,.title2,.title3,.title4{
-    height:52px;
-    line-height:52px;
-    width:100px;
-    box-sizing: border-box;
-    padding-right:10px;
-    text-align: right;
-  }
+    .title1,.title2,.title3,.title4{
+      height:52px;
+      line-height:52px;
+      width:100px;
+      box-sizing: border-box;
+      padding-right:10px;
+      text-align: right;
+    }
 
-  .el-form-item {
-    margin-bottom:0px;
-    padding:5px 0;
-    .el-form-item__label{
-      color:unset;
+    .el-form-item {
+      margin-bottom:0px;
+      padding:5px 0;
+      .el-form-item__label{
+        color:unset;
+      }
     }
   }
 }

@@ -3,7 +3,6 @@
     <el-row :gutter="20">
       <!--即时视图-->
       <el-col :span="12">
-        即时视图
         <div class="myReportCanvas"></div>
       </el-col>
       
