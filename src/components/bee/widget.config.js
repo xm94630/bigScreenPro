@@ -8,8 +8,8 @@ export default function(){
       "css":{
         "x": 20,
         "y": 20,
-        "width": 400,
-        "height": 300,
+        "width": 250,
+        "height": 200,
         "border": "none",
         "padding":10,
         "background":"#1e2647"

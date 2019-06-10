@@ -93,8 +93,9 @@ export default {
     }
   }
   .myReportCanvas{
-    width:500px;
-    height:500px;
+    width:600px;
+    height:300px;
+    margin:0 auto;
     background: #999;
   }
 }

@@ -208,6 +208,7 @@ export default {
 
 <style lang="scss">
 .createPage{
+  overflow: hidden;
   .editorBox{
     background: #1b1e25;
     height:100%;
