@@ -53,27 +53,18 @@ export default {
       this.randerWidget(wigetConfig);
     },
     randerWidget(wigetConfig){
-      console.log(wigetConfig)
       let data = wigetConfig
-
       //组件基本样式数据
       let propsConfig = {
         myConfig: data
       };
       let dataUrl = data.dataUrl;
       let diyCoreCode = data.diyCoreCode;
-
       //把参数都带上（包括store中的全局搜索条件）
       let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
-
       //获取数据源
       axios.post(baseUrl + dataUrl,params).then(response => {
-
-        //propsConfig.myConfig.xAxis = response.data.data.xAxis;
-        //propsConfig.myConfig.series = response.data.data.series;
-        //propsConfig.myConfig.legend = response.data.data.legend;
-        propsConfig.myConfig.apiData = response.data.data;
-        
+        propsConfig.myConfig.apiData = JSON.stringify(response.data.data);
         //构建组件
         import("../components/bee/new_bar.vue").then(cmp => {
           mountCmp(
@@ -83,7 +74,6 @@ export default {
           );
         });
       });
-
     }
   },
   mounted(){

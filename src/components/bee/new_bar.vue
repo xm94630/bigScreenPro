@@ -65,7 +65,7 @@ function getNewOption(data) {
   // [{"出库单":1,"sku":4,"type":"JIT"},
   //  {"出库单":2,"sku":5,"type":"B2C"},
   //  {"出库单":3,"sku":6,"type":"B2B"}]
-  let apiData = data.apiData;
+  let apiData = eval('('+data.apiData+')');
   
   // 提取type的所有值为一个数组。例如["JIT"、"B2C"、"B2B"]
   let types = _.map(apiData,"type");
@@ -91,8 +91,10 @@ function getNewOption(data) {
   }
   // legend 配置
   let legend = Object.assign({},{"data":effectiveKeys},data.echartOption.legend)
+  legend.show = JSON.parse(legend.show); //将字符串转成布尔
   // xAxis、yAxis 配置
-  let axisLabel = data.echartOption.axisLabel
+  let axisLabel = Object.assign({},data.echartOption.axisLabel);
+  axisLabel.show = JSON.parse(axisLabel.show); //将字符串转成布尔
   let xAxis = {
     "axisLabel":axisLabel,
     "data":types
@@ -102,10 +104,13 @@ function getNewOption(data) {
     "type": "value"
   }
 
+  // color 配置
+  let color = data.echartOption.color.split('|')
+
   // 最新的配置
   let newOption = JSON.parse(JSON.stringify(defaultOption));
-  newOption.color = data.echartOption.color;
   newOption.title = data.echartOption.title;
+  newOption.color = color;
   newOption.series = series;
   newOption.legend = legend;
   newOption.xAxis = xAxis;
@@ -113,6 +118,7 @@ function getNewOption(data) {
 
   return newOption;
 }
+
 
 export default {
   name: "bar",
