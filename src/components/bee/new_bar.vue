@@ -100,7 +100,7 @@ function getNewOption(myConfig,apiData) {
   legend.show = legend.show==="false"?false:true;
   // xAxis、yAxis 配置
   let axisLabel = Object.assign({},data.echartOption.axisLabel);
-  axisLabel.show = JSON.parse(axisLabel.show); //将字符串转成布尔
+  axisLabel.show = axisLabel.show==="false"?false:true //将字符串转成布尔
   let xAxis = {
     "axisLabel":axisLabel,
     "data":types
@@ -122,8 +122,6 @@ function getNewOption(myConfig,apiData) {
   newOption.xAxis = xAxis;
   newOption.yAxis = yAxis;
 
-  console.log(newOption)
-
   return newOption;
 }
 
@@ -131,12 +129,12 @@ function getNewOption(myConfig,apiData) {
 export default {
   name: "bar",
   props: {
-    percent: Number,
     myConfig: Object
   },
   data() {
     return {
       myEchart:null,
+      apiData:[],
     };
   },
   computed: {
@@ -145,40 +143,36 @@ export default {
       return bee.objToCSS( bee.replaceKey(this.myConfig.css,map) );
     }
   },
+  methods:{
+    randerWidget:function(val){
+      //组件基本样式数据
+      let dataUrl = val.dataUrl;
+      let diyCoreCode = val.diyCoreCode;
+      let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+      //获取数据源
+      axios.post(baseUrl + dataUrl,params).then(response => {
+        let apiData = response.data.data;
+        this.apiData = apiData;
+        this.myEchart = echarts.init(document.getElementById(val.id))
+        this.myEchart.setOption(getNewOption(val,apiData));
+      });
+    },
+  },
   watch:{
     "myConfig":{
-      handler:function(val){
-        this.myEchart.setOption( getNewOption(val) );
+      handler:function(v){
+        console.log('watched!')
+        this.randerWidget(v)
       },
       deep: true
     },
     
   },
   mounted: function() {
-
-    //组件基本样式数据
-    let dataUrl = this.myConfig.dataUrl;
-    let diyCoreCode = this.myConfig.diyCoreCode;
-    let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
-    //获取数据源
-    axios.post(baseUrl + dataUrl,params).then(response => {
-      let apiData = response.data.data;
-      this.myEchart = echarts.init(document.getElementById(this.myConfig.id))
-      this.myEchart.setOption(getNewOption(this.myConfig,apiData));
-    });
-
+    console.log('mounted!')
+    this.randerWidget(this.myConfig);
   },
   updated(){
-    //组件基本样式数据
-    let dataUrl = this.myConfig.dataUrl;
-    let diyCoreCode = this.myConfig.diyCoreCode;
-    let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
-    //获取数据源
-    axios.post(baseUrl + dataUrl,params).then(response => {
-      let apiData = response.data.data;
-      this.myEchart = echarts.init(document.getElementById(this.myConfig.id))
-      this.myEchart.setOption(getNewOption(this.myConfig,apiData));
-    });
   }
 };
 

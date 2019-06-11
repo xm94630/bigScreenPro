@@ -1,0 +1,58 @@
+{
+	"color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
+	"title": {
+		"text": "出库单",
+		"textStyle": {
+			"fontSize": 16,
+			"color": "#f8f4a0"
+		}
+	},
+	"legend": {
+		"data": ["出库单", "sku"],
+		"show": true,
+		"textStyle": {
+			"color": "#f8f4a0"
+		}
+	},
+	"xAxis": {
+		"axisLabel": {
+			"show": true,
+			"textStyle": {
+				"color": "#f8f4a0"
+			}
+		},
+		"data": ["JIT", "B2C", "B2B"]
+	},
+	"yAxis": {
+		"axisLabel": {
+			"show": true,
+			"textStyle": {
+				"color": "#f8f4a0"
+			}
+		},
+		"type": "value"
+	},
+	"series": [{
+		"name": "出库单",
+		"data": [1, 2, 3],
+		"type": "bar"
+	}, {
+		"name": "sku",
+		"data": [4, 5, 6],
+		"type": "bar"
+	}],
+	"tooltip": {
+		"trigger": "axis"
+	},
+	"toolbox": {
+		"feature": {
+			"saveAsImage": {}
+		}
+	},
+	"grid": {
+		"left": "3%",
+		"right": "4%",
+		"bottom": "3%",
+		"containLabel": true
+	}
+}
