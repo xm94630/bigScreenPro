@@ -5,7 +5,9 @@
       <el-col :span="12">
         <div class="myReportCanvas"></div>
         <div class="bottomBar">
-          <el-button @click="saveScreenFun" type="primary"  size="mini" icon="el-icon-star-on" class="saveBtn">保存大屏视图 </el-button>
+          <el-button @click="openSaveWindowFun" type="primary"  size="mini" icon="el-icon-star-on" class="saveBtn">
+            保存大屏视图
+          </el-button>
         </div>
       </el-col>
       
@@ -14,12 +16,29 @@
         <editorBox ref="editorBox" @getWidgetConfig="getWidgetConfig"/>
       </el-col>
     </el-row>
+
+    <el-dialog title="保存大屏视图" :visible.sync="dialogFormVisible" width="400px">
+      <el-form ref="myForm" :model="myForm" :rules="rules">
+        <el-form-item label="名称" prop="name" :label-width="formLabelWidth">
+          <el-input v-model="myForm.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="Code" prop="code" :label-width="formLabelWidth">
+          <el-input v-model="myForm.code" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="saveScreenFun">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
+  
 </template>
 
 <script>
 import Vue from "vue";
 import editorBox from "../components/editorBox"
+import bee from "@/src/tools/bee";
 
 
 function mountCmp(cmp, props, parent) {
@@ -47,20 +66,19 @@ export default {
   data(){
     return{
       wigetConfig:null,
+      dialogFormVisible: false,
+      myForm: {
+        name: '',
+        code: '',
+      },
+      formLabelWidth:'80px',
+      rules: {
+        name: [{ required: true, message: '请输入大屏名称', trigger: 'blur' }],
+        code: [{ required: true, message: '请输入大屏code（任意字符串皆可，确保唯一性，以后会用此code获取大屏的内容）', trigger: 'blur' }]
+      }
     }
   },
   watch:{
-    "wigetConfig.diyCoreCode":{
-      handler: function (newCode) {
-        //更新数据
-        // let dataUrl = this.wigetConfig.dataUrl;
-        // let params = Object.assign({},{diyCoreCode:newCode},store.state.store_globalContion);
-        // axios.post(baseUrl + dataUrl,params).then(response => {
-        //   this.wigetConfig.apiData = JSON.stringify(response.data.data);
-        // });
-      },
-      deep: true
-    }
   },
   methods:{
     getWidgetConfig(wigetConfig){
@@ -77,10 +95,42 @@ export default {
         );
       });
     },
+    openSaveWindowFun(){
+      this.myForm.code = 'screen-'+bee.guidGenerator(); 
+      this.dialogFormVisible = true;
+    },    
     saveScreenFun(){
-      console.log("获取子组件中配置完毕的json数据：")
-      console.log(JSON.stringify(this.$refs.editorBox.json))
-    }
+
+        this.$refs["myForm"].validate((valid) => {
+          if (valid) {
+            this.dialogFormVisible = false;
+            let ScreenConfig = {
+              json:JSON.stringify(this.$refs.editorBox.json),
+              name:this.myForm.name,
+              code:this.myForm.code,
+            }
+            let ScreenConfigStr = JSON.stringify(ScreenConfig)
+
+            //保存到本地储存（未来改成接口）
+            if(localStorage.getItem("screenList")){
+              let screenList = JSON.parse(localStorage.getItem('screenList'))
+              screenList[this.myForm.code] = ScreenConfigStr
+              localStorage.setItem("screenList",JSON.stringify(screenList))
+            }else{
+              let screenList = {}
+              screenList[this.myForm.code] = ScreenConfigStr
+              localStorage.setItem("screenList",JSON.stringify(screenList));
+            }
+
+
+
+
+          } else {
+            return false;
+          }
+        });
+
+    },
   },
   mounted(){
 
