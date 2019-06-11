@@ -63,20 +63,22 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"demo_line"
         }],
-        "new_bar": [{
-          "id": "bar01",
+        "new_bar":[{
+          "id": "xxx",
+          "type":"new_bar",
           "css":{
             "x": 550,
             "y": 20,
-            "width": 500,
-            "height": 300,
+            "width": 250,
+            "height": 200,
+            "z-index": 9,
             "border": "none",
-            "padding":10,
-            "background":"#1e2647"
+            "padding":5,
+            "background":"#142a41"
           },
           "echartOption":{
+            "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
             "title": {
-              "show": true,
               "text": "出库单",
               "textStyle": {
                 "fontSize": 16,
@@ -84,22 +86,21 @@ router.get('/view/info', async (ctx, next) => {
               }
             },
             "axisLabel": {
-              "show": true,
+              "show": "true",
               "textStyle": {
                 "color": "#f8f4a0"
               }
             },
             "legend":{
-              "show": true,
+              "show": "true",
               "textStyle": {
                 "color": "#f8f4a0"
               }
-            },
-            "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
+            }
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-HistogramOutOrder"
-        }]
+        }],
       }
     }
   }
