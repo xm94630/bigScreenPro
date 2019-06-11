@@ -13,7 +13,7 @@ export default function(){
         "height": 200,
         "z-index": 1,
         "border": "none",
-        "padding":10,
+        "padding":5,
         "background":"#142a41"
       },
       "echartOption":{
