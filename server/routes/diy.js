@@ -937,7 +937,7 @@ router.get('/view/info', async (ctx, next) => {
                 "color": "#f8f4a0"
               }
             },
-            "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
+            "color":  "#4f8ff9|#38c3ec|#a2fdff|#eada80",
             "legend":{
               "show": true,
               "textStyle": {
@@ -974,7 +974,7 @@ router.get('/view/info', async (ctx, next) => {
                 "color": "#f8f4a0"
               }
             },
-            "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
+            "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
             "legend":{
               "show": true,
               "textStyle": {
@@ -1011,7 +1011,7 @@ router.get('/view/info', async (ctx, next) => {
                 "color": "#f8f4a0"
               }
             },
-            "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
+            "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
             "legend":{
               "show": true,
               "textStyle": {
@@ -1048,7 +1048,7 @@ router.get('/view/info', async (ctx, next) => {
                 "color": "#f8f4a0"
               }
             },
-            "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
+            "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
             "legend":{
               "show": true,
               "textStyle": {
