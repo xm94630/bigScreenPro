@@ -12,6 +12,7 @@ import _ from "lodash";
 import axios from "axios";
 import {baseUrl} from '@/bee.config';
 import store from '@/src/store';
+import { setTimeout } from 'timers';
 
 
 
@@ -176,6 +177,11 @@ export default {
       }else{
         this.myEchart.setOption(getNewOption(val,this.apiData));
       }
+
+      //必须异步，随着外容器的改变，调整size
+      setTimeout(()=>{
+         this.myEchart.resize();
+      },0)
 
     },
   },
