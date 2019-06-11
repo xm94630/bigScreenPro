@@ -10,7 +10,7 @@
       <el-button size="mini" type="primary" round>card</el-button>
       <el-button size="mini" type="primary" round>textBar</el-button>
     </div>
-    <el-row :gutter="20">
+    <el-row :gutter="0">
       <!--左侧-->
       <el-col :span="8">
 
@@ -47,7 +47,7 @@
               </template>
             </div>
           </template> -->
-
+          
         </div>
       </el-col>
       
@@ -194,7 +194,7 @@ export default {
     //父菜单中处理select事件，控制菜单的展开收拢
     selectFun(index,indexPath){
       this.defaultOpeneds = indexPath;
-    }
+    },
   },
   mounted(){
   }
@@ -218,8 +218,10 @@ export default {
     }
     .leftBox{
       height:100%;
-      background: #1b1e25;
+      background: #1a1d21;
       overflow: auto;
+      position: relative;
+      border-right:solid 1px #333; 
       .typeName{
         height:50px;
         background:rebeccapurple;

@@ -4,6 +4,9 @@
       <!--即时视图-->
       <el-col :span="12">
         <div class="myReportCanvas"></div>
+        <div class="bottomBar">
+          <el-button @click="saveScreenFun" type="primary"  size="mini" icon="el-icon-search" class="saveBtn">保存大屏视图 </el-button>
+        </div>
       </el-col>
       
       <!--新增编辑区-->
@@ -73,6 +76,9 @@ export default {
           document.querySelector(".myReportCanvas")
         );
       });
+    },
+    saveScreenFun(){
+      alert('保存操作')
     }
   },
   mounted(){
@@ -92,6 +98,23 @@ export default {
     height:100%;
     .el-col{
       height:100%;
+      position: relative;
+      .bottomBar{
+        width:100%;
+        box-sizing: border-box;
+        padding:0 10px;
+        height:40px;
+        border-top:solid 1px #292a2c;
+        background: #1d2125;
+        position: absolute;
+        bottom:0px;
+        display: flex;
+        align-items:center;
+        .saveBtn{
+          background: #4a555b;
+          border:none;
+        }
+      }
     }
   }
   .myReportCanvas{
