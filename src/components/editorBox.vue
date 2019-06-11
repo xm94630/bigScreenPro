@@ -149,6 +149,7 @@
 <script>
 import bee from "@/src/tools/bee";
 import getWidgetConfig from "./bee/widget.config"
+import store from '@/src/store';
 //let barWidgetConfig = widgetConfig['new_bar']
 
 export default {
@@ -181,12 +182,14 @@ export default {
       }
       //打开对应的菜单，提升用户体验
       this.defaultOpeneds = [name,thisConfigTemplate.id]
-      
+    
       this.$emit('getWidgetConfig',thisConfigTemplate)
     },
     //子菜单的点击
     selectWidget(widget){
       this.widget = widget;
+      //全局保存选中的那个组件id
+      store.dispatch("setSelectWidgetId",widget.id );
     },
     //父菜单中处理select事件，控制菜单的展开收拢
     selectFun(index,indexPath){

@@ -1,6 +1,9 @@
 <template>
   <div class="widgetBox" :style="myCss">
     <div class="widgetCon" :id="myConfig.id"></div>
+    <div class="selectBorder" v-if="myConfig.id===store.state.selectedWidgetId">
+      <!-- {{myConfig.id}} -->
+    </div>
   </div>
 </template>
 
@@ -137,6 +140,7 @@ export default {
       myEchart:null,
       diyCoreCode:'',
       apiData:[],
+      store:store,
     };
   },
   computed: {
@@ -217,6 +221,15 @@ export default {
   .widgetCon {
     width: 100%;
     height: 100%;
+  }
+  .selectBorder{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    //background: rgba(0,231,255,0.11);
+    border: solid 1px rgba(0,231,255,0.3);
   }
 }
 </style>
