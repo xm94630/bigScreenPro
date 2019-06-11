@@ -134,6 +134,8 @@ export default {
   data() {
     return {
       myEchart:null,
+      diyCoreCode:'',
+      apiData:[],
     };
   },
   computed: {
@@ -147,10 +149,12 @@ export default {
       //组件基本样式数据
       let dataUrl = val.dataUrl;
       let diyCoreCode = val.diyCoreCode;
+      this.diyCoreCode = diyCoreCode;
       let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
       //获取数据源
       axios.post(baseUrl + dataUrl,params).then(response => {
         let apiData = response.data.data;
+        this.apiData = apiData;
         this.myEchart = echarts.init(document.getElementById(val.id))
         this.myEchart.setOption(getNewOption(val,apiData));
       });
@@ -159,13 +163,20 @@ export default {
       //组件基本样式数据
       let dataUrl = val.dataUrl;
       let diyCoreCode = val.diyCoreCode;
-      let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
-      //获取数据源
-      axios.post(baseUrl + dataUrl,params).then(response => {
-        let apiData = response.data.data;
-        this.myEchart = echarts.init(document.getElementById(val.id))
-        this.myEchart.setOption(getNewOption(val,apiData));
-      });
+      //只有diyCoreCode发生改变的时候才调接口！
+      if(this.diyCoreCode!==diyCoreCode){
+        this.diyCoreCode=diyCoreCode
+        let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+        //获取数据源
+        axios.post(baseUrl + dataUrl,params).then(response => {
+          let apiData = response.data.data;
+          this.apiData = apiData;
+          this.myEchart.setOption(getNewOption(val,apiData));
+        });
+      }else{
+        this.myEchart.setOption(getNewOption(val,this.apiData));
+      }
+
     },
   },
   // 最近坑有点多，什么使用watch，什么时候用updated呢，主要看，props传入的是个对象时，如果你不是直接在模板中使用属性的话，
