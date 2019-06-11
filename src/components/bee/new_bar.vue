@@ -134,7 +134,6 @@ export default {
   data() {
     return {
       myEchart:null,
-      apiData:[],
     };
   },
   computed: {
@@ -144,7 +143,7 @@ export default {
     }
   },
   methods:{
-    randerWidget:function(val){
+    initWidget:function(val){
       //组件基本样式数据
       let dataUrl = val.dataUrl;
       let diyCoreCode = val.diyCoreCode;
@@ -152,17 +151,32 @@ export default {
       //获取数据源
       axios.post(baseUrl + dataUrl,params).then(response => {
         let apiData = response.data.data;
-        this.apiData = apiData;
+        this.myEchart = echarts.init(document.getElementById(val.id))
+        this.myEchart.setOption(getNewOption(val,apiData));
+      });
+    },
+    updatedWidget:function(val){
+      //组件基本样式数据
+      let dataUrl = val.dataUrl;
+      let diyCoreCode = val.diyCoreCode;
+      let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+      //获取数据源
+      axios.post(baseUrl + dataUrl,params).then(response => {
+        let apiData = response.data.data;
         this.myEchart = echarts.init(document.getElementById(val.id))
         this.myEchart.setOption(getNewOption(val,apiData));
       });
     },
   },
+  // 最近坑有点多，什么使用watch，什么时候用updated呢，主要看，props传入的是个对象时，如果你不是直接在模板中使用属性的话，
+  // 外界的更新是不会触发组件的update的（虽然组件的中的那个对象已经发生了改变）。这个时候使用watch就比较合适
   watch:{
     "myConfig":{
-      handler:function(v){
+      //注意，watch对这个myConfig对象的属性，无法做newVal、oldVal的区分，两者是一样的。
+      //watch只有对一开始就存在的属性才能有效。
+      handler:function(newVal,oldVal){
         console.log('watched!')
-        this.randerWidget(v)
+        this.updatedWidget(newVal,oldVal)
       },
       deep: true
     },
@@ -170,7 +184,7 @@ export default {
   },
   mounted: function() {
     console.log('mounted!')
-    this.randerWidget(this.myConfig);
+    this.initWidget(this.myConfig);
   },
   updated(){
   }
