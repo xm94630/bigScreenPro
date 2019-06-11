@@ -5,13 +5,13 @@
       <el-col :span="12">
         <div class="myReportCanvas"></div>
         <div class="bottomBar">
-          <el-button @click="saveScreenFun" type="primary"  size="mini" icon="el-icon-search" class="saveBtn">保存大屏视图 </el-button>
+          <el-button @click="saveScreenFun" type="primary"  size="mini" icon="el-icon-star-on" class="saveBtn">保存大屏视图 </el-button>
         </div>
       </el-col>
       
       <!--新增编辑区-->
       <el-col :span="12">
-        <editorBox @getWidgetConfig="getWidgetConfig"/>
+        <editorBox ref="editorBox" @getWidgetConfig="getWidgetConfig"/>
       </el-col>
     </el-row>
   </div>
@@ -78,7 +78,8 @@ export default {
       });
     },
     saveScreenFun(){
-      alert('保存操作')
+      console.log("获取子组件中配置完毕的json数据：")
+      console.log(JSON.stringify(this.$refs.editorBox.json))
     }
   },
   mounted(){
