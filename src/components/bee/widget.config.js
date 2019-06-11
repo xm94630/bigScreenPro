@@ -11,6 +11,7 @@ export default function(){
         "y": 20,
         "width": 250,
         "height": 200,
+        "z-index": 1,
         "border": "none",
         "padding":10,
         "background":"#142a41"
