@@ -20,7 +20,7 @@
             text-color="#999"
             :default-openeds ="defaultOpeneds"
             class="el-menu-vertical-demo"
-            active-text-color="red"
+            active-text-color="#409EFF"
             @select="selectFun"
           >
             <template v-for="(widgets,key) in json">

@@ -203,6 +203,22 @@ router.post('/report/selectData', async (ctx, next) => {
     ]
   }
 
+  //new_bar 的测试用的 code数据。
+  if(code==="lifeng-HistogramOutOrder2"){
+    data = [
+      {"出库单":1,"sku":4,"入库单":4,"type":"JIT"},
+      {"出库单":2,"sku":5,"入库单":4,"type":"B2C"},
+      {"出库单":3,"sku":6,"入库单":4,"type":"B2B"}
+    ]
+  }
+  if(code==="lifeng-HistogramOutOrder3"){
+    data = [
+      {"出库单":1,"sku":4,"入库单":4,"bin":2,"type":"JIT"},
+      {"出库单":2,"sku":5,"入库单":2,"bin":1,"type":"B2C"},
+      {"出库单":3,"sku":6,"入库单":4,"bin":2,"type":"B2B"}
+    ]
+  }
+
   if(code==="lifeng-robotTote"){
     data = [{
       '总数':999,
