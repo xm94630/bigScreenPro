@@ -17,9 +17,7 @@
         <div class="leftBox">
           
           <!--画布按钮-->
-          <div class="canvasBtn">
-            画布
-          </div>
+          <div class="canvasBtn" @click="selectWidget(canvas)">画布</div>
 
           <!--组件菜单列表-->
           <el-menu
@@ -168,7 +166,6 @@ export default {
   data(){
     return{
       "canvas":{
-        "id":"22",
         "width": 1400,
         "height": 800,
         "background": "#f3f3f3",
