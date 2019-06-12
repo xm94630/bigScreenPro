@@ -15,6 +15,13 @@
       <el-col :span="8">
 
         <div class="leftBox">
+          
+          <!--画布按钮-->
+          <div class="canvasBtn">
+            画布
+          </div>
+
+          <!--组件菜单列表-->
           <el-menu
             background-color="#333"
             text-color="#999"
@@ -160,6 +167,17 @@ export default {
   },
   data(){
     return{
+      "canvas":{
+        "id":"22",
+        "width": 1400,
+        "height": 800,
+        "background": "#f3f3f3",
+        "zoom-type":0,
+        "formFormat":{
+          "labelPosition":"left",
+          "colSpan":8
+        }
+      },
       json:{
         //"new_bar":[{id:"111"},{id:"222"}],"new_pie":[{id:"333"},{id:"444"}],
       },
@@ -225,6 +243,19 @@ export default {
       .typeName{
         height:50px;
         background:rebeccapurple;
+      }
+      .canvasBtn{
+        height:50px;
+        line-height: 50px;
+        padding-left: 20px;
+        color: rgb(153, 153, 153);
+        background-color: rgb(51, 51, 51);
+        border-right:solid 1px #e6e6e6;
+        cursor: pointer;
+        &:hover{
+          background-color:#2d2d2d;
+          transition: background-color .3s;
+        }
       }
     }
     .rightBox{
