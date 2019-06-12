@@ -17,7 +17,7 @@
         <div class="leftBox">
           
           <!--画布按钮-->
-          <div class="canvasBtn" @click="selectWidget(canvas)">画布</div>
+          <div class="canvasBtn" @click="selectCanvas">画布</div>
 
           <!--组件菜单列表-->
           <el-menu
@@ -210,6 +210,10 @@ export default {
     selectFun(index,indexPath){
       this.defaultOpeneds = indexPath;
     },
+    selectCanvas(){
+      this.selectWidget(this.canvas);
+      this.defaultOpeneds=[];
+    }
   },
   mounted(){
   }
