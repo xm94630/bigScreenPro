@@ -122,7 +122,10 @@ export default {
           if (valid) {
             this.dialogFormVisible = false;
             let ScreenConfig = {
-              json:JSON.stringify(this.$refs.editorBox.json),
+              json:{
+                "canvas":JSON.stringify(this.$refs.editorBox.canvas),
+                "components":JSON.stringify(this.$refs.editorBox.json)
+              },
               name:this.myForm.name,
               code:this.myForm.code,
             }
