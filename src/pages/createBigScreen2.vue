@@ -4,7 +4,9 @@
       <!--即时视图-->
       <el-col :span="12">
 
-        <div class="myReportCanvas" :style="style"></div>
+        <div class="myReportCanvasBox">
+          <div class="myReportCanvas" :style="style"></div>
+        </div>
         
         <div class="bottomBar">
           <el-button @click="openSaveWindowFun" type="primary"  size="mini" icon="el-icon-star-on" class="saveBtn">
@@ -188,12 +190,16 @@ export default {
       }
     }
   }
-  .myReportCanvas{
-    // width:600px;
-    // height:400px;
-    // background: #142a41;
-    margin:20px 0 0 20px;
-    box-shadow: rgba(0,0,0,.5) 0 0 30px 0;
+  .myReportCanvasBox{
+    height:100%;
+    overflow: auto;
+    .myReportCanvas{
+      // width:600px;
+      // height:400px;
+      // background: #142a41;
+      margin:20px 0px 0px 20px;
+      box-shadow: rgba(0,0,0,.5) 0 0 30px 0;
+    }
   }
 }
 
