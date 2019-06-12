@@ -166,9 +166,9 @@ export default {
   data(){
     return{
       "canvas":{
-        "width": 1400,
-        "height": 800,
-        "background": "#f3f3f3",
+        "width": 600,
+        "height": 400,
+        "background": "#142a41",
         "zoom-type":0,
         "formFormat":{
           "labelPosition":"left",
@@ -216,6 +216,8 @@ export default {
     }
   },
   mounted(){
+    //一开始就把canvas对象抛出，用来渲染画布。
+    this.$emit('getCanvasConfig',this.canvas)
   }
 }
 </script>
