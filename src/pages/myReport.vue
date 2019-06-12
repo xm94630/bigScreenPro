@@ -60,14 +60,10 @@ export default {
     let code = this.$route.query.diyViewCode;
     //axios.get(baseUrl + "/koa/getReportByCode?code="+code).then(response => {
     
-    axios.get(baseUrl + path + "/api_v1/diy/view/info?diyViewCode="+code).then(response => {
-
-      let d = response.data.data.jsonData;
-      d = typeof(d)=='string'?eval('(' + d + ')'):d;
-      
+    function xxx(d){
       //全局条件查询
-      this.showGlobalContion = d.globalCondition;
-      this.globalContion = d.globalCondition;
+      that.showGlobalContion = d.globalCondition;
+      that.globalContion = d.globalCondition;
 
       //刷新页面
       let refreshTime = d.refreshTime;
@@ -84,18 +80,18 @@ export default {
           if(d.globalCondition[i].dataType===997788){
             let v = d.globalCondition[i].defaultValue;
             if(v && v[0] && v[1]){
-              this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=new Date(v[0]).getTime();
-              this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=new Date(v[1]).getTime();
+              that.defaultGlobalContion[d.globalCondition[i].keyName[0]]=new Date(v[0]).getTime();
+              that.defaultGlobalContion[d.globalCondition[i].keyName[1]]=new Date(v[1]).getTime();
             }else{
               let a = new Date(new Date().toLocaleDateString()).getTime(); //今天0点开始的时间
               let b = new Date().getTime() //当前时间
-              this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=a;
-              this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=b;
+              that.defaultGlobalContion[d.globalCondition[i].keyName[0]]=a;
+              that.defaultGlobalContion[d.globalCondition[i].keyName[1]]=b;
             }
           }
         }
         //把默认的全局条件查询值，存到store
-        store.dispatch("setGlobalContion",this.defaultGlobalContion);
+        store.dispatch("setGlobalContion",that.defaultGlobalContion);
       }
 
       //保存到全局store
@@ -109,9 +105,24 @@ export default {
         d = eval('(' + d + ')');
       }
       
-      this.data = d;
-    });
+      that.data = d;
+    }
 
+    let a = eval("("+localStorage.getItem("screenList")+")")[code];
+    if(a){
+      let b = eval("("+a+")");  
+      let canvas = eval("("+b.json.canvas+")");
+      let components = eval("("+b.json.components+")");
+      xxx({
+        canvas,components
+      })
+    }else{
+      axios.get(baseUrl + path + "/api_v1/diy/view/info?diyViewCode="+code).then(response => {
+        let d = response.data.data.jsonData;
+        d = typeof(d)=='string'?eval('(' + d + ')'):d;
+        xxx(d);
+      });
+    }
   },
 }
 </script>
