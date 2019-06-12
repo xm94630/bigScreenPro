@@ -111,6 +111,21 @@ export default {
   display: inline-block;
   vertical-align: middle;
   margin-right: 20px;
+  margin-bottom:20px;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+.myReport2 {
+  width: 150px;
+  height: 150px;
+  background: #eada80;
+  border: solid 3px red;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
+  margin-bottom:20px;
   padding: 20px;
   box-sizing: border-box;
   font-size: 20px;

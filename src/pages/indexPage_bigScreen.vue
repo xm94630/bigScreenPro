@@ -7,6 +7,12 @@
       </router-link>
     </template>
 
+    <template v-for="(one) in reportList2">
+      <router-link :to="'/myReport?diyViewCode='+one.code" :key="one.code">
+        <div class="myReport2">{{one.name}}</div>
+      </router-link>
+    </template>
+
     <!-- <router-link to="/createBigScreen">
       <add-btn></add-btn>
     </router-link> -->
@@ -31,7 +37,8 @@ export default {
   data() {
     return {
       isCollapse: true,
-      reportList: null
+      reportList: [],
+      reportList2: []
     };
   },
   methods: {
@@ -41,6 +48,13 @@ export default {
     axios.get(baseUrl + path + "/api_v1/diy/view/template/list").then(response => {
       this.reportList = response.data.data;
     });
+
+    //从本地储存中获取
+    let list = JSON.parse(localStorage.getItem('screenList'));
+    for(let key in list){
+      list[key] = JSON.parse(list[key]);
+    }
+    this.reportList2 = list;
   },
   computed:{
   }
