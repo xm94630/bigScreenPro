@@ -61,19 +61,19 @@ export default {
       const scaleW = show_width / w;
       const scaleH = show_height / h;
       const ele = document.querySelector('.myReportCanvas')
-      if(type===1){
+      if(type==="1"){
         ele.style.transform = 'scale('+scaleW+','+scaleH+')';
         ele.style.top = (show_height - h)/2 + "px";
         if(show_width<w){
           ele.style.left = (show_width - w)/2 + "px";
         }
-      }else if(type===2){
+      }else if(type==="2"){
         ele.style.transform = 'scale('+scaleW+','+scaleW+')';
         ele.style.top = (h*scaleW - h)/2 + "px";
         if(show_width<w){
           ele.style.left = (show_width - w)/2 + "px";
         }
-      }else if(type===3){
+      }else if(type==="3"){
         ele.style.transform = 'scale('+scaleH+','+scaleH+')';
         ele.style.top = (show_height - h)/2 + "px";
         if(show_width<w){
