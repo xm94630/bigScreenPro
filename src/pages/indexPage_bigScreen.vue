@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div clas="">
 
     <template v-for="(one) in reportList">
       <router-link :to="'/myReport?diyViewCode='+one.diyViewCode" :key="one.diyViewCode">
@@ -9,7 +9,14 @@
 
     <template v-for="(one) in reportList2">
       <router-link :to="'/myReport?diyViewCode='+one.code" :key="one.code">
-        <div class="myReport2">{{one.name}}</div>
+        <div class="myReport2">
+          {{one.name}}
+          <div class="editScreenBtn">
+            <router-link :to="'/createBigScreen2?diyViewCode='+one.code">
+              <i class="el-icon-edit"></i>
+            </router-link>
+          </div>
+        </div>
       </router-link>
     </template>
 
@@ -61,5 +68,22 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
+
+  .myReport2{
+    position: relative;
+    .editScreenBtn{
+      width: 25px;
+      height:25px;
+      background: red;
+      position: absolute;
+      top:0px;
+      right:0px;
+      cursor: pointer;
+      font-size: 20px;
+      color:#fff;
+    }
+  }
+
+
 </style>
