@@ -31,7 +31,7 @@
           <el-input v-model="myForm.name" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="Code" prop="code" :label-width="formLabelWidth">
-          <el-input v-model="myForm.code" autocomplete="off"></el-input>
+          <el-input v-model="myForm.code" autocomplete="off" :disabled="codeInputDisabled"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -85,7 +85,8 @@ export default {
       rules: {
         name: [{ required: true, message: '请输入大屏名称', trigger: 'blur' }],
         code: [{ required: true, message: '请输入大屏code（任意字符串皆可，确保唯一性，以后会用此code获取大屏的内容）', trigger: 'blur' }]
-      }
+      },
+      codeInputDisabled:false
     }
   },
   computed:{
@@ -117,7 +118,14 @@ export default {
       });
     },
     openSaveWindowFun(){
-      this.myForm.code = 'screen-'+bee.guidGenerator(); 
+      let modCode = this.$route.query.modCode;
+      if(modCode){
+        this.myForm.name =JSON.parse(localStorage.getItem('screenList'))[modCode].name;
+        this.myForm.code = modCode; 
+        this.codeInputDisabled = true;
+      }else{
+        this.myForm.code = 'screen-'+bee.guidGenerator(); 
+      }
       this.dialogFormVisible = true;
     },    
     saveScreenFun(){
@@ -127,13 +135,13 @@ export default {
             this.dialogFormVisible = false;
             let ScreenConfig = {
               json:{
-                "canvas":JSON.stringify(this.$refs.editorBox.canvas),
-                "components":JSON.stringify(this.$refs.editorBox.json)
+                "canvas":this.$refs.editorBox.canvas,
+                "components":this.$refs.editorBox.json
               },
               name:this.myForm.name,
               code:this.myForm.code,
             }
-            let ScreenConfigStr = JSON.stringify(ScreenConfig)
+            let ScreenConfigStr = ScreenConfig
 
             //保存到本地储存（未来改成接口）
             if(localStorage.getItem("screenList")){

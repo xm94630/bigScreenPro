@@ -217,8 +217,25 @@ export default {
     }
   },
   mounted(){
-    //一开始就把canvas对象抛出，用来渲染画布。
-    this.$emit('getCanvasConfig',this.canvas)
+
+    //看看是不是编辑页面
+    let modCode = this.$route.query.modCode;
+    if(modCode){
+      let list = JSON.parse(localStorage.getItem('screenList'));
+      //直接导入数据
+      this.canvas = list[modCode].json.canvas;
+      this.json = list[modCode].json.components;
+      //并触发创建组件
+      this.$emit('getCanvasConfig',this.canvas)
+      for(let types in this.json){
+        for(let i=0;i<this.json[types].length;i++){
+          this.$emit('getWidgetConfig',this.json[types][i]);
+        }
+      }
+    }else{
+      //一开始就把canvas对象抛出，用来渲染画布。
+      this.$emit('getCanvasConfig',this.canvas)
+    }
   }
 }
 </script>

@@ -12,7 +12,7 @@
         <div class="myReport2">
           {{one.name}}
           <div class="editScreenBtn">
-            <router-link :to="'/createBigScreen2?diyViewCode='+one.code">
+            <router-link :to="'/createBigScreen2?modCode='+one.code">
               <i class="el-icon-edit"></i>
             </router-link>
           </div>
@@ -58,9 +58,6 @@ export default {
 
     //从本地储存中获取
     let list = JSON.parse(localStorage.getItem('screenList'));
-    for(let key in list){
-      list[key] = JSON.parse(list[key]);
-    }
     this.reportList2 = list;
   },
   computed:{

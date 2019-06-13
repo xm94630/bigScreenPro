@@ -108,11 +108,10 @@ export default {
       that.data = d;
     }
 
-    let a = eval("("+localStorage.getItem("screenList")+")")[code];
-    if(a){
-      let b = eval("("+a+")");  
-      let canvas = eval("("+b.json.canvas+")");
-      let components = eval("("+b.json.components+")");
+    let config = JSON.parse(localStorage.getItem("screenList"))[code];
+    if(config){
+      let canvas = config.json.canvas
+      let components = config.json.components
       xxx({
         canvas,components
       })
