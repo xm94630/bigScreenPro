@@ -72,10 +72,15 @@ export default function(){
           "textStyle": {
             "color": "#f8f4a0"
           }
+        },
+        "series": {
+          "name": "机器人",
+          "radius" : "50%",
+          "center": "50%|55%",
         }
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"lifeng-robot"
+      "diyCoreCode":"lifeng-robot2"
     }
   }
 }

@@ -58,14 +58,18 @@ function getNewOption(myConfig,apiData) {
   let keys = Object.keys(one)
 
   // series配置
-  let series = [];
+  let seriesData = [];
   for(let key in one){
-    series.push({
+    seriesData.push({
       value:one[key],
       name:key,
     })
   }
- 
+  let series = JSON.parse(JSON.stringify(myConfig.echartOption.series));
+  series.data = seriesData;
+  series.type = "pie";
+  series.center = series.center.split('|');
+
   // legend 配置
   let legend = JSON.parse(JSON.stringify(myConfig.echartOption.legend));
   legend.data = keys;
@@ -78,7 +82,7 @@ function getNewOption(myConfig,apiData) {
   let newOption = JSON.parse(JSON.stringify(defaultOption));
   newOption.title = title;
   newOption.color = color;
-  newOption.series[0].data = series;
+  newOption.series[0] = series;
   newOption.legend = legend;
 
   return newOption;
