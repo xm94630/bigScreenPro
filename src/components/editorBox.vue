@@ -5,6 +5,7 @@
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_bar')">bar</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_line')">line</el-button>
       <el-button size="mini" type="primary" round>pie</el-button>
+      <el-button size="mini" type="primary" round @click="createWidgetFun('new_pie_2')">pie2</el-button>
       <el-button size="mini" type="primary" round>title</el-button>
       <el-button size="mini" type="primary" round>table</el-button>
       <el-button size="mini" type="primary" round>card</el-button>

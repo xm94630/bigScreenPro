@@ -109,7 +109,7 @@ export default {
     },
     randerWidget(wigetConfig){
       //构建组件
-      import("../components/bee/new_bar.vue").then(cmp => {
+      import("../components/bee/"+wigetConfig.type+".vue").then(cmp => {
         mountCmp(
           cmp,
           {myConfig: wigetConfig},

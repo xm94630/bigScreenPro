@@ -881,7 +881,7 @@ router.get('/view/info', async (ctx, next) => {
         }],
     
         "new_pie_2":[{
-          "chartId":"piex",
+          "id":"piex",
           "css":{
             "x": 360,
             "y": 550,

@@ -46,6 +46,7 @@ export default function(){
     },
     "new_pie_2":{
       "id": bee.guidGenerator(),
+      "type":"new_pie_2",
       "css":{
         "x": 20,
         "y": 20,
@@ -57,7 +58,7 @@ export default function(){
         "background":"#142a41"
       },
       "echartOption":{
-        "color": ["#4f8ff9","#38c3ec","#a2fdff","#c0f8ff"],
+        "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
         "title": {
           "text": "出库单",
           "textStyle": {

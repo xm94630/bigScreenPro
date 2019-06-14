@@ -133,7 +133,7 @@ function getNewOption(myConfig,apiData) {
 
 
 export default {
-  name: "bar",
+  name: "new_bar",
   props: {
     myConfig: Object
   },
@@ -152,18 +152,18 @@ export default {
     }
   },
   methods:{
-    initWidget:function(val){
+    initWidget:function(myConfig){
       //组件基本样式数据
-      let dataUrl = val.dataUrl;
-      let diyCoreCode = val.diyCoreCode;
+      let dataUrl = myConfig.dataUrl;
+      let diyCoreCode = myConfig.diyCoreCode;
       this.diyCoreCode = diyCoreCode;
       let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
       //获取数据源
       axios.post(baseUrl + dataUrl,params).then(response => {
         let apiData = response.data.data;
         this.apiData = apiData;
-        this.myEchart = echarts.init(document.getElementById(val.id))
-        this.myEchart.setOption(getNewOption(val,apiData));
+        this.myEchart = echarts.init(document.getElementById(myConfig.id))
+        this.myEchart.setOption(getNewOption(myConfig,apiData));
       });
     },
     updatedWidget:function(val){
