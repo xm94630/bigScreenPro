@@ -12,6 +12,40 @@
 import bee from '@/src/tools/bee.js';
 import echarts from "echarts";
 
+
+
+// 这个是echart实例的默认配置
+let defaultOption = {
+	"color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#c0f8ff"],
+	"title": {
+    "text": "机器人",
+    "textStyle": {
+			"fontSize": 16,
+			"color": "#f8f4a0"
+		}
+  },
+  "legend": {
+    "orient": "vertical",
+    "left": "right",
+    "data": ["工作中", "异常", "空闲", "充电中"],
+		"textStyle": {
+			"color": "#f8f4a0"
+		}
+	},
+	"series": [{
+		"name": "机器人",
+		"type": "pie",
+		"data": [
+      {"value": 800,"name": "工作中"}, 
+      {"value": 300,"name": "异常"}, 
+      {"value": 200,"name": "空闲"}, 
+      {"value": 500,"name": "充电中"}
+    ]
+  }],
+  "tooltip": {"trigger": "item","formatter": "{a} <br/>{b} : {c} ({d}%)"}
+}
+
+
 //获取饼图option配置
 function getOption(data) {
 
@@ -64,6 +98,9 @@ function getOption(data) {
     ]
   };
 
+  console.log('==>')
+  console.log(JSON.stringify(option))
+
   return option;
 }
 
@@ -92,12 +129,14 @@ export default {
     this.myChart = echarts.init(
       document.getElementById(this.myConfig.chartId)
     );
-    this.myChart.setOption(this.bingTu_option);
+    //this.myChart.setOption(this.bingTu_option);
+    this.myChart.setOption(defaultOption);
   },
   watch: {
     myConfig: {
       handler: function(val) {
-        this.myChart.setOption(getOption(val));
+        //this.myChart.setOption(getOption(val));
+        this.myChart.setOption(defaultOption);
       },
       deep: true
     }
