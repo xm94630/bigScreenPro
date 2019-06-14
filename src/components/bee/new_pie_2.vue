@@ -34,7 +34,9 @@ let defaultOption = {
 	},
 	"series": [{
 		"name": "机器人",
-		"type": "pie",
+    "type": "pie",
+    "radius" : "55%",
+    "center": ["50%", "60%"],
 		"data": [
       {"value": 800,"name": "工作中"}, 
       {"value": 300,"name": "异常"}, 
@@ -46,62 +48,42 @@ let defaultOption = {
 }
 
 
-//获取饼图option配置
-function getOption(data) {
+// 结合数据源和默认echart数据，进行最新样式的组装。
+function getNewOption(myConfig) {
 
-  //兼容字符串形式
-  let apiData = typeof(data.apiData)=='string'?eval('(' + data.apiData + ')'):data.apiData;
+  // 接口的数据格式为：[{"工作中":800,"异常":300,"空闲":200,"充电中":500}]
+  let apiData = typeof(myConfig.apiData)=='string'?eval('(' + myConfig.apiData + ')'):myConfig.apiData;
   
-  //这个是接口的数据，还需要我们进行组装
-  apiData = apiData[0];
-  let legendData = {data:Object.keys(apiData)};
-  let seriesData = [];
-  for(let key in apiData){
-    seriesData.push({
-      value:apiData[key],
+  // 获取一条数据
+  let one = apiData[0];
+  // 获取keys，如：["工作中", "异常", "空闲", "充电中"]
+  let keys = Object.keys(one)
+
+  // series配置
+  let series = [];
+  for(let key in one){
+    series.push({
+      value:one[key],
       name:key,
     })
   }
+ 
+  // legend 配置
+  let legend = myConfig.echartOption.legend;
+  legend.data = keys;
+  // title 配置
+  let title = myConfig.echartOption.title;
+  // color 配置
+  let color = myConfig.echartOption.color.split('|')
 
-  //legend样式部分
-  let legend = data.legend;
+  // 最新的配置
+  let newOption = JSON.parse(JSON.stringify(defaultOption));
+  newOption.title = title;
+  newOption.color = color;
+  newOption.series[0].data = series;
+  newOption.legend = legend;
 
-  //console.log(seriesData)
-
-  let option = {
-    color: data.color || ["#83b5b9","#db8460","#9ec794","#eada80"],
-    title: data.title,
-    tooltip: {
-      trigger: "item",
-      formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: Object.assign({},legend,legendData),
-    series: [
-      {
-        name: "访问来源",
-        label:{
-          //formatter: '{b}: {@2012} ({d}%)'
-          formatter: '{@2012}'
-        },
-        type: "pie",
-        radius: "55%",
-        center: ["50%", "60%"],
-        data: seriesData
-        // itemStyle: {
-        //     emphasis: {
-        //         shadowBlur: 10,
-        //         shadowOffsetX: 0,
-        //         shadowColor: 'rgba(0, 0, 0, 0.5)'
-        //     }
-        // }
-      }
-    ]
-  };
-
-  console.log('==>')
-  console.log(JSON.stringify(option))
-
-  return option;
+  return newOption;
 }
 
 export default {
@@ -112,7 +94,7 @@ export default {
   },
   data() {
     return {
-      bingTu_option: getOption(this.myConfig),
+      bingTu_option: getNewOption(this.myConfig),
       myChart: null,
       width: this.myConfig.width,
       height: this.myConfig.height,
@@ -129,14 +111,14 @@ export default {
     this.myChart = echarts.init(
       document.getElementById(this.myConfig.chartId)
     );
-    //this.myChart.setOption(this.bingTu_option);
-    this.myChart.setOption(defaultOption);
+    this.myChart.setOption(this.bingTu_option);
+    //this.myChart.setOption(defaultOption);
   },
   watch: {
     myConfig: {
       handler: function(val) {
-        //this.myChart.setOption(getOption(val));
-        this.myChart.setOption(defaultOption);
+        this.myChart.setOption(getNewOption(val));
+        //this.myChart.setOption(defaultOption);
       },
       deep: true
     }

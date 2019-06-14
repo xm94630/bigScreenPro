@@ -114,12 +114,14 @@ function getNewOption(myConfig,apiData) {
     "type": "value"
   }
 
+  // title 配置
+  let title = data.echartOption.title;
   // color 配置
   let color = data.echartOption.color.split('|')
 
   // 最新的配置
   let newOption = JSON.parse(JSON.stringify(defaultOption));
-  newOption.title = data.echartOption.title;
+  newOption.title = title;
   newOption.color = color;
   newOption.series = series;
   newOption.legend = legend;

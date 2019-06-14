@@ -891,20 +891,22 @@ router.get('/view/info', async (ctx, next) => {
             "padding":10,
             "background":"#1e2647",
           },
-          "title": {
-            "text": "",
-            "color": "#666",
-            "font-size": 16,
-            "align": "center"
+          "echartOption":{
+            "title": {
+              "text": "",
+              "color": "#666",
+              "font-size": 16,
+              "align": "center"
+            },
+            "legend": {
+              "orient": "vertical",
+              "left": "right",
+              "textStyle": {
+                "color": "#f8f4a0"
+              }
+            },
+            "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
           },
-          "legend": {
-            "orient": "vertical",
-            "left": "right",
-            "textStyle": {
-              "color": "#f8f4a0"
-            }
-          },
-          "color": ["#4f8ff9","#38c3ec","#a2fdff","#c0f8ff"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-robot"
         }],
