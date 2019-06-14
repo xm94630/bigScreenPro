@@ -42,7 +42,33 @@ export default function(){
       "diyCoreCode":"lifeng-HistogramOutOrder"
     },
     "new_line":{
-      "id": bee.guidGenerator()
+      "id": bee.guidGenerator(),
+      "css":{
+        "x": 20,
+        "y": 20,
+        "width": 500,
+        "height": 300,
+        "border": "none",
+        "padding":10,
+        "background":"#fff"
+      },
+      "title": {
+        "show": true,
+        "text": "按周统计",
+        "x": "left",
+        "textStyle": {
+          "fontSize": 16,
+          "color": "#f8f4a0"
+        }
+      },
+      "xAxis": {
+        "type": "category",
+        "boundaryGap": false,
+        "data": ["周一","周二","周三","周四","周五","周六","周日"]
+      },
+      "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"],
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"demo_line"
     },
     "new_pie_2":{
       "id": bee.guidGenerator(),
@@ -82,6 +108,7 @@ export default function(){
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"lifeng-robot2"
     }
+    
   }
 }
 
