@@ -60,7 +60,7 @@ export default function(){
       "echartOption":{
         "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
         "title": {
-          "text": "出库单",
+          "text": "饼图2",
           "textStyle": {
             "fontSize": 16,
             "color": "#f8f4a0"

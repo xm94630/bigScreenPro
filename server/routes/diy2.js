@@ -188,6 +188,12 @@ router.post('/report/selectData', async (ctx, next) => {
       '充电中':500,
     }]
   }
+  if(code==="lifeng-robot2"){
+    data = [{
+      '已完成':800,
+      '未完成':300
+    }]
+  }
 
   //利丰大屏幕 - 柱状图
   if(
