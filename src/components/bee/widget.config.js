@@ -43,6 +43,7 @@ export default function(){
     },
     "new_line":{
       "id": bee.guidGenerator(),
+      "type":"new_line",
       "css":{
         "x": 20,
         "y": 20,
@@ -62,10 +63,15 @@ export default function(){
             "color": "#f8f4a0"
           }
         },
+        "legend": {
+          "data": ["出库单", "入库单"]
+        },
         "xAxis": {
           "type": "category",
-          "boundaryGap": false,
-          "data": ["周一","周二","周三","周四","周五","周六","周日"]
+          "data": ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+        },
+        "yAxis": {
+          "type": "value"
         },
         "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"]
       },

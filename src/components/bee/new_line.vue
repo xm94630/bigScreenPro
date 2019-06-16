@@ -17,83 +17,74 @@ import { setTimeout } from 'timers';
 
 // 这个是echart实例的默认配置
 let defaultOption = {
-	"myConfig": {
-		"id": "componentId_line001",
-		"css": {
-			"x": 20,
-			"y": 20,
-			"width": 500,
-			"height": 300,
-			"border": "none",
-			"padding": 10,
-			"background": "#fff"
-		},
-		"title": {
-			"show": true,
-			"text": "出库单",
-			"x": "left",
-			"textStyle": {
-				"fontSize": 16,
-				"color": "#f8f4a0"
-			}
-		},
-		"axisLabel": {
-			"show": true,
-			"textStyle": {
-				"color": "#f8f4a0"
-			}
-		},
-		"color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
-		"dataUrl": "/epimetheus/api/diy/report/selectData",
-		"diyCoreCode": "demo_line",
-		"apiData": [{
-			"name": "出库单",
-			"data": [120, 132, 101, 134, 90, 230, 210]
-		}, {
-			"name": "入库单",
-			"data": [220, 182, 191, 234, 290, 330, 310]
-		}]
-	}
+	"color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
+	"title": {
+		"text": "按周统计",
+		"textStyle": {
+			"fontSize": 16,
+			"color": "#f8f4a0"
+		}
+	},
+	"legend": {
+		"data": ["出库单", "入库单"]
+  },
+	"xAxis": {
+		"type": "category",
+		"data": ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+	},
+	"yAxis": {
+		"type": "value"
+	},
+	"series": [{
+		"name": "出库单",
+		"data": [120, 132, 101, 134, 90, 230, 210],
+		"type": "line"
+	}, {
+		"name": "入库单",
+		"data": [220, 182, 191, 234, 290, 330, 310],
+		"type": "line"
+  }],
+  "tooltip": {"trigger": "axis"},
+	"grid": {"left": "3%","right": "4%","bottom": "3%","containLabel": true},
+	"toolbox": {"feature": {"saveAsImage": {}}},
 }
 
+
 // 结合数据源和默认echart数据，进行最新样式的组装。
-function getNewOption(data) {
+function getNewOption(myConfig,apiData) {
+  
+  //接口数据格式：
+  //[{name:'出库单',data:[120, 132, 101, 134, 90, 230, 210]},
+  // {name:'入库单',data:[220, 182, 191, 234, 29, 330, 310]}]
+
+  apiData = myConfig.apiData;
+
+  // 获取keys，如：["出库单", "入库单"]
+  let keys =["出库单", "入库单"]
 
   //追加类型
-  let series = data.apiData;
+  let series = myConfig.apiData;
   series.forEach(function(one) {
     one.type = "line";
   });
 
-  //构建option
-  let option = {
-    color: data.color,
-    title: data.title,
-    tooltip: {
-      trigger: "axis"
-    },
-    legend: {
-        data:['出库单','入库单']
-    },
-    grid: {
-      left: "3%",
-      right: "4%",
-      bottom: "3%",
-      containLabel: true
-    },
-    toolbox: {
-      feature: {
-        saveAsImage: {}
-      }
-    },
-    xAxis: data.xAxis,
-    yAxis: {
-      type: "value"
-    },
-    series: series
-  };
+  // legend 配置
+  console.log(myConfig)
+  let legend = {};
+  legend.data = keys;
+  // title 配置
+  let title = myConfig.echartOption.title;
+  // color 配置
+  let color = myConfig.echartOption.color.split('|')
 
-  return option;
+  // 最新的配置
+  let newOption = JSON.parse(JSON.stringify(defaultOption));
+  newOption.title = title;
+  newOption.color = color;
+  newOption.series = series;
+  newOption.legend = legend;
+
+  return newOption;
 }
 
 export default {
@@ -113,6 +104,7 @@ export default {
     // 基于准备好的dom，初始化echarts实例
     this.myChart = echarts.init(document.getElementById(this.myConfig.id));
     this.myChart.setOption(getNewOption(this.myConfig));
+    //this.myChart.setOption(defaultOption);
   },
   computed: {
     myCss() {
@@ -124,6 +116,7 @@ export default {
     myConfig: {
       handler: function(myConfig) {
         this.myChart.setOption(getNewOption(myConfig));
+        //this.myChart.setOption(defaultOption);
       },
       deep: true
     }
