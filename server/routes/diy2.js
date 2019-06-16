@@ -245,7 +245,7 @@ router.post('/report/selectData', async (ctx, next) => {
   if(code==="demo_line"){
     data=[{
         name:'南京仓',
-        data:[120, 132, 101, 134, 90, 230, 210]
+        data:[1,2,3,2,5,6]
     }]
   }
 

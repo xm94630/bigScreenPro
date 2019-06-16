@@ -27,6 +27,10 @@ let defaultOption = {
 		}
 	},
 	"legend": {
+    "show": true,
+		"textStyle": {
+			"color": "#f8f4a0"
+		},
 		"data": ["出库单", "入库单"]
   },
 	"xAxis": {
@@ -70,7 +74,7 @@ function getNewOption(myConfig,apiData) {
   // {name:'入库单',data:[220, 182, 191, 234, 29, 330, 310]}]
 
   // 获取keys，如：["出库单", "入库单"]
-  let keys = _.orderBy(apiData,'name','asc'); 
+  let keys = _.map(apiData,"name");
 
   //追加类型
   let series = apiData;

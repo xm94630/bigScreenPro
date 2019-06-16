@@ -1,27 +1,27 @@
 {
 	"color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
 	"title": {
-		"text": "出库单",
+		"text": "周统计",
 		"textStyle": {
 			"fontSize": 16,
 			"color": "#f8f4a0"
 		}
 	},
 	"legend": {
-		"data": ["出库单", "sku"],
 		"show": true,
 		"textStyle": {
 			"color": "#f8f4a0"
-		}
+		},
+		"data": ["南京仓"]
 	},
 	"xAxis": {
+		"data": ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
 		"axisLabel": {
 			"show": true,
 			"textStyle": {
 				"color": "#f8f4a0"
 			}
-		},
-		"data": ["JIT", "B2C", "B2B"]
+		}
 	},
 	"yAxis": {
 		"axisLabel": {
@@ -29,30 +29,25 @@
 			"textStyle": {
 				"color": "#f8f4a0"
 			}
-		},
-		"type": "value"
+		}
 	},
 	"series": [{
-		"name": "出库单",
-		"data": [1, 2, 3],
-		"type": "bar"
-	}, {
-		"name": "sku",
-		"data": [4, 5, 6],
-		"type": "bar"
+		"name": "南京仓",
+		"data": [1, 2, 3, 2, 5, 6],
+		"type": "line"
 	}],
 	"tooltip": {
 		"trigger": "axis"
-	},
-	"toolbox": {
-		"feature": {
-			"saveAsImage": {}
-		}
 	},
 	"grid": {
 		"left": "3%",
 		"right": "4%",
 		"bottom": "3%",
 		"containLabel": true
+	},
+	"toolbox": {
+		"feature": {
+			"saveAsImage": {}
+		}
 	}
 }

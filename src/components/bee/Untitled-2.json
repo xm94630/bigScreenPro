@@ -1,27 +1,27 @@
 {
 	"color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
 	"title": {
-		"text": "出库单2",
+		"text": "周统计",
 		"textStyle": {
 			"fontSize": 16,
 			"color": "#f8f4a0"
 		}
 	},
 	"legend": {
-		"data": [],
 		"show": true,
 		"textStyle": {
 			"color": "#f8f4a0"
-		}
+		},
+		"data": ["出库单", "入库单"]
 	},
 	"xAxis": {
+		"data": ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
 		"axisLabel": {
 			"show": true,
 			"textStyle": {
 				"color": "#f8f4a0"
 			}
-		},
-		"data": []
+		}
 	},
 	"yAxis": {
 		"axisLabel": {
@@ -29,22 +29,29 @@
 			"textStyle": {
 				"color": "#f8f4a0"
 			}
-		},
-		"type": "value"
+		}
 	},
-	"series": [],
+	"series": [{
+		"name": "出库单",
+		"data": [120, 132, 101, 134, 90, 230, 210],
+		"type": "line"
+	}, {
+		"name": "入库单",
+		"data": [220, 182, 191, 234, 290, 330, 310],
+		"type": "line"
+	}],
 	"tooltip": {
 		"trigger": "axis"
-	},
-	"toolbox": {
-		"feature": {
-			"saveAsImage": {}
-		}
 	},
 	"grid": {
 		"left": "3%",
 		"right": "4%",
 		"bottom": "3%",
 		"containLabel": true
+	},
+	"toolbox": {
+		"feature": {
+			"saveAsImage": {}
+		}
 	}
 }
