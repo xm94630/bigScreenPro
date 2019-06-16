@@ -10,6 +10,7 @@
 <script>
 import bee from '@/src/tools/bee.js';
 import echarts from "echarts";
+import _ from "lodash";
 import axios from "axios";
 import {baseUrl} from '@/bee.config';
 import store from '@/src/store';
@@ -30,10 +31,22 @@ let defaultOption = {
   },
 	"xAxis": {
 		"type": "category",
-		"data": ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+    "data": ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+    "axisLabel": {
+			"show": true,
+			"textStyle": {
+				"color": "#f8f4a0"
+			}
+		}
 	},
 	"yAxis": {
-		"type": "value"
+    "type": "value",
+    "axisLabel": {
+			"show": true,
+			"textStyle": {
+				"color": "#f8f4a0"
+			}
+		}
 	},
 	"series": [{
 		"name": "出库单",
@@ -49,7 +62,6 @@ let defaultOption = {
 	"toolbox": {"feature": {"saveAsImage": {}}},
 }
 
-
 // 结合数据源和默认echart数据，进行最新样式的组装。
 function getNewOption(myConfig,apiData) {
   
@@ -58,7 +70,7 @@ function getNewOption(myConfig,apiData) {
   // {name:'入库单',data:[220, 182, 191, 234, 29, 330, 310]}]
 
   // 获取keys，如：["出库单", "入库单"]
-  let keys =["出库单", "入库单"]
+  let keys = _.orderBy(apiData,'name','asc'); 
 
   //追加类型
   let series = apiData;
@@ -67,15 +79,23 @@ function getNewOption(myConfig,apiData) {
   });
 
   // legend 配置
-  console.log(myConfig)
-  let legend = {};
+  let legend = JSON.parse(JSON.stringify(myConfig.echartOption.legend))
+  legend.show = legend.show==="false"?false:true //将字符串转成布尔
   legend.data = keys;
   // title 配置
   let title = myConfig.echartOption.title;
   // color 配置
-  console.log("myConfig.echartOption.color")
-  console.log(myConfig.echartOption.color)
   let color = myConfig.echartOption.color.split('|')
+  // xAxis、yAxis 配置
+  let axisLabel = JSON.parse(JSON.stringify(myConfig.echartOption.axisLabel))
+  let show = axisLabel.show==="false"?false:true //将字符串转成布尔
+  let xAxis = JSON.parse(JSON.stringify(myConfig.echartOption.xAxis))
+  xAxis.data = xAxis.data.split('|')
+  xAxis.axisLabel = axisLabel
+  xAxis.axisLabel.show = show
+  let yAxis = {}
+  yAxis.axisLabel = axisLabel
+  yAxis.axisLabel.show = show
 
   // 最新的配置
   let newOption = JSON.parse(JSON.stringify(defaultOption));
@@ -83,6 +103,8 @@ function getNewOption(myConfig,apiData) {
   newOption.color = color;
   newOption.series = series;
   newOption.legend = legend;
+  newOption.xAxis = xAxis;
+  newOption.yAxis = yAxis;
 
   return newOption;
 }

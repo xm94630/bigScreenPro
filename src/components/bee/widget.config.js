@@ -47,32 +47,36 @@ export default function(){
       "css":{
         "x": 20,
         "y": 20,
-        "width": 500,
-        "height": 300,
+        "width": 300,
+        "height": 200,
+        "z-index": 9,
         "border": "none",
-        "padding":10,
-        "background":"#fff"
+        "padding":5,
+        "background":"#142a41"
       },
       "echartOption":{
         "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
         "title": {
-          "show": true,
-          "text": "按周统计",
-          "x": "left",
+          "text": "周统计",
           "textStyle": {
             "fontSize": 16,
             "color": "#f8f4a0"
           }
         },
-        "legend": {
-          "data": ["出库单", "入库单"]
-        },
         "xAxis": {
-          "type": "category",
-          "data": ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+          "data": "周一|周二|周三|周四|周五|周六|周日"
         },
-        "yAxis": {
-          "type": "value"
+        "axisLabel": {
+          "show": "true",
+          "textStyle": {
+            "color": "#f8f4a0"
+          }
+        },
+        "legend":{
+          "show": "true",
+          "textStyle": {
+            "color": "#f8f4a0"
+          }
         }
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",

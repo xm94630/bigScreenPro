@@ -232,7 +232,7 @@ router.post('/report/selectData', async (ctx, next) => {
   }
 
   //注意，这个line组件的数据，还尚未和后端确定，所以就这个格式走，未来有调整再说。
-  if(code==="demo_line"){
+  if(code==="demo_line2"){
     data=[{
         name:'出库单',
         data:[120, 132, 101, 134, 90, 230, 210]
@@ -240,6 +240,12 @@ router.post('/report/selectData', async (ctx, next) => {
     {
         name:'入库单',
         data:[220, 182, 191, 234, 290, 330, 310]
+    }]
+  }
+  if(code==="demo_line"){
+    data=[{
+        name:'南京仓',
+        data:[120, 132, 101, 134, 90, 230, 210]
     }]
   }
 
