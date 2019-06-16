@@ -762,20 +762,20 @@ router.get('/view/info', async (ctx, next) => {
           "type":"new_pie_1",
           "css":{
             "x": 380,
-            "y": 20,
+            "y": 50,
             "width": 200,
-            "height": 150,
+            "height": 100,
             "z-index": 9,
             "border": "none",
             "padding":5,
-            "background":"red"
+            "background":"#142a41"
           },
           "echartOption":{
             "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
             "series": {
               "name":"使用占比",
               "type": "pie",
-              "radius": "40%|60%",
+              "radius": "65%|100%",
               "labelLine": {
               "show": false
               },
@@ -794,9 +794,9 @@ router.get('/view/info', async (ctx, next) => {
           "type":"new_pie_1",
           "css":{
             "x": 380,
-            "y": 140,
+            "y": 170,
             "width": 200,
-            "height": 150,
+            "height": 100,
             "z-index": 9,
             "border": "none",
             "padding":5,
@@ -807,7 +807,7 @@ router.get('/view/info', async (ctx, next) => {
             "series": {
               "name":"使用占比",
               "type": "pie",
-              "radius": "40%|60%",
+              "radius": "65%|100%",
               "labelLine": {
               "show": false
               },
@@ -826,9 +826,9 @@ router.get('/view/info', async (ctx, next) => {
           "type":"new_pie_1",
           "css":{
             "x": 380,
-            "y": 270,
+            "y": 300,
             "width": 200,
-            "height": 150,
+            "height": 100,
             "z-index": 9,
             "border": "none",
             "padding":5,
@@ -839,7 +839,7 @@ router.get('/view/info', async (ctx, next) => {
             "series": {
               "name":"使用占比",
               "type": "pie",
-              "radius": "40%|60%",
+              "radius": "65%|100%",
               "labelLine": {
               "show": false
               },
@@ -858,9 +858,9 @@ router.get('/view/info', async (ctx, next) => {
           "type":"new_pie_1",
           "css":{
             "x": 380,
-            "y": 380,
+            "y": 410,
             "width": 200,
-            "height": 150,
+            "height": 100,
             "z-index": 9,
             "border": "none",
             "padding":5,
@@ -871,7 +871,7 @@ router.get('/view/info', async (ctx, next) => {
             "series": {
               "name":"使用占比",
               "type": "pie",
-              "radius": "40%|60%",
+              "radius": "65%|100%",
               "labelLine": {
               "show": false
               },
