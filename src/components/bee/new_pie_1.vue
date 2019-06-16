@@ -1,6 +1,7 @@
 <template>
-  <div class="bingTuCon" :style="myCss">
-    <div class="bingTuBox" :id="myConfig.chartId"></div>
+  <div class="widgetBox" :style="myCss">
+    <div class="widgetCon" :id="myConfig.id"></div>
+    <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
   </div>
 </template>
 
@@ -8,6 +9,10 @@
 <script>
 import bee from '@/src/tools/bee.js';
 import echarts from "echarts";
+import axios from "axios";
+import {baseUrl} from '@/bee.config';
+import store from '@/src/store';
+import { setTimeout } from 'timers';
 
 // 这个是echart实例的默认配置
 let defaultOption = {
@@ -22,7 +27,7 @@ let defaultOption = {
 		"label": {    
       "color": "red",
 			"position": "center",
-			"fontSize": 20,
+			"fontSize": 12,
 			"formatter": "{a}\n{c}%"
 		},
 		"data": [{
@@ -42,12 +47,13 @@ let defaultOption = {
 function getNewOption(myConfig,apiData) {
 
   apiData = [{a:60}];
-  let percent = apiData[Object.keys(apiData[0])[0]]
+  let percent = apiData[0][Object.keys(apiData[0])[0]]
 
   // 最新的配置
   let newOption = JSON.parse(JSON.stringify(defaultOption));
-  newOption.color = myConfig.echartOption.color;
+  newOption.color = myConfig.echartOption.color.split('|');
   newOption.series = JSON.parse(JSON.stringify(myConfig.echartOption.series));
+  newOption.series.radius = newOption.series.radius.split('|');
   newOption.series.data = [{
     "value": percent,
   }, {
@@ -69,12 +75,15 @@ export default {
     return {
       bingTu_option: getNewOption(this.myConfig),
       myChart: null,
+      diyCoreCode:'',
+      apiData:[],
+      store:store,
     };
   },
   mounted: function() {
     // 基于准备好的dom，初始化echarts实例
     this.myChart = echarts.init(
-      document.getElementById(this.myConfig.chartId)
+      document.getElementById(this.myConfig.id)
     );
     this.myChart.setOption(this.bingTu_option);
   },
@@ -98,16 +107,26 @@ export default {
 </script>
 
 
-<style scoped>
-.bingTuCon {
+<style lang="scss">
+.selectBorder{
+  position: absolute;
+  top:0px;
+  left:0px;
+  width: 100%;
+  height:100%;
+  background: rgba(0,231,255,0.11);
+  border: solid 1px rgba(0,231,255,0.3);
+}
+.widgetBox {
   position: absolute;
   box-sizing: border-box;
-}
-.bingTuBox {
-  width: 100%;
-  height: 100%;
+  .widgetCon {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>
+
 
 
 

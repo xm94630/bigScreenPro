@@ -758,135 +758,131 @@ router.get('/view/info', async (ctx, next) => {
         }],
     
         "new_pie_1":[{
-          "chartId":"pie111",
+          "id":"pie111",
+          "type":"new_pie_1",
           "css":{
             "x": 380,
             "y": 20,
             "width": 200,
             "height": 150,
+            "z-index": 9,
             "border": "none",
-            "padding":10,
-            "background":"none",
+            "padding":5,
+            "background":"red"
           },
-          "title": {
-            "show": true,
-            "text": "使用占比",
-            "x": "left",
-            "textStyle": {
-              "fontSize": "12px",
-              "color": "#1e2647",
-              "fontWeight":"bold"
+          "echartOption":{
+            "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+            "series": {
+              "name":"使用占比",
+              "type": "pie",
+              "radius": "40%|60%",
+              "labelLine": {
+              "show": false
+              },
+              "label": {    
+                "color": "#f8f594",
+                "fontSize": 12,
+                "position": "center",
+                "formatter": "{a}\n{c}%"
+              }
             }
-          },
-          "label":{
-            "normal": {
-              "show": true,
-              "color":"#f8f4a0",
-              "position": "center",
-              "fontSize": 14,
-              "formatter": "{b}\n{d}%"
-            }
-          },
-          "color": ["#4f8ff9","#38c3ec"],
+          },    
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseScaleA"
         },{
-          "chartId":"pie222",
+          "id":"pie222",
+          "type":"new_pie_1",
           "css":{
             "x": 380,
             "y": 140,
             "width": 200,
             "height": 150,
+            "z-index": 9,
             "border": "none",
-            "padding":10,
-            "background":"none",
+            "padding":5,
+            "background":"#142a41"
           },
-          "title": {
-            "show": true,
-            "text": "使用占比",
-            "x": "left",
-            "textStyle": {
-              "fontSize": "12px",
-              "color": "#1e2647",
-              "fontWeight":"bold"
+          "echartOption":{
+            "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+            "series": {
+              "name":"使用占比",
+              "type": "pie",
+              "radius": "40%|60%",
+              "labelLine": {
+              "show": false
+              },
+              "label": {    
+                "color": "#f8f594",
+                "fontSize": 12,
+                "position": "center",
+                "formatter": "{a}\n{c}%"
+              }
             }
           },
-          "label":{
-            "normal": {
-              "show": true,
-              "color":"#f8f4a0",
-              "position": "center",
-              "fontSize": 14,
-              "formatter": "{b}\n{d}%"
-            }
-          },
-          "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseScaleB"
         },{
-          "chartId":"pie333",
+          "id":"pie333",
+          "type":"new_pie_1",
           "css":{
             "x": 380,
             "y": 270,
             "width": 200,
             "height": 150,
+            "z-index": 9,
             "border": "none",
-            "padding":10,
-            "background":"none",
+            "padding":5,
+            "background":"#142a41"
           },
-          "title": {
-            "show": true,
-            "text": "使用占比",
-            "x": "left",
-            "textStyle": {
-              "fontSize": "12px",
-              "color": "#1e2647",
-              "fontWeight":"bold"
+          "echartOption":{
+            "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+            "series": {
+              "name":"使用占比",
+              "type": "pie",
+              "radius": "40%|60%",
+              "labelLine": {
+              "show": false
+              },
+              "label": {    
+                "color": "#f8f594",
+                "fontSize": 12,
+                "position": "center",
+                "formatter": "{a}\n{c}%"
+              }
             }
           },
-          "label":{
-            "normal": {
-              "show": true,
-              "color":"#f8f4a0",
-              "position": "center",
-              "fontSize": 14,
-              "formatter": "{b}\n{d}%"
-            }
-          },
-          "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseScaleA"
         },{
-          "chartId":"pie444",
+          "id":"pie444",
+          "type":"new_pie_1",
           "css":{
             "x": 380,
             "y": 380,
             "width": 200,
             "height": 150,
+            "z-index": 9,
             "border": "none",
-            "padding":10,
-            "background":"none",
+            "padding":5,
+            "background":"#142a41"
           },
-          "title": {
-            "show": true,
-            "text": "使用占比",
-            "x": "left",
-            "textStyle": {
-              "fontSize": "12px",
-              "color": "#1e2647",
-              "fontWeight":"bold"
+          "echartOption":{
+            "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+            "series": {
+              "name":"使用占比",
+              "type": "pie",
+              "radius": "40%|60%",
+              "labelLine": {
+              "show": false
+              },
+              "label": {    
+                "color": "#f8f594",
+                "fontSize": 12,
+                "position": "center",
+                "formatter": "{a}\n{c}%"
+              }
             }
           },
-          "label":{
-            "normal": {
-              "show": true,
-              "color":"#f8f4a0",
-              "position": "center",
-              "fontSize": 14,
-              "formatter": "{b}\n{d}%"
-            }
-          },
-          "color": ["#4f8ff9","#38c3ec"],
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseScaleB"
         }],

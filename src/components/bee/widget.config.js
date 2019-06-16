@@ -106,7 +106,7 @@ export default function(){
           },
           "label": {    
             "color": "red",
-            "fontSize": 20,
+            "fontSize": 12,
             "position": "center",
             "formatter": "{a}\n{c}%"
           }
