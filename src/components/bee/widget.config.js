@@ -82,6 +82,39 @@ export default function(){
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"demo_line"
     },
+    "new_pie_1":{
+      "id": bee.guidGenerator(),
+      "type":"new_pie_1",
+      "css":{
+        "x": 20,
+        "y": 20,
+        "width": 200,
+        "height": 200,
+        "z-index": 9,
+        "border": "none",
+        "padding":5,
+        "background":"#142a41"
+      },
+      "echartOption":{
+        "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+        "series": {
+          "name":"使用占比",
+          "type": "pie",
+          "radius": ["40%", "70%"],
+          "labelLine": {
+          "show": false
+          },
+          "label": {    
+            "color": "red",
+            "fontSize": 20,
+            "position": "center",
+            "formatter": "{a}\n{c}%"
+          }
+        }
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-robot2"
+    },
     "new_pie_2":{
       "id": bee.guidGenerator(),
       "type":"new_pie_2",

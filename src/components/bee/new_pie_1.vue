@@ -9,77 +9,55 @@
 import bee from '@/src/tools/bee.js';
 import echarts from "echarts";
 
+// 这个是echart实例的默认配置
+let defaultOption = {
+	"color": ["#4f8ff9", "#38c3ec"],
+	"series": {
+    "name":"使用占比",
+		"type": "pie",
+		"radius": ["40%", "70%"],
+		"labelLine": {
+		"show": false
+		},
+		"label": {    
+      "color": "red",
+			"position": "center",
+			"fontSize": 20,
+			"formatter": "{a}\n{c}%"
+		},
+		"data": [{
+			"value": 60,
+		}, {
+			"value": 40,
+			"label":{
+        "show":false
+			}
+		}]
+	}
+}
+
+
 
 //获取饼图option配置
-function getOption(data) {
+function getNewOption(myConfig,apiData) {
 
-  let urlData = data.urlData[0];
-  let percent = 1;
-  for(let key in urlData){
-    percent = urlData[key];
-    break;
-  }
+  apiData = [{a:60}];
+  let percent = apiData[Object.keys(apiData[0])[0]]
 
-  var option = {
-    color:data.color || ["#83b5b9","#db8460"],
-    // 标题组件，包含主标题和副标题
-    title: data.title,
-    //  提示框组件
-    tooltip: {
-      //是否显示提示框组件，包括提示框浮层和 axisPointe
-      show: false,
-      // 触发类型: item:数据项触发，axis：坐标轴触发
-      trigger: "item",
-      formatter: "{a} <br/>{b}: {c} ({d}%)"
-    },
-    // // 图例
-    // legend: {
-    //     orient: 'vertical',
-    //     x: 'left',
-    //     data:['完成率']
-    // },
+  // 最新的配置
+  let newOption = JSON.parse(JSON.stringify(defaultOption));
+  newOption.color = myConfig.echartOption.color;
+  newOption.series = JSON.parse(JSON.stringify(myConfig.echartOption.series));
+  newOption.series.data = [{
+    "value": percent,
+  }, {
+    "value": 100-percent,
+    "label":{
+      "show":false
+    }
+  }]
 
-    // 系列列表。每个系列通过 type 决定自己的图表类型
-    series: [
-      {
-        // 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
-        name: "任务进度",
-        type: "pie",
-        // 饼图的半径，数组的第一项是内半径，第二项是外半径
-        radius: ["50%", "70%"],
-        // 是否启用防止标签重叠策略，默认开启
-        avoidLabelOverlap: false,
-        hoverAnimation: false,
-        // 标签的视觉引导线样式，在 label 位置 设置为'outside'的时候会显示视觉引导线
-        labelLine: {
-          normal: {
-            show: false
-          }
-        },
-        data: [
-          {
-            // 数据值
-            value: 100 * percent,
-            // 数据项名称
-            name: data.title.text,
-            //该数据项是否被选中
-            selected: false,
-            // 单个扇区的标签配置
-            label: data.label,
-          },
-          {
-            value: 100 * (1 - percent),
-            label: {
-              normal: {
-                show: false
-              }
-            }
-          }
-        ]
-      }
-    ]
-  };
-  return option;
+  return newOption;
 }
 
 export default {
@@ -89,7 +67,7 @@ export default {
   },
   data() {
     return {
-      bingTu_option: getOption(this.myConfig),
+      bingTu_option: getNewOption(this.myConfig),
       myChart: null,
     };
   },
@@ -103,7 +81,7 @@ export default {
   watch: {
     myConfig: {
       handler: function(val) {
-        this.myChart.setOption(getOption(val));
+        this.myChart.setOption(getNewOption(val));
       },
       deep: true
     }

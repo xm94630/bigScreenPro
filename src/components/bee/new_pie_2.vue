@@ -85,8 +85,6 @@ function getNewOption(myConfig,apiData) {
   newOption.series[0] = series;
   newOption.legend = legend;
 
-  console.log(JSON.stringify(newOption))
-
   return newOption;
 }
 
