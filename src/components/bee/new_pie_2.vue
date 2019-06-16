@@ -117,8 +117,8 @@ export default {
       axios.post(baseUrl + dataUrl,params).then(response => {
         let apiData = response.data.data;
         this.apiData = apiData;
-        this.myEchart = echarts.init(document.getElementById(myConfig.id))
-        this.myEchart.setOption(getNewOption(myConfig,this.apiData));
+        this.myChart = echarts.init(document.getElementById(myConfig.id))
+        this.myChart.setOption(getNewOption(myConfig,this.apiData));
       });
     },
     updatedWidget:function(val){
@@ -132,14 +132,14 @@ export default {
         axios.post(baseUrl + dataUrl,params).then(response => {
           let apiData = response.data.data;
           this.apiData = apiData;
-          this.myEchart.setOption(getNewOption(val,this.apiData));
+          this.myChart.setOption(getNewOption(val,this.apiData));
         });
       }else{
-        this.myEchart.setOption(getNewOption(val,this.apiData));
+        this.myChart.setOption(getNewOption(val,this.apiData));
       }
 
       setTimeout(()=>{
-         this.myEchart.resize();
+         this.myChart.resize();
       },0)
     },
   },
