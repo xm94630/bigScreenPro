@@ -178,7 +178,7 @@ router.post('/report/selectData', async (ctx, next) => {
     // data = [{
     //   percent:0.55,
     // }]
-    data = [{占用率: 0.55}]
+    data = [{占用率: 0.6}]
   }
   if(code==="lifeng-robot"){
     data = [{

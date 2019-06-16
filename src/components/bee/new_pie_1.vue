@@ -42,24 +42,25 @@ let defaultOption = {
 	}
 }
 
-
-
 //获取饼图option配置
 function getNewOption(myConfig,apiData) {
 
-  apiData = [{a:60}];
+  //数据源数据格式：[{占用率: 0.6}]
   let percent = apiData[0][Object.keys(apiData[0])[0]]
+  //保留2位小数
+  let d1 = Math.round(percent*10000)/100
+  let d2 = Math.round(10000-percent*10000)/100
 
-  // 最新的配置
-  let newOption = JSON.parse(JSON.stringify(defaultOption));
+  let newOption = JSON.parse(JSON.stringify(defaultOption));  
+  // color 配置
   newOption.color = myConfig.echartOption.color.split('|');
-  newOption.series = _.merge({},newOption.series,JSON.parse(JSON.stringify(myConfig.echartOption.series)));
+  // series 配置
+  newOption.series = _.merge({},newOption.series,myConfig.echartOption.series);
   newOption.series.radius = newOption.series.radius.split('|');
-  
   newOption.series.data = [{
-    "value": percent,
+    "value": d1,
   }, {
-    "value": 100-percent,
+    "value": d2,
     "label":{
       "show":false
     }
@@ -75,35 +76,67 @@ export default {
   },
   data() {
     return {
-      bingTu_option: getNewOption(this.myConfig),
       myChart: null,
       diyCoreCode:'',
       apiData:[],
       store:store,
     };
   },
-  mounted: function() {
-    // 基于准备好的dom，初始化echarts实例
-    this.myChart = echarts.init(
-      document.getElementById(this.myConfig.id)
-    );
-    this.myChart.setOption(this.bingTu_option);
-  },
-  watch: {
-    myConfig: {
-      handler: function(val) {
-        this.myChart.setOption(getNewOption(val));
-      },
-      deep: true
-    }
-  },
   computed: {
     myCss() {
       let map = {"x":"left","y":"top"};
-      let cssObj = bee.replaceKey(this.myConfig.css,map);
-      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
-      return cssStr;
+      return bee.objToCSS(bee.replaceKey(this.myConfig.css,map),"position:absolute;box-sizing:border-box;");
     }
+  },
+  methods:{
+    initWidget:function(myConfig){
+      let dataUrl = myConfig.dataUrl;
+      let diyCoreCode = myConfig.diyCoreCode;
+      this.diyCoreCode = diyCoreCode;
+      let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+      //获取数据源
+      axios.post(baseUrl + dataUrl,params).then(response => {
+        let apiData = response.data.data;
+        this.apiData = apiData;
+        this.myChart = echarts.init(document.getElementById(myConfig.id))
+        this.myChart.setOption(getNewOption(myConfig,this.apiData));
+      });
+    },
+    updatedWidget:function(val){
+      let diyCoreCode = val.diyCoreCode;
+      //只有diyCoreCode发生改变的时候才调接口！
+      if(this.diyCoreCode!==diyCoreCode){
+        let dataUrl = val.dataUrl;
+        this.diyCoreCode=diyCoreCode;
+        let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+        //获取数据源
+        axios.post(baseUrl + dataUrl,params).then(response => {
+          let apiData = response.data.data;
+          this.apiData = apiData;
+          this.myChart.setOption(getNewOption(val,this.apiData));
+        });
+      }else{
+        this.myChart.setOption(getNewOption(val,this.apiData));
+      }
+
+      setTimeout(()=>{
+         this.myChart.resize();
+      },0)
+    },
+  },
+  watch:{
+    "myConfig":{
+      handler:function(newVal,oldVal){
+        this.updatedWidget(newVal,oldVal)
+      },
+      deep: true
+    },
+    
+  },
+  mounted: function() {
+    this.initWidget(this.myConfig);
+  },
+  updated(){
   }
 };
 </script>

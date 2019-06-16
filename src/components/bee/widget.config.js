@@ -108,7 +108,7 @@ export default function(){
         }
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"lifeng-robot2"
+      "diyCoreCode":"lifeng-BinUseScaleA"
     },
     "new_pie_2":{
       "id": bee.guidGenerator(),
