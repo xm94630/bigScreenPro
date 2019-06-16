@@ -39,28 +39,37 @@ router.get('/view/info', async (ctx, next) => {
           "css":{
             "x": 20,
             "y": 20,
-            "width": 500,
-            "height": 300,
+            "width": 300,
+            "height": 200,
+            "z-index": 9,
             "border": "none",
-            "padding":10,
-            "background":"#fff"
+            "padding":5,
+            "background":"#142a41"
           },
           "echartOption":{
+            "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
             "title": {
-              "show": true,
-              "text": "按周统计",
-              "x": "left",
+              "text": "周统计",
               "textStyle": {
                 "fontSize": 16,
                 "color": "#f8f4a0"
               }
             },
             "xAxis": {
-              "type": "category",
-              "boundaryGap": false,
-              "data": ["周一","周二","周三","周四","周五","周六","周日"]
+              "data": "周一|周二|周三|周四|周五|周六|周日"
             },
-            "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80"
+            "axisLabel": {
+              "show": "true",
+              "textStyle": {
+                "color": "#f8f4a0"
+              }
+            },
+            "legend":{
+              "show": "true",
+              "textStyle": {
+                "color": "#f8f4a0"
+              }
+            }
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"demo_line"
@@ -884,21 +893,25 @@ router.get('/view/info', async (ctx, next) => {
     
         "new_pie_2":[{
           "id":"piex",
+          "type":"new_pie_2",
           "css":{
             "x": 360,
             "y": 550,
             "width": 240,
             "height": 210,
-            "border": "solid 1px #ccc",
-            "padding":10,
-            "background":"#1e2647",
+            "z-index": 9,
+            "border": "none",
+            "padding":5,
+            "background":"#142a41"
           },
           "echartOption":{
+            "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
             "title": {
               "text": "",
-              "color": "#666",
-              "font-size": 16,
-              "align": "center"
+              "textStyle": {
+                "fontSize": 16,
+                "color": "#f8f4a0"
+              }
             },
             "legend": {
               "orient": "vertical",
@@ -907,7 +920,11 @@ router.get('/view/info', async (ctx, next) => {
                 "color": "#f8f4a0"
               }
             },
-            "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+            "series": {
+              "name": "机器人",
+              "radius" : "50%",
+              "center": "50%|55%",
+            }
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-robot"
