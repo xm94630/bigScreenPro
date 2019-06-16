@@ -180,6 +180,12 @@ router.post('/report/selectData', async (ctx, next) => {
     // }]
     data = [{占用率: 0.6}]
   }
+  if(code==="lifeng-BinUseScaleA2"){
+    data = [{占用率: 0.131415}]
+  }
+
+
+
   if(code==="lifeng-robot"){
     data = [{
       '工作中':900,
