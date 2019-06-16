@@ -57,13 +57,11 @@ function getNewOption(myConfig,apiData) {
   //[{name:'出库单',data:[120, 132, 101, 134, 90, 230, 210]},
   // {name:'入库单',data:[220, 182, 191, 234, 29, 330, 310]}]
 
-  apiData = myConfig.apiData;
-
   // 获取keys，如：["出库单", "入库单"]
   let keys =["出库单", "入库单"]
 
   //追加类型
-  let series = myConfig.apiData;
+  let series = apiData;
   series.forEach(function(one) {
     one.type = "line";
   });
@@ -75,6 +73,8 @@ function getNewOption(myConfig,apiData) {
   // title 配置
   let title = myConfig.echartOption.title;
   // color 配置
+  console.log("myConfig.echartOption.color")
+  console.log(myConfig.echartOption.color)
   let color = myConfig.echartOption.color.split('|')
 
   // 最新的配置
@@ -100,26 +100,61 @@ export default {
       store:store,
     };
   },
-  mounted: function() {
-    // 基于准备好的dom，初始化echarts实例
-    this.myChart = echarts.init(document.getElementById(this.myConfig.id));
-    this.myChart.setOption(getNewOption(this.myConfig));
-    //this.myChart.setOption(defaultOption);
-  },
   computed: {
     myCss() {
       let map = {"x":"left","y":"top"};
       return bee.objToCSS(bee.replaceKey(this.myConfig.css,map));
     }
   },
-  watch: {
-    myConfig: {
-      handler: function(myConfig) {
-        this.myChart.setOption(getNewOption(myConfig));
-        //this.myChart.setOption(defaultOption);
+  methods:{
+    initWidget:function(myConfig){
+      let dataUrl = myConfig.dataUrl;
+      let diyCoreCode = myConfig.diyCoreCode;
+      this.diyCoreCode = diyCoreCode;
+      let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+      //获取数据源
+      axios.post(baseUrl + dataUrl,params).then(response => {
+        let apiData = response.data.data;
+        this.apiData = apiData;
+        this.myChart = echarts.init(document.getElementById(myConfig.id))
+        this.myChart.setOption(getNewOption(myConfig,this.apiData));
+      });
+    },
+    updatedWidget:function(val){
+      let diyCoreCode = val.diyCoreCode;
+      //只有diyCoreCode发生改变的时候才调接口！
+      if(this.diyCoreCode!==diyCoreCode){
+        let dataUrl = val.dataUrl;
+        this.diyCoreCode=diyCoreCode;
+        let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+        //获取数据源
+        axios.post(baseUrl + dataUrl,params).then(response => {
+          let apiData = response.data.data;
+          this.apiData = apiData;
+          this.myChart.setOption(getNewOption(val,this.apiData));
+        });
+      }else{
+        this.myChart.setOption(getNewOption(val,this.apiData));
+      }
+
+      setTimeout(()=>{
+         this.myChart.resize();
+      },0)
+    },
+  },
+  watch:{
+    "myConfig":{
+      handler:function(newVal,oldVal){
+        this.updatedWidget(newVal,oldVal)
       },
       deep: true
-    }
+    },
+    
+  },
+  mounted: function() {
+    this.initWidget(this.myConfig);
+  },
+  updated(){
   }
 };
 </script>

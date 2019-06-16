@@ -54,6 +54,7 @@ export default function(){
         "background":"#fff"
       },
       "echartOption":{
+        "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
         "title": {
           "show": true,
           "text": "按周统计",
@@ -72,8 +73,7 @@ export default function(){
         },
         "yAxis": {
           "type": "value"
-        },
-        "color": ["#4f8ff9","#38c3ec","#a2fdff","#eada80"]
+        }
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"demo_line"
