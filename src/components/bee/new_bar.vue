@@ -178,7 +178,7 @@ export default {
         axios.post(baseUrl + dataUrl,params).then(response => {
           let apiData = response.data.data;
           this.apiData = apiData;
-          this.myEchart.setOption(getNewOption(val,apiData));
+          this.myEchart.setOption(getNewOption(val,apiData),true);//这个true参数很重要，否则会有残留数据
         });
       }else{
         this.myEchart.setOption(getNewOption(val,this.apiData));
