@@ -99,15 +99,10 @@ export default function(){
         "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
         "series": {
           "name":"使用占比",
-          "type": "pie",
-          "radius": ["40%", "70%"],
-          "labelLine": {
-          "show": false
-          },
+          "radius": "35%|50%",
           "label": {    
-            "color": "red",
+            "color": "#f8f4a0",
             "fontSize": 12,
-            "position": "center",
             "formatter": "{a}\n{c}%"
           }
         }

@@ -776,9 +776,6 @@ router.get('/view/info', async (ctx, next) => {
               "name":"使用占比",
               "type": "pie",
               "radius": "65%|100%",
-              "labelLine": {
-              "show": false
-              },
               "label": {    
                 "color": "#f8f594",
                 "fontSize": 12,
@@ -808,9 +805,6 @@ router.get('/view/info', async (ctx, next) => {
               "name":"使用占比",
               "type": "pie",
               "radius": "65%|100%",
-              "labelLine": {
-              "show": false
-              },
               "label": {    
                 "color": "#f8f594",
                 "fontSize": 12,
@@ -840,9 +834,6 @@ router.get('/view/info', async (ctx, next) => {
               "name":"使用占比",
               "type": "pie",
               "radius": "65%|100%",
-              "labelLine": {
-              "show": false
-              },
               "label": {    
                 "color": "#f8f594",
                 "fontSize": 12,
@@ -872,9 +863,6 @@ router.get('/view/info', async (ctx, next) => {
               "name":"使用占比",
               "type": "pie",
               "radius": "65%|100%",
-              "labelLine": {
-              "show": false
-              },
               "label": {    
                 "color": "#f8f594",
                 "fontSize": 12,

@@ -9,6 +9,7 @@
 <script>
 import bee from '@/src/tools/bee.js';
 import echarts from "echarts";
+import _ from "lodash";
 import axios from "axios";
 import {baseUrl} from '@/bee.config';
 import store from '@/src/store';
@@ -22,7 +23,7 @@ let defaultOption = {
 		"type": "pie",
 		"radius": ["40%", "70%"],
 		"labelLine": {
-		"show": false
+      "show": false
 		},
 		"label": {    
       "color": "red",
@@ -35,7 +36,7 @@ let defaultOption = {
 		}, {
 			"value": 40,
 			"label":{
-        "show":false
+        "show": false
 			}
 		}]
 	}
@@ -52,8 +53,9 @@ function getNewOption(myConfig,apiData) {
   // 最新的配置
   let newOption = JSON.parse(JSON.stringify(defaultOption));
   newOption.color = myConfig.echartOption.color.split('|');
-  newOption.series = JSON.parse(JSON.stringify(myConfig.echartOption.series));
+  newOption.series = _.merge({},newOption.series,JSON.parse(JSON.stringify(myConfig.echartOption.series)));
   newOption.series.radius = newOption.series.radius.split('|');
+  
   newOption.series.data = [{
     "value": percent,
   }, {
