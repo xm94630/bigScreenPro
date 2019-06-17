@@ -183,6 +183,15 @@ export default function(){
         "text-align": "left"
       },
       "text": "大屏DEMO"
+    },
+    "dater":{
+      "id": bee.guidGenerator(),
+      "type":"dater",
+      "css":{
+        "x":20,
+        "y":20,
+        "color":"red"
+      }
     }
   }
 }

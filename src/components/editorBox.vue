@@ -8,6 +8,7 @@
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_pie_2')">pie2</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_card')">card</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('title')">title</el-button>
+      <el-button size="mini" type="primary" round @click="createWidgetFun('dater')">dater</el-button>
       <el-button size="mini" type="primary" round>table</el-button>
       <el-button size="mini" type="primary" round>textBar</el-button>
     </div>
