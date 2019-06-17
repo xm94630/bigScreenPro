@@ -147,8 +147,26 @@ export default function(){
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"lifeng-robot2"
+    },
+    "new_card":{
+      "id": bee.guidGenerator(),
+      "type":"new_card",
+      "css":{
+        "x": 20,
+        "y": 20,
+        "width": 300,
+        "height": 100,
+        "z-index": 9,
+        "border": "",
+        "padding":10,
+        "background":"#142a41",
+        "color":"#f8f594"
+      },
+      "title":"A类/鞋",
+      "state":0,
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-BinUseA"
     }
-    
   }
 }
 

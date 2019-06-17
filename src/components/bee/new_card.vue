@@ -1,6 +1,6 @@
 <template>
   <div class="cardBox" v-bind:class="classObject" :style="myCss">
-    <div class="cardBoxT">{{title}}</div>
+    <div class="cardBoxT">{{myConfig.title}}</div>
     <div class="dataBox">
       <template v-for="(one,key) in data">
         <div :key="key">
@@ -14,19 +14,38 @@
 
 <script>
 import bee from '@/src/tools/bee.js';
+import axios from "axios";
+import {baseUrl} from '@/bee.config';
+import store from '@/src/store';
 
 export default {
-  name: "card",
+  name: "new_card",
   props: {
     myConfig: null
   },
   data: function() {
     return {
-      title: this.myConfig.title,
-      state: this.myConfig.state,
       cardData: this.myConfig,
-      data:this.orderFun(this.myConfig.data),
+      apiData:[],
     };
+  },
+  computed:{
+    data(){
+      return this.orderFun(this.apiData)[0]
+    },
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      let cssObj = bee.replaceKey(this.myConfig.css,map);
+      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
+      return cssStr;
+    },
+    classObject:function(){
+      return {
+        green: this.myConfig.state == 1 ? true : false,
+        orange: this.myConfig.state == 2 ? true : false,
+        red: this.myConfig.state == 3 ? true : false
+      }
+    }
   },
   methods:{
     //对数据进行排序，排序的顺序可以在json中配置。
@@ -42,25 +61,47 @@ export default {
       }else{
         return data;
       }
-    }
-  },
-  computed:{
-    myCss() {
-      let map = {"x":"left","y":"top"};
-      let cssObj = bee.replaceKey(this.myConfig.css,map);
-      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
-      return cssStr;
     },
-    classObject:function(){
-      return {
-        green: this.state == 1 ? true : false,
-        orange: this.state == 2 ? true : false,
-        red: this.state == 3 ? true : false
+    initWidget:function(myConfig){
+      let dataUrl = myConfig.dataUrl;
+      let diyCoreCode = myConfig.diyCoreCode;
+      this.diyCoreCode = diyCoreCode;
+      let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+      //获取数据源
+      axios.post(baseUrl + dataUrl,params).then(response => {
+        let apiData = response.data.data;
+        this.apiData = apiData;
+      });
+    },
+    updatedWidget:function(val){
+      let diyCoreCode = val.diyCoreCode;
+      //只有diyCoreCode发生改变的时候才调接口！
+      if(this.diyCoreCode!==diyCoreCode){
+        let dataUrl = val.dataUrl;
+        this.diyCoreCode=diyCoreCode;
+        let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+        //获取数据源
+        axios.post(baseUrl + dataUrl,params).then(response => {
+          let apiData = response.data.data;
+          this.apiData = apiData;
+        });
       }
-    }
+
+    },
+  },
+  watch:{
+    "myConfig":{
+      handler:function(newVal,oldVal){
+        this.updatedWidget(newVal,oldVal)
+      },
+      deep: true
+    },
+    
   },
   mounted: function() {
-   
+    this.initWidget(this.myConfig);
+  },
+  updated(){
   }
 };
 </script>

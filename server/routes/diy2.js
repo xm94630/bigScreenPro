@@ -132,6 +132,17 @@ router.post('/report/selectData', async (ctx, next) => {
       '未使用':50000,
     }]
   }
+  if(code==="lifeng-BinUseA2"){
+    data = [{
+      '身高':43,
+      '体重':20,
+      '飞行':30,
+      '奔跑':90,
+      '年龄':60,
+      '攻击力':99,
+    }]
+  }
+
   if(code==="lifeng-InventoryPool"){
     data = [{
       '总数':10000,
@@ -145,6 +156,8 @@ router.post('/report/selectData', async (ctx, next) => {
       '总数':9999999,
     }]
   }
+
+
   if(
     code==="lifeng-ReceiptIn" ||
     code==="lifeng-ReceiptCopleted" ||
