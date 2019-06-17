@@ -166,6 +166,23 @@ export default function(){
       "state":0,
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"lifeng-BinUseA"
+    },
+    "title":{
+      "id": bee.guidGenerator(),
+      "type":"title",
+      "css":{
+        "x": 20,
+        "y": 20,
+        "width": 150,
+        "height": 30,
+        "padding": 0,
+        "font-size": 24,
+        "color": "#f8f4a0",
+        "border": "",
+        "background": "",
+        "text-align": "left"
+      },
+      "text": "大屏DEMO"
     }
   }
 }

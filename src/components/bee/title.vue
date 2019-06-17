@@ -6,7 +6,7 @@
 import bee from '@/src/tools/bee.js';
 
 export default {
-  name: "beeTitle",
+  name: "bee_title",//不能使用title，以为这个已经被默认占用了
   props: {
     myConfig: null
   },
