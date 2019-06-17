@@ -146,6 +146,7 @@ export default {
               },
               name:this.myForm.name,
               code:this.myForm.code,
+              zoom:this.zoom
             }
             let ScreenConfigStr = ScreenConfig
 
@@ -179,7 +180,12 @@ export default {
     },
   },
   mounted(){
-
+    //看看是不是编辑页面，载入缩放
+    let modCode = this.$route.query.modCode;
+    if(modCode){
+      let list = JSON.parse(localStorage.getItem('screenList'));
+      this.zoom = (list[modCode] && list[modCode].zoom) || 100;
+    }
   }
 }
 </script>
