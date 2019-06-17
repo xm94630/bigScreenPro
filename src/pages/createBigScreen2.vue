@@ -9,9 +9,12 @@
         </div>
         
         <div class="bottomBar">
-          <el-button @click="openSaveWindowFun" type="primary"  size="mini" icon="el-icon-star-on" class="saveBtn">保存大屏视图</el-button>
-          <el-button @click="zoomInFun" type="primary"  size="mini" icon="el-icon-zoom-in" class="saveBtn" circle></el-button>
-          <el-button @click="zoomOutFun" type="primary"  size="mini" icon="el-icon-zoom-out" class="saveBtn" circle></el-button>
+          <el-button @click="openSaveWindowFun" type="primary"  size="mini" icon="el-icon-star-on" class="bottomBatBtn">保存大屏视图</el-button>
+          <el-button @click="zoomInFun" type="primary"  size="mini" icon="el-icon-zoom-in" class="bottomBatBtn" circle></el-button>
+          <el-button @click="zoomOutFun" type="primary"  size="mini" icon="el-icon-zoom-out" class="bottomBatBtn" circle></el-button>
+          <div class="zoomBar">
+            <el-slider v-model="zoom" :min="20" :max="200" :step="10" :show-tooltip="false"></el-slider>
+          </div>
           <span>缩放x{{zoom/100}} </span>
         </div>
       </el-col>
@@ -98,6 +101,9 @@ export default {
     }
   },
   watch:{
+    "zoom":function(){
+      this.$refs.myReportCanvas.style.transform = "scale("+this.zoom/100+")"
+    }
   },
   methods:{
     getWidgetConfig(wigetConfig){
@@ -201,12 +207,16 @@ export default {
         bottom:0px;
         display: flex;
         align-items:center;
-        .saveBtn{
+        .bottomBatBtn{
           background: #4a555b;
           border:none;
         }
         span{
           margin-left:10px;
+        }
+        .zoomBar{
+          width: 100px;
+          margin-left: 10px;
         }
       }
     }
