@@ -416,7 +416,7 @@ export default {
     
               //组件基本样式数据
               let propsConfig = {
-                myData: myData[i]
+                myConfig: myData[i]
               };
               let dataUrl = myData[i].dataUrl;
               let diyCoreCode = myData[i].diyCoreCode;
@@ -427,7 +427,7 @@ export default {
               }).then(response => {
 
 
-                propsConfig.myData.apiData = response.data.data;
+                propsConfig.myConfig.apiData = response.data.data;
 
                 import("../components/bee/new_info.vue").then(cmp => {
                   mountCmp(
