@@ -29,6 +29,22 @@
       <add-btn></add-btn>
     </router-link>
 
+    <!-- 复制大屏弹框 -->
+    <el-dialog title="复制大屏视图" :visible.sync="dialogFormVisible" width="400px">
+      <el-form ref="myForm" :model="myForm" :rules="rules">
+        <el-form-item label="名称" prop="name" :label-width="formLabelWidth">
+          <el-input v-model="myForm.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="Code" prop="code" :label-width="formLabelWidth">
+          <el-input v-model="myForm.code" autocomplete="off" :disabled="codeInputDisabled"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="saveCloneScreenFun">确 定</el-button>
+      </div>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -36,6 +52,7 @@
 import axios from "axios";
 import {baseUrl,path} from '@/bee.config';
 import addBtn from "../components/addBtn.vue";
+import bee from "@/src/tools/bee";
 
 
 export default {
@@ -47,7 +64,22 @@ export default {
     return {
       isCollapse: true,
       reportList: [],
-      reportList2: []
+      reportList2: [],
+
+      dialogFormVisible: false,
+      myForm: {
+        name: '',
+        code: '',
+      },
+      formLabelWidth:'80px',
+      rules: {
+        name: [{ required: true, message: '请输入大屏名称', trigger: 'blur' }],
+        code: [{ required: true, message: '请输入大屏code（任意字符串皆可，确保唯一性，以后会用此code获取大屏的内容）', trigger: 'blur' }]
+      },
+      codeInputDisabled:true,
+
+      codeForClone:'',
+
     };
   },
   methods: {
@@ -69,9 +101,25 @@ export default {
           this.$message({type: 'info',message: '已取消删除'});          
         });
     },
-    copyScreenFun(){
-      alert(2)
-    }
+    copyScreenFun(code){
+      this.myForm.code = 'screen-'+bee.guidGenerator();
+      this.codeForClone = code;
+      this.dialogFormVisible = true;
+      let screenList = JSON.parse(localStorage.getItem('screenList'))[code].name + "_拷贝"
+      this.myForm.name = screenList
+    },
+    saveCloneScreenFun(){
+      let code = this.codeForClone;
+
+      this.dialogFormVisible = false;
+      //复制逻辑
+      let screenList = JSON.parse(localStorage.getItem('screenList'));
+      screenList[this.myForm.code] = JSON.parse(JSON.stringify(screenList[code]));
+      screenList[this.myForm.code].name = this.myForm.name;
+      screenList[this.myForm.code].code = this.myForm.code;
+      localStorage.setItem("screenList",JSON.stringify(screenList));
+      this.reportList2 = screenList;
+    },
   },
   mounted: function() {
     //获取已经存在的数据
