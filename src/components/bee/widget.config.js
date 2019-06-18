@@ -217,9 +217,9 @@ export default function(){
       "id": bee.guidGenerator(),
       "type":"textBar",
       "options":{
-        "TotalVolume":"身高",
-        "TotalUseVolume":"体重",
-        "TotalAvailability":"视力",
+        "TotalVolume":"TotalVolume",
+        "TotalUseVolume":"TotalUseVolume",
+        "TotalAvailability":"TotalAvailability",
       },
       "css":{
         "x": 20,
