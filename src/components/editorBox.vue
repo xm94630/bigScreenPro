@@ -251,6 +251,11 @@ export default {
     height:100%;
     .toolBar{
       padding:10px;
+      white-space: nowrap;
+      overflow: auto;
+      button{
+        display: inline-block;
+      }
     }
     .el-row{ 
       height:calc(100% - 48px);
