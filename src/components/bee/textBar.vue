@@ -78,6 +78,7 @@ export default {
 
 <style lang="scss">
 .beeTitle {
+  position: absolute;
   color: #000;
 }
 </style>

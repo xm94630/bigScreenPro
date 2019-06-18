@@ -232,7 +232,7 @@ export default function(){
         "font-size": 12,
         "text-align": "left",
         "color": "yellow",
-        "background": "#409EFF"
+        "background": "none"
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"InventoryReportByWarehouse"
