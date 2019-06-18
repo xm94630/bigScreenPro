@@ -249,6 +249,11 @@ router.post('/report/selectData', async (ctx, next) => {
       '总数':999,
     }]
   }
+  if(code==="lifeng-robotTote2"){
+    data = [{
+      '数据':3.1415926,
+    }]
+  }
 
   //注意，这个line组件的数据，还尚未和后端确定，所以就这个格式走，未来有调整再说。
   if(code==="demo_line2"){

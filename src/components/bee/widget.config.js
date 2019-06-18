@@ -192,6 +192,26 @@ export default function(){
         "y":20,
         "color":"red"
       }
+    },
+    "new_info":{
+      "id": bee.guidGenerator(),
+      "type":"new_info",
+      "css":{
+        "x": 20,
+        "y": 20,
+        "width": 300,
+        "height": 20,
+        "z-index":9,
+        "border": "none",
+        "padding": 0,
+        "font-size": 12,
+        "text-align": "left",
+        "color": "#f8f4a0",
+        "background": "none"
+      },
+      "template": "目前完成的订单总数为“{{data}}”，继续努力！",
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-robotTote" 
     }
   }
 }
