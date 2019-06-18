@@ -10,8 +10,8 @@
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_info')">info</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('title')">title</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('dater')">dater</el-button>
+      <el-button size="mini" type="primary" round @click="createWidgetFun('textBar')">textBar</el-button>
       <el-button size="mini" type="primary" round>table</el-button>
-      <el-button size="mini" type="primary" round>textBar</el-button>
     </div>
     <el-row :gutter="0">
       <!--左侧-->

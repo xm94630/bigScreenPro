@@ -212,6 +212,30 @@ export default function(){
       "template": "目前完成的订单总数为“{{data}}”，继续努力！",
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"lifeng-robotTote" 
+    },
+    "textBar":{
+      "id": bee.guidGenerator(),
+      "type":"textBar",
+      "options":{
+        "TotalVolume":"身高",
+        "TotalUseVolume":"体重",
+        "TotalAvailability":"视力",
+      },
+      "css":{
+        "x": 20,
+        "y": 20,
+        "width": 400,
+        "height": 20,
+        "z-index":9,
+        "border": "none",
+        "padding": 0,
+        "font-size": 12,
+        "text-align": "left",
+        "color": "yellow",
+        "background": "#409EFF"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"InventoryReportByWarehouse"
     }
   }
 }
