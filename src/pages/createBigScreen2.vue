@@ -181,24 +181,14 @@ export default {
       this.$refs.myReportCanvas.style.transform = "scale("+this.zoom/100+")"
     },
     deleteWidgetElementFun(id){
-      this.$confirm('确认删除', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }).then(() => {
-          //删除逻辑
-          let echartsDom = document.getElementById(id)
-          if(echartsDom){
-            //通过这种方法，销毁echarts，比较安全。
-            echarts.init(echartsDom).dispose();
-          }
-          //再销毁整个容器
-          document.getElementsByName(id)[0].remove();
-
-          this.$message({type: 'success',message: '删除成功!'});
-        }).catch(() => {
-          this.$message({type: 'info',message: '已取消删除'});          
-        });
+      //删除逻辑
+        let echartsDom = document.getElementById(id)
+        if(echartsDom){
+          //通过这种方法，销毁echarts，比较安全。
+          echarts.init(echartsDom).dispose();
+        }
+        //再销毁整个容器
+        document.getElementsByName(id)[0].remove();
     }
   },
   mounted(){

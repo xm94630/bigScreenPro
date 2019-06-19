@@ -39,11 +39,17 @@
                 <template v-for="(myWidget) in widgets">
                   <el-menu-item :key="myWidget.id" :index="myWidget.id" @click="selectWidget(myWidget)">
                     id_{{myWidget.id}}
-                    <span 
-                      class="deleteWidgetBtn"
-                      v-if="widget.id===myWidget.id"
-                      @click="deleteWidgetFun(myWidget.id,myWidget.type,myWidget)">
-                      删除
+                    <span class="widgetOperateBtn">
+                      <span 
+                        v-if="widget.id===myWidget.id"
+                        @click="cloneWidgetFun(myWidget.id,myWidget.type,myWidget)">
+                        <i class="el-icon-star-on"></i>
+                      </span>
+                      <span 
+                        v-if="widget.id===myWidget.id"
+                        @click="deleteWidgetFun(myWidget.id,myWidget.type,myWidget)">
+                        <i class="el-icon-delete"></i>
+                      </span>
                     </span>
                   </el-menu-item>
                 </template>
@@ -200,19 +206,34 @@ export default {
   watch:{
   },
   methods:{
+    cloneWidgetFun(id,type,widget){
+      alert(id)
+      alert(type)
+    },
     deleteWidgetFun(id,type){
-      let arr = this.json[type].filter(function(widget){
-        return widget.id !== id;
-      });
-      if(arr.length===0){
-        this.$delete(this.json,type); 
-      }else{
-        this.json[type] = arr;
-      }
-      //删除选中（配置面板清空）
-      this.widget={};
-      //发布事件
-      this.$emit('deleteWidgetElementFun',id);
+      this.$confirm('确认删除', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+            
+          //删除逻辑
+          let arr = this.json[type].filter(function(widget){
+            return widget.id !== id;
+          });
+          if(arr.length===0){
+            this.$delete(this.json,type); 
+          }else{
+            this.json[type] = arr;
+          }
+          //删除选中（配置面板清空）
+          this.widget={};
+          //发布事件
+          this.$emit('deleteWidgetElementFun',id);
+
+        }).catch(() => {
+       
+        });
     },
     createWidgetFun(name){
       let thisConfigTemplate =  JSON.parse(JSON.stringify(getWidgetConfig()[name]));
@@ -308,13 +329,13 @@ export default {
           transition: background-color .3s;
         }
       }
-      .deleteWidgetBtn{
+      .widgetOperateBtn{
         display: inline-block;
         height:100%;
-        color:red;
+        color:#ccc;
+        padding:0 10px;
         position: absolute;
         right:0px;
-        padding:0 10px;
       }
     }
     .rightBox{
