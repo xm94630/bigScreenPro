@@ -26,9 +26,9 @@
           <el-menu
             background-color="#333"
             text-color="#999"
+            active-text-color="#409EFF"
             :default-openeds ="defaultOpeneds"
             class="el-menu-vertical-demo"
-            active-text-color="#409EFF"
             @select="selectFun"
           >
             <template v-for="(widgets,key) in json">
@@ -36,8 +36,16 @@
               <el-submenu :index="key" :key="key">
                 <template slot="title">{{key}}</template>
 
-                <template v-for="(widget) in widgets">
-                  <el-menu-item :key="widget.id" :index="widget.id" @click="selectWidget(widget)">id_{{widget.id}}</el-menu-item>
+                <template v-for="(myWidget) in widgets">
+                  <el-menu-item :key="myWidget.id" :index="myWidget.id" @click="selectWidget(myWidget)">
+                    id_{{myWidget.id}}
+                    <span 
+                      class="deleteWidgetBtn"
+                      v-if="widget.id===myWidget.id"
+                      @click="deleteWidgetFun(myWidget.id)">
+                      删除
+                    </span>
+                  </el-menu-item>
                 </template>
               </el-submenu>
             
@@ -192,6 +200,9 @@ export default {
   watch:{
   },
   methods:{
+    deleteWidgetFun(deleteCode){
+      alert(deleteCode)
+    },
     createWidgetFun(name){
       let thisConfigTemplate =  JSON.parse(JSON.stringify(getWidgetConfig()[name]));
       if(this.json[name]){
@@ -285,6 +296,14 @@ export default {
           background-color:#2d2d2d;
           transition: background-color .3s;
         }
+      }
+      .deleteWidgetBtn{
+        display: inline-block;
+        height:100%;
+        color:red;
+        position: absolute;
+        right:0px;
+        padding:0 10px;
       }
     }
     .rightBox{
