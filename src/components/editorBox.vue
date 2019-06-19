@@ -76,7 +76,7 @@
       <!--右侧-->
       <el-col :span="16">
         <div class="rightBox">
-
+          <!--配置部分1：针对key/value的配置-->
           <el-form ref="form" :model="widget" label-width="100px" :inline="true">
           <template v-for="(value,key) in widget">
             <div :key="key">
@@ -161,6 +161,9 @@
           </template>
           </el-form>
 
+          <!--配置部分2：针对数组的配置-->
+          <getMultipleTemplate />
+
         </div>
       </el-col>
 
@@ -172,11 +175,13 @@
 import bee from "@/src/tools/bee";
 import getWidgetConfig from "./bee/widget.config"
 import store from '@/src/store';
+import getMultipleTemplate from "./getMultipleTemplate"
 //let barWidgetConfig = widgetConfig['new_bar']
 
 export default {
   name: 'editorBox',
-  compvaluents: {
+  components: {
+    getMultipleTemplate
   },
   props: {
   },
