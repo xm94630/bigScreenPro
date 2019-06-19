@@ -174,11 +174,24 @@ export default {
     }
   },
 
+  watch:{
+    "myConfig":{
+      handler:async function(v){
+        let conditionArr = v.initForView.conditionColumnList;
+        if(typeof(conditionArr)==='string' && conditionArr!==''){
+          conditionArr = eval("("+conditionArr+")");
+        }
+        this.items = await this.parseConditionArr2(conditionArr);
+      },
+      deep:true,
+    }
+  },
   async mounted(){
-
-    const conditionArr = this.myConfig.initForView.conditionColumnList;
+    let conditionArr = this.myConfig.initForView.conditionColumnList;
+    if(typeof(conditionArr)==='string' && conditionArr!==''){
+      conditionArr = eval("("+conditionArr+")");
+    }
     this.items = await this.parseConditionArr2(conditionArr);
-
   },
   computed: {
     myCss() {
