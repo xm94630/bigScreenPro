@@ -13,9 +13,10 @@
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
-          background-color="#545c64"
-          text-color="#fff"
-          active-text-color="#ffd04b"
+          
+          background-color="#333"
+          text-color="#999"
+          active-text-color="#409EFF"
         >
           <el-submenu index="/index">
             <template slot="title">
@@ -82,10 +83,15 @@ export default {
 //   margin-top: 60px;
 // }
 
+.appBox{
+  background:#25292d;
+}
+
 .indexPageBox{
   .headBar{
     line-height: 40px;
-    background: red;
+    background: #25292d;
+    font-size: 16px;
   }
 }
 
@@ -107,11 +113,16 @@ export default {
   }
 }
 
+.el-main{
+  a{
+    color: #409EFF;
+    //color: #fff;
+  }
+}
+
 .myReport {
   width: 150px;
   height: 150px;
-  background: plum;
-  border: solid 3px red;
   text-align: center;
   display: inline-block;
   vertical-align: middle;
@@ -119,12 +130,16 @@ export default {
   margin-bottom:20px;
   padding: 20px;
   box-sizing: border-box;
-  font-size: 20px;
+
+  border: 1px solid #00baff;
+  font-size: 14px;
+  color: #8eeeff;
+  background-image: linear-gradient(-90deg,rgba(0,222,255,.39) 0,rgba(0,174,255,.19) 100%);
+  box-shadow: 0 0 10px 0 rgba(55,224,255,.3);
 }
 .myReport2 {
   width: 150px;
   height: 150px;
-  background: #eada80;
   border: solid 3px red;
   text-align: center;
   display: inline-block;
@@ -134,10 +149,16 @@ export default {
   padding: 20px;
   box-sizing: border-box;
   font-size: 20px;
+
+  border: 1px solid #00baff;
+  font-size: 14px;
+  color: #8eeeff;
+  background-image: linear-gradient(-90deg,rgba(0,222,255,.39) 0,rgba(0,174,255,.19) 100%);
+  box-shadow: 0 0 10px 0 rgba(55,224,255,.3);
 }
 
 .el-aside {
-  background-color:  rgb(84, 92, 100);
+  background-color:  #1b1e25;
   color: #333;
   text-align: center;
   line-height: 200px;

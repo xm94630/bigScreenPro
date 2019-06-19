@@ -1,5 +1,5 @@
 <template>
-  <div clas="">
+  <div class="listBox">
 
     <template v-for="(one) in reportList">
       <router-link :to="'/myReport?diyViewCode='+one.diyViewCode" :key="one.diyViewCode">
@@ -22,12 +22,8 @@
       </router-link>
     </template>
 
-    <!-- <router-link to="/createBigScreen">
-      <add-btn></add-btn>
-    </router-link> -->
-    <router-link to="/createBigScreen2">
-      <add-btn></add-btn>
-    </router-link>
+    <!-- <router-link to="/createBigScreen" class="addBtn">+ 新建可视化</router-link> -->
+    <router-link to="/createBigScreen2" class="addBtn">+ 新建可视化</router-link>
 
     <!-- 复制大屏弹框 -->
     <el-dialog title="复制大屏视图" :visible.sync="dialogFormVisible" width="400px">
@@ -51,14 +47,12 @@
 <script>
 import axios from "axios";
 import {baseUrl,path} from '@/bee.config';
-import addBtn from "../components/addBtn.vue";
 import bee from "@/src/tools/bee";
 
 
 export default {
   name: "app",
   components: {
-    addBtn
   },
   data() {
     return {
@@ -138,20 +132,30 @@ export default {
 
 <style lang="scss">
 
-  .myReport2{
-    position: relative;
-    .editScreenBtn{
-      width: 25px;
-      // height:25px;
-      // background: red;
-      position: absolute;
-      top:0px;
-      right:0px;
-      cursor: pointer;
-      font-size: 20px;
-      color:#fff;
-    }
+.myReport2{
+  position: relative;
+  .editScreenBtn{
+    width: 25px;
+    position: absolute;
+    bottom:0px;
+    right:0px;
+    cursor: pointer;
+    font-size: 20px;
+    color:#fff;
   }
+}
 
+.addBtn{
+  width:150px;
+  height:150px;
+  line-height:150px;
+  text-align:center;
+  border:dashed 2px lightseagreen;
+  display:inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
 
 </style>
