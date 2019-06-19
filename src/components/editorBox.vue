@@ -42,7 +42,7 @@
                     <span 
                       class="deleteWidgetBtn"
                       v-if="widget.id===myWidget.id"
-                      @click="deleteWidgetFun(myWidget.id)">
+                      @click="deleteWidgetFun(myWidget.id,myWidget.type,myWidget)">
                       删除
                     </span>
                   </el-menu-item>
@@ -200,8 +200,16 @@ export default {
   watch:{
   },
   methods:{
-    deleteWidgetFun(deleteCode){
-      alert(deleteCode)
+    deleteWidgetFun(id,type){
+      let arr = this.json[type].filter(function(widget){
+        return widget.id !== id;
+      });
+      if(arr.length===0){
+        this.$delete(this.json,type); 
+      }else{
+        this.json[type] = arr;
+      }
+      this.widget={};
     },
     createWidgetFun(name){
       let thisConfigTemplate =  JSON.parse(JSON.stringify(getWidgetConfig()[name]));
