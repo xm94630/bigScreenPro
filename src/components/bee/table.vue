@@ -70,40 +70,16 @@ export default {
     return {
       tableTitle:"xxx",
       isShow:!this.myConfig.foldSearchPanel,
-
-      resultColumnList:[], //注意，默认值还是要的，要不然就会报错。
-
+      resultColumnList:[], 
       //重置用
       //通过子组件发送事件，在本组件中，控制v-if来显示隐藏的变化，从而完成组件的重新加载！1
       hackReset:true,
-
-      items:[
-        // 这个部分时间长了可以删除，因为因为版本的时候，会出现闪现，体验可不好
-        // {
-        //   span: 12,
-        //   label: "配置有点问题哦",
-        //   keyName: '这个是用来绑定的',
-        //   type: 'beeInput',
-        //   placeholder: '请输入',
-        //   value: '',
-        //   rule: {},
-        // },{
-        //   span: 12,
-        //   label: "警告",
-        //   keyName: '这个是用来绑定的',
-        //   type: 'beeDatePicker',
-        //   placeholder: '日期选择',
-        //   value: '',
-        //   rule: {},
-        // },
-      ],
+      items:[],
       tableData:[],
       currentSearchOptions:{},
       currentUseCode:{},
       currentUseUrl:{},
-    
       totalPage:0,
-
       noDataInfo:this.myConfig.noDataInfo
     };
   },
@@ -126,145 +102,19 @@ export default {
       })
     },
     tableDataOK(tableData,searchOptions,code,url,totalPage,resultColumnList){
-      console.log('==table数据就绪==')
-      console.log(tableData)
+      //console.log('==table数据就绪==')
+      //console.log(tableData)
       
-
       //增加一列ID的数据
       for(let i=0;i<tableData.length;i++){
         tableData[i].ID = i+1;
       }
-
-      // console.log(searchOptions)
-      // console.log(code)
-      // console.log(url)
       this.tableData = tableData;
       this.currentSearchOptions = searchOptions;
       this.currentUseCode = code;
       this.currentUseUrl = url;
       this.totalPage = totalPage;
       this.resultColumnList = resultColumnList;
-    },
-    //将服务器的配置数据，转换成我组件所能使用的格式！
-    async parseConditionArr(arr){
-      console.log("搜索条件配置数据===>")
-      console.log(arr)
-      let newArr = [];
-      for(let i=0;i<arr.length;i++){
-        let one = arr[i];
-        let item = null;
-        let isForeign = one.isForeign;
-        let dataType = one.dataType;
-        let queryType = one.queryType;
-        if(isForeign){
-
-          let referenceUrl = one.referenceUrl;
-          
-          let getOptionsData = function() {
-              return new Promise((resolve) => {
-                axios.get(referenceUrl).then( async (response) => {
-                  
-                  let d = response.data.data;
-                  let options = [];
-                  for(let i=0;i<d.length;i++){
-                    options.push({
-                      value:d[i][one.referenceColumn],
-                      label:d[i][one.referenceDisplayColumn]
-                    })
-                  }
-
-                  resolve(options);
-                }).catch((err)=>{
-                  alert("下拉关联的接口存在问题："+err)
-                })
-              })
-          }
-
-          let options = await getOptionsData();
-
-          //关联的是下拉列表
-          item = {
-            label: one.displayName,
-            keyName: one.columnName,
-            type: 'beeSelect',
-            placeholder: one.placeholder,
-            defaultValue: one.defaultValue,
-            rule: {},
-            options: options,
-            queryIndex: one.queryIndex,
-          }
-
-        }else{
-          //不关联的是其他类型
-          item = {}
-          if(dataType===1){
-            //字符串：普通的文字输入框
-            item.label = one.displayName;
-            item.keyName = one.columnName;
-            item.type = "beeInput";
-            item.placeholder = one.placeholder;
-            item.defaultValue = one.defaultValue;
-            item.rule = {};
-            item.queryIndex= one.queryIndex;
-          }else if(dataType===2){
-            //整数：整数输入框
-            item.label = one.displayName;
-            item.keyName = one.columnName;
-            item.type = "beeInput";
-            item.placeholder = one.placeholder;
-            item.defaultValue = one.defaultValue;
-            item.rule = {};
-            item.queryIndex= one.queryIndex;
-          }else if(dataType===3 && queryType!==7){
-            //时间戳：日期选择
-            item.label = one.displayName;
-            item.keyName = one.columnName;
-            item.type = "beeDatePicker";
-            item.placeholder = one.placeholder;
-            item.defaultValue = one.defaultValue;
-            item.rule = {};
-            item.queryIndex= one.queryIndex;
-          }else{
-            //其他
-            item = {
-              label: "XXXX11",
-              keyName: 'XXXX22',
-              type: 'beeInput',
-              placeholder: 'XXXX33',
-              defaultValue: '',
-              rule: {},
-              queryIndex: one.queryIndex
-            }
-          }
-
-        }
-
-        //queryType为7，并且类型不是时间，说明是范围区间的输入框
-        if(queryType==7 && dataType!==3){
-            item.label = one.displayName;
-            item.keyName = one.columnName;
-            item.type = "beeInputRange";
-            item.placeholder = one.placeholder;
-            item.defaultValue = one.defaultValue;
-            item.rule = {};
-            item.queryIndex= one.queryIndex;
-        }else if(queryType==7 && dataType==3){
-            //时间范围
-            item.label = one.displayName;
-            item.keyName = one.columnName;
-            item.type = "beeDatePickerRange";
-            item.placeholder = one.placeholder;
-            item.defaultValue = one.defaultValue;
-            item.rule = {};
-            item.queryIndex= one.queryIndex;
-        }
-
-        newArr.push(item);
-      }
-
-      newArr = _.orderBy(newArr,'queryIndex','asc');  
-
-      return newArr;
     },
 
     getOptionsData (one) {
@@ -325,23 +175,9 @@ export default {
   },
 
   async mounted(){
-    
-    //console.log('===>')
-    //console.log(this.myConfig);
 
     const conditionArr = this.myConfig.initForView.conditionColumnList;
     this.items = await this.parseConditionArr2(conditionArr);
-
-    //console.log('===>>>>')
-    //console.log(this.items);
-
-    //条件搜索部分的数据组装
-    //const conditionArr = this.myConfig.initTableConfig.conditionColumnList;
-    //this.items = await this.parseConditionArr(conditionArr);
-
-    //表头的配置
-    //this.resultColumnList = _.orderBy(this.myConfig.initTableConfig.resultColumnList,'columnIndex','asc');
-    //this.resultColumnList = this.myConfig.searchBtns[2].resultColumnList;
 
   },
   computed: {
