@@ -188,7 +188,12 @@ export default {
 
               //来自前端自己的配置
               let myConfig = conf[i];
-              let searchBtns = myConfig.searchBtns
+              let searchBtns = myConfig.searchBtns;
+              if(typeof(searchBtns)==="string"){
+                searchBtns =JSON.parse(searchBtns);
+              }
+              console.log("searchBtns")
+              console.log(searchBtns)
 
               //请求各个小表的“初始配置数据”
               let arr = [];

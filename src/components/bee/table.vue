@@ -12,8 +12,8 @@
         v-show="isShow" 
         v-if="hackReset"
         :items="items" 
-        :searchBtns="myConfig.searchBtns" 
-        :resetBtn="myConfig.resetBtn" 
+        :searchBtns="searchBtns" 
+        :resetBtnText="myConfig.resetBtnText" 
         :currentPage="myConfig.currentPage"
         :pageSize="myConfig.pageSize"
         :showPage="myConfig.showPage"
@@ -80,7 +80,8 @@ export default {
       currentUseCode:{},
       currentUseUrl:{},
       totalPage:0,
-      noDataInfo:this.myConfig.noDataInfo
+      noDataInfo:this.myConfig.noDataInfo,
+      searchBtns:typeof(this.myConfig.searchBtns)==="string"?JSON.parse(this.myConfig.searchBtns):this.myConfig.searchBtns,
     };
   },
   components:{

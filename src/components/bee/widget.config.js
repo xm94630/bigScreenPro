@@ -265,11 +265,11 @@ export default function(){
       "showPage":"true",
       "currentPage":1,
       "pageSize":10,
-      "resetBtn":{
-        "text":"重置"
-      },
+      "resetBtnText":"重置",
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "initUrl": "/epimetheus/api_v1/diy/column/initForView",
+
+      "searchBtns":'[{"text":"按货架查询","dataUrl":"/epimetheus/api/diy/report/selectData","initUrl":"/epimetheus/api_v1/diy/column/initForView","diyCoreCode":"InventoryReportByShelf"},{"text":"按货位查询","dataUrl":"/epimetheus/api/diy/report/selectData","initUrl":"/epimetheus/api_v1/diy/column/initForView","diyCoreCode":"InventoryReportByBin"}]',
       "initForView":{
         "conditionColumnList":""
       },
