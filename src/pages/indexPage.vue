@@ -1,7 +1,7 @@
 <template>
   <el-container class="indexPageBox"> 
     <el-header height="40px" class="headBar">
-      大屏配置-欢迎使用
+      自定义大屏-欢迎使用
     </el-header>
 
     <el-container>
@@ -84,7 +84,10 @@ export default {
 // }
 
 .appBox{
-  background:#25292d;
+  .el-main{
+    background: #25292d;
+    color:#fff;
+  }
 }
 
 .indexPageBox{
@@ -92,6 +95,8 @@ export default {
     line-height: 40px;
     background: #25292d;
     font-size: 16px;
+    border-bottom:solid 1px #555; 
+    text-align: right;
   }
 }
 
