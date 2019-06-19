@@ -24,6 +24,7 @@
         <editorBox ref = "editorBox"
           @getWidgetConfig = "getWidgetConfig"
           @getCanvasConfig = "getCanvasConfig"
+          @deleteWidgetElementFun = "deleteWidgetElementFun"
         />
       </el-col>
     </el-row>
@@ -50,6 +51,7 @@
 import Vue from "vue";
 import editorBox from "../components/editorBox"
 import bee from "@/src/tools/bee";
+import echarts from "echarts";
 
 
 function mountCmp(cmp, props, parent) {
@@ -178,6 +180,15 @@ export default {
       if(this.zoom>20){this.zoom = this.zoom -10}
       this.$refs.myReportCanvas.style.transform = "scale("+this.zoom/100+")"
     },
+    deleteWidgetElementFun(id){
+      let echartsDom = document.getElementById(id)
+      if(echartsDom){
+        //通过这种方法，销毁echarts，比较安全。
+        echarts.init(echartsDom).dispose();
+      }
+      //再销毁整个容器
+      document.getElementsByName(id)[0].remove();
+    }
   },
   mounted(){
     //看看是不是编辑页面，载入缩放

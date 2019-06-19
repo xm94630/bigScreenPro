@@ -1,5 +1,5 @@
 <template>
-  <div class="beeTitle" :style="myCss">
+  <div class="beeTitle" :style="myCss" :name="myConfig.id">
       <template v-for="(value, name) in myConfig.options">
         <span :key="name"> 
           {{value}}:{{apiData[0]&&apiData[0][name]}} | 

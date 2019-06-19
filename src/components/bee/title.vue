@@ -1,5 +1,5 @@
 <template>
-  <div class="beeTitle" :style="myCss">{{myConfig.text}}</div>
+  <div class="beeTitle" :style="myCss" :name="myConfig.id">{{myConfig.text}}</div>
 </template>
 
 <script>

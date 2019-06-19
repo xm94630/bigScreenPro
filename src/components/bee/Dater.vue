@@ -1,5 +1,5 @@
 <template>
-  <div class="Dater" :style="myCss">{{str}}</div>
+  <div class="Dater" :style="myCss" :name="myConfig.id">{{str}}</div>
 </template>
 
 

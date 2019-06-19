@@ -175,6 +175,7 @@ export default function(){
         "y": 20,
         "width": 150,
         "height": 30,
+        "z-index": 9,
         "padding": 0,
         "font-size": 24,
         "color": "#f8f4a0",
@@ -188,9 +189,17 @@ export default function(){
       "id": bee.guidGenerator(),
       "type":"dater",
       "css":{
-        "x":20,
-        "y":20,
-        "color":"red"
+        "x": 20,
+        "y": 20,
+        "width": 150,
+        "height": 30,
+        "z-index": 9,
+        "padding": 0,
+        "font-size": 12,
+        "color": "red",
+        "border": "",
+        "background": "",
+        "text-align": "left"
       }
     },
     "new_info":{

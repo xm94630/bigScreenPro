@@ -1,5 +1,5 @@
 <template>
-  <div class="beeTitle">
+  <div class="beeTitle" :name="myConfig.id">
     <div @click="myFun" v-bind:class="{ 'canControl': isActive,'baseBox':true}" v-drag='{"changeData":changeData}'>
       <div class="wenzi">我是标题</div>
       <div class="miniDot dot1"></div>

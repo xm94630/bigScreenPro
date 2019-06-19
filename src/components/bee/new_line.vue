@@ -1,5 +1,5 @@
 <template>
-  <div class="widgetBox" :style="myCss">
+  <div class="widgetBox" :style="myCss" :name="myConfig.id">
     <div class="widgetCon" :id="myConfig.id"></div>
     <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
   </div>

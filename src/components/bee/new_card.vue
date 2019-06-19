@@ -1,5 +1,5 @@
 <template>
-  <div class="cardBox" v-bind:class="classObject" :style="myCss">
+  <div class="cardBox" v-bind:class="classObject" :style="myCss" :name="myConfig.id">
     <div class="cardBoxT">{{myConfig.title}}</div>
     <div class="dataBox">
       <template v-for="(one,key) in data">

@@ -1,5 +1,5 @@
 <template>
-  <div class="beeTable" :style="myCss">
+  <div class="beeTable" :style="myCss" :name="myConfig.id">
         
     <div class="top">
       
