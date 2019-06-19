@@ -1,7 +1,7 @@
 <template>
-  <el-container>
-    <el-header>
-      <head-title msg="大屏配置-欢迎使用"/>
+  <el-container class="indexPageBox"> 
+    <el-header height="40px" class="headBar">
+      大屏配置-欢迎使用
     </el-header>
 
     <el-container>
@@ -51,12 +51,9 @@
 </template>
 
 <script>
-import headTitle from "../components/HeadTitle.vue";
-
 export default {
   name: "app",
   components: {
-    headTitle,
   },
   data() {
     return {
@@ -84,6 +81,14 @@ export default {
 //   color: #2c3e50;
 //   margin-top: 60px;
 // }
+
+.indexPageBox{
+  .headBar{
+    line-height: 40px;
+    background: red;
+  }
+}
+
 
 .el-container {
   height: 100%;
