@@ -207,8 +207,12 @@ export default {
   },
   methods:{
     cloneWidgetFun(id,type,widget){
-      alert(id)
-      alert(type)
+      let cloneWidget = JSON.parse(JSON.stringify(widget));
+      cloneWidget.id = bee.guidGenerator();
+      cloneWidget.css["z-index"]++;
+      cloneWidget.css["x"]+=100;
+      this.json[type].push(cloneWidget)
+      this.$emit('getWidgetConfig',cloneWidget)
     },
     deleteWidgetFun(id,type){
       this.$confirm('确认删除', '提示', {
