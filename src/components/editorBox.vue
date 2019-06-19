@@ -78,91 +78,96 @@
         <div class="rightBox">
           <!--配置部分1：针对key/value的配置-->
           <el-form ref="form" :model="widget" label-width="100px" :inline="true">
-          <template v-for="(value,key) in widget">
-            <div :key="key">
+            <template v-for="(value,key) in widget">
+              <div :key="key">
 
-              <template v-if="bee.isObject(value)">
-                
-                <div class="_1thLine">
-                <div class="title1">{{key}}</div>
-                <template v-for="(value2,key2) in value">
-                  <div :key="key2">
+                <template v-if="bee.isObject(value)">
+                  
+                  <div class="_1thLine">
+                  <div class="title1">{{key}}</div>
+                  <template v-for="(value2,key2) in value">
+                    <div :key="key2">
 
-                    <template v-if="bee.isObject(value2)">
-                      
-                      <div class="_2thLine">
-                      <div class="title2">{{key2}}</div>
-                      <template v-for="(value3,key3) in value2">
-                        <div :key="key3">
+                      <template v-if="bee.isObject(value2)">
+                        
+                        <div class="_2thLine">
+                        <div class="title2">{{key2}}</div>
+                        <template v-for="(value3,key3) in value2">
+                          <div :key="key3">
 
-                          <template v-if="bee.isObject(value3)">
-                            
-                            <div class="_3thLine">
-                            <div class="title3">{{key3}}</div>
-                            <template v-for="(value4,key4) in value3">
-                              <div :key="key4">
+                            <template v-if="bee.isObject(value3)">
+                              
+                              <div class="_3thLine">
+                              <div class="title3">{{key3}}</div>
+                              <template v-for="(value4,key4) in value3">
+                                <div :key="key4">
 
-                                <template v-if="bee.isObject(value4)">
-                                  配置数据不允许超过4个层级哦
-                                </template>
+                                  <template v-if="bee.isObject(value4)">
+                                    配置数据不允许超过4个层级哦
+                                  </template>
 
-                                <template v-else>
-                                  <!-- 第4层级 -->
-                                  <div class="_4thLine">
-                                    <el-form-item :label="key4">
-                                      <el-input v-model="value3[key4]"></el-input>  
-                                    </el-form-item>   
-                                  </div>
-                                </template>
+                                  <template v-else>
+                                    <!-- 第4层级 -->
+                                    <div class="_4thLine">
+                                      <el-form-item :label="key4">
+                                        <el-input v-model="value3[key4]"></el-input>  
+                                      </el-form-item>   
+                                    </div>
+                                  </template>
 
+                                </div>
+                              </template>
+                              </div>
+
+                            </template>
+                            <template v-else>
+                              <!-- 第3层级 -->
+                              <div class="_3thLine">
+                                <el-form-item :label="key3">
+                                  <el-input v-model="value2[key3]"></el-input>  
+                                </el-form-item>    
                               </div>
                             </template>
-                            </div>
 
-                          </template>
-                          <template v-else>
-                            <!-- 第3层级 -->
-                            <div class="_3thLine">
-                              <el-form-item :label="key3">
-                                <el-input v-model="value2[key3]"></el-input>  
-                              </el-form-item>    
-                            </div>
-                          </template>
+                          </div>
+                        </template>
+                        </div>
 
+                      </template>
+                      <template v-else>
+                        <!-- 第2层级 -->
+                        <div class="_2thLine">                        
+                          <el-form-item :label="key2">
+                            <el-input v-model="value[key2]"></el-input>  
+                          </el-form-item>    
                         </div>
                       </template>
-                      </div>
 
-                    </template>
-                    <template v-else>
-                      <!-- 第2层级 -->
-                      <div class="_2thLine">                        
-                        <el-form-item :label="key2">
-                          <el-input v-model="value[key2]"></el-input>  
-                        </el-form-item>    
-                      </div>
-                    </template>
+                    </div>
+                  </template>
+                  </div>
 
+                </template>
+                <template v-else>
+                  <!-- 第1层级 -->
+                  <div class="_1thLine">
+                    <el-form-item :label="key">
+                      <el-input v-model="widget[key]"></el-input>  
+                    </el-form-item>  
                   </div>
                 </template>
-                </div>
 
-               </template>
-              <template v-else>
-                <!-- 第1层级 -->
-                <div class="_1thLine">
-                  <el-form-item :label="key">
-                    <el-input v-model="widget[key]"></el-input>  
-                  </el-form-item>  
-                </div>
-              </template>
-
-            </div>
-          </template>
+              </div>
+            </template>
           </el-form>
 
           <!--配置部分2：针对数组的配置-->
-          <getMultipleTemplate />
+          <getMultipleTemplate 
+            :templateAllData="widgetPartConfig" 
+            :templateName="templateName"
+            defaultValue="10"
+            @changeData = "changeDataFun"
+          />
 
         </div>
       </el-col>
@@ -174,6 +179,7 @@
 <script>
 import bee from "@/src/tools/bee";
 import getWidgetConfig from "./bee/widget.config"
+import getWidgetPartConfig from "./bee/widgetPart.config"
 import store from '@/src/store';
 import getMultipleTemplate from "./getMultipleTemplate"
 //let barWidgetConfig = widgetConfig['new_bar']
@@ -206,6 +212,8 @@ export default {
       //动态打开标签的控制。数组形式，可以支持多个一起打开。
       //这个被坑了很久，文档中居然没有这个！！有个比较混淆的default-active，这个似乎不支持动态控制！
       defaultOpeneds:[], 
+      widgetPartConfig:getWidgetPartConfig(), //配置（针对于数组类型的组件）
+      templateName:'conditionInput', //配置的名字（针对于数组类型的组件）
     }
   },
   watch:{
@@ -269,6 +277,12 @@ export default {
     selectCanvas(){
       this.selectWidget(this.canvas);
       this.defaultOpeneds=[];
+    },
+    //二次模板数据更改
+    changeDataFun(data){
+      this.widget.initForView={
+        conditionColumnList:data
+      }
     }
   },
   mounted(){

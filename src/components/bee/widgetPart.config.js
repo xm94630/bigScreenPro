@@ -1,9 +1,10 @@
+//import bee from "@/src/tools/bee";
 // table中的子组件的配置模板
 export default function(){
   return {
     "searchBtns":{
       "searchBtn":{
-        "template":{
+        "10":{
           "text":"查询",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "initUrl": "/epimetheus/api_v1/diy/column/initForView",
@@ -16,101 +17,101 @@ export default function(){
     "conditionInput":{
       "10":{
         "template":{
-          "label": "普通输入框 (type:10)",
-          "keyName": "name1",
           "type": "10",
-          "typeScribe": "beeInput",
+          "label": "普通输入框",
+          "keyName": "name1",
           "placeholder": "请输入",
-          "defaultValue": "",
-          "rule": {},
-          "queryIndex": 0
+          "defaultValue": "9",
+          "queryIndex": 0,
+          //"typeScribe": "beeInput",
+          //"rule": "",
         },
         "label":"普通输入框"
       },
 
       "11":{
         "template":{
-          "label": "范围输入框 (type:11)",
-          "keyName": "name2",
           "type": "11",
-          "typeScribe": "beeInputRange",
+          "label": "范围输入框",
+          "keyName": "name2",
           "placeholder": "请输入",
-          "defaultValue": "",
-          "rule": {},
-          "queryIndex": 1
+          "defaultValue": "1-9",
+          "queryIndex": 1,
+          //"typeScribe": "beeInputRange",
+          //"rule": "",
         },
         "label":"范围输入框"
       },
 
       "20":{
         "template":{
-          "label": "普通下拉 (type:20)",
-          "keyName": "love",
           "type": "20",
-          "typeScribe": "beeSelect",
+          "label": "普通下拉",
+          "keyName": "love",
           "placeholder": "请选择",
-          "defaultValue": "2",
-          "rule": {},
+          "defaultValue": "",
           "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
           "referenceColumn": "playerNameValue",
           "referenceDisplayColumn": "playerName",
-          "queryIndex": 2
+          "queryIndex": 2,
+          //"typeScribe": "beeSelect",
+          //"rule": "",
         },
         "label":"普通下拉"
       },
 
       "30":{
         "template":{
-          "label": "日期 (type:30)",
-          "keyName": "date1",
           "type": "30",
-          "typeScribe": "beeDatePicker",
+          "label": "日期",
+          "keyName": "date1",
           "placeholder": "请选择",
           "defaultValue": "",
-          "rule": {},
-          "queryIndex": 3
+          "queryIndex": 3,
+          //"typeScribe": "beeDatePicker",
+          //"rule": "",
         },
         "label":"日期"
       },
 
       "31":{
         "template":{
-          "label": "日期（范围） (type:31)",
-          "keyName": "date2",
           "type": "31",
-          "typeScribe": "beeDatePickerRange",
+          "label": "日期（范围）",
+          "keyName": "date2",
           "placeholder": ["开始", "结束"],
           "defaultValue": "",
-          "rule": {},
-          "queryIndex": 4
+          "queryIndex": 4,
+          //"typeScribe": "beeDatePickerRange",
+          //"rule": "",
         },
         "label":"日期（范围）"
       },
 
       "40":{
         "template":{
-          "label": "日期时间 (type:40)",
-          "keyName": "date3",
           "type": "40",
-          "typeScribe": "beeDateTimePicker",
+          "label": "日期时间",
+          "keyName": "date3",
           "placeholder": "请选择",
           "defaultValue": "",
-          "rule": {},
-          "queryIndex": 6
+          "queryIndex": 6,
+          //"typeScribe": "beeDateTimePicker",
+          //"rule": "",
         },
         "label":"日期时间"
       },
 
       "41":{
         "template":{
-          "label": "日期时间（范围） (type:41)",
-          "keyName": "date4",
           "type": "41",
-          "typeScribe": "beeDateTimePickerRange",
+          "label": "日期时间（范围）",
+          "keyName": "date4",
           "placeholder": ["开始", "结束"],
           "defaultValue": "",
-          "rule": {},
-          "queryIndex": 5
+          "queryIndex": 5,
+          //"typeScribe": "beeDateTimePickerRange",
+          //"rule": "",
         },
         "label":"日期时间（范围）"
       },

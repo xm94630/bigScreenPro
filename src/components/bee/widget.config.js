@@ -269,7 +269,8 @@ export default function(){
         "text":"重置"
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "initUrl": "/epimetheus/api_v1/diy/column/initForView"
+      "initUrl": "/epimetheus/api_v1/diy/column/initForView",
+      "initForView":"",
     }
   }
 }
