@@ -270,7 +270,9 @@ export default function(){
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "initUrl": "/epimetheus/api_v1/diy/column/initForView",
-      "initForView":"",
+      "initForView":{
+        "conditionColumnList":""
+      },
     }
   }
 }

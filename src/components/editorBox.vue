@@ -281,7 +281,7 @@ export default {
     //二次模板数据更改
     changeDataFun(data){
       this.widget.initForView={
-        conditionColumnList:data
+        conditionColumnList:JSON.stringify(data)
       }
     }
   },

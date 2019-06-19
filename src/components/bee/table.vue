@@ -147,7 +147,6 @@ export default {
     },
     //将服务器的配置数据，转换成我组件所能使用的格式！
     async parseConditionArr(arr){
-
       console.log("搜索条件配置数据===>")
       console.log(arr)
       let newArr = [];
@@ -288,6 +287,7 @@ export default {
 
     async parseConditionArr2(arr){
       console.log("搜索条件配置数据===>")
+      arr = arr || [];
       console.log(arr)
       
       // 以后千万不要踩这个坑啊！ forEach、async 的组合，会死人的。
