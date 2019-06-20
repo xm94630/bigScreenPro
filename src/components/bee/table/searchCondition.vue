@@ -6,7 +6,7 @@
       <component
       v-for="(item, index) in items"
       :key="index"
-      :is="item.type"
+      :is="item.typeName"
       :item="item"
       :ref="item.keyName"
       :labelPosition="store.state.store_labelPosition"
@@ -204,6 +204,7 @@ export default {
     beeDateTimePicker
   },
   mounted(){
+    //console.log("---------------------===>")
     //console.log(this.items)
     //console.log(this.searchBtns)
     //console.log(this.$refs['searchBrn'][0])

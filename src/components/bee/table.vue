@@ -134,29 +134,30 @@ export default {
           "41":"beeDateTimePickerRange",
           "100":"beeDatePickerRange",
         }
-        arr[i].type = map[arr[i].type];
+        arr[i].typeName = map[arr[i].type];
       }
       arr = _.orderBy(arr,'queryIndex','asc');  
       return arr;
     }
   },
 
-  // watch:{
-  //   "myConfig":{
-  //     handler:function(v){
-  //       //更新items
-  //       let conditionArr = v.initForView.conditionColumnList;
-  //       if(typeof(conditionArr)==='string' && conditionArr!==''){
-  //         conditionArr = eval("("+conditionArr+")");
-  //       }
-  //       this.items = this.parseConditionArr(conditionArr);
-  //       //更新btns
-  //       this.searchBtns = typeof(v.searchBtns)==="string"?JSON.parse(v.searchBtns):v.searchBtns;
-
-  //     },
-  //     deep:true,
-  //   }
-  // },
+  watch:{
+    "myConfig.initForView":{
+      handler:function(initForView){
+        //更新items
+        let conditionArr = initForView.conditionColumnList;
+        if(typeof(conditionArr)==='string' && conditionArr!==''){
+          conditionArr = eval("("+conditionArr+")");
+        }
+        this.items = this.parseConditionArr(conditionArr);
+        console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++===>')
+        console.log(this.items)
+        //更新btns
+        // this.searchBtns = typeof(v.searchBtns)==="string"?JSON.parse(v.searchBtns):v.searchBtns;
+      },
+      deep:true,
+    }
+  },
   mounted(){
     //更新items
     let conditionArr = this.myConfig.initForView.conditionColumnList;
