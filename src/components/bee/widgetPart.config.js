@@ -21,7 +21,7 @@ export default function(){
           "label": "普通输入框",
           "keyName": "name1",
           "placeholder": "请输入",
-          "defaultValue": "9",
+          "defaultValue": "",
           "queryIndex": 0,
           //"typeScribe": "beeInput",
           //"rule": "",
@@ -35,7 +35,7 @@ export default function(){
           "label": "范围输入框",
           "keyName": "name2",
           "placeholder": "请输入",
-          "defaultValue": "1-9",
+          "defaultValue": "",
           "queryIndex": 1,
           //"typeScribe": "beeInputRange",
           //"rule": "",
@@ -59,7 +59,7 @@ export default function(){
         },
         "label":"普通下拉"
       },
-      
+
       "21":{
         "template":{
           "type": "21",
