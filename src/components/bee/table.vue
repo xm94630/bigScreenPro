@@ -118,45 +118,10 @@ export default {
       this.resultColumnList = resultColumnList;
     },
 
-    getOptionsData (one) {
-
-      let options = [{
-        value:1,
-        label:"如来佛",
-      },{
-        value:2,
-        label:"观世音",
-      }]
-      return options;
-
-      // return new Promise((resolve) => {
-      //   axios.get(one.referenceUrl).then( async (response) => {
-      //     let d = response.data.data;
-      //     let options = [];
-      //     for(let i=0;i<d.length;i++){
-      //       options.push({
-      //         value:d[i][one.referenceColumn],
-      //         label:d[i][one.referenceDisplayColumn]
-      //       })
-      //     }
-      //     resolve(options);
-      //   }).catch((err)=>{
-      //     alert("下拉关联的接口存在问题："+err)
-      //   })
-      // })
-    },
 
     parseConditionArr(arr){
-      console.log("搜索条件配置数据===>")
       arr = arr || [];
-      console.log(arr)
-
       for(let i=0;i<arr.length;i++){
-        if(arr[i].type==20){
-          let options = this.getOptionsData(arr[i]);
-          arr[i].options=options;
-        }
-
         let map = {
           "0":"beeBlank",
           "10":"beeInput",
@@ -170,7 +135,6 @@ export default {
           "100":"beeDatePickerRange",
         }
         arr[i].type = map[arr[i].type];
-
       }
       arr = _.orderBy(arr,'queryIndex','asc');  
       return arr;
