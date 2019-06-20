@@ -141,22 +141,22 @@ export default {
     }
   },
 
-  watch:{
-    "myConfig":{
-      handler:async function(v){
-        //更新items
-        let conditionArr = v.initForView.conditionColumnList;
-        if(typeof(conditionArr)==='string' && conditionArr!==''){
-          conditionArr = eval("("+conditionArr+")");
-        }
-        this.items = this.parseConditionArr(conditionArr);
-        //更新btns
-        this.searchBtns = typeof(v.searchBtns)==="string"?JSON.parse(v.searchBtns):v.searchBtns;
+  // watch:{
+  //   "myConfig":{
+  //     handler:function(v){
+  //       //更新items
+  //       let conditionArr = v.initForView.conditionColumnList;
+  //       if(typeof(conditionArr)==='string' && conditionArr!==''){
+  //         conditionArr = eval("("+conditionArr+")");
+  //       }
+  //       this.items = this.parseConditionArr(conditionArr);
+  //       //更新btns
+  //       this.searchBtns = typeof(v.searchBtns)==="string"?JSON.parse(v.searchBtns):v.searchBtns;
 
-      },
-      deep:true,
-    }
-  },
+  //     },
+  //     deep:true,
+  //   }
+  // },
   mounted(){
     //更新items
     let conditionArr = this.myConfig.initForView.conditionColumnList;
