@@ -150,9 +150,7 @@ router.get('/view/info', async (ctx, next) => {
           "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "initUrl": "/epimetheus/api_v1/diy/column/initForView",
-          "resetBtn":[{
-            "text":"重置"
-          }],
+          "resetBtnText":"重置",
           "searchBtns":[{
             "text":"按货架查询",
             "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -319,9 +317,7 @@ router.get('/view/info', async (ctx, next) => {
           "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "initUrl": "/epimetheus/api_v1/diy/column/initForView",
-          "resetBtn":[{
-            "text":"重置"
-          }],
+          "resetBtnText":"重置",
           "searchBtns":[{
             "text":"查询",
             "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -1129,9 +1125,7 @@ router.get('/view/info', async (ctx, next) => {
           "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "initUrl": "/epimetheus/api_v1/diy/column/initForView",
-          "resetBtn":[{
-            "text":"重置"
-          }],
+          "resetBtnText":"重置",
           "searchBtns":[{
             "text":"查询",
             "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -1255,9 +1249,7 @@ router.get('/view/info', async (ctx, next) => {
           "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "initUrl": "/epimetheus/api_v1/diy/column/initForView",
-          "resetBtn":[{
-            "text":"重置"
-          }],
+          "resetBtnText":"重置",
           "searchBtns":[{
             "text":"查询",
             "dataUrl": "/epimetheus/api/diy/report/selectData",
