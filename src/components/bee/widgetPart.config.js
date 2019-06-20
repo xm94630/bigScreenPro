@@ -59,6 +59,23 @@ export default function(){
         },
         "label":"普通下拉"
       },
+      
+      "21":{
+        "template":{
+          "type": "21",
+          "label": "下拉搜索",
+          "keyName": "love2",
+          "placeholder": "请选择",
+          "defaultValue": "",
+          "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+          "referenceColumn": "playerNameValue",
+          "referenceDisplayColumn": "playerName",
+          "queryIndex": 3,
+          //"typeScribe": "beeSelect",
+          //"rule": "",
+        },
+        "label":"下拉搜索"
+      },
 
       "30":{
         "template":{
