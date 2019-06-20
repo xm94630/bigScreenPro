@@ -1,54 +1,48 @@
 <template>
   <div class="beeTable" :style="myCss" :name="myConfig.id">
-        
-    <div class="top">
-      
-      <div class="tableTitle">{{myConfig.tableTitle}}</div>
 
+    <!-- 上面部分 -->
+    <div class="top">
+      <!-- 表格标题 -->
+      <div class="tableTitle">{{myConfig.tableTitle}}</div>
       <div class="topCon">
+        <!-- 折叠按钮 -->
         <div class="foldBtn" @click="foldBtnFun">{{foldBtnText}}</div>
         <!-- 条件查询部分 -->
         <searchCondition
-        v-show="isShow" 
-        v-if="hackReset"
-        :items="items" 
-        :searchBtns="searchBtns" 
-        :resetBtnText="myConfig.resetBtnText" 
-        :currentPage="myConfig.currentPage"
-        :pageSize="myConfig.pageSize"
-        :showPage="myConfig.showPage"
-        :autoSearch="myConfig.autoSearch"
-        @reset = "resetFun"
-        @tableDataOK = "tableDataOK"
+          v-show = "isShow" 
+          v-if = "hackReset"
+          :items = "items" 
+          :searchBtns = "searchBtns" 
+          :resetBtnText = "myConfig.resetBtnText" 
+          :currentPage = "myConfig.currentPage"
+          :pageSize = "myConfig.pageSize"
+          :showPage = "myConfig.showPage"
+          :autoSearch = "myConfig.autoSearch"
+          @reset = "resetFun"
+          @tableDataOK = "tableDataOK"
         />
       </div>
     </div>
 
-
-    <!-- <div v-if="tableData.length"> -->
-      <div class="bottom">
-        <div class="bottomCon">
-            <myTable 
-              :tableData = "tableData"
-              :currentSearchOptions = "currentSearchOptions"
-              :currentUseCode = "currentUseCode"
-              :currentUseUrl = "currentUseUrl"
-
-              :currentPage = "myConfig.currentPage"
-              :pageSize = "myConfig.pageSize"
-              :totalPage = "totalPage"
-              :showPage = "myConfig.showPage"
-              
-              :tableColumnWidth = "myConfig.tableColumnWidth"
-
-              :resultColumnList = "resultColumnList"
-              
-              :noDataInfo = "myConfig.noDataInfo"
-            />
-        </div>
+    <!-- 下面部分 -->
+    <div class="bottom">
+      <div class="bottomCon">
+        <myTable 
+          :tableData = "tableData"
+          :currentSearchOptions = "currentSearchOptions"
+          :currentUseCode = "currentUseCode"
+          :currentUseUrl = "currentUseUrl"
+          :resultColumnList = "resultColumnList"
+          :tableColumnWidth = "myConfig.tableColumnWidth"
+          :noDataInfo = "myConfig.noDataInfo"
+          :totalPage = "totalPage"
+          :currentPage = "myConfig.currentPage" 
+          :pageSize = "myConfig.pageSize"
+          :showPage = "myConfig.showPage"
+        />
       </div>
-    <!-- </div> -->
- 
+    </div>
 
   </div>
 </template>
@@ -60,86 +54,74 @@ import _ from "lodash";
 import searchCondition from "./table/searchCondition.vue"
 import myTable from "./table/myTable.vue"
 
-
 export default {
   name: "beeTable",
-  props: {
-    myConfig: null
-  },
-  data() {
-    return {
-      tableTitle:"xxx",
-      isShow:!this.myConfig.foldSearchPanel,
-      resultColumnList:[], 
-      //重置用
-      //通过子组件发送事件，在本组件中，控制v-if来显示隐藏的变化，从而完成组件的重新加载！1
-      hackReset:true,
-      items:[],
-      tableData:[],
-      currentSearchOptions:{},
-      currentUseCode:{},
-      currentUseUrl:{},
-      totalPage:0,
-      noDataInfo:this.myConfig.noDataInfo,
-      searchBtns:[],
-    };
-  },
   components:{
     searchCondition,
     myTable,
   },
+  props: {
+    myConfig: Object
+  },
+  data() {
+    return {
+      isShow:!this.myConfig.foldSearchPanel, //面板是否折叠
+      noDataInfo:this.myConfig.noDataInfo,   //表格无数据、未查询时候的文本提示
+      
+      items:[],                //条件查询组件集合
+      currentSearchOptions:{}, //当前的条件查询的选项内容
+      hackReset:true,          //控制显示与否，实现条件搜索大组件的重新加载，实现类似重置的效果
+      searchBtns:[],           //搜索按钮配置
+      currentUseCode:{},       //当前使用的数据源code，因为一个大table组件下，可以通过多个查询按钮（不同code）查询不同的数据
+      currentUseUrl:{},        //当前使用的数据源url
+
+      resultColumnList:[],     //列配置
+      tableData:[],            //表数据
+      totalPage:0,             //总页数
+    };
+  },
   methods:{
     foldBtnFun(){
-      if(this.foldBtnText=='+'){
-        this.isShow = true;
-      }else{
-        this.isShow = false;
-      }
+      if(this.foldBtnText=='+'){this.isShow = true;}else{this.isShow = false}
     },
     resetFun(){      
-      this.hackReset = false;
-      this.$nextTick(() => {
-        this.hackReset = true
-      })
+      this.hackReset = false
+      this.$nextTick(() => {this.hackReset = true})
     },
-    tableDataOK(tableData,searchOptions,code,url,totalPage,resultColumnList){
-      //console.log('==table数据就绪==')
-      //console.log(tableData)
-      
-      //增加一列ID的数据
-      for(let i=0;i<tableData.length;i++){
-        tableData[i].ID = i+1;
-      }
+    //在点击查询按钮之后，会把所有数据准备好的数据传递过来
+    tableDataOK(tableData,searchOptions,code,url,totalPage,resultColumnList){      
       this.tableData = tableData;
       this.currentSearchOptions = searchOptions;
       this.currentUseCode = code;
       this.currentUseUrl = url;
       this.totalPage = totalPage;
       this.resultColumnList = resultColumnList;
+      for(let i=0;i<tableData.length;i++){tableData[i].ID = i+1} //增加一列“NO.”的数据
     },
 
-
+    //对条件查询的组件集合做一些处理
     parseConditionArr(arr){
-      arr = arr || [];
-      for(let i=0;i<arr.length;i++){
-        let map = {
-          "0":"beeBlank",
-          "10":"beeInput",
-          "11":"beeInputRange",
-          "20":"beeSelect",
-          "21":"beeSelectSearch",
-          "30":"beeDatePicker",
-          "31":"beeDatePickerRange",
-          "40":"beeDateTimePicker",
-          "41":"beeDateTimePickerRange",
-          "100":"beeDatePickerRange",
-        }
-        arr[i].typeName = map[arr[i].type];
+      let map = {
+        "0":"beeBlank",
+        "10":"beeInput",
+        "11":"beeInputRange",
+        "20":"beeSelect",
+        "21":"beeSelectSearch",
+        "30":"beeDatePicker",
+        "31":"beeDatePickerRange",
+        "40":"beeDateTimePicker",
+        "41":"beeDateTimePickerRange",
+        "100":"beeDatePickerRange",
       }
-      arr = _.orderBy(arr,'queryIndex','asc');  
-      return arr;
+      //添加typeName属性
+      for(let i=0;i<arr.length;i++){
+        arr[i].typeName = map[arr[i].type]
+      }
+      //数据排序 
+      return _.orderBy(arr,'queryIndex','asc')
     },
-        //这里完成对按钮们添加新的属性（来自后端的，用于初始化表头的，没有他可渲染不了table）
+
+    //这里完成对按钮们添加新的属性（来自后端的，用于初始化表头的，没有他可渲染不了table）
     getResultColumnList(searchBtns){
       
       //请求各个小表的“初始配置数据”
@@ -174,6 +156,10 @@ export default {
     }
   },
 
+  xxx:function(){
+
+  },
+
   watch:{
     "myConfig.initForView":{
       handler:function(initForView){
@@ -183,8 +169,6 @@ export default {
           conditionArr = eval("("+conditionArr+")");
         }
         this.items = this.parseConditionArr(conditionArr);
-        //console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++===>')
-        //console.log(this.items)
       },
       deep:true,
     },
@@ -198,12 +182,6 @@ export default {
     }
   },
   mounted(){
-    //更新items
-    let conditionArr = this.myConfig.initForView.conditionColumnList;
-    if(typeof(conditionArr)==='string' && conditionArr!==''){
-      conditionArr = eval("("+conditionArr+")");
-    }
-    this.items = this.parseConditionArr(conditionArr);
     //更新btns
     this.searchBtns = typeof(this.myConfig.searchBtns)==="string"?JSON.parse(this.myConfig.searchBtns):this.myConfig.searchBtns;
     this.getResultColumnList(this.searchBtns);
