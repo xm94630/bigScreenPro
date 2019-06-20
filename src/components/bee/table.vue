@@ -80,6 +80,15 @@ export default {
       totalPage:0,             //总页数
     };
   },
+  computed: {
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      return bee.objToCSS(bee.replaceKey(this.myConfig.css,map))
+    },
+    foldBtnText(){
+      if(this.isShow){return "-"}else{return "+"}
+    }
+  },
   methods:{
     foldBtnFun(){
       if(this.foldBtnText=='+'){this.isShow = true;}else{this.isShow = false}
@@ -99,8 +108,8 @@ export default {
       for(let i=0;i<tableData.length;i++){tableData[i].ID = i+1} //增加一列“NO.”的数据
     },
 
-    //对条件查询的组件集合做一些处理
-    parseConditionArr(arr){
+    //更新items:对条件查询的组件集合做一些处理
+    fun1:function(conditionArr){
       let map = {
         "0":"beeBlank",
         "10":"beeInput",
@@ -113,102 +122,69 @@ export default {
         "41":"beeDateTimePickerRange",
         "100":"beeDatePickerRange",
       }
+      if(typeof(conditionArr)==='string' && conditionArr!==''){
+        conditionArr = eval("("+conditionArr+")");
+      }
       //添加typeName属性
-      for(let i=0;i<arr.length;i++){
-        arr[i].typeName = map[arr[i].type]
+      for(let i=0;i<conditionArr.length;i++){
+        conditionArr[i].typeName = map[conditionArr[i].type]
       }
       //数据排序 
-      return _.orderBy(arr,'queryIndex','asc')
+      this.items = _.orderBy(conditionArr,'queryIndex','asc')
     },
-
-    //这里完成对按钮们添加新的属性（来自后端的，用于初始化表头的，没有他可渲染不了table）
-    getResultColumnList(searchBtns){
-      
-      //请求各个小表的“初始配置数据”
+    
+    //更新searchBtns
+    fun2:function(searchBtns){
+      searchBtns = typeof(searchBtns)==="string"?JSON.parse(searchBtns):searchBtns;
+      //从接口获取“列的配置”
       let arr = [];
-      for(let j=0;j<searchBtns.length;j++){
-        arr[j] = new Promise((resolve) => {
-            axios.get(searchBtns[j].initUrl+'?diyCoreCode='+searchBtns[j].diyCoreCode).then(response => {
-              resolve(response);
-            })
+      for(let i=0;i<searchBtns.length;i++){
+        arr[i] = new Promise((resolve) => {
+          axios.get(searchBtns[i].initUrl+'?diyCoreCode='+searchBtns[i].diyCoreCode).then(response => {
+            resolve(response);
+          })
         })            
       }
-      let that = this;
-
-      //完成所有异步动作之后，拿到数据之后，就可以做实例化。
-      Promise.all(arr).then(function(values) {  
-        //resultColumnList属性，对应的放回searchBtns中
+      Promise.all(arr).then((values)=>{  
+        //searchBtns中添加resultColumnList属性，并排序
         for(let k=0;k<searchBtns.length;k++){
-          //增加一列
+          //增加一列 "No."
           let resultColumnList = values[k].data.data.resultColumnList
           resultColumnList = resultColumnList.concat({
-            "columnName":"ID",   //列的key   
-            "displayName":"ID",   //列头名字  
-            "columnIndex":-1,   //列的顺序
+            "columnName":"bee_number", //列的key   
+            "displayName":"No.",       //列头名字  
+            "columnIndex":-1,          //列的顺序
           })
-          //表头排序
           searchBtns[k].resultColumnList=_.orderBy(resultColumnList,'columnIndex','asc');
-          that.searchBtns = searchBtns;
+          this.searchBtns = searchBtns;
         }
       });
-
-
-    }
-  },
-
-  xxx:function(){
-
+    },
   },
 
   watch:{
     "myConfig.initForView":{
-      handler:function(initForView){
-        //更新items
-        let conditionArr = initForView.conditionColumnList;
-        if(typeof(conditionArr)==='string' && conditionArr!==''){
-          conditionArr = eval("("+conditionArr+")");
-        }
-        this.items = this.parseConditionArr(conditionArr);
-      },
+      handler:function(v){this.xxx(v.conditionColumnList)},
       deep:true,
     },
     "myConfig.searchBtns":{
-      handler:function(searchBtns){
-        //更新btns
-        this.searchBtns = typeof(searchBtns)==="string"?JSON.parse(searchBtns):searchBtns;
-        this.getResultColumnList(this.searchBtns);
-      },
+      handler:function(v){this.yyy(v)},
       deep:true,
     }
   },
+  
   mounted(){
-    //更新btns
-    this.searchBtns = typeof(this.myConfig.searchBtns)==="string"?JSON.parse(this.myConfig.searchBtns):this.myConfig.searchBtns;
-    this.getResultColumnList(this.searchBtns);
-  },
-  computed: {
-    myCss() {
-      let map = {"x":"left","y":"top"};
-      let cssObj = bee.replaceKey(this.myConfig.css,map);
-      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
-      return cssStr;
-    },
-    foldBtnText(){
-      if(this.isShow){
-        return "-"
-      }else{
-        return "+"
-      }
-
-    }
-
-  },
+    this.fun1(this.myConfig.initForView.conditionColumnList);
+    this.fun2(this.myConfig.searchBtns);
+  }
 
 };
 </script>
 
 <style lang="scss">
 .beeTable {
+  position:absolute;
+  box-sizing:border-box;
   color: #000;
   background: #fff;
   box-sizing: border-box;
