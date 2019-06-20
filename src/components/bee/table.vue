@@ -164,11 +164,11 @@ export default {
 
   watch:{
     "myConfig.initForView":{
-      handler:function(v){this.xxx(v.conditionColumnList)},
+      handler:function(v){this.fun1(v.conditionColumnList)},
       deep:true,
     },
     "myConfig.searchBtns":{
-      handler:function(v){this.yyy(v)},
+      handler:function(v){this.fun2(v)},
       deep:true,
     }
   },
