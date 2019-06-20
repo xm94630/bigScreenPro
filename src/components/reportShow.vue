@@ -113,43 +113,30 @@ export default {
 
 
         //对配置的的全部组件进行渲染
-        for (let key in this.reportConfig.components) {
+        for (let typeName in this.reportConfig.components) {
+
+
+
+
           //渲染全部的“title”组件进行渲染
-          if ("title" == key) {
-            let titleData = this.reportConfig.components.title;
-            let len = titleData.length;
-            for (let i = 0; i < len; i++) {
-              let propsConfig = {
-                myConfig: titleData[i]
-              };
-              import("../components/bee/title.vue").then(cmp => {
+          if (
+               "title" == typeName 
+            || "dater" == typeName 
+          ) {
+            let widgets = this.reportConfig.components[typeName];
+            for (let i = 0; i < widgets.length; i++) {
+              import("../components/bee/"+typeName+".vue").then(cmp => {
                 mountCmp(
                   cmp,
-                  propsConfig,
+                  {myConfig: widgets[i]},
                   document.querySelector(".myReportCanvas")
                 );
               });
             }
           }
-          //渲染全部的“ dater ”组件进行渲染
-          if ("dater" == key) {
-            let data = this.reportConfig.components.dater;
-            let len = data.length;
-            for (let i = 0; i < len; i++) {
-              let propsConfig = {
-                myConfig: data[i]
-              };
-              import("../components/bee/dater.vue").then(cmp => {
-                mountCmp(
-                  cmp,
-                  propsConfig,
-                  document.querySelector(".myReportCanvas")
-                );
-              });
-            }
-          }
+
           //渲染全部的“new_line”组件进行渲染
-          if ("new_line" == key) {
+          if ("new_line" == typeName) {
             let data = this.reportConfig.components.new_line;
             let len = data.length;
             for (let i = 0; i < len; i++) {
@@ -179,7 +166,7 @@ export default {
           }
           
           //渲染全部的“table”组件进行渲染
-          if ("table" == key) {
+          if ("table" == typeName) {
 
             let conf = this.reportConfig.components.table;
             let len = conf.length;
@@ -244,7 +231,7 @@ export default {
           }
 
           //渲染全部的“ textBar ”组件进行渲染
-          if ("textBar" == key) {
+          if ("textBar" == typeName) {
             let data = this.reportConfig.components.textBar;
             let len = data.length;
             for (let i = 0; i < len; i++) {
@@ -280,7 +267,7 @@ export default {
           }
 
           //渲染全部的“ new_card ”组件进行渲染
-          if ("new_card" == key) {
+          if ("new_card" == typeName) {
 
             let data = this.reportConfig.components.new_card;
             let len = data.length;
@@ -316,7 +303,7 @@ export default {
           }
 
           //渲染全部的“ new_pie_1 ”组件进行渲染
-          if ("new_pie_1" == key) {
+          if ("new_pie_1" == typeName) {
             let data = this.reportConfig.components.new_pie_1;
             let len = data.length;
             for (let i = 0; i < len; i++) {
@@ -347,7 +334,7 @@ export default {
           }
 
           //渲染全部的“ new_pie_2 ”组件进行渲染
-          if ("new_pie_2" == key) {
+          if ("new_pie_2" == typeName) {
             let data = this.reportConfig.components.new_pie_2;
             let len = data.length;
             for (let i = 0; i < len; i++) {
@@ -379,7 +366,7 @@ export default {
           }
 
           //渲染全部的“bar”组件进行渲染
-          if ("new_bar" == key) {
+          if ("new_bar" == typeName) {
             let data = this.reportConfig.components.new_bar;
             let len = data.length;
             for (let i = 0; i < len; i++) {
@@ -414,7 +401,7 @@ export default {
           }
 
           //渲染全部的“new_info”组件进行渲染
-          if ("new_info" == key) {
+          if ("new_info" == typeName) {
             let myData = this.reportConfig.components.new_info;
             let len = myData.length;
             for (let i = 0; i < len; i++) {
