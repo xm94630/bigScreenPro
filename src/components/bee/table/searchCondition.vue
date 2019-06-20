@@ -26,7 +26,7 @@
         </el-button>
 
 
-      <template v-for="(one,index) in searchBtns">
+      <template v-for="(one,index) in searchBtnsPlus">
         <el-button 
         ref = "searchBrn"
         :key= "index" 
@@ -55,6 +55,7 @@ import beeSelectSearch from './beeSelectSearch.vue';
 import beeDateTimePickerRange from './beeDateTimePickerRange.vue';
 import beeDateTimePicker from './beeDateTimePicker.vue';
 import { setTimeout } from 'timers';
+import _ from "lodash";
 
 export default {
   name: "beeTitle",
@@ -72,6 +73,7 @@ export default {
       store,
       conditionData:{}, //这个用来保存查询条件的最后结果
       resetBtnDisabled:true, //默认一开始不让使用reset，只有一定延时后才能用。
+      searchBtnsPlus:[],
     };
   },
   methods:{
@@ -151,6 +153,41 @@ export default {
     //接受子组件中值的变化，更新数据
     sonChangeHandle(v,item){
       this.conditionData[item.keyName] = v;
+    },
+
+    //这里完成对按钮们添加新的属性（来自后端的，用于初始化表头的，没有他可渲染不了table）
+    getResultColumnList(searchBtns){
+      
+      //请求各个小表的“初始配置数据”
+      let arr = [];
+      for(let j=0;j<searchBtns.length;j++){
+        arr[j] = new Promise((resolve) => {
+            axios.get(searchBtns[j].initUrl+'?diyCoreCode='+searchBtns[j].diyCoreCode).then(response => {
+              resolve(response);
+            })
+        })            
+      }
+      let that = this;
+
+      //完成所有异步动作之后，拿到数据之后，就可以做实例化。
+      Promise.all(arr).then(function(values) {  
+        //resultColumnList属性，对应的放回searchBtns中
+        for(let k=0;k<searchBtns.length;k++){
+          //增加一列
+          let resultColumnList = values[k].data.data.resultColumnList
+          resultColumnList = resultColumnList.concat({
+            "columnName":"ID",   //列的key   
+            "displayName":"ID",   //列头名字  
+            "columnIndex":-1,   //列的顺序
+          })
+          //表头排序
+          searchBtns[k].resultColumnList=_.orderBy(resultColumnList,'columnIndex','asc');
+
+          that.searchBtnsPlus = searchBtns;
+        }
+      });
+
+
     }
   },
   computed: {
@@ -181,6 +218,7 @@ export default {
     setTimeout(()=>{
       this.resetBtnDisabled = false;
     },1000)
+
   },
   //这个一定要加，否者”重置“的时候，就会出现查询条件没有带上的bug
   created(){
@@ -192,6 +230,12 @@ export default {
     this.conditionData = this.initConditionData(this.items);
   },
   watch:{
+    "searchBtns":{
+      handler:function(searchBtns){
+        this.getResultColumnList(searchBtns);
+      },
+      deep:true
+    }
   }
   
 };
