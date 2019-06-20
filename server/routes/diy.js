@@ -1909,10 +1909,12 @@ router.get('/xxx/xxx', async (ctx, next) => {
     data:[
       {
         "playerName":"孙悟空"+code,
+        "playerName2":"兰陵王"+code,
         "playerNameValue":"1"
       },
       {
         "playerName":"沙和尚"+code,
+        "playerName2":"程咬金"+code,
         "playerNameValue":"2"
       },
     ]
