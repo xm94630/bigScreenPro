@@ -48,7 +48,8 @@ export default {
     }
   },
   mounted(){
-   
+   console.log('====>+++')
+   console.log(this.item)
   },
   updated(){
   }

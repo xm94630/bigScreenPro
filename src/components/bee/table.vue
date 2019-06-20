@@ -146,19 +146,11 @@ export default {
       // })
     },
 
-    parseConditionArr2(arr){
+    parseConditionArr(arr){
       console.log("搜索条件配置数据===>")
       arr = arr || [];
       console.log(arr)
-      
-      // 以后千万不要踩这个坑啊！ forEach、async 的组合，会死人的。
-      // arr.forEach(async (one)=>{
-      //   if(one.type=='beeSelect'){
-      //     let options = await this.getOptionsData(one);
-      //     one.options=options;
-      //   }
-      // })
-      
+
       for(let i=0;i<arr.length;i++){
         if(arr[i].type==20){
           let options = this.getOptionsData(arr[i]);
@@ -192,17 +184,17 @@ export default {
         if(typeof(conditionArr)==='string' && conditionArr!==''){
           conditionArr = eval("("+conditionArr+")");
         }
-        this.items = this.parseConditionArr2(conditionArr);
+        this.items = this.parseConditionArr(conditionArr);
       },
       deep:true,
     }
   },
-  async mounted(){
+  mounted(){
     let conditionArr = this.myConfig.initForView.conditionColumnList;
     if(typeof(conditionArr)==='string' && conditionArr!==''){
       conditionArr = eval("("+conditionArr+")");
     }
-    this.items = this.parseConditionArr2(conditionArr);
+    this.items = this.parseConditionArr(conditionArr);
   },
   computed: {
     myCss() {
