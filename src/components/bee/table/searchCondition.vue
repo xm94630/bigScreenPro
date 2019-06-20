@@ -26,7 +26,7 @@
         </el-button>
 
 
-      <template v-for="(one,index) in searchBtnsPlus">
+      <template v-for="(one,index) in searchBtns">
         <el-button 
         ref = "searchBrn"
         :key= "index" 
@@ -73,7 +73,6 @@ export default {
       store,
       conditionData:{}, //这个用来保存查询条件的最后结果
       resetBtnDisabled:true, //默认一开始不让使用reset，只有一定延时后才能用。
-      searchBtnsPlus:[],
     };
   },
   methods:{
@@ -155,40 +154,7 @@ export default {
       this.conditionData[item.keyName] = v;
     },
 
-    //这里完成对按钮们添加新的属性（来自后端的，用于初始化表头的，没有他可渲染不了table）
-    getResultColumnList(searchBtns){
-      
-      //请求各个小表的“初始配置数据”
-      let arr = [];
-      for(let j=0;j<searchBtns.length;j++){
-        arr[j] = new Promise((resolve) => {
-            axios.get(searchBtns[j].initUrl+'?diyCoreCode='+searchBtns[j].diyCoreCode).then(response => {
-              resolve(response);
-            })
-        })            
-      }
-      let that = this;
 
-      //完成所有异步动作之后，拿到数据之后，就可以做实例化。
-      Promise.all(arr).then(function(values) {  
-        //resultColumnList属性，对应的放回searchBtns中
-        for(let k=0;k<searchBtns.length;k++){
-          //增加一列
-          let resultColumnList = values[k].data.data.resultColumnList
-          resultColumnList = resultColumnList.concat({
-            "columnName":"ID",   //列的key   
-            "displayName":"ID",   //列头名字  
-            "columnIndex":-1,   //列的顺序
-          })
-          //表头排序
-          searchBtns[k].resultColumnList=_.orderBy(resultColumnList,'columnIndex','asc');
-
-          that.searchBtnsPlus = searchBtns;
-        }
-      });
-
-
-    }
   },
   computed: {
   },
@@ -204,10 +170,13 @@ export default {
     beeDateTimePicker
   },
   mounted(){
-    //console.log("---------------------===>")
+    console.log("---------------------===>")
     //console.log(this.items)
-    //console.log(this.searchBtns)
+    console.log(this.searchBtns)
     //console.log(this.$refs['searchBrn'][0])
+
+    //点重置的时候，本组件重新加载，这里的接口会再次调用，会被刷新下（闪一下）。
+    //this.getResultColumnList(this.searchBtns);
     
     //延时处理，等查询条件完成渲染。再模拟点击
     if(this.autoSearch){
@@ -233,7 +202,7 @@ export default {
   watch:{
     "searchBtns":{
       handler:function(searchBtns){
-        this.getResultColumnList(searchBtns);
+        //this.getResultColumnList(searchBtns);
       },
       deep:true
     }

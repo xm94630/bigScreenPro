@@ -138,6 +138,39 @@ export default {
       }
       arr = _.orderBy(arr,'queryIndex','asc');  
       return arr;
+    },
+        //这里完成对按钮们添加新的属性（来自后端的，用于初始化表头的，没有他可渲染不了table）
+    getResultColumnList(searchBtns){
+      
+      //请求各个小表的“初始配置数据”
+      let arr = [];
+      for(let j=0;j<searchBtns.length;j++){
+        arr[j] = new Promise((resolve) => {
+            axios.get(searchBtns[j].initUrl+'?diyCoreCode='+searchBtns[j].diyCoreCode).then(response => {
+              resolve(response);
+            })
+        })            
+      }
+      let that = this;
+
+      //完成所有异步动作之后，拿到数据之后，就可以做实例化。
+      Promise.all(arr).then(function(values) {  
+        //resultColumnList属性，对应的放回searchBtns中
+        for(let k=0;k<searchBtns.length;k++){
+          //增加一列
+          let resultColumnList = values[k].data.data.resultColumnList
+          resultColumnList = resultColumnList.concat({
+            "columnName":"ID",   //列的key   
+            "displayName":"ID",   //列头名字  
+            "columnIndex":-1,   //列的顺序
+          })
+          //表头排序
+          searchBtns[k].resultColumnList=_.orderBy(resultColumnList,'columnIndex','asc');
+          that.searchBtns = searchBtns;
+        }
+      });
+
+
     }
   },
 
@@ -150,10 +183,16 @@ export default {
           conditionArr = eval("("+conditionArr+")");
         }
         this.items = this.parseConditionArr(conditionArr);
-        console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++===>')
-        console.log(this.items)
+        //console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++===>')
+        //console.log(this.items)
+      },
+      deep:true,
+    },
+    "myConfig.searchBtns":{
+      handler:function(searchBtns){
         //更新btns
-        // this.searchBtns = typeof(v.searchBtns)==="string"?JSON.parse(v.searchBtns):v.searchBtns;
+        this.searchBtns = typeof(searchBtns)==="string"?JSON.parse(searchBtns):searchBtns;
+        this.getResultColumnList(this.searchBtns);
       },
       deep:true,
     }
@@ -167,6 +206,7 @@ export default {
     this.items = this.parseConditionArr(conditionArr);
     //更新btns
     this.searchBtns = typeof(this.myConfig.searchBtns)==="string"?JSON.parse(this.myConfig.searchBtns):this.myConfig.searchBtns;
+    this.getResultColumnList(this.searchBtns);
   },
   computed: {
     myCss() {
