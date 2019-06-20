@@ -200,7 +200,7 @@ export default {
         "zoom-type":0,
         "refreshTime":"600000",
         "formFormat":{
-          "labelPosition":"left",
+          "labelPosition":"top",
           "colSpan":8
         }
       },
