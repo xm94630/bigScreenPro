@@ -119,24 +119,34 @@ export default {
     },
 
     getOptionsData (one) {
-      return new Promise((resolve) => {
-        axios.get(one.referenceUrl).then( async (response) => {
-          let d = response.data.data;
-          let options = [];
-          for(let i=0;i<d.length;i++){
-            options.push({
-              value:d[i][one.referenceColumn],
-              label:d[i][one.referenceDisplayColumn]
-            })
-          }
-          resolve(options);
-        }).catch((err)=>{
-          alert("下拉关联的接口存在问题："+err)
-        })
-      })
+
+      let options = [{
+        value:1,
+        label:"如来佛",
+      },{
+        value:2,
+        label:"观世音",
+      }]
+      return options;
+
+      // return new Promise((resolve) => {
+      //   axios.get(one.referenceUrl).then( async (response) => {
+      //     let d = response.data.data;
+      //     let options = [];
+      //     for(let i=0;i<d.length;i++){
+      //       options.push({
+      //         value:d[i][one.referenceColumn],
+      //         label:d[i][one.referenceDisplayColumn]
+      //       })
+      //     }
+      //     resolve(options);
+      //   }).catch((err)=>{
+      //     alert("下拉关联的接口存在问题："+err)
+      //   })
+      // })
     },
 
-    async parseConditionArr2(arr){
+    parseConditionArr2(arr){
       console.log("搜索条件配置数据===>")
       arr = arr || [];
       console.log(arr)
@@ -151,7 +161,7 @@ export default {
       
       for(let i=0;i<arr.length;i++){
         if(arr[i].type==20){
-          let options = await this.getOptionsData(arr[i]);
+          let options = this.getOptionsData(arr[i]);
           arr[i].options=options;
         }
 
@@ -182,7 +192,7 @@ export default {
         if(typeof(conditionArr)==='string' && conditionArr!==''){
           conditionArr = eval("("+conditionArr+")");
         }
-        this.items = await this.parseConditionArr2(conditionArr);
+        this.items = this.parseConditionArr2(conditionArr);
       },
       deep:true,
     }
@@ -192,7 +202,7 @@ export default {
     if(typeof(conditionArr)==='string' && conditionArr!==''){
       conditionArr = eval("("+conditionArr+")");
     }
-    this.items = await this.parseConditionArr2(conditionArr);
+    this.items = this.parseConditionArr2(conditionArr);
   },
   computed: {
     myCss() {
