@@ -168,6 +168,7 @@
             :templateAllData="widgetPartConfig" 
             :templateName="templateName"
             defaultValue="10"
+            :defaultValue2="widget.initForView.conditionColumnList"
             @changeData = "changeDataFun"
           />
 

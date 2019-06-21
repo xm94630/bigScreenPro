@@ -43,11 +43,12 @@ export default {
     templateAllData:null,
     templateName:String,
     defaultValue:String,
+    defaultValue2:String,
   },
   data(){
     return{
       templateTypeId:this.defaultValue,
-      json:[],  //[{"type": "10","label": "普通输入框","id":"xxxx-xxxx"},{"type": "11","label": "范围输入框","id":"xxxx-xxxx"}]
+      json:typeof(this.defaultValue2)==="string" && this.defaultValue2!==''?JSON.parse(this.defaultValue2):[],//[{"type": "10","label": "普通输入框","id":"xxxx-xxxx"},{"type": "11","label": "范围输入框","id":"xxxx-xxxx"}]
       xxx:{},
     }
   },
@@ -77,7 +78,6 @@ export default {
     }
   },
   mounted(){
-    console.log(this.templateAllData[this.templateName])
   },
   watch:{
     "json":{
