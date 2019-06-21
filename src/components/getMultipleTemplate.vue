@@ -4,19 +4,20 @@
     <div class="title">conditionColumnList 高级配置</div>
     
     <el-form ref="form" v-model="json" label-width="160px" :inline="true">
-      <template v-for="(templ) in json">
-        <div class="box" :key="templ.id">
-          <template v-for="(value,key) in templ">
-            <el-form-item :key="key" :label="key">
-              <el-input v-model="templ[key]"></el-input>  
-            </el-form-item>  
-          </template>
-        </div>
-      </template>
+        <template v-for="(templ) in json">
+          <div class="box" :key="templ.id">
+            <template v-for="(value,key) in templ">
+              <el-form-item :key="key" :label="key">
+                <el-input v-model="templ[key]" :disabled="key==='id'"></el-input>  
+              </el-form-item>  
+            </template>
+            <div class="removeBtn" @click="removeFun(templ.id)"><i class="el-icon-close"></i></div>
+          </div>
+        </template>
     </el-form>
 
     <div class="selectBox">
-      <el-select v-model="templateId" placeholder="请选择">
+      <el-select v-model="templateTypeId" placeholder="请选择">
         <el-option
           v-for="item in templateData"
           :key="item.value"
@@ -24,7 +25,7 @@
           :value="item.value">
         </el-option>
       </el-select>
-      <el-button type="primary" icon="el-icon-plus" circle @click="addTemplateFun(templateId)"></el-button>
+      <el-button type="primary" icon="el-icon-plus" circle @click="addTemplateFun(templateTypeId)"></el-button>
     </div>
 
 
@@ -34,7 +35,7 @@
 </template>
 
 <script>
-//import bee from "@/src/tools/bee";
+import bee from "@/src/tools/bee";
 
 export default {
   name: 'getMultipleTemplate',
@@ -45,8 +46,8 @@ export default {
   },
   data(){
     return{
-      templateId:this.defaultValue,
-      json:[],  //[{"type": "10","label": "普通输入框"},{"type": "11","label": "范围输入框"}]
+      templateTypeId:this.defaultValue,
+      json:[],  //[{"type": "10","label": "普通输入框","id":"xxxx-xxxx"},{"type": "11","label": "范围输入框","id":"xxxx-xxxx"}]
       xxx:{},
     }
   },
@@ -64,9 +65,15 @@ export default {
     }
   },
   methods:{
-    addTemplateFun(id){
-      let template = JSON.parse(JSON.stringify(this.templateAllData[this.templateName][id].template));
+    addTemplateFun(templateTypeId){
+      let template = JSON.parse(JSON.stringify(this.templateAllData[this.templateName][templateTypeId].template));
+      template.id = bee.guidGenerator()
       this.json.push(template);
+    },
+    removeFun(removeId){
+      this.json = this.json.filter(function(one){
+        return one.id!==removeId;
+      })
     }
   },
   mounted(){
@@ -105,6 +112,19 @@ export default {
   .box{
     background: #333;
     margin-top: 10px;
+    position: relative;
+    .removeBtn{
+      position: absolute;
+      right:0px;
+      top:0px;
+      width:30px;
+      height:30px;
+      line-height: 30px;
+      color:#fff;
+      font-size: 30px;
+      background: #000;
+      cursor: pointer;
+    }
   }
 }
 </style>
