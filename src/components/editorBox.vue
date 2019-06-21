@@ -140,6 +140,7 @@
                           <el-form-item :label="key2">
                             <el-input v-model="value[key2]" :disabled="key2==='conditionColumnList'"></el-input>  
                           </el-form-item>    
+                          <span class="textBtn" v-if="key2==='conditionColumnList'" @click="configPlusFun">请在高级配置中完成此配置</span>
                         </div>
                       </template>
 
@@ -284,6 +285,9 @@ export default {
       this.widget.initForView={
         conditionColumnList:JSON.stringify(data)
       }
+    },
+    configPlusFun(){
+
     }
   },
   mounted(){
@@ -366,11 +370,14 @@ export default {
       height:100%;
       background: #1b1e25;
       overflow: auto;
+      .textBtn{
+        line-height: 50px;
+        cursor:pointer;
+      }
     }
     ._1thLine{
       background:#333;
       margin-left:0px;
-      cursor:pointer;
     }
     ._2thLine{
       background:#444;
