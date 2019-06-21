@@ -116,7 +116,7 @@ export default {
     position: relative;
     .removeBtn{
       position: absolute;
-      right:0px;
+      left:0px;
       top:0px;
       width:30px;
       height:30px;
