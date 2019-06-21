@@ -1,7 +1,7 @@
 <template>
   <div class="fishBox">
 
-    <div class="title">conditionColumnList 高级配置</div>
+    <div class="title">{{title}}</div>
     
     <el-form ref="form" v-model="json" label-width="160px" :inline="true">
         <template v-for="(templ) in json">
@@ -40,6 +40,7 @@ import bee from "@/src/tools/bee";
 export default {
   name: 'getMultipleTemplate',
   props: {
+    title:String,
     templateAllData:null,
     templateName:String,
     defaultOptionValue:String,

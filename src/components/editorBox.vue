@@ -153,8 +153,9 @@
                   <!-- 第1层级 -->
                   <div class="_1thLine">
                     <el-form-item :label="key">
-                      <el-input v-model="widget[key]"></el-input>  
+                      <el-input v-model="widget[key]" :disabled="key==='searchBtns'"></el-input>  
                     </el-form-item>  
+                    <span class="textBtn" v-if="key==='searchBtns'" @click="configPlusFun">请在高级配置中完成此配置</span>
                   </div>
                 </template>
 
@@ -162,14 +163,24 @@
             </template>
           </el-form>
 
-          <!--配置部分2：针对数组的配置-->
+          <!--高级配置-->
           <getMultipleTemplate 
             v-if="widget.type==='table'"
+            title="conditionColumnList 高级配置"
             :templateAllData="widgetPartConfig" 
             :templateName="templateName"
             defaultOptionValue="10"
             :defaultList="widget.initForView.conditionColumnList"
             @changeData = "changeDataFun"
+          />
+           <getMultipleTemplate 
+            v-if="widget.type==='table'"
+            title="searchBtns 高级配置"
+            :templateAllData="widgetPartConfig" 
+            :templateName="templateName2"
+            defaultOptionValue="10"
+            :defaultList="widget.searchBtns"
+            @changeData = "changeDataFun2"
           />
 
         </div>
@@ -217,6 +228,7 @@ export default {
       defaultOpeneds:[], 
       widgetPartConfig:getWidgetPartConfig(), //配置（针对于数组类型的组件）
       templateName:'conditionInput', //配置的名字（针对于数组类型的组件）
+      templateName2:'searchBtns', //配置的名字（针对于数组类型的组件）
     }
   },
   watch:{
@@ -286,6 +298,9 @@ export default {
       this.widget.initForView={
         conditionColumnList:JSON.stringify(data)
       }
+    },
+    changeDataFun2(data){
+      this.widget.searchBtns=JSON.stringify(data)
     },
     configPlusFun(){
 

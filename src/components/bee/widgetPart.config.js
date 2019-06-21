@@ -3,8 +3,8 @@
 export default function(){
   return {
     "searchBtns":{
-      "searchBtn":{
-        "10":{
+      "10":{
+        "template":{
           "text":"查询",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "initUrl": "/epimetheus/api_v1/diy/column/initForView",
