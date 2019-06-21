@@ -167,8 +167,8 @@
             v-if="widget.type==='table'"
             :templateAllData="widgetPartConfig" 
             :templateName="templateName"
-            defaultValue="10"
-            :defaultValue2="widget.initForView.conditionColumnList"
+            defaultOptionValue="10"
+            :defaultList="widget.initForView.conditionColumnList"
             @changeData = "changeDataFun"
           />
 

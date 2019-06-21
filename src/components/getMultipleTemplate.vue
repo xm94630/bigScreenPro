@@ -42,13 +42,13 @@ export default {
   props: {
     templateAllData:null,
     templateName:String,
-    defaultValue:String,
-    defaultValue2:String,
+    defaultOptionValue:String,
+    defaultList:String,
   },
   data(){
     return{
-      templateTypeId:this.defaultValue,
-      json:typeof(this.defaultValue2)==="string" && this.defaultValue2!==''?JSON.parse(this.defaultValue2):[],//[{"type": "10","label": "普通输入框","id":"xxxx-xxxx"},{"type": "11","label": "范围输入框","id":"xxxx-xxxx"}]
+      templateTypeId:this.defaultOptionValue, //下拉的默认值
+      json:typeof(this.defaultList)==="string" && this.defaultList!==''?JSON.parse(this.defaultList):[],//[{"type": "10","label": "普通输入框","id":"xxxx-xxxx"},{"type": "11","label": "范围输入框","id":"xxxx-xxxx"}]
       xxx:{},
     }
   },
