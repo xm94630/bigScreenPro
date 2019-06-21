@@ -138,7 +138,7 @@
                         <!-- 第2层级 -->
                         <div class="_2thLine">                        
                           <el-form-item :label="key2">
-                            <el-input v-model="value[key2]"></el-input>  
+                            <el-input v-model="value[key2]" :disabled="key2==='conditionColumnList'"></el-input>  
                           </el-form-item>    
                         </div>
                       </template>
@@ -163,6 +163,7 @@
 
           <!--配置部分2：针对数组的配置-->
           <getMultipleTemplate 
+            v-if="widget.type==='table'"
             :templateAllData="widgetPartConfig" 
             :templateName="templateName"
             defaultValue="10"

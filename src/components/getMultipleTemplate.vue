@@ -1,20 +1,10 @@
 <template>
   <div class="fishBox">
 
-    <div>条件查询的组件配置</div>
-    <el-select v-model="templateId" placeholder="请选择">
-      <el-option
-        v-for="item in templateData"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-      </el-option>
-    </el-select>
-    <el-button type="primary" icon="el-icon-plus" circle @click="addTemplateFun(templateId)"></el-button>
-
+    <div class="title">conditionColumnList 高级配置</div>
+    
     <el-form ref="form" v-model="json" label-width="160px" :inline="true">
       <template v-for="(templ) in json">
-
         <div class="box" :key="templ.id">
           <template v-for="(value,key) in templ">
             <el-form-item :key="key" :label="key">
@@ -22,9 +12,22 @@
             </el-form-item>  
           </template>
         </div>
-
       </template>
     </el-form>
+
+    <div class="selectBox">
+      <el-select v-model="templateId" placeholder="请选择">
+        <el-option
+          v-for="item in templateData"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
+      <el-button type="primary" icon="el-icon-plus" circle @click="addTemplateFun(templateId)"></el-button>
+    </div>
+
+
 
 
   </div>
@@ -83,6 +86,22 @@ export default {
 
 <style lang="scss">
 .fishBox{
+  padding:0px 0px 10px 0px;
+  box-sizing: border-box;
+  border:solid 1px #409EFF;
+  color:#fff;
+  .title{
+    background: #409EFF;
+    line-height: 24px;
+    padding:0px 10px;
+    text-align: center;
+  }
+  .selectBox{
+    padding:10px;
+    .el-select{
+      margin-right: 10px;
+    }
+  }
   .box{
     background: #333;
     margin-top: 10px;
