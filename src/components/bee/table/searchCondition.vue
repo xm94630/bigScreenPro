@@ -16,15 +16,12 @@
     </el-row>
 
     <div class="funBox">
-
-
-        <el-button 
-          @click="resetForm('ruleForm')" 
-          :disabled="resetBtnDisabled"
-        >
-          {{resetBtnText}}
-        </el-button>
-
+      <el-button 
+        @click="resetForm('ruleForm')" 
+        :disabled="resetBtnDisabled"
+      >
+        {{resetBtnText}}
+      </el-button>
 
       <template v-for="(one,index) in searchBtns">
         <el-button 
@@ -55,7 +52,6 @@ import beeSelectSearch from './beeSelectSearch.vue';
 import beeDateTimePickerRange from './beeDateTimePickerRange.vue';
 import beeDateTimePicker from './beeDateTimePicker.vue';
 import { setTimeout } from 'timers';
-import _ from "lodash";
 
 export default {
   name: "beeTitle",
@@ -71,7 +67,7 @@ export default {
   data() {
     return {
       store,
-      conditionData:{}, //这个用来保存查询条件的最后结果
+      conditionData:{},      //这个用来保存查询条件的最后结果
       resetBtnDisabled:true, //默认一开始不让使用reset，只有一定延时后才能用。
     };
   },
@@ -103,20 +99,18 @@ export default {
           newArr[arr[i].keyName] = (arr[i].defaultValue);
         }
       }
-      console.log('条件搜索初始数据===>')
-      console.log(newArr)
+      //console.log('条件搜索初始数据===>')
+      //console.log(newArr)
       return newArr;
     },
 
     submitForm(code,url,resultColumnList){
       //console.log("条件查询最终数据")
       //console.log(this.conditionData);
-      
       // console.log(code)
       // console.log(url)
       // console.log(this.currentPage)
       // console.log(this.pageSize)
-
 
       let abc = bee.effectiveKeys(this.conditionData);
       let body = Object.assign({diyCoreCode:code},abc);
@@ -143,8 +137,6 @@ export default {
           this.$emit('hideLoadingBox');
         });
       }
-
-
     },
     resetForm(){
       this.$emit('reset');
@@ -153,8 +145,6 @@ export default {
     sonChangeHandle(v,item){
       this.conditionData[item.keyName] = v;
     },
-
-
   },
   computed: {
   },
@@ -172,11 +162,8 @@ export default {
   mounted(){
     console.log("---------------------===>")
     //console.log(this.items)
-    console.log(this.searchBtns)
+    //console.log(this.searchBtns)
     //console.log(this.$refs['searchBrn'][0])
-
-    //点重置的时候，本组件重新加载，这里的接口会再次调用，会被刷新下（闪一下）。
-    //this.getResultColumnList(this.searchBtns);
     
     //延时处理，等查询条件完成渲染。再模拟点击
     if(this.autoSearch){
@@ -188,7 +175,6 @@ export default {
     setTimeout(()=>{
       this.resetBtnDisabled = false;
     },1000)
-
   },
   //这个一定要加，否者”重置“的时候，就会出现查询条件没有带上的bug
   created(){
@@ -198,14 +184,6 @@ export default {
   updated(){
     //初始化查询条件的值
     this.conditionData = this.initConditionData(this.items);
-  },
-  watch:{
-    "searchBtns":{
-      handler:function(searchBtns){
-        //this.getResultColumnList(searchBtns);
-      },
-      deep:true
-    }
   }
   
 };
