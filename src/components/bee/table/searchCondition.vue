@@ -73,6 +73,7 @@ export default {
   },
   methods:{
     //初始化查询条件的值
+    //这是对this.items中默认值做格式的处理。比如传进来的是日期格式，我要转成时间戳
     initConditionData(arr){
 
       //深度拷贝。否者原对象会被改变。
