@@ -229,7 +229,7 @@ router.get('/view/info', async (ctx, next) => {
               "type": "31",
               "typeScribe": "beeDatePickerRange",
               "placeholder": ["开始", "结束"],
-              "defaultValue": "",
+              "defaultValue": ["2019-01-01","2019-01-02"],
               "rule": {},
               "queryIndex": 6
             }, {

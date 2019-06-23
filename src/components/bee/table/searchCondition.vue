@@ -84,7 +84,7 @@ export default {
 
         //对时间范围的组件的默认值做处理
         let defaultValue = arr[i].defaultValue;
-        if(arr[i].type==='beeDatePickerRange' && defaultValue){
+        if(arr[i].type==='31' || arr[i].type==='41'){
           //如果默认值存在
           if(Array.isArray(defaultValue)){
             let a = defaultValue.map(function(one){
@@ -161,6 +161,9 @@ export default {
     beeDateTimePicker
   },
   mounted(){
+    //初始化查询条件的值
+    this.conditionData = this.initConditionData(this.items);
+
     console.log("---------------------===>")
     //console.log(this.items)
     //console.log(this.searchBtns)
@@ -176,11 +179,6 @@ export default {
     setTimeout(()=>{
       this.resetBtnDisabled = false;
     },1000)
-  },
-  //这个一定要加，否者”重置“的时候，就会出现查询条件没有带上的bug
-  created(){
-    //初始化查询条件的值
-    this.conditionData = this.initConditionData(this.items);
   },
   updated(){
     //初始化查询条件的值
