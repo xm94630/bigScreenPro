@@ -1,6 +1,11 @@
 <template>
   <div class="cardBox" :style="myCss" :name="myConfig.id">
     卡片组合
+    <div class="xxx">
+      <div class="yyy">
+        <newCard :myConfig="newCardConfig"/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,14 +14,37 @@ import bee from '@/src/tools/bee.js';
 import axios from "axios";
 import {baseUrl} from '@/bee.config';
 import store from '@/src/store';
+import newCard from './new_card'
 
 export default {
   name: "new_cardGroup",
+  components:{
+    newCard,
+  },
   props: {
     myConfig: null
   },
   data: function() {
     return {
+      newCardConfig:{
+        "id": 22,
+        "type":"new_card",
+        "css":{
+          "x": 20,
+          "y": 20,
+          "width": "90%",
+          "height": 100,
+          "z-index": 9,
+          "border": "",
+          "padding":10,
+          "background":"#142a41",
+          "color":"#f8f594"
+        },
+        "title":"A类/鞋",
+        "state":0,
+        "dataUrl": "/epimetheus/api/diy/report/selectData",
+        "diyCoreCode":"lifeng-BinUseA"
+      }
     };
   },
   computed:{
@@ -71,4 +99,10 @@ export default {
 </script>
 
 <style lang="scss">
+.xxx{
+  
+  .yyy{
+    
+  }
+}
 </style>
