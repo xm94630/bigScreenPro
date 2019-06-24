@@ -34,84 +34,101 @@ router.get('/view/info', async (ctx, next) => {
             "color":"red"
           }
         }],
-        "new_line":[{
-          "id": "componentId_line001",
+        // "new_line":[{
+        //   "id": "componentId_line001",
+        //   "css":{
+        //     "x": 20,
+        //     "y": 20,
+        //     "width": 300,
+        //     "height": 200,
+        //     "z-index": 9,
+        //     "border": "none",
+        //     "padding":5,
+        //     "background":"#142a41"
+        //   },
+        //   "echartOption":{
+        //     "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
+        //     "title": {
+        //       "text": "周统计",
+        //       "textStyle": {
+        //         "fontSize": 16,
+        //         "color": "#f8f4a0"
+        //       }
+        //     },
+        //     "xAxis": {
+        //       "data": "周一|周二|周三|周四|周五|周六|周日"
+        //     },
+        //     "axisLabel": {
+        //       "show": "true",
+        //       "textStyle": {
+        //         "color": "#f8f4a0"
+        //       }
+        //     },
+        //     "legend":{
+        //       "show": "true",
+        //       "textStyle": {
+        //         "color": "#f8f4a0"
+        //       }
+        //     }
+        //   },
+        //   "dataUrl": "/epimetheus/api/diy/report/selectData",
+        //   "diyCoreCode":"demo_line"
+        // }],
+        // "new_bar":[{
+        //   "id": "xxx",
+        //   "type":"new_bar",
+        //   "css":{
+        //     "x": 550,
+        //     "y": 20,
+        //     "width": 250,
+        //     "height": 200,
+        //     "z-index": 9,
+        //     "border": "none",
+        //     "padding":5,
+        //     "background":"#142a41"
+        //   },
+        //   "echartOption":{
+        //     "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
+        //     "title": {
+        //       "text": "出库单",
+        //       "textStyle": {
+        //         "fontSize": 16,
+        //         "color": "#f8f4a0"
+        //       }
+        //     },
+        //     "axisLabel": {
+        //       "show": "true",
+        //       "textStyle": {
+        //         "color": "#f8f4a0"
+        //       }
+        //     },
+        //     "legend":{
+        //       "show": "true",
+        //       "textStyle": {
+        //         "color": "#f8f4a0"
+        //       }
+        //     }
+        //   },
+        //   "dataUrl": "/epimetheus/api/diy/report/selectData",
+        //   "diyCoreCode":"lifeng-HistogramOutOrder"
+        // }],
+        "new_cardGroup":[{
+          "id": 'new_cardGroup_001',
+          "type":"new_cardGroup",
           "css":{
             "x": 20,
             "y": 20,
-            "width": 300,
-            "height": 200,
+            "width": 1350,
+            "height": 400,
             "z-index": 9,
-            "border": "none",
-            "padding":5,
-            "background":"#142a41"
-          },
-          "echartOption":{
-            "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
-            "title": {
-              "text": "周统计",
-              "textStyle": {
-                "fontSize": 16,
-                "color": "#f8f4a0"
-              }
-            },
-            "xAxis": {
-              "data": "周一|周二|周三|周四|周五|周六|周日"
-            },
-            "axisLabel": {
-              "show": "true",
-              "textStyle": {
-                "color": "#f8f4a0"
-              }
-            },
-            "legend":{
-              "show": "true",
-              "textStyle": {
-                "color": "#f8f4a0"
-              }
-            }
+            "border": "",
+            "padding":10,
+            "background":"#142a41",
+            "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"demo_line"
-        }],
-        "new_bar":[{
-          "id": "xxx",
-          "type":"new_bar",
-          "css":{
-            "x": 550,
-            "y": 20,
-            "width": 250,
-            "height": 200,
-            "z-index": 9,
-            "border": "none",
-            "padding":5,
-            "background":"#142a41"
-          },
-          "echartOption":{
-            "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
-            "title": {
-              "text": "出库单",
-              "textStyle": {
-                "fontSize": 16,
-                "color": "#f8f4a0"
-              }
-            },
-            "axisLabel": {
-              "show": "true",
-              "textStyle": {
-                "color": "#f8f4a0"
-              }
-            },
-            "legend":{
-              "show": "true",
-              "textStyle": {
-                "color": "#f8f4a0"
-              }
-            }
-          },
-          "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-HistogramOutOrder"
-        }],
+          "diyCoreCode":"lifeng-BinUseA"
+        }]
       }
     }
   }

@@ -273,6 +273,23 @@ export default function(){
       "initForView":{
         "conditionColumnList":""
       },
+    },
+    "new_cardGroup":{
+      "id": bee.guidGenerator(),
+      "type":"new_cardGroup",
+      "css":{
+        "x": 20,
+        "y": 20,
+        "width": 1000,
+        "height": 400,
+        "z-index": 9,
+        "border": "",
+        "padding":10,
+        "background":"#142a41",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-BinUseA"
     }
   }
 }
