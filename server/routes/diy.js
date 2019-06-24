@@ -117,9 +117,9 @@ router.get('/view/info', async (ctx, next) => {
           "type":"new_cardGroup",
           "css":{
             "x": 20,
-            "y": 20,
+            "y": 100,
             "width": 1350,
-            "height": 400,
+            "height": 600,
             "z-index": 9,
             "border": "",
             "padding":10,

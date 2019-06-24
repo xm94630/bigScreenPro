@@ -1,9 +1,11 @@
 <template>
   <div class="cardGroupBox" :style="myCss" :name="myConfig.id">
 
+    <div class="yyy" name="xxx">
+
     <template v-for="(one,index) in apiData">
 
-        <div class="cardBox" :key="index">
+        <div class="con" :key="index" >
             <template v-for="(value,key) in one">
               <div class="one" :key="key">
                 <div class="flexBox">
@@ -15,6 +17,9 @@
         </div>
 
     </template>
+
+    </div>
+
   </div>
 </template>
 
@@ -82,6 +87,37 @@ export default {
   },
   mounted: function() {
     this.initWidget(this.myConfig);
+    
+
+    let element = document.getElementsByName('xxx')[0];
+    let top = element.offsetTop;
+
+    element.style.top = top+'px';
+
+
+    let start = null;
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      var progress = timestamp - start;
+      element.style.transform = 'translateY(' + Math.min(-progress / 10) + 'px)';
+      if (progress < 2000) {
+        window.requestAnimationFrame(step);
+      }
+    }
+
+    window.requestAnimationFrame(step);
+
+
+    // function step() {
+    //   top=top-1;
+    //   element.style.top = top+'px';
+    //   if (top < 2000) {
+    //     window.requestAnimationFrame(step);
+    //   }
+    // }
+    // window.requestAnimationFrame(step);
+
+
   },
   updated(){
   }
@@ -91,7 +127,12 @@ export default {
 <style lang="scss">
 .cardGroupBox{
   overflow: auto;
-  .cardBox{
+  .yyy{
+    position:absolute;
+    top:0;
+    transform:translateY(100)
+  }
+  .con{
     box-sizing: border-box;
     width:calc(33.33% - 20px);
     height:70px;
@@ -104,6 +145,7 @@ export default {
     overflow: hidden;
     text-align: center;
     font-size: 14px;
+    font-weight: bold;
     .one{
       box-sizing: border-box;
       display: inline-block;
