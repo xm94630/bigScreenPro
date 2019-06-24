@@ -1,10 +1,19 @@
 <template>
-  <div class="cardBox" :style="myCss" :name="myConfig.id">
-    卡片组合2
+  <div class="cardGroupBox" :style="myCss" :name="myConfig.id">
+
     <template v-for="(one,index) in apiData">
-      <div :key="index">
-        {{one['进度']}}-{{index}}
-      </div>
+
+        <div class="cardBox" :key="index">
+            <template v-for="(value,key) in one">
+              <div class="one" :key="key">
+                <div class="flexBox">
+                  <div class="top">{{value}}</div>
+                  <div class="bottom">{{key}}</div>
+                </div>
+              </div>
+            </template>
+        </div>
+
     </template>
   </div>
 </template>
@@ -80,10 +89,36 @@ export default {
 </script>
 
 <style lang="scss">
-.xxx{
-  
-  .yyy{
-    
+.cardGroupBox{
+  overflow: auto;
+  .cardBox{
+    box-sizing: border-box;
+    width:calc(33.33% - 20px);
+    height:70px;
+    background:#1b2140;
+    color:#ee7b11;
+    border:solid 1px #299ecb;
+    border-radius: 5px;
+    display: inline-block;
+    margin:10px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 14px;
+    .one{
+      box-sizing: border-box;
+      display: inline-block;
+      height: 100%;
+      width: 25%;
+      .flexBox{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+
   }
 }
 </style>

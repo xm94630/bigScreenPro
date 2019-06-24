@@ -283,8 +283,11 @@ router.post('/report/selectData', async (ctx, next) => {
       "进度":"已完成",
     }
     for(let i=0;i<30;i++){
-      data.push(shop);
+      data.push(JSON.parse(JSON.stringify(shop)));
     }
+    data[10]["周转箱数"] = 999999999;
+    data[7]["进度"] = "好像真的没有完成哦";
+
   }
 
   ctx.body = {
