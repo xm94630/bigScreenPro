@@ -3,6 +3,7 @@ const router = require('koa-router')()
 router.prefix('/epimetheus/api/diy/')
 
 
+
 //数据源
 router.post('/report/selectData', async (ctx, next) => {
 
@@ -271,6 +272,19 @@ router.post('/report/selectData', async (ctx, next) => {
         name:'南京仓',
         data:[1,2,3,2,5,6]
     }]
+  }
+
+  if(code==="yonghui_shops"){
+    data = [];
+    let shop={
+      "门店代码":"ABCDE12345",
+      "门店名":"上海静安店",
+      "周转箱数":"8888",
+      "进度":"已完成",
+    }
+    for(let i=0;i<30;i++){
+      data.push(shop);
+    }
   }
 
   ctx.body = {

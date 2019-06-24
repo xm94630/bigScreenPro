@@ -127,7 +127,7 @@ router.get('/view/info', async (ctx, next) => {
             "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-BinUseA"
+          "diyCoreCode":"yonghui_shops"
         }]
       }
     }
