@@ -1,23 +1,21 @@
 <template>
-  <div class="cardGroupBox" :style="myCss" :name="myConfig.id">
-
-    <div class="yyy" name="xxx">
-
-    <template v-for="(one,index) in apiData">
-
-        <div class="con" :key="index" >
-            <template v-for="(value,key) in one">
-              <div class="one" :key="key">
-                <div class="flexBox">
-                  <div class="top">{{value}}</div>
-                  <div class="bottom">{{key}}</div>
-                </div>
+  <!-- 外容器 -->
+  <div class="cardGroupBox" :style="myCss" :name="myConfig.id" >
+   
+    <!-- 内容区 -->
+    <div ref="conBox">
+      <template v-for="(one,index) in apiData">
+        <div class="card" :key="index" >
+          <template v-for="(value,key) in one">
+            <div class="con" :key="key">
+              <div class="flexBox" :key="key">
+                <div class="top">{{value}}</div>
+                <div class="bottom">{{key}}</div>
               </div>
-            </template>
+            </div>
+          </template>
         </div>
-
-    </template>
-
+      </template>
     </div>
 
   </div>
@@ -48,6 +46,9 @@ export default {
       let cssObj = bee.replaceKey(this.myConfig.css,map);
       let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
       return cssStr;
+    },
+    name(){
+      return "con_"+this.myConfig.id
     }
   },
   methods:{
@@ -73,8 +74,25 @@ export default {
           this.apiData = apiData;
         });
       }
-
     },
+    scrollFun(cb){
+      let element = this.$refs.conBox;
+      let start = null;
+      window.setTimeout( () =>{
+        let contentHeight = element.clientHeight;
+        function step(timestamp) {
+          if (!start) start = timestamp;
+          var s = (timestamp - start) / 20;
+          element.style.transform = 'translateY(' +  (-s) + 'px)';
+          if (s < contentHeight ) {
+            window.requestAnimationFrame(step);
+          }else{
+            cb();
+          }
+        }
+        window.requestAnimationFrame(step);
+      },2000)
+    }
   },
   watch:{
     "myConfig":{
@@ -87,37 +105,10 @@ export default {
   },
   mounted: function() {
     this.initWidget(this.myConfig);
-    
-
-    let element = document.getElementsByName('xxx')[0];
-    let top = element.offsetTop;
-
-    element.style.top = top+'px';
-
-
-    let start = null;
-    function step(timestamp) {
-      if (!start) start = timestamp;
-      var progress = timestamp - start;
-      element.style.transform = 'translateY(' + Math.min(-progress / 10) + 'px)';
-      if (progress < 2000) {
-        window.requestAnimationFrame(step);
-      }
-    }
-
-    window.requestAnimationFrame(step);
-
-
-    // function step() {
-    //   top=top-1;
-    //   element.style.top = top+'px';
-    //   if (top < 2000) {
-    //     window.requestAnimationFrame(step);
-    //   }
-    // }
-    // window.requestAnimationFrame(step);
-
-
+    //滚动效果
+    this.scrollFun(()=>{
+      console.log('滚动完毕');
+    });
   },
   updated(){
   }
@@ -132,7 +123,7 @@ export default {
     top:0;
     transform:translateY(100)
   }
-  .con{
+  .card{
     box-sizing: border-box;
     width:calc(33.33% - 20px);
     height:70px;
@@ -146,7 +137,7 @@ export default {
     text-align: center;
     font-size: 14px;
     font-weight: bold;
-    .one{
+    .con{
       box-sizing: border-box;
       display: inline-block;
       height: 100%;
