@@ -428,8 +428,8 @@ router.get('/view/info', async (ctx, next) => {
       "pageId": "pageId-00004",
       "canvas": {
         "zoom-type":0, 
-        "width": 1200,
-        "height": 1200,
+        "width": 1400,
+        "height": 1400,
         "background": "#f3f3f3",
         "formFormat":{
           "labelPosition":"top",
@@ -443,7 +443,7 @@ router.get('/view/info', async (ctx, next) => {
           "css":{
             "x": 0,
             "y": 0,
-            "width": 1200,
+            "width": 1400,
             "padding": 10
           },
           "exported": true,
@@ -489,9 +489,9 @@ router.get('/view/info', async (ctx, next) => {
             },{
               "label": "导出任务编号",
               "keyName": "exportBatchCode",
-              "type": "30",
-              "typeScribe": "beeDatePicker",
-              "placeholder": "请选择",
+              "type": "10",
+              "typeScribe": "beeInput",
+              "placeholder": "请输入",
               "defaultValue": "",
               "rule": {},
               "queryIndex": 3
