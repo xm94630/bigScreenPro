@@ -267,7 +267,19 @@ router.get('/view/info', async (ctx, next) => {
               "defaultValue": "",
               "rule": {},
               "queryIndex": 8
-            }],
+            }, {
+              "label": "多选下拉",
+              "keyName": "love3",
+              "type": "22",
+              "typeScribe": "beeSelectMultiple",
+              "placeholder": "请选择",
+              "defaultValue": [],
+              "rule": {},
+              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+              "referenceColumn": "playerNameValue",
+              "referenceDisplayColumn": "playerName",
+              "queryIndex": 9
+            }, ],
             "resultColumnList": [{
               "bbb": 222
             }]
@@ -465,10 +477,10 @@ router.get('/view/info', async (ctx, next) => {
             "conditionColumnList": [{
               "label": "仓库",
               "keyName": "warehouseCodeList",
-              "type": "20",
-              "typeScribe": "beeSelect",
+              "type": "22",
+              "typeScribe": "多选",
               "placeholder": "请选择",
-              "defaultValue": "2",
+              "defaultValue": [],
               "rule": {},
               "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
               "referenceColumn": "playerNameValue",
@@ -477,10 +489,10 @@ router.get('/view/info', async (ctx, next) => {
             }, {
               "label": "导出类型",
               "keyName": "fileNameList",
-              "type": "20",
-              "typeScribe": "beeSelect",
+              "type": "22",
+              "typeScribe": "多选",
               "placeholder": "请选择",
-              "defaultValue": "2",
+              "defaultValue": [],
               "rule": {},
               "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
               "referenceColumn": "playerNameValue",
@@ -498,10 +510,10 @@ router.get('/view/info', async (ctx, next) => {
             },{
               "label": "状态",
               "keyName": "exportStatus",
-              "type": "20",
-              "typeScribe": "beeSelect",
+              "type": "22",
+              "typeScribe": "多选",
               "placeholder": "请选择",
-              "defaultValue": "2",
+              "defaultValue": [],
               "rule": {},
               "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
               "referenceColumn": "playerNameValue",
