@@ -105,7 +105,7 @@ export default {
       this.currentUseUrl = url;
       this.totalPage = totalPage;
       this.resultColumnList = resultColumnList;
-      for(let i=0;i<tableData.length;i++){tableData[i].ID = i+1} //增加一列“NO.”的数据
+      for(let i=0;i<tableData.length;i++){tableData[i].bee_number = i+1} //增加一列“NO.”的数据
     },
 
     //更新items:对条件查询的组件集合做一些处理
