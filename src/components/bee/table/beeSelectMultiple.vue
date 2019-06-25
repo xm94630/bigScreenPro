@@ -1,9 +1,9 @@
-<!--此组件复制的 beeSelect，只有一处不同:多了multiple，name不同-->
+<!--此组件复制的 beeSelect，只有一处不同:多了multiple collapse-tags，另外name不同-->
 <template>
   <el-col :span="colSpan">
     <el-form :label-position="labelPosition" :inline="true" :model="formInline" class="demo-form-inline" label-width="80px">
       <el-form-item :label="item.label">          
-        <el-select clearable filterable multiple v-model="formInline.user" :placeholder="item.placeholder"  @change="handleChange">
+        <el-select clearable filterable multiple collapse-tags v-model="formInline.user" :placeholder="item.placeholder"  @change="handleChange">
           <el-option
             v-for="item in options"
             :key="item.value"
