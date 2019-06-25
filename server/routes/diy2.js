@@ -93,6 +93,19 @@ router.post('/report/selectData', async (ctx, next) => {
         address: 'M87'
       }]
     }
+  }else if(code==="asyncExport"){
+    data = {
+      "recordList":[{
+        a: '绍兴仓库',
+        b: '某类型',
+        c: '某状态',
+        d: '000001',
+        e: '2019-01-01',
+        f: '2010-01-02',
+        'creator_user': '兰陵王',
+      }],
+      "recordCount": 333
+    }
   }else{
     if(pageSize){
       data = {

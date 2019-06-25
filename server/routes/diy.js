@@ -459,12 +459,12 @@ router.get('/view/info', async (ctx, next) => {
             "text":"查询",
             "dataUrl": "/epimetheus/api/diy/report/selectData",
             "initUrl": "/epimetheus/api_v1/diy/column/initForView",
-            "diyCoreCode":"SkuHot"
+            "diyCoreCode":"asyncExport"
           }],
           "initForView":{
             "conditionColumnList": [{
               "label": "仓库",
-              "keyName": "love",
+              "keyName": "warehouseCodeList",
               "type": "20",
               "typeScribe": "beeSelect",
               "placeholder": "请选择",
@@ -476,7 +476,7 @@ router.get('/view/info', async (ctx, next) => {
               "queryIndex": 1
             }, {
               "label": "导出类型",
-              "keyName": "love",
+              "keyName": "fileNameList",
               "type": "20",
               "typeScribe": "beeSelect",
               "placeholder": "请选择",
@@ -488,7 +488,7 @@ router.get('/view/info', async (ctx, next) => {
               "queryIndex": 2
             },{
               "label": "导出任务编号",
-              "keyName": "date1",
+              "keyName": "exportBatchCode",
               "type": "30",
               "typeScribe": "beeDatePicker",
               "placeholder": "请选择",
@@ -497,7 +497,7 @@ router.get('/view/info', async (ctx, next) => {
               "queryIndex": 3
             },{
               "label": "状态",
-              "keyName": "love",
+              "keyName": "exportStatus",
               "type": "20",
               "typeScribe": "beeSelect",
               "placeholder": "请选择",
@@ -509,7 +509,7 @@ router.get('/view/info', async (ctx, next) => {
               "queryIndex": 4
             },{
               "label": "导出开始时间",
-              "keyName": "date4",
+              "keyName": "exportTimeBeginByQuery",
               "type": "41",
               "typeScribe": "beeDateTimePickerRange",
               "placeholder": ["开始", "结束"],
@@ -518,7 +518,7 @@ router.get('/view/info', async (ctx, next) => {
               "queryIndex": 5
             },{
               "label": "导出结束时间",
-              "keyName": "date4",
+              "keyName": "exportTimeEndByQuery",
               "type": "41",
               "typeScribe": "beeDateTimePickerRange",
               "placeholder": ["开始", "结束"],
@@ -2022,6 +2022,39 @@ router.get('/column/initForView', async (ctx, next) => {
       ]
 
 
+    }
+  }else if("asyncExport"==code){
+    data = {
+      "resultColumnList":[{
+        "columnName":"a",
+        "displayName":"仓库",
+        "columnIndex":1,
+      },{
+        "columnName":"b",
+        "displayName":"导出类型",
+        "columnIndex":2,
+      },{
+        "columnName":"c",
+        "displayName":"状态",
+        "columnIndex":3,
+      },{
+        "columnName":"d",
+        "displayName":"导出任务编号",
+        "columnIndex":3,
+      },{
+        "columnName":"e",
+        "displayName":"导出开始时间",
+        "columnIndex":3,
+      },{
+        "columnName":"f",
+        "displayName":"导出结束时间",
+        "columnIndex":3,
+      },{
+        "columnName":"creator_user",
+        "displayName":"创建人",
+        "columnIndex":3,
+      }],
+      "conditionColumnList":[],
     }
   }
   ctx.body = {
