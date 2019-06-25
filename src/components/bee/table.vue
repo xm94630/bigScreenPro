@@ -21,6 +21,7 @@
           :autoSearch = "myConfig.autoSearch"
           @reset = "resetFun"
           @tableDataOK = "tableDataOK"
+          :myConfig = "myConfig"
         />
       </div>
     </div>
@@ -40,6 +41,7 @@
           :currentPage = "myConfig.currentPage" 
           :pageSize = "myConfig.pageSize"
           :showPage = "myConfig.showPage"
+          :myConfig = "myConfig"
         />
       </div>
     </div>

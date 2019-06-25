@@ -3,7 +3,7 @@
     <div v-if="tableData.length">
 
       <!-- 导出按钮 -->
-      <div class="exportBar">
+      <div class="exportBar" v-if="exportBtnShow">
         <el-button type= "primary" @click="exportFun">{{exportBtnText}}</el-button>
       </div>
 
@@ -74,6 +74,7 @@ export default {
     "resultColumnList":null,   //表头数据
     "noDataInfo":null,         //没有数据的时候的提示文字
 
+    "myConfig":null,
   },
   data() {
     return {
@@ -81,7 +82,9 @@ export default {
       myTableData:this.tableData,
       myCurrentPage:this.currentPage,
 
-      "exportBtnText":"Export",
+      "exportBtnText":this.myConfig.exportBtn.text,
+      "exportBtnShow":this.myConfig.exportBtn.show,
+
       "noDataInfo2":this.noDataInfo || "数据不存在"
     };
   },

@@ -159,7 +159,6 @@ router.get('/view/info', async (ctx, next) => {
             "width": 1200,
             "padding": 10
           },
-          "exported": true,
           "showIndexColumn":true,
           "currentPage":1,
           "pageSize":10,
@@ -179,6 +178,10 @@ router.get('/view/info', async (ctx, next) => {
             "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"InventoryReportByBin"
           }],
+          "exportBtn": {
+            "show":true,
+            "text":"导出",
+          },
           "initForView":{
             "conditionColumnList": [
             {
@@ -338,7 +341,6 @@ router.get('/view/info', async (ctx, next) => {
             "width": 1200,
             "padding": 10
           },
-          "exported": true,
           "showIndexColumn":true,
           "currentPage":1,
           "pageSize":10,
@@ -353,6 +355,10 @@ router.get('/view/info', async (ctx, next) => {
             "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"SkuHot"
           }],
+          "exportBtn": {
+            "show":true,
+            "text":"导出",
+          },
           "initForView":{
             "conditionColumnList": [{
               "label": "普通输入框 (type:10)",
@@ -458,7 +464,6 @@ router.get('/view/info', async (ctx, next) => {
             "width": 1400,
             "padding": 10
           },
-          "exported": false,
           "showIndexColumn":true,
           "currentPage":1,
           "pageSize":10,
@@ -473,6 +478,10 @@ router.get('/view/info', async (ctx, next) => {
             "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"asyncExport"
           }],
+          "exportBtn": {
+            "show":false,
+            "text":"导出",
+          },
           "initForView":{
             "conditionColumnList": [{
               "label": "仓库",
@@ -1279,6 +1288,10 @@ router.get('/view/info', async (ctx, next) => {
             "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"chanel-InboundEfficiency"
           }],
+          "exportBtn": {
+            "show":true,
+            "text":"导出",
+          },
           "initForView":{
             "conditionColumnList": [{
               "label": "普通输入框 (type:10)",
@@ -1388,7 +1401,6 @@ router.get('/view/info', async (ctx, next) => {
             "width": 1300,
             "padding": 10
           },
-          "exported": true,
           "showIndexColumn":true,
           "currentPage":1,
           "pageSize":10,
@@ -1403,6 +1415,10 @@ router.get('/view/info', async (ctx, next) => {
             "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"chanel-OutboundEfficiency"
           }],
+          "exportBtn": {
+            "show":true,
+            "text":"导出",
+          },
           "initForView":{
             "conditionColumnList": [{
               "label": "普通输入框 (type:10)",
