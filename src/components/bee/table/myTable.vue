@@ -18,6 +18,16 @@
           >
           </el-table-column>
         </template>
+
+        <el-table-column
+          fixed="right"
+          label="操作"
+          width="100">
+          <template slot-scope="scope">
+            <el-button @click="downLoadFun(scope.row)" type="text" size="small">下载</el-button>
+          </template>
+        </el-table-column>
+
       </el-table>
 
       <!-- 分页 -->
@@ -145,6 +155,9 @@ export default {
       }
 
 
+    },
+    downLoadFun(rowData){
+      window.open(rowData.downloadUrl)
     }
   },
   computed: {

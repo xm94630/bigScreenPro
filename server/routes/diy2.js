@@ -102,6 +102,7 @@ router.post('/report/selectData', async (ctx, next) => {
         d: '000001',
         e: '2019-01-01',
         f: '2010-01-02',
+        downloadUrl:'#/index/dashboard',
         'creator_user': '兰陵王',
       }],
       "recordCount": 333
