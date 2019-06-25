@@ -1,9 +1,9 @@
 <template>
   <!-- 外容器 -->
-  <div class="cardGroupBox" :style="myCss" :name="myConfig.id" >
+  <div class="cardGroupBox" :style="myCss" :name="myConfig.id" ref="cardGroupBox">
    
     <!-- 内容区 -->
-    <div ref="conBox">
+    <div class="conBox" ref="conBox">
       <template v-for="(one,index) in apiData">
         <div class="card" :key="index" >
           <template v-for="(value,key) in one">
@@ -38,6 +38,7 @@ export default {
     return {
       diyCoreCode:'',
       apiData:[],
+      setTimeoutHolder:null,
     };
   },
   computed:{
@@ -52,13 +53,14 @@ export default {
     }
   },
   methods:{
-    initWidget:function(myConfig){
+    initWidget:function(myConfig,cb){
       this.diyCoreCode = myConfig.diyCoreCode;
       let params = Object.assign({},{diyCoreCode:myConfig.diyCoreCode},store.state.store_globalContion);
       //获取数据源
       axios.post(baseUrl + myConfig.dataUrl,params).then(response => {
         let apiData = response.data.data;
         this.apiData = apiData;
+        cb();
       });
     },
     updatedWidget:function(val){
@@ -76,22 +78,24 @@ export default {
       }
     },
     scrollFun(cb){
+      let containerHeight = this.$refs.cardGroupBox.clientHeight;
       let element = this.$refs.conBox;
       let start = null;
-      window.setTimeout( () =>{
+      element.style.top = this.myConfig.css.height+'px'
+      this.$nextTick( () =>{
         let contentHeight = element.clientHeight;
         function step(timestamp) {
           if (!start) start = timestamp;
           var s = (timestamp - start) / 20;
           element.style.transform = 'translateY(' +  (-s) + 'px)';
-          if (s < contentHeight ) {
+          if (s < contentHeight+containerHeight ) {
             window.requestAnimationFrame(step);
           }else{
             cb();
           }
         }
         window.requestAnimationFrame(step);
-      },2000)
+      })
     }
   },
   watch:{
@@ -101,16 +105,19 @@ export default {
       },
       deep: true
     },
-    
   },
   mounted: function() {
-    this.initWidget(this.myConfig);
-    //滚动效果
-    this.scrollFun(()=>{
-      console.log('滚动完毕');
+    this.initWidget(this.myConfig,()=>{
+      //滚动效果
+      this.scrollFun(()=>{
+        console.log('滚动完毕');
+      });
     });
   },
   updated(){
+  },
+  destroyed(){
+    clearTimeout(this.setTimeoutHolder)
   }
 };
 </script>
@@ -118,35 +125,37 @@ export default {
 <style lang="scss">
 .cardGroupBox{
   overflow: auto;
-  .card{
-    box-sizing: border-box;
-    width:calc(33.33% - 20px);
-    height:70px;
-    background:#1b2140;
-    color:#ee7b11;
-    border:solid 1px #299ecb;
-    border-radius: 5px;
-    display: inline-block;
-    margin:10px;
-    overflow: hidden;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-    .con{
+  .conBox{
+    position: absolute;
+    .card{
       box-sizing: border-box;
+      width:calc(33.33% - 20px);
+      height:70px;
+      background:#1b2140;
+      color:#ee7b11;
+      border:solid 1px #299ecb;
+      border-radius: 5px;
       display: inline-block;
-      height: 100%;
-      width: 25%;
-      .flexBox{
+      margin:10px;
+      overflow: hidden;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      .con{
+        box-sizing: border-box;
+        display: inline-block;
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        overflow: hidden;
-        white-space: nowrap;
+        width: 25%;
+        .flexBox{
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          overflow: hidden;
+          white-space: nowrap;
+        }
       }
     }
-
   }
 }
 </style>
