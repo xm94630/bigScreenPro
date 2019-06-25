@@ -118,11 +118,6 @@ export default {
 <style lang="scss">
 .cardGroupBox{
   overflow: auto;
-  .yyy{
-    position:absolute;
-    top:0;
-    transform:translateY(100)
-  }
   .card{
     box-sizing: border-box;
     width:calc(33.33% - 20px);
