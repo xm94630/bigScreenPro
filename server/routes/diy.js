@@ -446,7 +446,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 1400,
             "padding": 10
           },
-          "exported": true,
+          "exported": false,
           "showIndexColumn":true,
           "currentPage":1,
           "pageSize":10,
