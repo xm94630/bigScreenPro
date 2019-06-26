@@ -23,7 +23,6 @@ import {baseUrl,path} from '@/bee.config';
 import store from '@/src/store';
 
 
-
 export default {
   name: 'myReport',
   components:{
@@ -52,11 +51,17 @@ export default {
         //跳转到新的大屏
     goToNewScreen(){
       let linkScreenCode = "report-InventoryVolume";
-      this.$router.push({ path: 'myReport', query: { diyViewCode: linkScreenCode }})
+      this.$router.push({ path: '/myReport', query: { diyViewCode: linkScreenCode }})
+      this.globalConditionUpdateFun();
     },
     init(){
-      let that = this;
+      //【重要】当路由发生变化的时候，这个init再次被执行，不同的是，此时 this.data.components 是有内容的。
+      // 我们需要清空它，这样子组件就会完成一次刷新，把原来的渲染的组件清空了。
+      if(this.data&&this.data.components){
+        this.data.components=[];
+      }
 
+      let that = this;
       /**********************************************************
        * 这里是最初获取到大屏配置的地方，有很多重要的逻辑处理
        **********************************************************/
@@ -139,7 +144,7 @@ export default {
     bus.$on('widgetEvent', ()=> {  
       this.goToNewScreen();
     }); 
-  },
+  }
 }
 </script>
 

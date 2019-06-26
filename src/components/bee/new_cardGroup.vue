@@ -118,6 +118,7 @@ export default {
   },
   destroyed(){
     clearTimeout(this.setTimeoutHolder)
+    bus.$off('widgetEvent')
   }
 };
 </script>
