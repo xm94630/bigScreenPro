@@ -50,7 +50,7 @@ export default {
     },
         //跳转到新的大屏
     goToNewScreen(){
-      let linkScreenCode = "report-InventoryVolume";
+      let linkScreenCode = this.data.linkScreen.linkScreenCode;
       this.$router.push({ path: '/myReport', query: { diyViewCode: linkScreenCode }})
     },
     init(){
@@ -141,9 +141,16 @@ export default {
   mounted(){
     this.init();
     
-    bus.$on('widgetEvent', ()=> {  
-      this.goToNewScreen();
+    //通过事件触发跳屏
+    bus.$on('widgetEvent', (widgetName)=> {  
+      if(this.data.linkScreen.eventWidgetName === widgetName){
+        this.goToNewScreen();
+      }
     }); 
+
+    //通过定时器触发跳屏
+
+
   }
   
 }

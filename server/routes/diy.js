@@ -19,9 +19,9 @@ router.get('/view/info', async (ctx, next) => {
       "code": "lifeng-ReportScreen",
       "pageId": "pageId-00001",
       "linkScreen":{
-        "linkScreenCode":"report-InventoryVolume",
+        "linkScreenCode":"asyncExport",
         "waitTime":3000,
-        "eventWidgets":"new_cardGroup"
+        "eventWidgetName":"new_cardGroup"
       },
       "canvas": {
         "width": 1400,
@@ -460,7 +460,7 @@ router.get('/view/info', async (ctx, next) => {
       "linkScreen":{
         "linkScreenCode":"xxx",
         "waitTime":3000,
-        "eventWidgets":"new_cardGroup"
+        "eventWidgetName":"new_cardGroup"
       },
       "canvas": {
         "zoom-type":0, 

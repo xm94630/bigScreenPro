@@ -110,6 +110,7 @@ export default {
       this.scrollFun(()=>{
         console.log('滚动完毕');
         //滚动完成传递事件
+        
         bus.$emit("widgetEvent",this.$options.name);
       });
     });
