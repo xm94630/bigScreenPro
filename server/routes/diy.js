@@ -18,6 +18,11 @@ router.get('/view/info', async (ctx, next) => {
       "version":"20190529",
       "code": "lifeng-ReportScreen",
       "pageId": "pageId-00001",
+      "linkScreen":{
+        "linkScreenCode":"report-InventoryVolume",
+        "waitTime":3000,
+        "eventWidgets":"new_cardGroup"
+      },
       "canvas": {
         "width": 1400,
         "height": 800,
@@ -119,7 +124,7 @@ router.get('/view/info', async (ctx, next) => {
             "x": 20,
             "y": 100,
             "width": 1350,
-            "height": 600,
+            "height": 100,
             "z-index": 9,
             "border": "",
             "padding":10,
@@ -453,7 +458,7 @@ router.get('/view/info', async (ctx, next) => {
       "code": "report-SkuHot",
       "pageId": "pageId-00004",
       "linkScreen":{
-        "linkScreenCode":"",
+        "linkScreenCode":"xxx",
         "waitTime":3000,
         "eventWidgets":"new_cardGroup"
       },

@@ -10,7 +10,6 @@
 
 <script>
 import Vue from "vue";
-import bus from '@/src/tools/bus.js';
 //import axios from "axios";
 //import {baseUrl} from '@/bee.config';
 //import _ from "lodash";
@@ -142,9 +141,8 @@ export default {
   mounted() {
     this.loadAll();
 
-    bus.$on('widgetEvent', target => {  
-      alert(target);  
-    });  
+
+
   }
 };
 </script>
