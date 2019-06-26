@@ -52,13 +52,13 @@ export default {
     goToNewScreen(){
       let linkScreenCode = "report-InventoryVolume";
       this.$router.push({ path: '/myReport', query: { diyViewCode: linkScreenCode }})
-      this.globalConditionUpdateFun();
     },
     init(){
       //【重要】当路由发生变化的时候，这个init再次被执行，不同的是，此时 this.data.components 是有内容的。
       // 我们需要清空它，这样子组件就会完成一次刷新，把原来的渲染的组件清空了。
       if(this.data&&this.data.components){
         this.data.components=[];
+        this.globalConditionUpdateFun();
       }
 
       let that = this;
