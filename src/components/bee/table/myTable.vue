@@ -20,6 +20,7 @@
         </template>
 
         <el-table-column
+          v-if = "myConfig.downloadColumn.show"
           fixed="right"
           label="操作"
           width="100">
@@ -160,7 +161,7 @@ export default {
 
     },
     downLoadFun(rowData){
-      window.open(rowData.downloadUrl)
+      window.open(rowData[this.myConfig.downloadColumn.columnKey])
     }
   },
   computed: {

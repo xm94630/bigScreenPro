@@ -23,6 +23,7 @@
 
 <script>
 import bee from '@/src/tools/bee.js';
+import bus from '@/src/tools/bus.js';
 import axios from "axios";
 import {baseUrl} from '@/bee.config';
 import store from '@/src/store';
@@ -47,9 +48,6 @@ export default {
       let cssObj = bee.replaceKey(this.myConfig.css,map);
       let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
       return cssStr;
-    },
-    name(){
-      return "con_"+this.myConfig.id
     }
   },
   methods:{
@@ -111,6 +109,8 @@ export default {
       //滚动效果
       this.scrollFun(()=>{
         console.log('滚动完毕');
+        //滚动完成传递事件
+        bus.$emit("widgetEvent",this.$options.name);
       });
     });
   },

@@ -182,6 +182,10 @@ router.get('/view/info', async (ctx, next) => {
             "show":true,
             "text":"导出",
           },
+          "downloadColumn": {
+            "show":false,
+            "columnKey":"",
+          },
           "initForView":{
             "conditionColumnList": [
             {
@@ -359,6 +363,10 @@ router.get('/view/info', async (ctx, next) => {
             "show":true,
             "text":"导出",
           },
+          "downloadColumn": {
+            "show":false,
+            "columnKey":"",
+          },
           "initForView":{
             "conditionColumnList": [{
               "label": "普通输入框 (type:10)",
@@ -444,6 +452,11 @@ router.get('/view/info', async (ctx, next) => {
       "version":"20190523",
       "code": "report-SkuHot",
       "pageId": "pageId-00004",
+      "linkScreen":{
+        "linkScreenCode":"",
+        "waitTime":3000,
+        "eventWidgets":"new_cardGroup"
+      },
       "canvas": {
         "zoom-type":0, 
         "width": 1400,
@@ -481,6 +494,10 @@ router.get('/view/info', async (ctx, next) => {
           "exportBtn": {
             "show":false,
             "text":"导出",
+          },
+          "downloadColumn": {
+            "show":true,
+            "columnKey":"downloadUrl",
           },
           "initForView":{
             "conditionColumnList": [{
@@ -1292,6 +1309,10 @@ router.get('/view/info', async (ctx, next) => {
             "show":true,
             "text":"导出",
           },
+          "downloadColumn": {
+            "show":false,
+            "columnKey":"",
+          },
           "initForView":{
             "conditionColumnList": [{
               "label": "普通输入框 (type:10)",
@@ -1418,6 +1439,10 @@ router.get('/view/info', async (ctx, next) => {
           "exportBtn": {
             "show":true,
             "text":"导出",
+          },
+          "downloadColumn": {
+            "show":false,
+            "columnKey":"",
           },
           "initForView":{
             "conditionColumnList": [{

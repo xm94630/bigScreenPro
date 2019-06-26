@@ -10,10 +10,11 @@
 
 <script>
 import Vue from "vue";
-import axios from "axios";
-import {baseUrl} from '@/bee.config';
-import _ from "lodash";
-import store from '@/src/store';
+import bus from '@/src/tools/bus.js';
+//import axios from "axios";
+//import {baseUrl} from '@/bee.config';
+//import _ from "lodash";
+//import store from '@/src/store';
 
 
 function mountCmp(cmp, props, parent) {
@@ -129,8 +130,7 @@ export default {
     
       }
 
-    }
-
+    },
   },
   updated(){
     this.loadAll();
@@ -141,6 +141,10 @@ export default {
   },
   mounted() {
     this.loadAll();
+
+    bus.$on('widgetEvent', target => {  
+      alert(target);  
+    });  
   }
 };
 </script>
