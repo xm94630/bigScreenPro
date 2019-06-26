@@ -145,6 +145,7 @@ export default {
       this.goToNewScreen();
     }); 
   }
+  
 }
 </script>
 
