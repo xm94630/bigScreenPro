@@ -22,7 +22,12 @@ const router = new VueRouter({
           children: [
             {path: 'bigscreen',component: pageIndexBigScreen},
             {path: 'dashboard',component: pageIndexDashboard},
-          ]
+          ],
+          //前置守卫
+          beforeEnter:function (to, from, next){
+            bus.$off('widgetEvent');
+            next();
+          }
         },
         {path:'/createBigScreen',component:createBigScreen},
         {path:'/createBigScreen2',component:createBigScreen2},
@@ -30,14 +35,6 @@ const router = new VueRouter({
     ],
 })
 
-//[全局前置守卫]
-//这个功能不错啊。
-//因为进入大屏，然后跳出，组件是不会被销毁的，所以事件也会存在。会导致我回到主页了，但是组件中的事件触发了！
-//这里就把事件清空了！不会由此问题。
-router.beforeEach((to, from, next) => {
-  bus.$off('widgetEvent');
-  next();
-})
 
 export default router
 
