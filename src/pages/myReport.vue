@@ -39,23 +39,40 @@ export default {
       globalContion:[],         //经过选择表单选择之后的结果
       defaultGlobalContion:[],  //这个是默认的条件结果，没有使用表单选择之前的使用。
       hackReset:true,
-      setTimeoutHolder:null,
+      setTimeoutHolder:null,    //定时跳屏的句柄
+      setIntervalHolder:null,   //定时刷新本页面的句柄
     }
   },
   methods:{
+
+    //刷新操作
     refreshFun(){
-      //刷新大屏
       this.hackReset = false;
       this.$nextTick(() => {
         this.hackReset = true
       })
     },
+
+    //定时刷新本页面
+    timingRefresh(d){
+      let refreshTime = d.refreshTime;
+      if(refreshTime>=3000){
+        this.setIntervalHolder = setInterval(() => {
+          this.refreshFun();
+        }, refreshTime);
+      }
+    },
+
     //跳转到新的大屏
     goToNewScreen(info){
       console.log(info)
-      let linkScreenCode = this.data.linkScreen.linkScreenCode;
-      this.$router.push({ path: '/myReport', query: { diyViewCode: linkScreenCode }})
+      //销毁跳转用的定时器
+      clearTimeout(this.setTimeoutHolder);
+      //清除定时刷新的定时器
+      clearInterval(this.setIntervalHolder);
+      this.$router.push({ path: '/myReport', query: { diyViewCode: this.data.linkScreen.linkScreenCode }})
     },
+
     //通过定时器触发跳屏
     timingJump(){
       let time = this.data.linkScreen.waitTime;
@@ -73,14 +90,6 @@ export default {
       //全局条件查询
       this.showGlobalContion = d.globalCondition;
       this.globalContion = d.globalCondition;
-
-      //刷新页面
-      let refreshTime = d.refreshTime;
-      if(refreshTime){
-        setInterval(() => {
-          this.refreshFun();
-        }, refreshTime);
-      }
 
       //这里有一个把大批默认值配置到 store 的工作
       if(d.globalCondition){
@@ -134,16 +143,17 @@ export default {
       if(config){
         let canvas = config.json.canvas
         let components = config.json.components
-        this.dealWithData({
-          canvas,components
-        })
+        let d = {canvas,components}
+        this.dealWithData(d)
         this.timingJump();
+        this.timingRefresh(d);
       }else{
         axios.get(baseUrl + path + "/api_v1/diy/view/info?diyViewCode="+code).then(response => {
           let d = response.data.data.jsonData;
           d = typeof(d)=='string'?eval('(' + d + ')'):d;
           this.dealWithData(d);
           this.timingJump();
+          this.timingRefresh(d);
         });
       }
     }
@@ -159,8 +169,6 @@ export default {
     bus.$on('widgetEvent', (widgetName,pageCode)=> {  
       //事件来自指定的组件，并且当前页面必须是事件组件所在页面
       if(this.data.linkScreen.eventWidgetName === widgetName && bee.getUrlParam('diyViewCode')===pageCode){
-        //如果bus先触发了，销毁跳转用的定时器
-        clearTimeout(this.setTimeoutHolder);
         this.goToNewScreen("bus触发");
       }
     }); 
@@ -169,7 +177,6 @@ export default {
   destroyed(){
     clearTimeout(this.setTimeoutHolder);
     bus.$off('widgetEvent');
-    //console.log('销毁“myReport”组件')
   }
   
   

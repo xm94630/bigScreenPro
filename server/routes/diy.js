@@ -14,14 +14,15 @@ router.get('/view/info', async (ctx, next) => {
   //Demo
   if ("Demo" == code) {
     jsonData = {
-      "refreshTime":"600000",
+      "refreshTime":-1,
       "version":"20190529",
       "code": "lifeng-ReportScreen",
       "pageId": "pageId-00001",
       "linkScreen":{
         "linkScreenCode":"asyncExport",
-        "waitTime":-1,
-        "eventWidgetName":"new_cardGroup"
+        "waitTime":5000,
+        //"eventWidgetName":"new_cardGroup"
+        "eventWidgetName":""
       },
       "canvas": {
         "width": 1400,
@@ -454,12 +455,13 @@ router.get('/view/info', async (ctx, next) => {
   //异步导出
   if ("asyncExport" == code) {    
     jsonData = {
+      "refreshTime":-1,
       "version":"20190523",
       "code": "report-SkuHot",
       "pageId": "pageId-00004",
       "linkScreen":{
-        "linkScreenCode":"Demo",
-        "waitTime":1000*60*1,
+        "linkScreenCode":"",
+        "waitTime":-1,
         "eventWidgetName":""
       },
       "canvas": {

@@ -115,11 +115,11 @@ export default {
     });
   },
   updated(){
-    //console.log('更新“new_cardGroup”组件')
   },
   destroyed(){
+    //动态加载的组件被销毁，不调用这个？
+    alert('销毁啦')
     bus.$off('widgetEvent')
-    //console.log('销毁“new_cardGroup”组件')
   }
     
 };
