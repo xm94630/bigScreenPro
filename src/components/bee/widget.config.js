@@ -246,9 +246,9 @@ export default function(){
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"InventoryReportByWarehouse"
     },
-    "table": {
+    "beeTable": {
       "id": bee.guidGenerator(),
-      "type":"table",
+      "type":"beeTable",
       "css":{
         "x": 0,
         "y": 0,
@@ -258,6 +258,14 @@ export default function(){
       "formFormat":{
         "labelPosition":"top",
         "colSpan":8
+      },
+      "exportBtn": {
+        "show":"false",
+        "text":"导出",
+      },
+      "downloadColumn": {
+        "show":"false",
+        "columnKey":"",
       },
       "noDataInfo":"No data",
       "exported": "true",

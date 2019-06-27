@@ -11,7 +11,7 @@
       <el-button size="mini" type="primary" round @click="createWidgetFun('title')">title</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('dater')">dater</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('textBar')">textBar</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('table')">table</el-button>
+      <el-button size="mini" type="primary" round @click="createWidgetFun('beeTable')">beeTable</el-button>
     </div>
     <el-row :gutter="0">
       <!--左侧-->
@@ -165,7 +165,7 @@
 
           <!--高级配置-->
           <getMultipleTemplate 
-            v-if="widget.type==='table'"
+            v-if="widget.type==='beeTable'"
             title="conditionColumnList 高级配置"
             :templateAllData="widgetPartConfig" 
             :templateName="templateName"
@@ -174,7 +174,7 @@
             @changeData = "changeDataFun"
           />
            <getMultipleTemplate 
-            v-if="widget.type==='table'"
+            v-if="widget.type==='beeTable'"
             title="searchBtns 高级配置"
             :templateAllData="widgetPartConfig" 
             :templateName="templateName2"
