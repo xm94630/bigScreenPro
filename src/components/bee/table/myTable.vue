@@ -168,9 +168,9 @@ export default {
    
   },
   mounted(){
-    console.log('表格组件接受数据===>')
-    console.log(this.tableData)
-    console.log(this.resultColumnList)
+    //console.log('表格组件接受数据===>')
+    //console.log(this.tableData)
+    //console.log(this.resultColumnList)
     // console.log(this.currentSearchOptions)
     // console.log(this.currentUseCode)
     // console.log(this.currentUseUrl)

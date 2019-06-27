@@ -20,9 +20,8 @@ router.get('/view/info', async (ctx, next) => {
       "pageId": "pageId-00001",
       "linkScreen":{
         "linkScreenCode":"asyncExport",
-        "waitTime":3000,
+        "waitTime":-1,
         "eventWidgetName":"new_cardGroup"
-        //"eventWidgetName":""
       },
       "canvas": {
         "width": 1400,
@@ -125,7 +124,7 @@ router.get('/view/info', async (ctx, next) => {
             "x": 20,
             "y": 100,
             "width": 1350,
-            "height": 300,
+            "height": 500,
             "z-index": 9,
             "border": "",
             "padding":10,
@@ -460,8 +459,8 @@ router.get('/view/info', async (ctx, next) => {
       "pageId": "pageId-00004",
       "linkScreen":{
         "linkScreenCode":"Demo",
-        "waitTime":-1,
-        "eventWidgetName":"new_cardGroup"
+        "waitTime":1000*60*1,
+        "eventWidgetName":""
       },
       "canvas": {
         "zoom-type":0, 

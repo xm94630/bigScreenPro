@@ -5,7 +5,7 @@
     <reportContion 
       v-if = "showGlobalContion" 
       :globalContion = "globalContion"
-      @globalConditionUpdate = "globalConditionUpdateFun"
+      @globalConditionUpdate = "refreshFun"
     />
 
     <!-- 整个画面显示 -->
@@ -43,7 +43,7 @@ export default {
     }
   },
   methods:{
-    globalConditionUpdateFun(){
+    refreshFun(){
       //刷新大屏
       this.hackReset = false;
       this.$nextTick(() => {
@@ -73,7 +73,7 @@ export default {
       // 我们需要清空它，这样子组件就会完成一次刷新，把原来的渲染的组件清空了。
       if(this.data&&this.data.components){
         this.data.components=[];
-        this.globalConditionUpdateFun();
+        this.refreshFun();
       }
 
       let that = this;
@@ -94,7 +94,7 @@ export default {
         let refreshTime = d.refreshTime;
         if(refreshTime){
           setInterval(() => {
-            that.globalConditionUpdateFun();
+            that.refreshFun();
           }, refreshTime);
         }
 
@@ -158,11 +158,9 @@ export default {
   mounted(){
     this.init();
 
-
-
     //订阅事件，触发跳屏
     bus.$on('widgetEvent', (widgetName,pageCode)=> {  
-      //事件来自指定的组件
+      //事件来自指定的组件，并且当前页面必须是事件组件所在页面
       if(this.data.linkScreen.eventWidgetName === widgetName && bee.getUrlParam('diyViewCode')===pageCode){
         //如果bus先触发了，销毁跳转用的定时器
         clearTimeout(this.setTimeoutHolder);
@@ -174,7 +172,7 @@ export default {
   destroyed(){
     clearTimeout(this.setTimeoutHolder);
     bus.$off('widgetEvent');
-    console.log('销毁“myReport”组件')
+    //console.log('销毁“myReport”组件')
   }
   
   
