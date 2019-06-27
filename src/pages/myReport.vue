@@ -75,7 +75,7 @@ export default {
 
     //通过定时器触发跳屏
     timingJump(){
-      let time = this.data.linkScreen.waitTime;
+      let time = this.data.linkScreen && this.data.linkScreen.waitTime || 0;
       //只有时间间隔超过3秒才有效。
       if(time>=3000){
         this.setTimeoutHolder = window.setTimeout(()=>{

@@ -624,7 +624,7 @@ router.get('/view/info', async (ctx, next) => {
       },
       "components": {
         "beeTitle": [{
-          "id": "",
+          "id": "beeTitle-1",
           "text": "基础数据",
           "css":{
             "x": 10,
@@ -639,7 +639,7 @@ router.get('/view/info', async (ctx, next) => {
             "text-align": "center"
           }
         },{
-          "id": "",
+          "id": "beeTitle-2",
           "text": "入库数据",
           "css":{
             "x": 620,
@@ -654,7 +654,7 @@ router.get('/view/info', async (ctx, next) => {
             "text-align": "center"
           }
         },{
-          "id": "",
+          "id": "beeTitle-3",
           "text": "出库数据",
           "css":{
             "x": 620,
@@ -671,7 +671,7 @@ router.get('/view/info', async (ctx, next) => {
         }
       
         ,{
-          "id": "",
+          "id": "beeTitle-4",
           "text": "货位",
           "css":{
             "x": 50,
@@ -685,7 +685,7 @@ router.get('/view/info', async (ctx, next) => {
             "text-align": "center"
           }
         },{
-          "id": "",
+          "id": "beeTitle-5",
           "text": "货架",
           "css":{
             "x": 50,
@@ -699,7 +699,7 @@ router.get('/view/info', async (ctx, next) => {
             "text-align": "center"
           }
         },{
-          "id": "",
+          "id": "beeTitle-6",
           "text": "库存",
           "css":{
             "x": 50,
@@ -713,7 +713,7 @@ router.get('/view/info', async (ctx, next) => {
             "text-align": "center"
           }
         },{
-          "id": "",
+          "id": "beeTitle-7",
           "text": "机器人",
           "css":{
             "x": 370,
