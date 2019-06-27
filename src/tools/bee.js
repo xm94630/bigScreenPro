@@ -56,6 +56,16 @@ var bee = (function(bee){
         return Object.prototype.toString.call(obj)=== '[object Object]';
     }
 
+    bee.getUrlParam = function(key){
+        let arr = location.href.split("?")[1].split("&&");
+        let obj = {};
+        for(let i=0;i<arr.length;i++){
+            let n = arr[i].split("=");
+            obj[n[0]] = n[1];
+        }
+        return obj[key];
+    }
+
 
 
 

@@ -19,17 +19,17 @@ const router = new VueRouter({
       children: [
         {path: 'bigscreen',component: pageIndexBigScreen},
         {path: 'dashboard',component: pageIndexDashboard},
-      ],
-      //前置守卫
-      beforeEnter:function (to, from, next){
-        bus.$off('widgetEvent');
-        next();
-      }
+      ]
     },
     {path:'/createBigScreen',component:createBigScreen},
     {path:'/createBigScreen2',component:createBigScreen2},
     {path:'/myReport',component:myReport}
   ],
 })
+
+//全局前置守卫
+router.beforeEach((to, from, next)=>{
+  next();
+});
 
 export default router

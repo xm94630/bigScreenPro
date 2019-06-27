@@ -39,7 +39,6 @@ export default {
     return {
       diyCoreCode:'',
       apiData:[],
-      setTimeoutHolder:null,
     };
   },
   computed:{
@@ -105,22 +104,24 @@ export default {
     },
   },
   mounted: function() {
+    this.pageCode = bee.getUrlParam('diyViewCode');
     this.initWidget(this.myConfig,()=>{
       //滚动效果
       this.scrollFun(()=>{
         console.log('滚动完毕');
         //滚动完成传递事件
-        
-        bus.$emit("widgetEvent",this.$options.name);
+        bus.$emit("widgetEvent",this.$options.name,this.pageCode);
       });
     });
   },
   updated(){
+    //console.log('更新“new_cardGroup”组件')
   },
   destroyed(){
-    clearTimeout(this.setTimeoutHolder)
     bus.$off('widgetEvent')
+    //console.log('销毁“new_cardGroup”组件')
   }
+    
 };
 </script>
 

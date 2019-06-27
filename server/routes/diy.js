@@ -22,6 +22,7 @@ router.get('/view/info', async (ctx, next) => {
         "linkScreenCode":"asyncExport",
         "waitTime":3000,
         "eventWidgetName":"new_cardGroup"
+        //"eventWidgetName":""
       },
       "canvas": {
         "width": 1400,
@@ -124,7 +125,7 @@ router.get('/view/info', async (ctx, next) => {
             "x": 20,
             "y": 100,
             "width": 1350,
-            "height": 100,
+            "height": 300,
             "z-index": 9,
             "border": "",
             "padding":10,
@@ -458,8 +459,8 @@ router.get('/view/info', async (ctx, next) => {
       "code": "report-SkuHot",
       "pageId": "pageId-00004",
       "linkScreen":{
-        "linkScreenCode":"xxx",
-        "waitTime":3000,
+        "linkScreenCode":"Demo",
+        "waitTime":-1,
         "eventWidgetName":"new_cardGroup"
       },
       "canvas": {
