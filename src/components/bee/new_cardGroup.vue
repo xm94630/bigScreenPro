@@ -113,6 +113,8 @@ export default {
         bus.$emit("widgetEvent",this.$options.name,this.pageCode);
       });
     });
+
+    console.log(this.myConfig)
   },
   updated(){
   },

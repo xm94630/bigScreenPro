@@ -3,17 +3,40 @@
     <!-- <template v-if="reportConfig==null">数据有误，无法渲染</template> -->
     <template v-if="reportConfig==null"><div class="loadingCanvas">Loading...</div></template>
     <template v-else>
-      <div class="myReportCanvas" :style="canvasStyle"></div>
+      <div class="myReportCanvas" :style="canvasStyle">
+
+        <template v-for="(arr, key) in this.reportConfig.components">
+          <template v-for="(item) in arr">
+            <component
+              :key = "item.id"
+              :is = "key"
+              :myConfig= "item"
+            ></component>
+          </template>
+        </template>
+
+
+      </div>
     </template>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-//import axios from "axios";
-//import {baseUrl} from '@/bee.config';
-//import _ from "lodash";
-//import store from '@/src/store';
+
+import beeX from './bee/beeX.vue';
+import dater from './bee/dater.vue';
+import new_bar from './bee/new_bar.vue';
+import new_card from './bee/new_card.vue';
+import new_cardGroup from './bee/new_cardGroup.vue';
+import new_info from './bee/new_info.vue';
+import new_line from './bee/new_line.vue';
+import new_pie_1 from './bee/new_pie_1.vue';
+import new_pie_2 from './bee/new_pie_2.vue';
+import beeTable from './bee/beeTable.vue';
+import textBar from './bee/textBar.vue';
+import beeTitle from './bee/beeTitle.vue';
+
 
 
 function mountCmp(cmp, props, parent) {
@@ -36,7 +59,20 @@ export default {
   props: {
     reportConfig: null
   },
-  components: {},
+  components: {
+    beeX,
+    dater,
+    new_bar,
+    new_card,
+    new_cardGroup,
+    new_info,
+    new_line,
+    new_pie_1,
+    new_pie_2,
+    beeTable,
+    textBar,
+    beeTitle,
+  },
   data() {
     return {};
   },
@@ -112,20 +148,22 @@ export default {
         }
 
 
+        console.log(this.reportConfig.components)
+
         //对配置的的全部组件进行渲染
         //原来这里有一大堆的代码，是因为把组件获取数据的逻辑也放在这里了，之前在组件内部做好了。现在简化到只有几行代码。
-        for (let typeName in this.reportConfig.components) {
-          let widgets = this.reportConfig.components[typeName];
-          for (let i = 0; i < widgets.length; i++) {
-            import("../components/bee/"+typeName+".vue").then(cmp => {
-              mountCmp(
-                cmp,
-                {myConfig: widgets[i]},
-                document.querySelector(".myReportCanvas")
-              );
-            });
-          }
-        }
+        // for (let typeName in this.reportConfig.components) {
+        //   let widgets = this.reportConfig.components[typeName];
+        //   for (let i = 0; i < widgets.length; i++) {
+        //     import("../components/bee/"+typeName+".vue").then(cmp => {
+        //       mountCmp(
+        //         cmp,
+        //         {myConfig: widgets[i]},
+        //         document.querySelector(".myReportCanvas")
+        //       );
+        //     });
+        //   }
+        // }
     
       }
 

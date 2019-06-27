@@ -53,7 +53,7 @@ router.get('/view/info', async (ctx, next) => {
         //   },
         //   "echartOption":{
         //     "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
-        //     "title": {
+        //     "beeTitle": {
         //       "text": "周统计",
         //       "textStyle": {
         //         "fontSize": 16,
@@ -94,7 +94,7 @@ router.get('/view/info', async (ctx, next) => {
         //   },
         //   "echartOption":{
         //     "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
-        //     "title": {
+        //     "beeTitle": {
         //       "text": "出库单",
         //       "textStyle": {
         //         "fontSize": 16,
@@ -144,6 +144,11 @@ router.get('/view/info', async (ctx, next) => {
       "version":"20190523",
       "code": "report-InventoryVolume",
       "pageId": "pageId-00004",
+      "linkScreen":{
+        "linkScreenCode":"",
+        "waitTime":-1,
+        "eventWidgetName":""
+      },
       "canvas": {
         "zoom-type":0, 
         "width": 1200,
@@ -155,7 +160,7 @@ router.get('/view/info', async (ctx, next) => {
         }
       },
       "components": {
-        "table": [{
+        "beeTable": [{
           "noDataInfo":"No data",
           "id": "componentId_00003",
           "css":{
@@ -330,6 +335,11 @@ router.get('/view/info', async (ctx, next) => {
       "version":"20190523",
       "code": "report-SkuHot",
       "pageId": "pageId-00004",
+      "linkScreen":{
+        "linkScreenCode":"",
+        "waitTime":-1,
+        "eventWidgetName":""
+      },
       "canvas": {
         "zoom-type":0, 
         "width": 1200,
@@ -341,7 +351,7 @@ router.get('/view/info', async (ctx, next) => {
         }
       },
       "components": {
-        "table": [{
+        "beeTable": [{
           "noDataInfo":"No data",
           "id": "componentId_00003",
           "css":{
@@ -474,7 +484,7 @@ router.get('/view/info', async (ctx, next) => {
         }
       },
       "components": {
-        "table": [{
+        "beeTable": [{
           "noDataInfo":"No data",
           "id": "componentId_00003",
           "css":{
@@ -597,6 +607,11 @@ router.get('/view/info', async (ctx, next) => {
       }],
       "code": "lifeng-ReportScreen",
       "pageId": "pageId-00001",
+      "linkScreen":{
+        "linkScreenCode":"",
+        "waitTime":-1,
+        "eventWidgetName":""
+      },
       "canvas": {
         "width": 1400,
         "height": 800,
@@ -608,7 +623,7 @@ router.get('/view/info', async (ctx, next) => {
         }
       },
       "components": {
-        "title": [{
+        "beeTitle": [{
           "id": "",
           "text": "基础数据",
           "css":{
@@ -714,7 +729,7 @@ router.get('/view/info', async (ctx, next) => {
         }],
     
         "new_card": [{
-          "title":"A类/鞋",
+          "beeTitle":"A类/鞋",
           "state":0,
           "css":{
             "x": 50,
@@ -729,7 +744,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseA"
         },{
-          "title":"B类/衣服",
+          "beeTitle":"B类/衣服",
           "state":0,
           "css":{
             "x": 50,
@@ -744,7 +759,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseB"
         },{
-          "title":"A类/鞋",
+          "beeTitle":"A类/鞋",
           "state":0,
           "css":{
             "x": 50,
@@ -759,7 +774,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseA"
         },{
-          "title":"B类/衣服",
+          "beeTitle":"B类/衣服",
           "state":0,
           "css":{
             "x": 50,
@@ -776,7 +791,7 @@ router.get('/view/info', async (ctx, next) => {
         },
         
         {
-          "title":"总库存",
+          "beeTitle":"总库存",
           "state":0,
           "css":{
             "x": 50,
@@ -792,7 +807,7 @@ router.get('/view/info', async (ctx, next) => {
           "diyCoreCode":"lifeng-InventoryPool",
           "keyOrder":["总数","已分配","已冻结","可用"]
         },{
-          "title":"SKU",
+          "beeTitle":"SKU",
           "state":0,
           "css":{
             "x": 50,
@@ -809,7 +824,7 @@ router.get('/view/info', async (ctx, next) => {
         },
       
         {
-          "title":"入库单",
+          "beeTitle":"入库单",
           "state":0,
           "css":{
             "x": 650,
@@ -824,7 +839,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptIn"
         },{
-          "title":"已完成",
+          "beeTitle":"已完成",
           "state":0,
           "css":{
             "x": 830,
@@ -839,7 +854,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptCopleted"
         },{
-          "title":"作业中",
+          "beeTitle":"作业中",
           "state":0,
           "css":{
             "x": 1010,
@@ -854,7 +869,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptWorking"
         },{
-          "title":"未开始",
+          "beeTitle":"未开始",
           "state":0,
           "css":{
             "x": 1190,
@@ -871,7 +886,7 @@ router.get('/view/info', async (ctx, next) => {
         },
       
         {
-          "title":"出库单",
+          "beeTitle":"出库单",
           "state":0,
           "css":{
             "x": 650,
@@ -886,7 +901,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderIn"
         },{
-          "title":"已完成",
+          "beeTitle":"已完成",
           "state":0,
           "css":{
             "x": 830,
@@ -901,7 +916,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderComplete"
         },{
-          "title":"已分配",
+          "beeTitle":"已分配",
           "state":0,
           "css":{
             "x": 1010,
@@ -916,7 +931,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderAllocated"
         },{
-          "title":"系统报缺",
+          "beeTitle":"系统报缺",
           "state":0,
           "css":{
             "x": 1190,
@@ -1065,7 +1080,7 @@ router.get('/view/info', async (ctx, next) => {
           },
           "echartOption":{
             "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
-            "title": {
+            "beeTitle": {
               "text": "",
               "textStyle": {
                 "fontSize": 16,
@@ -1102,7 +1117,7 @@ router.get('/view/info', async (ctx, next) => {
             "background":"#1e2647"
           },
           "echartOption":{
-            "title": {
+            "beeTitle": {
               "show": true,
               "text": "出库单",
               "x": "left",
@@ -1139,7 +1154,7 @@ router.get('/view/info', async (ctx, next) => {
             "background":"#1e2647",
           },
           "echartOption":{
-            "title": {
+            "beeTitle": {
               "show": true,
               "text": "已完成",
               "x": "left",
@@ -1176,7 +1191,7 @@ router.get('/view/info', async (ctx, next) => {
             "background":"#1e2647"
           },
           "echartOption":{
-            "title": {
+            "beeTitle": {
               "show": true,
               "text": "已分配",
               "x": "left",
@@ -1213,7 +1228,7 @@ router.get('/view/info', async (ctx, next) => {
             "background":"#1e2647"
           },
           "echartOption":{
-            "title": {
+            "beeTitle": {
               "show": true,
               "text": "系统报缺",
               "x": "left",
@@ -1272,6 +1287,11 @@ router.get('/view/info', async (ctx, next) => {
       "code": "chanel-InboundEfficiency",
       "pageId": "pageId-00004",
       "lang":"en",
+      "linkScreen":{
+        "linkScreenCode":"",
+        "waitTime":-1,
+        "eventWidgetName":""
+      },
       "canvas": {
         "zoom-type":0, 
         "width": 1300,
@@ -1283,7 +1303,7 @@ router.get('/view/info', async (ctx, next) => {
         }
       },
       "components": {
-        "table": [{
+        "beeTable": [{
           "foldSearchPanel":true,
           "autoSearch":true,
           "noDataInfo":"No data",
@@ -1405,6 +1425,11 @@ router.get('/view/info', async (ctx, next) => {
       "code": "chanel-OutboundEfficiency",
       "pageId": "pageId-004",
       "lang":"en",
+      "linkScreen":{
+        "linkScreenCode":"",
+        "waitTime":-1,
+        "eventWidgetName":""
+      },
       "canvas": {
         "zoom-type":0, 
         "width": 1300,
@@ -1416,7 +1441,7 @@ router.get('/view/info', async (ctx, next) => {
         }
       },
       "components": {
-        "table": [{
+        "beeTable": [{
           "foldSearchPanel":true,
           "autoSearch":true,
           "noDataInfo":"No data",
