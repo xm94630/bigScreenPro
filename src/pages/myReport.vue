@@ -67,6 +67,56 @@ export default {
         },time);
       }
     },
+
+    //对数据进行处理
+    dealWithData(d){
+      //全局条件查询
+      this.showGlobalContion = d.globalCondition;
+      this.globalContion = d.globalCondition;
+
+      //刷新页面
+      let refreshTime = d.refreshTime;
+      if(refreshTime){
+        setInterval(() => {
+          this.refreshFun();
+        }, refreshTime);
+      }
+
+      //这里有一个把大批默认值配置到 store 的工作
+      if(d.globalCondition){
+        for(let i=0;i<d.globalCondition.length;i++){
+          //是个时间组件
+          if(d.globalCondition[i].dataType===997788){
+            let v = d.globalCondition[i].defaultValue;
+            if(v && v[0] && v[1]){
+              this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=new Date(v[0]).getTime();
+              this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=new Date(v[1]).getTime();
+            }else{
+              let a = new Date(new Date().toLocaleDateString()).getTime(); //今天0点开始的时间
+              let b = new Date().getTime() //当前时间
+              this.defaultGlobalContion[d.globalCondition[i].keyName[0]]=a;
+              this.defaultGlobalContion[d.globalCondition[i].keyName[1]]=b;
+            }
+          }
+        }
+        //把默认的全局条件查询值，存到store
+        store.dispatch("setGlobalContion",this.defaultGlobalContion);
+      }
+
+      //保存到全局store
+      let labelPosition = d.canvas.formFormat && d.canvas.formFormat.labelPosition;
+      let colSpan = d.canvas.formFormat && d.canvas.formFormat.colSpan;
+      store.dispatch("setLabelPosition", labelPosition||'top');
+      store.dispatch("setColSpan", colSpan||8);
+      
+      //兼容koa本地虚拟的数据（对象类型）、和来自后端那边的数据
+      if(typeof(d)!=='object'){
+        d = eval('(' + d + ')');
+      }
+      
+      this.data = d;
+    },
+
     init(){
 
       //【重要】当路由发生变化的时候，这个init再次被执行，不同的是，此时 this.data.components 是有内容的。
@@ -76,68 +126,15 @@ export default {
         this.refreshFun();
       }
 
-      let that = this;
-      /**********************************************************
-       * 这里是最初获取到大屏配置的地方，有很多重要的逻辑处理
-       **********************************************************/
-
       //获取已经存在的数据
       let code = this.$route.query.diyViewCode;
-      //axios.get(baseUrl + "/koa/getReportByCode?code="+code).then(response => {
       
-      function xxx(d){
-        //全局条件查询
-        that.showGlobalContion = d.globalCondition;
-        that.globalContion = d.globalCondition;
-
-        //刷新页面
-        let refreshTime = d.refreshTime;
-        if(refreshTime){
-          setInterval(() => {
-            that.refreshFun();
-          }, refreshTime);
-        }
-
-        //这里有一个把大批默认值配置到 store 的工作
-        if(d.globalCondition){
-          for(let i=0;i<d.globalCondition.length;i++){
-            //是个时间组件
-            if(d.globalCondition[i].dataType===997788){
-              let v = d.globalCondition[i].defaultValue;
-              if(v && v[0] && v[1]){
-                that.defaultGlobalContion[d.globalCondition[i].keyName[0]]=new Date(v[0]).getTime();
-                that.defaultGlobalContion[d.globalCondition[i].keyName[1]]=new Date(v[1]).getTime();
-              }else{
-                let a = new Date(new Date().toLocaleDateString()).getTime(); //今天0点开始的时间
-                let b = new Date().getTime() //当前时间
-                that.defaultGlobalContion[d.globalCondition[i].keyName[0]]=a;
-                that.defaultGlobalContion[d.globalCondition[i].keyName[1]]=b;
-              }
-            }
-          }
-          //把默认的全局条件查询值，存到store
-          store.dispatch("setGlobalContion",that.defaultGlobalContion);
-        }
-
-        //保存到全局store
-        let labelPosition = d.canvas.formFormat && d.canvas.formFormat.labelPosition;
-        let colSpan = d.canvas.formFormat && d.canvas.formFormat.colSpan;
-        store.dispatch("setLabelPosition", labelPosition||'top');
-        store.dispatch("setColSpan", colSpan||8);
-        
-        //兼容koa本地虚拟的数据（对象类型）、和来自后端那边的数据
-        if(typeof(d)!=='object'){
-          d = eval('(' + d + ')');
-        }
-        
-        that.data = d;
-      }
-
+      //获取数据
       let config = JSON.parse(localStorage.getItem("screenList"))[code];
       if(config){
         let canvas = config.json.canvas
         let components = config.json.components
-        xxx({
+        this.dealWithData({
           canvas,components
         })
         this.timingJump();
@@ -145,7 +142,7 @@ export default {
         axios.get(baseUrl + path + "/api_v1/diy/view/info?diyViewCode="+code).then(response => {
           let d = response.data.data.jsonData;
           d = typeof(d)=='string'?eval('(' + d + ')'):d;
-          xxx(d);
+          this.dealWithData(d);
           this.timingJump();
         });
       }
