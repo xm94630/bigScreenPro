@@ -2,7 +2,7 @@
   <div class="reportShow">
     <template v-if="reportConfig==null"><div class="loadingCanvas">Loading...</div></template>
     <template v-else>
-      <div class="myReportCanvas" :style="canvasStyle">
+      <div class="myReportCanvas" :style="myCss">
         <!-- 各个组件渲染 -->
         <template v-for="(arr, key) in this.reportConfig.components">
           <template v-for="(item) in arr">
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import bee from '@/src/tools/bee.js';
 //加载全部可用组件
 import beeX from './bee/beeX.vue';
 import dater from './bee/dater.vue';
@@ -57,19 +58,9 @@ export default {
     return {};
   },
   computed: {
-    canvasStyle() {
-      let str = "margin:0 auto;";
-      str +=
-        "background:" +
-        this.reportConfig.canvas.background +
-        ";" +
-        "height:" +
-        this.reportConfig.canvas.height +
-        "px;" +
-        "width:" +
-        this.reportConfig.canvas.width +
-        "px;";
-      return str;
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      return bee.objToCSS(bee.replaceKey(this.reportConfig.canvas,map),"margin:0 auto;");
     }
   },
   methods:{
