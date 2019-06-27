@@ -167,9 +167,9 @@ export default function(){
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"lifeng-BinUseA"
     },
-    "title":{
+    "beeTitle":{
       "id": bee.guidGenerator(),
-      "type":"title",
+      "type":"beeTitle",
       "css":{
         "x": 20,
         "y": 20,
