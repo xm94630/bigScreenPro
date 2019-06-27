@@ -1,10 +1,9 @@
 <template>
   <div class="reportShow">
-    <!-- <template v-if="reportConfig==null">数据有误，无法渲染</template> -->
     <template v-if="reportConfig==null"><div class="loadingCanvas">Loading...</div></template>
     <template v-else>
       <div class="myReportCanvas" :style="canvasStyle">
-
+        <!-- 各个组件渲染 -->
         <template v-for="(arr, key) in this.reportConfig.components">
           <template v-for="(item) in arr">
             <component
@@ -14,16 +13,13 @@
             ></component>
           </template>
         </template>
-
-
       </div>
     </template>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-
+//加载全部可用组件
 import beeX from './bee/beeX.vue';
 import dater from './bee/dater.vue';
 import new_bar from './bee/new_bar.vue';
@@ -37,22 +33,6 @@ import beeTable from './bee/beeTable.vue';
 import textBar from './bee/textBar.vue';
 import beeTitle from './bee/beeTitle.vue';
 
-
-
-function mountCmp(cmp, props, parent) {
-  if (cmp.default) {
-    cmp = cmp.default;
-  }
-  cmp = Vue.extend(cmp);
-  let node = document.createElement("div");
-  parent.appendChild(node);
-  new cmp({
-    // eslint-disable-line
-    el: node,
-    propsData: props,
-    parent: this
-  });
-}
 
 export default {
   name: "reportShow",
@@ -119,10 +99,7 @@ export default {
     },
 
     loadAll(){
-      
       if(this.reportConfig){
-
-
         let lang = this.reportConfig.lang;
         if(lang){
           import('element-ui/lib/locale/lang/'+lang).then((lang)=>{
@@ -145,45 +122,20 @@ export default {
           const show_width = document.documentElement.clientWidth;
           const show_height = document.documentElement.clientHeight;
           adjustShow(w,h,show_width,show_height,zoomType);
-        }
-
-
-        console.log(this.reportConfig.components)
-
-        //对配置的的全部组件进行渲染
-        //原来这里有一大堆的代码，是因为把组件获取数据的逻辑也放在这里了，之前在组件内部做好了。现在简化到只有几行代码。
-        // for (let typeName in this.reportConfig.components) {
-        //   let widgets = this.reportConfig.components[typeName];
-        //   for (let i = 0; i < widgets.length; i++) {
-        //     import("../components/bee/"+typeName+".vue").then(cmp => {
-        //       mountCmp(
-        //         cmp,
-        //         {myConfig: widgets[i]},
-        //         document.querySelector(".myReportCanvas")
-        //       );
-        //     });
-        //   }
-        // }
-    
+        }    
       }
+    }
 
-    },
   },
   updated(){
     this.loadAll();
-    //五分钟刷新，这个方法很简陋，有空优化
-    // setInterval(()=>{
-    //   window.location.reload()
-    // },1000*60*5)
   },
   mounted() {
     this.loadAll();
-
-
-
   }
 };
 </script>
+
 
 <style lang="scss">
 .myReportCanvas {
@@ -191,7 +143,6 @@ export default {
   overflow: hidden;
   box-sizing: border-box;
 }
-
 .reportShow{
   height:100%;
   .loadingCanvas{
@@ -201,5 +152,4 @@ export default {
     align-items:center;
   }
 }
-
 </style>
