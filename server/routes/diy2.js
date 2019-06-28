@@ -296,7 +296,7 @@ router.post('/report/selectData', async (ctx, next) => {
       "周转箱数":"8888",
       "进度":"已完成",
     }
-    for(let i=0;i<30;i++){
+    for(let i=0;i<4;i++){
       data.push(JSON.parse(JSON.stringify(shop)));
     }
     data[1]["周转箱数"] = 999999999;

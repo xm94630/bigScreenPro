@@ -20,7 +20,7 @@ router.get('/view/info', async (ctx, next) => {
       "pageId": "pageId-00001",
       "linkScreen":{
         "linkScreenCode":"asyncExport",
-        "waitTime":-1,
+        "waitTime":3000,
         "eventWidgetName":"new_cardGroup"
       },
       "canvas": {
@@ -124,7 +124,7 @@ router.get('/view/info', async (ctx, next) => {
             "x": 20,
             "y": 100,
             "width": 1350,
-            "height": 500,
+            "height": 100,
             "z-index": 9,
             "border": "",
             "padding":10,

@@ -39,6 +39,7 @@ export default {
     return {
       diyCoreCode:'',
       apiData:[],
+      inLifeCirle:true,
     };
   },
   computed:{
@@ -75,6 +76,7 @@ export default {
       }
     },
     scrollFun(cb){
+      let that = this;
       let containerHeight = this.$refs.cardGroupBox.clientHeight;
       let element = this.$refs.conBox;
       let start = null;
@@ -82,13 +84,16 @@ export default {
       this.$nextTick( () =>{
         let contentHeight = element.clientHeight;
         function step(timestamp) {
-          if (!start) start = timestamp;
-          var s = (timestamp - start) / 20;
-          element.style.transform = 'translateY(' +  (-s) + 'px)';
-          if (s < contentHeight+containerHeight ) {
-            window.requestAnimationFrame(step);
-          }else{
-            cb();
+          //只在生命周期中执行，这样改组件销毁之后，事件就不会再触发。
+          if(that.inLifeCirle){
+            if (!start) start = timestamp;
+            var s = (timestamp - start) / 20;
+            element.style.transform = 'translateY(' +  (-s) + 'px)';
+            if (s < contentHeight+containerHeight ) {
+              window.requestAnimationFrame(step);
+            }else{
+              cb();
+            }
           }
         }
         window.requestAnimationFrame(step);
@@ -113,15 +118,12 @@ export default {
         bus.$emit("widgetEvent",this.$options.name,this.pageCode);
       });
     });
-
-    console.log(this.myConfig)
   },
   updated(){
   },
   destroyed(){
-    //动态加载的组件被销毁，不调用这个？
-    alert('销毁啦')
-    bus.$off('widgetEvent')
+    this.inLifeCirle=false;
+    console.log('card_group 销毁啦');
   }
     
 };
