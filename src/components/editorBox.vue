@@ -237,8 +237,8 @@ export default {
     cloneWidgetFun(id,type,widget){
       let cloneWidget = JSON.parse(JSON.stringify(widget));
       cloneWidget.id = bee.guidGenerator();
-      cloneWidget.css["z-index"]++;
-      cloneWidget.css["x"]+=100;
+      cloneWidget.css["z-index"] = Number(cloneWidget.css["z-index"]) + 1;
+      cloneWidget.css["x"] = Number(cloneWidget.css["x"]) + 100;
       this.json[type].push(cloneWidget)
       this.$emit('getWidgetConfig',cloneWidget)
     },
