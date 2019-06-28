@@ -261,7 +261,7 @@ export default {
           //删除选中（配置面板清空）
           this.widget={};
           //发布事件
-          this.$emit('deleteWidgetElementFun',id);
+          this.$emit('deleteWidgetElementFun',id,type);
 
         }).catch(() => {
        

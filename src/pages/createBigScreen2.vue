@@ -5,7 +5,20 @@
       <el-col :span="12">
 
         <div class="myReportCanvasBox">
-          <div class="myReportCanvas" :style="style" ref="myReportCanvas"></div>
+          <div class="myReportCanvas" :style="style" ref="myReportCanvas">
+
+            <!-- 各个组件渲染 -->
+            <template v-for="(arr, key) in allwidgets">
+              <template v-for="(item) in arr">
+                <component
+                  :key = "item.id"
+                  :is = "key"
+                  :myConfig= "item"
+                ></component>
+              </template>
+            </template>
+
+          </div>
         </div>
         
         <div class="bottomBar">
@@ -53,6 +66,20 @@ import editorBox from "../components/editorBox"
 import bee from "@/src/tools/bee";
 import echarts from "echarts";
 
+//加载全部可用组件
+import beeX from '../components/bee/beeX.vue';
+import dater from '../components/bee/dater.vue';
+import new_bar from '../components/bee/new_bar.vue';
+import new_card from '../components/bee/new_card.vue';
+import new_cardGroup from '../components/bee/new_cardGroup.vue';
+import new_info from '../components/bee/new_info.vue';
+import new_line from '../components/bee/new_line.vue';
+import new_pie_1 from '../components/bee/new_pie_1.vue';
+import new_pie_2 from '../components/bee/new_pie_2.vue';
+import beeTable from '../components/bee/beeTable.vue';
+import textBar from '../components/bee/textBar.vue';
+import beeTitle from '../components/bee/beeTitle.vue';
+
 
 function mountCmp(cmp, props, parent) {
   if (cmp.default) {
@@ -72,7 +99,20 @@ function mountCmp(cmp, props, parent) {
 export default {
   name: 'xm',
   components: {
-    editorBox
+    editorBox,
+    
+    beeX,
+    dater,
+    new_bar,
+    new_card,
+    new_cardGroup,
+    new_info,
+    new_line,
+    new_pie_1,
+    new_pie_2,
+    beeTable,
+    textBar,
+    beeTitle,
   },
   props: {
   },
@@ -91,7 +131,8 @@ export default {
         name: [{ required: true, message: '请输入大屏名称', trigger: 'blur' }],
         code: [{ required: true, message: '请输入大屏code（任意字符串皆可，确保唯一性，以后会用此code获取大屏的内容）', trigger: 'blur' }]
       },
-      codeInputDisabled:false
+      codeInputDisabled:false,
+      allwidgets:{},
     }
   },
   computed:{
@@ -115,15 +156,13 @@ export default {
     getCanvasConfig(canvasConfig){
       this.canvasConfig = canvasConfig;
     },
+    //在画布上渲染组件
     randerWidget(wigetConfig){
-      //构建组件
-      import("../components/bee/"+wigetConfig.type+".vue").then(cmp => {
-        mountCmp(
-          cmp,
-          {myConfig: wigetConfig},
-          document.querySelector(".myReportCanvas")
-        );
-      });
+      if(Object.keys(this.allwidgets).indexOf(wigetConfig.type)===-1){
+        this.allwidgets[wigetConfig.type] = [];
+      }
+      this.allwidgets[wigetConfig.type].push(wigetConfig);
+      this.$forceUpdate()
     },
     openSaveWindowFun(){
       let modCode = this.$route.query.modCode;
@@ -180,15 +219,20 @@ export default {
       if(this.zoom>20){this.zoom = this.zoom -10}
       this.$refs.myReportCanvas.style.transform = "scale("+this.zoom/100+")"
     },
-    deleteWidgetElementFun(id){
-      //删除逻辑
-        let echartsDom = document.getElementById(id)
-        if(echartsDom){
-          //通过这种方法，销毁echarts，比较安全。
-          echarts.init(echartsDom).dispose();
+    //删除画布上的组件
+    deleteWidgetElementFun(widgetId,widgetType){
+      let category = this.allwidgets[widgetType];
+      let newCategory = category.filter((one)=>{
+        if(one.id!==widgetId){
+          return one;
         }
-        //再销毁整个容器
-        document.getElementsByName(id)[0].remove();
+      })
+      if(newCategory.length===0){
+        this.$delete(this.allwidgets,widgetType);
+      }else{
+        this.allwidgets[widgetType]= newCategory;
+      }
+      this.$forceUpdate();
     }
   },
   mounted(){
