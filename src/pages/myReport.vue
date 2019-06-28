@@ -166,9 +166,9 @@ export default {
     this.init();
 
     //订阅事件，触发跳屏
-    bus.$on('widgetEvent', (widgetName,pageCode)=> {  
-      //事件来自指定的组件，并且当前页面必须是事件组件所在页面
-      if(this.data.linkScreen.eventWidgetName === widgetName && bee.getUrlParam('diyViewCode')===pageCode){
+    bus.$on('widgetEvent', (widgetName)=> {  
+      //事件来自指定的组件
+      if(this.data.linkScreen.eventWidgetName === widgetName){
         this.goToNewScreen("bus触发");
       }
     }); 

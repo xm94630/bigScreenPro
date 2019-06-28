@@ -109,13 +109,14 @@ export default {
     },
   },
   mounted: function() {
-    this.pageCode = bee.getUrlParam('diyViewCode');
+    //this.pageCode = bee.getUrlParam('diyViewCode');
     this.initWidget(this.myConfig,()=>{
       //滚动效果
       this.scrollFun(()=>{
         console.log('滚动完毕');
         //滚动完成传递事件
-        bus.$emit("widgetEvent",this.$options.name,this.pageCode);
+        //bus.$emit("widgetEvent",this.$options.name,this.pageCode);
+        bus.$emit("widgetEvent",this.$options.name);
       });
     });
   },
