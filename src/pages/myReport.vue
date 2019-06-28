@@ -79,7 +79,6 @@ export default {
       //只有时间间隔超过3秒才有效。
       if(time>=3000){
         this.setTimeoutHolder = window.setTimeout(()=>{
-          clearTimeout(this.setTimeoutHolder);
           this.goToNewScreen("定时器触发");
         },time);
       }
@@ -126,19 +125,18 @@ export default {
       this.data = d;
     },
 
-    init(){
+    getDataAndRender(){
 
-      //【重要】当路由发生变化的时候，这个init再次被执行，不同的是，此时 this.data.components 是有内容的。
+      //【重要】
+      // 当路由发生变化的时候，这个"getDataAndRender"再次被执行，不同的是，此时 this.data.components 是有内容的。
       // 我们需要清空它，这样子组件就会完成一次刷新，把原来的渲染的组件清空了。
       if(this.data&&this.data.components){
         this.data.components=[];
         this.refreshFun();
       }
 
-      //获取已经存在的数据
-      let code = this.$route.query.diyViewCode;
-      
       //获取数据
+      let code = this.$route.query.diyViewCode;      
       let config = JSON.parse(localStorage.getItem("screenList"))[code];
       if(config){
         let canvas = config.json.canvas
@@ -160,10 +158,10 @@ export default {
   },
   watch: {
     // 如果路由有变化，会再次执行该方法
-    "$route": "init"
+    "$route": "getDataAndRender"
   },
   mounted(){
-    this.init();
+    this.getDataAndRender();
 
     //订阅事件，触发跳屏
     bus.$on('widgetEvent', (widgetName)=> {  
@@ -175,7 +173,9 @@ export default {
 
   },
   destroyed(){
+    //销毁页面中的定时器、事件侦听等
     clearTimeout(this.setTimeoutHolder);
+    clearInterval(this.setIntervalHolder);
     bus.$off('widgetEvent');
   }
   
