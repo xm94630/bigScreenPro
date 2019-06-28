@@ -285,7 +285,7 @@ router.get('/view/info', async (ctx, next) => {
               "rule": {},
               "queryIndex": 8
             }, {
-              "label": "多选下拉",
+              "label": "多选下拉(type:22)",
               "keyName": "love3",
               "type": "22",
               "typeScribe": "beeSelectMultiple",
@@ -296,7 +296,19 @@ router.get('/view/info', async (ctx, next) => {
               "referenceColumn": "playerNameValue",
               "referenceDisplayColumn": "playerName",
               "queryIndex": 9
-            }, ],
+            },{
+              "label": "多选下拉搜索 (type:23)",
+              "keyName": "love2",
+              "type": "23",
+              "typeScribe": "beeSelectSearchMultiple",
+              "placeholder": "请选择",
+              "defaultValue": "",
+              "rule": {},
+              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+              "referenceColumn": "playerNameValue",
+              "referenceDisplayColumn": "playerName",
+              "queryIndex": 10
+            },],
             "resultColumnList": [{
               "bbb": 222
             }]

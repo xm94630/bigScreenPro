@@ -52,6 +52,7 @@ import beeSelectSearch from './beeSelectSearch.vue';
 import beeSelectMultiple from './beeSelectMultiple.vue';
 import beeDateTimePickerRange from './beeDateTimePickerRange.vue';
 import beeDateTimePicker from './beeDateTimePicker.vue';
+import beeSelectSearchMultiple from './beeSelectSearchMultiple.vue';
 import { setTimeout } from 'timers';
 
 export default {
@@ -160,7 +161,8 @@ export default {
     beeDatePickerRange,
     beeSelectMultiple,
     beeDateTimePickerRange,
-    beeDateTimePicker
+    beeDateTimePicker,
+    beeSelectSearchMultiple,
   },
   mounted(){
     //初始化查询条件的值

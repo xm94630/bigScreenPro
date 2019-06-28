@@ -47,7 +47,7 @@ export default function(){
         "template":{
           "type": "20",
           "label": "普通下拉",
-          "keyName": "love",
+          "keyName": "love20",
           "placeholder": "请选择",
           "defaultValue": "",
           "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
@@ -64,7 +64,7 @@ export default function(){
         "template":{
           "type": "21",
           "label": "下拉搜索",
-          "keyName": "love2",
+          "keyName": "love21",
           "placeholder": "请选择",
           "defaultValue": "",
           "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
@@ -75,6 +75,40 @@ export default function(){
           //"rule": "",
         },
         "label":"下拉搜索"
+      },
+
+      "22":{
+        "template":{
+          "type": "22",
+          "label": "多选下拉",
+          "keyName": "love22",
+          "placeholder": "请选择",
+          "defaultValue": "",
+          "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+          "referenceColumn": "playerNameValue",
+          "referenceDisplayColumn": "playerName",
+          "queryIndex": 3,
+          //"typeScribe": "beeSelect",
+          //"rule": "",
+        },
+        "label":"多选下拉"
+      },
+
+      "23":{
+        "template":{
+          "type": "23",
+          "label": "多选下拉搜索",
+          "keyName": "love23",
+          "placeholder": "请选择",
+          "defaultValue": "",
+          "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+          "referenceColumn": "playerNameValue",
+          "referenceDisplayColumn": "playerName",
+          "queryIndex": 3,
+          //"typeScribe": "beeSelect",
+          //"rule": "",
+        },
+        "label":"多选下拉搜索"
       },
 
       "30":{
