@@ -1,5 +1,5 @@
 <template>
-  <div class="widgetBox" :style="myCss" :name="myConfig.id">
+  <div class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)">
     <div class="widgetCon" :id="myConfig.id"></div>
     <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}">
       <!-- {{myConfig.id}} -->
@@ -190,6 +190,10 @@ export default {
       },0)
 
     },
+    clickFun(widgetId){
+      //全局保存选中的那个组件id
+      store.dispatch("setSelectWidgetId",widgetId);
+    }
   },
   // 最近坑有点多，什么使用watch，什么时候用updated呢，主要看，props传入的是个对象时，如果你不是直接在模板中使用属性的话，
   // 外界的更新是不会触发组件的update的（虽然组件的中的那个对象已经发生了改变）。这个时候使用watch就比较合适

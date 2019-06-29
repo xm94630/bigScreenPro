@@ -39,6 +39,7 @@
                 <template v-for="(myWidget) in widgets">
                   <el-menu-item :key="myWidget.id" :index="myWidget.id" @click="selectWidget(myWidget)">
                     id_{{myWidget.id}}
+                    <!-- 组件操作按钮 -->
                     <span class="widgetOperateBtn">
                       <span 
                         v-if="widget.id===myWidget.id"

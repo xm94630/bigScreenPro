@@ -4,7 +4,7 @@
       <!--即时视图-->
       <el-col :span="12">
 
-        <div class="myReportCanvasBox">
+        <div class="myReportCanvasBox" id="editCanvas">
           <div class="myReportCanvas" :style="style" ref="myReportCanvas">
 
             <!-- 各个组件渲染 -->
