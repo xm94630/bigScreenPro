@@ -247,7 +247,18 @@ export default {
 
     //订阅事件：当被编辑的组件选中的时候，菜单中也跟着选中。
     bus.$on('widgetClick', (widgetId)=> {  
-      this.$refs.editorBox.$refs[widgetId][0].$el.click();
+
+      let holder = window.setInterval(()=>{
+        let ele = this.$refs.editorBox.$refs[widgetId];
+        if(ele){
+          ele[0].$el.click()
+          clearInterval(holder)
+        }
+      },50)
+
+
+
+      
     }); 
   }
 }

@@ -276,9 +276,13 @@ export default {
       }else{
         this.$set(this.json,name,[thisConfigTemplate])
       }
+      let widgetId = thisConfigTemplate.id
       //打开对应的菜单，提升用户体验
-      this.defaultOpeneds = [name,thisConfigTemplate.id]
-    
+      this.defaultOpeneds = [name,widgetId]
+      //并且菜单选中那个新增的
+      store.dispatch("setSelectWidgetId",widgetId);
+      bus.$emit("widgetClick",widgetId);
+      //事件
       this.$emit('getWidgetConfig',thisConfigTemplate)
     },
     //子菜单的点击
@@ -328,7 +332,7 @@ export default {
       //一开始就把canvas对象抛出，用来渲染画布。
       this.$emit('getCanvasConfig',this.canvas)
     }
-    
+
   }
 }
 </script>
