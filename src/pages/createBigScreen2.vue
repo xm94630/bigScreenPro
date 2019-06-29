@@ -64,6 +64,7 @@
 import Vue from "vue";
 import editorBox from "../components/editorBox"
 import bee from "@/src/tools/bee";
+import bus from "@/src/tools/bus";
 import echarts from "echarts";
 
 //加载全部可用组件
@@ -242,6 +243,12 @@ export default {
       let list = JSON.parse(localStorage.getItem('screenList'));
       this.zoom = (list[modCode] && list[modCode].zoom) || 100;
     }
+
+
+    //订阅事件：当被编辑的组件选中的时候，菜单中也跟着选中。
+    bus.$on('widgetClick', (widgetId)=> {  
+      this.$refs.editorBox.$refs[widgetId][0].$el.click();
+    }); 
   }
 }
 </script>

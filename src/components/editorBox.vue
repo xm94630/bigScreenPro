@@ -37,7 +37,7 @@
                 <template slot="title">{{key}}</template>
 
                 <template v-for="(myWidget) in widgets">
-                  <el-menu-item :key="myWidget.id" :index="myWidget.id" @click="selectWidget(myWidget)">
+                  <el-menu-item :key="myWidget.id" :index="myWidget.id" @click="selectWidget(myWidget)" :ref="myWidget.id">
                     id_{{myWidget.id}}
                     <!-- 组件操作按钮 -->
                     <span class="widgetOperateBtn">
@@ -193,6 +193,7 @@
 
 <script>
 import bee from "@/src/tools/bee";
+import bus from "@/src/tools/bus";
 import getWidgetConfig from "./bee/widget.config"
 import getWidgetPartConfig from "./bee/widgetPart.config"
 import store from '@/src/store';
@@ -327,6 +328,7 @@ export default {
       //一开始就把canvas对象抛出，用来渲染画布。
       this.$emit('getCanvasConfig',this.canvas)
     }
+    
   }
 }
 </script>

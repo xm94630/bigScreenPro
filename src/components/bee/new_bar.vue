@@ -10,6 +10,7 @@
 
 <script>
 import bee from '@/src/tools/bee.js';
+import bus from '@/src/tools/bus.js';
 import echarts from "echarts";
 import _ from "lodash";
 import axios from "axios";
@@ -193,6 +194,7 @@ export default {
     clickFun(widgetId){
       //全局保存选中的那个组件id
       store.dispatch("setSelectWidgetId",widgetId);
+      bus.$emit("widgetClick",widgetId);
     }
   },
   // 最近坑有点多，什么使用watch，什么时候用updated呢，主要看，props传入的是个对象时，如果你不是直接在模板中使用属性的话，
