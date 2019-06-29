@@ -254,6 +254,7 @@ export default {
         console.log('循环获取')
         let editorBoxEle = this.$refs.editorBox
         if(editorBoxEle && editorBoxEle.$refs[widgetId]){
+          //选择编辑页面中的子菜单中对应的按钮，并点击
           editorBoxEle.$refs[widgetId][0].$el.click()
           clearInterval(holder)
         }else{
@@ -265,6 +266,10 @@ export default {
 
       
     }); 
+  },
+  destroyed(){
+    //记得关闭，不关闭的话，在别的页面中也会触发这个事件。
+    bus.$off('widgetClick');
   }
 }
 </script>

@@ -243,6 +243,9 @@ export default {
       cloneWidget.css["x"] = Number(cloneWidget.css["x"]) + 100;
       this.json[type].push(cloneWidget)
       this.$emit('getWidgetConfig',cloneWidget)
+      //并且菜单选中那个新增的
+      store.dispatch("setSelectWidgetId",cloneWidget.id);
+      bus.$emit("widgetClick",cloneWidget.id);
     },
     deleteWidgetFun(id,type){
       this.$confirm('确认删除', '提示', {
