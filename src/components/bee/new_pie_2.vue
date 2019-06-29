@@ -1,5 +1,5 @@
 <template>
-  <div class="widgetBox" :style="myCss" :name="myConfig.id">
+  <div class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)">
     <div class="widgetCon" :id="myConfig.id"></div>
     <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
   </div>
@@ -7,6 +7,7 @@
 
 <script>
 import bee from '@/src/tools/bee.js';
+import bus from '@/src/tools/bus.js';
 import echarts from "echarts";
 import axios from "axios";
 import {baseUrl} from '@/bee.config';
@@ -142,6 +143,10 @@ export default {
          this.myChart.resize();
       },0)
     },
+    clickFun(widgetId){
+      store.dispatch("setSelectWidgetId",widgetId);
+      bus.$emit("widgetClick",widgetId);
+    }
   },
   watch:{
     "myConfig":{
