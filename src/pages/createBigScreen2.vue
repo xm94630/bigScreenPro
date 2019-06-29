@@ -66,6 +66,7 @@ import editorBox from "../components/editorBox"
 import bee from "@/src/tools/bee";
 import bus from "@/src/tools/bus";
 import echarts from "echarts";
+import store from '@/src/store';
 
 //加载全部可用组件
 import beeX from '../components/bee/beeX.vue';
@@ -270,6 +271,8 @@ export default {
   destroyed(){
     //记得关闭，不关闭的话，在别的页面中也会触发这个事件。
     bus.$off('widgetClick');
+    //退出编辑页面的时候，要把它清空。
+    store.dispatch("setSelectWidgetId",'');
   }
 }
 </script>
