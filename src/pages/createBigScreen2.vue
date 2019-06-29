@@ -4,8 +4,8 @@
       <!--即时视图-->
       <el-col :span="12">
 
-        <div class="myReportCanvasBox" id="editCanvas">
-          <div class="myReportCanvas" :style="style" ref="myReportCanvas">
+        <div class="myReportCanvasBox">
+          <div class="myReportCanvas" :style="style" ref="myReportCanvas" id="editCanvas">
 
             <!-- 各个组件渲染 -->
             <template v-for="(arr, key) in allwidgets">

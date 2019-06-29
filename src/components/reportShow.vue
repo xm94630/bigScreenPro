@@ -2,7 +2,7 @@
   <div class="reportShow">
     <template v-if="reportConfig==null"><div class="loadingCanvas">Loading...</div></template>
     <template v-else>
-      <div class="myReportCanvas" :style="myCss">
+      <div class="myReportCanvas" :style="myCss" id="showCanvas">
         <!-- 各个组件渲染 -->
         <template v-for="(arr, key) in this.reportConfig.components">
           <template v-for="(item) in arr">
