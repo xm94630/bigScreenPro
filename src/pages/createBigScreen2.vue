@@ -248,11 +248,16 @@ export default {
     //订阅事件：当被编辑的组件选中的时候，菜单中也跟着选中。
     bus.$on('widgetClick', (widgetId)=> {  
 
+      let n=0;
       let holder = window.setInterval(()=>{
-        let ele = this.$refs.editorBox.$refs[widgetId];
-        if(ele){
-          ele[0].$el.click()
+        n = n+1;
+        console.log('循环获取')
+        let editorBoxEle = this.$refs.editorBox
+        if(editorBoxEle && editorBoxEle.$refs[widgetId]){
+          editorBoxEle.$refs[widgetId][0].$el.click()
           clearInterval(holder)
+        }else{
+          if(n>100){clearInterval(holder)}
         }
       },50)
 
