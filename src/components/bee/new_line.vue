@@ -9,6 +9,7 @@
 
 <script>
 import bee from '@/src/tools/bee.js';
+import bus from '@/src/tools/bus.js';
 import echarts from "echarts";
 import _ from "lodash";
 import axios from "axios";
@@ -167,6 +168,10 @@ export default {
          this.myChart.resize();
       },0)
     },
+    clickFun(widgetId){
+      store.dispatch("setSelectWidgetId",widgetId);
+      bus.$emit("widgetClick",widgetId);
+    }
   },
   watch:{
     "myConfig":{
