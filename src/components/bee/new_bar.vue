@@ -2,8 +2,8 @@
 
   <!-- 拖拽组件 -->
   <vue-draggable-resizable 
-    :x="myConfig.css.x" :y="myConfig.css.y" :w="myConfig.css.width" :h="myConfig.css.height" 
-    :grid="[10,10]" :parent="false"
+    :x="Number(myConfig.css.x)" :y="Number(myConfig.css.y)" :w="Number(myConfig.css.width)" :h="Number(myConfig.css.height)" 
+    :grid="grid" :parent="false"
     v-on:dragging="onDrag" v-on:resizing="onResize" @activated="clickFun(myConfig.id)" 
     class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)"
   >
@@ -146,7 +146,8 @@ function getNewOption(myConfig,apiData) {
 export default {
   name: "new_bar",
   props: {
-    myConfig: Object
+    myConfig: Object,
+    canvasConfig: Object,
   },
   data() {
     return {
@@ -160,6 +161,8 @@ export default {
       y: this.myConfig.css.y,
       width: this.myConfig.css.width,
       height: this.myConfig.css.height,
+      //初始的栅格
+      grid:(this.canvasConfig&&this.canvasConfig.grid)?[this.canvasConfig.grid,this.canvasConfig.grid]:[1,1]
     };
   },
   computed: {
@@ -237,7 +240,9 @@ export default {
       },
       deep: true
     },
-    
+    "canvasConfig.grid":function(v){
+      this.grid=[v,v];
+    }
   },
   mounted: function() {
     console.log('mounted!')

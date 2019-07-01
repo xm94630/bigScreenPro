@@ -214,6 +214,7 @@ export default {
         "height": 400,
         "background": "#142a41",
         "zoom-type":0,
+        "grid":10,
         "refreshTime":"600000",
         "formFormat":{
           "labelPosition":"top",

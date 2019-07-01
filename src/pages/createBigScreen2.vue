@@ -14,6 +14,7 @@
                   :key = "item.id"
                   :is = "key"
                   :myConfig= "item"
+                  :canvasConfig = "canvasConfig"
                 ></component>
               </template>
             </template>
