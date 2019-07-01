@@ -1,10 +1,19 @@
 <template>
-  <div class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)">
+
+  <!-- 拖拽组件 -->
+  <vue-draggable-resizable 
+    :x="myConfig.css.x" :y="myConfig.css.y" :w="myConfig.css.width" :h="myConfig.css.height" 
+    v-on:dragging="onDrag" v-on:resizing="onResize" @activated="clickFun(myConfig.id)" :parent="true"
+    class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)"
+  >
+    <!-- 组件内容区 -->
     <div class="widgetCon" :id="myConfig.id"></div>
-    <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}">
-      <!-- {{myConfig.id}} -->
-    </div>
-  </div>
+    <!-- 选中框 -->
+    <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
+    <!-- 坐标提示框 -->
+    <p class="infoBox" v-if= "myConfig.id===store.state.selectedWidgetId">x:{{x}} y:{{y}} w:{{width}} h:{{height}}</p>
+  </vue-draggable-resizable>
+
 </template>
 
 
@@ -144,6 +153,12 @@ export default {
       diyCoreCode:'',
       apiData:[],
       store:store,
+
+      //用于控制拖拽组件的初始定位
+      x: this.myConfig.css.x,
+      y: this.myConfig.css.y,
+      width: this.myConfig.css.width,
+      height: this.myConfig.css.height,
     };
   },
   computed: {
@@ -153,6 +168,16 @@ export default {
     }
   },
   methods:{
+    onResize: function (x, y, width, height) {
+      this.myConfig.css.x = this.x = x
+      this.myConfig.css.y = this.y = y
+      this.myConfig.css.width =this.width = width
+      this.myConfig.css.height = this.height = height
+    },
+    onDrag: function (x, y) {
+      this.myConfig.css.x = this.x = x
+      this.myConfig.css.y = this.y = y   
+    },
     initWidget:function(myConfig){
       //组件基本样式数据
       let dataUrl = myConfig.dataUrl;
@@ -240,6 +265,11 @@ export default {
   .widgetCon {
     width: 100%;
     height: 100%;
+  }
+  .infoBox{
+    color:#4f8ff9;
+    font-size:12px;
+    margin-top: 5px;
   }
 }
 </style>
