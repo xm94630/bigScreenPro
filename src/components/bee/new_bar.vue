@@ -3,7 +3,8 @@
   <!-- 拖拽组件 -->
   <vue-draggable-resizable 
     :x="myConfig.css.x" :y="myConfig.css.y" :w="myConfig.css.width" :h="myConfig.css.height" 
-    v-on:dragging="onDrag" v-on:resizing="onResize" @activated="clickFun(myConfig.id)" :parent="false"
+    :grid="[10,10]" :parent="false"
+    v-on:dragging="onDrag" v-on:resizing="onResize" @activated="clickFun(myConfig.id)" 
     class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)"
   >
     <!-- 组件内容区 -->
