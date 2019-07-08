@@ -1,3 +1,4 @@
+
 <template>
   <div class="editorBox">
     <div class="toolBar">
@@ -79,89 +80,7 @@
         <div class="rightBox">
           <!--配置部分1：针对key/value的配置-->
           <el-form ref="form" :model="widget" label-width="100px" :inline="true">
-            <template v-for="(value,key) in widget">
-              <div :key="key">
-
-                <template v-if="bee.isObject(value)">
-                  
-                  <div class="_1thLine">
-                  <div class="title1">{{key}}</div>
-                  <template v-for="(value2,key2) in value">
-                    <div :key="key2">
-
-                      <template v-if="bee.isObject(value2)">
-                        
-                        <div class="_2thLine">
-                        <div class="title2">{{key2}}</div>
-                        <template v-for="(value3,key3) in value2">
-                          <div :key="key3">
-
-                            <template v-if="bee.isObject(value3)">
-                              
-                              <div class="_3thLine">
-                              <div class="title3">{{key3}}</div>
-                              <template v-for="(value4,key4) in value3">
-                                <div :key="key4">
-
-                                  <template v-if="bee.isObject(value4)">
-                                    配置数据不允许超过4个层级哦
-                                  </template>
-
-                                  <template v-else>
-                                    <!-- 第4层级 -->
-                                    <div class="_4thLine">
-                                      <el-form-item :label="key4">
-                                        <el-input v-model="value3[key4]"></el-input>  
-                                      </el-form-item>   
-                                    </div>
-                                  </template>
-
-                                </div>
-                              </template>
-                              </div>
-
-                            </template>
-                            <template v-else>
-                              <!-- 第3层级 -->
-                              <div class="_3thLine">
-                                <el-form-item :label="key3">
-                                  <el-input v-model="value2[key3]"></el-input>  
-                                </el-form-item>    
-                              </div>
-                            </template>
-
-                          </div>
-                        </template>
-                        </div>
-
-                      </template>
-                      <template v-else>
-                        <!-- 第2层级 -->
-                        <div class="_2thLine">                        
-                          <el-form-item :label="key2">
-                            <el-input v-model="value[key2]" :disabled="key2==='conditionColumnList'"></el-input>  
-                          </el-form-item>    
-                          <span class="textBtn" v-if="key2==='conditionColumnList'" @click="configPlusFun">请在高级配置中完成此配置</span>
-                        </div>
-                      </template>
-
-                    </div>
-                  </template>
-                  </div>
-
-                </template>
-                <template v-else>
-                  <!-- 第1层级 -->
-                  <div class="_1thLine">
-                    <el-form-item :label="key">
-                      <el-input v-model="widget[key]" :disabled="key==='searchBtns'"></el-input>  
-                    </el-form-item>  
-                    <span class="textBtn" v-if="key==='searchBtns'" @click="configPlusFun">请在高级配置中完成此配置</span>
-                  </div>
-                </template>
-
-              </div>
-            </template>
+            <list :widget="widget" :index="0" @moreConfigFun="configPlusFun"></list>
           </el-form>
 
           <!--高级配置-->
@@ -192,6 +111,89 @@
 </template>
 
 <script>
+// <template v-for="(value,key) in widget">
+//               <div :key="key">
+
+//                 <template v-if="bee.isObject(value)">
+                  
+//                   <div class="_1thLine">
+//                   <div class="title1">{{key}}</div>
+//                   <template v-for="(value2,key2) in value">
+//                     <div :key="key2">
+
+//                       <template v-if="bee.isObject(value2)">
+                        
+//                         <div class="_2thLine">
+//                         <div class="title2">{{key2}}</div>
+//                         <template v-for="(value3,key3) in value2">
+//                           <div :key="key3">
+
+//                             <template v-if="bee.isObject(value3)">
+                              
+//                               <div class="_3thLine">
+//                               <div class="title3">{{key3}}</div>
+//                               <template v-for="(value4,key4) in value3">
+//                                 <div :key="key4">
+
+//                                   <template v-if="bee.isObject(value4)">
+//                                     配置数据不允许超过4个层级哦
+//                                   </template>
+
+//                                   <template v-else>
+//                                     <!-- 第4层级 -->
+//                                     <div class="_4thLine">
+//                                       <el-form-item :label="key4">
+//                                         <el-input v-model="value3[key4]"></el-input>  
+//                                       </el-form-item>   
+//                                     </div>
+//                                   </template>
+
+//                                 </div>
+//                               </template>
+//                               </div>
+
+//                             </template>
+//                             <template v-else>
+//                               <!-- 第3层级 -->
+//                               <div class="_3thLine">
+//                                 <el-form-item :label="key3">
+//                                   <el-input v-model="value2[key3]"></el-input>  
+//                                 </el-form-item>    
+//                               </div>
+//                             </template>
+
+//                           </div>
+//                         </template>
+//                         </div>
+
+//                       </template>
+//                       <template v-else>
+//                         <!-- 第2层级 -->
+//                         <div class="_2thLine">                        
+//                           <el-form-item :label="key2">
+//                             <el-input v-model="value[key2]" :disabled="key2==='conditionColumnList'"></el-input>  
+//                           </el-form-item>    
+//                           <span class="textBtn" v-if="key2==='conditionColumnList'" @click="configPlusFun">请在高级配置中完成此配置</span>
+//                         </div>
+//                       </template>
+
+//                     </div>
+//                   </template>
+//                   </div>
+
+//                 </template>
+//                 <template v-else>
+//                   <!-- 第1层级 -->
+//                   <div class="_1thLine">
+//                     <el-form-item :label="key">
+//                       <el-input v-model="widget[key]" :disabled="key==='searchBtns'"></el-input>  
+//                     </el-form-item>  
+//                     <span class="textBtn" v-if="key==='searchBtns'" @click="configPlusFun">请在高级配置中完成此配置</span>
+//                   </div>
+//                 </template>
+
+//               </div>
+//             </template>
 import bee from "@/src/tools/bee";
 import bus from "@/src/tools/bus";
 import getWidgetConfig from "./bee/widget.config"
@@ -200,10 +202,13 @@ import store from '@/src/store';
 import getMultipleTemplate from "./getMultipleTemplate"
 //let barWidgetConfig = widgetConfig['new_bar']
 
+import list from "./itermList";
+
 export default {
   name: 'editorBox',
   components: {
-    getMultipleTemplate
+    getMultipleTemplate,
+    list,
   },
   props: {
   },
