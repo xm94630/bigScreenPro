@@ -9,7 +9,7 @@
         <div class="title">{{key}}</div>
         
         <!-- 递归 -->
-        <list :widget="value" :index="n"></list>
+        <list :widget="value" :index="n" @moreConfigFun="configPlusFun"></list>
 
       </div>
 

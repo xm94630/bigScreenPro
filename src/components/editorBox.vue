@@ -318,7 +318,7 @@ export default {
       this.widget.searchBtns=JSON.stringify(data)
     },
     configPlusFun(){
-
+      console.log('点击了')
     }
   },
   mounted(){
