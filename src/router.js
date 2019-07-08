@@ -6,6 +6,7 @@ import pageIndex from './pages/indexPage.vue';
 import myReport from './pages/myReport.vue';
 import pageIndexDashboard from './pages/indexPage_dashboard.vue';
 import pageIndexBigScreen from './pages/indexPage_bigScreen.vue';
+import test from './pages/test.vue';
 import bus from '@/src/tools/bus.js';
 
 Vue.use(VueRouter)
@@ -19,6 +20,7 @@ const router = new VueRouter({
       children: [
         {path: 'bigscreen',component: pageIndexBigScreen},
         {path: 'dashboard',component: pageIndexDashboard},
+        {path: 'test',component: test},
       ]
     },
     {path:'/createBigScreen',component:createBigScreen},

@@ -35,6 +35,7 @@
               <span>我的组件</span>
             </template>
             <el-menu-item-group>
+              <el-menu-item index="/index/test">我的练习</el-menu-item>
               <el-menu-item index="2-1">我的组件包</el-menu-item>
               <el-menu-item index="2-2">组件中心教程</el-menu-item>
             </el-menu-item-group>
