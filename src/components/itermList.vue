@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="itermListBox">
 <template v-for="(value,key) in widget">
   <div :key="key">
 
@@ -17,8 +17,11 @@
     <template v-else>
       <!-- 第1层级 -->
       <div  :class="style">
-        <el-form-item :label="key">
-          <el-input size="mini" v-model="widget[key]" :disabled="(key==='searchBtns')||(key==='conditionColumnList')"></el-input>  
+        <el-form-item :inline="true" :label="key">
+          <el-input size="mini" v-model="widget[key]" :disabled="(key==='searchBtns')||(key==='conditionColumnList')"></el-input>
+          <el-tooltip class="item" effect="light" content="提示文字，巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉" placement="top">
+            <i class="el-icon-info tipsIcon"></i>
+          </el-tooltip>
         </el-form-item>  
         <span class="textBtn" v-if="(key==='searchBtns')||(key==='conditionColumnList')" @click="configPlusFun">请在高级配置中完成此配置</span>
       </div>
@@ -69,6 +72,12 @@ export default {
 
 <style scoped lang="scss">
 
+  .itermListBox{
+    .tipsIcon{
+      margin-left:10px;
+    }
+  }
+
     ._1thLine{
       background:#333;
       margin-left:0px;
@@ -102,5 +111,7 @@ export default {
         color:unset;
       }
     }
+
+
   
 </style>

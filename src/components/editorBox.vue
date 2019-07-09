@@ -439,6 +439,9 @@ export default {
       .el-form-item__label{
         color:unset;
       }
+      .el-input{
+        width: inherit;
+      }
     }
   }
 }
