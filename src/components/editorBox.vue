@@ -435,7 +435,7 @@ export default {
 
     .el-form-item {
       margin-bottom:0px;
-      padding:5px 0;
+      padding:0;
       .el-form-item__label{
         color:unset;
       }

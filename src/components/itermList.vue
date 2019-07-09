@@ -18,7 +18,7 @@
       <!-- 第1层级 -->
       <div  :class="style">
         <el-form-item :label="key">
-          <el-input v-model="widget[key]" :disabled="(key==='searchBtns')||(key==='conditionColumnList')"></el-input>  
+          <el-input size="mini" v-model="widget[key]" :disabled="(key==='searchBtns')||(key==='conditionColumnList')"></el-input>  
         </el-form-item>  
         <span class="textBtn" v-if="(key==='searchBtns')||(key==='conditionColumnList')" @click="configPlusFun">请在高级配置中完成此配置</span>
       </div>

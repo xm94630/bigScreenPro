@@ -8,7 +8,7 @@
           <div class="box" :key="templ.id">
             <template v-for="(value,key) in templ">
               <el-form-item :key="key" :label="key" v-if="['id','type'].indexOf(key)===-1"> 
-                <el-input v-model="templ[key]"></el-input>  
+                <el-input size="mini" v-model="templ[key]"></el-input>  
               </el-form-item>  
             </template>
             <div class="removeBtn" @click="removeFun(templ.id)"><i class="el-icon-close"></i></div>
@@ -17,7 +17,7 @@
     </el-form>
 
     <div class="selectBox">
-      <el-select v-model="templateTypeId" placeholder="请选择">
+      <el-select size="mini" v-model="templateTypeId" placeholder="请选择">
         <el-option
           v-for="item in templateData"
           :key="item.value"
