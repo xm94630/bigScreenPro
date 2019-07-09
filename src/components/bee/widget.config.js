@@ -1,7 +1,7 @@
 import bee from "@/src/tools/bee";
 
 //用于可视化的配置模板
-export default function(){
+function getWidgetConfig (){
   return {
     "new_bar":{
       "id": bee.guidGenerator(),
@@ -302,3 +302,50 @@ export default function(){
   }
 }
 
+ function getWidgetConfigExplain (){
+  return {
+    "new_bar":{
+      "id": "该组件的id，系统默认生成，无需配置",
+      "type":"该组件的类型，系统默认生成，无需配置",
+      "css":{
+        // "x": "x轴的坐标", //也支持不配置哦
+        // "y": "y轴的坐标",
+        "width": "宽度",
+        "height": "高度",
+        "z-index": "组件叠放顺序，数值大的在上层",
+        "border": "边框设置，具体写法参照css的写法，例如：solid 1px red",
+        "padding": "边距",
+        "background":"背景色"
+      },
+      "echartOption":{
+        "color": "组件配色，多个颜色用竖线分割",
+        "title": {
+          "text": "标题",
+          "textStyle": {
+            "fontSize": "标题字号",
+            "color": "标题颜色"
+          }
+        },
+        "axisLabel": {
+          "show": "标签是否显示，不显示用false",
+          "textStyle": {
+            "color": "标签颜色"
+          }
+        },
+        "legend":{
+          "show": "说明文字是否显示",
+          "textStyle": {
+            "color": "说明文字颜色"
+          }
+        }
+      },
+      "dataUrl": "数据源Url，通常情况下，默认的就可以",
+      "diyCoreCode":"数据源code，系统会用此码获取对应图标的数据，请联系数据方。"
+    }
+  }
+ }
+
+ export {
+  getWidgetConfig,
+  getWidgetConfigExplain
+ }

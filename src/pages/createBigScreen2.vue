@@ -253,7 +253,7 @@ export default {
       let n=0;
       let holder = window.setInterval(()=>{
         n = n+1;
-        console.log('循环获取')
+        //console.log('循环获取')
         let editorBoxEle = this.$refs.editorBox
         if(editorBoxEle && editorBoxEle.$refs[widgetId]){
           //选择编辑页面中的子菜单中对应的按钮，并点击

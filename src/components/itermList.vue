@@ -9,7 +9,7 @@
         <div class="title">{{key}}</div>
         
         <!-- 递归 -->
-        <list :widget="value" :index="n" @moreConfigFun="configPlusFun"></list>
+        <list :widget="value" :index="n" :widgetConfigExplain="widgetConfigExplain[key]||{}" @moreConfigFun="configPlusFun"></list>
 
       </div>
 
@@ -19,7 +19,7 @@
       <div  :class="style">
         <el-form-item :inline="true" :label="key">
           <el-input size="mini" v-model="widget[key]" :disabled="(key==='searchBtns')||(key==='conditionColumnList')"></el-input>
-          <el-tooltip class="item" effect="light" content="提示文字，巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉" placement="top">
+          <el-tooltip class="item" effect="light" :content="widgetConfigExplain[key]" placement="top" v-if="widgetConfigExplain[key]">
             <i class="el-icon-info tipsIcon"></i>
           </el-tooltip>
         </el-form-item>  
@@ -35,11 +35,13 @@
 
 <script>
 import bee from "@/src/tools/bee";
+
 export default {
   name: "List",
   props: {
     widget: null,
     index: Number,
+    widgetConfigExplain:Object,
   },  
   data(){
     return{

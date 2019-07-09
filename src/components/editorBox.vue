@@ -78,9 +78,13 @@
       <!--右侧-->
       <el-col :span="16">
         <div class="rightBox">
+          
           <!--配置部分1：针对key/value的配置-->
           <el-form ref="form" :model="widget" label-width="100px" :inline="true">
-            <list :widget="widget" :index="0" @moreConfigFun="configPlusFun"></list>
+          
+            <!-- 递归 -->
+            <list :widget="widget" :widgetConfigExplain="widgetConfigExplain" :index="0" @moreConfigFun="configPlusFun"></list>
+          
           </el-form>
 
           <!--高级配置-->
@@ -196,7 +200,7 @@
 //             </template>
 import bee from "@/src/tools/bee";
 import bus from "@/src/tools/bus";
-import getWidgetConfig from "./bee/widget.config"
+import {getWidgetConfig,getWidgetConfigExplain} from "./bee/widget.config"
 import getWidgetPartConfig from "./bee/widgetPart.config"
 import store from '@/src/store';
 import getMultipleTemplate from "./getMultipleTemplate"
@@ -230,6 +234,7 @@ export default {
         //"new_bar":[{id:"111"},{id:"222"}],"new_pie":[{id:"333"},{id:"444"}],
       },
       widget:{},
+      widgetConfigExplain:{},
       bee:bee,
       //动态打开标签的控制。数组形式，可以支持多个一起打开。
       //这个被坑了很久，文档中居然没有这个！！有个比较混淆的default-active，这个似乎不支持动态控制！
@@ -296,6 +301,10 @@ export default {
     },
     //子菜单的点击
     selectWidget(widget){
+      //获取该组件对应的解释词条
+      this.widgetConfigExplain = JSON.parse(JSON.stringify(getWidgetConfigExplain()[widget.type]||{}));
+      console.log(this.widgetConfigExplain)
+      
       this.widget = widget;
       //全局保存选中的那个组件id
       store.dispatch("setSelectWidgetId",widget.id );
