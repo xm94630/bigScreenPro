@@ -1,6 +1,6 @@
 <template>
   <!-- 外容器 -->
-  <div class="cardGroupBox" :style="myCss" :name="myConfig.id" ref="cardGroupBox">
+  <div class="cardGroupBox" :style="myCss" :name="myConfig.id" ref="cardGroupBox" @click="clickFun(myConfig.id)">
    
     <!-- 内容区 -->
     <div class="conBox" ref="conBox">
@@ -18,6 +18,7 @@
       </template>
     </div>
 
+    <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
   </div>
 </template>
 
@@ -40,6 +41,7 @@ export default {
       diyCoreCode:'',
       apiData:[],
       inLifeCirle:true,
+      store,
     };
   },
   computed:{
@@ -98,6 +100,10 @@ export default {
         }
         window.requestAnimationFrame(step);
       })
+    },
+    clickFun(widgetId){
+      store.dispatch("setSelectWidgetId",widgetId);
+      bus.$emit("widgetClick",widgetId);
     }
   },
   watch:{

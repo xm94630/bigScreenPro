@@ -288,7 +288,7 @@ function getWidgetConfig (){
         "width": 1000,
         "height": 400,
         "z-index": 9,
-        "border": "",
+        "border": "solid 1px #f8f594",
         "padding":10,
         "background":"#142a41",
         "color":"#f8f594"
