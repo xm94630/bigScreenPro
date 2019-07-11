@@ -8,6 +8,7 @@
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_pie_1')">pie1</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_pie_2')">pie2</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_card')">card</el-button>
+      <el-button size="mini" type="primary" round @click="createWidgetFun('new_cardGroup')">cardGroup</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_info')">info</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('beeTitle')">beeTitle</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('dater')">dater</el-button>
@@ -225,6 +226,11 @@ export default {
         "zoom-type":0,
         "grid":10,
         "refreshTime":"600000",
+        "linkScreen":{
+          "linkScreenCode":"",
+          "waitTime":-1,
+          "eventWidgetName":""
+        },
         "formFormat":{
           "labelPosition":"top",
           "colSpan":8

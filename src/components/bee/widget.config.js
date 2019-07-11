@@ -294,7 +294,7 @@ function getWidgetConfig (){
         "color":"#f8f594"
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"lifeng-BinUseA"
+      "diyCoreCode":"yonghui_shops"
     }
   }
 }

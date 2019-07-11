@@ -70,12 +70,12 @@ export default {
       clearTimeout(this.setTimeoutHolder);
       //清除定时刷新的定时器
       clearInterval(this.setIntervalHolder);
-      this.$router.push({ path: '/myReport', query: { diyViewCode: this.data.linkScreen.linkScreenCode }})
+      this.$router.push({ path: '/myReport', query: { diyViewCode: this.data.canvas.linkScreen.linkScreenCode }})
     },
 
     //通过定时器触发跳屏
     timingJump(){
-      let time = this.data.linkScreen && this.data.linkScreen.waitTime || 0;
+      let time = this.data.canvas.linkScreen && this.data.canvas.linkScreen.waitTime || 0;
       //只有时间间隔超过3秒才有效。
       if(time>=3000){
         this.setTimeoutHolder = window.setTimeout(()=>{
@@ -166,7 +166,7 @@ export default {
     //订阅事件，触发跳屏
     bus.$on('widgetEvent', (widgetName)=> {  
       //事件来自指定的组件
-      if(this.data.linkScreen.eventWidgetName === widgetName){
+      if(this.data.canvas.linkScreen.eventWidgetName === widgetName){
         this.goToNewScreen("bus触发");
       }
     }); 

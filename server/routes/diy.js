@@ -18,16 +18,16 @@ router.get('/view/info', async (ctx, next) => {
       "version":"20190529",
       "code": "lifeng-ReportScreen",
       "pageId": "pageId-00001",
-      "linkScreen":{
-        "linkScreenCode":"asyncExport",
-        "waitTime":3000,
-        "eventWidgetName":"new_cardGroup"
-      },
       "canvas": {
         "width": 1400,
         "height": 800,
         "background": "#f3f3f3",
         "zoom-type":0,
+        "linkScreen":{
+          "linkScreenCode":"asyncExport",
+          "waitTime":3000,
+          "eventWidgetName":"new_cardGroup"
+        },
         "formFormat":{
           "labelPosition":"left",
           "colSpan":8
