@@ -47,7 +47,7 @@ function getWidgetConfig (){
       "css":{
         "x": 20,
         "y": 20,
-        "width": 300,
+        "width": 250,
         "height": 200,
         "z-index": 9,
         "border": "none",
@@ -57,14 +57,11 @@ function getWidgetConfig (){
       "echartOption":{
         "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
         "title": {
-          "text": "周统计",
+          "text": "出库单",
           "textStyle": {
             "fontSize": 16,
             "color": "#f8f4a0"
           }
-        },
-        "xAxis": {
-          "data": "周一|周二|周三|周四|周五|周六|周日"
         },
         "axisLabel": {
           "show": "true",

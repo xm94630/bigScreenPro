@@ -1,10 +1,21 @@
 <template>
-  <div class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)">
-    <div class="widgetCon" :id="myConfig.id"></div>
-    <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
-  </div>
-</template>
 
+  <!-- 拖拽组件 -->
+  <vue-draggable-resizable 
+    :x="Number(myConfig.css.x)" :y="Number(myConfig.css.y)" :w="Number(myConfig.css.width)" :h="Number(myConfig.css.height)" 
+    :grid="grid" :parent="false"
+    v-on:dragging="onDrag" v-on:resizing="onResize" @activated="clickFun(myConfig.id)" 
+    class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)"
+  >
+    <!-- 组件内容区 -->
+    <div class="widgetCon" :id="myConfig.id"></div>
+    <!-- 选中框 -->
+    <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
+    <!-- 坐标提示框 -->
+    <p class="infoBox" v-if= "myConfig.id===store.state.selectedWidgetId">x:{{x}} y:{{y}} w:{{width}} h:{{height}}</p>
+  </vue-draggable-resizable>
+
+</template>
 
 
 <script>
@@ -17,27 +28,27 @@ import {baseUrl} from '@/bee.config';
 import store from '@/src/store';
 import { setTimeout } from 'timers';
 
+
+
 // 这个是echart实例的默认配置
 let defaultOption = {
-	"color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
+  "color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
 	"title": {
-		"text": "按周统计",
+		"text": "出库单",
 		"textStyle": {
 			"fontSize": 16,
 			"color": "#f8f4a0"
 		}
 	},
 	"legend": {
-    "show": true,
+		"data": ["出库单", "sku"],
 		"textStyle": {
 			"color": "#f8f4a0"
-		},
-		"data": ["出库单", "入库单"]
-  },
+		}
+	},
 	"xAxis": {
-		"type": "category",
-    "data": ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
-    "axisLabel": {
+		"data": ["JIT", "B2C", "B2B"],
+		"axisLabel": {
 			"show": true,
 			"textStyle": {
 				"color": "#f8f4a0"
@@ -45,8 +56,8 @@ let defaultOption = {
 		}
 	},
 	"yAxis": {
-    "type": "value",
-    "axisLabel": {
+		"type": "value",
+		"axisLabel": {
 			"show": true,
 			"textStyle": {
 				"color": "#f8f4a0"
@@ -55,52 +66,69 @@ let defaultOption = {
 	},
 	"series": [{
 		"name": "出库单",
-		"data": [120, 132, 101, 134, 90, 230, 210],
+		"data": [1, 2, 3],
 		"type": "line"
 	}, {
-		"name": "入库单",
-		"data": [220, 182, 191, 234, 290, 330, 310],
+		"name": "sku",
+		"data": [4, 5, 6],
 		"type": "line"
   }],
-  "tooltip": {"trigger": "axis"},
-	"grid": {"left": "3%","right": "4%","bottom": "3%","containLabel": true},
-	"toolbox": {"feature": {"saveAsImage": {}}},
+  "tooltip": {"trigger": "axis"}, 
+  "toolbox": {"feature": {"saveAsImage": {}}},
+  "grid": {"left": "3%","right": "4%","bottom": "3%","containLabel": true},
 }
 
 // 结合数据源和默认echart数据，进行最新样式的组装。
 function getNewOption(myConfig,apiData) {
+
+  // 获取数据源数据，固定格式为：
+  // [{"出库单":1,"sku":4,"type":"JIT"},
+  //  {"出库单":2,"sku":5,"type":"B2C"},
+  //  {"出库单":3,"sku":6,"type":"B2B"}]
+  let data = myConfig;
   
-  //接口数据格式：
-  //[{name:'出库单',data:[120, 132, 101, 134, 90, 230, 210]},
-  // {name:'入库单',data:[220, 182, 191, 234, 29, 330, 310]}]
+  // 提取type的所有值为一个数组。例如["JIT"、"B2C"、"B2B"]
+  let types = _.map(apiData,"type");
+  
+  // keys，例如['出库单','sku','type']
+  let keys = _.keys(apiData && apiData[0]);
+  
+  // 有效的keys（排除type），例如['出库单','sku']
+  let effectiveKeys = keys.slice(0);
+  let index = effectiveKeys.indexOf('type');
+  if (index > -1) {effectiveKeys.splice(index, 1)}
 
-  // 获取keys，如：["出库单", "入库单"]
-  let keys = _.map(apiData,"name");
-
-  //追加类型
-  let series = apiData;
-  series.forEach(function(one) {
-    one.type = "line";
-  });
-
+  // series 配置，例如 
+  // [{name: '出库单',data: [1, 2, 3]},
+  //  {name: 'sku',  data: [4, 5, 6]}]
+  let series = []
+  for(let i=0;i<effectiveKeys.length;i++){
+    series.push({
+      name:effectiveKeys[i],
+      data:_.map(apiData,effectiveKeys[i]),
+      type:"line"
+    })
+  }
   // legend 配置
-  let legend = JSON.parse(JSON.stringify(myConfig.echartOption.legend))
-  legend.show = legend.show==="false"?false:true //将字符串转成布尔
-  legend.data = keys;
-  // title 配置
-  let title = myConfig.echartOption.title;
-  // color 配置
-  let color = myConfig.echartOption.color.split('|')
+  let legend = Object.assign({},{"data":effectiveKeys},data.echartOption.legend)
+  //将字符串转成布尔
+  legend.show = legend.show==="false"?false:true;
   // xAxis、yAxis 配置
-  let axisLabel = JSON.parse(JSON.stringify(myConfig.echartOption.axisLabel))
-  let show = axisLabel.show==="false"?false:true //将字符串转成布尔
-  let xAxis = JSON.parse(JSON.stringify(myConfig.echartOption.xAxis))
-  xAxis.data = xAxis.data.split('|')
-  xAxis.axisLabel = axisLabel
-  xAxis.axisLabel.show = show
-  let yAxis = {}
-  yAxis.axisLabel = axisLabel
-  yAxis.axisLabel.show = show
+  let axisLabel = Object.assign({},data.echartOption.axisLabel);
+  axisLabel.show = axisLabel.show==="false"?false:true //将字符串转成布尔
+  let xAxis = {
+    "axisLabel":axisLabel,
+    "data":types
+  }
+  let yAxis = {
+    "axisLabel":axisLabel,
+    "type": "value"
+  }
+
+  // title 配置
+  let title = data.echartOption.title;
+  // color 配置
+  let color = data.echartOption.color.split('|')
 
   // 最新的配置
   let newOption = JSON.parse(JSON.stringify(defaultOption));
@@ -114,27 +142,48 @@ function getNewOption(myConfig,apiData) {
   return newOption;
 }
 
+
 export default {
-  name: "new_line", //注意，这个名字不能和浏览器默认的的标签相同，比如“line”
+  name: "new_line_2",
   props: {
-    myConfig: Object
+    myConfig: Object,
+    canvasConfig: Object,
   },
   data() {
     return {
-      myChart: null,
+      myEchart:null,
       diyCoreCode:'',
       apiData:[],
       store:store,
+
+      //用于控制拖拽组件的初始定位
+      x: this.myConfig.css.x,
+      y: this.myConfig.css.y,
+      width: this.myConfig.css.width,
+      height: this.myConfig.css.height,
+      //初始的栅格
+      grid:(this.canvasConfig&&this.canvasConfig.grid)?[this.canvasConfig.grid,this.canvasConfig.grid]:[1,1]
     };
   },
   computed: {
     myCss() {
       let map = {"x":"left","y":"top"};
-      return bee.objToCSS(bee.replaceKey(this.myConfig.css,map));
+      return bee.objToCSS( bee.replaceKey(this.myConfig.css,map) );
     }
   },
   methods:{
+    onResize: function (x, y, width, height) {
+      this.myConfig.css.x = this.x = x
+      this.myConfig.css.y = this.y = y
+      this.myConfig.css.width =this.width = width
+      this.myConfig.css.height = this.height = height
+    },
+    onDrag: function (x, y) {
+      this.myConfig.css.x = this.x = x
+      this.myConfig.css.y = this.y = y   
+    },
     initWidget:function(myConfig){
+      //组件基本样式数据
       let dataUrl = myConfig.dataUrl;
       let diyCoreCode = myConfig.diyCoreCode;
       this.diyCoreCode = diyCoreCode;
@@ -143,51 +192,66 @@ export default {
       axios.post(baseUrl + dataUrl,params).then(response => {
         let apiData = response.data.data;
         this.apiData = apiData;
-        this.myChart = echarts.init(document.getElementById(myConfig.id))
-        this.myChart.setOption(getNewOption(myConfig,this.apiData));
+        this.myEchart = echarts.init(document.getElementById(myConfig.id))
+        this.myEchart.setOption(getNewOption(myConfig,apiData));
       });
     },
     updatedWidget:function(val){
+      //组件基本样式数据
+      let dataUrl = val.dataUrl;
       let diyCoreCode = val.diyCoreCode;
       //只有diyCoreCode发生改变的时候才调接口！
       if(this.diyCoreCode!==diyCoreCode){
-        let dataUrl = val.dataUrl;
-        this.diyCoreCode=diyCoreCode;
+        this.diyCoreCode=diyCoreCode
         let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
         //获取数据源
         axios.post(baseUrl + dataUrl,params).then(response => {
           let apiData = response.data.data;
           this.apiData = apiData;
-          this.myChart.setOption(getNewOption(val,this.apiData),true);//这个true参数很重要，否则会有残留数据
+          this.myEchart.setOption(getNewOption(val,apiData),true);//这个true参数很重要，否则会有残留数据
         });
       }else{
-        this.myChart.setOption(getNewOption(val,this.apiData));
+        this.myEchart.setOption(getNewOption(val,this.apiData));
       }
 
+      //必须异步，随着外容器的改变，调整size
       setTimeout(()=>{
-         this.myChart.resize();
+         this.myEchart.resize();
       },0)
+
     },
     clickFun(widgetId){
-      store.dispatch("setSelectWidgetId",widgetId);
-      bus.$emit("widgetClick",widgetId);
+      //只有在编辑页面，这个点击才有效
+      if(this.$el.parentElement.id==="editCanvas"){
+        store.dispatch("setSelectWidgetId",widgetId);
+        bus.$emit("widgetClick",widgetId);
+      }
     }
   },
+  // 最近坑有点多，什么使用watch，什么时候用updated呢，主要看，props传入的是个对象时，如果你不是直接在模板中使用属性的话，
+  // 外界的更新是不会触发组件的update的（虽然组件的中的那个对象已经发生了改变）。这个时候使用watch就比较合适
   watch:{
     "myConfig":{
+      //注意，watch对这个myConfig对象的属性，无法做newVal、oldVal的区分，两者是一样的。
+      //watch只有对一开始就存在的属性才能有效。
       handler:function(newVal,oldVal){
+        console.log('watched!')
         this.updatedWidget(newVal,oldVal)
       },
       deep: true
     },
-    
+    "canvasConfig.grid":function(v){
+      this.grid=[v,v];
+    }
   },
   mounted: function() {
+    console.log('mounted!')
     this.initWidget(this.myConfig);
   },
   updated(){
   }
 };
+
 </script>
 
 
@@ -208,9 +272,13 @@ export default {
     width: 100%;
     height: 100%;
   }
+  .infoBox{
+    color:#4f8ff9;
+    font-size:12px;
+    margin-top: 5px;
+  }
 }
 </style>
-
 
 
 
