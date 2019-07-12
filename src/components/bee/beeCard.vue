@@ -1,11 +1,11 @@
 <template>
   <div class="widgetBox" :style="myCss" :name="myConfig.id">
 
-    <div class="beeCardBox">
+    <div class="style1">
       <template v-for="(value,key) in apiData[0]">
         <div class="oneline" :key="key">
-          <div class="valueCon">{{value}}</div>
-          <div class="nameCon">{{key}}</div>
+          <div class="valueCon" style="font-size:10px;">{{value}}</div>
+          <div class="nameCon" style="font-size:20px;">{{key}}</div>
         </div>
       </template>
     </div>
@@ -84,32 +84,31 @@ export default {
   position:absolute;
   box-sizing:border-box;
 }
-// .beeCardBox{
-//   width: 100%;
-//   height:100%;
-//   padding:10px;
-//   box-sizing: border-box;
-//   display: flex;
-//   justify-content:space-around;
-//   text-align: center;
-//   .oneline{
-//     height:100%;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content:space-around;
-//     .valueCon{
-//       font-size: 30px;
-//     }
-//     .nameCon{
-//        font-size: 12px;
-//     }
-//   }
-// }
 
-.beeCardBox{
+.style1{
   width: 100%;
   height:100%;
-  padding:10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content:space-around;
+  text-align: center;
+  .oneline{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    .valueCon{
+      font-size: 30px;
+    }
+    .nameCon{
+       font-size: 12px;
+    }
+  }
+}
+
+.style2{
+  width: 100%;
+  height:100%;
   box-sizing: border-box;
   display: flex;
   justify-content:space-around;
@@ -122,11 +121,11 @@ export default {
     justify-content:space-around;
     align-items:center;
     .valueCon{
-      width:50%;
+      width:60%;
       font-size: 30px;
     }
     .nameCon{
-      width:50%;
+      width:40%;
       font-size: 12px;
     }
   }
