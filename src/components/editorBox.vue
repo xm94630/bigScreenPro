@@ -8,6 +8,7 @@
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_pie_1')">pie1</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_pie_2')">pie2</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_card')">card</el-button>
+      <el-button size="mini" type="primary" round @click="createWidgetFun('beeCard')">card(新)</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_cardGroup')">cardGroup</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_info')">info</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('beeTitle')">beeTitle</el-button>

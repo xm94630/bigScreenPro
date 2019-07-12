@@ -74,6 +74,7 @@ import beeX from '../components/bee/beeX.vue';
 import dater from '../components/bee/dater.vue';
 import new_bar from '../components/bee/new_bar.vue';
 import new_card from '../components/bee/new_card.vue';
+import beeCard from '../components/bee/beeCard.vue';
 import new_cardGroup from '../components/bee/new_cardGroup.vue';
 import new_info from '../components/bee/new_info.vue';
 import new_line from '../components/bee/new_line.vue';
@@ -108,6 +109,7 @@ export default {
     dater,
     new_bar,
     new_card,
+    beeCard,
     new_cardGroup,
     new_info,
     new_line,
