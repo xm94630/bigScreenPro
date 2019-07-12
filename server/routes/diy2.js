@@ -270,6 +270,18 @@ router.post('/report/selectData', async (ctx, next) => {
     }]
   }
 
+  if(code==="YH-card1"){
+    data = [{
+      '总数':999,
+    }]
+  }
+  if(code==="YH-card2"){
+    data = [{
+      '数据1':111,
+      '数据2':222,
+    }]
+  }
+
   //注意，这个line组件的数据，还尚未和后端确定，所以就这个格式走，未来有调整再说。
   if(code==="demo_line2"){
     data=data = [

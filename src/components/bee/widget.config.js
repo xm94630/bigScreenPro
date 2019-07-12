@@ -313,9 +313,8 @@ function getWidgetConfig (){
         "color": "#f8f4a0",
         "background": "none"
       },
-      "template": "目前完成的订单总数为“{{data}}”，继续努力！",
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"lifeng-robotTote" 
+      "diyCoreCode":"YH-card1" 
     },
   }
 }

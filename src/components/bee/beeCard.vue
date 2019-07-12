@@ -1,5 +1,5 @@
 <template>
-  <div class="beeTitle" :style="myCss" :name="myConfig.id">{{showData}}</div>
+  <div class="widgetBox" :style="myCss" :name="myConfig.id">{{apiData}}</div>
 </template>
 
 <script>
@@ -7,7 +7,6 @@ import bee from '@/src/tools/bee.js';
 import axios from "axios";
 import {baseUrl} from '@/bee.config';
 import store from '@/src/store';
-import { setTimeout } from 'timers';
 
 export default {
   name: "beeCard",
@@ -17,15 +16,11 @@ export default {
   data() {
     return {
       apiData:[],
-      showData:'',
     };
   },
   computed: {
     myCss() {
-      let map = {"x":"left","y":"top"};
-      let cssObj = bee.replaceKey(this.myConfig.css,map);
-      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
-      return cssStr;
+      return bee.objToCSS(bee.replaceKey(this.myConfig.css,{"x":"left","y":"top"}));
     }
   },
   methods:{
@@ -38,10 +33,6 @@ export default {
       axios.post(baseUrl + dataUrl,params).then(response => {
         let apiData = response.data.data;
         this.apiData = apiData;
-
-        //数据格式：[{"总数":999}]，提取数据，填充模板
-        let v = apiData[0][Object.keys(apiData[0])[0]];
-        this.showData = this.myConfig.template.replace(/{{(\w)*}}/g, v);
       });
 
     },
@@ -56,16 +47,8 @@ export default {
         axios.post(baseUrl + dataUrl,params).then(response => {
           let apiData = response.data.data;
           this.apiData = apiData;
-
-          //数据格式：[{"总数":999}]，提取数据，填充模板
-          let v = apiData[0][Object.keys(apiData[0])[0]];
-          this.showData = this.myConfig.template.replace(/{{(\w)*}}/g, v);
         });
       }
-
-      //数据格式：[{"总数":999}]，提取数据，填充模板
-      let v = this.apiData[0][Object.keys(this.apiData[0])[0]];
-      this.showData = this.myConfig.template.replace(/{{(\w)*}}/g, v);
     },
   },
   watch:{
@@ -85,6 +68,9 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.beeTitle {}
+<style scoped lang="scss">
+.widgetBox {
+  position:absolute;
+  box-sizing:border-box;
+}
 </style>
