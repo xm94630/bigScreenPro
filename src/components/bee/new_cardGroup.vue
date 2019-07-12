@@ -140,6 +140,7 @@ export default {
 .cardGroupBox{
   overflow: auto;
   .conBox{
+    width:100%;
     position: absolute;
     .card{
       box-sizing: border-box;
@@ -153,7 +154,7 @@ export default {
       margin:10px;
       overflow: hidden;
       text-align: center;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: bold;
       .con{
         box-sizing: border-box;
