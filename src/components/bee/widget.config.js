@@ -175,6 +175,7 @@ function getWidgetConfig (){
         "z-index": 9,
         "padding": 0,
         "font-size": 24,
+        "font-weight":"normal",
         "color": "#f8f4a0",
         "border": "",
         "background": "",
