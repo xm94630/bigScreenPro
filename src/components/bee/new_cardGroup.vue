@@ -145,9 +145,9 @@ export default {
       box-sizing: border-box;
       width:calc(33.33% - 20px);
       height:70px;
-      background:#1b2140;
-      color:#ee7b11;
-      border:solid 1px #299ecb;
+      background:#16244a;
+      color:#3c8bd0;
+      border:solid 1px #1f3e7b;
       border-radius: 5px;
       display: inline-block;
       margin:10px;
