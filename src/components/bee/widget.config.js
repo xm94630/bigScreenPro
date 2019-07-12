@@ -306,22 +306,24 @@ function getWidgetConfig (){
         "width": 300,
         "height": 100,
         "z-index":9,
-        "border": "",
+        "border": "solid 1px #1f3e7b",
         "border-radius":0,
         "padding": 0,
         "font-size": 12,
         "text-align": "left",
         "color": "#f8f4a0",
-        "background": "#204265"
+        "background": "#16244a"
       },
       "widgetOption":{
         "cardStyle":1,
         "keyCss":{
           "font-size":12,
+          "color":"#3c8bd0",
           "width":"",
         },
         "valueCss":{
           "font-size":30,
+          "color":"#3c8bd0",
           "width":"",
         }
       },
