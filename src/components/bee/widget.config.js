@@ -304,17 +304,17 @@ function getWidgetConfig (){
         "x": 20,
         "y": 20,
         "width": 300,
-        "height": 20,
+        "height": 100,
         "z-index":9,
-        "border": "none",
+        "border": "solid 1px red",
         "padding": 0,
         "font-size": 12,
         "text-align": "left",
         "color": "#f8f4a0",
-        "background": "none"
+        "background": "#204265"
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"YH-card1" 
+      "diyCoreCode":"YH-card" 
     },
   }
 }

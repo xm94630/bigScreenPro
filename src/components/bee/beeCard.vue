@@ -1,5 +1,16 @@
 <template>
-  <div class="widgetBox" :style="myCss" :name="myConfig.id">{{apiData}}</div>
+  <div class="widgetBox" :style="myCss" :name="myConfig.id">
+
+    <div class="beeCardBox">
+      <template v-for="(value,key) in apiData[0]">
+        <div class="oneline" :key="key">
+          <div class="valueCon">{{value}}</div>
+          <div class="nameCon">{{key}}</div>
+        </div>
+      </template>
+    </div>
+
+  </div>
 </template>
 
 <script>
@@ -73,4 +84,52 @@ export default {
   position:absolute;
   box-sizing:border-box;
 }
+// .beeCardBox{
+//   width: 100%;
+//   height:100%;
+//   padding:10px;
+//   box-sizing: border-box;
+//   display: flex;
+//   justify-content:space-around;
+//   text-align: center;
+//   .oneline{
+//     height:100%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content:space-around;
+//     .valueCon{
+//       font-size: 30px;
+//     }
+//     .nameCon{
+//        font-size: 12px;
+//     }
+//   }
+// }
+
+.beeCardBox{
+  width: 100%;
+  height:100%;
+  padding:10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content:space-around;
+  text-align: center;
+  flex-direction: column;
+  .oneline{
+    height:100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content:space-around;
+    align-items:center;
+    .valueCon{
+      width:50%;
+      font-size: 30px;
+    }
+    .nameCon{
+      width:50%;
+      font-size: 12px;
+    }
+  }
+}
+
 </style>

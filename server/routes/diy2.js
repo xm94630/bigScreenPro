@@ -270,15 +270,22 @@ router.post('/report/selectData', async (ctx, next) => {
     }]
   }
 
-  if(code==="YH-card1"){
+  if(code==="YH-card"){
     data = [{
-      '总数':999,
+      'E数':888,
+      'SKU数':888,
     }]
   }
   if(code==="YH-card2"){
     data = [{
-      '数据1':111,
-      '数据2':222,
+      '数据1':1292,
+      '数据2':812320,
+      '数据3':3,
+    }]
+  }
+  if(code==="YH-card3"){
+    data = [{
+      '总数':99
     }]
   }
 
