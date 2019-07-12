@@ -1,11 +1,11 @@
 <template>
   <div class="widgetBox" :style="myCss" :name="myConfig.id">
 
-    <div class="style1">
+    <div :class="myConfig.widgetOption.cardStyle==1?'style1':'style2'">
       <template v-for="(value,key) in apiData[0]">
         <div class="oneline" :key="key">
-          <div class="valueCon" style="font-size:10px;">{{value}}</div>
-          <div class="nameCon" style="font-size:20px;">{{key}}</div>
+          <div class="valueCon" :style="valueStyle">{{value}}</div>
+          <div class="nameCon" :style="keyStyle">{{key}}</div>
         </div>
       </template>
     </div>
@@ -30,9 +30,9 @@ export default {
     };
   },
   computed: {
-    myCss() {
-      return bee.objToCSS(bee.replaceKey(this.myConfig.css,{"x":"left","y":"top"}));
-    }
+    myCss() {return bee.objToCSS(bee.replaceKey(this.myConfig.css,{"x":"left","y":"top"}));},
+    keyStyle() {return bee.objToCSS(bee.replaceKey(this.myConfig.widgetOption.keyCss,{"x":"left","y":"top"}));},
+    valueStyle() {return bee.objToCSS(bee.replaceKey(this.myConfig.widgetOption.valueCss,{"x":"left","y":"top"}));}
   },
   methods:{
     initWidget:function(myConfig){

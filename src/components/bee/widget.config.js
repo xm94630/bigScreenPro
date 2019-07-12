@@ -306,12 +306,24 @@ function getWidgetConfig (){
         "width": 300,
         "height": 100,
         "z-index":9,
-        "border": "solid 1px red",
+        "border": "",
+        "border-radius":0,
         "padding": 0,
         "font-size": 12,
         "text-align": "left",
         "color": "#f8f4a0",
         "background": "#204265"
+      },
+      "widgetOption":{
+        "cardStyle":1,
+        "keyCss":{
+          "font-size":12,
+          "width":"",
+        },
+        "valueCss":{
+          "font-size":30,
+          "width":"",
+        }
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"YH-card" 
