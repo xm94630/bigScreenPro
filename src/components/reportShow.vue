@@ -35,7 +35,6 @@ import beeTable from './bee/beeTable.vue';
 import textBar from './bee/textBar.vue';
 import beeTitle from './bee/beeTitle.vue';
 
-
 export default {
   name: "reportShow",
   props: {

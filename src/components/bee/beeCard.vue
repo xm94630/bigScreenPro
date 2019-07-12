@@ -1,5 +1,5 @@
 <template>
-  <div class="widgetBox" :style="myCss" :name="myConfig.id">
+  <div class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)">
 
     <div :class="myConfig.widgetOption.cardStyle==1?'style1':'style2'">
       <template v-for="(value,key) in apiData[0]">
@@ -10,11 +10,13 @@
       </template>
     </div>
 
+    <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
   </div>
 </template>
 
 <script>
 import bee from '@/src/tools/bee.js';
+import bus from '@/src/tools/bus.js';
 import axios from "axios";
 import {baseUrl} from '@/bee.config';
 import store from '@/src/store';
@@ -27,6 +29,7 @@ export default {
   data() {
     return {
       apiData:[],
+      store
     };
   },
   computed: {
@@ -61,6 +64,10 @@ export default {
         });
       }
     },
+    clickFun(widgetId){
+      store.dispatch("setSelectWidgetId",widgetId);
+      bus.$emit("widgetClick",widgetId);
+    }
   },
   watch:{
     "myConfig":{
