@@ -347,11 +347,11 @@ function getWidgetConfig (){
       "css":{
         "x": 20,
         "y": 20,
-        "width": 1000,
-        "height": 400,
+        "width": 600,
+        "height": 500,
         "z-index": 9,
-        "border": "solid 1px #f8f594",
-        "padding":10,
+        "border": "",
+        "padding":0,
         "background":"#142a41",
         "color":"#f8f594"
       },
