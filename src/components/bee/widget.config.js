@@ -341,6 +341,23 @@ function getWidgetConfig (){
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"YH-card" 
     },
+    "YH_lines":{
+      "id": bee.guidGenerator(),
+      "type":"YH_lines",
+      "css":{
+        "x": 20,
+        "y": 20,
+        "width": 1000,
+        "height": 400,
+        "z-index": 9,
+        "border": "solid 1px #f8f594",
+        "padding":10,
+        "background":"#142a41",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"yonghui_shops"
+    },
   }
 }
 

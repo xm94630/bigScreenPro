@@ -10,6 +10,7 @@
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_card')">card</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('beeCard')">card(新)</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_cardGroup')">cardGroup</el-button>
+      <el-button size="mini" type="primary" round @click="createWidgetFun('YH_lines')">YH_lines</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_info')">info</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('beeTitle')">beeTitle</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('dater')">dater</el-button>

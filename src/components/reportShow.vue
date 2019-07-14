@@ -27,6 +27,7 @@ import new_bar from './bee/new_bar.vue';
 import new_card from './bee/new_card.vue';
 import beeCard from './bee/beeCard.vue';
 import new_cardGroup from './bee/new_cardGroup.vue';
+import YH_lines from './bee/YH_lines.vue';
 import new_info from './bee/new_info.vue';
 import new_line from './bee/new_line.vue';
 import new_pie_1 from './bee/new_pie_1.vue';
@@ -47,6 +48,7 @@ export default {
     new_card,
     beeCard,
     new_cardGroup,
+    YH_lines,
     new_info,
     new_line,
     new_pie_1,
