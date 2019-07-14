@@ -13,6 +13,7 @@ function getWidgetConfig (){
         "height": 200,
         "z-index": 9,
         "border": "none",
+        "border-radius":0,
         "padding":5,
         "background":"#142a41"
       },
@@ -51,6 +52,7 @@ function getWidgetConfig (){
         "height": 200,
         "z-index": 9,
         "border": "none",
+        "border-radius":0,
         "padding":5,
         "background":"#142a41"
       },
@@ -89,6 +91,7 @@ function getWidgetConfig (){
         "height": 200,
         "z-index": 9,
         "border": "none",
+        "border-radius":0,
         "padding":5,
         "background":"#142a41"
       },
@@ -117,6 +120,7 @@ function getWidgetConfig (){
         "height": 200,
         "z-index": 9,
         "border": "none",
+        "border-radius":0,
         "padding":5,
         "background":"#142a41"
       },
@@ -155,6 +159,7 @@ function getWidgetConfig (){
         "height": 100,
         "z-index": 9,
         "border": "",
+        "border-radius":0,
         "padding":10,
         "background":"#142a41",
         "color":"#f8f594"
@@ -178,6 +183,7 @@ function getWidgetConfig (){
         "font-weight":"normal",
         "color": "#f8f4a0",
         "border": "",
+        "border-radius":0,
         "background": "",
         "text-align": "left"
       },
@@ -196,6 +202,7 @@ function getWidgetConfig (){
         "font-size": 12,
         "color": "red",
         "border": "",
+        "border-radius":0,
         "background": "",
         "text-align": "left"
       }
@@ -210,6 +217,7 @@ function getWidgetConfig (){
         "height": 20,
         "z-index":9,
         "border": "none",
+        "border-radius":0,
         "padding": 0,
         "font-size": 12,
         "text-align": "left",
@@ -235,6 +243,7 @@ function getWidgetConfig (){
         "height": 20,
         "z-index":9,
         "border": "none",
+        "border-radius":0,
         "padding": 0,
         "font-size": 12,
         "text-align": "left",

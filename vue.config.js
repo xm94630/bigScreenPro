@@ -11,10 +11,10 @@ module.exports={
         devServer: {
             proxy: {
                 '/epimetheus': {
-                    target: 'http://localhost:3000',
+                    //target: 'http://localhost:3000',
                     
                     //target: 'http://172.16.28.85:80',     // 德柱
-                    //target: 'http://172.16.28.106:80',      // 志强
+                    target: 'http://172.16.28.106:80',      // 志强
                     
                     //target: 'http://172.16.9.101:8083',     // 苏州 志超
                     //pathRewrite: {'^/epimetheus' : ''}, 
