@@ -84,6 +84,7 @@ import new_pie_2 from '../components/bee/new_pie_2.vue';
 import beeTable from '../components/bee/beeTable.vue';
 import textBar from '../components/bee/textBar.vue';
 import beeTitle from '../components/bee/beeTitle.vue';
+import beeImage from '../components/bee/beeImage.vue';
 
 
 function mountCmp(cmp, props, parent) {
@@ -120,6 +121,7 @@ export default {
     beeTable,
     textBar,
     beeTitle,
+    beeImage,
   },
   props: {
   },

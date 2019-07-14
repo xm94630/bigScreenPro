@@ -358,6 +358,23 @@ function getWidgetConfig (){
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"YH-PickLineInfo"
     },
+    "beeImage":{
+      "id": bee.guidGenerator(),
+      "type":"YH_lines",
+      "css":{
+        "x": 20,
+        "y": 20,
+        "width": 600,
+        "height": 500,
+        "z-index": 9,
+        "border": "",
+        "padding":0,
+        "background":"#142a41",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"YH-PickLineInfo"
+    },
   }
 }
 

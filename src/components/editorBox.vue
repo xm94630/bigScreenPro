@@ -16,6 +16,7 @@
       <el-button size="mini" type="primary" round @click="createWidgetFun('dater')">dater</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('textBar')">textBar</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('beeTable')">beeTable</el-button>
+      <el-button size="mini" type="primary" round @click="createWidgetFun('beeImage')">beeImage</el-button>
     </div>
     <el-row :gutter="0">
       <!--左侧-->

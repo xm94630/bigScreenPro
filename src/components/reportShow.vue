@@ -35,6 +35,7 @@ import new_pie_2 from './bee/new_pie_2.vue';
 import beeTable from './bee/beeTable.vue';
 import textBar from './bee/textBar.vue';
 import beeTitle from './bee/beeTitle.vue';
+import beeImage from './bee/beeImage.vue';
 
 export default {
   name: "reportShow",
@@ -56,6 +57,7 @@ export default {
     beeTable,
     textBar,
     beeTitle,
+    beeImage,
   },
   data() {
     return {};
