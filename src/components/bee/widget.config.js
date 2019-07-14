@@ -371,7 +371,7 @@ function getWidgetConfig (){
         "padding":0,
         "background":"",
       },
-      "imageLink": "https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/home/img/qrcode/zbios_09b6296.png",
+      "imageLink": "http://chuantu.xyz/t6/702/1563104330x3703728804.png",
     },
   }
 }
