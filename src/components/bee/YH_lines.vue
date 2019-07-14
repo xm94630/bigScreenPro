@@ -1,3 +1,4 @@
+<!-- 这个是对永辉大屏其中一部分定制化的组件，没有复用的价值 -->
 <template>
   <!-- 外容器 -->
   <div class="widgetBox" :style="myCss" :name="myConfig.id" ref="cardGroupBox" @click="clickFun(myConfig.id)">
