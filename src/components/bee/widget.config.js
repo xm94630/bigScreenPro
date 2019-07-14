@@ -360,20 +360,18 @@ function getWidgetConfig (){
     },
     "beeImage":{
       "id": bee.guidGenerator(),
-      "type":"YH_lines",
+      "type":"beeImage",
       "css":{
         "x": 20,
         "y": 20,
-        "width": 600,
-        "height": 500,
+        "width": 100,
+        "height": 100,
         "z-index": 9,
         "border": "",
         "padding":0,
-        "background":"#142a41",
-        "color":"#f8f594"
+        "background":"",
       },
-      "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"YH-PickLineInfo"
+      "imageLink": "https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/home/img/qrcode/zbios_09b6296.png",
     },
   }
 }
