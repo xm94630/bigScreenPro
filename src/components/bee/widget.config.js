@@ -356,7 +356,7 @@ function getWidgetConfig (){
         "color":"#f8f594"
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"yonghui_shops"
+      "diyCoreCode":"YH-PickLineInfo"
     },
   }
 }

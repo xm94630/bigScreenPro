@@ -1,6 +1,6 @@
 <template>
   <!-- 外容器 -->
-  <div class="cardGroupBox" :style="myCss" :name="myConfig.id" ref="cardGroupBox" @click="clickFun(myConfig.id)">
+  <div class="widgetBox" :style="myCss" :name="myConfig.id" ref="cardGroupBox" @click="clickFun(myConfig.id)">
    
     <!-- 内容区 -->
     <div class="conBox" ref="conBox">
@@ -40,27 +40,23 @@ export default {
     return {
       diyCoreCode:'',
       apiData:[],
-      inLifeCirle:true,
       store,
     };
   },
   computed:{
     myCss() {
-      let map = {"x":"left","y":"top"};
-      let cssObj = bee.replaceKey(this.myConfig.css,map);
-      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
+      let cssStr = bee.objToCSS(bee.replaceKey(this.myConfig.css,{"x":"left","y":"top"}))
       return cssStr;
     }
   },
   methods:{
-    initWidget:function(myConfig,cb){
+    initWidget:function(myConfig){
       this.diyCoreCode = myConfig.diyCoreCode;
       let params = Object.assign({},{diyCoreCode:myConfig.diyCoreCode},store.state.store_globalContion);
       //获取数据源
       axios.post(baseUrl + myConfig.dataUrl,params).then(response => {
         let apiData = response.data.data;
         this.apiData = apiData;
-        cb();
       });
     },
     updatedWidget:function(val){
@@ -77,30 +73,6 @@ export default {
         });
       }
     },
-    scrollFun(cb){
-      let that = this;
-      let containerHeight = this.$refs.cardGroupBox.clientHeight;
-      let element = this.$refs.conBox;
-      let start = null;
-      element.style.top = this.myConfig.css.height+'px'
-      this.$nextTick( () =>{
-        let contentHeight = element.clientHeight;
-        function step(timestamp) {
-          //只在生命周期中执行，这样改组件销毁之后，事件就不会再触发。
-          if(that.inLifeCirle){
-            if (!start) start = timestamp;
-            var s = (timestamp - start) / 20;
-            element.style.transform = 'translateY(' +  (-s) + 'px)';
-            if (s < contentHeight+containerHeight ) {
-              window.requestAnimationFrame(step);
-            }else{
-              cb();
-            }
-          }
-        }
-        window.requestAnimationFrame(step);
-      })
-    },
     clickFun(widgetId){
       store.dispatch("setSelectWidgetId",widgetId);
       bus.$emit("widgetClick",widgetId);
@@ -115,30 +87,20 @@ export default {
     },
   },
   mounted: function() {
-    //this.pageCode = bee.getUrlParam('diyViewCode');
-    this.initWidget(this.myConfig,()=>{
-      //滚动效果
-      this.scrollFun(()=>{
-        console.log('滚动完毕');
-        //滚动完成传递事件
-        //bus.$emit("widgetEvent",this.$options.name,this.pageCode);
-        bus.$emit("widgetEvent",this.$options.name);
-      });
-    });
+    this.initWidget(this.myConfig);
   },
   updated(){
   },
   destroyed(){
-    this.inLifeCirle=false;
-    console.log('card_group 销毁啦');
   }
     
 };
 </script>
 
-<style lang="scss">
-.cardGroupBox{
-  overflow: auto;
+<style scoded lang="scss">
+.widgetBox{
+  position:absolute;
+  box-sizing:border-box;
   .conBox{
     width:100%;
     position: absolute;
