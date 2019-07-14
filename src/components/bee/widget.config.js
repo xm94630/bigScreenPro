@@ -134,6 +134,7 @@ function getWidgetConfig (){
           }
         },
         "legend": {
+          "show": "true",
           "orient": "vertical",
           "left": "right",
           "textStyle": {

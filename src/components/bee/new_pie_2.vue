@@ -25,6 +25,7 @@ let defaultOption = {
 		}
   },
   "legend": {
+    "show": "true",
     "orient": "vertical",
     "left": "right",
     "data": ["工作中", "异常", "空闲", "充电中"],
@@ -73,6 +74,8 @@ function getNewOption(myConfig,apiData) {
 
   // legend 配置
   let legend = JSON.parse(JSON.stringify(myConfig.echartOption.legend));
+  //将字符串转成布尔
+  legend.show = legend.show==="false"?false:true;
   legend.data = keys;
   // title 配置
   let title = myConfig.echartOption.title;
