@@ -6,8 +6,8 @@
     <div class="conBox" ref="conBox">
       <template v-for="(one,index) in apiData">
         <div class="card" :key="index" >
-          <template v-for="(value,key) in one">
-            <div class="con" :key="key">
+          <template v-for="(value,key,myIndex) in one">
+            <div class="con" :class="getClass('childBox',myIndex)" :key="key">
               <div class="flexBox" :key="key">
                 <div class="top">{{value}}</div>
                 <div class="bottom">{{key}}</div>
@@ -104,6 +104,9 @@ export default {
     clickFun(widgetId){
       store.dispatch("setSelectWidgetId",widgetId);
       bus.$emit("widgetClick",widgetId);
+    },
+    getClass(className,index){
+      return className+index;
     }
   },
   watch:{
@@ -160,7 +163,6 @@ export default {
         box-sizing: border-box;
         display: inline-block;
         height: 100%;
-        width: 25%;
         .flexBox{
           height: 100%;
           display: flex;
@@ -169,6 +171,18 @@ export default {
           overflow: hidden;
           white-space: nowrap;
         }
+      }
+      .con.childBox0{
+        width: 40%;
+      }
+      .con.childBox1{
+        width: 20%;
+      }
+      .con.childBox2{
+        width: 20%;
+      }
+      .con.childBox3{
+        width: 20%;
       }
     }
   }

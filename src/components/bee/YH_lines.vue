@@ -74,7 +74,7 @@ export default {
     parseData(data){
       let arr = data.slice(0,3);
       for(let i=0;i<arr.length;i=i+1){
-        let shopArr = arr[i]['门店列表'].split(',');
+        let shopArr = arr[i]['门店列表']?arr[i]['门店列表'].split(','):[];
         arr[i].shops = [];
         for(let j=0;j<shopArr.length;j++){
           if(j<16){
@@ -216,7 +216,7 @@ export default {
             text-align: center;
           }
           .C{
-            color:r#4fcf97;
+            color:#4fcf97;
             border:solid 1px #4fcf97;
           }
           .B{
