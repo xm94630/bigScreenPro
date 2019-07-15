@@ -137,7 +137,11 @@ export default {
 
       //获取数据
       let code = this.$route.query.diyViewCode;      
-      let config = JSON.parse(localStorage.getItem("screenList"))[code];
+      
+      //解决bug
+      //let config = JSON.parse(localStorage.getItem("screenList"))[code];
+      let config = localStorage.getItem("screenList")?JSON.parse(localStorage.getItem("screenList"))[code]:null;
+      
       if(config){
         let canvas = config.json.canvas
         let components = config.json.components
