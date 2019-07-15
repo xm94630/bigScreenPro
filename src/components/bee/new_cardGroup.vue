@@ -77,12 +77,37 @@ export default {
         });
       }
     },
+    //从底部开始滚到结束看不到
+    // scrollFun(cb){
+    //   let that = this;
+    //   let containerHeight = this.$refs.cardGroupBox.clientHeight;
+    //   let element = this.$refs.conBox;
+    //   let start = null;
+    //   element.style.top = this.myConfig.css.height+'px'
+    //   this.$nextTick( () =>{
+    //     let contentHeight = element.clientHeight;
+    //     function step(timestamp) {
+    //       //只在生命周期中执行，这样改组件销毁之后，事件就不会再触发。
+    //       if(that.inLifeCirle){
+    //         if (!start) start = timestamp;
+    //         var s = (timestamp - start) / 20;
+    //         element.style.transform = 'translateY(' +  (-s) + 'px)';
+    //         if (s < contentHeight+containerHeight ) {
+    //           window.requestAnimationFrame(step);
+    //         }else{
+    //           cb();
+    //         }
+    //       }
+    //     }
+    //     window.requestAnimationFrame(step);
+    //   })
+
+    //从全部展示滚到看不到
     scrollFun(cb){
       let that = this;
-      let containerHeight = this.$refs.cardGroupBox.clientHeight;
       let element = this.$refs.conBox;
       let start = null;
-      element.style.top = this.myConfig.css.height+'px'
+      element.style.top = '0px'
       this.$nextTick( () =>{
         let contentHeight = element.clientHeight;
         function step(timestamp) {
@@ -91,7 +116,7 @@ export default {
             if (!start) start = timestamp;
             var s = (timestamp - start) / 20;
             element.style.transform = 'translateY(' +  (-s) + 'px)';
-            if (s < contentHeight+containerHeight ) {
+            if (s < contentHeight + 100 ) { //这里的100 是继续向上偏移100，行程一定的停顿
               window.requestAnimationFrame(step);
             }else{
               cb();
@@ -120,13 +145,17 @@ export default {
   mounted: function() {
     //this.pageCode = bee.getUrlParam('diyViewCode');
     this.initWidget(this.myConfig,()=>{
-      //滚动效果
-      this.scrollFun(()=>{
-        console.log('滚动完毕');
-        //滚动完成传递事件
-        //bus.$emit("widgetEvent",this.$options.name,this.pageCode);
-        bus.$emit("widgetEvent",this.$options.name);
-      });
+      let t = 10000; //延时效果
+      window.setTimeout(()=>{
+        //滚动效果
+        this.scrollFun(()=>{
+          console.log('滚动完毕');
+          //滚动完成传递事件
+          //bus.$emit("widgetEvent",this.$options.name,this.pageCode);
+          bus.$emit("widgetEvent",this.$options.name);
+        });
+      },t)
+
     });
   },
   updated(){
