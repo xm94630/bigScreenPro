@@ -749,7 +749,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 300,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -764,7 +764,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 300,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -779,7 +779,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 300,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -794,7 +794,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 300,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -811,7 +811,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 300,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -827,7 +827,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 300,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -844,7 +844,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 170,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -859,7 +859,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 170,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -874,7 +874,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 170,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -889,7 +889,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 170,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -906,7 +906,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 170,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -921,7 +921,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 170,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -936,7 +936,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 170,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -951,7 +951,7 @@ router.get('/view/info', async (ctx, next) => {
             "width": 170,
             "height": 100,
             "border": "solid 1px #fff",
-            "padding":20,
+            "padding":0,
             "background":"#1e2647",
             "color":"#f8f594"
           },
@@ -1282,7 +1282,7 @@ router.get('/view/info', async (ctx, next) => {
             "border": "none",
             "background": "none",
             "text-align": "left",
-            "z-index":999,
+            "z-index":80,
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-robotTote"
