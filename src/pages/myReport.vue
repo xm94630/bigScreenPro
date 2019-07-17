@@ -1,11 +1,11 @@
 <template>
   <div class="myReportBox">
-
+    
     <!-- 左上角配置按钮 -->
-    <div v-if="!showGlobalContion" class="reportConditionBtn" @click="showGlobalContion=true">
+    <div v-if="showControlBtn && !showGlobalContion" class="reportConditionBtn" @click="showGlobalContion=true">
       <i class="el-icon-edit"></i>
     </div>
-    <div v-else class="reportConditionBtn" @click="showGlobalContion=false">
+    <div v-if="showControlBtn && showGlobalContion" class="reportConditionBtn" @click="showGlobalContion=false">
       <i class="el-icon-close"></i>
     </div>
 
@@ -49,6 +49,7 @@ export default {
       hackReset:true,
       setTimeoutHolder:null,    //定时跳屏的句柄
       setIntervalHolder:null,   //定时刷新本页面的句柄
+      showControlBtn:false, //左上角按钮
     }
   },
   methods:{
@@ -173,7 +174,10 @@ export default {
   },
   watch: {
     // 如果路由有变化，会再次执行该方法
-    "$route": "getDataAndRender"
+    "$route": "getDataAndRender",
+    "data":function(v){
+      this.showControlBtn = v.globalCondition?true:false;
+    }
   },
   mounted(){
     this.getDataAndRender();
