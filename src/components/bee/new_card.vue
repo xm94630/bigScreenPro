@@ -53,11 +53,11 @@ export default {
     orderFun(data){
       let keyOrder = this.myConfig.keyOrder;
       let orderData = {};
-      if(keyOrder){
+      if(keyOrder&&data[0]){
         keyOrder.forEach(function(key){
-          orderData[key] = data[key]
+          orderData[key] = data[0][key]
         })
-        return orderData;
+        return [orderData];
       }else{
         return data;
       }
