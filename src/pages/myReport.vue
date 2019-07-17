@@ -1,6 +1,14 @@
 <template>
   <div class="myReportBox">
 
+    <!-- 左上角配置按钮 -->
+    <div v-if="!showGlobalContion" class="reportConditionBtn" @click="showGlobalContion=true">
+      <i class="el-icon-edit"></i>
+    </div>
+    <div v-else class="reportConditionBtn" @click="showGlobalContion=false">
+      <i class="el-icon-close"></i>
+    </div>
+
     <!-- 大屏全局的条件查询 -->
     <reportContion 
       v-if = "showGlobalContion" 
@@ -45,8 +53,12 @@ export default {
   },
   methods:{
 
+
     //刷新操作
     refreshFun(){
+      //条件选择弹层关闭
+      this.showGlobalContion = false;
+      //重置大屏
       this.hackReset = false;
       this.$nextTick(() => {
         this.hackReset = true
@@ -87,7 +99,6 @@ export default {
     //对数据进行处理
     dealWithData(d){
       //全局条件查询
-      this.showGlobalContion = d.globalCondition;
       this.globalContion = d.globalCondition;
 
       //这里有一个把大批默认值配置到 store 的工作
@@ -187,8 +198,22 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .myReportBox{
   height:100%;
+  .reportConditionBtn{
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index: 100;
+    width: 50px;
+    height:50px;
+    line-height:50px;
+    text-align: center;
+    background: #db8460;
+    cursor: pointer;
+    color:#fff;
+    font-size: 30px;
+  }
 }
 </style>

@@ -2,19 +2,9 @@
   <!------------------------- 大屏全局搜索 --------------------------->
   <div class="reportConditionBox">
  
-    <!-- 搜索条件配置 -->
-    <div class="reportConditionBtn" @click="clickFun">
-      <i class="el-icon-edit"></i>
-    </div>
-
     <!-- 内容区 -->
-    <div v-show="showCon" class="reportConditionCon">
-      
-      <!-- 关闭按钮 -->
-      <div class="reportConditionBtn" @click="clickFun2">
-        <i class="el-icon-close"></i>
-      </div>
-      
+    <div  class="reportConditionCon">
+            
       <!-- 复用二维表条件查询 -->
       <div class="reportConditionConBox">
         <h1 class="MB20">请选择全局查询条件</h1>
@@ -60,7 +50,6 @@ export default {
   data(){
     return{
       store,
-      showCon:false,
       conditionData:{},  //这里是存放的是大屏整体的条件查询
       items:[]
     }
@@ -73,12 +62,6 @@ export default {
     beeDatePickerRangePlus,
   },
   methods:{
-    clickFun(){
-      this.showCon = true;
-    },
-    clickFun2(){
-      this.showCon = false;
-    },
     //接受子组件中值的变化，更新数据
     sonChangeHandle(v,item){
       this.conditionData[item.keyName] = v;
@@ -88,7 +71,6 @@ export default {
       console.log(this.conditionData)
       //存到全局
       store.dispatch("setGlobalContion",this.conditionData);
-      this.showCon = false;
       //通知
       this.$emit('globalConditionUpdate');
       //提示
@@ -147,19 +129,9 @@ export default {
   position: absolute;
   top:0;
   left:0;
-  z-index:9999;
+  z-index:99;
   width: 100%;
   height: 100%;
-}
-.reportConditionBtn{
-  width: 50px;
-  height:50px;
-  line-height:50px;
-  text-align: center;
-  background: #db8460;
-  cursor: pointer;
-  color:#fff;
-  font-size: 30px;
 }
 .reportConditionCon{
   width: 100%;
@@ -174,6 +146,7 @@ export default {
   margin: 0 auto;
   padding:20px;
   min-height:200px;
+  margin-top:100px;
 }
 .reportConditionConBox.MB20{margin-bottom: 20px;}
 .reportConditionConBox .goRight{text-align: right}
