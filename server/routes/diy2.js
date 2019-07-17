@@ -181,7 +181,7 @@ router.post('/report/selectData', async (ctx, next) => {
   ){
     data = [{
       '入库单':10000,
-      'SKU':1000,
+      'Qty':1000,
     }]
   }
   if(
@@ -192,7 +192,7 @@ router.post('/report/selectData', async (ctx, next) => {
   ){
     data = [{
       '出库单':9000,
-      'SKU':999,
+      'Qty':999,
     }]
   }
 
@@ -237,25 +237,25 @@ router.post('/report/selectData', async (ctx, next) => {
     code==="lifeng-HistogramOutOrderLack" 
   ){
     data = data = [
-      {"出库单":1,"sku":4,"type":"JIT"},
-      {"出库单":2,"sku":5,"type":"B2C"},
-      {"出库单":3,"sku":6,"type":"B2B"}
+      {"Order":1,"Qty":4,"type":"JIT"},
+      {"Order":2,"Qty":5,"type":"B2C"},
+      {"Order":3,"Qty":6,"type":"B2B"}
     ]
   }
 
   //new_bar 的测试用的 code数据。
   if(code==="lifeng-HistogramOutOrder2"){
     data = [
-      {"出库单":1,"sku":4,"入库单":4,"type":"JIT"},
-      {"出库单":2,"sku":5,"入库单":4,"type":"B2C"},
-      {"出库单":3,"sku":6,"入库单":4,"type":"B2B"}
+      {"Order":1,"Qty":4,"入库单":4,"type":"JIT"},
+      {"Order":2,"Qty":5,"入库单":4,"type":"B2C"},
+      {"Order":3,"Qty":6,"入库单":4,"type":"B2B"}
     ]
   }
   if(code==="lifeng-HistogramOutOrder3"){
     data = [
-      {"出库单":1,"sku":4,"入库单":4,"bin":2,"type":"JIT"},
-      {"出库单":2,"sku":5,"入库单":2,"bin":1,"type":"B2C"},
-      {"出库单":3,"sku":6,"入库单":4,"bin":2,"type":"B2B"}
+      {"Order":1,"Qty":4,"入库单":4,"bin":2,"type":"JIT"},
+      {"Order":2,"Qty":5,"入库单":2,"bin":1,"type":"B2C"},
+      {"Order":3,"Qty":6,"入库单":4,"bin":2,"type":"B2B"}
     ]
   }
 
@@ -273,7 +273,7 @@ router.post('/report/selectData', async (ctx, next) => {
   if(code==="YH-card"){
     data = [{
       'E数':888,
-      'SKU数':888,
+      'Qty':888,
     }]
   }
   if(code==="YH-card2"){

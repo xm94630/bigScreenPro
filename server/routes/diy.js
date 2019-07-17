@@ -754,7 +754,8 @@ router.get('/view/info', async (ctx, next) => {
             "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-BinUseA"
+          "diyCoreCode":"lifeng-BinUseA",
+          "keyOrder":"总数|未使用|使用量"
         },{
           "title":"B类/衣服",
           "state":0,
@@ -769,7 +770,8 @@ router.get('/view/info', async (ctx, next) => {
             "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-BinUseB"
+          "diyCoreCode":"lifeng-BinUseB",
+          "keyOrder":"总数|未使用|使用量"
         },{
           "title":"A类/鞋",
           "state":0,
@@ -784,7 +786,8 @@ router.get('/view/info', async (ctx, next) => {
             "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-ShelfUseA"
+          "diyCoreCode":"lifeng-ShelfUseA",
+          "keyOrder":"总数|未使用|使用量"
         },{
           "title":"B类/衣服",
           "state":0,
@@ -799,7 +802,8 @@ router.get('/view/info', async (ctx, next) => {
             "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-ShelfUseB"
+          "diyCoreCode":"lifeng-ShelfUseB",
+          "keyOrder":"总数|未使用|使用量"
         },
         
         {
@@ -817,7 +821,7 @@ router.get('/view/info', async (ctx, next) => {
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-InventoryPool",
-          "keyOrder":["总数","已分配","已冻结","可用"]
+          "keyOrder":"总数|已分配|已冻结|可用"
         },{
           "title":"SKU",
           "state":0,
@@ -849,7 +853,8 @@ router.get('/view/info', async (ctx, next) => {
             "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-ReceiptIn"
+          "diyCoreCode":"lifeng-ReceiptIn",
+          "keyOrder":"入库单|Qty"
         },{
           "title":"已完成",
           "state":0,
@@ -864,7 +869,8 @@ router.get('/view/info', async (ctx, next) => {
             "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-ReceiptCopleted"
+          "diyCoreCode":"lifeng-ReceiptCopleted",
+          "keyOrder":"入库单|Qty"
         },{
           "title":"作业中",
           "state":0,
@@ -876,7 +882,8 @@ router.get('/view/info', async (ctx, next) => {
             "border": "solid 1px #fff",
             "padding":0,
             "background":"#1e2647",
-            "color":"#f8f594"
+            "color":"#f8f594",
+            "keyOrder":"入库单|Qty"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptWorking"
@@ -894,7 +901,8 @@ router.get('/view/info', async (ctx, next) => {
             "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-ReceiptNotStart"
+          "diyCoreCode":"lifeng-ReceiptNotStart",
+          "keyOrder":"入库单|Qty"
         },
       
         {
@@ -911,7 +919,8 @@ router.get('/view/info', async (ctx, next) => {
             "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-OutOrderIn"
+          "diyCoreCode":"lifeng-OutOrderIn",
+          "keyOrder":"出库单|Qty"
         },{
           "title":"已完成",
           "state":0,
@@ -926,7 +935,8 @@ router.get('/view/info', async (ctx, next) => {
             "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-OutOrderComplete"
+          "diyCoreCode":"lifeng-OutOrderComplete",
+          "keyOrder":"出库单|Qty"
         },{
           "title":"已分配",
           "state":0,
@@ -941,7 +951,8 @@ router.get('/view/info', async (ctx, next) => {
             "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-OutOrderAllocated"
+          "diyCoreCode":"lifeng-OutOrderAllocated",
+          "keyOrder":"出库单|Qty"
         },{
           "title":"系统报缺",
           "state":0,
@@ -956,7 +967,8 @@ router.get('/view/info', async (ctx, next) => {
             "color":"#f8f594"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-OutOrderLack"
+          "diyCoreCode":"lifeng-OutOrderLack",
+          "keyOrder":"出库单|Qty"
         }],
     
         "new_pie_1":[{
