@@ -51,7 +51,7 @@ export default {
     //对数据进行排序，排序的顺序可以在json中配置。
     //这个方法还不是很完美，先这样子实现。
     orderFun(data){
-      let keyOrder = this.myConfig.keyOrder;
+      let keyOrder = this.myConfig.keyOrder?this.myConfig.keyOrder.split('|'):false;
       let orderData = {};
       if(keyOrder&&data[0]){
         keyOrder.forEach(function(key){

@@ -165,6 +165,7 @@ function getWidgetConfig (){
         "background":"#142a41",
         "color":"#f8f594"
       },
+      "keyOrder":"",
       "title":"A类/鞋",
       "state":0,
       "dataUrl": "/epimetheus/api/diy/report/selectData",
