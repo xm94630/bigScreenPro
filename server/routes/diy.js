@@ -53,7 +53,7 @@ router.get('/view/info', async (ctx, next) => {
         //   },
         //   "echartOption":{
         //     "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
-        //     "beeTitle": {
+        //     "title": {
         //       "text": "周统计",
         //       "textStyle": {
         //         "fontSize": 16,
@@ -94,7 +94,7 @@ router.get('/view/info', async (ctx, next) => {
         //   },
         //   "echartOption":{
         //     "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
-        //     "beeTitle": {
+        //     "title": {
         //       "text": "出库单",
         //       "textStyle": {
         //         "fontSize": 16,
@@ -636,7 +636,7 @@ router.get('/view/info', async (ctx, next) => {
       },
       "components": {
         "beeTitle": [{
-          "id": "beeTitle-1",
+          "id": "title-1",
           "text": "基础数据",
           "css":{
             "x": 10,
@@ -651,7 +651,7 @@ router.get('/view/info', async (ctx, next) => {
             "text-align": "center"
           }
         },{
-          "id": "beeTitle-2",
+          "id": "title-2",
           "text": "入库数据",
           "css":{
             "x": 620,
@@ -666,7 +666,7 @@ router.get('/view/info', async (ctx, next) => {
             "text-align": "center"
           }
         },{
-          "id": "beeTitle-3",
+          "id": "title-3",
           "text": "出库数据",
           "css":{
             "x": 620,
@@ -683,7 +683,7 @@ router.get('/view/info', async (ctx, next) => {
         }
       
         ,{
-          "id": "beeTitle-4",
+          "id": "title-4",
           "text": "货位",
           "css":{
             "x": 50,
@@ -697,7 +697,7 @@ router.get('/view/info', async (ctx, next) => {
             "text-align": "center"
           }
         },{
-          "id": "beeTitle-5",
+          "id": "title-5",
           "text": "货架",
           "css":{
             "x": 50,
@@ -711,7 +711,7 @@ router.get('/view/info', async (ctx, next) => {
             "text-align": "center"
           }
         },{
-          "id": "beeTitle-6",
+          "id": "title-6",
           "text": "库存",
           "css":{
             "x": 50,
@@ -725,7 +725,7 @@ router.get('/view/info', async (ctx, next) => {
             "text-align": "center"
           }
         },{
-          "id": "beeTitle-7",
+          "id": "title-7",
           "text": "机器人",
           "css":{
             "x": 370,
@@ -741,7 +741,7 @@ router.get('/view/info', async (ctx, next) => {
         }],
     
         "new_card": [{
-          "beeTitle":"A类/鞋",
+          "title":"A类/鞋",
           "state":0,
           "css":{
             "x": 50,
@@ -756,7 +756,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseA"
         },{
-          "beeTitle":"B类/衣服",
+          "title":"B类/衣服",
           "state":0,
           "css":{
             "x": 50,
@@ -771,7 +771,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-BinUseB"
         },{
-          "beeTitle":"A类/鞋",
+          "title":"A类/鞋",
           "state":0,
           "css":{
             "x": 50,
@@ -786,7 +786,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ShelfUseA"
         },{
-          "beeTitle":"B类/衣服",
+          "title":"B类/衣服",
           "state":0,
           "css":{
             "x": 50,
@@ -803,7 +803,7 @@ router.get('/view/info', async (ctx, next) => {
         },
         
         {
-          "beeTitle":"总库存",
+          "title":"总库存",
           "state":0,
           "css":{
             "x": 50,
@@ -817,9 +817,9 @@ router.get('/view/info', async (ctx, next) => {
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-InventoryPool",
-          "keyOrder":["总数","已分配","已冻结","可用"]
+          //"keyOrder":["总数","已分配","已冻结","可用"]
         },{
-          "beeTitle":"SKU",
+          "title":"SKU",
           "state":0,
           "css":{
             "x": 50,
@@ -836,7 +836,7 @@ router.get('/view/info', async (ctx, next) => {
         },
       
         {
-          "beeTitle":"入库单",
+          "title":"入库单",
           "state":0,
           "css":{
             "x": 650,
@@ -851,7 +851,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptIn"
         },{
-          "beeTitle":"已完成",
+          "title":"已完成",
           "state":0,
           "css":{
             "x": 830,
@@ -866,7 +866,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptCopleted"
         },{
-          "beeTitle":"作业中",
+          "title":"作业中",
           "state":0,
           "css":{
             "x": 1010,
@@ -881,7 +881,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-ReceiptWorking"
         },{
-          "beeTitle":"未开始",
+          "title":"未开始",
           "state":0,
           "css":{
             "x": 1190,
@@ -898,7 +898,7 @@ router.get('/view/info', async (ctx, next) => {
         },
       
         {
-          "beeTitle":"出库单",
+          "title":"出库单",
           "state":0,
           "css":{
             "x": 650,
@@ -913,7 +913,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderIn"
         },{
-          "beeTitle":"已完成",
+          "title":"已完成",
           "state":0,
           "css":{
             "x": 830,
@@ -928,7 +928,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderComplete"
         },{
-          "beeTitle":"已分配",
+          "title":"已分配",
           "state":0,
           "css":{
             "x": 1010,
@@ -943,7 +943,7 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-OutOrderAllocated"
         },{
-          "beeTitle":"系统报缺",
+          "title":"系统报缺",
           "state":0,
           "css":{
             "x": 1190,
@@ -970,7 +970,7 @@ router.get('/view/info', async (ctx, next) => {
             "z-index": 9,
             "border": "none",
             "padding":5,
-            "background":"#142a41"
+            "background":""
           },
           "echartOption":{
             "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
@@ -999,7 +999,7 @@ router.get('/view/info', async (ctx, next) => {
             "z-index": 9,
             "border": "none",
             "padding":5,
-            "background":"#142a41"
+            "background":""
           },
           "echartOption":{
             "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
@@ -1028,7 +1028,7 @@ router.get('/view/info', async (ctx, next) => {
             "z-index": 9,
             "border": "none",
             "padding":5,
-            "background":"#142a41"
+            "background":""
           },
           "echartOption":{
             "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
@@ -1057,7 +1057,7 @@ router.get('/view/info', async (ctx, next) => {
             "z-index": 9,
             "border": "none",
             "padding":5,
-            "background":"#142a41"
+            "background":""
           },
           "echartOption":{
             "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
@@ -1086,13 +1086,14 @@ router.get('/view/info', async (ctx, next) => {
             "width": 240,
             "height": 210,
             "z-index": 9,
-            "border": "none",
+            "border": "solid 1px #fff",
             "padding":5,
-            "background":"#142a41"
+            "background":"",
+            "border-radius": "5px"
           },
           "echartOption":{
             "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
-            "beeTitle": {
+            "title": {
               "text": "",
               "textStyle": {
                 "fontSize": 16,
@@ -1129,7 +1130,7 @@ router.get('/view/info', async (ctx, next) => {
             "background":"#1e2647"
           },
           "echartOption":{
-            "beeTitle": {
+            "title": {
               "show": true,
               "text": "出库单",
               "x": "left",
@@ -1166,7 +1167,7 @@ router.get('/view/info', async (ctx, next) => {
             "background":"#1e2647",
           },
           "echartOption":{
-            "beeTitle": {
+            "title": {
               "show": true,
               "text": "已完成",
               "x": "left",
@@ -1203,7 +1204,7 @@ router.get('/view/info', async (ctx, next) => {
             "background":"#1e2647"
           },
           "echartOption":{
-            "beeTitle": {
+            "title": {
               "show": true,
               "text": "已分配",
               "x": "left",
@@ -1240,7 +1241,7 @@ router.get('/view/info', async (ctx, next) => {
             "background":"#1e2647"
           },
           "echartOption":{
-            "beeTitle": {
+            "title": {
               "show": true,
               "text": "系统报缺",
               "x": "left",
