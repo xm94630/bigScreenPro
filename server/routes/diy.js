@@ -883,10 +883,10 @@ router.get('/view/info', async (ctx, next) => {
             "padding":0,
             "background":"#1e2647",
             "color":"#f8f594",
-            "keyOrder":"入库单|Qty"
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-ReceiptWorking"
+          "diyCoreCode":"lifeng-ReceiptWorking",
+          "keyOrder":"入库单|Qty"
         },{
           "title":"未开始",
           "state":0,
