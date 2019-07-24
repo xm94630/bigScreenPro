@@ -608,7 +608,7 @@ router.get('/view/info', async (ctx, next) => {
     
     jsonData = {
       "refreshTime":"600000",
-      "version":"20190529",
+      "version":"20190724",
       "globalCondition":[{
         "dataType":997788,
         "keyName":["startTime","endTime"],
@@ -1122,7 +1122,7 @@ router.get('/view/info', async (ctx, next) => {
             "series": {
               "name": "机器人",
               "radius" : "50%",
-              "center": "50%|55%",
+              "center": "50%|55%"
             }
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
@@ -1176,7 +1176,7 @@ router.get('/view/info', async (ctx, next) => {
             "height": 200,
             "border": "none",
             "padding":10,
-            "background":"#1e2647",
+            "background":"#1e2647"
           },
           "echartOption":{
             "title": {
@@ -1294,7 +1294,7 @@ router.get('/view/info', async (ctx, next) => {
             "border": "none",
             "background": "none",
             "text-align": "left",
-            "z-index":80,
+            "z-index":80
           },
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "diyCoreCode":"lifeng-robotTote"

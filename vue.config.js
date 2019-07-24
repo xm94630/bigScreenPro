@@ -13,6 +13,8 @@ module.exports={
                 '/epimetheus': {
                     target: 'http://localhost:3000',
                     
+                    //target: 'http://172.16.1.76',  //永辉仿真
+                    
                     //target: 'http://172.16.28.85:80',     // 德柱
                     //target: 'http://172.16.28.106:80',      // 志强
                     

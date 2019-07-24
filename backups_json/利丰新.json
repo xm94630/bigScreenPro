@@ -1,0 +1,695 @@
+{
+  "refreshTime":"600000",
+  "version":"20190724",
+  "globalCondition":[{
+    "dataType":997788,
+    "keyName":["startTime","endTime"],
+    "defaultValue":["",""],
+    "label":"时间",
+    "queryIndex":1,
+    "placeholder":["开始时间","结束时间"]
+  }],
+  "code": "lifeng-ReportScreen",
+  "pageId": "pageId-00001",
+  "linkScreen":{
+    "linkScreenCode":"",
+    "waitTime":-1,
+    "eventWidgetName":""
+  },
+  "canvas": {
+    "width": 1400,
+    "height": 800,
+    "background": "#000",
+    "zoom-type":1,
+    "formFormat":{
+      "labelPosition":"left",
+      "colSpan":8
+    }
+  },
+  "components": {
+    "beeTitle": [{
+      "id": "title-1",
+      "text": "基础数据",
+      "css":{
+        "x": 10,
+        "y": 10,
+        "width": 600,
+        "height": 780,
+        "padding": 0,
+        "font-size": 26,
+        "color": "#f8f594",
+        "border": "solid 1px #fff",
+        "background": "#1e264a",
+        "text-align": "center"
+      }
+    },{
+      "id": "title-2",
+      "text": "入库数据",
+      "css":{
+        "x": 620,
+        "y": 10,
+        "width": 770,
+        "height": 150,
+        "padding": 0,
+        "font-size": 24,
+        "color": "#f8f594",
+        "border": "solid 1px #fff",
+        "background": "#1e264a",
+        "text-align": "center"
+      }
+    },{
+      "id": "title-3",
+      "text": "出库数据",
+      "css":{
+        "x": 620,
+        "y": 170,
+        "width": 770,
+        "height": 620,
+        "padding": 0,
+        "font-size": 24,
+        "color": "#f8f594",
+        "border": "solid 1px #fff",
+        "background": "#1e264a",
+        "text-align": "center"
+      }
+    }
+  
+    ,{
+      "id": "title-4",
+      "text": "货位",
+      "css":{
+        "x": 50,
+        "y": 25,
+        "width": 50,
+        "height": 50,
+        "padding": 0,
+        "font-size": 18,
+        "color": "#f8f594",
+        "border": "none",
+        "text-align": "center"
+      }
+    },{
+      "id": "title-5",
+      "text": "货架",
+      "css":{
+        "x": 50,
+        "y": 275,
+        "width": 50,
+        "height": 50,
+        "padding": 0,
+        "font-size": 18,
+        "color": "#f8f594",
+        "border": "none",
+        "text-align": "center"
+      }
+    },{
+      "id": "title-6",
+      "text": "库存",
+      "css":{
+        "x": 50,
+        "y": 525,
+        "width": 50,
+        "height": 50,
+        "padding": 0,
+        "font-size": 18,
+        "color": "#f8f594",
+        "border": "none",
+        "text-align": "center"
+      }
+    },{
+      "id": "title-7",
+      "text": "机器人",
+      "css":{
+        "x": 370,
+        "y": 525,
+        "width": 200,
+        "height": 30,
+        "padding": 0,
+        "font-size": 18,
+        "color": "#f8f594",
+        "border": "",
+        "text-align": "left"
+      }
+    }],
+
+    "new_card": [{
+      "title":"A类/鞋",
+      "state":0,
+      "css":{
+        "x": 50,
+        "y": 50,
+        "width": 300,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-BinUseA",
+      "keyOrder":"总数|未使用|使用量"
+    },{
+      "title":"B类/衣服",
+      "state":0,
+      "css":{
+        "x": 50,
+        "y": 160,
+        "width": 300,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-BinUseB",
+      "keyOrder":"总数|未使用|使用量"
+    },{
+      "title":"A类/鞋",
+      "state":0,
+      "css":{
+        "x": 50,
+        "y": 300,
+        "width": 300,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-ShelfUseA",
+      "keyOrder":"总数|未使用|使用量"
+    },{
+      "title":"B类/衣服",
+      "state":0,
+      "css":{
+        "x": 50,
+        "y": 410,
+        "width": 300,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-ShelfUseB",
+      "keyOrder":"总数|未使用|使用量"
+    },
+    
+    {
+      "title":"总库存",
+      "state":0,
+      "css":{
+        "x": 50,
+        "y": 550,
+        "width": 300,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-InventoryPool",
+      "keyOrder":"总数|已分配|已冻结|可用"
+    },{
+      "title":"SKU",
+      "state":0,
+      "css":{
+        "x": 50,
+        "y": 660,
+        "width": 300,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-SKUPool"
+    },
+  
+    {
+      "title":"入库单",
+      "state":0,
+      "css":{
+        "x": 650,
+        "y": 50,
+        "width": 170,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-ReceiptIn",
+      "keyOrder":"入库单|Qty"
+    },{
+      "title":"已完成",
+      "state":0,
+      "css":{
+        "x": 830,
+        "y": 50,
+        "width": 170,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-ReceiptCopleted",
+      "keyOrder":"入库单|Qty"
+    },{
+      "title":"作业中",
+      "state":0,
+      "css":{
+        "x": 1010,
+        "y": 50,
+        "width": 170,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594",
+        "keyOrder":"入库单|Qty"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-ReceiptWorking"
+    },{
+      "title":"未开始",
+      "state":0,
+      "css":{
+        "x": 1190,
+        "y": 50,
+        "width": 170,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-ReceiptNotStart",
+      "keyOrder":"入库单|Qty"
+    },
+  
+    {
+      "title":"出库单",
+      "state":0,
+      "css":{
+        "x": 650,
+        "y": 210,
+        "width": 170,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-OutOrderIn",
+      "keyOrder":"出库单|Qty"
+    },{
+      "title":"已完成",
+      "state":0,
+      "css":{
+        "x": 830,
+        "y": 210,
+        "width": 170,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-OutOrderComplete",
+      "keyOrder":"出库单|Qty"
+    },{
+      "title":"已分配",
+      "state":0,
+      "css":{
+        "x": 1010,
+        "y": 210,
+        "width": 170,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-OutOrderAllocated",
+      "keyOrder":"出库单|Qty"
+    },{
+      "title":"系统报缺",
+      "state":0,
+      "css":{
+        "x": 1190,
+        "y": 210,
+        "width": 170,
+        "height": 100,
+        "border": "solid 1px #fff",
+        "padding":0,
+        "background":"#1e2647",
+        "color":"#f8f594"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-OutOrderLack",
+      "keyOrder":"出库单|Qty"
+    }],
+
+    "new_pie_1":[{
+      "id":"pie111",
+      "type":"new_pie_1",
+      "css":{
+        "x": 380,
+        "y": 50,
+        "width": 200,
+        "height": 100,
+        "z-index": 9,
+        "border": "none",
+        "padding":5,
+        "background":""
+      },
+      "echartOption":{
+        "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+        "series": {
+          "name":"使用占比",
+          "type": "pie",
+          "radius": "65%|100%",
+          "label": {    
+            "color": "#f8f594",
+            "fontSize": 12,
+            "position": "center",
+            "formatter": "{a}\n{c}%"
+          }
+        }
+      },    
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-BinUseScaleA"
+    },{
+      "id":"pie222",
+      "type":"new_pie_1",
+      "css":{
+        "x": 380,
+        "y": 170,
+        "width": 200,
+        "height": 100,
+        "z-index": 9,
+        "border": "none",
+        "padding":5,
+        "background":""
+      },
+      "echartOption":{
+        "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+        "series": {
+          "name":"使用占比",
+          "type": "pie",
+          "radius": "65%|100%",
+          "label": {    
+            "color": "#f8f594",
+            "fontSize": 12,
+            "position": "center",
+            "formatter": "{a}\n{c}%"
+          }
+        }
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-BinUseScaleB"
+    },{
+      "id":"pie333",
+      "type":"new_pie_1",
+      "css":{
+        "x": 380,
+        "y": 300,
+        "width": 200,
+        "height": 100,
+        "z-index": 9,
+        "border": "none",
+        "padding":5,
+        "background":""
+      },
+      "echartOption":{
+        "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+        "series": {
+          "name":"使用占比",
+          "type": "pie",
+          "radius": "65%|100%",
+          "label": {    
+            "color": "#f8f594",
+            "fontSize": 12,
+            "position": "center",
+            "formatter": "{a}\n{c}%"
+          }
+        }
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-ShelfUseScaleA"
+    },{
+      "id":"pie444",
+      "type":"new_pie_1",
+      "css":{
+        "x": 380,
+        "y": 410,
+        "width": 200,
+        "height": 100,
+        "z-index": 9,
+        "border": "none",
+        "padding":5,
+        "background":""
+      },
+      "echartOption":{
+        "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+        "series": {
+          "name":"使用占比",
+          "type": "pie",
+          "radius": "65%|100%",
+          "label": {    
+            "color": "#f8f594",
+            "fontSize": 12,
+            "position": "center",
+            "formatter": "{a}\n{c}%"
+          }
+        }
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-ShelfUseScaleB"
+    }],
+
+    "new_pie_2":[{
+      "id":"piex",
+      "type":"new_pie_2",
+      "css":{
+        "x": 360,
+        "y": 550,
+        "width": 240,
+        "height": 210,
+        "z-index": 9,
+        "border": "solid 1px #fff",
+        "padding":5,
+        "background":"",
+        "border-radius": "5px"
+      },
+      "echartOption":{
+        "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+        "title": {
+          "text": "",
+          "textStyle": {
+            "fontSize": 16,
+            "color": "#f8f4a0"
+          }
+        },
+        "legend": {
+          "orient": "vertical",
+          "left": "right",
+          "textStyle": {
+            "color": "#f8f4a0"
+          }
+        },
+        "series": {
+          "name": "机器人",
+          "radius" : "50%",
+          "center": "50%|55%"
+        }
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-robot"
+    }],
+
+
+    "new_bar": [{
+      "id": "componentId_bar001",
+      "css":{
+        "x": 650,
+        "y": 330,
+        "width": 350,
+        "height": 200,
+        "border": "none",
+        "padding":10,
+        "background":"#1e2647"
+      },
+      "echartOption":{
+        "title": {
+          "show": true,
+          "text": "出库单",
+          "x": "left",
+          "textStyle": {
+            "fontSize": 16,
+            "color": "#f8f4a0"
+          }
+        },
+        "axisLabel": {
+          "show": true,
+          "textStyle": {
+            "color": "#f8f4a0"
+          }
+        },
+        "color":  "#4f8ff9|#38c3ec|#a2fdff|#eada80",
+        "legend":{
+          "show": true,
+          "textStyle": {
+            "color": "#f8f4a0"
+          }
+        }
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-HistogramOutOrder"
+    },{
+      "id": "componentId_bar002",
+      "css":{
+        "x": 1010,
+        "y": 330,
+        "width": 350,
+        "height": 200,
+        "border": "none",
+        "padding":10,
+        "background":"#1e2647"
+      },
+      "echartOption":{
+        "title": {
+          "show": true,
+          "text": "已完成",
+          "x": "left",
+          "textStyle": {
+            "fontSize": 16,
+            "color": "#f8f4a0"
+          }
+        },
+        "axisLabel": {
+          "show": true,
+          "textStyle": {
+            "color": "#f8f4a0"
+          }
+        },
+        "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
+        "legend":{
+          "show": true,
+          "textStyle": {
+            "color": "#f8f4a0"
+          }
+        }
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-HistogramOutOrderCompleted"
+    },{
+      "id": "componentId_bar003",
+      "css":{
+        "x": 650,
+        "y": 540,
+        "width": 350,
+        "height": 200,
+        "border": "none",
+        "padding":10,
+        "background":"#1e2647"
+      },
+      "echartOption":{
+        "title": {
+          "show": true,
+          "text": "已分配",
+          "x": "left",
+          "textStyle": {
+            "fontSize": 16,
+            "color": "#f8f4a0"
+          }
+        },
+        "axisLabel": {
+          "show": true,
+          "textStyle": {
+            "color": "#f8f4a0"
+          }
+        },
+        "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
+        "legend":{
+          "show": true,
+          "textStyle": {
+            "color": "#f8f4a0"
+          }
+        }
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-HistogramOutOrderAllocated"
+    },{
+      "id": "componentId_bar004",
+      "css":{
+        "x": 1010,
+        "y": 540,
+        "width": 350,
+        "height": 200,
+        "border": "none",
+        "padding":10,
+        "background":"#1e2647"
+      },
+      "echartOption":{
+        "title": {
+          "show": true,
+          "text": "系统报缺",
+          "x": "left",
+          "textStyle": {
+            "fontSize": 16,
+            "color": "#f8f4a0"
+          }
+        },
+        "axisLabel": {
+          "show": true,
+          "textStyle": {
+            "color": "#f8f4a0"
+          }
+        },
+        "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
+        "legend":{
+          "show": true,
+          "textStyle": {
+            "color": "#f8f4a0"
+          }
+        }
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-HistogramOutOrderLack"
+    }],
+
+    "new_info": [{
+      "id": "",
+      "template": "总数:{{data}}",
+      "css":{
+        "x": 380,
+        "y": 560,
+        "width": 100,
+        "height": 20,
+        "padding": 0,
+        "font-size": 14,
+        "color": "#f8f4a0",
+        "border": "none",
+        "background": "none",
+        "text-align": "left",
+        "z-index":80
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"lifeng-robotTote"
+    }]
+  }
+}
