@@ -1280,25 +1280,29 @@ router.get('/view/info', async (ctx, next) => {
           "diyCoreCode":"lifeng-HistogramOutOrderLack"
         }],
     
-        "new_info": [{
-          "id": "",
-          "template": "总数:{{data}}",
-          "css":{
-            "x": 380,
-            "y": 560,
-            "width": 100,
-            "height": 20,
-            "padding": 0,
-            "font-size": 14,
-            "color": "#f8f4a0",
-            "border": "none",
-            "background": "none",
-            "text-align": "left",
-            "z-index":80
-          },
-          "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode":"lifeng-robotTote"
-        }]
+        "new_info": [
+          {
+              "id": "1355-2e3e",
+              "type": "new_info",
+              "css": {
+                  "x": 380,
+                  "y": 560,
+                  "width": 100,
+                  "height": 20,
+                  "z-index": 9,
+                  "border": "none",
+                  "border-radius": 0,
+                  "padding": 0,
+                  "font-size": 14,
+                  "text-align": "left",
+                  "color": "#f8f4a0",
+                  "background": "none"
+              },
+              "template": "总数:{{data}}",
+              "dataUrl": "/epimetheus/api/diy/report/selectData",
+              "diyCoreCode": "lifeng-robotTote"
+          }
+      ]
       }
     }
     
