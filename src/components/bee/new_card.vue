@@ -56,7 +56,7 @@ export default {
       if(keyOrder&&data[0]){
         keyOrder.forEach(function(key){
           if(key!==''){
-            orderData[key] = data[0][key]?data[0][key]:'-'
+            orderData[key] = data[0][key]===undefined?'-':data[0][key]
           }
         })
         return [orderData];
