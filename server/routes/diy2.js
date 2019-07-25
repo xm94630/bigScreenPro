@@ -260,9 +260,7 @@ router.post('/report/selectData', async (ctx, next) => {
   }
 
   if(code==="lifeng-robotTote"){
-    data = [{
-      '总数':999,
-    }]
+    data = "[{'总数':999}]"
   }
   if(code==="lifeng-robotTote2"){
     data = [{

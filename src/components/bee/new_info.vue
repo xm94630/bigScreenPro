@@ -36,7 +36,7 @@ export default {
       let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
       //获取数据源
       axios.post(baseUrl + dataUrl,params).then(response => {
-        let apiData = response.data.data;
+        let apiData = bee.safeData(response.data.data);
         this.apiData = apiData;
 
         //数据格式：[{"总数":999}]，提取数据，填充模板
@@ -54,7 +54,7 @@ export default {
         let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
         //获取数据源
         axios.post(baseUrl + dataUrl,params).then(response => {
-          let apiData = response.data.data;
+          let apiData = bee.safeData(response.data.data);
           this.apiData = apiData;
 
           //数据格式：[{"总数":999}]，提取数据，填充模板

@@ -1302,7 +1302,7 @@ router.get('/view/info', async (ctx, next) => {
               "dataUrl": "/epimetheus/api/diy/report/selectData",
               "diyCoreCode": "lifeng-robotTote"
           }
-      ]
+        ]
       }
     }
     

@@ -1,6 +1,11 @@
 // 通用函数库
 var bee = (function(bee){
 
+    //将字符串格式的json转义成js可用的对象
+    bee.safeData = function(apiData){
+        return typeof(apiData)=='string'?eval('(' + apiData + ')'):apiData;
+    }
+
     //删除对象中值为空的key
     bee.effectiveKeys = function (obj){
         for(let key in obj){
