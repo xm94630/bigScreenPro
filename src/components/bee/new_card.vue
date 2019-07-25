@@ -55,7 +55,9 @@ export default {
       let orderData = {};
       if(keyOrder&&data[0]){
         keyOrder.forEach(function(key){
-          orderData[key] = data[0][key]
+          if(key!==''){
+            orderData[key] = data[0][key]?data[0][key]:'-'
+          }
         })
         return [orderData];
       }else{
