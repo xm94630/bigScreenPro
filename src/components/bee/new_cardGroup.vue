@@ -116,7 +116,7 @@ export default {
             if (!start) start = timestamp;
             var s = (timestamp - start) / 20;
             element.style.transform = 'translateY(' +  (-s) + 'px)';
-            if (s < contentHeight + 100 ) { //这里的100 是继续向上偏移100，行程一定的停顿
+            if (s < contentHeight + 350 ) { //这里的100 是继续向上偏移100，形成一定的停顿，这里差不多有5秒
               window.requestAnimationFrame(step);
             }else{
               cb();

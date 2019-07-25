@@ -318,8 +318,43 @@ router.post('/report/selectData', async (ctx, next) => {
     }
     data[1]["周转箱数"] = 999999999;
     data[2]["进度"] = "好像真的没有完成哦";
-
   }
+
+  //利丰新版的mock数据
+  if(code==="YH-PickOverallProgress"){data = [{总体进度: 0.5}]}
+  else if(
+    code==="YH-PickTotalTasks"
+    || code==="YH-PickCompleted"
+    || code==="YH-PickUnfinished"
+    || code==="YH-PickAbnormal"
+    || code==="YH-ReceiptTotalTasks"
+    || code==="YH-ReceiptCompleted"
+    || code==="YH-ReceiptUnfinished"
+    || code==="YH-ReceiptTotalTasks"
+  ){data = [{E数: 457, SKU: 66}]}
+  else if(code==="YH-PickSkuCompleted"){data = [{"SKU(已完成 / 总数)": "0 / 66"}]}
+  else if(code==="YH-PickNumCompleted"){data = [{"E数(已完成 / 总数)": "0 / 457"}]}
+  else if(code==="YH-PickShopCompleted"){data = [{"门店数(已完成 / 总数)": "0 / 1"}]}
+  else if(code==="YH-PickSkuPercentage"){data = [{"进度 (SKU)": 9}]}
+  else if(code==="YH-PickPieChart"){data = [{"未完成": 50, "已完成": 30, "异常": 20}]}
+  else if(code==="YH-PickLineChart"){data = [{"拣货量":20,"type":"00:00"},{"拣货量":60,"type":"01:00"},{"拣货量":150,"type":"02:00"}]}
+  else if(code==="YH-PickHistogram"){data = [{"type":1,"拣货量":120},{"type":2,"拣货量":250},{"type":3,"拣货量":150},{"type":4,"拣货量":400}]}
+  else if(code==="YH-PickLineInfo"){
+    data = [
+      {"门店列表":"上海A,南京店B,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店A,北京店C","进度 (SKU)":"10%","E数 (已完成 / 总数)":"1 / 457","线路":96,"SKU (已完成 / 总数)":"0 / 66","门店数 (已完成 / 总数)":"0 / 1"},
+      {"门店列表":"上海A,南京店B,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店A,北京店C","进度 (SKU)":"10%","E数 (已完成 / 总数)":"1 / 457","线路":96,"SKU (已完成 / 总数)":"0 / 66","门店数 (已完成 / 总数)":"0 / 1"},
+      {"门店列表":"上海A,南京店B,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店A,北京店C","进度 (SKU)":"10%","E数 (已完成 / 总数)":"1 / 457","线路":96,"SKU (已完成 / 总数)":"0 / 66","门店数 (已完成 / 总数)":"0 / 1"},
+    ]
+  }
+  else if(code==="YH-PickContainerNum"){data = [{"周转箱总数": 9}]}
+  else if(code==="YH-PickShopInfo"){
+    data = []
+    for(let i=0;i<32;i++){
+      data.push({"门店名":"永辉徐汇区上中西路会员店","进度":10.00,"周转箱数":i,"门店代码":"YH9D32"});
+    }
+  }
+
+
 
   ctx.body = {
     data: data,
