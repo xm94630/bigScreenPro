@@ -181,6 +181,7 @@ export default {
       display: flex;
       flex-direction: row;
       justify-content:space-around;
+      border-radius:5px;
       .lineName{
         color:#e28b36;
         width:24px;

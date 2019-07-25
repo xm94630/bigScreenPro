@@ -7,7 +7,7 @@
         "grid": 10,
         "refreshTime": "600000",
         "linkScreen": {
-            "linkScreenCode": "screen-3232-f93e",
+            "linkScreenCode": "YH-2",
             "waitTime": -1,
             "eventWidgetName": "new_cardGroup"
         },
@@ -170,7 +170,7 @@
                 "padding": 0,
                 "background": ""
             },
-            "imageLink": "http://chuantu.xyz/t6/702/1563104330x3703728804.png"
+            "imageLink": "https://i.site.pictures/ppXSg.png"
         }]
     }
 }
