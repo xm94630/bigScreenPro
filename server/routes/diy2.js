@@ -1,176 +1,374 @@
-{
-  "canvas": {
-      "width": "1920",
-      "height": "1080",
-      "background": "#14224a",
-      "zoom-type": 0,
-      "grid": 10,
-      "refreshTime": "600000",
-      "linkScreen": {
-          "linkScreenCode": "YH-1",
-          "waitTime": -1,
-          "eventWidgetName": "new_cardGroup"
-      },
-      "formFormat": {
-          "labelPosition": "top",
-          "colSpan": 8
+const router = require('koa-router')()
+
+router.prefix('/epimetheus/api/diy/')
+
+
+
+//数据源
+router.post('/report/selectData', async (ctx, next) => {
+
+  let code = ctx.request.body.diyCoreCode;
+  let pageSize = ctx.request.body.pageSize;
+  let data = {}
+
+  //雅诗兰黛 二维表
+  if(code==="InventoryReportByWarehouse"){
+    data = [{"TotalUseVolume":510,"TotalVolume":1000,"TotalAvailability":"51%"}]
+  }else if(code==="InventoryReportByShelf"){
+    if(pageSize){
+      data = {
+        "recordList":[{
+          date: '2016-05-02',
+          name: '王小虎1：' + Math.random(10),
+          address: '上海市普陀区金沙江路 1518 弄',
+          age:12
+        }, {
+          date: '2016-05-04',
+          name: '王小虎2：'+ Math.random(10),
+          address: '上海市普陀区金沙江路 1517 弄',
+          age:13
+        }],
+        "recordCount": 60
       }
-  },
-  "components": {
-      "beeCard": [{
-          "id": "98de-e994",
-          "type": "beeCard",
-          "css": {
-              "x": 20,
-              "y": 20,
-              "width": "615",
-              "height": "80",
-              "z-index": 9,
-              "border": "solid 1px #1f3e7b",
-              "padding": 0,
-              "font-size": 12,
-              "text-align": "left",
-              "color": "#f8f4a0",
-              "background": "#16244a",
-              "border-radius":5
-          },
-          "widgetOption": {
-              "cardStyle": "",
-              "keyCss": {
-                  "font-size": "20",
-                  "color": "#3c8bd0",
-                  "width": ""
-              },
-              "valueCss": {
-                  "font-size": "60",
-                  "color": "#3c8bd0",
-                  "width": ""
-              }
-          },
-          "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode": "YH-PickContainerNum"
-      }],
-      "beeTitle": [{
-          "id": "11df-284e",
-          "type": "beeTitle",
-          "css": {
-              "x": "0",
-              "y": "20",
-              "width": "1920",
-              "height": "50",
-              "z-index": 9,
-              "padding": 0,
-              "font-size": "50",
-              "font-weight": "bold",
-              "color": "#e28c36",
-              "border": "",
-              "background": "",
-              "text-align": "center"
-          },
-          "text": "上海会员物流"
+    }else{
+      data = [{
+        date: '2016-05-02',
+        name: '王小虎1：' + Math.random(10),
+        address: '上海市普陀区金沙江路 1518 弄',
+        age:12,
       }, {
-          "id": "6266-b836",
-          "type": "beeTitle",
-          "css": {
-              "x": "1220",
-              "y": 20,
-              "width": 150,
-              "height": 30,
-              "z-index": 9,
-              "padding": 0,
-              "font-size": "16",
-              "font-weight": "normal",
-              "color": "#fff",
-              "border": "",
-              "background": "",
-              "text-align": "left"
-          },
-          "text": "当前时间："
-      }, {
-          "id": "ceaa-5534",
-          "type": "beeTitle",
-          "css": {
-              "x": "1520",
-              "y": 20,
-              "width": "120",
-              "height": 30,
-              "z-index": 10,
-              "padding": 0,
-              "font-size": "16",
-              "font-weight": "normal",
-              "color": "#fff",
-              "border": "",
-              "background": "",
-              "text-align": "left"
-          },
-          "text": "统计范围：当天"
-      }, {
-          "id": "c959-653a",
-          "type": "beeTitle",
-          "css": {
-              "x": "1720",
-              "y": 20,
-              "width": "300",
-              "height": 30,
-              "z-index": 11,
-              "padding": 0,
-              "font-size": "16",
-              "font-weight": "normal",
-              "color": "#fff",
-              "border": "",
-              "background": "",
-              "text-align": "left"
-          },
-          "text": "刷新时间：1分钟"
-      }],
-      "dater": [{
-          "id": "1828-4813",
-          "type": "dater",
-          "css": {
-              "x": "1320",
-              "y": "20",
-              "width": "400",
-              "height": 30,
-              "z-index": 9,
-              "padding": 0,
-              "font-size": "16",
-              "color": "#ffffff",
-              "border": "",
-              "background": "",
-              "text-align": "left"
-          }
-      }],
-      "new_cardGroup": [{
-          "id": "76f7-46d9",
-          "type": "new_cardGroup",
-          "css": {
-              "x": "0",
-              "y": "140",
-              "width": "1900",
-              "height": "900",
-              "z-index": 9,
-              "border": "",
-              "padding": 10,
-              "background": "#142249",
-              "color": "#f8f594"
-          },
-          "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "diyCoreCode": "YH-PickShopInfo"
-      }],
-      "beeImage": [{
-          "id": "f395-f7fa",
-          "type": "beeImage",
-          "css": {
-              "x": "740",
-              "y": 20,
-              "width": "60",
-              "height": "80",
-              "z-index": 9,
-              "border": "",
-              "padding": 0,
-              "background": ""
-          },
-          "imageLink": "https://i.site.pictures/ppXSg.png"
+        date: '2016-05-04',
+        name: '王小虎2：'+ Math.random(10),
+        address: '上海市普陀区金沙江路 1517 弄',
+        age:13
       }]
+    }
+  }else if(code==="InventoryReportByBin"){
+    if(pageSize){
+      data = {
+        "recordList":[{
+          date: '2016-05-02',
+          name: '王小虎1：' + Math.random(10),
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-04',
+          name: '王小虎2：'+ Math.random(10),
+          address: '上海市普陀区金沙江路 1517 弄'
+        }],
+        "recordCount": 600
+      }
+    }else{
+      data = [{
+        date: '2016-05-02',
+        name: '王小虎1：' + Math.random(10),
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-04',
+        name: '王小虎2：'+ Math.random(10),
+        address: '上海市普陀区金沙江路 1517 弄'
+      }]
+    }
+  }else if(code==="SkuHot"){
+    if(pageSize){
+      data = {
+        "recordList":[{
+          date: '2016-05-02',
+          name: '雷欧：' + Math.random(10),
+          address: 'M77'
+        }, {
+          date: '2016-05-04',
+          name: '爱迪：'+ Math.random(10),
+          address: 'M87'
+        }],
+        "recordCount": 600
+      }
+    }else{
+      data = [{
+        date: '2016-05-02',
+        name: '雷欧：' + Math.random(10),
+        address: 'M77'
+      }, {
+        date: '2016-05-04',
+        name: '爱迪：'+ Math.random(10),
+        address: 'M87'
+      }]
+    }
+  }else if(code==="asyncExport"){
+    data = {
+      "recordList":[{
+        a: '绍兴仓库',
+        b: '某类型',
+        c: '某状态',
+        d: '000001',
+        e: '2019-01-01',
+        f: '2010-01-02',
+        downloadUrl:'#/index/dashboard',
+        'creator_user': '兰陵王',
+      }],
+      "recordCount": 333
+    }
+  }else{
+    if(pageSize){
+      data = {
+        "recordList":[{
+          date: '2016-05-02',
+          name: '王小虎1：' + Math.random(10),
+          address: "Without you?I'd be a soul without a purpose.Without you?I'd be an emotion without a heartI'm a face without expression,A heart with no beat."
+        }, {
+          date: '2016-05-04',
+          name: '王小虎2：'+ Math.random(10),
+          address: '上海市普陀区金沙江路 1517 弄'
+        }],
+        "recordCount": 600
+      }
+    }else{
+      data = [{
+        date: '2016-05-02',
+        name: '王小虎1：' + Math.random(10),
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-04',
+        name: '王小虎2：'+ Math.random(10),
+        address: '上海市普陀区金沙江路 1517 弄'
+      }]
+    }
   }
-}
+
+  //利丰大屏幕 - 卡片
+  if(
+    code==="lifeng-BinUseA" ||
+    code==="lifeng-BinUseB" ||
+    code==="lifeng-ShelfUseA" ||
+    code==="lifeng-ShelfUseB" 
+  ){
+    data = [{
+      '总数':100000,
+      '使用量':50000,
+      '未使用':50000,
+    }]
+  }
+  if(code==="lifeng-BinUseA2"){
+    data = [{
+      '身高':43,
+      '体重':20,
+      '飞行':30,
+      '奔跑':90,
+      '年龄':60,
+      '攻击力':99,
+    }]
+  }
+
+  if(code==="lifeng-InventoryPool"){
+    data = [{
+      '总数':10000,
+      '可用':1000,
+      '已分配':1000,
+      '已冻结':1000,
+    }]
+  }
+  if(code==="lifeng-SKUPool"){
+    data = [{
+      '总数':9999999,
+    }]
+  }
+
+
+  if(
+    code==="lifeng-ReceiptIn" ||
+    code==="lifeng-ReceiptCopleted" ||
+    code==="lifeng-ReceiptWorking" ||
+    code==="lifeng-ReceiptNotStart" 
+  ){
+    data = [{
+      '入库单':10000,
+      'Qty':1000,
+    }]
+  }
+  if(
+    code==="lifeng-OutOrderIn" ||
+    code==="lifeng-OutOrderComplete" ||
+    code==="lifeng-OutOrderAllocated" ||
+    code==="lifeng-OutOrderLack" 
+  ){
+    data = [{
+      '出库单':9000,
+      'Qty':999,
+    }]
+  }
+
+  //利丰大屏幕 - 饼图
+  if(
+    code==="lifeng-BinUseScaleA" ||
+    code==="lifeng-BinUseScaleB" ||
+    code==="lifeng-ShelfUseScaleA" ||
+    code==="lifeng-ShelfUseScaleB" 
+  ){
+    // data = [{
+    //   percent:0.55,
+    // }]
+    data = [{占用率: 0.6}]
+  }
+  if(code==="lifeng-BinUseScaleA2"){
+    data = [{占用率: 0.131415}]
+  }
+
+
+
+  if(code==="lifeng-robot"){
+    data = [{
+      '工作中':900,
+      '异常':100,
+      '空闲':100,
+      '充电中':100,
+    }]
+  }
+  if(code==="lifeng-robot2"){
+    data = [{
+      '已完成':200,
+      '未完成':100
+    }]
+  }
+
+  //利丰大屏幕 - 柱状图
+  if(
+    code==="lifeng-HistogramOutOrder" ||
+    code==="lifeng-HistogramOutOrderCompleted" ||
+    code==="lifeng-HistogramOutOrderAllocated" ||
+    code==="lifeng-HistogramOutOrderLack" 
+  ){
+    data = data = [
+      {"Order":1,"Qty":4,"type":"JIT"},
+      {"Order":2,"Qty":5,"type":"B2C"},
+      {"Order":3,"Qty":6,"type":"B2B"}
+    ]
+  }
+
+  //new_bar 的测试用的 code数据。
+  if(code==="lifeng-HistogramOutOrder2"){
+    data = [
+      {"Order":1,"Qty":4,"入库单":4,"type":"JIT"},
+      {"Order":2,"Qty":5,"入库单":4,"type":"B2C"},
+      {"Order":3,"Qty":6,"入库单":4,"type":"B2B"}
+    ]
+  }
+  if(code==="lifeng-HistogramOutOrder3"){
+    data = [
+      {"Order":1,"Qty":4,"入库单":4,"bin":2,"type":"JIT"},
+      {"Order":2,"Qty":5,"入库单":2,"bin":1,"type":"B2C"},
+      {"Order":3,"Qty":6,"入库单":4,"bin":2,"type":"B2B"}
+    ]
+  }
+
+  if(code==="lifeng-robotTote"){
+    data = "[{'总数':999}]"
+  }
+  if(code==="lifeng-robotTote2"){
+    data = [{
+      '数据':3.1415926,
+    }]
+  }
+
+  if(code==="YH-card"){
+    data = [{
+      'E数':888,
+      'Qty':888,
+    }]
+  }
+  if(code==="YH-card2"){
+    data = [{
+      '数据1':1292,
+      '数据2':812320,
+      '数据3':3,
+    }]
+  }
+  if(code==="YH-card3"){
+    data = [{
+      '总数':99
+    }]
+  }
+
+  //注意，这个line组件的数据，还尚未和后端确定，所以就这个格式走，未来有调整再说。
+  if(code==="demo_line2"){
+    data=data = [
+      {"拣货":100,"上架":200,"type":"00:00"},
+      {"拣货":200,"上架":400,"type":"01:00"},
+      {"拣货":370,"上架":1000,"type":"02:00"},
+      {"拣货":270,"上架":800,"type":"03:00"},
+    ]
+  }
+  if(code==="demo_line"){
+    data = [
+      {"拣货":100,"type":"00:00"},
+      {"拣货":200,"type":"01:00"},
+      {"拣货":370,"type":"02:00"},
+      {"拣货":270,"type":"03:00"},
+    ]
+  }
+
+  if(code==="yonghui_shops"){
+    data = [];
+    let shop={
+      "门店代码":"ABCDE12345",
+      "门店名":"上海静安店",
+      "周转箱数":"8888",
+      "进度":"已完成",
+    }
+    for(let i=0;i<34;i++){
+      data.push(JSON.parse(JSON.stringify(shop)));
+    }
+    data[1]["周转箱数"] = 999999999;
+    data[2]["进度"] = "好像真的没有完成哦";
+  }
+
+  //利丰新版的mock数据
+  if(code==="YH-PickOverallProgress"){data = [{总体进度: 0.5}]}
+  else if(
+    code==="YH-PickTotalTasks"
+    || code==="YH-PickCompleted"
+    || code==="YH-PickUnfinished"
+    || code==="YH-PickAbnormal"
+    || code==="YH-ReceiptTotalTasks"
+    || code==="YH-ReceiptCompleted"
+    || code==="YH-ReceiptUnfinished"
+    || code==="YH-ReceiptTotalTasks"
+  ){data = [{E数: 457, SKU: 66}]}
+  else if(code==="YH-PickSkuCompleted"){data = [{"SKU(已完成 / 总数)": "0 / 66"}]}
+  else if(code==="YH-PickNumCompleted"){data = [{"E数(已完成 / 总数)": "0 / 457"}]}
+  else if(code==="YH-PickShopCompleted"){data = [{"门店数(已完成 / 总数)": "0 / 1"}]}
+  else if(code==="YH-PickSkuPercentage"){data = [{"进度 (SKU)": 9}]}
+  else if(code==="YH-PickPieChart"){data = [{"未完成": 50, "已完成": 30, "异常": 20}]}
+  else if(code==="YH-PickLineChart"){data = [{"拣货量":20,"type":"00:00"},{"拣货量":60,"type":"01:00"},{"拣货量":150,"type":"02:00"}]}
+  else if(code==="YH-PickHistogram"){data = [{"type":1,"拣货量":120},{"type":2,"拣货量":250},{"type":3,"拣货量":150},{"type":4,"拣货量":400}]}
+  else if(code==="YH-PickLineInfo"){
+    data = [
+      {"门店列表":"上海A,南京店B,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店A,北京店C","进度 (SKU)":"10%","E数 (已完成 / 总数)":"1 / 457","线路":96,"SKU (已完成 / 总数)":"0 / 66","门店数 (已完成 / 总数)":"0 / 1"},
+      {"门店列表":"上海A,南京店B,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店A,北京店C","进度 (SKU)":"10%","E数 (已完成 / 总数)":"1 / 457","线路":96,"SKU (已完成 / 总数)":"0 / 66","门店数 (已完成 / 总数)":"0 / 1"},
+      {"门店列表":"上海A,南京店B,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店C,北京店A,北京店C","进度 (SKU)":"10%","E数 (已完成 / 总数)":"1 / 457","线路":96,"SKU (已完成 / 总数)":"0 / 66","门店数 (已完成 / 总数)":"0 / 1"},
+    ]
+  }
+  else if(code==="YH-PickContainerNum"){data = [{"周转箱总数": 9}]}
+  else if(code==="YH-PickShopInfo"){
+    data = []
+    for(let i=0;i<32;i++){
+      data.push({"门店名":"永辉徐汇区上中西路会员店","进度":10.00,"周转箱数":i,"门店代码":"YH9D32"});
+    }
+  }
+
+
+
+  ctx.body = {
+    data: data,
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+module.exports = router
