@@ -56,28 +56,7 @@ function getWidgetConfig (){
         "padding":5,
         "background":""
       },
-      "echartOption":{
-        "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
-        "title": {
-          "text": "出库单",
-          "textStyle": {
-            "fontSize": 16,
-            "color": "#f8f4a0"
-          }
-        },
-        "axisLabel": {
-          "show": "true",
-          "textStyle": {
-            "color": "#f8f4a0"
-          }
-        },
-        "legend":{
-          "show": "true",
-          "textStyle": {
-            "color": "#f8f4a0"
-          }
-        }
-      },
+      //"echartOption":{},
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"lifeng-HistogramOutOrder"
     },

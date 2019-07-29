@@ -32,34 +32,36 @@ import { setTimeout } from 'timers';
 // let apiData = [
 //   {
 //     "percent": 0.4,
-//     "finish": 800,
-//     "unfinish": 1200,
+//     "finish": 80,
+//     "unfinish": 120,
 //     "type": "CYCLE"
 //   },
 //   {
 //     "percent": 0.5,
-//     "finish": 400,
-//     "unfinish": 400,
+//     "finish": 40,
+//     "unfinish": 40,
 //     "type": "WALKING"
 //   },
 //   {
-//     "percent": 0.75,
-//     "finish": 600,
-//     "unfinish": 400,
+//     "percent": 0.6,
+//     "finish": 60,
+//     "unfinish": 40,
 //     "type": "JOGGING MAN"
 //   }
 // ]
 
 // 提取数据格式为：
-// let data1 = [0.4,0.5,0.75];
-// let data2 = [800,400,600];
-// let data3 = [1200,400,400];
+// let data_text = ["CYCLE","WALKING","JOGGING MAN"];
+// let data_percent = [0.4,0.5,0.75];
+// let data_finish = [80,40,60];
+// let data_unfinish = [120,40,40];
 
 // 进一步处理为：
-// let data1 = [140,150,175]; // 100*(n+1) 目的是显示在纵坐标100点以上
-// let data2 = [400,500,600]; // n*zoom 目的是无论数据多大，都缩放到100点的位置
-// let data3 = [600,500,400]; // n*zoom 目的是无论数据多大，都缩放到100点的位置
-// let zoom = [2,0.8,1];      // data1/data2 缩放比例
+// let data_total = [200,80,100];                     // data_finish + data_unfinish 总数
+// let data_zoom = [2,0.8,1];                         // data_total/100 缩放系数
+// let data_percent = [140,150,175];                  // 100*(n+1) 目的是显示在纵坐标100点以上
+// let data_finish = [40,50,60];                      // n/zoom 目的是无论数据多大，都缩放到100点的位置
+// let data_unfinish = [60,50,40];                    // n/zoom 目的是无论数据多大，都缩放到100点的位置
 
 
 // 这个是echart实例的默认配置
@@ -127,7 +129,7 @@ let defaultOption = {
         normal : {
           color: '#fff',
           label: {
-            formatter: '{c}%',
+            formatter: '{c}',
             show: true,
             position: 'left',
             textStyle: {
@@ -148,7 +150,7 @@ let defaultOption = {
         normal : {
           color: 'rgba(255,255,255,0.2)',
           label: {
-            formatter: '{c}%',
+            formatter: '{c}',
             show: true,
             position: 'left',
             textStyle: {
@@ -171,65 +173,59 @@ let defaultOption = {
 // 结合数据源和默认echart数据，进行最新样式的组装。
 function getNewOption(myConfig,apiData) {
 
-  // 获取数据源数据，固定格式为：
-  // [{"出库单":1,"sku":4,"type":"JIT"},
-  //  {"出库单":2,"sku":5,"type":"B2C"},
-  //  {"出库单":3,"sku":6,"type":"B2B"}]
-  let data = myConfig;
-  
-  // 提取type的所有值为一个数组。例如["JIT"、"B2C"、"B2B"]
-  let types = _.map(apiData,"type");
-  
-  // keys，例如['出库单','sku','type']
-  let keys = _.keys(apiData && apiData[0]);
-  
-  // 有效的keys（排除type），例如['出库单','sku']
-  let effectiveKeys = keys.slice(0);
-  let index = effectiveKeys.indexOf('type');
-  if (index > -1) {effectiveKeys.splice(index, 1)}
+  apiData = [
+    {
+      "percent": 0.4,
+      "finish": 80,
+      "unfinish": 120,
+      "type": "CYCLE"
+    },
+    {
+      "percent": 0.5,
+      "finish": 40,
+      "unfinish": 40,
+      "type": "WALKING"
+    },
+    {
+      "percent": 0.6,
+      "finish": 60,
+      "unfinish": 40,
+      "type": "JOGGING MAN"
+    }
+  ]
 
-  // series 配置，例如 
-  // [{name: '出库单',data: [1, 2, 3]},
-  //  {name: 'sku',  data: [4, 5, 6]}]
-  let series = []
-  for(let i=0;i<effectiveKeys.length;i++){
-    series.push({
-      name:effectiveKeys[i],
-      data:_.map(apiData,effectiveKeys[i]),
-      type:"bar"
-    })
+  let data_text = _.map(apiData,"type");
+  let data_percent = _.map(apiData,"percent");
+  let data_finish = _.map(apiData,"finish");
+  let data_unfinish = _.map(apiData,"unfinish");
+
+  let data_total = _.unzipWith([data_finish,data_unfinish], _.add)
+  let data_zoom = data_total.map(function(one){return Number((one/100).toFixed(4))})
+  data_percent = data_percent.map(function(one){return 100*(one+1)})
+  data_finish = data_finish.map(function(one,index){return Number((one/data_zoom[index]).toFixed(4)) })
+  data_unfinish = data_unfinish.map(function(one,index){return Number((one/data_zoom[index]).toFixed(4)) })
+
+  //使用数据
+  defaultOption.xAxis.data = data_text;
+  defaultOption.series[0].data = data_percent;
+  defaultOption.series[1].data = data_finish;
+  defaultOption.series[2].data = data_unfinish;
+
+  defaultOption.series[0].itemStyle.normal.label.formatter =  function(params) {
+    let a = (params.data-100)+'%';
+    return a; 
   }
-  // legend 配置
-  let legend = Object.assign({},{"data":effectiveKeys},data.echartOption.legend)
-  //将字符串转成布尔
-  legend.show = legend.show==="false"?false:true;
-  // xAxis、yAxis 配置
-  let axisLabel = Object.assign({},data.echartOption.axisLabel);
-  axisLabel.show = axisLabel.show==="false"?false:true //将字符串转成布尔
-  let xAxis = {
-    "axisLabel":axisLabel,
-    "data":types
+  defaultOption.series[1].itemStyle.normal.label.formatter =  function(params) {
+    let zoom = data_zoom[params.dataIndex]
+    let a = Math.round(params.data*zoom);
+    return a; 
   }
-  let yAxis = {
-    "axisLabel":axisLabel,
-    "type": "value"
+  defaultOption.series[2].itemStyle.normal.label.formatter =  function(params) {
+    let zoom = data_zoom[params.dataIndex]
+    let a = Math.round(params.data*zoom);
+    return a; 
   }
-
-  // title 配置
-  let title = data.echartOption.title;
-  // color 配置
-  let color = data.echartOption.color.split('|')
-
-  // 最新的配置
-  let newOption = JSON.parse(JSON.stringify(defaultOption));
-  newOption.title = title;
-  newOption.color = color;
-  newOption.series = series;
-  newOption.legend = legend;
-  newOption.xAxis = xAxis;
-  newOption.yAxis = yAxis;
-
-  //return newOption;
+  
   return defaultOption;
 }
 
