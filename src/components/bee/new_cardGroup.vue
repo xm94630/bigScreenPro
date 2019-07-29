@@ -53,13 +53,16 @@ export default {
     }
   },
   methods:{
+    parseData(data){
+      return bee.arraySortByGivenKeys(data,["门店名","门店代码","周转箱数","进度"],'-');
+    },
     initWidget:function(myConfig,cb){
       this.diyCoreCode = myConfig.diyCoreCode;
       let params = Object.assign({},{diyCoreCode:myConfig.diyCoreCode},store.state.store_globalContion);
       //获取数据源
       axios.post(baseUrl + myConfig.dataUrl,params).then(response => {
         let apiData = response.data.data;
-        this.apiData = apiData;
+        this.apiData = this.parseData(apiData);
         cb();
       });
     },
@@ -73,7 +76,7 @@ export default {
         //获取数据源
         axios.post(baseUrl + dataUrl,params).then(response => {
           let apiData = response.data.data;
-          this.apiData = apiData;
+          this.apiData = this.parseData(apiData);
         });
       }
     },

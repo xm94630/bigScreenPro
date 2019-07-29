@@ -1,6 +1,24 @@
 // 通用函数库
 var bee = (function(bee){
 
+    //重新排列对象字段顺序
+    bee.objectSortByGivenKeys = function(obj,keysArr,defaultValue){
+        let newObj={};
+        for(let i=0;i<keysArr.length;i++){
+          newObj[keysArr[i]] = obj[keysArr[i]]===undefined?defaultValue:obj[keysArr[i]];
+        }
+        return newObj;
+    }
+
+    //重新排列（数组中）所有对象字段顺序
+    bee.arraySortByGivenKeys = function(arr,keysArr,defaultValue){
+        const newData=[];
+        for(let i=0;i<arr.length;i++){
+            newData.push(bee.objectSortByGivenKeys(arr[i],keysArr,defaultValue));
+        }
+        return newData;
+    }
+
     //将字符串格式的json转义成js可用的对象
     bee.safeData = function(apiData){
         return typeof(apiData)=='string'?eval('(' + apiData + ')'):apiData;
