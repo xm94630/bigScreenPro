@@ -30,109 +30,100 @@ import { setTimeout } from 'timers';
 
 
 let option = {
-    xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        axisLine:{
-            lineStyle:{
-                color:'#fff',
-                width:3, 
-            },  
-        } ,
-        axisLabel: {
+  xAxis: {
+    type: 'category',
+    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    axisLine:{
+      lineStyle:{
+        color:'#fff',
+        width:3, 
+      },  
+    } ,
+    axisLabel: {
+      show: true,
+      textStyle: {
+        color: '#fff',  
+        fontSize : 30,
+      },
+      backgroundColor:'rgba(255,255,255,0.2)',
+      padding:10,
+      verticalAlign:'middle',
+      margin:35,
+      width:200, 
+    },
+  },
+  yAxis: {
+    show : false,
+    type: 'value',
+  }, 
+  color:['#fff'],
+  series: [
+    {
+      data: [90, 80, 90, 64, 90, 70, 70],
+      type: 'line',
+      itemStyle : {
+      normal : {
+        color: '#fff',
+        label: {
+          formatter: '{c}%',
             show: true,
+            position: 'top',
             textStyle: {
-                color: '#fff',  
-                fontSize : 30,
-            },
-            backgroundColor:'rgba(255,255,255,0.2)',
-            padding:10,
-            verticalAlign:'middle',
-            margin:35,
-            width:200, 
-        },
-    },
-    yAxis: {
-        show : false,
-        type: 'value',
-    },
-    
-    color:['#fff','red'],
-    
-
-    series: [{
-        
-        data: [90, 80, 90, 64, 90, 70, 70],
-        type: 'line',
-        
-        itemStyle : {
-        normal : {
-          color: '#fff',
-          label: {
-              formatter: '{c}%',
-                  show: true,
-                  position: 'top',
-                  textStyle: {
-                    color: '#fff',
-                    fontSize:'24',
-              }
-            }
-        }
-			},
-		lineStyle: {
-            width: 5
-        },
-        symbol:'circle',
-        symbolSize:20,
-        
-    },  
-    
-        {
-            name: '直接访问',
-            type: 'bar',
-            stack: '总量',
-            barWidth : 30,//柱图宽度
-            itemStyle : {
-            normal : {
               color: '#fff',
-              label: {
-                  formatter: '{c}%',
-                      show: true,
-                      position: 'left',
-                      textStyle: {
-                        color: '#fff',
-                        fontSize:'24',
-                    
-                  }
-                }
+              fontSize:'24',
             }
-			},
-
-            
-            data: [10, 30, 30, 30, 30, 30, 30]
-        },
-        {
-            name: '邮件营销',
-            type: 'bar',
-            stack: '总量',
-             itemStyle : {
-            normal : {
-              color: 'rgba(255,255,255,0.2)',
-              label: {
-                  formatter: '{c}%',
-                      show: true,
-                      position: 'left',
-                      textStyle: {
-                        color: '#fff',
-                        fontSize:'24',
-                    
-                  }
-                }
+          }
+        }
+      },
+      lineStyle: {
+        width: 5
+      },
+      symbol:'circle',
+      symbolSize:20,  
+    },  
+    {
+      name: '直接访问',
+      type: 'bar',
+      stack: '总量',
+      barWidth : 30,//柱图宽度
+      itemStyle : {
+      normal : {
+        color: '#fff',
+        label: {
+            formatter: '{c}%',
+                show: true,
+                position: 'left',
+                textStyle: {
+                  color: '#fff',
+                  fontSize:'24',
+              
             }
-          },
-            data: [40, 20, 20, 20, 20, 20, 20]
-        },
-    ]
+          }
+        }
+      },        
+      data: [10, 30, 30, 30, 30, 30, 30]
+    },
+    {
+      name: '邮件营销',
+      type: 'bar',
+      stack: '总量',
+      itemStyle : {
+      normal : {
+        color: 'rgba(255,255,255,0.2)',
+        label: {
+          formatter: '{c}%',
+            show: true,
+            position: 'left',
+            textStyle: {
+              color: '#fff',
+              fontSize:'24',  
+            }
+          }
+        }
+      },
+      data: [40, 20, 20, 20, 20, 20, 20]
+    },
+  ]
 };
 
 
