@@ -29,7 +29,8 @@ import store from '@/src/store';
 import { setTimeout } from 'timers';
 
 
-let option = {
+// 这个是echart实例的默认配置
+let defaultOption = {
   xAxis: {
     type: 'category',
     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -59,13 +60,14 @@ let option = {
   color:['#fff'],
   series: [
     {
-      data: [90, 80, 90, 64, 90, 70, 70],
+      name: '折线图_百分比',
       type: 'line',
+      data: [90, 80, 90, 64, 90, 70, 70],
       itemStyle : {
-      normal : {
-        color: '#fff',
-        label: {
-          formatter: '{c}%',
+        normal : {
+          color: '#fff',
+          label: {
+            formatter: '{c}%',
             show: true,
             position: 'top',
             textStyle: {
@@ -80,38 +82,40 @@ let option = {
       },
       symbol:'circle',
       symbolSize:20,  
-    },  
+    }, 
+
     {
-      name: '直接访问',
+      name: '柱状图_已完成',
       type: 'bar',
-      stack: '总量',
-      barWidth : 30,//柱图宽度
+      data: [10, 30, 30, 30, 30, 30, 30],
+      stack: '总量',//和下方的设置同一个值，实现堆叠图
+      barWidth : 30,
       itemStyle : {
-      normal : {
-        color: '#fff',
-        label: {
+        normal : {
+          color: '#fff',
+          label: {
             formatter: '{c}%',
-                show: true,
-                position: 'left',
-                textStyle: {
-                  color: '#fff',
-                  fontSize:'24',
-              
+            show: true,
+            position: 'left',
+            textStyle: {
+              color: '#fff',
+              fontSize:'24',
             }
           }
         }
-      },        
-      data: [10, 30, 30, 30, 30, 30, 30]
+      },   
     },
+
     {
-      name: '邮件营销',
+      name: '柱状图_未完成',
       type: 'bar',
+      data: [40, 20, 20, 20, 20, 20, 20],
       stack: '总量',
       itemStyle : {
-      normal : {
-        color: 'rgba(255,255,255,0.2)',
-        label: {
-          formatter: '{c}%',
+        normal : {
+          color: 'rgba(255,255,255,0.2)',
+          label: {
+            formatter: '{c}%',
             show: true,
             position: 'left',
             textStyle: {
@@ -121,8 +125,8 @@ let option = {
           }
         }
       },
-      data: [40, 20, 20, 20, 20, 20, 20]
-    },
+    }
+    
   ]
 };
 
@@ -130,53 +134,6 @@ let option = {
 
 
 
-// 这个是echart实例的默认配置
-let defaultOption = {
-  "color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
-	"title": {
-		"text": "出库单",
-		"textStyle": {
-			"fontSize": 16,
-			"color": "#f8f4a0"
-		}
-	},
-	"legend": {
-		"data": ["出库单", "sku"],
-		"textStyle": {
-			"color": "#f8f4a0"
-		}
-	},
-	"xAxis": {
-		"data": ["JIT", "B2C", "B2B"],
-		"axisLabel": {
-			"show": true,
-			"textStyle": {
-				"color": "#f8f4a0"
-			}
-		}
-	},
-	"yAxis": {
-		"type": "value",
-		"axisLabel": {
-			"show": true,
-			"textStyle": {
-				"color": "#f8f4a0"
-			}
-		}
-	},
-	"series": [{
-		"name": "出库单",
-		"data": [1, 2, 3],
-		"type": "bar"
-	}, {
-		"name": "sku",
-		"data": [4, 5, 6],
-		"type": "bar"
-  }],
-  "tooltip": {"trigger": "axis"}, 
-  "toolbox": {"feature": {"saveAsImage": {}}},
-  "grid": {"left": "3%","right": "4%","bottom": "3%","containLabel": true},
-}
 
 // 结合数据源和默认echart数据，进行最新样式的组装。
 function getNewOption(myConfig,apiData) {
@@ -240,7 +197,7 @@ function getNewOption(myConfig,apiData) {
   newOption.yAxis = yAxis;
 
   //return newOption;
-  return option;
+  return defaultOption;
 }
 
 
