@@ -58,7 +58,7 @@ function getWidgetConfig (){
       },
       //"echartOption":{},
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"lifeng-HistogramOutOrder"
+      "diyCoreCode":"dkn_barLine"
     },
     "new_line":{
       "id": bee.guidGenerator(),

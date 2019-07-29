@@ -354,6 +354,57 @@ router.post('/report/selectData', async (ctx, next) => {
     }
   }
 
+  //迪卡侬
+  if(code==="dkn_barLine"){
+    data = [
+      {
+        "finish": 80,
+        "unfinish": 120,
+        "type": "CYCLE"
+      },
+      {
+        "finish": 40,
+        "unfinish": 40,
+        "type": "WALKING"
+      },
+      {
+        "finish": 100,
+        "unfinish": 0,
+        "type": "JOGGING MAN"
+      },
+      {
+        "finish": 0,
+        "unfinish": 0,
+        "type": "JOGGING WOMAN ACC"
+      },
+      {
+        "finish": 350,
+        "unfinish": 200,
+        "type": "GOLF"
+      },
+      {
+        "finish": 600,
+        "unfinish": 170,
+        "type": "H&D"
+      },
+      {
+        "finish": 750,
+        "unfinish": 300,
+        "type": "RACKKET SPORTS"
+      },
+      {
+        "finish": 710,
+        "unfinish": 150,
+        "type": "WORKSHOP"
+      },
+      {
+        "finish": 800,
+        "unfinish": 80,
+        "type": "RUNNING"
+      }
+    ]
+  }
+
 
 
   ctx.body = {

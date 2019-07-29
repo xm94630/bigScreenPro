@@ -169,27 +169,6 @@ let defaultOption = {
 
 // 结合数据源和默认echart数据，进行最新样式的组装。
 function getNewOption(myConfig,apiData) {
-
-  apiData = [
-    {
-      "percent": 0.4,
-      "finish": 80,
-      "unfinish": 120,
-      "type": "CYCLE"
-    },
-    {
-      "percent": 0.5,
-      "finish": 40,
-      "unfinish": 40,
-      "type": "WALKING"
-    },
-    {
-      "percent": 0.6,
-      "finish": 90,
-      "unfinish": 10,
-      "type": "JOGGING MAN"
-    }
-  ]
  
   let data_text = _.map(apiData,"type");
   let data_finish = _.map(apiData,"finish");
@@ -198,7 +177,7 @@ function getNewOption(myConfig,apiData) {
   let data_total = _.unzipWith([data_finish,data_unfinish], _.add)
   let data_zoom = data_total.map(function(one){return Number((one/100).toFixed(4))})
   let data_percent = data_finish.map(function(one,index){
-    return data_total[index]?Math.round(100*(one/data_total[index]+1)):0;
+    return data_total[index]?Math.round(100*(one/data_total[index]+1)):100;
   })
   data_finish = data_finish.map(function(one,index){return Number((one/data_zoom[index]).toFixed(4)) })
   data_unfinish = data_unfinish.map(function(one,index){return Number((one/data_zoom[index]).toFixed(4)) })
