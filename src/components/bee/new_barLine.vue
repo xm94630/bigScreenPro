@@ -31,19 +31,16 @@ import { setTimeout } from 'timers';
 //数据源的数据格式
 // let apiData = [
 //   {
-//     "percent": 0.4,
 //     "finish": 80,
 //     "unfinish": 120,
 //     "type": "CYCLE"
 //   },
 //   {
-//     "percent": 0.5,
 //     "finish": 40,
 //     "unfinish": 40,
 //     "type": "WALKING"
 //   },
 //   {
-//     "percent": 0.6,
 //     "finish": 60,
 //     "unfinish": 40,
 //     "type": "JOGGING MAN"
@@ -59,7 +56,7 @@ import { setTimeout } from 'timers';
 // 进一步处理为：
 // let data_total = [200,80,100];                     // data_finish + data_unfinish 总数
 // let data_zoom = [2,0.8,1];                         // data_total/100 缩放系数
-// let data_percent = [140,150,175];                  // 100*(n+1) 目的是显示在纵坐标100点以上
+// let data_percent = [140,150,175];                  // 先求得完成百分比，然后100*(n+1) 目的是显示在纵坐标100点以上
 // let data_finish = [40,50,60];                      // n/zoom 目的是无论数据多大，都缩放到100点的位置
 // let data_unfinish = [60,50,40];                    // n/zoom 目的是无论数据多大，都缩放到100点的位置
 
@@ -79,7 +76,7 @@ let defaultOption = {
       show: true,
       textStyle: {
         color: '#fff',  
-        fontSize : 30,
+        fontSize : 18,
       },
       backgroundColor:'rgba(255,255,255,0.2)',
       padding:10,
@@ -188,20 +185,21 @@ function getNewOption(myConfig,apiData) {
     },
     {
       "percent": 0.6,
-      "finish": 60,
-      "unfinish": 40,
+      "finish": 90,
+      "unfinish": 10,
       "type": "JOGGING MAN"
     }
   ]
-
+ 
   let data_text = _.map(apiData,"type");
-  let data_percent = _.map(apiData,"percent");
   let data_finish = _.map(apiData,"finish");
   let data_unfinish = _.map(apiData,"unfinish");
 
   let data_total = _.unzipWith([data_finish,data_unfinish], _.add)
   let data_zoom = data_total.map(function(one){return Number((one/100).toFixed(4))})
-  data_percent = data_percent.map(function(one){return 100*(one+1)})
+  let data_percent = data_finish.map(function(one,index){
+    return data_total[index]?Math.round(100*(one/data_total[index]+1)):0;
+  })
   data_finish = data_finish.map(function(one,index){return Number((one/data_zoom[index]).toFixed(4)) })
   data_unfinish = data_unfinish.map(function(one,index){return Number((one/data_zoom[index]).toFixed(4)) })
 
