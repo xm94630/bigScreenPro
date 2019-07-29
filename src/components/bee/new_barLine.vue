@@ -28,6 +28,39 @@ import {baseUrl} from '@/bee.config';
 import store from '@/src/store';
 import { setTimeout } from 'timers';
 
+//数据源的数据格式
+// let apiData = [
+//   {
+//     "percent": 0.4,
+//     "finish": 800,
+//     "unfinish": 1200,
+//     "type": "CYCLE"
+//   },
+//   {
+//     "percent": 0.5,
+//     "finish": 400,
+//     "unfinish": 400,
+//     "type": "WALKING"
+//   },
+//   {
+//     "percent": 0.75,
+//     "finish": 600,
+//     "unfinish": 400,
+//     "type": "JOGGING MAN"
+//   }
+// ]
+
+// 提取数据格式为：
+// let data1 = [0.4,0.5,0.75];
+// let data2 = [800,400,600];
+// let data3 = [1200,400,400];
+
+// 进一步处理为：
+// let data1 = [140,150,175]; // 100*(n+1) 目的是显示在纵坐标100点以上
+// let data2 = [400,500,600]; // n*zoom 目的是无论数据多大，都缩放到100点的位置
+// let data3 = [600,500,400]; // n*zoom 目的是无论数据多大，都缩放到100点的位置
+// let zoom = [2,0.8,1];      // data1/data2 缩放比例
+
 
 // 这个是echart实例的默认配置
 let defaultOption = {
@@ -126,7 +159,7 @@ let defaultOption = {
         }
       },
     }
-    
+
   ]
 };
 
