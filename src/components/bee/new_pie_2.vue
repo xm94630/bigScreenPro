@@ -56,6 +56,9 @@ function getNewOption(myConfig,apiData) {
   
   // 获取一条数据
   let one = apiData[0];
+  if(!one){
+    return {}; //如果数据不存在，直接返回空配置
+  }
   // 获取keys，如：["工作中", "异常", "空闲", "充电中"]
   let keys = Object.keys(one)
 
