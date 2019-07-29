@@ -1589,7 +1589,7 @@ router.get('/view/info', async (ctx, next) => {
       "canvas": {
         "width": "1920",
         "height": "1080",
-        "background": "#14224a",
+        "background": "#182136",
         "zoom-type": 0,
         "grid": 10,
         "refreshTime": "60000",
@@ -2453,7 +2453,7 @@ router.get('/view/info', async (ctx, next) => {
       "canvas": {
           "width": "1920",
           "height": "1080",
-          "background": "#14224a",
+          "background": "#182136",
           "zoom-type": 0,
           "grid": 10,
           "refreshTime": "600000",
@@ -2482,7 +2482,7 @@ router.get('/view/info', async (ctx, next) => {
                   "font-size": 12,
                   "text-align": "left",
                   "color": "#f8f4a0",
-                  "background": "#16244a",
+                  "background": "",
                   "border-radius":5
               },
               "widgetOption": {
@@ -2602,7 +2602,7 @@ router.get('/view/info', async (ctx, next) => {
                   "z-index": 9,
                   "border": "",
                   "padding": 10,
-                  "background": "#142249",
+                  "background": "",
                   "color": "#f8f594"
               },
               "dataUrl": "/epimetheus/api/diy/report/selectData",

@@ -173,6 +173,7 @@ export default {
     width:100%;
     position: absolute;
     .oneLine{
+      box-sizing: border-box;
       border:solid 1px #1f3e7b;
       width:100%;
       height:150px;
