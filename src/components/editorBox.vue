@@ -4,6 +4,7 @@
     <div class="toolBar">
       点击添加组件：
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_bar')">bar</el-button>
+      <el-button size="mini" type="primary" round @click="createWidgetFun('new_barLine')">barLine</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_line')">line</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_pie_1')">pie1</el-button>
       <el-button size="mini" type="primary" round @click="createWidgetFun('new_pie_2')">pie2</el-button>

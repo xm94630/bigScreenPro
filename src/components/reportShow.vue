@@ -24,6 +24,7 @@ import bee from '@/src/tools/bee.js';
 import beeX from './bee/beeX.vue';
 import dater from './bee/dater.vue';
 import new_bar from './bee/new_bar.vue';
+import new_barLine from './bee/new_barLine.vue';
 import new_card from './bee/new_card.vue';
 import beeCard from './bee/beeCard.vue';
 import new_cardGroup from './bee/new_cardGroup.vue';
@@ -46,6 +47,7 @@ export default {
     beeX,
     dater,
     new_bar,
+    new_barLine,
     new_card,
     beeCard,
     new_cardGroup,
