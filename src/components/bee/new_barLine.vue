@@ -63,6 +63,16 @@ import { setTimeout } from 'timers';
 
 // 这个是echart实例的默认配置
 let defaultOption = {
+  legend: {
+    data:['Picked','To Pick','Completion Rate'],
+    x: 'center', 
+    y: 'bottom',
+    textStyle:{
+      color:"#fff",
+      fontSize:20,
+    }
+  },
+  grid: {bottom: "25%",left:"0",right:"0"}, //把图往上偏移
   xAxis: {
     type: 'category',
     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -92,7 +102,7 @@ let defaultOption = {
   color:['#fff'],
   series: [
     {
-      name: '折线图_百分比',
+      name: 'Completion Rate',
       type: 'line',
       data: [90, 80, 90, 64, 90, 70, 70],
       itemStyle : {
@@ -117,7 +127,7 @@ let defaultOption = {
     }, 
 
     {
-      name: '柱状图_已完成',
+      name: 'Picked',
       type: 'bar',
       data: [10, 30, 30, 30, 30, 30, 30],
       stack: '总量',//和下方的设置同一个值，实现堆叠图
@@ -139,7 +149,7 @@ let defaultOption = {
     },
 
     {
-      name: '柱状图_未完成',
+      name: 'To Pick',
       type: 'bar',
       data: [40, 20, 20, 20, 20, 20, 20],
       stack: '总量',
