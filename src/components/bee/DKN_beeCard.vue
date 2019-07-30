@@ -24,8 +24,10 @@
       <div class="titleCon" :style="titleStyle">{{myConfig.title}}</div>
     </div>
 
+    <div :style="arrawStyle"></div>
+
     <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
-    </vue-draggable-resizable>
+  </vue-draggable-resizable>
 </template>
 
 <script>
@@ -53,6 +55,7 @@ export default {
     keyStyle() {return bee.objToCSS(bee.replaceKey(this.myConfig.widgetOption.keyCss,{"x":"left","y":"top"}));},
     valueStyle() {return bee.objToCSS(bee.replaceKey(this.myConfig.widgetOption.valueCss,{"x":"left","y":"top"}));},
     titleStyle() {return bee.objToCSS(bee.replaceKey(this.myConfig.widgetOption.titleCss,{"x":"left","y":"top"}));},
+    arrawStyle() {return bee.objToCSS(bee.replaceKey(this.myConfig.widgetOption.arrawCss,{"x":"left","y":"top"}));},
   },
   methods:{
     
