@@ -71,21 +71,7 @@ import store from '@/src/store';
 
 //加载全部可用组件
 import beeX from '../components/bee/beeX.vue';
-import dater from '../components/bee/dater.vue';
-import new_bar from '../components/bee/new_bar.vue';
-import new_barLine from '../components/bee/new_barLine.vue';
-import new_card from '../components/bee/new_card.vue';
-import beeCard from '../components/bee/beeCard.vue';
-import new_cardGroup from '../components/bee/new_cardGroup.vue';
-import YH_lines from '../components/bee/YH_lines.vue';
-import new_info from '../components/bee/new_info.vue';
-import new_line from '../components/bee/new_line.vue';
-import new_pie_1 from '../components/bee/new_pie_1.vue';
-import new_pie_2 from '../components/bee/new_pie_2.vue';
-import beeTable from '../components/bee/beeTable.vue';
-import textBar from '../components/bee/textBar.vue';
-import beeTitle from '../components/bee/beeTitle.vue';
-import beeImage from '../components/bee/beeImage.vue';
+import {allWidgets} from "@/src/components/bee/widget.config"
 
 
 function mountCmp(cmp, props, parent) {
@@ -107,23 +93,7 @@ export default {
   name: 'xm',
   components: {
     editorBox,
-    
-    beeX,
-    dater,
-    new_bar,
-    new_barLine,
-    new_card,
-    beeCard,
-    new_cardGroup,
-    YH_lines,
-    new_info,
-    new_line,
-    new_pie_1,
-    new_pie_2,
-    beeTable,
-    textBar,
-    beeTitle,
-    beeImage,
+    ...allWidgets
   },
   props: {
   },
@@ -247,6 +217,7 @@ export default {
     }
   },
   mounted(){
+
     //看看是不是编辑页面，载入缩放
     let modCode = this.$route.query.modCode;
     if(modCode){

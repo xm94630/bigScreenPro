@@ -1,5 +1,44 @@
 import bee from "@/src/tools/bee";
 
+//引入全部组件
+import beeX from '@/src/components/bee/beeX.vue';
+import dater from '@/src/components/bee/dater.vue';
+import new_bar from '@/src/components/bee/new_bar.vue';
+import new_barLine from '@/src/components/bee/new_barLine.vue';
+import new_card from '@/src/components/bee/new_card.vue';
+import beeCard from '@/src/components/bee/beeCard.vue';
+import new_cardGroup from '@/src/components/bee/new_cardGroup.vue';
+import YH_lines from '@/src/components/bee/YH_lines.vue';
+import new_info from '@/src/components/bee/new_info.vue';
+import new_line from '@/src/components/bee/new_line.vue';
+import new_pie_1 from '@/src/components/bee/new_pie_1.vue';
+import new_pie_2 from '@/src/components/bee/new_pie_2.vue';
+import beeTable from '@/src/components/bee/beeTable.vue';
+import textBar from '@/src/components/bee/textBar.vue';
+import beeTitle from '@/src/components/bee/beeTitle.vue';
+import beeImage from '@/src/components/bee/beeImage.vue';
+import DKN_beeCard from '@/src/components/bee/DKN_beeCard.vue';
+
+let allWidgets = {
+    beeX, 
+    dater,
+    new_bar,
+    new_barLine,
+    new_card,
+    beeCard,
+    new_cardGroup,
+    YH_lines,
+    new_info,
+    new_line,
+    new_pie_1,
+    new_pie_2,
+    beeTable,
+    textBar,
+    beeTitle,
+    beeImage,
+    DKN_beeCard,
+}; 
+
 //用于可视化的配置模板
 function getWidgetConfig (){
   return {
@@ -474,5 +513,6 @@ function getWidgetConfig (){
 
  export {
   getWidgetConfig,
-  getWidgetConfigExplain
+  getWidgetConfigExplain,
+  allWidgets,
  }

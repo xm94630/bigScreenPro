@@ -21,22 +21,7 @@
 <script>
 import bee from '@/src/tools/bee.js';
 //加载全部可用组件
-import beeX from './bee/beeX.vue';
-import dater from './bee/dater.vue';
-import new_bar from './bee/new_bar.vue';
-import new_barLine from './bee/new_barLine.vue';
-import new_card from './bee/new_card.vue';
-import beeCard from './bee/beeCard.vue';
-import new_cardGroup from './bee/new_cardGroup.vue';
-import YH_lines from './bee/YH_lines.vue';
-import new_info from './bee/new_info.vue';
-import new_line from './bee/new_line.vue';
-import new_pie_1 from './bee/new_pie_1.vue';
-import new_pie_2 from './bee/new_pie_2.vue';
-import beeTable from './bee/beeTable.vue';
-import textBar from './bee/textBar.vue';
-import beeTitle from './bee/beeTitle.vue';
-import beeImage from './bee/beeImage.vue';
+import {allWidgets} from "@/src/components/bee/widget.config"
 
 export default {
   name: "reportShow",
@@ -44,22 +29,7 @@ export default {
     reportConfig: null
   },
   components: {
-    beeX,
-    dater,
-    new_bar,
-    new_barLine,
-    new_card,
-    beeCard,
-    new_cardGroup,
-    YH_lines,
-    new_info,
-    new_line,
-    new_pie_1,
-    new_pie_2,
-    beeTable,
-    textBar,
-    beeTitle,
-    beeImage,
+    ...allWidgets,
   },
   data() {
     return {};
