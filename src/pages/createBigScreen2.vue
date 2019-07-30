@@ -70,7 +70,6 @@ import echarts from "echarts";
 import store from '@/src/store';
 
 //加载全部可用组件
-import beeX from '../components/bee/beeX.vue';
 import {allWidgets} from "@/src/components/bee/widget.config"
 
 
