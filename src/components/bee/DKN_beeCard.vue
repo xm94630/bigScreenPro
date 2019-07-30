@@ -12,14 +12,18 @@
     @activated="clickFun(myConfig.id)" 
     class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)"
   >
-    <div :class="myConfig.widgetOption.cardStyle==1?'style1':'style2'">
-      <template v-for="(value,key) in apiData[0]">
-        <div class="oneline" :key="key">
-          <div class="valueCon" :style="valueStyle">{{value}}</div>
-          <div class="nameCon" :style="keyStyle">{{key}}</div>
-        </div>
-      </template>
+    <div style="height:100%;display:flex;flex-direction: column;justify-content:space-around;">
+      <div class="style1">
+        <template v-for="(value,key) in apiData[0]">
+          <div class="oneline" :key="key">
+            <div class="nameCon" :style="keyStyle">{{key}}</div>
+            <div class="valueCon" :style="valueStyle">{{value}}</div>
+          </div>
+        </template>
+      </div>
+      <div class="titleCon" :style="titleStyle">{{myConfig.title}}</div>
     </div>
+
     <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
     </vue-draggable-resizable>
 </template>
@@ -47,7 +51,8 @@ export default {
   computed: {
     myCss() {return bee.objToCSS(bee.replaceKey(this.myConfig.css,{"x":"left","y":"top"}));},
     keyStyle() {return bee.objToCSS(bee.replaceKey(this.myConfig.widgetOption.keyCss,{"x":"left","y":"top"}));},
-    valueStyle() {return bee.objToCSS(bee.replaceKey(this.myConfig.widgetOption.valueCss,{"x":"left","y":"top"}));}
+    valueStyle() {return bee.objToCSS(bee.replaceKey(this.myConfig.widgetOption.valueCss,{"x":"left","y":"top"}));},
+    titleStyle() {return bee.objToCSS(bee.replaceKey(this.myConfig.widgetOption.titleCss,{"x":"left","y":"top"}));},
   },
   methods:{
     
@@ -142,29 +147,10 @@ export default {
   }
 }
 
-.style2{
-  width: 100%;
-  height:100%;
+.titleCon{
+  font-size: 12px;
+  padding: 0 4px 4px 0;
   box-sizing: border-box;
-  display: flex;
-  justify-content:space-around;
-  text-align: center;
-  flex-direction: column;
-  .oneline{
-    height:100%;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content:space-around;
-    align-items:center;
-    .valueCon{
-      width:60%;
-      font-size: 30px;
-    }
-    .nameCon{
-      width:40%;
-      font-size: 12px;
-    }
-  }
 }
 
 </style>

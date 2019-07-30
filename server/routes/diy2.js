@@ -403,6 +403,14 @@ router.post('/report/selectData', async (ctx, next) => {
         "type": "RUNNING"
       }
     ]
+  }else if(code==="dkn_card"){
+    data = [{
+      "Total Order":38868
+    }]
+  }else if(code==="dkn_card2"){
+    data = [{
+      "JOGGING\nWOMAN\nACC":326
+    }]
   }
 
 

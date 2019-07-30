@@ -51,7 +51,7 @@ var bee = (function(bee){
     //将对象格式的样式配置转换成css字符串形式。
     bee.objToCSS = function(obj,otherCssStr){
         let str = "";
-        let arr = ["width","height","top","bottom","left","right","font-size","padding","border-radius"];
+        let arr = ["width","height","top","bottom","left","right","font-size","padding","border-radius","line-height"];
         for (let [key, value] of Object.entries(obj)) { 
             if(arr.indexOf(key)>-1 && ('number'===typeof(value) || value.indexOf('px')===-1) && !('string'===typeof(value)&&value.indexOf('%')!==-1)){
                 str += (`${key}:${value}px;`);

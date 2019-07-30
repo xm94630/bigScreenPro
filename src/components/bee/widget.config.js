@@ -435,35 +435,58 @@ function getWidgetConfig (){
     "DKN_beeCard":{
       "id": bee.guidGenerator(),
       "type":"DKN_beeCard",
+      "title":"PCS/Hr",
       "css":{
         "x": 20,
         "y": 20,
-        "width": 300,
-        "height": 100,
+        "width": 100,
+        "height": 150,
         "z-index":9,
-        "border": "solid 1px #1f3e7b",
+        "border": "",
         "border-radius":0,
-        "padding": 0,
+        "padding": 5,
         "font-size": 12,
         "text-align": "left",
         "color": "#f8f4a0",
-        "background": "#16244a"
+        "background": "rgba(255,255,255,0.1)",
       },
       "widgetOption":{
-        "cardStyle":1,
         "keyCss":{
           "font-size":12,
-          "color":"#3c8bd0",
+          "line-height":15,
+          "font-weight":"bold",
+          "color":"#ffffff",
           "width":"",
+          "height":"50",
+          "text-align":"left",
+          "padding":"0",
+          "margin":"-15px 0 0 5px",
         },
         "valueCss":{
           "font-size":30,
-          "color":"#3c8bd0",
+          "line-height":14,
+          "font-weight":"bold",
+          "color":"#ffffff",
           "width":"",
+          "height":"",
+          "text-align":"center",
+          "padding":"0",
+          "margin":"0",
+        },
+        "titleCss":{
+          "font-size":12,
+          "line-height":16,
+          "font-weight":"bold",
+          "color":"#ffffff",
+          "width":"",
+          "height":"",
+          "text-align":"right",
+          "padding":"2",
+          "margin":"0",
         }
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"YH-card" 
+      "diyCoreCode":"dkn_card2" 
     },
   }
 }
