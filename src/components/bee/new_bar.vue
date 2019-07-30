@@ -166,10 +166,7 @@ export default {
     };
   },
   computed: {
-    myCss() {
-      let map = {"x":"left","y":"top"};
-      return bee.objToCSS( bee.replaceKey(this.myConfig.css,map) );
-    }
+    myCss() {return bee.objToCSS( bee.replaceKey(this.myConfig.css,{"x":"left","y":"top"}));}
   },
   methods:{
     onResize: function (x, y, width, height) {
@@ -256,15 +253,6 @@ export default {
 
 
 <style lang="scss">
-.selectBorder{
-  position: absolute;
-  top:0px;
-  left:0px;
-  width: 100%;
-  height:100%;
-  background: rgba(0,231,255,0.11);
-  border: solid 1px rgba(0,231,255,0.3);
-}
 .widgetBox {
   position: absolute;
   box-sizing: border-box;

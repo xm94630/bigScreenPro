@@ -173,15 +173,6 @@ export default {
 
 
 <style lang="scss">
-.selectBorder{
-  position: absolute;
-  top:0px;
-  left:0px;
-  width: 100%;
-  height:100%;
-  background: rgba(0,231,255,0.11);
-  border: solid 1px rgba(0,231,255,0.3);
-}
 .widgetBox {
   position: absolute;
   box-sizing: border-box;

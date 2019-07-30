@@ -1,6 +1,17 @@
 <template>
-  <div class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)">
-
+  <!-- 拖拽组件 -->
+  <vue-draggable-resizable 
+    :x="Number(myConfig.css.x)" 
+    :y="Number(myConfig.css.y)" 
+    :w="Number(myConfig.css.width)" 
+    :h="Number(myConfig.css.height)" 
+    :grid="grid" 
+    :parent="false"
+    v-on:dragging="onDrag" 
+    v-on:resizing="onResize" 
+    @activated="clickFun(myConfig.id)" 
+    class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)"
+  >
     <div :class="myConfig.widgetOption.cardStyle==1?'style1':'style2'">
       <template v-for="(value,key) in apiData[0]">
         <div class="oneline" :key="key">
@@ -9,9 +20,8 @@
         </div>
       </template>
     </div>
-
     <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
-  </div>
+    </vue-draggable-resizable>
 </template>
 
 <script>
@@ -25,11 +35,13 @@ export default {
   name: "beeCard",
   props: {
     myConfig: null,
+    canvasConfig: Object,
   },
   data() {
     return {
       apiData:[],
-      store
+      store,
+      grid:(this.canvasConfig&&this.canvasConfig.grid)?[this.canvasConfig.grid,this.canvasConfig.grid]:[1,1]
     };
   },
   computed: {
@@ -38,6 +50,18 @@ export default {
     valueStyle() {return bee.objToCSS(bee.replaceKey(this.myConfig.widgetOption.valueCss,{"x":"left","y":"top"}));}
   },
   methods:{
+    
+    onResize: function (x, y, width, height) {
+      this.myConfig.css.x = this.x = x
+      this.myConfig.css.y = this.y = y
+      this.myConfig.css.width =this.width = width
+      this.myConfig.css.height = this.height = height
+    },
+    onDrag: function (x, y) {
+      this.myConfig.css.x = this.x = x
+      this.myConfig.css.y = this.y = y   
+    },
+
     initWidget:function(myConfig){
       let dataUrl = myConfig.dataUrl;
       let diyCoreCode = myConfig.diyCoreCode;
@@ -65,8 +89,11 @@ export default {
       }
     },
     clickFun(widgetId){
-      store.dispatch("setSelectWidgetId",widgetId);
-      bus.$emit("widgetClick",widgetId);
+      //只有在编辑页面，这个点击才有效
+      if(this.$el.parentElement.id==="editCanvas"){
+        store.dispatch("setSelectWidgetId",widgetId);
+        bus.$emit("widgetClick",widgetId);
+      }
     }
   },
   watch:{
@@ -76,7 +103,9 @@ export default {
       },
       deep: true
     },
-    
+    "canvasConfig.grid":function(v){
+      this.grid=[v,v];
+    }
   },
   mounted: function() {
     this.initWidget(this.myConfig);
