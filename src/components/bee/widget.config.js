@@ -390,7 +390,41 @@ function getWidgetConfig (){
         "padding":0,
         "background":"",
       },
-      "imageLink": "http://chuantu.xyz/t6/702/1563104330x3703728804.png",
+      "imageLink": "https://i.site.pictures/ppXSg.png",
+    },
+    //迪卡侬新增
+    "DKN_beeCard":{
+      "id": bee.guidGenerator(),
+      "type":"DKN_beeCard",
+      "css":{
+        "x": 20,
+        "y": 20,
+        "width": 300,
+        "height": 100,
+        "z-index":9,
+        "border": "solid 1px #1f3e7b",
+        "border-radius":0,
+        "padding": 0,
+        "font-size": 12,
+        "text-align": "left",
+        "color": "#f8f4a0",
+        "background": "#16244a"
+      },
+      "widgetOption":{
+        "cardStyle":1,
+        "keyCss":{
+          "font-size":12,
+          "color":"#3c8bd0",
+          "width":"",
+        },
+        "valueCss":{
+          "font-size":30,
+          "color":"#3c8bd0",
+          "width":"",
+        }
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"YH-card" 
     },
   }
 }

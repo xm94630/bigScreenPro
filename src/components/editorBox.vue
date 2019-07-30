@@ -3,21 +3,11 @@
   <div class="editorBox">
     <div class="toolBar">
       点击添加组件：
-      <el-button size="mini" type="primary" round @click="createWidgetFun('new_bar')">bar</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('new_barLine')">barLine</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('new_line')">line</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('new_pie_1')">pie1</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('new_pie_2')">pie2</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('new_card')">card</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('beeCard')">card(新)</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('new_cardGroup')">cardGroup</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('YH_lines')">YH_lines</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('new_info')">info</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('beeTitle')">beeTitle</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('dater')">dater</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('textBar')">textBar</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('beeTable')">beeTable</el-button>
-      <el-button size="mini" type="primary" round @click="createWidgetFun('beeImage')">beeImage</el-button>
+
+      <template v-for="(one,key) in widgetBtn">
+        <el-button :key="key" size="mini" type="primary" round @click="createWidgetFun(key)">{{key}}</el-button>
+      </template>
+
     </div>
     <el-row :gutter="0">
       <!--左侧-->
@@ -252,6 +242,8 @@ export default {
       widgetPartConfig:getWidgetPartConfig(), //配置（针对于数组类型的组件）
       templateName:'conditionInput', //配置的名字（针对于数组类型的组件）
       templateName2:'searchBtns', //配置的名字（针对于数组类型的组件）
+
+      widgetBtn:getWidgetConfig(), //用于显示工具栏的按钮
     }
   },
   watch:{
