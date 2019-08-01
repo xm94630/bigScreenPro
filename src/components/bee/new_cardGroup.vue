@@ -173,7 +173,7 @@ export default {
 
 <style lang="scss">
 .cardGroupBox{
-  overflow: auto;
+  overflow: hidden;
   .conBox{
     width:100%;
     position: absolute;

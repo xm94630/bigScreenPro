@@ -3,7 +3,7 @@
 	  "width": "1920",
 	  "height": "1080",
 	  "background": "#14224a",
-	  "zoom-type": 0,
+	  "zoom-type": "1",
 	  "grid": 10,
 	  "refreshTime": "60000",
 	  "linkScreen": {
