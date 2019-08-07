@@ -274,7 +274,7 @@
         "border": "solid 1px #fff",
         "padding":0,
         "background":"#1e2647",
-        "color":"#f8f594",
+        "color":"#f8f594"
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"lifeng-ReceiptWorking",
