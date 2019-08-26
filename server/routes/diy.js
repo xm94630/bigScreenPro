@@ -1614,14 +1614,14 @@ router.get('/view/info', async (ctx, next) => {
             "height": "50",
             "z-index": 9,
             "padding": 0,
-            "font-size": "50",
+            "font-size": "40",
             "font-weight": "bold",
             "color": "#e28c36",
             "border": "",
             "background": "",
             "text-align": "center"
           },
-          "text": "上海会员物流"
+          "text": "永辉云创 上海物流中心"
         }, {
           "id": "6266-b836",
           "type": "beeTitle",
@@ -2433,8 +2433,8 @@ router.get('/view/info', async (ctx, next) => {
           "id": "cc0c-8262",
           "type": "beeImage",
           "css": {
-            "x": "750",
-            "y": 20,
+            "x": "690",
+            "y": 10,
             "width": "50",
             "height": "70",
             "z-index": 9,
@@ -2511,14 +2511,14 @@ router.get('/view/info', async (ctx, next) => {
                   "height": "50",
                   "z-index": 9,
                   "padding": 0,
-                  "font-size": "50",
+                  "font-size": "40",
                   "font-weight": "bold",
                   "color": "#e28c36",
                   "border": "",
                   "background": "",
                   "text-align": "center"
               },
-              "text": "上海会员物流"
+              "text": "永辉云创 上海物流中心"
           }, {
               "id": "6266-b836",
               "type": "beeTitle",
@@ -2609,19 +2609,19 @@ router.get('/view/info', async (ctx, next) => {
               "diyCoreCode": "YH-PickShopInfo"
           }],
           "beeImage": [{
-              "id": "f395-f7fa",
-              "type": "beeImage",
-              "css": {
-                  "x": "740",
-                  "y": 20,
-                  "width": "60",
-                  "height": "80",
-                  "z-index": 9,
-                  "border": "",
-                  "padding": 0,
-                  "background": ""
-              },
-              "imageLink": "https://i.site.pictures/ppXSg.png"
+            "id": "cc0c-8262",
+            "type": "beeImage",
+            "css": {
+              "x": "690",
+              "y": 10,
+              "width": "50",
+              "height": "70",
+              "z-index": 9,
+              "border": "",
+              "padding": 0,
+              "background": ""
+            },
+            "imageLink": "https://i.site.pictures/ppXSg.png"
           }]
       }
     }
