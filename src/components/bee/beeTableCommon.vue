@@ -1,25 +1,40 @@
 <template>
-  <div class="beeTitle" :style="myCss" :name="myConfig.id">
-    <el-table
-    :data="apiData"
-    style="width: 100%"
-    height="250">
-      <template v-for="(value,key) in options">
-        <el-table-column
-          :key = "key"
-          :prop = "value"
-          :label="key"
-          width="150">
-        </el-table-column>
-      </template>
-    </el-table>
-  </div>
+  <!-- 拖拽组件 -->
+  <vue-draggable-resizable 
+    :x="Number(myConfig.css.x)" :y="Number(myConfig.css.y)" :w="Number(myConfig.css.width)" :h="Number(myConfig.css.height)" 
+    :grid="grid" :parent="false"
+    v-on:dragging="onDrag" v-on:resizing="onResize" @activated="clickFun(myConfig.id)" 
+    class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)"
+  >
+    <!-- 组件内容区 -->
+    <div class="widgetCon">
+      <el-table
+        border
+        :data="apiData"
+        class="tableClass"
+        style="background:rgba(255,0,0,0);"
+        :height="myConfig.css.height"
+      >
+        <template v-for="(value,key) in options">
+          <el-table-column
+            :key = "key"
+            :prop = "value"
+            :label="key"
+          >
+          </el-table-column>
+        </template>
+      </el-table>
+    </div>
+    <!-- 选中框 -->
+    <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
+  </vue-draggable-resizable>
 </template>
 
 <script>
 import bee from '@/src/tools/bee.js';
 import axios from "axios";
 import {baseUrl} from '@/bee.config';
+import bus from '@/src/tools/bus.js';
 import store from '@/src/store';
 
 export default {
@@ -31,6 +46,15 @@ export default {
     return {
       options:{},
       apiData:[],
+      store,
+
+      //用于控制拖拽组件的初始定位
+      x: this.myConfig.css.x,
+      y: this.myConfig.css.y,
+      width: this.myConfig.css.width,
+      height: this.myConfig.css.height,
+      //初始的栅格
+      grid:(this.canvasConfig&&this.canvasConfig.grid)?[this.canvasConfig.grid,this.canvasConfig.grid]:[1,1]
     };
   },
   computed: {
@@ -40,6 +64,24 @@ export default {
     }
   },
   methods:{
+    onResize: function (x, y, width, height) {
+      this.myConfig.css.x = this.x = x
+      this.myConfig.css.y = this.y = y
+      this.myConfig.css.width =this.width = width
+      this.myConfig.css.height = this.height = height
+    },
+    onDrag: function (x, y) {
+      this.myConfig.css.x = this.x = x
+      this.myConfig.css.y = this.y = y   
+    },
+    clickFun(widgetId){
+      //只有在编辑页面，这个点击才有效
+      if(this.$el.parentElement.id==="editCanvas"){
+        store.dispatch("setSelectWidgetId",widgetId);
+        bus.$emit("widgetClick",widgetId);
+      }
+    },
+
     initWidget:function(myConfig){
       try{
         this.options = JSON.parse(myConfig.options);
@@ -98,8 +140,26 @@ export default {
 </script>
 
 <style lang="scss">
-.beeTitle {
+.widgetBox {
   position: absolute;
-  color: #000;
+  box-sizing: border-box;
+  .widgetCon {
+    width: 100%;
+    height: 100%;
+  }
 }
+
+.tableClass{
+  width: 100%;
+  &.el-table th, 
+  &.el-table tr {
+    background:rgba(255, 0, 0, 0); 
+    color: #fff;
+  }
+}
+//table hover样式
+.el-table--enable-row-hover .el-table__body tr:hover>td{
+  background-color: #142a41 !important;
+}
+
 </style>
