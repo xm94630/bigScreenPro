@@ -1,20 +1,18 @@
 <template>
   <div class="beeTitle" :style="myCss" :name="myConfig.id">
-
     <el-table
     :data="apiData"
     style="width: 100%"
     height="250">
-      <template v-for="(value,key) in apiData[0]">
+      <template v-for="(value,key) in options">
         <el-table-column
           :key = "key"
-          :prop = "key"
+          :prop = "value"
           :label="key"
           width="150">
         </el-table-column>
       </template>
     </el-table>
-
   </div>
 </template>
 
@@ -31,6 +29,7 @@ export default {
   },
   data() {
     return {
+      options:{},
       apiData:[],
     };
   },
@@ -42,6 +41,12 @@ export default {
   },
   methods:{
     initWidget:function(myConfig){
+      try{
+        this.options = JSON.parse(myConfig.options);
+      }catch(e){
+        alert('[beeTableCommon组件]options配置格式有误')
+      }
+    
       let dataUrl = myConfig.dataUrl;
       let diyCoreCode = myConfig.diyCoreCode;
       this.diyCoreCode = diyCoreCode;
@@ -53,6 +58,12 @@ export default {
       });
     },
     updatedWidget:function(val){
+      try{
+        this.options = JSON.parse(val.options);
+      }catch(e){
+        alert('[beeTableCommon组件]:options配置格式有误')
+      }
+
       let diyCoreCode = val.diyCoreCode;
       //只有diyCoreCode发生改变的时候才调接口！
       if(this.diyCoreCode!==diyCoreCode){
