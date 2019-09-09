@@ -151,10 +151,19 @@ export default {
 
 .tableClass{
   width: 100%;
-  &.el-table th, 
+  &.el-table th{
+    background:rgba(255, 0, 0, 0); 
+    color: #fff;
+    padding:0px;
+  }
   &.el-table tr {
     background:rgba(255, 0, 0, 0); 
     color: #fff;
+  }
+  &.el-table td {
+    background:rgba(255, 0, 0, 0); 
+    color: #fff;
+    padding:0px;
   }
 }
 //table hover样式
