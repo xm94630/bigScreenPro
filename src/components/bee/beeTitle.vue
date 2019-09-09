@@ -6,10 +6,10 @@
     v-on:dragging="onDrag" v-on:resizing="onResize" @activated="clickFun(myConfig.id)" 
     class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)"
   >
-  <div class="widgetCon">
-    {{myConfig.text}}
+    <!-- 组件内容区 -->
+    <div class="widgetCon">{{myConfig.text}}</div>
+    <!-- 选中框 -->
     <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
-  </div>
   </vue-draggable-resizable>
 </template>
 
@@ -74,11 +74,6 @@ export default {
   .widgetCon {
     width: 100%;
     height: 100%;
-  }
-  .infoBox{
-    color:#4f8ff9;
-    font-size:12px;
-    margin-top: 5px;
   }
 }
 </style>
