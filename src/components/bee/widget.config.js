@@ -14,6 +14,7 @@ import new_line from '@/src/components/bee/new_line.vue';
 import new_pie_1 from '@/src/components/bee/new_pie_1.vue';
 import new_pie_2 from '@/src/components/bee/new_pie_2.vue';
 import beeTable from '@/src/components/bee/beeTable.vue';
+import beeTableCommon from '@/src/components/bee/beeTableCommon.vue';
 import textBar from '@/src/components/bee/textBar.vue';
 import beeTitle from '@/src/components/bee/beeTitle.vue';
 import beeImage from '@/src/components/bee/beeImage.vue';
@@ -33,6 +34,7 @@ let allWidgets = {
     new_pie_1,
     new_pie_2,
     beeTable,
+    beeTableCommon,
     textBar,
     beeTitle,
     beeImage,
@@ -347,6 +349,31 @@ function getWidgetConfig (){
       "initForView":{
         "conditionColumnList":""
       },
+    },
+    "beeTableCommon": {
+      "id": bee.guidGenerator(),
+      "type":"textBar",
+      "options":{
+        "TotalVolume":"TotalVolume",
+        "TotalUseVolume":"TotalUseVolume",
+        "TotalAvailability":"TotalAvailability",
+      },
+      "css":{
+        "x": 20,
+        "y": 20,
+        "width": 400,
+        "height": 20,
+        "z-index":9,
+        "border": "none",
+        "border-radius":0,
+        "padding": 0,
+        "font-size": 12,
+        "text-align": "left",
+        "color": "yellow",
+        "background": "none"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"InventoryReportByWarehouse"
     },
     //永辉大屏新增
     "new_cardGroup":{

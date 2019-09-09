@@ -15,7 +15,7 @@ import {baseUrl} from '@/bee.config';
 import store from '@/src/store';
 
 export default {
-  name: "textBar",
+  name: "beeTableCommon",
   props: {
     myConfig: null,
   },
