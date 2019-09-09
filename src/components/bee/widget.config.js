@@ -19,6 +19,7 @@ import textBar from '@/src/components/bee/textBar.vue';
 import beeTitle from '@/src/components/bee/beeTitle.vue';
 import beeImage from '@/src/components/bee/beeImage.vue';
 import DKN_beeCard from '@/src/components/bee/DKN_beeCard.vue';
+import DSV_lines from '@/src/components/bee/DSV_lines.vue';
 
 let allWidgets = {
     beeX, 
@@ -39,6 +40,7 @@ let allWidgets = {
     beeTitle,
     beeImage,
     DKN_beeCard,
+    DSV_lines,
 }; 
 
 //用于可视化的配置模板
@@ -358,7 +360,7 @@ function getWidgetConfig (){
         "x": 20,
         "y": 20,
         "width": 400,
-        "height": 20,
+        "height": 200,
         "z-index":9,
         "border": "none",
         "border-radius":0,
@@ -523,6 +525,27 @@ function getWidgetConfig (){
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"dkn_card2" 
+    },
+    "DSV_lines": {
+      "id": bee.guidGenerator(),
+      "type":"DSV_lines",
+      "options":'{"日期":"date","名字":"name","地址":"address"}',
+      "css":{
+        "x": 20,
+        "y": 20,
+        "width": 400,
+        "height": 200,
+        "z-index":9,
+        "border": "none",
+        "border-radius":0,
+        "padding": 0,
+        "font-size": 12,
+        "text-align": "left",
+        "color": "yellow",
+        "background": "none"
+      },
+      "dataUrl": "/epimetheus/api/diy/report/selectData",
+      "diyCoreCode":"table"
     },
   }
 }
