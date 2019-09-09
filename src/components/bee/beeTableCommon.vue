@@ -1,10 +1,20 @@
 <template>
   <div class="beeTitle" :style="myCss" :name="myConfig.id">
-      <template v-for="(value, name) in myConfig.options">
-        <span :key="name"> 
-          {{value}}:{{apiData[0]&&apiData[0][name]}} | 
-        </span>
+
+    <el-table
+    :data="apiData"
+    style="width: 100%"
+    height="250">
+      <template v-for="(value,key) in apiData[0]">
+        <el-table-column
+          :key = "key"
+          :prop = "key"
+          :label="key"
+          width="150">
+        </el-table-column>
       </template>
+    </el-table>
+
   </div>
 </template>
 

@@ -352,7 +352,7 @@ function getWidgetConfig (){
     },
     "beeTableCommon": {
       "id": bee.guidGenerator(),
-      "type":"textBar",
+      "type":"beeTableCommon",
       "options":{
         "TotalVolume":"TotalVolume",
         "TotalUseVolume":"TotalUseVolume",
@@ -373,7 +373,7 @@ function getWidgetConfig (){
         "background": "none"
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"InventoryReportByWarehouse"
+      "diyCoreCode":"table"
     },
     //永辉大屏新增
     "new_cardGroup":{

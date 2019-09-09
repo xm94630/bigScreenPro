@@ -13,7 +13,9 @@ module.exports={
                 '/epimetheus': {
                     target: 'http://localhost:3000',
                     
-                    //target: 'http://172.16.1.84', //嘉
+                    //target: 'http://172.16.28.241:8080', //威杰
+
+                    //target: 'http://172.16.1.84', //嘉浩
                     
                     //target: 'http://172.16.28.149', //技术支持
                     
