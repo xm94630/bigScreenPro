@@ -1,6 +1,20 @@
 <template>
   <div class="listBox">
 
+    <div class="myTextarea" v-if="showTextarea">
+      <div class="info">
+        【{{screenName}}】josn配置文件，请复制后放置到数据库对应的表中。
+        <span @click="closeFun">关闭</span>
+        <span @click="copyFun">复制</span>
+      </div>
+      <el-input
+        ref="xxx"
+        type="textarea"
+        :rows="10"
+        v-model="textarea">
+      </el-input>
+    </div>
+
     <template v-for="(one) in reportList">
       <router-link :to="'/myReport?diyViewCode='+one.diyViewCode" :key="one.diyViewCode">
         <div class="myReport">{{one.viewName}}</div>
@@ -12,6 +26,7 @@
         <div class="myReport2">
           {{one.name}}
           <div class="editScreenBtn">
+            <a @click.prevent="showConfigFun(one.code)"><i class="el-icon-edit-outline"></i></a>
             <router-link :to="'/createBigScreen2?modCode='+one.code">
               <i class="el-icon-edit"></i>
             </router-link>
@@ -56,6 +71,10 @@ export default {
   },
   data() {
     return {
+      showTextarea:false,
+      screenName:'',
+      textarea:'',
+
       isCollapse: true,
       reportList: [],
       reportList2: [],
@@ -77,8 +96,24 @@ export default {
     };
   },
   methods: {
+    copyFun(){
+      this.$refs.xxx.$el.firstChild.select();
+      document.execCommand("Copy"); 
+      this.$message({
+        message: '复制成功',
+        type: 'success'
+      });
+    },
+    closeFun(){
+      this.showTextarea = false;
+    },
+    showConfigFun(code){
+      let config = JSON.parse(localStorage.getItem('screenList'))[code];
+      this.textarea = JSON.stringify(config.json);
+      this.screenName = config.name;
+      this.showTextarea = true;
+    },
     deleteScreenFun(code){
-
       this.$confirm('确认删除', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -130,8 +165,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
 .myReport2{
   position: relative;
   .editScreenBtn{
@@ -144,7 +178,6 @@ export default {
     color:#fff;
   }
 }
-
 .addBtn{
   width:150px;
   height:150px;
@@ -157,5 +190,30 @@ export default {
   margin-right: 20px;
   margin-bottom: 20px;
 }
+</style>
 
+<style lang="scss">
+.myTextarea{
+  color:#888;
+  margin-bottom: 20px;
+  .info{
+    margin-bottom: 10px;
+    span{
+      color: #00baff;
+      margin-left:20px;
+      float: right;
+      cursor:pointer;
+    }
+  }
+  .el-textarea__inner{
+    border:solid 1px #00baff;
+    background: #333;
+    color:#888;
+  }
+  
+  ::selection {
+    background:rgba(0, 222, 255, 0.39) 0; 
+    color:#fff;
+  }
+}
 </style>
