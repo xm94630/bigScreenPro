@@ -1,14 +1,22 @@
-<!-- 这个是对永辉大屏其中一部分定制化的组件，没有复用的价值 -->
 <template>
-  <!-- 外容器 -->
-  <div class="widgetBox" :style="myCss" :name="myConfig.id" ref="cardGroupBox" @click="clickFun(myConfig.id)">
-    <img
-      :width="width"
-      :height="height"
-      :src="myConfig.imageLink">
-    </img>
+  <!-- 拖拽组件 -->
+  <vue-draggable-resizable 
+    :x="Number(myConfig.css.x)" :y="Number(myConfig.css.y)" :w="Number(myConfig.css.width)" :h="Number(myConfig.css.height)" 
+    :grid="grid" :parent="false"
+    v-on:dragging="onDrag" v-on:resizing="onResize" @activated="clickFun(myConfig.id)" 
+    class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)"
+  >
+    <!-- 外容器 -->
+    <div class="widgetCon">
+      <img
+        :width="width"
+        :height="height"
+        :src="myConfig.imageLink" />
+    </div>
+
+    <!-- 选中框 -->
     <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
-  </div>
+  </vue-draggable-resizable>
 </template>
 
 <script>
@@ -26,8 +34,14 @@ export default {
   data: function() {
     return {
       store,
-      width:'100%',
-      height:'100%',
+
+      //用于控制拖拽组件的初始定位
+      x: this.myConfig.css.x,
+      y: this.myConfig.css.y,
+      width: this.myConfig.css.width,
+      height: this.myConfig.css.height,
+      //初始的栅格
+      grid:(this.canvasConfig&&this.canvasConfig.grid)?[this.canvasConfig.grid,this.canvasConfig.grid]:[1,1]
     };
   },
   computed:{
@@ -37,10 +51,24 @@ export default {
     }
   },
   methods:{
+    onResize: function (x, y, width, height) {
+      this.myConfig.css.x = this.x = x
+      this.myConfig.css.y = this.y = y
+      this.myConfig.css.width =this.width = width
+      this.myConfig.css.height = this.height = height
+    },
+    onDrag: function (x, y) {
+      this.myConfig.css.x = this.x = x
+      this.myConfig.css.y = this.y = y   
+    },
     clickFun(widgetId){
-      store.dispatch("setSelectWidgetId",widgetId);
-      bus.$emit("widgetClick",widgetId);
-    }
+      //只有在编辑页面，这个点击才有效
+      if(this.$el.parentElement.id==="editCanvas"){
+        store.dispatch("setSelectWidgetId",widgetId);
+        bus.$emit("widgetClick",widgetId);
+      }
+    },
+
   },
   watch:{
     "myConfig":{
@@ -60,13 +88,17 @@ export default {
 </script>
 
 <style scoded lang="scss">
-.widgetBox{
-  position:absolute;
-  box-sizing:border-box;
-  overflow: hidden;
-  image{
+.widgetBox {
+  position: absolute;
+  box-sizing: border-box;
+  .widgetCon {
     width: 100%;
     height: 100%;
   }
+}
+
+image{
+  width: 100%;
+  height: 100%;
 }
 </style>
