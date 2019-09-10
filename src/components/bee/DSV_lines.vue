@@ -8,22 +8,88 @@
   >
     <!-- 组件内容区 -->
     <div class="widgetCon">
-      <el-table
-        border
-        :data="apiData"
-        class="tableClass"
-        style="background:rgba(255,0,0,0);"
-        :height="myConfig.css.height"
-      >
-        <template v-for="(value,key) in options">
-          <el-table-column
-            :key = "key"
-            :prop = "value"
-            :label="key"
-          >
-          </el-table-column>
-        </template>
-      </el-table>
+
+      <template v-for="(one,index) in apiData">
+        <div class="myLine" :key="index">
+          <div class="mybox mybox1">{{one[options[0]]}}</div>
+          <div class="mybox mybox2">
+            <div class="miniBox myboxL"><div class="juzhong1">总量</div></div>
+            <div class="miniBox myboxR">
+              <div class="flexBox">
+                <div class="flexBoxS">
+                  <div class="flexBoxCon flexBoxConL"><div class="juzhong2">{{options[1]}}</div></div>
+                  <div class="flexBoxCon flexBoxConR"><div class="juzhong2">{{one[options[1]]}}</div></div>
+                </div>
+                <div class="flexBoxS">
+                  <div class="flexBoxCon flexBoxConL"><div class="juzhong2">{{options[2]}}</div></div>
+                  <div class="flexBoxCon flexBoxConR"><div class="juzhong2">{{one[options[2]]}}</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mybox mybox3">
+            <div class="miniBox myboxL"><div class="juzhong1">缺货等待</div></div>
+            <div class="miniBox myboxR">
+              <div class="flexBox">
+                <div class="flexBoxS">
+                  <div class="flexBoxCon flexBoxConL"><div class="juzhong2">{{options[3]}}</div></div>
+                  <div class="flexBoxCon flexBoxConR"><div class="juzhong2">{{one[options[3]]}}</div></div>
+                </div>
+                <div class="flexBoxS">
+                  <div class="flexBoxCon flexBoxConL"><div class="juzhong2">{{options[4]}}</div></div>
+                  <div class="flexBoxCon flexBoxConR"><div class="juzhong2">{{one[options[4]]}}</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mybox mybox4">
+            <div class="miniBox myboxL"><div class="juzhong1">未上架</div></div>
+            <div class="miniBox myboxR">
+              <div class="flexBox">
+                <div class="flexBoxS">
+                  <div class="flexBoxCon flexBoxConL"><div class="juzhong2">{{options[5]}}</div></div>
+                  <div class="flexBoxCon flexBoxConR"><div class="juzhong2">{{one[options[5]]}}</div></div>
+                </div>
+                <div class="flexBoxS">
+                  <div class="flexBoxCon flexBoxConL"><div class="juzhong2">{{options[6]}}</div></div>
+                  <div class="flexBoxCon flexBoxConR"><div class="juzhong2">{{one[options[6]]}}</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mybox mybox5">
+            <div class="miniBox myboxL"><div class="juzhong1">拣货中</div></div>
+            <div class="miniBox myboxR">
+              <div class="flexBox">
+                <div class="flexBoxS">
+                  <div class="flexBoxCon flexBoxConL"><div class="juzhong2">{{options[7]}}</div></div>
+                  <div class="flexBoxCon flexBoxConR"><div class="juzhong2">{{one[options[7]]}}</div></div>
+                </div>
+                <div class="flexBoxS">
+                  <div class="flexBoxCon flexBoxConL"><div class="juzhong2">{{options[8]}}</div></div>
+                  <div class="flexBoxCon flexBoxConR"><div class="juzhong2">{{one[options[8]]}}</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mybox mybox6">
+            <div class="miniBox myboxL"><div class="juzhong1">拣货完成</div></div>
+            <div class="miniBox myboxR">
+              <div class="flexBox">
+                <div class="flexBoxS">
+                  <div class="flexBoxCon flexBoxConL"><div class="juzhong2">{{options[9]}}</div></div>
+                  <div class="flexBoxCon flexBoxConR"><div class="juzhong2">{{one[options[9]]}}</div></div>
+                </div>
+                <div class="flexBoxS">
+                  <div class="flexBoxCon flexBoxConL"><div class="juzhong2">{{options[10]}}</div></div>
+                  <div class="flexBoxCon flexBoxConR"><div class="juzhong2">{{one[options[10]]}}</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+
     </div>
     <!-- 选中框 -->
     <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
@@ -86,7 +152,7 @@ export default {
       try{
         this.options = JSON.parse(myConfig.options);
       }catch(e){
-        alert('[beeTableCommon组件]options配置格式有误')
+        alert('[DSV_lines 组件]options配置格式有误')
       }
     
       let dataUrl = myConfig.dataUrl;
@@ -96,14 +162,22 @@ export default {
       //获取数据源
       axios.post(baseUrl + dataUrl,params).then(response => {
         let apiData = response.data.data;
-        this.apiData = apiData;
+        this.apiData = apiData.sort(function(x,y){
+          if(x.index<y.index){
+            return -1;
+          }else if(x.index>y.index){
+            return 1;
+          }else{
+            return 0;
+          }
+        });
       });
     },
     updatedWidget:function(val){
       try{
         this.options = JSON.parse(val.options);
       }catch(e){
-        alert('[beeTableCommon组件]:options配置格式有误')
+        alert('[DSV_lines 组件]:options配置格式有误')
       }
 
       let diyCoreCode = val.diyCoreCode;
@@ -115,7 +189,15 @@ export default {
         //获取数据源
         axios.post(baseUrl + dataUrl,params).then(response => {
           let apiData = response.data.data;
-          this.apiData = apiData;
+          this.apiData = apiData.sort(function(x,y){
+            if(x.index<y.index){
+              return -1;
+            }else if(x.index>y.index){
+              return 1;
+            }else{
+              return 0;
+            }
+          });
         });
       }
 
@@ -139,7 +221,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .widgetBox {
   position: absolute;
   box-sizing: border-box;
@@ -149,26 +231,92 @@ export default {
   }
 }
 
-.tableClass{
-  width: 100%;
-  &.el-table th{
-    background:rgba(255, 0, 0, 0); 
-    color: #fff;
-    padding:0px;
+.myLine{
+  border:solid 3px #fff;
+  border-radius: 15px;
+  height:110px;
+  margin-bottom: 20px;
+  .mybox{
+    display: inline-block;
+    box-sizing: border-box;
+    padding:0 10px;
+    height: 100%;
+    //border: solid 1px red;
+    vertical-align: middle;
+    .miniBox{
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .myboxL{
+      width: 16px;
+      height:100%;
+      //border: solid 1px red;
+      .juzhong1{
+        width: 100%;
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+      }
+    }
+    .myboxR{
+      width: calc(100% - 30px);
+      height:100%;
+      //border: solid 1px red;
+      box-sizing: border-box;
+      padding-left: 20px;
+      .flexBox{
+        width: 100%;
+        height:100%;
+        display: flex;
+        flex-direction: column;
+        justify-content:space-around;
+        .flexBoxS{
+          height: 55px;
+        }
+        .flexBoxCon{
+          display: inline-block;
+          width:45%;
+          height:100%;
+          text-align:left;
+          position: relative;
+          .juzhong2{
+            position:absolute;
+            top:0;
+            //border:solid 1px green;
+            width: 100%;
+            height:100%;
+            display: flex;
+            flex-direction: column;
+            justify-content:center;
+          }
+        }
+        .flexBoxConR{
+          box-sizing: border-box;
+          padding-left:20px;
+        }
+      }
+    }
   }
-  &.el-table tr {
-    background:rgba(255, 0, 0, 0); 
-    color: #fff;
+  .mybox1{
+    width: 10%;
+    font-size: 30px;
   }
-  &.el-table td {
-    background:rgba(255, 0, 0, 0); 
-    color: #fff;
-    padding:0px;
+  .mybox2{
+    width: 18%;
   }
-}
-//table hover样式
-.el-table--enable-row-hover .el-table__body tr:hover>td{
-  background-color: #142a41 !important;
+  .mybox3{
+    width: 18%;
+  }
+  .mybox4{
+    width: 18%;
+  }
+  .mybox5{
+    width: 18%;
+  }
+  .mybox6{
+    width: 18%;
+  }
 }
 
 </style>

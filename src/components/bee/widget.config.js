@@ -529,12 +529,12 @@ function getWidgetConfig (){
     "DSV_lines": {
       "id": bee.guidGenerator(),
       "type":"DSV_lines",
-      "options":'{"日期":"date","名字":"name","地址":"address"}',
+      "options":'{"0":"data0","1":"data1","2":"data2","3":"data3","4":"data4","5":"data5","6":"data6","7":"data7","8":"data8","9":"data9","10":"data10"}',
       "css":{
         "x": 20,
         "y": 20,
-        "width": 400,
-        "height": 200,
+        "width": 1860,
+        "height": 960,
         "z-index":9,
         "border": "none",
         "border-radius":0,
@@ -545,7 +545,7 @@ function getWidgetConfig (){
         "background": "none"
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"table"
+      "diyCoreCode":"DSV"
     },
   }
 }

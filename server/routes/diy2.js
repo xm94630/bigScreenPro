@@ -354,6 +354,27 @@ router.post('/report/selectData', async (ctx, next) => {
     }
   }
 
+  //DSV
+  if(code==="DSV"){
+    data = []
+    for(let i=0;i<7;i++){
+      data.push({
+        index:i,
+        data0:'08/01',
+        'Pending for Replenishment order lines':99999999,
+        data2:8888,
+        data3:8888,
+        data4:8888,
+        data5:8888,
+        data6:8888,
+        data7:8888,
+        data8:8888,
+        data9:8888,
+        data10:8888,
+      });
+    }
+  }
+
   //迪卡侬
   if(code==="dkn_barLine"){
     data = [
@@ -412,6 +433,7 @@ router.post('/report/selectData', async (ctx, next) => {
       "JOGGING\nWOMAN\nACC":326
     }]
   }
+  
 
 
 
