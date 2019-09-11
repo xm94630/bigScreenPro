@@ -1,9 +1,10 @@
 <template>
   <div class="listBox">
 
+    <!-- 文本框/大屏code复制区 -->
     <div class="myTextarea" v-if="showTextarea">
       <div class="info">
-        【{{screenName}}】josn配置文件，请复制后放置到数据库对应的表中。
+        【{{screenName}}】josn配置文件，请复制后放置到数据库对应的表中
         <span @click="closeFun">关闭</span>
         <span @click="copyFun">复制</span>
       </div>
@@ -15,12 +16,14 @@
       </el-input>
     </div>
 
+    <!-- 大屏列表（来自接口） -->
     <template v-for="(one) in reportList">
       <router-link :to="'/myReport?diyViewCode='+one.diyViewCode" :key="one.diyViewCode">
         <div class="myReport">{{one.viewName}}</div>
       </router-link>
     </template>
 
+    <!-- 大屏列表（来自本地存储） -->
     <template v-for="(one) in reportList2">
       <router-link :to="'/myReport?diyViewCode='+one.code" :key="one.code" ref="one.code">
         <div class="myReport2">
@@ -96,6 +99,7 @@ export default {
     };
   },
   methods: {
+    //复制配置代码
     copyFun(){
       this.$refs.xxx.$el.firstChild.select();
       document.execCommand("Copy"); 
@@ -104,15 +108,18 @@ export default {
         type: 'success'
       });
     },
+    //关闭 文本框
     closeFun(){
       this.showTextarea = false;
     },
+    //显示 文本框
     showConfigFun(code){
       let config = JSON.parse(localStorage.getItem('screenList'))[code];
       this.textarea = JSON.stringify(config.json);
       this.screenName = config.name;
       this.showTextarea = true;
     },
+    //删除大屏
     deleteScreenFun(code){
       this.$confirm('确认删除', '提示', {
           confirmButtonText: '确定',
@@ -130,6 +137,7 @@ export default {
           this.$message({type: 'info',message: '已取消删除'});          
         });
     },
+    //复制大屏
     copyScreenFun(code){
       this.myForm.code = 'screen-'+bee.guidGenerator();
       this.codeForClone = code;
@@ -137,6 +145,7 @@ export default {
       let screenList = JSON.parse(localStorage.getItem('screenList'))[code].name + "_拷贝"
       this.myForm.name = screenList
     },
+    //确定复制大屏
     saveCloneScreenFun(){
       let code = this.codeForClone;
 
