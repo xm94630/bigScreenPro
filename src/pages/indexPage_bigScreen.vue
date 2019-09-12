@@ -1,5 +1,5 @@
 <template>
-  <div class="listBox">
+  <div class="mainCon">
 
     <!-- 文本框/大屏code复制区 -->
     <div class="myTextarea" v-if="showTextarea">
@@ -16,32 +16,37 @@
       </el-input>
     </div>
 
-    <!-- 大屏列表（来自接口） -->
-    <template v-for="(one) in reportList">
-      <router-link :to="'/myReport?diyViewCode='+one.diyViewCode" :key="one.diyViewCode">
-        <div class="myReport">{{one.viewName}}</div>
-      </router-link>
-    </template>
 
-    <!-- 大屏列表（来自本地存储） -->
-    <template v-for="(one) in reportList2">
-      <router-link :to="'/myReport?diyViewCode='+one.code" :key="one.code" ref="one.code">
-        <div class="myReport2">
-          {{one.name}}
-          <div class="editScreenBtn">
-            <a @click.prevent="showConfigFun(one.code)"><i class="el-icon-edit-outline"></i></a>
-            <router-link :to="'/createBigScreen2?modCode='+one.code">
-              <i class="el-icon-edit"></i>
-            </router-link>
-            <a @click.prevent="copyScreenFun(one.code)"><i class="el-icon-star-on"></i></a>
-            <a @click.prevent="deleteScreenFun(one.code)"><i class="el-icon-delete"></i></a>
+    <!-- 所有大屏的列表 -->
+    <div class="listBox">
+
+      <!-- 大屏列表（来自接口） -->
+      <template v-for="(one) in reportList">
+        <router-link :to="'/myReport?diyViewCode='+one.diyViewCode" :key="one.diyViewCode">
+          <div class="myReport">{{one.viewName}}</div>
+        </router-link>
+      </template>
+
+      <!-- 大屏列表（来自本地存储） -->
+      <template v-for="(one) in reportList2">
+        <router-link :to="'/myReport?diyViewCode='+one.code" :key="one.code" ref="one.code">
+          <div class="myReport2">
+            {{one.name}}
+            <div class="editScreenBtn">
+              <a @click.prevent="showConfigFun(one.code)"><i class="el-icon-edit-outline"></i></a>
+              <router-link :to="'/createBigScreen2?modCode='+one.code">
+                <i class="el-icon-edit"></i>
+              </router-link>
+              <a @click.prevent="copyScreenFun(one.code)"><i class="el-icon-star-on"></i></a>
+              <a @click.prevent="deleteScreenFun(one.code)"><i class="el-icon-delete"></i></a>
+            </div>
           </div>
-        </div>
-      </router-link>
-    </template>
+        </router-link>
+      </template>
 
-    <!-- <router-link to="/createBigScreen" class="addBtn">+ 新建可视化</router-link> -->
-    <router-link to="/createBigScreen2" class="addBtn">+ 新建可视化</router-link>
+      <!-- <router-link to="/createBigScreen" class="addBtn">+ 新建可视化</router-link> -->
+      <router-link to="/createBigScreen2" class="addBtn">+ 新建可视化</router-link>
+    </div>
 
     <!-- 复制大屏弹框 -->
     <el-dialog title="复制大屏视图" :visible.sync="dialogFormVisible" width="400px">
@@ -58,6 +63,31 @@
         <el-button type="primary" @click="saveCloneScreenFun">确 定</el-button>
       </div>
     </el-dialog>
+
+    <!-- 导入大屏弹框 -->
+    <el-dialog title="导入大屏" :visible.sync="loadScreenBoxVisible" width="400px">
+      <el-form ref="myForm" :model="myForm" :rules="rules">
+        <el-form-item label="起个名儿" prop="name" :label-width="formLabelWidth">
+          <el-input v-model="myForm.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="配置文件" prop="name" :label-width="formLabelWidth">
+          <el-input type="textarea" v-model="myForm.name"></el-input>
+        </el-form-item>
+        <el-form-item label="Code" prop="code" :label-width="formLabelWidth">
+          <el-input v-model="myForm.code" autocomplete="off" :disabled="codeInputDisabled"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="saveCloneScreenFun">确 定</el-button>
+      </div>
+    </el-dialog>
+
+    <!-- 导入 -->
+    <div class="loadOneBtn">
+      <div class="loadBtn" @click="open">+ 导入大屏</div>
+    </div>
+      
 
   </div>
 </template>
@@ -82,6 +112,7 @@ export default {
       reportList: [],
       reportList2: [],
 
+      loadScreenBoxVisible: false,
       dialogFormVisible: false,
       myForm: {
         name: '',
@@ -158,6 +189,17 @@ export default {
       localStorage.setItem("screenList",JSON.stringify(screenList));
       this.reportList2 = screenList;
     },
+
+    //导入大屏
+    loadScreenCode(data){
+      console.log(data);
+    },
+
+    //打开导入大屏
+    open() {
+      this.loadScreenBoxVisible = true;
+    }
+
   },
   mounted: function() {
     //获取已经存在的数据
@@ -175,29 +217,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.myReport2{
-  position: relative;
-  .editScreenBtn{
-    width: 25px;
-    position: absolute;
-    bottom:0px;
-    right:0px;
-    cursor: pointer;
-    font-size: 20px;
-    color:#fff;
+
+
+
+.mainCon{
+  .listBox{
+    .myReport2{
+      position: relative;
+      .editScreenBtn{
+        width: 25px;
+        position: absolute;
+        bottom:0px;
+        right:0px;
+        cursor: pointer;
+        font-size: 20px;
+        color:#fff;
+      }
+    }
+    .addBtn{
+      width:150px;
+      height:150px;
+      line-height:150px;
+      text-align:center;
+      border:dashed 2px lightseagreen;
+      display:inline-block;
+      vertical-align: middle;
+      box-sizing: border-box;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }    
   }
-}
-.addBtn{
-  width:150px;
-  height:150px;
-  line-height:150px;
-  text-align:center;
-  border:dashed 2px lightseagreen;
-  display:inline-block;
-  vertical-align: middle;
-  box-sizing: border-box;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  .loadOneBtn{
+    position: absolute;
+    right:20px;
+    bottom:20px;
+    .loadBtn{
+      background: #555;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color:#ccc;
+      cursor: pointer;
+    }
+  }
 }
 </style>
 
