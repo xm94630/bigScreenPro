@@ -414,11 +414,13 @@ function getWidgetConfig (){
           "font-size":12,
           "color":"#3c8bd0",
           "width":"",
+          "text-align": "left"
         },
         "valueCss":{
           "font-size":30,
           "color":"#3c8bd0",
           "width":"",
+          "text-align": "center"
         }
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",

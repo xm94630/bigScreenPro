@@ -16,7 +16,18 @@
       <template v-for="(value,key) in apiData[0]">
         <div class="oneline" :key="key">
           <div class="valueCon" :style="valueStyle">{{value}}</div>
-          <div class="nameCon" :style="keyStyle">{{key}}</div>
+
+          <!-- 支持对key的切分 -->
+          <template v-if="key && key.split && key.split('|').length<2">
+            <div class="nameCon" :style="keyStyle">{{key}}</div>
+          </template>
+          <template v-else>
+            <div class="nameCon" :style="keyStyle">
+              <div>{{key && key.split && key.split('|')[0]}}</div>
+              <div>{{key && key.split && key.split('|')[1]}}</div>
+            </div>
+          </template>
+          
         </div>
       </template>
     </div>
@@ -138,6 +149,7 @@ export default {
     }
     .nameCon{
        font-size: 12px;
+       text-align: left;
     }
   }
 }
@@ -159,10 +171,12 @@ export default {
     .valueCon{
       width:60%;
       font-size: 30px;
+      text-align: center;
     }
     .nameCon{
       width:40%;
       font-size: 12px;
+      text-align: left;
     }
   }
 }

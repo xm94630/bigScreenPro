@@ -11,7 +11,9 @@ module.exports={
         devServer: {
             proxy: {
                 '/epimetheus': {
-                    target: 'http://localhost:3000',
+                    //target: 'http://localhost:3000',
+
+                    target: 'http://172.16.1.85', //仿真
                     
                     //target: 'http://172.16.28.241:8080', //威杰
 
