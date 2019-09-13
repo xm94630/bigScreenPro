@@ -215,12 +215,27 @@ export default {
           this.loadScreenBoxVisible = false;          
           let {name,configCode,code} = this.loadForm;
           let screenList = JSON.parse(localStorage.getItem('screenList'));
-          //插入“导入大屏”的数据
-          screenList[code] = {
-            json:JSON.parse(configCode),
-            name,
-            code,
+          let hasError = false;
+          let json = '';
+          try{
+            json = JSON.parse(configCode);
+          }catch(e){
+            this.$message.error('json格式有误，请检查格式');
+            hasError = true;
           }
+          if(hasError)return;
+          if(json.canvas && json.components){
+            this.$message({
+              message: '导入成功',
+              type: 'success'
+            });
+          }else{
+            this.$message.error('不是标准的大屏配置');
+            return;
+          }
+
+          //插入“导入大屏”的数据
+          screenList[code] = {json,name,code}
           localStorage.setItem("screenList",JSON.stringify(screenList));
           this.reportList2 = screenList;
         } else {
