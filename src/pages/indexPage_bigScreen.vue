@@ -66,20 +66,20 @@
 
     <!-- 导入大屏弹框 -->
     <el-dialog title="导入大屏" :visible.sync="loadScreenBoxVisible" width="400px">
-      <el-form ref="myForm" :model="myForm" :rules="rules">
+      <el-form ref="loadForm" :model="loadForm" :rules="rules2">
         <el-form-item label="起个名儿" prop="name" :label-width="formLabelWidth">
-          <el-input v-model="myForm.name" autocomplete="off"></el-input>
+          <el-input v-model="loadForm.name" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="配置文件" prop="name" :label-width="formLabelWidth">
-          <el-input type="textarea" v-model="myForm.name"></el-input>
+        <el-form-item label="配置文件" prop="configCode" :label-width="formLabelWidth">
+          <el-input type="textarea" v-model="loadForm.configCode"></el-input>
         </el-form-item>
         <el-form-item label="Code" prop="code" :label-width="formLabelWidth">
-          <el-input v-model="myForm.code" autocomplete="off" :disabled="codeInputDisabled"></el-input>
+          <el-input v-model="loadForm.code" autocomplete="off" :disabled="codeInputDisabled"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="saveCloneScreenFun">确 定</el-button>
+        <el-button @click="loadScreenBoxVisible = false">取 消</el-button>
+        <el-button type="primary" @click="loadScreenCodeFun('loadForm')">确 定</el-button>
       </div>
     </el-dialog>
 
@@ -112,18 +112,30 @@ export default {
       reportList: [],
       reportList2: [],
 
-      loadScreenBoxVisible: false,
       dialogFormVisible: false,
+      loadScreenBoxVisible: false,
+      
       myForm: {
         name: '',
         code: '',
       },
-      formLabelWidth:'80px',
       rules: {
         name: [{ required: true, message: '请输入大屏名称', trigger: 'blur' }],
         code: [{ required: true, message: '请输入大屏code（任意字符串皆可，确保唯一性，以后会用此code获取大屏的内容）', trigger: 'blur' }]
       },
+      formLabelWidth:'80px',
       codeInputDisabled:true,
+
+      loadForm: {
+        name: '',
+        conifgCode: '',
+        code: '',
+      },
+      rules2: {
+        name: [{ required: true, message: '请为需要导入的大屏起个新的名称', trigger: 'blur' }],
+        configCode: [{ required: true, message: '请复制要导入大屏的配置（json格式）', trigger: 'blur' }],
+        code: [{ required: true, message: '请输入大屏code（任意字符串皆可，确保唯一性，以后会用此code获取大屏的内容）', trigger: 'blur' }]
+      },
 
       codeForClone:'',
 
@@ -168,19 +180,19 @@ export default {
           this.$message({type: 'info',message: '已取消删除'});          
         });
     },
-    //复制大屏
+
+    //复制大屏 弹层打开
     copyScreenFun(code){
+      this.dialogFormVisible = true;
       this.myForm.code = 'screen-'+bee.guidGenerator();
       this.codeForClone = code;
-      this.dialogFormVisible = true;
       let screenList = JSON.parse(localStorage.getItem('screenList'))[code].name + "_拷贝"
-      this.myForm.name = screenList
+      this.myForm.name = screenList;
     },
-    //确定复制大屏
+    //复制大屏 具体逻辑
     saveCloneScreenFun(){
       let code = this.codeForClone;
-
-      this.dialogFormVisible = false;
+      this.dialogFormVisible = true;
       //复制逻辑
       let screenList = JSON.parse(localStorage.getItem('screenList'));
       screenList[this.myForm.code] = JSON.parse(JSON.stringify(screenList[code]));
@@ -190,14 +202,32 @@ export default {
       this.reportList2 = screenList;
     },
 
-    //导入大屏
-    loadScreenCode(data){
-      console.log(data);
-    },
-
-    //打开导入大屏
+    //导入大屏 弹层打开
     open() {
       this.loadScreenBoxVisible = true;
+      this.loadForm.code = 'screen-'+bee.guidGenerator();
+      this.$refs['loadForm'] && this.$refs['loadForm'].resetFields();
+    },
+    //导入大屏 具体逻辑
+    loadScreenCodeFun(formName){
+      //验证表单
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          console.log("==>");
+          // let code = this.codeForClone;
+          // this.loadScreenBoxVisible = true;
+          // //复制逻辑
+          // let screenList = JSON.parse(localStorage.getItem('screenList'));
+          // screenList[this.myForm.code] = JSON.parse(JSON.stringify(screenList[code]));
+          // screenList[this.myForm.code].name = this.myForm.name;
+          // screenList[this.myForm.code].code = this.myForm.code;
+          // localStorage.setItem("screenList",JSON.stringify(screenList));
+          // this.reportList2 = screenList;
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
     }
 
   },
