@@ -65,16 +65,16 @@
     </el-dialog>
 
     <!-- 导入大屏弹框 -->
-    <el-dialog title="导入大屏" :visible.sync="loadScreenBoxVisible" width="400px">
+    <el-dialog title="导入大屏" :visible.sync="loadScreenBoxVisible" width="400px" @close="closeLoadBoxFun">
       <el-form ref="loadForm" :model="loadForm" :rules="rules2">
         <el-form-item label="起个名儿" prop="name" :label-width="formLabelWidth">
           <el-input v-model="loadForm.name" autocomplete="off"></el-input>
         </el-form-item>
-        <el-form-item label="配置文件" prop="configCode" :label-width="formLabelWidth">
-          <el-input type="textarea" v-model="loadForm.configCode"></el-input>
-        </el-form-item>
         <el-form-item label="Code" prop="code" :label-width="formLabelWidth">
           <el-input v-model="loadForm.code" autocomplete="off" :disabled="codeInputDisabled"></el-input>
+        </el-form-item>
+        <el-form-item label="配置文件" prop="configCode" :label-width="formLabelWidth">
+          <el-input type="textarea" v-model="loadForm.configCode"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -206,28 +206,32 @@ export default {
     open() {
       this.loadScreenBoxVisible = true;
       this.loadForm.code = 'screen-'+bee.guidGenerator();
-      this.$refs['loadForm'] && this.$refs['loadForm'].resetFields();
     },
     //导入大屏 具体逻辑
     loadScreenCodeFun(formName){
       //验证表单
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          console.log("==>");
-          // let code = this.codeForClone;
-          // this.loadScreenBoxVisible = true;
-          // //复制逻辑
-          // let screenList = JSON.parse(localStorage.getItem('screenList'));
-          // screenList[this.myForm.code] = JSON.parse(JSON.stringify(screenList[code]));
-          // screenList[this.myForm.code].name = this.myForm.name;
-          // screenList[this.myForm.code].code = this.myForm.code;
-          // localStorage.setItem("screenList",JSON.stringify(screenList));
-          // this.reportList2 = screenList;
+          this.loadScreenBoxVisible = false;          
+          let {name,configCode,code} = this.loadForm;
+          let screenList = JSON.parse(localStorage.getItem('screenList'));
+          //插入“导入大屏”的数据
+          screenList[code] = {
+            json:JSON.parse(configCode),
+            name,
+            code,
+          }
+          localStorage.setItem("screenList",JSON.stringify(screenList));
+          this.reportList2 = screenList;
         } else {
-          console.log('error submit!!');
+          console.log('填写有误');
           return false;
         }
       });
+    },
+    closeLoadBoxFun(){
+      //本来想做重置，但是一但用了下面这个，会导致弹层的中一些输入框无法使用。暂时不要吧。
+      //this.$refs['loadForm'].resetFields();
     }
 
   },
