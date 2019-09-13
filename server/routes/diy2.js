@@ -433,7 +433,68 @@ router.post('/report/selectData', async (ctx, next) => {
       "JOGGING\nWOMAN\nACC":326
     }]
   }
-  
+
+  //重庆商委
+  if(
+    code==="CQSW-total" ||
+    code==="CQSW-pick" ||
+    code==="CQSW-outorder" ||
+    code==="CQSW-toCancel" ||
+    code==="CQSW-lastOrder" ||
+    code==="CQSW-dayOrder" ||
+    code==="CQSW-ShortOrder" ||
+    code==="CQSW-collectOrder" ||
+    code==="CQSW-toPickOrder" ||
+    code==="CQSW-toPack" ||
+    code==="CQSW-DictpOrder" ||
+    code==="CQSW-onDict"
+  ){
+    data = [{总单量: 9999}]
+  }
+
+  //DSV效率、DSV出库
+  if(
+    code==="DSV-Completedoutboundorderlinesofyesterday" ||
+    code==="DSV-Binoccupancy" ||
+    code==="DSV-Completedordersofyesterday" ||
+    code==="DSV-Completedpcsofyesterday" ||
+    code==="DSV-Putawayordersoftoday" ||
+    code==="DSV-Putawaypcsoftoday" ||
+    code==="DSV-Putawayordersinprogress" ||
+    code==="DSV-Putawaypcsinprogress" ||
+    code==="DSV-Completepcsoftoday" ||
+    code==="DSV-Completeordersoftoday" ||
+    code==="DSV-Completedoutboundorderlinesofyesterday" 
+  ){
+    data = [{'已占用货位|Bin occupancy': 8888}]
+  }
+  if(code==="DSV-Robotaveragetraveldistancepertask"){
+    data = [
+      {"拣货":100,"type":"09/08"},
+      {"拣货":200,"type":"10/08"},
+      {"拣货":370,"type":"11/08"},
+      {"拣货":270,"type":"12/08"},
+    ]
+  }
+  if(code==="DSV-Pickingproductivityperworkstation"){
+    data = [
+      {"Time":"10/08/2019","Workstation1 order lines":888,"Workstation2 order lines":888,"Workstation3 order lines":888,"Workstation4 order lines":888,"Workstation5 order lines":888,"Workstation6 order lines":888,"Workstation7 order lines":888,"Workstation8 order lines":888,"Workstation9 order lines":888,"Workstation10 order lines":888,"Workstation11 order lines":888,"Workstation12 order lines":888,"Workstation13 order lines":888,"Workstation14 order lines":888,"Workstation15 order lines":888,"Workstation16 order lines":888,"Workstation17 order lines":888,"Workstation18 order lines":888,"Workstation19 order lines":888,"Workstation20 order lines":888,},
+      {"Time":"11/08/2019","Workstation1 order lines":888,"Workstation2 order lines":888,"Workstation3 order lines":888,"Workstation4 order lines":888,"Workstation5 order lines":888,"Workstation6 order lines":888,"Workstation7 order lines":888,"Workstation8 order lines":888,"Workstation9 order lines":888,"Workstation10 order lines":888,"Workstation11 order lines":888,"Workstation12 order lines":888,"Workstation13 order lines":888,"Workstation14 order lines":888,"Workstation15 order lines":888,"Workstation16 order lines":888,"Workstation17 order lines":888,"Workstation18 order lines":888,"Workstation19 order lines":888,"Workstation20 order lines":888,},
+      {"Time":"12/08/2019","Workstation1 order lines":888,"Workstation2 order lines":888,"Workstation3 order lines":888,"Workstation4 order lines":888,"Workstation5 order lines":888,"Workstation6 order lines":888,"Workstation7 order lines":888,"Workstation8 order lines":888,"Workstation9 order lines":888,"Workstation10 order lines":888,"Workstation11 order lines":888,"Workstation12 order lines":888,"Workstation13 order lines":888,"Workstation14 order lines":888,"Workstation15 order lines":888,"Workstation16 order lines":888,"Workstation17 order lines":888,"Workstation18 order lines":888,"Workstation19 order lines":888,"Workstation20 order lines":888,},
+    ]
+  }
+  if(
+    code==="DSV-outboundOrder-3" || 
+    code==="DSV-outboundOrder-2" || 
+    code==="DSV-outboundOrder-1" || 
+    code==="DSV-outboundOrder0" || 
+    code==="DSV-outboundOrder+1" || 
+    code==="DSV-outboundOrder+2" || 
+    code==="DSV-outboundOrder+3"
+  ){
+    data = [{"Total order lines":888,"Replenish HU":123,"Pending to put wall order lines":0,"Picking HU":0,"Picked order lines":0,"Pending for Replenishment order lines":0,"Picking order lines":0,"Picked HU":0,"Total HU":0,"desv":"10","time":"2019-09-10","Pending HU":0}]
+  }
+
 
 
 
