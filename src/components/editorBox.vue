@@ -5,7 +5,7 @@
       点击添加组件：
 
       <template v-for="(one,key) in widgetBtn">
-        <el-button :key="key" size="mini" type="primary" round @click="createWidgetFun(key)">{{key}}</el-button>
+        <el-button :key="key" size="mini" type="primary" round @click="createWidgetFun(key)">{{one.alias}}</el-button>
       </template>
 
     </div>

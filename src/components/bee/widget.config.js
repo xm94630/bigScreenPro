@@ -49,6 +49,7 @@ function getWidgetConfig (){
     "new_bar":{
       "id": bee.guidGenerator(),
       "type":"new_bar",
+      "alias":"柱状图",
       "css":{
         "x": 20,
         "y": 20,
@@ -87,6 +88,7 @@ function getWidgetConfig (){
     },
     "new_barLine":{
       "id": bee.guidGenerator(),
+      "alias":"柱状图折线图混合",
       "type":"new_barLine",
       "css":{
         "x": 20,
@@ -106,6 +108,7 @@ function getWidgetConfig (){
     "new_line":{
       "id": bee.guidGenerator(),
       "type":"new_line",
+      "alias":"折线图",
       "css":{
         "x": 20,
         "y": 20,
@@ -145,6 +148,7 @@ function getWidgetConfig (){
     "new_pie_1":{
       "id": bee.guidGenerator(),
       "type":"new_pie_1",
+      "alias":"环图",
       "css":{
         "x": 20,
         "y": 20,
@@ -174,6 +178,7 @@ function getWidgetConfig (){
     "new_pie_2":{
       "id": bee.guidGenerator(),
       "type":"new_pie_2",
+      "alias":"饼图",
       "css":{
         "x": 20,
         "y": 20,
@@ -214,6 +219,7 @@ function getWidgetConfig (){
     "new_card":{
       "id": bee.guidGenerator(),
       "type":"new_card",
+      "alias":"卡片_利丰风格",
       "css":{
         "x": 20,
         "y": 20,
@@ -235,6 +241,7 @@ function getWidgetConfig (){
     "beeTitle":{
       "id": bee.guidGenerator(),
       "type":"beeTitle",
+      "alias":"纯文字",
       "css":{
         "x": 20,
         "y": 20,
@@ -255,6 +262,7 @@ function getWidgetConfig (){
     "dater":{
       "id": bee.guidGenerator(),
       "type":"dater",
+      "alias":"时钟",
       "css":{
         "x": 20,
         "y": 20,
@@ -273,6 +281,7 @@ function getWidgetConfig (){
     "new_info":{
       "id": bee.guidGenerator(),
       "type":"new_info",
+      "alias":"模板文字",
       "css":{
         "x": 20,
         "y": 20,
@@ -294,6 +303,7 @@ function getWidgetConfig (){
     "textBar":{
       "id": bee.guidGenerator(),
       "type":"textBar",
+      "alias":"类表格文字",
       "options":{
         "TotalVolume":"TotalVolume",
         "TotalUseVolume":"TotalUseVolume",
@@ -319,6 +329,7 @@ function getWidgetConfig (){
     "beeTable": {
       "id": bee.guidGenerator(),
       "type":"beeTable",
+      "alias":"报表",
       "css":{
         "x": 0,
         "y": 0,
@@ -355,6 +366,7 @@ function getWidgetConfig (){
     "beeTableCommon": {
       "id": bee.guidGenerator(),
       "type":"beeTableCommon",
+      "alias":"普通表格",
       "css":{
         "x": 20,
         "y": 20,
@@ -377,6 +389,7 @@ function getWidgetConfig (){
     "new_cardGroup":{
       "id": bee.guidGenerator(),
       "type":"new_cardGroup",
+      "alias":"卡片组_永辉专用",
       "css":{
         "x": 20,
         "y": 20,
@@ -394,6 +407,7 @@ function getWidgetConfig (){
     "beeCard":{
       "id": bee.guidGenerator(),
       "type":"beeCard",
+      "alias":"卡片",
       "css":{
         "x": 20,
         "y": 20,
@@ -429,6 +443,7 @@ function getWidgetConfig (){
     "YH_lines":{
       "id": bee.guidGenerator(),
       "type":"YH_lines",
+      "alias":"线路组合_永辉专用",
       "css":{
         "x": 20,
         "y": 20,
@@ -446,6 +461,7 @@ function getWidgetConfig (){
     "beeImage":{
       "id": bee.guidGenerator(),
       "type":"beeImage",
+      "alias":"图片",
       "css":{
         "x": 20,
         "y": 20,
@@ -462,6 +478,7 @@ function getWidgetConfig (){
     "DKN_beeCard":{
       "id": bee.guidGenerator(),
       "type":"DKN_beeCard",
+      "alias":"卡片_迪卡侬风格",
       "title":"PCS/Hr",
       "css":{
         "x": 20,
@@ -531,6 +548,7 @@ function getWidgetConfig (){
     "DSV_lines": {
       "id": bee.guidGenerator(),
       "type":"DSV_lines",
+      "alias":"组合_DSV专用",
       "options":'{"0":"data0","1":"data1","2":"data2","3":"data3","4":"data4","5":"data5","6":"data6","7":"data7","8":"data8","9":"data9","10":"data10"}',
       "css":{
         "x": 20,

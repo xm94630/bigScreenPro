@@ -1,35 +1,35 @@
 <template>
-<div class="itermListBox">
-<template v-for="(value,key) in widget">
-  <div :key="key">
+  <div class="itermListBox">
+    <template v-for="(value,key) in widget">
+      <div :key="key" v-if="key!=='alias'"><!-- 不显示“别名” -->
 
-    <template v-if="bee.isObject(value)">
-      
-      <div  :class="style">
-        <div class="title">{{key}}</div>
-        
-        <!-- 递归 -->
-        <list :widget="value" :index="n" :widgetConfigExplain="widgetConfigExplain[key]||{}" @moreConfigFun="configPlusFun"></list>
+        <template v-if="bee.isObject(value)">
+          <div  :class="style">
+            <div class="title">{{key}}</div>
+            <!-- 递归 -->
+            <list :widget="value" :index="n" :widgetConfigExplain="widgetConfigExplain[key]||{}" @moreConfigFun="configPlusFun"></list>
+          </div>
+        </template>
+
+        <template v-else>
+          <!-- 第 N 层级 -->
+          <div  :class="style">
+            <el-form-item :inline="true" :label="key">
+              <el-input size="mini" v-model="widget[key]" 
+                :disabled="(key==='searchBtns')||(key==='conditionColumnList')"
+              >
+              </el-input>
+              <el-tooltip class="item" effect="light" :content="widgetConfigExplain[key]" placement="top" v-if="widgetConfigExplain[key]">
+                <i class="el-icon-info tipsIcon"></i>
+              </el-tooltip>
+            </el-form-item>  
+            <span class="textBtn" v-if="(key==='searchBtns')||(key==='conditionColumnList')" @click="configPlusFun">请在高级配置中完成此配置</span>
+          </div>
+        </template>
 
       </div>
-
     </template>
-    <template v-else>
-      <!-- 第1层级 -->
-      <div  :class="style">
-        <el-form-item :inline="true" :label="key">
-          <el-input size="mini" v-model="widget[key]" :disabled="(key==='searchBtns')||(key==='conditionColumnList')"></el-input>
-          <el-tooltip class="item" effect="light" :content="widgetConfigExplain[key]" placement="top" v-if="widgetConfigExplain[key]">
-            <i class="el-icon-info tipsIcon"></i>
-          </el-tooltip>
-        </el-form-item>  
-        <span class="textBtn" v-if="(key==='searchBtns')||(key==='conditionColumnList')" @click="configPlusFun">请在高级配置中完成此配置</span>
-      </div>
-    </template>
-
   </div>
-</template>
-</div>
 </template>
 
 
