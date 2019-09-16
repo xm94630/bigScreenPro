@@ -167,7 +167,7 @@ export default {
   }
 }
 //table hover样式
-.el-table--enable-row-hover .el-table__body tr:hover>td{
+.tableClass.el-table--enable-row-hover .el-table__body tr:hover>td{
   background-color: #142a41 !important;
 }
 
