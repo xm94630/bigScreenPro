@@ -355,7 +355,6 @@ function getWidgetConfig (){
     "beeTableCommon": {
       "id": bee.guidGenerator(),
       "type":"beeTableCommon",
-      "options":'{"日期":"date","名字":"name","地址":"address"}',
       "css":{
         "x": 20,
         "y": 20,
@@ -370,6 +369,7 @@ function getWidgetConfig (){
         "color": "yellow",
         "background": "none"
       },
+      "options":'{"日期":"date","名字":"name","地址":"address"}',
       "dataUrl": "/epimetheus/api/diy/report/selectData",
       "diyCoreCode":"table"
     },
