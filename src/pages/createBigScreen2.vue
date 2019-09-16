@@ -276,6 +276,7 @@ export default {
         border-top:solid 1px #292a2c;
         background: #1d2125;
         position: absolute;
+        z-index: 999;
         bottom:0px;
         display: flex;
         align-items:center;
