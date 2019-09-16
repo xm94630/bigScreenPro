@@ -8,7 +8,7 @@
           <div class="myReportCanvas" :style="style" ref="myReportCanvas" id="editCanvas">
 
             <!-- 各个组件渲染 -->
-            <template v-for="(arr, key) in allwidgets">
+            <template v-for="(arr, key) in widgetsForRendering">
               <template v-for="(item) in arr">
                 <component
                   :key = "item.id"
@@ -112,7 +112,7 @@ export default {
         code: [{ required: true, message: '请输入大屏code（任意字符串皆可，确保唯一性，以后会用此code获取大屏的内容）', trigger: 'blur' }]
       },
       codeInputDisabled:false,
-      allwidgets:{},
+      widgetsForRendering:{},
 
       modCode:'',
     }
@@ -140,10 +140,10 @@ export default {
     },
     //在画布上渲染组件
     randerWidget(wigetConfig){
-      if(Object.keys(this.allwidgets).indexOf(wigetConfig.type)===-1){
-        this.allwidgets[wigetConfig.type] = [];
+      if(Object.keys(this.widgetsForRendering).indexOf(wigetConfig.type)===-1){
+        this.widgetsForRendering[wigetConfig.type] = [];
       }
-      this.allwidgets[wigetConfig.type].push(wigetConfig);
+      this.widgetsForRendering[wigetConfig.type].push(wigetConfig);
       this.$forceUpdate()
     },
     openSaveWindowFun(){
@@ -206,16 +206,16 @@ export default {
     },
     //删除画布上的组件
     deleteWidgetElementFun(widgetId,widgetType){
-      let category = this.allwidgets[widgetType];
+      let category = this.widgetsForRendering[widgetType];
       let newCategory = category.filter((one)=>{
         if(one.id!==widgetId){
           return one;
         }
       })
       if(newCategory.length===0){
-        this.$delete(this.allwidgets,widgetType);
+        this.$delete(this.widgetsForRendering,widgetType);
       }else{
-        this.allwidgets[widgetType]= newCategory;
+        this.widgetsForRendering[widgetType]= newCategory;
       }
       this.$forceUpdate();
     }
