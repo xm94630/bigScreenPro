@@ -376,7 +376,7 @@ router.post('/report/selectData', async (ctx, next) => {
   }
 
   //迪卡侬
-  if(code==="dkn_barLine"){
+  if(code==="dkn_barLine" || code==="dkn_16"){
     data = [
       {
         "finish": 80,
@@ -493,6 +493,27 @@ router.post('/report/selectData', async (ctx, next) => {
     code==="DSV-outboundOrder+3"
   ){
     data = [{"Total order lines":888,"Replenish HU":123,"Pending to put wall order lines":0,"Picking HU":0,"Picked order lines":0,"Pending for Replenishment order lines":0,"Picking order lines":0,"Picked HU":0,"Total HU":0,"desv":"10","time":"2019-09-10","Pending HU":0}]
+  }
+
+  //迪卡侬
+  if(
+    code==="dkn_1" ||
+    code==="dkn_2" ||
+    code==="dkn_3" ||
+    code==="dkn_4" ||
+    code==="dkn_5" ||
+    code==="dkn_6" ||
+    code==="dkn_7" ||
+    code==="dkn_8" ||
+    code==="dkn_9" ||
+    code==="dkn_10" ||
+    code==="dkn_11" ||
+    code==="dkn_12" ||
+    code==="dkn_13" ||
+    code==="dkn_14" ||
+    code==="dkn_15"
+  ){
+    data = [{'JOGGING WOMAN ACC': 38868}]
   }
 
 
