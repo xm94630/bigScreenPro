@@ -33,10 +33,10 @@
           <div class="myReport2">
             {{one.name}}
             <div class="editScreenBtn">
-              <a @click.prevent="showConfigFun(one.code)"><i class="el-icon-edit-outline"></i></a>
               <router-link :to="'/createBigScreen2?modCode='+one.code">
                 <i class="el-icon-edit"></i>
               </router-link>
+              <a @click.prevent="showConfigFun(one.code)"><i class="el-icon-edit-outline"></i></a>
               <a @click.prevent="copyScreenFun(one.code)"><i class="el-icon-star-on"></i></a>
               <a @click.prevent="deleteScreenFun(one.code)"><i class="el-icon-delete"></i></a>
             </div>
