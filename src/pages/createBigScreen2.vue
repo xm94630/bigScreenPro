@@ -204,7 +204,6 @@ export default {
   },
 
   mounted(){
-
     //看看是不是编辑页面，载入缩放
     let modCode = this.$route.query.modCode;
     if(modCode){
@@ -212,10 +211,8 @@ export default {
       this.zoom = (list[modCode] && list[modCode].zoom) || 100;
     }
 
-
     //订阅事件：当被编辑的组件选中的时候，菜单中也跟着选中。
     bus.$on('widgetClick', (widgetId)=> {  
-
       let n=0;
       let holder = window.setInterval(()=>{
         n = n+1;
@@ -229,12 +226,9 @@ export default {
           if(n>100){clearInterval(holder)}
         }
       },50)
-
-
-
-      
     }); 
   },
+
   destroyed(){
     //记得关闭，不关闭的话，在别的页面中也会触发这个事件。
     bus.$off('widgetClick');
