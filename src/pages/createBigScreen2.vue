@@ -62,31 +62,13 @@
 </template>
 
 <script>
-import Vue from "vue";
 import editorBox from "../components/editorBox"
 import bee from "@/src/tools/bee";
 import bus from "@/src/tools/bus";
-import echarts from "echarts";
 import store from '@/src/store';
 
 //加载全部可用组件
 import {allWidgets} from "@/src/components/bee/widget.config"
-
-
-function mountCmp(cmp, props, parent) {
-  if (cmp.default) {
-    cmp = cmp.default;
-  }
-  cmp = Vue.extend(cmp);
-  let node = document.createElement("div");
-  parent.appendChild(node);
-  new cmp({
-    // eslint-disable-line
-    el: node,
-    propsData: props,
-    parent: this
-  });
-}
 
 export default {
   name: 'xm',
