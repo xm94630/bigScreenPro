@@ -113,6 +113,8 @@ export default {
       },
       codeInputDisabled:false,
       allwidgets:{},
+
+      modCode:'',
     }
   },
   computed:{
@@ -145,7 +147,7 @@ export default {
       this.$forceUpdate()
     },
     openSaveWindowFun(){
-      let modCode = this.$route.query.modCode;
+      let modCode = this.modCode = this.$route.query.modCode;
       if(modCode){
         this.myForm.name =JSON.parse(localStorage.getItem('screenList'))[modCode].name;
         this.myForm.code = modCode; 
@@ -182,8 +184,11 @@ export default {
               localStorage.setItem("screenList",JSON.stringify(screenList));
             }
 
-
-
+            //对于第一次保存的大屏，保存之后，修改路由（使其进入编辑的形态）。否则，会出现再次保存的时候，会新保存一个大屏的bug。
+            if(!this.modCode){
+              this.$router.push({ path: '/createBigScreen2',query:{modCode:this.myForm.code}})
+            }
+             
 
           } else {
             return false;
@@ -215,6 +220,7 @@ export default {
       this.$forceUpdate();
     }
   },
+
   mounted(){
 
     //看看是不是编辑页面，载入缩放
