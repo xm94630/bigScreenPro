@@ -214,8 +214,8 @@ export default {
   data(){
     return{
       "canvas":{
-        "width": 600,
-        "height": 400,
+        "width": 1200,
+        "height": 800,
         "background": "#142a41",
         "zoom-type":0,
         "grid":10,
