@@ -139,30 +139,58 @@ export default {
     
     //更新searchBtns
     fun2:function(searchBtns){
+      
       searchBtns = typeof(searchBtns)==="string"?JSON.parse(searchBtns):searchBtns;
-      //从接口获取“列的配置”
-      let arr = [];
-      for(let i=0;i<searchBtns.length;i++){
-        arr[i] = new Promise((resolve) => {
-          axios.get(searchBtns[i].initUrl+'?diyCoreCode='+searchBtns[i].diyCoreCode).then(response => {
-            resolve(response);
-          })
-        })            
-      }
-      Promise.all(arr).then((values)=>{  
-        //searchBtns中添加resultColumnList属性，并排序
-        for(let k=0;k<searchBtns.length;k++){
-          //增加一列 "No."
-          let resultColumnList = values[k].data.data.resultColumnList
-          resultColumnList = resultColumnList.concat({
+      searchBtns = searchBtns.map(function(one){
+        let resultColumnList = typeof(one.resultColumnList)==="string"?JSON.parse(one.resultColumnList):one.resultColumnList;
+        let newArr = [{
             "columnName":"bee_number", //列的key   
             "displayName":"No.",       //列头名字  
             "columnIndex":-1,          //列的顺序
+        }];
+        let i=0;
+        for(let key in resultColumnList){
+          newArr.push({
+            columnIndex:i,
+            columnName:resultColumnList[key],
+            displayName:key,
           })
-          searchBtns[k].resultColumnList=_.orderBy(resultColumnList,'columnIndex','asc');
-          this.searchBtns = searchBtns;
+          i++;
         }
-      });
+        one.resultColumnList = newArr;
+        return one;
+      })
+      this.searchBtns = searchBtns;
+
+
+      /* 旧的实现方式，依赖于接口，现在已经废除这个接口。这个部分逻辑暂时保留，以免未来需要用到这个接口 */
+      //searchBtns = typeof(searchBtns)==="string"?JSON.parse(searchBtns):searchBtns;
+      //从接口获取“列的配置”
+      // let arr = [];
+      // for(let i=0;i<searchBtns.length;i++){
+      //   arr[i] = new Promise((resolve) => {
+      //     axios.get(searchBtns[i].initUrl+'?diyCoreCode='+searchBtns[i].diyCoreCode).then(response => {
+      //       resolve(response);
+      //     })
+      //   })            
+      // }
+
+      // Promise.all(arr).then((values)=>{  
+      //   //searchBtns中添加resultColumnList属性，并排序
+      //   for(let k=0;k<searchBtns.length;k++){
+      //     //增加一列 "No."
+      //     let resultColumnList = values[k].data.data.resultColumnList
+      //     resultColumnList = resultColumnList.concat({
+      //       "columnName":"bee_number", //列的key   
+      //       "displayName":"No.",       //列头名字  
+      //       "columnIndex":-1,          //列的顺序
+      //     })
+      //     searchBtns[k].resultColumnList=_.orderBy(resultColumnList,'columnIndex','asc');
+      //     this.searchBtns = searchBtns;
+      //     console.log('=====>>>')
+      //     console.log(this.searchBtns)
+      //   }
+      // });
     },
   },
 
