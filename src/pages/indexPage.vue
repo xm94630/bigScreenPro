@@ -2,6 +2,7 @@
   <el-container class="indexPageBox"> 
     <el-header height="40px" class="headBar">
       自定义大屏-欢迎使用
+      <span>{{version}}</span>
     </el-header>
 
     <el-container>
@@ -53,6 +54,7 @@
 </template>
 
 <script>
+import {version} from '@/bee.config';
 export default {
   name: "app",
   components: {
@@ -60,7 +62,8 @@ export default {
   data() {
     return {
       isCollapse: true,
-      reportList: null
+      reportList: null,
+      version:version,
     };
   },
   methods: {
@@ -98,6 +101,11 @@ export default {
     font-size: 16px;
     border-bottom:solid 1px #555; 
     text-align: right;
+    span{
+      color:#00baff;
+      font-weight: bold;
+      margin-left: 10px;
+    }
   }
 }
 
