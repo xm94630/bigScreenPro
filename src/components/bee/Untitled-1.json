@@ -1,0 +1,53 @@
+{
+	"color": ["#4f8ff9", "#38c3ec", "#a2fdff", "#eada80"],
+	"title": {
+		"text": "周统计",
+		"textStyle": {
+			"fontSize": 16,
+			"color": "#f8f4a0"
+		}
+	},
+	"legend": {
+		"show": true,
+		"textStyle": {
+			"color": "#f8f4a0"
+		},
+		"data": ["南京仓"]
+	},
+	"xAxis": {
+		"data": ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+		"axisLabel": {
+			"show": true,
+			"textStyle": {
+				"color": "#f8f4a0"
+			}
+		}
+	},
+	"yAxis": {
+		"axisLabel": {
+			"show": true,
+			"textStyle": {
+				"color": "#f8f4a0"
+			}
+		}
+	},
+	"series": [{
+		"name": "南京仓",
+		"data": [1, 2, 3, 2, 5, 6],
+		"type": "line"
+	}],
+	"tooltip": {
+		"trigger": "axis"
+	},
+	"grid": {
+		"left": "3%",
+		"right": "4%",
+		"bottom": "3%",
+		"containLabel": true
+	},
+	"toolbox": {
+		"feature": {
+			"saveAsImage": {}
+		}
+	}
+}

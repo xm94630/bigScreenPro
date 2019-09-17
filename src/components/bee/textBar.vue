@@ -1,59 +1,84 @@
 <template>
-  <div class="beeTitle" :style="beeTitleStyle">
-    <template v-for="(one,index) in myConfig.myData">
-      <div :key="index"> 库房整体积：{{one.totalvolume}} | 总体使用体积：{{one.totalusevolume}} | 库房利用率：{{one.totalavailability}}</div>
-    </template>
+  <div class="beeTitle" :style="myCss" :name="myConfig.id">
+      <template v-for="(value, name) in myConfig.options">
+        <span :key="name"> 
+          {{value}}:{{apiData[0]&&apiData[0][name]}} | 
+        </span>
+      </template>
   </div>
 </template>
 
 <script>
-// myConfig 数据格式
-// {
-//   id: undefined,
-//   text: "默认文字",
-//   x: 0,
-//   y: 0,
-//   width: 100,
-//   height: 12,
-//   color: "#000",
-//   "font-size": 12,
-//   border:"solid 1px red",
-//   align: "center"
-//   ....
-// }
+import bee from '@/src/tools/bee.js';
+import axios from "axios";
+import {baseUrl} from '@/bee.config';
+import store from '@/src/store';
 
 export default {
-  name: "beeTitle",
+  name: "textBar",
   props: {
-    myConfig: null
+    myConfig: null,
   },
   data() {
-    return {};
+    return {
+      apiData:[],
+    };
   },
   computed: {
-    beeTitleStyle() {
-      let str = "position:absolute;box-sizing:border-box;";
-      str += "border:" + this.myConfig.border + ";" 
-      str += "width:" + this.myConfig.width + "px;" 
-      str += "height:" + this.myConfig.height + "px;" 
-      str += "left:" + this.myConfig.x + "px;" 
-      str +=  "top:" + this.myConfig.y + "px;"
-      str += "color:"+ this.myConfig.color+";"
-      str += "font-size:"+this.myConfig['font-size']+"px;"
-      str += "text-align:"+this.myConfig['text-align']+";"
-      str += "padding:"+this.myConfig['padding']+"px;"
-      str += "background:"+this.myConfig['background']+";"
-      return str;
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      return bee.objToCSS(bee.replaceKey(this.myConfig.css,map));
     }
   },
-  mounted(){
-    //console.log(this.myConfig)
+  methods:{
+    initWidget:function(myConfig){
+      let dataUrl = myConfig.dataUrl;
+      let diyCoreCode = myConfig.diyCoreCode;
+      this.diyCoreCode = diyCoreCode;
+      let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+      //获取数据源
+      axios.post(baseUrl + dataUrl,params).then(response => {
+        let apiData = response.data.data;
+        this.apiData = apiData;
+      });
+    },
+    updatedWidget:function(val){
+      let diyCoreCode = val.diyCoreCode;
+      //只有diyCoreCode发生改变的时候才调接口！
+      if(this.diyCoreCode!==diyCoreCode){
+        let dataUrl = val.dataUrl;
+        this.diyCoreCode=diyCoreCode;
+        let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+        //获取数据源
+        axios.post(baseUrl + dataUrl,params).then(response => {
+          let apiData = response.data.data;
+          this.apiData = apiData;
+        });
+      }
+
+
+    },
+  },
+  watch:{
+    "myConfig":{
+      handler:function(newVal,oldVal){
+        this.updatedWidget(newVal,oldVal)
+      },
+      deep: true
+    },
+    
+  },
+  mounted: function() {
+    this.initWidget(this.myConfig);
+  },
+  updated(){
   }
 };
 </script>
 
 <style lang="scss">
 .beeTitle {
+  position: absolute;
   color: #000;
 }
 </style>

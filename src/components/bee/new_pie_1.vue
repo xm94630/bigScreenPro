@@ -1,153 +1,163 @@
 <template>
-  <div
-    class="bingTuCon"
-    :style="'width:'+width+'px;height:'+height+'px;top:'+y+'px;left:'+x+'px;border:'+border+';padding:'+padding+'px;background:'+background"
-  >
-    <div class="bingTuBox" :id="chartData.chartId"></div>
+  <div class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)">
+    <div class="widgetCon" :id="myConfig.id"></div>
+    <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
   </div>
 </template>
 
 
 <script>
+import bee from '@/src/tools/bee.js';
+import bus from '@/src/tools/bus.js';
 import echarts from "echarts";
+import _ from "lodash";
+import axios from "axios";
+import {baseUrl} from '@/bee.config';
+import store from '@/src/store';
+import { setTimeout } from 'timers';
+
+// 这个是echart实例的默认配置
+let defaultOption = {
+	"color": ["#4f8ff9", "#38c3ec"],
+	"series": {
+    "name":"使用占比",
+		"type": "pie",
+		"radius": ["40%", "70%"],
+		"labelLine": {
+      "show": false
+		},
+		"label": {    
+      "color": "red",
+			"position": "center",
+			"fontSize": 12,
+			"formatter": "{a}\n{c}%"
+		},
+		"data": [{
+			"value": 60,
+		}, {
+			"value": 40,
+			"label":{
+        "show": false
+			}
+		}]
+	}
+}
 
 //获取饼图option配置
-function getOption(data) {
+function getNewOption(myConfig,apiData) {
 
-  let urlData = data.urlData[0];
-  let percent = 1;
-  for(let key in urlData){
-    percent = urlData[key];
-    break;
-  }
+  //数据源数据格式：[{占用率: 0.6}]
+  let percent = apiData[0][Object.keys(apiData[0])[0]]
+  //保留2位小数
+  let d1 = Math.round(percent*10000)/100
+  let d2 = Math.round(10000-percent*10000)/100
 
-  var option = {
-    color:data.color || ["#83b5b9","#db8460"],
-    // 标题组件，包含主标题和副标题
-    title: {
-      show: true,
-      text: data.title.text,
-      x: "left",
-      textStyle: {
-        fontSize: data.title['font-size'],
-        color: data.title['color'],
-        //fontWeight:"bold",
-      }
-    },
-    //  提示框组件
-    tooltip: {
-      //是否显示提示框组件，包括提示框浮层和 axisPointe
-      show: false,
-      // 触发类型: item:数据项触发，axis：坐标轴触发
-      trigger: "item",
-      formatter: "{a} <br/>{b}: {c} ({d}%)"
-    },
-    // // 图例
-    // legend: {
-    //     orient: 'vertical',
-    //     x: 'left',
-    //     data:['完成率']
-    // },
+  let newOption = JSON.parse(JSON.stringify(defaultOption));  
+  // color 配置
+  newOption.color = myConfig.echartOption.color.split('|');
+  // series 配置
+  newOption.series = _.merge({},newOption.series,myConfig.echartOption.series);
+  newOption.series.radius = newOption.series.radius.split('|');
+  newOption.series.data = [{
+    "value": d1,
+  }, {
+    "value": d2,
+    "label":{
+      "show":false
+    }
+  }]
 
-    // 系列列表。每个系列通过 type 决定自己的图表类型
-    series: [
-      {
-        // 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
-        name: "任务进度",
-        type: "pie",
-        // 饼图的半径，数组的第一项是内半径，第二项是外半径
-        radius: ["50%", "70%"],
-        // 是否启用防止标签重叠策略，默认开启
-        avoidLabelOverlap: false,
-        hoverAnimation: false,
-        // 标签的视觉引导线样式，在 label 位置 设置为'outside'的时候会显示视觉引导线
-        labelLine: {
-          normal: {
-            show: false
-          }
-        },
-        data: [
-          {
-            // 数据值
-            value: 100 * percent,
-            // 数据项名称
-            name: data.title.text,
-            //该数据项是否被选中
-            selected: false,
-            // 单个扇区的标签配置
-            label: {
-              normal: {
-                // 是显示标签
-                show: true,
-                position: "center",
-                fontSize: 14,
-                // 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行
-                formatter: "{b}\n{d}%"
-              }
-            }
-          },
-          {
-            value: 100 * (1 - percent),
-            label: {
-              normal: {
-                show: false
-              }
-            }
-          }
-        ]
-      }
-    ]
-  };
-  return option;
+  return newOption;
 }
 
 export default {
   name: "pie",
   props: {
-    chartData: Object,
+    myConfig: Object,
   },
   data() {
     return {
-      bingTu_option: getOption(this.chartData),
       myChart: null,
-      width: this.chartData.width,
-      height: this.chartData.height,
-      y: this.chartData.y,
-      x: this.chartData.x,
-      border: this.chartData.border,
-      padding: this.chartData.padding,
-      background: this.chartData.background,
+      diyCoreCode:'',
+      apiData:[],
+      store:store,
     };
   },
-  mounted: function() {
-    // 基于准备好的dom，初始化echarts实例
-    this.myChart = echarts.init(
-      document.getElementById(this.chartData.chartId)
-    );
-    this.myChart.setOption(this.bingTu_option);
+  computed: {
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      return bee.objToCSS(bee.replaceKey(this.myConfig.css,map),"position:absolute;box-sizing:border-box;");
+    }
   },
-  watch: {
-    chartData: {
-      handler: function(val) {
-        this.myChart.setOption(getOption(val));
+  methods:{
+    initWidget:function(myConfig){
+      let dataUrl = myConfig.dataUrl;
+      let diyCoreCode = myConfig.diyCoreCode;
+      this.diyCoreCode = diyCoreCode;
+      let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+      //获取数据源
+      axios.post(baseUrl + dataUrl,params).then(response => {
+        let apiData = response.data.data;
+        this.apiData = apiData;
+        this.myChart = echarts.init(document.getElementById(myConfig.id))
+        this.myChart.setOption(getNewOption(myConfig,this.apiData));
+      });
+    },
+    updatedWidget:function(val){
+      let diyCoreCode = val.diyCoreCode;
+      //只有diyCoreCode发生改变的时候才调接口！
+      if(this.diyCoreCode!==diyCoreCode){
+        let dataUrl = val.dataUrl;
+        this.diyCoreCode=diyCoreCode;
+        let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+        //获取数据源
+        axios.post(baseUrl + dataUrl,params).then(response => {
+          let apiData = response.data.data;
+          this.apiData = apiData;
+          this.myChart.setOption(getNewOption(val,this.apiData));
+        });
+      }else{
+        this.myChart.setOption(getNewOption(val,this.apiData));
+      }
+
+      setTimeout(()=>{
+         this.myChart.resize();
+      },0)
+    },
+    clickFun(widgetId){
+      store.dispatch("setSelectWidgetId",widgetId);
+      bus.$emit("widgetClick",widgetId);
+    }
+  },
+  watch:{
+    "myConfig":{
+      handler:function(newVal,oldVal){
+        this.updatedWidget(newVal,oldVal)
       },
       deep: true
-    }
+    },
+    
+  },
+  mounted: function() {
+    this.initWidget(this.myConfig);
+  },
+  updated(){
   }
 };
 </script>
 
 
-<style scoped>
-.bingTuCon {
+<style lang="scss">
+.widgetBox {
   position: absolute;
   box-sizing: border-box;
-}
-.bingTuBox {
-  width: 100%;
-  height: 100%;
+  .widgetCon {
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>
+
 
 
 

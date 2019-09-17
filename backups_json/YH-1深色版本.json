@@ -1,0 +1,861 @@
+{
+	"canvas": {
+	  "width": "1920",
+	  "height": "1080",
+	  "background": "#182136",
+	  "zoom-type": 0,
+	  "grid": 10,
+	  "refreshTime": "60000",
+	  "linkScreen": {
+		"linkScreenCode": "YH-2",
+		"waitTime": "60000",
+		"eventWidgetName": ""
+	  },
+	  "formFormat": {
+		"labelPosition": "top",
+		"colSpan": 8
+	  }
+	},
+	"components": {
+	  "beeTitle": [{
+		"id": "11df-284e",
+		"type": "beeTitle",
+		"css": {
+		  "x": "0",
+		  "y": "20",
+		  "width": "1920",
+		  "height": "50",
+		  "z-index": 9,
+		  "padding": 0,
+		  "font-size": "40",
+		  "font-weight": "bold",
+		  "color": "#e28c36",
+		  "border": "",
+		  "background": "",
+		  "text-align": "center"
+		},
+		"text": "永辉云创 上海物流中心"
+	  }, {
+		"id": "6266-b836",
+		"type": "beeTitle",
+		"css": {
+		  "x": "440",
+		  "y": "200",
+		  "width": 150,
+		  "height": 30,
+		  "z-index": 9,
+		  "padding": 0,
+		  "font-size": "16",
+		  "font-weight": "normal",
+		  "color": "#fff",
+		  "border": "",
+		  "background": "",
+		  "text-align": "left"
+		},
+		"text": "当前时间："
+	  }, {
+		"id": "ceaa-5534",
+		"type": "beeTitle",
+		"css": {
+		  "x": "440",
+		  "y": "270",
+		  "width": "120",
+		  "height": 30,
+		  "z-index": 10,
+		  "padding": 0,
+		  "font-size": "16",
+		  "font-weight": "normal",
+		  "color": "#fff",
+		  "border": "",
+		  "background": "",
+		  "text-align": "left"
+		},
+		"text": "统计范围：当天"
+	  }, {
+		"id": "c959-653a",
+		"type": "beeTitle",
+		"css": {
+		  "x": "440",
+		  "y": "320",
+		  "width": "300",
+		  "height": 30,
+		  "z-index": 11,
+		  "padding": 0,
+		  "font-size": "16",
+		  "font-weight": "normal",
+		  "color": "#fff",
+		  "border": "",
+		  "background": "",
+		  "text-align": "left"
+		},
+		"text": "刷新时间：1分钟"
+	  }, {
+		"id": "fddc-3578",
+		"type": "beeTitle",
+		"css": {
+		  "x": "30",
+		  "y": "30",
+		  "width": 150,
+		  "height": 30,
+		  "z-index": 9,
+		  "padding": 0,
+		  "font-size": 24,
+		  "font-weight": "normal",
+		  "color": "#e28b36",
+		  "border": "",
+		  "background": "",
+		  "text-align": "left"
+		},
+		"text": "总体进度"
+	  }, {
+		"id": "d45d-020d",
+		"type": "beeTitle",
+		"css": {
+		  "x": "20",
+		  "y": "390",
+		  "width": "1240",
+		  "height": "300",
+		  "z-index": 9,
+		  "padding": "10",
+		  "font-size": 24,
+		  "font-weight": "normal",
+		  "color": "#e28b36",
+		  "border": "solid 1px #1f3e7b",
+		  "background": "",
+		  "text-align": "",
+		  "border-radius":"5px"
+		},
+		"text": "当日拣货任务汇总"
+	  }, {
+		"id": "062c-3847",
+		"type": "beeTitle",
+		"css": {
+		  "x": "20",
+		  "y": "725",
+		  "width": "1240",
+		  "height": "300",
+		  "z-index": 10,
+		  "padding": "10",
+		  "font-size": 24,
+		  "font-weight": "normal",
+		  "color": "#e28b36",
+		  "border": "solid 1px #1f3e7b",
+		  "background": "",
+		  "text-align": "",
+		  "border-radius":"5px"
+		},
+		"text": "AGV上架任务"
+	  }, {
+		"id": "d19f-8cc3",
+		"type": "beeTitle",
+		"css": {
+		  "x": "100",
+		  "y": "480",
+		  "width": 150,
+		  "height": 30,
+		  "z-index": "19",
+		  "padding": 0,
+		  "font-size": 24,
+		  "font-weight": "normal",
+		  "color": "#3c8bd0",
+		  "border": "",
+		  "background": "",
+		  "text-align": "left"
+		},
+		"text": "任务总量"
+	  }, {
+		"id": "d067-6168",
+		"type": "beeTitle",
+		"css": {
+		  "x": "300",
+		  "y": "480",
+		  "width": 150,
+		  "height": 30,
+		  "z-index": 20,
+		  "padding": 0,
+		  "font-size": 24,
+		  "font-weight": "normal",
+		  "color": "#3c8bd0",
+		  "border": "",
+		  "background": "",
+		  "text-align": "left"
+		},
+		"text": "已完成"
+	  }, {
+		"id": "14a9-2613",
+		"type": "beeTitle",
+		"css": {
+		  "x": "500",
+		  "y": "480",
+		  "width": 150,
+		  "height": 30,
+		  "z-index": 21,
+		  "padding": 0,
+		  "font-size": 24,
+		  "font-weight": "normal",
+		  "color": "#3c8bd0",
+		  "border": "",
+		  "background": "",
+		  "text-align": "left"
+		},
+		"text": "未完成"
+	  }, {
+		"id": "db39-83d6",
+		"type": "beeTitle",
+		"css": {
+		  "x": "700",
+		  "y": "480",
+		  "width": 150,
+		  "height": 30,
+		  "z-index": 22,
+		  "padding": 0,
+		  "font-size": 24,
+		  "font-weight": "normal",
+		  "color": "#3c8bd0",
+		  "border": "",
+		  "background": "",
+		  "text-align": "left"
+		},
+		"text": "异常"
+	  }, {
+		"id": "e609-1493",
+		"type": "beeTitle",
+		"css": {
+		  "x": "180",
+		  "y": "830",
+		  "width": 150,
+		  "height": 30,
+		  "z-index": 20,
+		  "padding": 0,
+		  "font-size": 24,
+		  "font-weight": "normal",
+		  "color": "#3c8bd0",
+		  "border": "",
+		  "background": "",
+		  "text-align": "left"
+		},
+		"text": "任务总量"
+	  }, {
+		"id": "25c9-ac4c",
+		"type": "beeTitle",
+		"css": {
+		  "x": "580",
+		  "y": "830",
+		  "width": 150,
+		  "height": 30,
+		  "z-index": 21,
+		  "padding": 0,
+		  "font-size": 24,
+		  "font-weight": "normal",
+		  "color": "#3c8bd0",
+		  "border": "",
+		  "background": "",
+		  "text-align": "left"
+		},
+		"text": "已完成"
+	  }, {
+		"id": "fc3b-fed8",
+		"type": "beeTitle",
+		"css": {
+		  "x": "980",
+		  "y": "830",
+		  "width": 150,
+		  "height": 30,
+		  "z-index": 22,
+		  "padding": 0,
+		  "font-size": 24,
+		  "font-weight": "normal",
+		  "color": "#3c8bd0",
+		  "border": "",
+		  "background": "",
+		  "text-align": "left"
+		},
+		"text": "未完成"
+	  }, {
+		"id": "2251-1a12",
+		"type": "beeTitle",
+		"css": {
+		  "x": "1300",
+		  "y": "390",
+		  "width": "600",
+		  "height": "150",
+		  "z-index": 10,
+		  "padding": "10",
+		  "font-size": 24,
+		  "font-weight": "normal",
+		  "color": "#e28b36",
+		  "border": "solid 1px #1f3e7b",
+		  "background": "",
+		  "text-align": "",
+		  "border-radius":"5px"
+		},
+		"text": ""
+	  }, {
+		"id": "0b38-2a6f",
+		"type": "beeTitle",
+		"css": {
+		  "x": "1320",
+		  "y": "420",
+		  "width": "15",
+		  "height": "100",
+		  "z-index": 9,
+		  "padding": 0,
+		  "font-size": "16",
+		  "font-weight": "normal",
+		  "color": "#e28b36",
+		  "border": "",
+		  "border-radius": 0,
+		  "background": "",
+		  "text-align": "left"
+		},
+		"text": "配送汇总"
+	  }],
+	  "dater": [{
+		"id": "1828-4813",
+		"type": "dater",
+		"css": {
+		  "x": "440",
+		  "y": "230",
+		  "width": "400",
+		  "height": 30,
+		  "z-index": 9,
+		  "padding": 0,
+		  "font-size": "16",
+		  "color": "#ffffff",
+		  "border": "",
+		  "background": "",
+		  "text-align": "left"
+		}
+	  }],
+	  "new_pie_1": [{
+		"id": "a1d3-b00d",
+		"type": "new_pie_1",
+		"css": {
+		  "x": 20,
+		  "y": 20,
+		  "width": "400",
+		  "height": "320",
+		  "z-index": 9,
+		  "border": "solid 1px#1f3e7b",
+		  "padding": "0",
+		  "background": "",
+		  "border-radius":"5px"
+		},
+		"echartOption": {
+		  "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+		  "series": {
+			"name": "",
+			"radius": "50%|70%",
+			"label": {
+			  "color": "#fff",
+			  "fontSize": "40",
+			  "formatter": "{c}%"
+			}
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickOverallProgress"
+	  }],
+	  "new_line": [{
+		"id": "646a-0fb6",
+		"type": "new_line",
+		"css": {
+		  "x": 720,
+		  "y": 100,
+		  "width": 540,
+		  "height": 250,
+		  "z-index": 9,
+		  "border": "none",
+		  "padding": "0",
+		  "background": ""
+		},
+		"echartOption": {
+		  "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
+		  "title": {
+			"text": "拣货量推移图",
+			"textStyle": {
+			  "fontSize": "24",
+			  "color": "#e28b36"
+			}
+		  },
+		  "axisLabel": {
+			"show": "true",
+			"textStyle": {
+			  "color": "#3c8bd0"
+			}
+		  },
+		  "legend": {
+			"show": "false",
+			"textStyle": {
+			  "color": "#f8f4a0"
+			}
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickLineChart"
+	  }],
+	  "new_bar": [{
+		"id": "c6f3-4476",
+		"type": "new_bar",
+		"css": {
+		  "x": 1300,
+		  "y": 100,
+		  "width": 600,
+		  "height": 250,
+		  "z-index": 9,
+		  "border": "none",
+		  "padding": "0",
+		  "background": ""
+		},
+		"echartOption": {
+		  "color": "#4f8ff9|#38c3ec|#a2fdff|#eada80",
+		  "title": {
+			"text": "AGV每工位拣货量",
+			"textStyle": {
+			  "fontSize": "24",
+			  "color": "#e28b36"
+			}
+		  },
+		  "axisLabel": {
+			"show": "true",
+			"textStyle": {
+			  "color": "#3c8bd0"
+			}
+		  },
+		  "legend": {
+			"show": "false",
+			"textStyle": {
+			  "color": "#f8f4a0"
+			}
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickHistogram"
+	  }],
+	  "beeCard": [{
+		"id": "e95a-bf4a",
+		"type": "beeCard",
+		"css": {
+		  "x": "25",
+		  "y": "520",
+		  "width": "200",
+		  "height": "150",
+		  "z-index": 9,
+		  "border": "",
+		  "border-radius": "",
+		  "padding": "",
+		  "font-size": 12,
+		  "text-align": "left",
+		  "color": "#f8f4a0",
+		  "background": ""
+		},
+		"widgetOption": {
+		  "cardStyle": "0",
+		  "keyCss": {
+			"font-size": "16",
+			"color": "#3c8bd0",
+			"width": "30%"
+		  },
+		  "valueCss": {
+			"font-size": "40",
+			"color": "#3c8bd0",
+			"width": "70%"
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickTotalTasks"
+	  }, {
+		"id": "10ce-8290",
+		"type": "beeCard",
+		"css": {
+		  "x": "230",
+		  "y": "520",
+		  "width": "200",
+		  "height": "150",
+		  "z-index": 10,
+		  "border": "",
+		  "border-radius": "",
+		  "padding": "",
+		  "font-size": 12,
+		  "text-align": "left",
+		  "color": "#f8f4a0",
+		  "background": ""
+		},
+		"widgetOption": {
+		  "cardStyle": "0",
+		  "keyCss": {
+			"font-size": "16",
+			"color": "#3c8bd0",
+			"width": "30%"
+		  },
+		  "valueCss": {
+			"font-size": "40",
+			"color": "#3c8bd0",
+			"width": "70%"
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickCompleted"
+	  }, {
+		"id": "8c18-bfbf",
+		"type": "beeCard",
+		"css": {
+		  "x": "440",
+		  "y": "520",
+		  "width": "200",
+		  "height": "150",
+		  "z-index": 11,
+		  "border": "",
+		  "border-radius": "",
+		  "padding": "",
+		  "font-size": 12,
+		  "text-align": "left",
+		  "color": "#f8f4a0",
+		  "background": ""
+		},
+		"widgetOption": {
+		  "cardStyle": "0",
+		  "keyCss": {
+			"font-size": "16",
+			"color": "#3c8bd0",
+			"width": "30%"
+		  },
+		  "valueCss": {
+			"font-size": "40",
+			"color": "#3c8bd0",
+			"width": "70%"
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickUnfinished"
+	  }, {
+		"id": "aa02-b10f",
+		"type": "beeCard",
+		"css": {
+		  "x": "640",
+		  "y": "520",
+		  "width": "200",
+		  "height": "150",
+		  "z-index": 12,
+		  "border": "",
+		  "border-radius": "",
+		  "padding": "",
+		  "font-size": 12,
+		  "text-align": "left",
+		  "color": "#f8f4a0",
+		  "background": ""
+		},
+		"widgetOption": {
+		  "cardStyle": "0",
+		  "keyCss": {
+			"font-size": "16",
+			"color": "#3c8bd0",
+			"width": "30%"
+		  },
+		  "valueCss": {
+			"font-size": "40",
+			"color": "#3c8bd0",
+			"width": "70%"
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickAbnormal"
+	  }, {
+		"id": "be16-777b",
+		"type": "beeCard",
+		"css": {
+		  "x": "20",
+		  "y": "850",
+		  "width": "400",
+		  "height": "150",
+		  "z-index": 10,
+		  "border": "",
+		  "border-radius": "",
+		  "padding": "30",
+		  "font-size": 12,
+		  "text-align": "left",
+		  "color": "#f8f4a0",
+		  "background": ""
+		},
+		"widgetOption": {
+		  "cardStyle": "1",
+		  "keyCss": {
+			"font-size": "16",
+			"color": "#3c8bd0",
+			"width": ""
+		  },
+		  "valueCss": {
+			"font-size": "45",
+			"color": "#3c8bd0",
+			"width": ""
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-ReceiptTotalTasks"
+	  }, {
+		"id": "8f54-4fa6",
+		"type": "beeCard",
+		"css": {
+		  "x": "420",
+		  "y": "850",
+		  "width": "400",
+		  "height": "150",
+		  "z-index": 11,
+		  "border": "",
+		  "border-radius": "",
+		  "padding": "30",
+		  "font-size": 12,
+		  "text-align": "left",
+		  "color": "#f8f4a0",
+		  "background": ""
+		},
+		"widgetOption": {
+		  "cardStyle": "1",
+		  "keyCss": {
+			"font-size": "16",
+			"color": "#3c8bd0",
+			"width": ""
+		  },
+		  "valueCss": {
+			"font-size": "45",
+			"color": "#3c8bd0",
+			"width": ""
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-ReceiptCompleted"
+	  }, {
+		"id": "8682-c8cd",
+		"type": "beeCard",
+		"css": {
+		  "x": "820",
+		  "y": "850",
+		  "width": "400",
+		  "height": "150",
+		  "z-index": 12,
+		  "border": "",
+		  "border-radius": "",
+		  "padding": "30",
+		  "font-size": 12,
+		  "text-align": "left",
+		  "color": "#f8f4a0",
+		  "background": ""
+		},
+		"widgetOption": {
+		  "cardStyle": "1",
+		  "keyCss": {
+			"font-size": "16",
+			"color": "#3c8bd0",
+			"width": ""
+		  },
+		  "valueCss": {
+			"font-size": "45",
+			"color": "#3c8bd0",
+			"width": ""
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-ReceiptUnfinished"
+	  }, {
+		"id": "9663-1fe0",
+		"type": "beeCard",
+		"css": {
+		  "x": "1370",
+		  "y": "400",
+		  "width": "250",
+		  "height": "50",
+		  "z-index": 13,
+		  "border": "",
+		  "border-radius": "",
+		  "padding": "30",
+		  "font-size": 12,
+		  "text-align": "left",
+		  "color": "#f8f4a0",
+		  "background": ""
+		},
+		"widgetOption": {
+		  "cardStyle": "1",
+		  "keyCss": {
+			"font-size": "16",
+			"color": "#3c8bd0",
+			"width": ""
+		  },
+		  "valueCss": {
+			"font-size": "25",
+			"color": "#3c8bd0",
+			"width": ""
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickSkuCompleted"
+	  }, {
+		"id": "5b0c-7964",
+		"type": "beeCard",
+		"css": {
+		  "x": "1650",
+		  "y": "400",
+		  "width": "250",
+		  "height": "50",
+		  "z-index": 14,
+		  "border": "",
+		  "border-radius": "",
+		  "padding": "30",
+		  "font-size": 12,
+		  "text-align": "left",
+		  "color": "#f8f4a0",
+		  "background": ""
+		},
+		"widgetOption": {
+		  "cardStyle": "1",
+		  "keyCss": {
+			"font-size": "16",
+			"color": "#3c8bd0",
+			"width": ""
+		  },
+		  "valueCss": {
+			"font-size": "25",
+			"color": "#3c8bd0",
+			"width": ""
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickNumCompleted"
+	  }, {
+		"id": "5d91-47cd",
+		"type": "beeCard",
+		"css": {
+		  "x": "1370",
+		  "y": "470",
+		  "width": "250",
+		  "height": "50",
+		  "z-index": 14,
+		  "border": "",
+		  "border-radius": "",
+		  "padding": "30",
+		  "font-size": 12,
+		  "text-align": "left",
+		  "color": "#f8f4a0",
+		  "background": ""
+		},
+		"widgetOption": {
+		  "cardStyle": "1",
+		  "keyCss": {
+			"font-size": "16",
+			"color": "#3c8bd0",
+			"width": ""
+		  },
+		  "valueCss": {
+			"font-size": "25",
+			"color": "#3c8bd0",
+			"width": ""
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickShopCompleted"
+	  }, {
+		"id": "8fed-eee9",
+		"type": "beeCard",
+		"css": {
+		  "x": "1650",
+		  "y": "470",
+		  "width": "250",
+		  "height": "50",
+		  "z-index": 15,
+		  "border": "",
+		  "border-radius": "",
+		  "padding": "30",
+		  "font-size": 12,
+		  "text-align": "left",
+		  "color": "#f8f4a0",
+		  "background": ""
+		},
+		"widgetOption": {
+		  "cardStyle": "1",
+		  "keyCss": {
+			"font-size": "16",
+			"color": "#3c8bd0",
+			"width": ""
+		  },
+		  "valueCss": {
+			"font-size": "25",
+			"color": "#3c8bd0",
+			"width": ""
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickSkuPercentage"
+	  }],
+	  "new_pie_2": [{
+		"id": "2b19-5dde",
+		"type": "new_pie_2",
+		"css": {
+		  "x": "900",
+		  "y": "395",
+		  "width": "350",
+		  "height": "300",
+		  "z-index": 9,
+		  "border": "none",
+		  "border-radius": 0,
+		  "padding": "0",
+		  "background": ""
+		},
+		"echartOption": {
+		  "color": "#4f8ff9|#38c3ec|#a2fdff|#c0f8ff",
+		  "title": {
+			"text": "",
+			"textStyle": {
+			  "fontSize": 16,
+			  "color": "#f8f4a0"
+			}
+		  },
+		  "legend": {
+			"show": "false",
+			"orient": "vertical",
+			"left": "right",
+			"textStyle": {
+			  "color": "#f8f4a0"
+			}
+		  },
+		  "series": {
+			"name": "机器人",
+			"radius": "60%",
+			"center": "50%|50%"
+		  }
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickPieChart"
+	  }],
+	  "YH_lines": [{
+		"id": "cbb4-bafa",
+		"type": "YH_lines",
+		"css": {
+		  "x": "1300",
+		  "y": "550",
+		  "width": "600",
+		  "height": "500",
+		  "z-index": 9,
+		  "border": "",
+		  "padding": "0",
+		  "background": "",
+		  "color": "#f8f594"
+		},
+		"dataUrl": "/epimetheus/api/diy/report/selectData",
+		"diyCoreCode": "YH-PickLineInfo"
+	  }],
+	  "beeImage": [{
+		"id": "cc0c-8262",
+		"type": "beeImage",
+		"css": {
+		  "x": "690",
+		  "y": 10,
+		  "width": "50",
+		  "height": "70",
+		  "z-index": 9,
+		  "border": "",
+		  "padding": 0,
+		  "background": ""
+		},
+		"imageLink": "https://i.site.pictures/ppXSg.png"
+	  }]
+	}
+  }

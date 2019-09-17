@@ -1,176 +1,79 @@
 <template>
-  <div class="beeTitle">
-    <div @click="myFun" v-bind:class="{ 'canControl': isActive,'baseBox':true}" v-drag='{"changeData":changeData}'>
-      <div class="wenzi">我是标题</div>
-      <div class="miniDot dot1"></div>
-      <div class="miniDot dot2"></div>
-      <div class="miniDot dot3"></div>
-      <div class="miniDot dot4"></div>
-      <div class="miniDot dot6"></div>
-      <div class="miniDot dot7"></div>
-      <div class="miniDot dot8"></div>
-      <div class="miniDot dot9"></div>
-      <div class="showPosition">{{x}},{{y}}</div>
-    </div>
-  </div>
+  <!-- 拖拽组件 -->
+  <vue-draggable-resizable 
+    :x="Number(myConfig.css.x)" :y="Number(myConfig.css.y)" :w="Number(myConfig.css.width)" :h="Number(myConfig.css.height)" 
+    :grid="grid" :parent="false"
+    v-on:dragging="onDrag" v-on:resizing="onResize" @activated="clickFun(myConfig.id)" 
+    class="widgetBox" :style="myCss" :name="myConfig.id" @click="clickFun(myConfig.id)"
+  >
+    <!-- 组件内容区 -->
+    <div class="widgetCon">{{myConfig.text}}</div>
+    <!-- 选中框 -->
+    <div :class="{selectBorder:myConfig.id===store.state.selectedWidgetId}"></div>
+  </vue-draggable-resizable>
 </template>
 
 <script>
+import bee from '@/src/tools/bee.js';
+import bus from '@/src/tools/bus.js';
+import store from '@/src/store';
+
 export default {
-  name: 'xm',
+  name: "bee_title",//不能使用title，以为这个已经被默认占用了
   props: {
-    msg: String
+    myConfig: null,
+    canvasConfig: Object,
   },
-  data(){
-    return{
-      x:0,
-      y:0,
-      isActive:false
-    }
+  data() {
+    return {
+      store,
+
+      //用于控制拖拽组件的初始定位
+      x: this.myConfig.css.x,
+      y: this.myConfig.css.y,
+      width: this.myConfig.css.width,
+      height: this.myConfig.css.height,
+      //初始的栅格
+      grid:(this.canvasConfig&&this.canvasConfig.grid)?[this.canvasConfig.grid,this.canvasConfig.grid]:[1,1]
+    };
   },
-  methods: {
-    myFun(){
-      this.isActive = !this.isActive;
-      console.log(this.isActive)
+  methods:{
+    onResize: function (x, y, width, height) {
+      this.myConfig.css.x = this.x = x
+      this.myConfig.css.y = this.y = y
+      this.myConfig.css.width =this.width = width
+      this.myConfig.css.height = this.height = height
     },
-    changeData(x,y){
-      this.x = x;
-      this.y = y;
+    onDrag: function (x, y) {
+      this.myConfig.css.x = this.x = x
+      this.myConfig.css.y = this.y = y   
+    },
+    clickFun(widgetId){
+      //只有在编辑页面，这个点击才有效
+      if(this.$el.parentElement.id==="editCanvas"){
+        store.dispatch("setSelectWidgetId",widgetId);
+        bus.$emit("widgetClick",widgetId);
+      }
     }
   },
-  directives: {
-        drag: {
-            update:function(el,binding,bl){
-
-            },
-            // 指令的定义
-            bind: function (el,binding,bl) {
-
-                let that = this;
-                let odiv = el;   //获取当前元素
-                odiv.onmousedown = (e) => {
-                  
-                    //算出鼠标相对元素的位置
-                    let disX = e.clientX - odiv.offsetLeft;
-                    let disY = e.clientY - odiv.offsetTop;
-                    
-                    document.onmousemove = (e)=>{
-                      
-                      let isActive = bl.context.isActive
-
-                      if(isActive){
-                        //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
-                        let left = e.clientX - disX;    
-                        let top = e.clientY - disY;
-                      
-                        //改变data中的数据
-                        binding.value.changeData(top,left);
-                
-                        //移动当前元素
-                        odiv.style.left = left + 'px';
-                        odiv.style.top = top + 'px';
-                      }
-
-                    };
-                    document.onmouseup = (e) => {
-                        document.onmousemove = null;
-                        document.onmouseup = null;
-                    };
-                };
-            }
-        }
+  computed: {
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      let cssObj = bee.replaceKey(this.myConfig.css,map);
+      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
+      return cssStr;
     }
-  
-}
+  }
+};
 </script>
 
 <style lang="scss">
-.beeTitle{
-  color:#fff;
-}
-.baseBox{
-  width:100px;
-  height:80px;
-  border:dashed 1px #000;
-  box-sizing:border-box;
-  display:inline-block;
-  user-select:none;
-  cursor:pointer;
-  position:absolute;
-}
-.canControl{
-  border:dashed 1px red;
-  cursor:move;
-  .miniDot{
-    width:5px;
-    height:5px;
-    background:red;
-    position:absolute;
-  }
-  .dot1{
-    top:0px;
-    left:0px;
-    cursor:nwse-resize;
-  }
-  .dot2{
-    top:0px;
-    left:50%;
-    cursor:ns-resize;
-  }
-  .dot3{
-    top:0px;
-    right:0px;
-    cursor:nesw-resize;
-  }
-  .dot4{
-    top:50%;
-    left:0;
-    cursor:ew-resize;
-  }
-  .dot6{
-    top:50%;
-    right:0px;
-    cursor:ew-resize;
-  }
-  .dot7{
-    bottom:0px;
-    left:0px;
-    cursor:nesw-resize;
-  }
-  .dot8{
-    bottom:0px;
-    left:50%;
-    cursor:ns-resize;
-  }
-  .dot9{
-    bottom:0px;
-    right:0px;
-    cursor:nwse-resize;
-  }
-
-  .showPosition{
-    display:block;
+.widgetBox {
+  position: absolute;
+  box-sizing: border-box;
+  .widgetCon {
+    width: 100%;
+    height: 100%;
   }
 }
-.wenzi{
-  text-align:center;
-  position:relative;
-}
-
-.showPosition{
-  position:absolute;
-  left:-60px;
-  top:-20px;
-  width:60px;
-  height:20px;
-  display:none;
-  border-right:dashed 1px red;
-  border-bottom:dashed 1px red;
-  text-align:right;
-  box-sizing:border-box;
-  padding:2px 5px;
-}
-
-
-
 </style>

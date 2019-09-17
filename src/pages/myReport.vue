@@ -1,11 +1,19 @@
 <template>
   <div class="myReportBox">
+    
+    <!-- 左上角配置按钮 -->
+    <div v-if="showControlBtn && !showGlobalContion" class="reportConditionBtn" @click="showGlobalContion=true">
+      <i class="el-icon-edit"></i>
+    </div>
+    <div v-if="showControlBtn && showGlobalContion" class="reportConditionBtn" @click="showGlobalContion=false">
+      <i class="el-icon-close"></i>
+    </div>
 
     <!-- 大屏全局的条件查询 -->
     <reportContion 
       v-if = "showGlobalContion" 
       :globalContion = "globalContion"
-      @globalConditionUpdate = "globalConditionUpdateFun"
+      @globalConditionUpdate = "refreshFun"
     />
 
     <!-- 整个画面显示 -->
@@ -15,12 +23,13 @@
 </template>
 
 <script>
+import bee from '@/src/tools/bee.js';
+import bus from '@/src/tools/bus.js';
 import axios from "axios";
 import reportShow from "../components/reportShow.vue";
 import reportContion from "../components/reportCondition.vue";
-import {baseUrl,path} from '@/apiUrl.config';
+import {baseUrl,path} from '@/bee.config';
 import store from '@/src/store';
-
 
 
 export default {
@@ -38,44 +47,60 @@ export default {
       globalContion:[],         //经过选择表单选择之后的结果
       defaultGlobalContion:[],  //这个是默认的条件结果，没有使用表单选择之前的使用。
       hackReset:true,
+      setTimeoutHolder:null,    //定时跳屏的句柄
+      setIntervalHolder:null,   //定时刷新本页面的句柄
+      showControlBtn:false, //左上角按钮
     }
   },
   methods:{
-    globalConditionUpdateFun(){
-      //刷新大屏
+
+
+    //刷新操作
+    refreshFun(){
+      //条件选择弹层关闭
+      this.showGlobalContion = false;
+      //重置大屏
       this.hackReset = false;
       this.$nextTick(() => {
         this.hackReset = true
       })
-    }
-  },
-  mounted(){
-    let that = this;
+    },
 
-    /**********************************************************
-     * 这里是最初获取到大屏配置的地方，有很多重要的逻辑处理
-     **********************************************************/
-
-    //获取已经存在的数据
-    let code = this.$route.query.diyViewCode;
-    //axios.get(baseUrl + "/koa/getReportByCode?code="+code).then(response => {
-    
-    axios.get(baseUrl + path + "/api_v1/diy/view/info?diyViewCode="+code).then(response => {
-
-      let d = response.data.data.jsonData;
-      d = typeof(d)=='string'?eval('(' + d + ')'):d;
-      
-      //全局条件查询
-      this.showGlobalContion = d.globalCondition;
-      this.globalContion = d.globalCondition;
-
-      //刷新页面
+    //定时刷新本页面
+    timingRefresh(d){
       let refreshTime = d.refreshTime;
-      if(refreshTime){
-        setInterval(() => {
-          that.globalConditionUpdateFun();
+      if(refreshTime>=3000){
+        this.setIntervalHolder = setInterval(() => {
+          this.refreshFun();
         }, refreshTime);
       }
+    },
+
+    //跳转到新的大屏
+    goToNewScreen(info){
+      console.log(info)
+      //销毁跳转用的定时器
+      clearTimeout(this.setTimeoutHolder);
+      //清除定时刷新的定时器
+      clearInterval(this.setIntervalHolder);
+      this.$router.push({ path: '/myReport', query: { diyViewCode: this.data.canvas.linkScreen.linkScreenCode }})
+    },
+
+    //通过定时器触发跳屏
+    timingJump(){
+      let time = this.data.canvas.linkScreen && this.data.canvas.linkScreen.waitTime || 0;
+      //只有时间间隔超过3秒才有效。
+      if(time>=3000){
+        this.setTimeoutHolder = window.setTimeout(()=>{
+          this.goToNewScreen("定时器触发");
+        },time);
+      }
+    },
+
+    //对数据进行处理
+    dealWithData(d){
+      //全局条件查询
+      this.globalContion = d.globalCondition;
 
       //这里有一个把大批默认值配置到 store 的工作
       if(d.globalCondition){
@@ -101,7 +126,7 @@ export default {
       //保存到全局store
       let labelPosition = d.canvas.formFormat && d.canvas.formFormat.labelPosition;
       let colSpan = d.canvas.formFormat && d.canvas.formFormat.colSpan;
-      store.dispatch("setLabelPosition", labelPosition||'left');
+      store.dispatch("setLabelPosition", labelPosition||'top');
       store.dispatch("setColSpan", colSpan||8);
       
       //兼容koa本地虚拟的数据（对象类型）、和来自后端那边的数据
@@ -110,11 +135,89 @@ export default {
       }
       
       this.data = d;
-    });
+    },
+
+    getDataAndRender(){
+
+      //【重要】
+      // 当路由发生变化的时候，这个"getDataAndRender"再次被执行，不同的是，此时 this.data.components 是有内容的。
+      // 我们需要清空它，这样子组件就会完成一次刷新，把原来的渲染的组件清空了。
+      if(this.data&&this.data.components){
+        this.data.components=[];
+        this.refreshFun();
+      }
+
+      //获取数据
+      let code = this.$route.query.diyViewCode;      
+      
+      //解决bug
+      //let config = JSON.parse(localStorage.getItem("screenList"))[code];
+      let config = localStorage.getItem("screenList")?JSON.parse(localStorage.getItem("screenList"))[code]:null;
+      
+      if(config){
+        let canvas = config.json.canvas
+        let components = config.json.components
+        let d = {canvas,components}
+        this.dealWithData(d)
+        this.timingJump();
+        this.timingRefresh(d);
+      }else{
+        axios.get(baseUrl + path + "/api_v1/diy/view/info?diyViewCode="+code).then(response => {
+          let d = response.data.data.jsonData;
+          d = typeof(d)=='string'?eval('(' + d + ')'):d;
+          this.dealWithData(d);
+          this.timingJump();
+          this.timingRefresh(d);
+        });
+      }
+    }
+  },
+  watch: {
+    // 如果路由有变化，会再次执行该方法
+    "$route": "getDataAndRender",
+    "data":function(v){
+      this.showControlBtn = v.globalCondition?true:false;
+    }
+  },
+  mounted(){
+    this.getDataAndRender();
+
+    //订阅事件，触发跳屏
+    bus.$on('widgetEvent', (widgetName)=> {  
+      //事件来自指定的组件
+      if(this.data.canvas.linkScreen.eventWidgetName === widgetName){
+        this.goToNewScreen("bus触发");
+      }
+    }); 
 
   },
+  destroyed(){
+    //销毁页面中的定时器、事件侦听等
+    clearTimeout(this.setTimeoutHolder);
+    clearInterval(this.setIntervalHolder);
+    bus.$off('widgetEvent');
+  }
+  
+  
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.myReportBox{
+  height:100%;
+  .reportConditionBtn{
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index: 100;
+    width: 50px;
+    height:50px;
+    line-height:50px;
+    text-align: center;
+    background: #db8460;
+    cursor: pointer;
+    color:#fff;
+    font-size: 30px;
+  }
+}
 </style>

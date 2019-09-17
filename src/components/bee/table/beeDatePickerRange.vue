@@ -4,12 +4,12 @@
         <el-form-item :label="item.label">
           
           <!-- 日期区间选择 -->
-          <el-date-picker style="max-width:300px;"
+          <el-date-picker
             v-model="formInline.date"
             type="daterange"
-            range-separator="至"
-            :start-placeholder="myItem.placeholder[0]"
-            :end-placeholder="myItem.placeholder[1]"
+            range-separator="-"
+            :start-placeholder="startPlaceholder"
+            :end-placeholder="endPlaceholder"
             @change="handleChange"
           >
           </el-date-picker>
@@ -33,7 +33,9 @@ export default {
       keyNames:this.item.keyName,
       formInline: {
         date: '',
-      }
+      },
+      startPlaceholder:'',
+      endPlaceholder:'',
     };
   },
   watch:{
@@ -43,57 +45,33 @@ export default {
   },
   methods:{
     handleChange(val){
-
-      let a,b;
-      
-      //如果时间输入框有值，就使用现成选择的值
+      let val2='';
       if(val){
-        a = val[0].getTime()+28800000;
-        b = val[1].getTime()+28800000;
-      }else{
-        //如果清空时间选择，我们可以提供当天的时间。
-        console.log('默认使用当天的时间区间');
-        a = new Date(new Date().toLocaleDateString()).getTime(); //今天0点开始的时间
-        b = new Date().getTime() //当前时间
+        val2 = val.map(function(one){
+          return one.getTime();
+          //return one.getTime()+28800000;
+        }).join('-');
       }
 
-      //分两次分发
-      this.$emit('sonChange', a, {
-        keyName:this.keyNames[0]
+      //分发默认时间区间
+      this.$emit('sonChange', val2, {
+        keyName:this.keyNames
       });
-      this.$emit('sonChange', b, {
-        keyName:this.keyNames[1]
-      });  
             
     }
   },
   computed: {
   },
   mounted(){
+    //设置初始值
+    let defaultValue = this.item.defaultValue;
+    this.formInline.date = defaultValue;
 
-    //初始设置 在不配置的情况下，默认设置成当日
-    let dateArr = this.item.defaultValue;
-    let a = new Date(new Date().toLocaleDateString()).getTime();
-    let b = new Date().getTime()
-    if(dateArr && dateArr[0] && dateArr[1]){
-      this.formInline.date = [
-        new Date(dateArr[0]).getTime(),
-        new Date(dateArr[1]).getTime()
-      ];
-    }else{
-      this.formInline.date = [a,b];
-    }
-    //分两次分发
-    //这样子在父级组件中就有这两个时间的默认值了。
-    this.$emit('sonChange', this.formInline.date[0], {
-      keyName:this.keyNames[0]
-    });
-    this.$emit('sonChange', this.formInline.date[1], {
-      keyName:this.keyNames[1]
-    });  
-
+    this.startPlaceholder = this.item.placeholder && this.myItem.placeholder[0]
+    this.endPlaceholder = this.item.placeholder && this.myItem.placeholder[1]
   },
   updated(){
+    
   }
 };
 </script>

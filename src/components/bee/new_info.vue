@@ -1,67 +1,90 @@
 <template>
-  <div class="beeTitle" :style="beeTitleStyle">{{showData}}</div>
+  <div class="beeTitle" :style="myCss" :name="myConfig.id">{{showData}}</div>
 </template>
 
 <script>
-// myData 数据格式
-// {
-//   id: undefined,
-//   text: "默认文字",
-//   x: 0,
-//   y: 0,
-//   width: 100,
-//   height: 12,
-//   color: "#000",
-//   "font-size": 12,
-//   border:"solid 1px red",
-//   align: "center"
-//   ....
-// }
+import bee from '@/src/tools/bee.js';
+import axios from "axios";
+import {baseUrl} from '@/bee.config';
+import store from '@/src/store';
+import { setTimeout } from 'timers';
 
 export default {
-  name: "beeTitle",
+  name: "new_info",
   props: {
-    myData: null
+    myConfig: null,
   },
   data() {
     return {
-      template:this.myData.template,
+      apiData:[],
+      showData:'',
     };
   },
   computed: {
-    showData(){
-      let d='';
-      //兼容字符串数据
-      let infoData = typeof(this.myData.apiData)=='string'?eval('('+this.myData.apiData+')')[0]:this.myData.apiData[0]
-      for(let key in infoData){
-        d = infoData[key];
-      }
-      let a = this.template.replace(/{{(\w)*}}/g,d);
-      return a;
-    },
-    beeTitleStyle() {
-      let str = "position:absolute;box-sizing:border-box;";
-      str += "border:" + this.myData.border + ";" 
-      str += "width:" + this.myData.width + "px;" 
-      str += "height:" + this.myData.height + "px;" 
-      str += "left:" + this.myData.x + "px;" 
-      str +=  "top:" + this.myData.y + "px;"
-      str += "color:"+ this.myData.color+";"
-      str += "font-size:"+this.myData['font-size']+"px;"
-      str += "text-align:"+this.myData['text-align']+";"
-      str += "padding:"+this.myData['padding']+";"
-      str += "background:"+this.myData['background']+";"
-      str += "z-index:"+this.myData['z-index']+";"
-
-
-      return str;
+    myCss() {
+      let map = {"x":"left","y":"top"};
+      let cssObj = bee.replaceKey(this.myConfig.css,map);
+      let cssStr = bee.objToCSS(cssObj,"position:absolute;box-sizing:border-box;")
+      return cssStr;
     }
+  },
+  methods:{
+    initWidget:function(myConfig){
+      let dataUrl = myConfig.dataUrl;
+      let diyCoreCode = myConfig.diyCoreCode;
+      this.diyCoreCode = diyCoreCode;
+      let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+      //获取数据源
+      axios.post(baseUrl + dataUrl,params).then(response => {
+        let apiData = bee.safeData(response.data.data);
+        this.apiData = apiData;
+
+        //数据格式：[{"总数":999}]，提取数据，填充模板
+        let v = apiData[0][Object.keys(apiData[0])[0]];
+        this.showData = this.myConfig.template.replace(/{{(\w)*}}/g, v);
+      });
+
+    },
+    updatedWidget:function(val){
+      let diyCoreCode = val.diyCoreCode;
+      //只有diyCoreCode发生改变的时候才调接口！
+      if(this.diyCoreCode!==diyCoreCode){
+        let dataUrl = val.dataUrl;
+        this.diyCoreCode=diyCoreCode;
+        let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+        //获取数据源
+        axios.post(baseUrl + dataUrl,params).then(response => {
+          let apiData = bee.safeData(response.data.data);
+          this.apiData = apiData;
+
+          //数据格式：[{"总数":999}]，提取数据，填充模板
+          let v = apiData[0][Object.keys(apiData[0])[0]];
+          this.showData = this.myConfig.template.replace(/{{(\w)*}}/g, v);
+        });
+      }
+
+      //数据格式：[{"总数":999}]，提取数据，填充模板
+      let v = this.apiData[0][Object.keys(this.apiData[0])[0]];
+      this.showData = this.myConfig.template.replace(/{{(\w)*}}/g, v);
+    },
+  },
+  watch:{
+    "myConfig":{
+      handler:function(newVal,oldVal){
+        this.updatedWidget(newVal,oldVal);
+      },
+      deep: true
+    },
+    
+  },
+  mounted: function() {
+    this.initWidget(this.myConfig);
+  },
+  updated(){
   }
 };
 </script>
 
 <style lang="scss">
-.beeTitle {
-  color: #000;
-}
+.beeTitle {}
 </style>
