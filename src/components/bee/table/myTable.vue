@@ -83,8 +83,8 @@ export default {
       myTableData:this.tableData,
       myCurrentPage:this.currentPage,
 
-      "exportBtnText":this.myConfig.exportBtn.text,
-      "exportBtnShow":this.myConfig.exportBtn.show,
+      exportBtnText:'', //导出按钮 文字
+      exportBtnShow:'', //导出按钮 是否显示
 
       "noDataInfo2":this.noDataInfo || "数据不存在"
     };
@@ -98,8 +98,16 @@ export default {
       // console.log(this.currentUseCode)
       // console.log(this.currentUseUrl)
     },
+    "myConfig":{
+      handler:function(newConfig){this.dealWithMyConfig(newConfig)},
+      deep:true,
+    }
   },
   methods:{
+    dealWithMyConfig(newConfig){
+      this.exportBtnShow = newConfig.exportBtn.show == 'true';
+      this.exportBtnText = newConfig.exportBtn.text;
+    },
     //导出
     exportFun(){
       let exportUrl = baseUrl+path+'/api_v1/diy/view/excel/export?';
@@ -168,6 +176,9 @@ export default {
    
   },
   mounted(){
+
+    this.dealWithMyConfig(this.myConfig);
+
     //console.log('表格组件接受数据===>')
     //console.log(this.tableData)
     //console.log(this.resultColumnList)

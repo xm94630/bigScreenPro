@@ -341,11 +341,11 @@ function getWidgetConfig (){
         "colSpan":8
       },
       "exportBtn": {
-        "show":"false",
+        "show":"true",
         "text":"导出",
       },
       "downloadColumn": {
-        "show":"false",
+        "show":"true",
         "columnKey":"",
       },
       "noDataInfo":"No data",
