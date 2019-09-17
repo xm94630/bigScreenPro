@@ -346,7 +346,8 @@ function getWidgetConfig (){
       },
       "downloadColumn": {
         "show":"true",
-        "columnKey":"",
+        "downloadUrlKey":"",
+        "downloadColumnText":"下载",
       },
       "noDataInfo":"No data",
       "exported": "true",

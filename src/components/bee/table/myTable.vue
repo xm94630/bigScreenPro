@@ -20,12 +20,12 @@
         </template>
 
         <el-table-column
-          v-if = "myConfig.downloadColumn.show"
+          v-if = "downloadColumnShow"
           fixed="right"
           label="操作"
           width="100">
           <template slot-scope="scope">
-            <el-button @click="downLoadFun(scope.row)" type="text" size="small">下载</el-button>
+            <el-button @click="downLoadFun(scope.row)" type="text" size="small">{{downloadColumnText}}</el-button>
           </template>
         </el-table-column>
 
@@ -83,8 +83,12 @@ export default {
       myTableData:this.tableData,
       myCurrentPage:this.currentPage,
 
-      exportBtnText:'', //导出按钮 文字
-      exportBtnShow:'', //导出按钮 是否显示
+      exportBtnText:'',      //导出按钮 文字
+      exportBtnShow:'',      //导出按钮 是否显示
+      
+      downloadColumnShow:'', //每行下载文字 是否显示
+      downloadUrlKey:'',     //每行下载url的key设置（即：二维表数据中哪个key是控制下载连接的，需要指出来）
+      downloadColumnText:'', //每行下载文字 文本
 
       "noDataInfo2":this.noDataInfo || "数据不存在"
     };
@@ -107,6 +111,9 @@ export default {
     dealWithMyConfig(newConfig){
       this.exportBtnShow = newConfig.exportBtn.show == 'true';
       this.exportBtnText = newConfig.exportBtn.text;
+      this.downloadColumnShow = newConfig.downloadColumn.show == 'true';
+      this.downloadUrlKey = newConfig.downloadColumn.downloadUrlKey;
+      this.downloadColumnText = newConfig.downloadColumn.downloadColumnText;
     },
     //导出
     exportFun(){
@@ -169,7 +176,8 @@ export default {
 
     },
     downLoadFun(rowData){
-      window.open(rowData[this.myConfig.downloadColumn.columnKey])
+      let url = rowData[this.downloadUrlKey];
+      window.open(url);
     }
   },
   computed: {
