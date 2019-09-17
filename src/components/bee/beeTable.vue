@@ -143,6 +143,8 @@ export default {
       searchBtns = typeof(searchBtns)==="string"?JSON.parse(searchBtns):searchBtns;
       searchBtns = searchBtns.map(function(one){
         let resultColumnList = typeof(one.resultColumnList)==="string"?JSON.parse(one.resultColumnList):one.resultColumnList;
+        
+        //默认所有的表，都是自带“序列”的，在最后渲染的时候，根据配置决定是否要去掉。
         let newArr = [{
             "columnName":"bee_number", //列的key   
             "displayName":"No.",       //列头名字  

@@ -60,7 +60,9 @@ import store from '@/src/store';
 export default {
   name: "myTable",
   props: {
-    "tableData":null,
+    "resultColumnList":null,   //表头数据
+    "tableData":null,          //表体数据
+    
     "currentSearchOptions":null,
     "currentUseCode":null,
     "currentUseUrl":null,
@@ -71,8 +73,6 @@ export default {
     "totalPage":null,
 
     "tableColumnWidth":null,
-
-    "resultColumnList":null,   //表头数据
 
     "myConfig":null,
   },
@@ -90,6 +90,8 @@ export default {
       downloadColumnText:'', //每行下载文字 文本
 
       noDataInfo:'',  //没有数据时 默认文本
+
+      showIndexColumn:'', //是否显示“序列”列
     };
   },
   watch:{
@@ -114,6 +116,10 @@ export default {
       this.downloadUrlKey = newConfig.downloadColumn.downloadUrlKey;
       this.downloadColumnText = newConfig.downloadColumn.downloadColumnText;
       this.noDataInfo = newConfig.noDataInfo || "数据不存在";
+      this.showIndexColumn = newConfig.showIndexColumn == 'true';
+
+      console.log('===--->')
+      console.log(this.tableData)
     },
     //导出
     exportFun(){
@@ -133,6 +139,7 @@ export default {
       window.open(exportUrl);
     },
     pageChangeFun(thisPage){
+      let that = this;
 
       //更新分页
       this.myCurrentPage = thisPage;
@@ -148,30 +155,51 @@ export default {
       let abc = this.currentSearchOptions;
       let body = Object.assign({diyCoreCode:this.currentUseCode},abc);
 
+      let myTableData;
+
       //如果需要显示分页，要带上这两个参数
       if(this.showPage){
         body.currentPage = this.myCurrentPage;
         body.pageSize = this.pageSize
         //根据点击分页，更新数据
         axios.post(this.currentUseUrl,body).then(response => {
-          let myTableData = response.data.data.recordList;
+          myTableData = response.data.data.recordList;
           //增加一列ID的数据
           for(let i=0;i<myTableData.length;i++){
-            myTableData[i].ID = i+1;
+            myTableData[i].bee_number = i+1;
           }
-          this.myTableData =  myTableData;
+          xxx(myTableData);
         });
       }else{
         //根据点击分页，更新数据
         axios.post(this.currentUseUrl,body).then(response => {
-          let myTableData = response.data.data;
+          myTableData = response.data.data;
           //增加一列ID的数据
           for(let i=0;i<myTableData.length;i++){
-            myTableData[i].ID = i+1;
+            myTableData[i].bee_number = i+1;
           }
-          this.myTableData =  myTableData;
+          xxx(myTableData);
         });
       }
+
+      function xxx(myTableData){
+        //是否要保留“序列”列
+        if(!that.showIndexColumn){
+          that.myTableData = myTableData.map(function(one){
+            delete one.bee_number;
+            return one;
+          })
+          that.resultColumnList = myTableData.filter(function(one){
+            if(one.columnName == "bee_number"){
+              return true;
+            }
+            return false;
+          })
+          console.log(that.resultColumnList);
+        }
+      }
+
+      
 
 
     },
@@ -184,6 +212,9 @@ export default {
    
   },
   mounted(){
+
+    console.log('--')
+    console.log(this.tableData)
 
     this.dealWithMyConfig(this.myConfig);
 

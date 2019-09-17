@@ -350,7 +350,6 @@ function getWidgetConfig (){
         "downloadColumnText":"下载",
       },
       "noDataInfo":"No data",
-      "exported": "true",
       "showIndexColumn":"true",
       "showPage":"true",
       "currentPage":1,
