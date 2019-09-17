@@ -45,7 +45,7 @@
 
     </div>    
     <div v-else>
-      {{noDataInfo2}}
+      {{noDataInfo}}
     </div>
 
 
@@ -73,7 +73,6 @@ export default {
     "tableColumnWidth":null,
 
     "resultColumnList":null,   //表头数据
-    "noDataInfo":null,         //没有数据的时候的提示文字
 
     "myConfig":null,
   },
@@ -90,7 +89,7 @@ export default {
       downloadUrlKey:'',     //每行下载url的key设置（即：二维表数据中哪个key是控制下载连接的，需要指出来）
       downloadColumnText:'', //每行下载文字 文本
 
-      "noDataInfo2":this.noDataInfo || "数据不存在"
+      noDataInfo:'',  //没有数据时 默认文本
     };
   },
   watch:{
@@ -114,6 +113,7 @@ export default {
       this.downloadColumnShow = newConfig.downloadColumn.show == 'true';
       this.downloadUrlKey = newConfig.downloadColumn.downloadUrlKey;
       this.downloadColumnText = newConfig.downloadColumn.downloadColumnText;
+      this.noDataInfo = newConfig.noDataInfo || "数据不存在";
     },
     //导出
     exportFun(){
