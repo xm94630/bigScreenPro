@@ -360,7 +360,9 @@ function getWidgetConfig (){
 
       //注意，这里字符串的多次转义。
       // eslint-disable-next-line no-useless-escape
-      "searchBtns":'[{"text":"按货架查询","dataUrl":"/epimetheus/api/diy/report/selectData","initUrl":"/epimetheus/api_v1/diy/column/initForView","diyCoreCode":"InventoryReportByShelf","resultColumnList":"{\\\"日期哦\\\":\\\"date\\\",\\\"这个列是名字哦\\\":\\\"name\\\",\\\"地址呀\\\":\\\"address\\\",\\\"年龄哦\\\":\\\"age\\\"}"},{"text":"按货位查询","dataUrl":"/epimetheus/api/diy/report/selectData","initUrl":"/epimetheus/api_v1/diy/column/initForView","diyCoreCode":"InventoryReportByBin","resultColumnList":"{\\\"只有配置了名字这个列哦\\\":\\\"name\\\"}"}]',
+      "searchBtns":'[{"text":"按货架查询","dataUrl":"/epimetheus/api/diy/report/selectData","diyCoreCode":"InventoryReportByShelf","resultColumnList":"{\\\"日期哦\\\":\\\"date\\\",\\\"这个列是名字哦\\\":\\\"name\\\",\\\"地址呀\\\":\\\"address\\\",\\\"年龄哦\\\":\\\"age\\\"}"},{"text":"按货位查询","dataUrl":"/epimetheus/api/diy/report/selectData","diyCoreCode":"InventoryReportByBin","resultColumnList":"{\\\"只有配置了名字这个列哦\\\":\\\"name\\\"}"}]',
+      //"searchBtns":'[{"text":"按货架查询","dataUrl":"/epimetheus/api/diy/report/selectData","initUrl":"/epimetheus/api_v1/diy/column/initForView","diyCoreCode":"InventoryReportByShelf","resultColumnList":"{\\\"日期哦\\\":\\\"date\\\",\\\"这个列是名字哦\\\":\\\"name\\\",\\\"地址呀\\\":\\\"address\\\",\\\"年龄哦\\\":\\\"age\\\"}"},{"text":"按货位查询","dataUrl":"/epimetheus/api/diy/report/selectData","initUrl":"/epimetheus/api_v1/diy/column/initForView","diyCoreCode":"InventoryReportByBin","resultColumnList":"{\\\"只有配置了名字这个列哦\\\":\\\"name\\\"}"}]',
+      
       "initForView":{
         "conditionColumnList":""
       },
