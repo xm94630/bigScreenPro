@@ -205,7 +205,7 @@ function getNewOption(myConfig,apiData) {
   }
   defaultOption.series[1].itemStyle.normal.label.formatter =  function(params) {
     let zoom = data_zoom[params.dataIndex]
-    let a = Math.round(params.data*zoom);
+    let a = Math.round(params.data*zoom)==0?'':Math.round(params.data*zoom);//0的时候不显示，免得和x坐标重叠。
     return a; 
   }
   defaultOption.series[2].itemStyle.normal.label.formatter =  function(params) {
