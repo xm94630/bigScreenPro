@@ -46,19 +46,15 @@ router.get('/view/info', async (ctx, next) => {
           "currentPage":1,
           "pageSize":10,
           "showPage":true,
-          "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "initUrl": "/epimetheus/api_v1/diy/column/initForView",
           "resetBtnText":"重置",
           "searchBtns":[{
             "text":"按货架查询",
             "dataUrl": "/epimetheus/api/diy/report/selectData",
-            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"InventoryReportByShelf"
           },{
             "text":"按货位查询",
             "dataUrl": "/epimetheus/api/diy/report/selectData",
-            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"InventoryReportByBin"
           }],
           "exportBtn": {
@@ -69,123 +65,118 @@ router.get('/view/info', async (ctx, next) => {
             "show":false,
             "columnKey":"",
           },
-          "initForView":{
-            "conditionColumnList": [
+          "conditionColumnList": [
+          {
+            "label": "普通输入框 (type:10)",
+            "keyName": "name1",
+            "type": "10",
+            "typeScribe": "beeInput",
+            "placeholder": "请输入",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 0
+          }, {
+            "label": "范围输入框 (type:11)",
+            "keyName": "name2",
+            "type": "11",
+            "typeScribe": "beeInputRange",
+            "placeholder": "请输入",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 1
+          }, 
+          {
+            "label": "普通下拉 (type:20)",
+            "keyName": "love",
+            "type": "20",
+            "typeScribe": "beeSelect",
+            "placeholder": "请选择",
+            "defaultValue": "2",
+            "rule": {},
+            "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+            "referenceColumn": "playerNameValue",
+            "referenceDisplayColumn": "playerName",
+            "queryIndex": 2
+          }, 
+          {
+            "label": "下拉搜索 (type:21)",
+            "keyName": "love2",
+            "type": "21",
+            "typeScribe": "beeSelectSearch",
+            "placeholder": "请选择",
+            "defaultValue": "",
+            "rule": {},
+            "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+            "referenceColumn": "playerNameValue",
+            "referenceDisplayColumn": "playerName",
+            "queryIndex": 3
+          },
+          {
+            "type": "0",
+            "typeScribe": "占位，什么也不渲染",
+            "queryIndex": 4
+          },
             {
-              "label": "普通输入框 (type:10)",
-              "keyName": "name1",
-              "type": "10",
-              "typeScribe": "beeInput",
-              "placeholder": "请输入",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 0
-            }, {
-              "label": "范围输入框 (type:11)",
-              "keyName": "name2",
-              "type": "11",
-              "typeScribe": "beeInputRange",
-              "placeholder": "请输入",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 1
-            }, 
-            {
-              "label": "普通下拉 (type:20)",
-              "keyName": "love",
-              "type": "20",
-              "typeScribe": "beeSelect",
-              "placeholder": "请选择",
-              "defaultValue": "2",
-              "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
-              "referenceColumn": "playerNameValue",
-              "referenceDisplayColumn": "playerName",
-              "queryIndex": 2
-            }, 
-            {
-              "label": "下拉搜索 (type:21)",
-              "keyName": "love2",
-              "type": "21",
-              "typeScribe": "beeSelectSearch",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
-              "referenceColumn": "playerNameValue",
-              "referenceDisplayColumn": "playerName",
-              "queryIndex": 3
-            },
-            {
-              "type": "0",
-              "typeScribe": "占位，什么也不渲染",
-              "queryIndex": 4
-            },
-             {
-              "label": "日期 (type:30)",
-              "keyName": "date1",
-              "type": "30",
-              "typeScribe": "beeDatePicker",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 5
-            }, {
-              "label": "日期（范围） (type:31)",
-              "keyName": "date2",
-              "type": "31",
-              "typeScribe": "beeDatePickerRange",
-              "placeholder": ["开始", "结束"],
-              "defaultValue": ["2019-01-01","2019-01-02"],
-              "rule": {},
-              "queryIndex": 6
-            }, {
-              "label": "日期时间 (type:40)",
-              "keyName": "date3",
-              "type": "40",
-              "typeScribe": "beeDateTimePicker",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 7
-            }, {
-              "label": "日期时间（范围） (type:41)",
-              "keyName": "date4",
-              "type": "41",
-              "typeScribe": "beeDateTimePickerRange",
-              "placeholder": ["开始", "结束"],
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 8
-            }, {
-              "label": "多选下拉(type:22)",
-              "keyName": "love3",
-              "type": "22",
-              "typeScribe": "beeSelectMultiple",
-              "placeholder": "请选择",
-              "defaultValue": [],
-              "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
-              "referenceColumn": "playerNameValue",
-              "referenceDisplayColumn": "playerName",
-              "queryIndex": 9
-            },{
-              "label": "多选下拉搜索 (type:23)",
-              "keyName": "love2",
-              "type": "23",
-              "typeScribe": "beeSelectSearchMultiple",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
-              "referenceColumn": "playerNameValue",
-              "referenceDisplayColumn": "playerName",
-              "queryIndex": 10
-            },],
-            "resultColumnList": [{
-              "bbb": 222
-            }]
-          }
+            "label": "日期 (type:30)",
+            "keyName": "date1",
+            "type": "30",
+            "typeScribe": "beeDatePicker",
+            "placeholder": "请选择",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 5
+          }, {
+            "label": "日期（范围） (type:31)",
+            "keyName": "date2",
+            "type": "31",
+            "typeScribe": "beeDatePickerRange",
+            "placeholder": ["开始", "结束"],
+            "defaultValue": ["2019-01-01","2019-01-02"],
+            "rule": {},
+            "queryIndex": 6
+          }, {
+            "label": "日期时间 (type:40)",
+            "keyName": "date3",
+            "type": "40",
+            "typeScribe": "beeDateTimePicker",
+            "placeholder": "请选择",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 7
+          }, {
+            "label": "日期时间（范围） (type:41)",
+            "keyName": "date4",
+            "type": "41",
+            "typeScribe": "beeDateTimePickerRange",
+            "placeholder": ["开始", "结束"],
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 8
+          }, {
+            "label": "多选下拉(type:22)",
+            "keyName": "love3",
+            "type": "22",
+            "typeScribe": "beeSelectMultiple",
+            "placeholder": "请选择",
+            "defaultValue": [],
+            "rule": {},
+            "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+            "referenceColumn": "playerNameValue",
+            "referenceDisplayColumn": "playerName",
+            "queryIndex": 9
+          },{
+            "label": "多选下拉搜索 (type:23)",
+            "keyName": "love2",
+            "type": "23",
+            "typeScribe": "beeSelectSearchMultiple",
+            "placeholder": "请选择",
+            "defaultValue": "",
+            "rule": {},
+            "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+            "referenceColumn": "playerNameValue",
+            "referenceDisplayColumn": "playerName",
+            "queryIndex": 10
+          }]
         }],
         "textBar":[{
           "id": "componentId_00002",
@@ -249,14 +240,11 @@ router.get('/view/info', async (ctx, next) => {
           "currentPage":1,
           "pageSize":10,
           "showPage":true,
-          "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "initUrl": "/epimetheus/api_v1/diy/column/initForView",
           "resetBtnText":"重置",
           "searchBtns":[{
             "text":"查询",
             "dataUrl": "/epimetheus/api/diy/report/selectData",
-            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"SkuHot"
           }],
           "exportBtn": {
@@ -267,78 +255,74 @@ router.get('/view/info', async (ctx, next) => {
             "show":false,
             "columnKey":"",
           },
-          "initForView":{
-            "conditionColumnList": [{
-              "label": "普通输入框 (type:10)",
-              "keyName": "name1",
-              "type": "10",
-              "typeScribe": "beeInput",
-              "placeholder": "请输入",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 0
-            }, {
-              "label": "范围输入框 (type:11)",
-              "keyName": "name2",
-              "type": "11",
-              "typeScribe": "beeInputRange",
-              "placeholder": "请输入",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 1
-            }, {
-              "label": "普通下拉 (type:20)",
-              "keyName": "love",
-              "type": "20",
-              "typeScribe": "beeSelect",
-              "placeholder": "请选择",
-              "defaultValue": "2",
-              "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
-              "referenceColumn": "playerNameValue",
-              "referenceDisplayColumn": "playerName",
-              "queryIndex": 2
-            }, {
-              "label": "日期 (type:30)",
-              "keyName": "date1",
-              "type": "30",
-              "typeScribe": "beeDatePicker",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 3
-            }, {
-              "label": "日期（范围） (type:31)",
-              "keyName": "date2",
-              "type": "31",
-              "typeScribe": "beeDatePickerRange",
-              "placeholder": ["开始", "结束"],
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 4
-            }, {
-              "label": "日期时间 (type:40)",
-              "keyName": "date3",
-              "type": "40",
-              "typeScribe": "beeDateTimePicker",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 6
-            }, {
-              "label": "日期时间（范围） (type:41)",
-              "keyName": "date4",
-              "type": "41",
-              "typeScribe": "beeDateTimePickerRange",
-              "placeholder": ["开始", "结束"],
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 5
-            }],
-            "resultColumnList": [{
-              "bbb": 222
-            }]
-          }
+          "conditionColumnList": [{
+            "label": "普通输入框 (type:10)",
+            "keyName": "name1",
+            "type": "10",
+            "typeScribe": "beeInput",
+            "placeholder": "请输入",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 0
+          }, {
+            "label": "范围输入框 (type:11)",
+            "keyName": "name2",
+            "type": "11",
+            "typeScribe": "beeInputRange",
+            "placeholder": "请输入",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 1
+          }, {
+            "label": "普通下拉 (type:20)",
+            "keyName": "love",
+            "type": "20",
+            "typeScribe": "beeSelect",
+            "placeholder": "请选择",
+            "defaultValue": "2",
+            "rule": {},
+            "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+            "referenceColumn": "playerNameValue",
+            "referenceDisplayColumn": "playerName",
+            "queryIndex": 2
+          }, {
+            "label": "日期 (type:30)",
+            "keyName": "date1",
+            "type": "30",
+            "typeScribe": "beeDatePicker",
+            "placeholder": "请选择",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 3
+          }, {
+            "label": "日期（范围） (type:31)",
+            "keyName": "date2",
+            "type": "31",
+            "typeScribe": "beeDatePickerRange",
+            "placeholder": ["开始", "结束"],
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 4
+          }, {
+            "label": "日期时间 (type:40)",
+            "keyName": "date3",
+            "type": "40",
+            "typeScribe": "beeDateTimePicker",
+            "placeholder": "请选择",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 6
+          }, {
+            "label": "日期时间（范围） (type:41)",
+            "keyName": "date4",
+            "type": "41",
+            "typeScribe": "beeDateTimePickerRange",
+            "placeholder": ["开始", "结束"],
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 5
+          }]
+
         }]
       }
 
@@ -382,14 +366,11 @@ router.get('/view/info', async (ctx, next) => {
           "currentPage":1,
           "pageSize":10,
           "showPage":true,
-          "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "initUrl": "/epimetheus/api_v1/diy/column/initForView",
           "resetBtnText":"重置",
           "searchBtns":[{
             "text":"查询",
             "dataUrl": "/epimetheus/api/diy/report/selectData",
-            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"asyncExport"
           }],
           "exportBtn": {
@@ -400,75 +381,71 @@ router.get('/view/info', async (ctx, next) => {
             "show":true,
             "columnKey":"downloadUrl",
           },
-          "initForView":{
-            "conditionColumnList": [{
-              "label": "仓库",
-              "keyName": "warehouseCodeList",
-              "type": "22",
-              "typeScribe": "多选",
-              "placeholder": "请选择",
-              "defaultValue": [],
-              "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
-              "referenceColumn": "playerNameValue",
-              "referenceDisplayColumn": "playerName",
-              "queryIndex": 1
-            }, {
-              "label": "导出类型",
-              "keyName": "fileNameList",
-              "type": "22",
-              "typeScribe": "多选",
-              "placeholder": "请选择",
-              "defaultValue": [],
-              "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
-              "referenceColumn": "playerNameValue",
-              "referenceDisplayColumn": "playerName",
-              "queryIndex": 2
-            },{
-              "label": "导出任务编号",
-              "keyName": "exportBatchCode",
-              "type": "10",
-              "typeScribe": "beeInput",
-              "placeholder": "请输入",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 3
-            },{
-              "label": "状态",
-              "keyName": "exportStatus",
-              "type": "22",
-              "typeScribe": "多选",
-              "placeholder": "请选择",
-              "defaultValue": [],
-              "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
-              "referenceColumn": "playerNameValue",
-              "referenceDisplayColumn": "playerName",
-              "queryIndex": 4
-            },{
-              "label": "导出开始时间",
-              "keyName": "exportTimeBeginByQuery",
-              "type": "41",
-              "typeScribe": "beeDateTimePickerRange",
-              "placeholder": ["开始", "结束"],
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 5
-            },{
-              "label": "导出结束时间",
-              "keyName": "exportTimeEndByQuery",
-              "type": "41",
-              "typeScribe": "beeDateTimePickerRange",
-              "placeholder": ["开始", "结束"],
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 6
-            }],
-            "resultColumnList": [{
-              "bbb": 222
-            }]
-          }
+          "conditionColumnList": [{
+            "label": "仓库",
+            "keyName": "warehouseCodeList",
+            "type": "22",
+            "typeScribe": "多选",
+            "placeholder": "请选择",
+            "defaultValue": [],
+            "rule": {},
+            "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+            "referenceColumn": "playerNameValue",
+            "referenceDisplayColumn": "playerName",
+            "queryIndex": 1
+          }, {
+            "label": "导出类型",
+            "keyName": "fileNameList",
+            "type": "22",
+            "typeScribe": "多选",
+            "placeholder": "请选择",
+            "defaultValue": [],
+            "rule": {},
+            "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+            "referenceColumn": "playerNameValue",
+            "referenceDisplayColumn": "playerName",
+            "queryIndex": 2
+          },{
+            "label": "导出任务编号",
+            "keyName": "exportBatchCode",
+            "type": "10",
+            "typeScribe": "beeInput",
+            "placeholder": "请输入",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 3
+          },{
+            "label": "状态",
+            "keyName": "exportStatus",
+            "type": "22",
+            "typeScribe": "多选",
+            "placeholder": "请选择",
+            "defaultValue": [],
+            "rule": {},
+            "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+            "referenceColumn": "playerNameValue",
+            "referenceDisplayColumn": "playerName",
+            "queryIndex": 4
+          },{
+            "label": "导出开始时间",
+            "keyName": "exportTimeBeginByQuery",
+            "type": "41",
+            "typeScribe": "beeDateTimePickerRange",
+            "placeholder": ["开始", "结束"],
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 5
+          },{
+            "label": "导出结束时间",
+            "keyName": "exportTimeEndByQuery",
+            "type": "41",
+            "typeScribe": "beeDateTimePickerRange",
+            "placeholder": ["开始", "结束"],
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 6
+          }]
+          
         }]
       }
 
@@ -1223,14 +1200,11 @@ router.get('/view/info', async (ctx, next) => {
           "currentPage":1,
           "pageSize":10,
           "showPage":true,
-          "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "initUrl": "/epimetheus/api_v1/diy/column/initForView",
           "resetBtnText":"重置",
           "searchBtns":[{
             "text":"查询",
             "dataUrl": "/epimetheus/api/diy/report/selectData",
-            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"chanel-InboundEfficiency"
           }],
           "exportBtn": {
@@ -1241,78 +1215,74 @@ router.get('/view/info', async (ctx, next) => {
             "show":false,
             "columnKey":"",
           },
-          "initForView":{
-            "conditionColumnList": [{
-              "label": "普通输入框 (type:10)",
-              "keyName": "name1",
-              "type": "10",
-              "typeScribe": "beeInput",
-              "placeholder": "请输入",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 0
-            }, {
-              "label": "范围输入框 (type:11)",
-              "keyName": "name2",
-              "type": "11",
-              "typeScribe": "beeInputRange",
-              "placeholder": "请输入",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 1
-            }, {
-              "label": "普通下拉 (type:20)",
-              "keyName": "love",
-              "type": "20",
-              "typeScribe": "beeSelect",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
-              "referenceColumn": "playerNameValue",
-              "referenceDisplayColumn": "playerName",
-              "queryIndex": 2
-            }, {
-              "label": "日期 (type:30)",
-              "keyName": "date1",
-              "type": "30",
-              "typeScribe": "beeDatePicker",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 3
-            }, {
-              "label": "日期（范围） (type:31)",
-              "keyName": "date2",
-              "type": "31",
-              "typeScribe": "beeDatePickerRange",
-              "placeholder": ["开始", "结束"],
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 4
-            }, {
-              "label": "日期时间 (type:40)",
-              "keyName": "date3",
-              "type": "40",
-              "typeScribe": "beeDateTimePicker",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 6
-            }, {
-              "label": "日期时间（范围） (type:41)",
-              "keyName": "date4",
-              "type": "41",
-              "typeScribe": "beeDateTimePickerRange",
-              "placeholder": ["开始", "结束"],
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 5
-            }],
-            "resultColumnList": [{
-              "bbb": 222
-            }]
-          }
+          "conditionColumnList": [{
+            "label": "普通输入框 (type:10)",
+            "keyName": "name1",
+            "type": "10",
+            "typeScribe": "beeInput",
+            "placeholder": "请输入",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 0
+          }, {
+            "label": "范围输入框 (type:11)",
+            "keyName": "name2",
+            "type": "11",
+            "typeScribe": "beeInputRange",
+            "placeholder": "请输入",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 1
+          }, {
+            "label": "普通下拉 (type:20)",
+            "keyName": "love",
+            "type": "20",
+            "typeScribe": "beeSelect",
+            "placeholder": "请选择",
+            "defaultValue": "",
+            "rule": {},
+            "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+            "referenceColumn": "playerNameValue",
+            "referenceDisplayColumn": "playerName",
+            "queryIndex": 2
+          }, {
+            "label": "日期 (type:30)",
+            "keyName": "date1",
+            "type": "30",
+            "typeScribe": "beeDatePicker",
+            "placeholder": "请选择",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 3
+          }, {
+            "label": "日期（范围） (type:31)",
+            "keyName": "date2",
+            "type": "31",
+            "typeScribe": "beeDatePickerRange",
+            "placeholder": ["开始", "结束"],
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 4
+          }, {
+            "label": "日期时间 (type:40)",
+            "keyName": "date3",
+            "type": "40",
+            "typeScribe": "beeDateTimePicker",
+            "placeholder": "请选择",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 6
+          }, {
+            "label": "日期时间（范围） (type:41)",
+            "keyName": "date4",
+            "type": "41",
+            "typeScribe": "beeDateTimePickerRange",
+            "placeholder": ["开始", "结束"],
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 5
+          }]
+          
         }]
       }
 
@@ -1359,14 +1329,11 @@ router.get('/view/info', async (ctx, next) => {
           "currentPage":1,
           "pageSize":10,
           "showPage":true,
-          "initTableUrl":"/epimetheus/api_v1/diy/column/initForView",
           "dataUrl": "/epimetheus/api/diy/report/selectData",
-          "initUrl": "/epimetheus/api_v1/diy/column/initForView",
           "resetBtnText":"重置",
           "searchBtns":[{
             "text":"查询",
             "dataUrl": "/epimetheus/api/diy/report/selectData",
-            "initUrl": "/epimetheus/api_v1/diy/column/initForView",
             "diyCoreCode":"chanel-OutboundEfficiency"
           }],
           "exportBtn": {
@@ -1377,78 +1344,74 @@ router.get('/view/info', async (ctx, next) => {
             "show":false,
             "columnKey":"",
           },
-          "initForView":{
-            "conditionColumnList": [{
-              "label": "普通输入框 (type:10)",
-              "keyName": "name1",
-              "type": "10",
-              "typeScribe": "beeInput",
-              "placeholder": "请输入",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 0
-            }, {
-              "label": "范围输入框 (type:11)",
-              "keyName": "name2",
-              "type": "11",
-              "typeScribe": "beeInputRange",
-              "placeholder": "请输入",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 1
-            }, {
-              "label": "普通下拉 (type:20)",
-              "keyName": "love",
-              "type": "20",
-              "typeScribe": "beeSelect",
-              "placeholder": "请选择",
-              "defaultValue": "2",
-              "rule": {},
-              "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
-              "referenceColumn": "playerNameValue",
-              "referenceDisplayColumn": "playerName",
-              "queryIndex": 2
-            }, {
-              "label": "日期 (type:30)",
-              "keyName": "date1",
-              "type": "30",
-              "typeScribe": "beeDatePicker",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 3
-            }, {
-              "label": "日期（范围） (type:31)",
-              "keyName": "date2",
-              "type": "31",
-              "typeScribe": "beeDatePickerRange",
-              "placeholder": ["开始", "结束"],
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 4
-            }, {
-              "label": "日期时间 (type:40)",
-              "keyName": "date3",
-              "type": "40",
-              "typeScribe": "beeDateTimePicker",
-              "placeholder": "请选择",
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 6
-            }, {
-              "label": "日期时间（范围） (type:41)",
-              "keyName": "date4",
-              "type": "41",
-              "typeScribe": "beeDateTimePickerRange",
-              "placeholder": ["开始", "结束"],
-              "defaultValue": "",
-              "rule": {},
-              "queryIndex": 5
-            }],
-            "resultColumnList": [{
-              "bbb": 222
-            }]
-          }
+          "conditionColumnList": [{
+            "label": "普通输入框 (type:10)",
+            "keyName": "name1",
+            "type": "10",
+            "typeScribe": "beeInput",
+            "placeholder": "请输入",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 0
+          }, {
+            "label": "范围输入框 (type:11)",
+            "keyName": "name2",
+            "type": "11",
+            "typeScribe": "beeInputRange",
+            "placeholder": "请输入",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 1
+          }, {
+            "label": "普通下拉 (type:20)",
+            "keyName": "love",
+            "type": "20",
+            "typeScribe": "beeSelect",
+            "placeholder": "请选择",
+            "defaultValue": "2",
+            "rule": {},
+            "referenceUrl": "/epimetheus/api_v1/diy/xxx/xxx?code=",
+            "referenceColumn": "playerNameValue",
+            "referenceDisplayColumn": "playerName",
+            "queryIndex": 2
+          }, {
+            "label": "日期 (type:30)",
+            "keyName": "date1",
+            "type": "30",
+            "typeScribe": "beeDatePicker",
+            "placeholder": "请选择",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 3
+          }, {
+            "label": "日期（范围） (type:31)",
+            "keyName": "date2",
+            "type": "31",
+            "typeScribe": "beeDatePickerRange",
+            "placeholder": ["开始", "结束"],
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 4
+          }, {
+            "label": "日期时间 (type:40)",
+            "keyName": "date3",
+            "type": "40",
+            "typeScribe": "beeDateTimePicker",
+            "placeholder": "请选择",
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 6
+          }, {
+            "label": "日期时间（范围） (type:41)",
+            "keyName": "date4",
+            "type": "41",
+            "typeScribe": "beeDateTimePickerRange",
+            "placeholder": ["开始", "结束"],
+            "defaultValue": "",
+            "rule": {},
+            "queryIndex": 5
+          }]
+
         }]
       }
 
@@ -2590,534 +2553,534 @@ router.get('/createReport', async (ctx, next) => {
 })
 
 //对于二维表而言，需要额外多请求一个接口，用来获取“查询条件”配置的初始化工作哦
-router.get('/column/initForView', async (ctx, next) => {
-  let code = ctx.request.query.diyCoreCode;
-  let data = {};
-  if("InventoryReportByShelf"==code){
-    data = {
-      //这部分是对table部分的配置
-      "resultColumnList":[{
-        "diyColumnId":190,
-        "diyCoreCode":"print_label_1570",     //
-        "diyCoreName":"yashilandai",
-        "columnName":"date",   //列的key   
-        "displayName":"日期哦",   //列头  [{"key":},]
-        "dataType":1,   //数据类型 1字符串 2整型 3日期 4小数 50字典 
-        "dataLength":0,
-        "decimallength":0,
-        "columnIndex":0,   //列的顺序
-        "defaultValue":"",
-        "isDiy":0,
-        "isReadonly":0,
-        "isResult":1,
-        "isCondition":0,
-        "queryType":0,   // 1大于 2等于 3小于 4大于等于 5小于等于 6包含 7范围 8不等于 9模糊 10不包含
-        "queryIndex":0,   
-        "sortRule":0,
-        "isCheck":0,
-        "checkType":0,
-        "isImport":0,
-        "isExport":0,
-        "isForeign":0,  //关联
-        "referenceType":0,
-        "referenceTable":"",
-        "referenceColumn":"",
-        "referenceCondition":"",
-        "referenceDisplayColumn":"",
-        "referenceUrl":"",
-        "creator":"",
-        "createTime":0,
-        "updateUser":"",
-        "updateTime":0
-      },{
-        "columnName":"name",   //列的key   
-        "displayName":"姓名哦",   //列头名字  
-        "columnIndex":3,   //列的顺序
-      },{
-        "columnName":"address",   //列的key   
-        "displayName":"地址哦",   //列头名字  
-        "columnIndex":1,   //列的顺序
-      },{
-        "columnName":"age",   //列的key   
-        "displayName":"年龄",   //列头名字  
-        "columnIndex":2,   //列的顺序
-      }],
-      //这个部分是对查询条件部分的配置
-      "conditionColumnList":[{
-        "diyColumnId":217,
-        "diyCoreCode":"print_label_1570",
-        "diyCoreName":"yashilandai",
-        "columnName":"addr", //关联字段
-        "displayName":"地址", //label名称
-        "dataType":1,  //大类型
-        "dataLength":0,
-        "decimallength":0,
-        "columnIndex":0,
-        "defaultValue":"上海",  //输入框、查询框的默认值
-        "isDiy":0,
-        "isReadonly":0,
-        "isResult":1,
-        "isCondition":1,
-        "queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-        "queryIndex":0,  //顺序
-        "sortRule":0,
-        "isCheck":0,
-        "checkType":0,
-        "isImport":0,
-        "isExport":0,
-        "isForeign":0,   //是否关联（关联的是下拉）
-        "referenceType":0,
-        "referenceTable":"",
-        "referenceColumn":"",
-        "referenceCondition":"",
-        "referenceDisplayColumn":"",
-        "referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-        "creator":"",
-        "createTime":0,
-        "updateUser":"",
-        "updateTime":0,
-        "placeholder":"请输入"
-      },{
-        "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-        "dataType":1,    //大类型：1是字符串（普通输入框）
-        "columnName":'name',  //关联字段
-        "displayName":"姓名",    //label显示
-        "defaultValue":"张三",      //默认值
-        "placeholder":"请输入",    //placeholder
-        //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-        //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-        "queryIndex":1,  //组件出现顺序
-      },{
-        "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-        "dataType":2,    //大类型：2是整数（整数输入框）
-        "columnName":'car',  //关联字段
-        "displayName":"汽车",    //label显示
-        "defaultValue":"2",      //默认值
-        "placeholder":"请输入",    //placeholder
-        //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-        //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-        "queryIndex":2,  //组件出现顺序
-      },{
-        "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-        "dataType":3,    //大类型：3是日期（日期选择框）
-        "columnName":'date',  //关联字段
-        "displayName":"生日",    //label显示
-        "defaultValue":"",      //默认值
-        "placeholder":"请选择",    //placeholder
-        //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-        //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-        "queryIndex":4,  //组件出现顺序
-      },{
-        "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
-        "dataType":0,    //大类型：3是日期（日期选择框）
-        "columnName":'love',  //关联字段
-        "displayName":"最爱",    //label显示
-        "defaultValue":'',      //默认值
-        "placeholder":"请选择",    //placeholder
-        "referenceUrl":url+"/epimetheus/api_v1/diy/xxx/xxx?code=", //关联URL
-        "referenceColumn":"playerNameValue",  //下拉的值
-        "referenceDisplayColumn":"playerName", //下拉显示
-        //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-        //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-        "queryIndex":3,  //组件出现顺序
-      }]
-    }
-  }else if("InventoryReportByBin"==code){
-    data = {
-      //这部分是对table部分的配置
-      "resultColumnList":[{
-        "diyColumnId":190,
-        "diyCoreCode":"print_label_1570",     //
-        "diyCoreName":"yashilandai",
-        "columnName":"date",   //列的key   
-        "displayName":"日期哦",   //列头  [{"key":},]
-        "dataType":1,   //数据类型 1字符串  
-        "dataLength":0,
-        "decimallength":0,
-        "columnIndex":0,   //列的顺序
-        "defaultValue":"",
-        "isDiy":0,
-        "isReadonly":0,
-        "isResult":1,
-        "isCondition":0,
-        "queryType":0,
-        "queryIndex":0,   
-        "sortRule":0,
-        "isCheck":0,
-        "checkType":0,
-        "isImport":0,
-        "isExport":0,
-        "isForeign":0,  //关联
-        "referenceType":0,
-        "referenceTable":"",
-        "referenceColumn":"",
-        "referenceCondition":"",
-        "referenceDisplayColumn":"",
-        "referenceUrl":"",
-        "creator":"",
-        "createTime":0,
-        "updateUser":"",
-        "updateTime":0
-      },{
-        "columnName":"name",   //列的key   
-        "displayName":"姓名哦",   //列头名字  
-        "columnIndex":2,   //列的顺序
-      },{
-        "columnName":"address",   //列的key   
-        "displayName":"最新的地址",   //列头名字  
-        "columnIndex":3,   //列的顺序
-      }],
-      //这个部分是对查询条件部分的配置
-      "conditionColumnList":[{
-        "diyColumnId":217,
-        "diyCoreCode":"print_label_1570",
-        "diyCoreName":"yashilandai",
-        "columnName":"addr", //关联字段
-        "displayName":"地址", //label名称
-        "dataType":1,  //大类型
-        "dataLength":0,
-        "decimallength":0,
-        "columnIndex":0,
-        "defaultValue":"上海",  //输入框、查询框的默认值
-        "isDiy":0,
-        "isReadonly":0,
-        "isResult":1,
-        "isCondition":1,
-        "queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-        "queryIndex":0,  //顺序
-        "sortRule":0,
-        "isCheck":0,
-        "checkType":0,
-        "isImport":0,
-        "isExport":0,
-        "isForeign":0,   //是否关联（关联的是下拉）
-        "referenceType":0,
-        "referenceTable":"",
-        "referenceColumn":"",
-        "referenceCondition":"",
-        "referenceDisplayColumn":"",
-        "referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-        "creator":"",
-        "createTime":0,
-        "updateUser":"",
-        "updateTime":0,
-        "placeholder":"请输入"
-      },{
-        "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-        "dataType":1,    //大类型：1是字符串（普通输入框）
-        "columnName":'name',  //关联字段
-        "displayName":"姓名",    //label显示
-        "defaultValue":"张三",      //默认值
-        "placeholder":"请输入",    //placeholder
-        //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-        //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-        "queryIndex":1,  //组件出现顺序
-      },{
-        "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-        "dataType":2,    //大类型：2是整数（整数输入框）
-        "columnName":'car',  //关联字段
-        "displayName":"汽车",    //label显示
-        "defaultValue":"2",      //默认值
-        "placeholder":"请输入",    //placeholder
-        //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-        //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-        "queryIndex":2,  //组件出现顺序
-      },{
-        "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-        "dataType":3,    //大类型：3是日期（日期选择框）
-        "columnName":'date',  //关联字段
-        "displayName":"生日",    //label显示
-        "defaultValue":"",      //默认值
-        "placeholder":"请选择",    //placeholder
-        //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-        //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-        "queryIndex":4,  //组件出现顺序
-      },{
-        "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
-        "dataType":0,    //大类型：3是日期（日期选择框）
-        "columnName":'love',  //关联字段
-        "displayName":"最爱",    //label显示
-        "defaultValue":'',      //默认值
-        "placeholder":"请选择",    //placeholder
-        "referenceUrl":url+"/epimetheus/api_v1/diy/xxx/xxx?code=", //关联URL
-        "referenceColumn":"playerNameValue",  //下拉的值
-        "referenceDisplayColumn":"playerName", //下拉显示
-        //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-        //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-        "queryIndex":3,  //组件出现顺序
-      }]
-    }
-  }else if("SkuHot"==code){
-    data = {
-      //这部分是对table部分的配置
-      "resultColumnList":[{
-        "columnName":"date",   //列的key   
-        "displayName":"访问地球时间",   //列头[{"key":},]
-        "columnIndex":0,   //列的顺序
-      },{
-        "columnName":"name",   //列的key   
-        "displayName":"奥特曼",   //列头名字  
-        "columnIndex":2,   //列的顺序
-      },{
-        "columnName":"address",   //列的key   
-        "displayName":"星云",   //列头名字  
-        "columnIndex":3,   //列的顺序
-      }],
-      //这个部分是对查询条件部分的配置
-      "conditionColumnList":[
-        {
-          "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":0,    //大类型：3是日期（日期选择框）
-          "columnName":'customerCode',  //关联字段
-          "displayName":"Owner",    //label显示
-          "defaultValue":'1',      //默认值
-          "placeholder":"请选择",    //placeholder
-          "referenceUrl":url+"/epimetheus/api_v1/diy/yyy/yyy", //关联URL
-          "referenceColumn":"playerNameValue",  //下拉的值
-          "referenceDisplayColumn":"playerName", //下拉显示
-          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":0,  //组件出现顺序
-        },
-        {
-          "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":3,    //大类型：3是日期（日期选择框）
-          "columnName":'completedTime',  //关联字段
-          "displayName":"OutDate",    //label显示
-          "defaultValue":"",      //默认值
-          "placeholder":"请选择",    //placeholder
-          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":1,  //组件出现顺序
-        },
+// router.get('/column/initForView', async (ctx, next) => {
+//   let code = ctx.request.query.diyCoreCode;
+//   let data = {};
+//   if("InventoryReportByShelf"==code){
+//     data = {
+//       //这部分是对table部分的配置
+//       "resultColumnList":[{
+//         "diyColumnId":190,
+//         "diyCoreCode":"print_label_1570",     //
+//         "diyCoreName":"yashilandai",
+//         "columnName":"date",   //列的key   
+//         "displayName":"日期哦",   //列头  [{"key":},]
+//         "dataType":1,   //数据类型 1字符串 2整型 3日期 4小数 50字典 
+//         "dataLength":0,
+//         "decimallength":0,
+//         "columnIndex":0,   //列的顺序
+//         "defaultValue":"",
+//         "isDiy":0,
+//         "isReadonly":0,
+//         "isResult":1,
+//         "isCondition":0,
+//         "queryType":0,   // 1大于 2等于 3小于 4大于等于 5小于等于 6包含 7范围 8不等于 9模糊 10不包含
+//         "queryIndex":0,   
+//         "sortRule":0,
+//         "isCheck":0,
+//         "checkType":0,
+//         "isImport":0,
+//         "isExport":0,
+//         "isForeign":0,  //关联
+//         "referenceType":0,
+//         "referenceTable":"",
+//         "referenceColumn":"",
+//         "referenceCondition":"",
+//         "referenceDisplayColumn":"",
+//         "referenceUrl":"",
+//         "creator":"",
+//         "createTime":0,
+//         "updateUser":"",
+//         "updateTime":0
+//       },{
+//         "columnName":"name",   //列的key   
+//         "displayName":"姓名哦",   //列头名字  
+//         "columnIndex":3,   //列的顺序
+//       },{
+//         "columnName":"address",   //列的key   
+//         "displayName":"地址哦",   //列头名字  
+//         "columnIndex":1,   //列的顺序
+//       },{
+//         "columnName":"age",   //列的key   
+//         "displayName":"年龄",   //列头名字  
+//         "columnIndex":2,   //列的顺序
+//       }],
+//       //这个部分是对查询条件部分的配置
+//       "conditionColumnList":[{
+//         "diyColumnId":217,
+//         "diyCoreCode":"print_label_1570",
+//         "diyCoreName":"yashilandai",
+//         "columnName":"addr", //关联字段
+//         "displayName":"地址", //label名称
+//         "dataType":1,  //大类型
+//         "dataLength":0,
+//         "decimallength":0,
+//         "columnIndex":0,
+//         "defaultValue":"上海",  //输入框、查询框的默认值
+//         "isDiy":0,
+//         "isReadonly":0,
+//         "isResult":1,
+//         "isCondition":1,
+//         "queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//         "queryIndex":0,  //顺序
+//         "sortRule":0,
+//         "isCheck":0,
+//         "checkType":0,
+//         "isImport":0,
+//         "isExport":0,
+//         "isForeign":0,   //是否关联（关联的是下拉）
+//         "referenceType":0,
+//         "referenceTable":"",
+//         "referenceColumn":"",
+//         "referenceCondition":"",
+//         "referenceDisplayColumn":"",
+//         "referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//         "creator":"",
+//         "createTime":0,
+//         "updateUser":"",
+//         "updateTime":0,
+//         "placeholder":"请输入"
+//       },{
+//         "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//         "dataType":1,    //大类型：1是字符串（普通输入框）
+//         "columnName":'name',  //关联字段
+//         "displayName":"姓名",    //label显示
+//         "defaultValue":"张三",      //默认值
+//         "placeholder":"请输入",    //placeholder
+//         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//         //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//         "queryIndex":1,  //组件出现顺序
+//       },{
+//         "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//         "dataType":2,    //大类型：2是整数（整数输入框）
+//         "columnName":'car',  //关联字段
+//         "displayName":"汽车",    //label显示
+//         "defaultValue":"2",      //默认值
+//         "placeholder":"请输入",    //placeholder
+//         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//         //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//         "queryIndex":2,  //组件出现顺序
+//       },{
+//         "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//         "dataType":3,    //大类型：3是日期（日期选择框）
+//         "columnName":'date',  //关联字段
+//         "displayName":"生日",    //label显示
+//         "defaultValue":"",      //默认值
+//         "placeholder":"请选择",    //placeholder
+//         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//         //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//         "queryIndex":4,  //组件出现顺序
+//       },{
+//         "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
+//         "dataType":0,    //大类型：3是日期（日期选择框）
+//         "columnName":'love',  //关联字段
+//         "displayName":"最爱",    //label显示
+//         "defaultValue":'',      //默认值
+//         "placeholder":"请选择",    //placeholder
+//         "referenceUrl":url+"/epimetheus/api_v1/diy/xxx/xxx?code=", //关联URL
+//         "referenceColumn":"playerNameValue",  //下拉的值
+//         "referenceDisplayColumn":"playerName", //下拉显示
+//         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//         //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//         "queryIndex":3,  //组件出现顺序
+//       }]
+//     }
+//   }else if("InventoryReportByBin"==code){
+//     data = {
+//       //这部分是对table部分的配置
+//       "resultColumnList":[{
+//         "diyColumnId":190,
+//         "diyCoreCode":"print_label_1570",     //
+//         "diyCoreName":"yashilandai",
+//         "columnName":"date",   //列的key   
+//         "displayName":"日期哦",   //列头  [{"key":},]
+//         "dataType":1,   //数据类型 1字符串  
+//         "dataLength":0,
+//         "decimallength":0,
+//         "columnIndex":0,   //列的顺序
+//         "defaultValue":"",
+//         "isDiy":0,
+//         "isReadonly":0,
+//         "isResult":1,
+//         "isCondition":0,
+//         "queryType":0,
+//         "queryIndex":0,   
+//         "sortRule":0,
+//         "isCheck":0,
+//         "checkType":0,
+//         "isImport":0,
+//         "isExport":0,
+//         "isForeign":0,  //关联
+//         "referenceType":0,
+//         "referenceTable":"",
+//         "referenceColumn":"",
+//         "referenceCondition":"",
+//         "referenceDisplayColumn":"",
+//         "referenceUrl":"",
+//         "creator":"",
+//         "createTime":0,
+//         "updateUser":"",
+//         "updateTime":0
+//       },{
+//         "columnName":"name",   //列的key   
+//         "displayName":"姓名哦",   //列头名字  
+//         "columnIndex":2,   //列的顺序
+//       },{
+//         "columnName":"address",   //列的key   
+//         "displayName":"最新的地址",   //列头名字  
+//         "columnIndex":3,   //列的顺序
+//       }],
+//       //这个部分是对查询条件部分的配置
+//       "conditionColumnList":[{
+//         "diyColumnId":217,
+//         "diyCoreCode":"print_label_1570",
+//         "diyCoreName":"yashilandai",
+//         "columnName":"addr", //关联字段
+//         "displayName":"地址", //label名称
+//         "dataType":1,  //大类型
+//         "dataLength":0,
+//         "decimallength":0,
+//         "columnIndex":0,
+//         "defaultValue":"上海",  //输入框、查询框的默认值
+//         "isDiy":0,
+//         "isReadonly":0,
+//         "isResult":1,
+//         "isCondition":1,
+//         "queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//         "queryIndex":0,  //顺序
+//         "sortRule":0,
+//         "isCheck":0,
+//         "checkType":0,
+//         "isImport":0,
+//         "isExport":0,
+//         "isForeign":0,   //是否关联（关联的是下拉）
+//         "referenceType":0,
+//         "referenceTable":"",
+//         "referenceColumn":"",
+//         "referenceCondition":"",
+//         "referenceDisplayColumn":"",
+//         "referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//         "creator":"",
+//         "createTime":0,
+//         "updateUser":"",
+//         "updateTime":0,
+//         "placeholder":"请输入"
+//       },{
+//         "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//         "dataType":1,    //大类型：1是字符串（普通输入框）
+//         "columnName":'name',  //关联字段
+//         "displayName":"姓名",    //label显示
+//         "defaultValue":"张三",      //默认值
+//         "placeholder":"请输入",    //placeholder
+//         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//         //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//         "queryIndex":1,  //组件出现顺序
+//       },{
+//         "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//         "dataType":2,    //大类型：2是整数（整数输入框）
+//         "columnName":'car',  //关联字段
+//         "displayName":"汽车",    //label显示
+//         "defaultValue":"2",      //默认值
+//         "placeholder":"请输入",    //placeholder
+//         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//         //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//         "queryIndex":2,  //组件出现顺序
+//       },{
+//         "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//         "dataType":3,    //大类型：3是日期（日期选择框）
+//         "columnName":'date',  //关联字段
+//         "displayName":"生日",    //label显示
+//         "defaultValue":"",      //默认值
+//         "placeholder":"请选择",    //placeholder
+//         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//         //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//         "queryIndex":4,  //组件出现顺序
+//       },{
+//         "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
+//         "dataType":0,    //大类型：3是日期（日期选择框）
+//         "columnName":'love',  //关联字段
+//         "displayName":"最爱",    //label显示
+//         "defaultValue":'',      //默认值
+//         "placeholder":"请选择",    //placeholder
+//         "referenceUrl":url+"/epimetheus/api_v1/diy/xxx/xxx?code=", //关联URL
+//         "referenceColumn":"playerNameValue",  //下拉的值
+//         "referenceDisplayColumn":"playerName", //下拉显示
+//         //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//         //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//         "queryIndex":3,  //组件出现顺序
+//       }]
+//     }
+//   }else if("SkuHot"==code){
+//     data = {
+//       //这部分是对table部分的配置
+//       "resultColumnList":[{
+//         "columnName":"date",   //列的key   
+//         "displayName":"访问地球时间",   //列头[{"key":},]
+//         "columnIndex":0,   //列的顺序
+//       },{
+//         "columnName":"name",   //列的key   
+//         "displayName":"奥特曼",   //列头名字  
+//         "columnIndex":2,   //列的顺序
+//       },{
+//         "columnName":"address",   //列的key   
+//         "displayName":"星云",   //列头名字  
+//         "columnIndex":3,   //列的顺序
+//       }],
+//       //这个部分是对查询条件部分的配置
+//       "conditionColumnList":[
+//         {
+//           "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":0,    //大类型：3是日期（日期选择框）
+//           "columnName":'customerCode',  //关联字段
+//           "displayName":"Owner",    //label显示
+//           "defaultValue":'1',      //默认值
+//           "placeholder":"请选择",    //placeholder
+//           "referenceUrl":url+"/epimetheus/api_v1/diy/yyy/yyy", //关联URL
+//           "referenceColumn":"playerNameValue",  //下拉的值
+//           "referenceDisplayColumn":"playerName", //下拉显示
+//           //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":0,  //组件出现顺序
+//         },
+//         {
+//           "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":3,    //大类型：3是日期（日期选择框）
+//           "columnName":'completedTime',  //关联字段
+//           "displayName":"OutDate",    //label显示
+//           "defaultValue":"",      //默认值
+//           "placeholder":"请选择",    //placeholder
+//           //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":1,  //组件出现顺序
+//         },
 
-        {
-          "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":1,    //大类型：1是字符串（普通输入框）
-          "columnName":'skuCode',  //关联字段
-          "displayName":"SKU",    //label显示
-          "defaultValue":"",      //默认值
-          "placeholder":"请输入",    //placeholder
-          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":2,  //组件出现顺序
-        },
+//         {
+//           "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":1,    //大类型：1是字符串（普通输入框）
+//           "columnName":'skuCode',  //关联字段
+//           "displayName":"SKU",    //label显示
+//           "defaultValue":"",      //默认值
+//           "placeholder":"请输入",    //placeholder
+//           //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":2,  //组件出现顺序
+//         },
 
-        {
-          "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":1,    //大类型：1是字符串（普通输入框）
-          "columnName":'outBatchCode',  //关联字段
-          "displayName":"OutBatchCode",    //label显示
-          "defaultValue":"",      //默认值
-          "placeholder":"请输入",    //placeholder
-          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":3,  //组件出现顺序
-        },
+//         {
+//           "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":1,    //大类型：1是字符串（普通输入框）
+//           "columnName":'outBatchCode',  //关联字段
+//           "displayName":"OutBatchCode",    //label显示
+//           "defaultValue":"",      //默认值
+//           "placeholder":"请输入",    //placeholder
+//           //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":3,  //组件出现顺序
+//         },
 
-        {
-          "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":0,    //大类型：3是日期（日期选择框）
-          "columnName":'binCode',  //关联字段
-          "displayName":"BinCode",    //label显示
-          "defaultValue":'',      //默认值
-          "placeholder":"请选择",    //placeholder
-          "referenceUrl":url+"/epimetheus/api_v1/diy/yyy/yyy", //关联URL
-          "referenceColumn":"playerNameValue",  //下拉的值
-          "referenceDisplayColumn":"playerName", //下拉显示
-          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":4,  //组件出现顺序
-        },
+//         {
+//           "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":0,    //大类型：3是日期（日期选择框）
+//           "columnName":'binCode',  //关联字段
+//           "displayName":"BinCode",    //label显示
+//           "defaultValue":'',      //默认值
+//           "placeholder":"请选择",    //placeholder
+//           "referenceUrl":url+"/epimetheus/api_v1/diy/yyy/yyy", //关联URL
+//           "referenceColumn":"playerNameValue",  //下拉的值
+//           "referenceDisplayColumn":"playerName", //下拉显示
+//           //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":4,  //组件出现顺序
+//         },
 
-        {
-          "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":2,    //大类型：1是字符串（普通输入框） 2整形
-          "columnName":'hitTimes',  //关联字段
-          "displayName":"HitTimes",    //label显示
-          "defaultValue":"1-200",      //默认值
-          "placeholder":"请输入",    //placeholder
-          "queryType":7,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":5,  //组件出现顺序
-        },
+//         {
+//           "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":2,    //大类型：1是字符串（普通输入框） 2整形
+//           "columnName":'hitTimes',  //关联字段
+//           "displayName":"HitTimes",    //label显示
+//           "defaultValue":"1-200",      //默认值
+//           "placeholder":"请输入",    //placeholder
+//           "queryType":7,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":5,  //组件出现顺序
+//         },
 
-        {
-          "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":2,    //大类型：1是字符串（普通输入框） 2整形
-          "columnName":'hitAmount',  //关联字段
-          "displayName":"HitAmount",    //label显示
-          "defaultValue":"",      //默认值
-          "placeholder":"请输入",    //placeholder
-          "queryType":7,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":5,  //组件出现顺序
-        },
+//         {
+//           "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":2,    //大类型：1是字符串（普通输入框） 2整形
+//           "columnName":'hitAmount',  //关联字段
+//           "displayName":"HitAmount",    //label显示
+//           "defaultValue":"",      //默认值
+//           "placeholder":"请输入",    //placeholder
+//           "queryType":7,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":5,  //组件出现顺序
+//         },
       
-      ]
+//       ]
 
 
-    }
-  }else if("chanel-OutboundEfficiency"==code){
-    data = {
-      //这部分是对table部分的配置
-      "resultColumnList":[{
-        "columnName":"date",   //列的key   
-        "displayName":"香奈儿出库日期",   //列头[{"key":},]
-        "columnIndex":0,   //列的顺序
-      },{
-        "columnName":"name",   //列的key   
-        "displayName":"货主",   //列头名字  
-        "columnIndex":2,   //列的顺序
-      },{
-        "columnName":"address",   //列的key   
-        "displayName":"工作站",   //列头名字  
-        "columnIndex":3,   //列的顺序
-      }],
-      //这个部分是对查询条件部分的配置
-      "conditionColumnList":[
-        {
-          "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":0,    //大类型：3是日期（日期选择框）
-          "columnName":'customerCode',  //关联字段
-          "displayName":"香奈儿1 货主",    //label显示
-          "defaultValue":'1',      //默认值
-          "placeholder":"请选择",    //placeholder
-          "referenceUrl":url+"/epimetheus/api_v1/diy/yyy/yyy", //关联URL
-          "referenceColumn":"playerNameValue",  //下拉的值
-          "referenceDisplayColumn":"playerName", //下拉显示
-          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":0,  //组件出现顺序
-        },
+//     }
+//   }else if("chanel-OutboundEfficiency"==code){
+//     data = {
+//       //这部分是对table部分的配置
+//       "resultColumnList":[{
+//         "columnName":"date",   //列的key   
+//         "displayName":"香奈儿出库日期",   //列头[{"key":},]
+//         "columnIndex":0,   //列的顺序
+//       },{
+//         "columnName":"name",   //列的key   
+//         "displayName":"货主",   //列头名字  
+//         "columnIndex":2,   //列的顺序
+//       },{
+//         "columnName":"address",   //列的key   
+//         "displayName":"工作站",   //列头名字  
+//         "columnIndex":3,   //列的顺序
+//       }],
+//       //这个部分是对查询条件部分的配置
+//       "conditionColumnList":[
+//         {
+//           "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":0,    //大类型：3是日期（日期选择框）
+//           "columnName":'customerCode',  //关联字段
+//           "displayName":"香奈儿1 货主",    //label显示
+//           "defaultValue":'1',      //默认值
+//           "placeholder":"请选择",    //placeholder
+//           "referenceUrl":url+"/epimetheus/api_v1/diy/yyy/yyy", //关联URL
+//           "referenceColumn":"playerNameValue",  //下拉的值
+//           "referenceDisplayColumn":"playerName", //下拉显示
+//           //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":0,  //组件出现顺序
+//         },
 
-        {
-          "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":1,    //大类型：1是字符串（普通输入框）
-          "columnName":'skuCode',  //关联字段
-          "displayName":"操作人",    //label显示
-          "defaultValue":"",      //默认值
-          "placeholder":"请输入",    //placeholder
-          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":2,  //组件出现顺序
-        },
+//         {
+//           "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":1,    //大类型：1是字符串（普通输入框）
+//           "columnName":'skuCode',  //关联字段
+//           "displayName":"操作人",    //label显示
+//           "defaultValue":"",      //默认值
+//           "placeholder":"请输入",    //placeholder
+//           //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":2,  //组件出现顺序
+//         },
 
-        {
-          "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":3,    //大类型：3是日期（日期选择框）
-          "columnName":'date',  //关联字段
-          "displayName":"时间范围",    //label显示
-          "defaultValue":"",      //默认值
-          "placeholder":["开始","结束"],    //placeholder
-          "queryType":7,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":4,  //组件出现顺序
-        },
+//         {
+//           "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":3,    //大类型：3是日期（日期选择框）
+//           "columnName":'date',  //关联字段
+//           "displayName":"时间范围",    //label显示
+//           "defaultValue":"",      //默认值
+//           "placeholder":["开始","结束"],    //placeholder
+//           "queryType":7,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":4,  //组件出现顺序
+//         },
       
-      ]
+//       ]
 
 
-    }
-  }else if("chanel-InboundEfficiency"==code){
-    data = {
-      //这部分是对table部分的配置
-      "resultColumnList":[{
-        "columnName":"date",   //列的key   
-        "displayName":"香奈儿出库日期",   //列头[{"key":},]
-        "columnIndex":0,   //列的顺序
-      },{
-        "columnName":"name",   //列的key   
-        "displayName":"货主",   //列头名字  
-        "columnIndex":2,   //列的顺序
-      },{
-        "columnName":"address",   //列的key   
-        "displayName":"工作站",   //列头名字  
-        "columnIndex":3,   //列的顺序
-      }],
-      //这个部分是对查询条件部分的配置
-      "conditionColumnList":[
-        {
-          "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":0,    //大类型：3是日期（日期选择框）
-          "columnName":'customerCode',  //关联字段
-          "displayName":"香奈儿2 货主",    //label显示
-          "defaultValue":'1',      //默认值
-          "placeholder":"请选择",    //placeholder
-          "referenceUrl":url+"/epimetheus/api_v1/diy/yyy/yyy", //关联URL
-          "referenceColumn":"playerNameValue",  //下拉的值
-          "referenceDisplayColumn":"playerName", //下拉显示
-          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":0,  //组件出现顺序
-        },
+//     }
+//   }else if("chanel-InboundEfficiency"==code){
+//     data = {
+//       //这部分是对table部分的配置
+//       "resultColumnList":[{
+//         "columnName":"date",   //列的key   
+//         "displayName":"香奈儿出库日期",   //列头[{"key":},]
+//         "columnIndex":0,   //列的顺序
+//       },{
+//         "columnName":"name",   //列的key   
+//         "displayName":"货主",   //列头名字  
+//         "columnIndex":2,   //列的顺序
+//       },{
+//         "columnName":"address",   //列的key   
+//         "displayName":"工作站",   //列头名字  
+//         "columnIndex":3,   //列的顺序
+//       }],
+//       //这个部分是对查询条件部分的配置
+//       "conditionColumnList":[
+//         {
+//           "isForeign":1,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":0,    //大类型：3是日期（日期选择框）
+//           "columnName":'customerCode',  //关联字段
+//           "displayName":"香奈儿2 货主",    //label显示
+//           "defaultValue":'1',      //默认值
+//           "placeholder":"请选择",    //placeholder
+//           "referenceUrl":url+"/epimetheus/api_v1/diy/yyy/yyy", //关联URL
+//           "referenceColumn":"playerNameValue",  //下拉的值
+//           "referenceDisplayColumn":"playerName", //下拉显示
+//           //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":0,  //组件出现顺序
+//         },
 
-        {
-          "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":1,    //大类型：1是字符串（普通输入框）
-          "columnName":'skuCode',  //关联字段
-          "displayName":"操作人",    //label显示
-          "defaultValue":"",      //默认值
-          "placeholder":"请输入",    //placeholder
-          //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":2,  //组件出现顺序
-        },
+//         {
+//           "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":1,    //大类型：1是字符串（普通输入框）
+//           "columnName":'skuCode',  //关联字段
+//           "displayName":"操作人",    //label显示
+//           "defaultValue":"",      //默认值
+//           "placeholder":"请输入",    //placeholder
+//           //"queryType":0,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":2,  //组件出现顺序
+//         },
 
-        {
-          "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
-          "dataType":3,    //大类型：3是日期（日期选择框）
-          "columnName":'date',  //关联字段
-          "displayName":"时间范围",    //label显示
-          "defaultValue":"",      //默认值
-          "placeholder":["开始","结束"],    //placeholder
-          "queryType":7,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
-          //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
-          "queryIndex":4,  //组件出现顺序
-        },
+//         {
+//           "isForeign":0,   //是否关联 0不关联 1关联，关联的是下拉
+//           "dataType":3,    //大类型：3是日期（日期选择框）
+//           "columnName":'date',  //关联字段
+//           "displayName":"时间范围",    //label显示
+//           "defaultValue":"",      //默认值
+//           "placeholder":["开始","结束"],    //placeholder
+//           "queryType":7,   //查询类型  等值（1个）、范围（2个，数据用“-”分割）、大于小于包含（用逗号分割）
+//           //"referenceUrl":"",   //关联的url 数据源，这个会得到多个数据，但我们只要其中2个， referenceDisplayColumn 下拉显示，  referenceColumn 下来的组件的值。
+//           "queryIndex":4,  //组件出现顺序
+//         },
       
-      ]
+//       ]
 
 
-    }
-  }else if("asyncExport"==code){
-    data = {
-      "resultColumnList":[{
-        "columnName":"a",
-        "displayName":"仓库",
-        "columnIndex":1,
-      },{
-        "columnName":"b",
-        "displayName":"导出类型",
-        "columnIndex":2,
-      },{
-        "columnName":"c",
-        "displayName":"状态",
-        "columnIndex":3,
-      },{
-        "columnName":"d",
-        "displayName":"导出任务编号",
-        "columnIndex":3,
-      },{
-        "columnName":"e",
-        "displayName":"导出开始时间",
-        "columnIndex":3,
-      },{
-        "columnName":"f",
-        "displayName":"导出结束时间",
-        "columnIndex":3,
-      },{
-        "columnName":"creator_user",
-        "displayName":"创建人",
-        "columnIndex":3,
-      }],
-      "conditionColumnList":[],
-    }
-  }
-  ctx.body = {
-    data: data
-  }
-})
+//     }
+//   }else if("asyncExport"==code){
+//     data = {
+//       "resultColumnList":[{
+//         "columnName":"a",
+//         "displayName":"仓库",
+//         "columnIndex":1,
+//       },{
+//         "columnName":"b",
+//         "displayName":"导出类型",
+//         "columnIndex":2,
+//       },{
+//         "columnName":"c",
+//         "displayName":"状态",
+//         "columnIndex":3,
+//       },{
+//         "columnName":"d",
+//         "displayName":"导出任务编号",
+//         "columnIndex":3,
+//       },{
+//         "columnName":"e",
+//         "displayName":"导出开始时间",
+//         "columnIndex":3,
+//       },{
+//         "columnName":"f",
+//         "displayName":"导出结束时间",
+//         "columnIndex":3,
+//       },{
+//         "columnName":"creator_user",
+//         "displayName":"创建人",
+//         "columnIndex":3,
+//       }],
+//       "conditionColumnList":[],
+//     }
+//   }
+//   ctx.body = {
+//     data: data
+//   }
+// })
 
 //关联U
 //创建大屏配置
