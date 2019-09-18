@@ -80,6 +80,8 @@ export default {
       resultColumnList:[],     //列配置
       tableData:[],            //表数据
       totalPage:0,             //总页数
+
+      showIndexColumn:this.myConfig.showIndexColumn,    //是否显示“序号”列
     };
   },
   computed: {
@@ -106,8 +108,21 @@ export default {
       this.currentUseCode = code;
       this.currentUseUrl = url;
       this.totalPage = totalPage;
+
+      //根据配置决定是否需要”序号“列
+      if(this.showIndexColumn){
+        resultColumnList = [{
+            "columnName":"bee_number", //列的key   
+            "displayName":"No.",       //列头名字  
+            "columnIndex":-1,          //列的顺序
+        }].concat(resultColumnList);
+      }else{
+        resultColumnList = resultColumnList.filter((one)=>one.columnName!=="bee_number");
+      }
       this.resultColumnList = resultColumnList;
-      for(let i=0;i<tableData.length;i++){tableData[i].bee_number = i+1} //增加一列“NO.”的数据
+
+      //增加一列“NO.”的数据
+      for(let i=0;i<tableData.length;i++){tableData[i].bee_number = i+1} 
     },
 
     //更新items:对条件查询的组件集合做一些处理
@@ -139,17 +154,10 @@ export default {
     
     //更新searchBtns
     fun2:function(searchBtns){
-      
       searchBtns = typeof(searchBtns)==="string"?JSON.parse(searchBtns):searchBtns;
       searchBtns = searchBtns.map(function(one){
         let resultColumnList = typeof(one.resultColumnList)==="string"?JSON.parse(one.resultColumnList):one.resultColumnList;
-        
-        //默认所有的表，都是自带“序列”的，在最后渲染的时候，根据配置决定是否要去掉。
-        let newArr = [{
-            "columnName":"bee_number", //列的key   
-            "displayName":"No.",       //列头名字  
-            "columnIndex":-1,          //列的顺序
-        }];
+        let newArr = [];
         let i=0;
         for(let key in resultColumnList){
           newArr.push({
@@ -204,6 +212,11 @@ export default {
     "myConfig.searchBtns":{
       handler:function(v){this.fun2(v)},
       deep:true,
+    },
+    "myConfig.showIndexColumn":{
+      handler:function(v){
+        this.showIndexColumn = v==="true";
+      }
     }
   },
   

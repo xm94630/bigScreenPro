@@ -168,7 +168,6 @@ export default {
           for(let i=0;i<myTableData.length;i++){
             myTableData[i].bee_number = i+1;
           }
-          xxx(myTableData);
         });
       }else{
         //根据点击分页，更新数据
@@ -178,26 +177,9 @@ export default {
           for(let i=0;i<myTableData.length;i++){
             myTableData[i].bee_number = i+1;
           }
-          xxx(myTableData);
         });
       }
 
-      function xxx(myTableData){
-        //是否要保留“序列”列
-        if(!that.showIndexColumn){
-          that.myTableData = myTableData.map(function(one){
-            delete one.bee_number;
-            return one;
-          })
-          that.resultColumnList = myTableData.filter(function(one){
-            if(one.columnName == "bee_number"){
-              return true;
-            }
-            return false;
-          })
-          console.log(that.resultColumnList);
-        }
-      }
 
       
 
