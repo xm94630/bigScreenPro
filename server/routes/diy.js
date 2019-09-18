@@ -49,12 +49,12 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "resetBtnText":"重置",
           "searchBtns":[{
+            "resultColumnList":{"日期":"date"},
             "text":"按货架查询",
-            "dataUrl": "/epimetheus/api/diy/report/selectData",
             "diyCoreCode":"InventoryReportByShelf"
           },{
+            "resultColumnList":{"日期":"date"},
             "text":"按货位查询",
-            "dataUrl": "/epimetheus/api/diy/report/selectData",
             "diyCoreCode":"InventoryReportByBin"
           }],
           "exportBtn": {
@@ -243,8 +243,8 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "resetBtnText":"重置",
           "searchBtns":[{
+            "resultColumnList":{"日期":"date"},
             "text":"查询",
-            "dataUrl": "/epimetheus/api/diy/report/selectData",
             "diyCoreCode":"SkuHot"
           }],
           "exportBtn": {
@@ -369,8 +369,8 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "resetBtnText":"重置",
           "searchBtns":[{
+            "resultColumnList":{"仓库":"a"},
             "text":"查询",
-            "dataUrl": "/epimetheus/api/diy/report/selectData",
             "diyCoreCode":"asyncExport"
           }],
           "exportBtn": {
@@ -1203,8 +1203,8 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "resetBtnText":"重置",
           "searchBtns":[{
+            "resultColumnList":{"日期":"date"},
             "text":"查询",
-            "dataUrl": "/epimetheus/api/diy/report/selectData",
             "diyCoreCode":"chanel-InboundEfficiency"
           }],
           "exportBtn": {
@@ -1332,8 +1332,8 @@ router.get('/view/info', async (ctx, next) => {
           "dataUrl": "/epimetheus/api/diy/report/selectData",
           "resetBtnText":"重置",
           "searchBtns":[{
+            "resultColumnList":{"日期":"date"},
             "text":"查询",
-            "dataUrl": "/epimetheus/api/diy/report/selectData",
             "diyCoreCode":"chanel-OutboundEfficiency"
           }],
           "exportBtn": {

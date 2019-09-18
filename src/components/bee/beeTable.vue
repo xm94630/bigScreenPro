@@ -154,7 +154,8 @@ export default {
     
     //更新searchBtns
     fun2:function(searchBtns){
-      searchBtns = typeof(searchBtns)==="string"?JSON.parse(searchBtns):searchBtns;
+      //注意：这里 searchBtns 若为对象的话，要对其进行克隆处理，否则的话，在watch中对”对象“做出改变，会循环而报错。
+      searchBtns = typeof(searchBtns)==="string"?JSON.parse(searchBtns):JSON.parse(JSON.stringify(searchBtns));
       searchBtns = searchBtns.map(function(one){
         let resultColumnList = typeof(one.resultColumnList)==="string"?JSON.parse(one.resultColumnList):one.resultColumnList;
         let newArr = [];
