@@ -6,8 +6,6 @@ export default function(){
       "10":{
         "template":{
           "text":"查询",
-          "dataUrl": "/epimetheus/api/diy/report/selectData",
-          //"initUrl": "/epimetheus/api_v1/diy/column/initForView",
           "diyCoreCode":"SkuHot",
           "resultColumnList":'{"日期":"date","名字":"name","地址哦":"address","年龄":"age"}',
         },

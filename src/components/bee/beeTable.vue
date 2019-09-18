@@ -205,8 +205,8 @@ export default {
   },
 
   watch:{
-    "myConfig.initForView":{
-      handler:function(v){this.fun1(v.conditionColumnList)},
+    "myConfig.conditionColumnList":{
+      handler:function(v){this.fun1(v)},
       deep:true,
     },
     "myConfig.searchBtns":{
@@ -221,7 +221,7 @@ export default {
   },
   
   mounted(){
-    this.fun1(this.myConfig.initForView.conditionColumnList);
+    this.fun1(this.myConfig.conditionColumnList);
     this.fun2(this.myConfig.searchBtns);
   }
 

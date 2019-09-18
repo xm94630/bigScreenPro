@@ -356,16 +356,11 @@ function getWidgetConfig (){
       "pageSize":10,
       "resetBtnText":"重置",
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      //"initUrl": "/epimetheus/api_v1/diy/column/initForView",
 
       //注意，这里字符串的多次转义。
       // eslint-disable-next-line no-useless-escape
-      "searchBtns":'[{"text":"按货架查询","dataUrl":"/epimetheus/api/diy/report/selectData","diyCoreCode":"InventoryReportByShelf","resultColumnList":"{\\\"日期哦\\\":\\\"date\\\",\\\"这个列是名字哦\\\":\\\"name\\\",\\\"地址呀\\\":\\\"address\\\",\\\"年龄哦\\\":\\\"age\\\"}"},{"text":"按货位查询","dataUrl":"/epimetheus/api/diy/report/selectData","diyCoreCode":"InventoryReportByBin","resultColumnList":"{\\\"只有配置了名字这个列哦\\\":\\\"name\\\"}"}]',
-      //"searchBtns":'[{"text":"按货架查询","dataUrl":"/epimetheus/api/diy/report/selectData","initUrl":"/epimetheus/api_v1/diy/column/initForView","diyCoreCode":"InventoryReportByShelf","resultColumnList":"{\\\"日期哦\\\":\\\"date\\\",\\\"这个列是名字哦\\\":\\\"name\\\",\\\"地址呀\\\":\\\"address\\\",\\\"年龄哦\\\":\\\"age\\\"}"},{"text":"按货位查询","dataUrl":"/epimetheus/api/diy/report/selectData","initUrl":"/epimetheus/api_v1/diy/column/initForView","diyCoreCode":"InventoryReportByBin","resultColumnList":"{\\\"只有配置了名字这个列哦\\\":\\\"name\\\"}"}]',
-      
-      "initForView":{
-        "conditionColumnList":'[{"type":"10","label":"普通输入框","keyName":"name1","placeholder":"请输入","defaultValue":"","queryIndex":0,"id":"c73f-3601"}]'
-      },
+      "searchBtns":'[{"text":"按货架查询","diyCoreCode":"InventoryReportByShelf","resultColumnList":"{\\\"日期哦\\\":\\\"date\\\",\\\"这个列是名字哦\\\":\\\"name\\\",\\\"地址呀\\\":\\\"address\\\",\\\"年龄哦\\\":\\\"age\\\"}"},{"text":"按货位查询","diyCoreCode":"InventoryReportByBin","resultColumnList":"{\\\"只有配置了名字这个列哦\\\":\\\"name\\\"}"}]',
+      "conditionColumnList":'[{"type":"10","label":"普通输入框","keyName":"name1","placeholder":"请输入","defaultValue":"","queryIndex":0,"id":"c73f-3601"}]'
     },
     "beeTableCommon": {
       "id": bee.guidGenerator(),

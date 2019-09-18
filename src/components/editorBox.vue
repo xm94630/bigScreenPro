@@ -89,7 +89,7 @@
             :templateAllData="widgetPartConfig" 
             :templateName="templateName"
             defaultOptionValue="10"
-            :defaultList="widget.initForView.conditionColumnList"
+            :defaultList="widget.conditionColumnList"
             @changeData = "changeDataFun"
           />
            <getMultipleTemplate 
@@ -321,9 +321,7 @@ export default {
     },
     //二次模板数据更改
     changeDataFun(data){
-      this.widget.initForView={
-        conditionColumnList:JSON.stringify(data)
-      }
+      this.widget.conditionColumnList=JSON.stringify(data)
     },
     changeDataFun2(data){
       this.widget.searchBtns=JSON.stringify(data)

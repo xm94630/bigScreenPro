@@ -29,7 +29,7 @@
         :key= "index" 
         type= "primary" 
         :diyCoreCode= "one.diyCoreCode" 
-        @click="submitForm(one.diyCoreCode,one.dataUrl,one.resultColumnList)"
+        @click="submitForm(one.diyCoreCode, myConfig.dataUrl ,one.resultColumnList)"
         >
           {{one.text}}
         </el-button>
@@ -58,6 +58,8 @@ import { setTimeout } from 'timers';
 export default {
   name: "beeTitle",
   props: {
+    myConfig:null,
+
     items:Array,
     searchBtns:null,
     resetBtnText:null,
