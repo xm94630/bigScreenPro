@@ -7,6 +7,11 @@
         【{{screenName}}】josn配置文件，请复制后放置到数据库对应的表中
         <span @click="closeFun">关闭</span>
         <span @click="copyFun">复制</span>
+
+         <!-- 格式化工具 -->
+        <template v-for="(value,key) in formatToolUrl">
+          <span :key="key" class="gray" @click="formatFun(value)">{{key}}</span>
+        </template>
       </div>
       <el-input
         ref="xxx"
@@ -94,7 +99,7 @@
 
 <script>
 import axios from "axios";
-import {baseUrl,path} from '@/bee.config';
+import {baseUrl,path,formatToolUrl} from '@/bee.config';
 import bee from "@/src/tools/bee";
 
 
@@ -104,6 +109,8 @@ export default {
   },
   data() {
     return {
+      formatToolUrl,
+
       showTextarea:false,
       screenName:'',
       textarea:'',
@@ -142,6 +149,10 @@ export default {
     };
   },
   methods: {
+    //格式化工具
+    formatFun(url){
+      window.open(url);
+    },
     //复制配置代码
     copyFun(){
       this.$refs.xxx.$el.firstChild.select();
@@ -322,6 +333,9 @@ export default {
       margin-left:20px;
       float: right;
       cursor:pointer;
+      &.gray{
+        color:#888;
+      }
     }
   }
   .el-textarea__inner{
