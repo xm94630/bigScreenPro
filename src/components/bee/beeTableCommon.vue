@@ -188,15 +188,15 @@ export default {
 }
 
 .tableClass.el-table td .red {
-  color: #ef5350;
-  font-weight: normal;
+  color: red;
+  font-weight: bold;
 }
 .tableClass.el-table td .yellow {
   color: yellow;
-  font-weight: normal;
+  font-weight: bold;
 }
 .tableClass.el-table td .green {
-  color: #8bc34a;
-  font-weight: normal;
+  color: #4caf50;
+  font-weight: bold;
 }
 </style>
