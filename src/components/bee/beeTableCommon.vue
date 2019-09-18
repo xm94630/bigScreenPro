@@ -21,6 +21,22 @@
             :prop = "value"
             :label="key"
           >
+            <!-- 自定义模板 -->
+            <template slot-scope="scope">
+              <template v-if="scope.row[key]<65">
+                <span class="red">{{ scope.row[key] }}</span>
+              </template>
+              <template v-else-if="scope.row[key]<=100 && scope.row[key]>=65">
+                <span class="yellow">{{ scope.row[key] }}</span>
+              </template>
+              <template v-else-if="scope.row[key]>100">
+                <span class="green">{{ scope.row[key] }}</span>
+              </template>
+              <template v-else>
+                <span class="">{{ scope.row[key] }}</span>
+              </template>
+              
+            </template>
           </el-table-column>
         </template>
       </el-table>
@@ -171,4 +187,16 @@ export default {
   background-color: #142a41 !important;
 }
 
+.tableClass.el-table td .red {
+  color: #ef5350;
+  font-weight: normal;
+}
+.tableClass.el-table td .yellow {
+  color: yellow;
+  font-weight: normal;
+}
+.tableClass.el-table td .green {
+  color: #8bc34a;
+  font-weight: normal;
+}
 </style>
