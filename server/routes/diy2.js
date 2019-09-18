@@ -379,8 +379,8 @@ router.post('/report/selectData', async (ctx, next) => {
   if(code==="dkn_barLine" || code==="dkn_16"){
     data = [
       {
-        "finish": 80,
-        "unfinish": 120,
+        "finish": 0,
+        "unfinish": 100,
         "type": "CYCLE"
       },
       {

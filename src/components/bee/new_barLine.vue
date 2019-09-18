@@ -86,13 +86,14 @@ let defaultOption = {
       show: true,
       textStyle: {
         color: '#fff',  
-        fontSize : 18,
+        fontSize : 14,
       },
       backgroundColor:'rgba(255,255,255,0.2)',
       padding:10,
       verticalAlign:'middle',
       margin:35,
       width:200, 
+      interval:0, //关键设置，采用标签不重叠的策略间隔显示标签
     },
   },
   yAxis: {
