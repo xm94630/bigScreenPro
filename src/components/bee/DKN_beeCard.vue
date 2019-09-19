@@ -17,7 +17,19 @@
         <template v-for="(value,key) in apiData[0]">
           <div class="oneline" :key="key">
             <div class="nameCon" :style="keyStyle">{{key}}</div>
-            <div class="valueCon" :style="valueStyle">{{value}}</div>
+
+            <template v-if="myConfig.widgetOption.colorChanging.active==='true'">
+              <template v-if="(Number(value)?Number(value):0)>myConfig.widgetOption.colorChanging.standardLevel">
+                <div class="valueCon green" :style="valueStyle">{{value}}</div>
+              </template>
+              <template v-else>
+                <div class="valueCon red" :style="valueStyle">{{value}}</div>
+              </template>
+            </template>
+            <template v-else>
+              <div class="valueCon" :style="valueStyle">{{value}}</div>
+            </template>
+
           </div>
         </template>
       </div>
@@ -143,6 +155,12 @@ export default {
     justify-content:space-around;
     .valueCon{
       font-size: 30px;
+      &.red{
+        color:#ff6e40 !important;
+      }
+      &.green{
+        color:#66bb6a !important;
+      }
     }
     .nameCon{
        font-size: 12px;

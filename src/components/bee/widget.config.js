@@ -494,6 +494,10 @@ function getWidgetConfig (){
         "background": "rgba(255,255,255,0.1)",
       },
       "widgetOption":{
+        "colorChanging":{
+          "active":"false",
+          "standardLevel":350,
+        },
         "keyCss":{
           "font-size":12,
           "line-height":15,

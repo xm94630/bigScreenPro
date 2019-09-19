@@ -513,7 +513,7 @@ router.post('/report/selectData', async (ctx, next) => {
     code==="dkn_14" ||
     code==="dkn_15"
   ){
-    data = [{'JOGGING WOMAN ACC': 38868}]
+    data = [{'JOGGING WOMAN ACC': Math.round(Math.random()*1000)}]
   }
 
 
