@@ -102,7 +102,7 @@ export default {
     border-bottom:solid 1px #555; 
     text-align: right;
     span{
-      color:#00baff;
+      color:rgba(0, 174, 255, 0.19);
       font-weight: bold;
       margin-left: 10px;
     }
