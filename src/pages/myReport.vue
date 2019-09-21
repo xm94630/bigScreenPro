@@ -68,11 +68,13 @@ export default {
 
     //定时刷新本页面
     timingRefresh(d){
-      let refreshTime = d.refreshTime;
+      let refreshTime = Number(d.canvas.refreshTime);
       if(refreshTime>=3000){
         this.setIntervalHolder = setInterval(() => {
           this.refreshFun();
         }, refreshTime);
+      }else{
+        console.log('刷新时间间隔设置太短')
       }
     },
 
