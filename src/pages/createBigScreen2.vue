@@ -39,6 +39,7 @@
           @getWidgetConfig = "getWidgetConfig"
           @getCanvasConfig = "getCanvasConfig"
           @deleteWidgetElementFun = "deleteWidgetElementFun"
+          @deleteAllWidgetByTypeElementEvent = "deleteAllWidgetByTypeElementEvent"
         />
       </el-col>
     </el-row>
@@ -200,6 +201,10 @@ export default {
         this.widgetsForRendering[widgetType]= newCategory;
       }
       this.$forceUpdate();
+    },
+    //删除画布上的全部组件
+    deleteAllWidgetByTypeElementEvent(widgetType){
+      this.$delete(this.widgetsForRendering,widgetType);
     }
   },
 

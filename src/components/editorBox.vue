@@ -27,12 +27,14 @@
             class="el-menu-vertical-demo"
             @select="selectFun"
           >
+            <!-- 一条菜单 -->
             <template v-for="(widgets,key) in json">
 
               <el-submenu :index="key" :key="key">
                 <template slot="title">{{key}}</template>
                 <template v-for="(myWidget) in widgets">
                   <el-menu-item :key="myWidget.id" :index="myWidget.id" @click="selectWidget(myWidget)" :ref="myWidget.id">
+                    <!-- 菜单名称 -->
                     id_{{myWidget.id}}
                     <!-- 组件操作按钮 -->
                     <span class="widgetOperateBtn">
@@ -50,8 +52,11 @@
                   </el-menu-item>
                 </template>
 
+                <!-- 删除某类组件的全部实例 -->
                 <el-menu-item>
-                  <el-button type="primary" size="mini" style="width:100%;">删除全部“{{key}}”组件</el-button>
+                  <el-button type="primary" size="mini" style="width:100%;" @click="deleteAllWidgetByTypeElementFun(key)">
+                    删除全部“{{key}}”组件
+                  </el-button>
                 </el-menu-item>
 
               </el-submenu>
@@ -265,30 +270,39 @@ export default {
       store.dispatch("setSelectWidgetId",cloneWidget.id);
       bus.$emit("widgetClick",cloneWidget.id);
     },
+    //删除某类组件的全部实例
+    deleteAllWidgetByTypeElementFun(type){
+      this.$confirm('确认删除 '+type+ ' 类的全部组件', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+      }).then(() => {
+        this.$delete(this.json,type); 
+        //发布事件
+        this.$emit('deleteAllWidgetByTypeElementEvent',type);
+      }).catch(() => {});
+    },
+    //删除某个实例
     deleteWidgetFun(id,type){
       this.$confirm('确认删除', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
-        }).then(() => {
-            
-          //删除逻辑
-          let arr = this.json[type].filter(function(widget){
-            return widget.id !== id;
-          });
-          if(arr.length===0){
-            this.$delete(this.json,type); 
-          }else{
-            this.json[type] = arr;
-          }
-          //删除选中（配置面板清空）
-          this.widget={};
-          //发布事件
-          this.$emit('deleteWidgetElementFun',id,type);
-
-        }).catch(() => {
-       
+      }).then(() => {
+        //删除逻辑
+        let arr = this.json[type].filter(function(widget){
+          return widget.id !== id;
         });
+        if(arr.length===0){
+          this.$delete(this.json,type); 
+        }else{
+          this.json[type] = arr;
+        }
+        //删除选中（配置面板清空）
+        this.widget={};
+        //发布事件
+        this.$emit('deleteWidgetElementFun',id,type);
+      }).catch(() => {});
     },
     createWidgetFun(name){
       let thisConfigTemplate =  JSON.parse(JSON.stringify(getWidgetConfig()[name]));
