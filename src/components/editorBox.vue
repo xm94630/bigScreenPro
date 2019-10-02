@@ -31,7 +31,6 @@
 
               <el-submenu :index="key" :key="key">
                 <template slot="title">{{key}}</template>
-
                 <template v-for="(myWidget) in widgets">
                   <el-menu-item :key="myWidget.id" :index="myWidget.id" @click="selectWidget(myWidget)" :ref="myWidget.id">
                     id_{{myWidget.id}}
@@ -50,7 +49,13 @@
                     </span>
                   </el-menu-item>
                 </template>
+
+                <el-menu-item>
+                  <el-button type="primary" size="mini" style="width:100%;">删除全部“{{key}}”组件</el-button>
+                </el-menu-item>
+
               </el-submenu>
+              
             
             </template>
           </el-menu>
