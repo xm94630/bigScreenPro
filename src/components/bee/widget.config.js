@@ -43,7 +43,8 @@ let allWidgets = {
     DSV_lines,
 }; 
 
-//用于可视化的配置模板
+
+//配置模板:各类视图组件
 function getWidgetConfig (){
   return {
     "new_bar":{
@@ -573,9 +574,54 @@ function getWidgetConfig (){
   }
 }
 
-//编辑面板中，对组件的属性配置的一些说明
+//配置模板:canva组件
+function getCanvasDefaultConfig (){
+  return {
+    "canvas":{
+      "id": bee.guidGenerator(),
+      "alias":"画布",
+      "type":"canvas",
+      "width": 1200,
+      "height": 800,
+      "background": "#142a41",
+      "zoom-type":0,
+      "grid":10,
+      "refreshTime":"600000",
+      "linkScreen":{
+        "linkScreenCode":"",
+        "waitTime":-1,
+        "eventWidgetName":""
+      },
+      "formFormat":{
+        "labelPosition":"top",
+        "colSpan":8
+      }
+    }
+  }
+}
+
+//编辑中，组件配置说明
 function getWidgetConfigExplain (){
   return {
+    "canvas":{
+      "id": "该组件的id，系统默认生成，无需配置",
+      "type":"该组件的类型，系统默认生成，无需配置",
+      "width": "画布宽度",
+      "height": "画布高度",
+      "background": "画布背景色",
+      "zoom-type":"画布缩放模式。0表示正常尺寸；1表示全屏平铺；2表示宽度满屏，高度按比例缩放；3表示高度满屏，宽度按照比例缩放",
+      "grid":"画布栅格设置。设置栅格之后，组件的移动都是按栅格像素的整数倍移动。比如设置为5，拖动组件的时候，移动量为5的整数倍",
+      "refreshTime":"刷新时间，单位毫秒。最小设置时间为3000毫秒，否则无效。建议为60000毫秒（1分钟）",
+      "linkScreen":{
+        "linkScreenCode":"关联大屏的code。只有需要做多个大屏跳转的时候需要设置这个，默认不用配置",
+        "waitTime":"等待时间，即多少时间之后跳转到另外一个大屏。-1表示不跳转",
+        "eventWidgetName":"组件事件名字，当大屏中包含的某个组件发出事件的时候实现大屏跳转"
+      },
+      "formFormat":{
+        "labelPosition":"form组件的label显示的位置，left表示显示在左侧，top表示显示在上方",
+        "colSpan":"form组件的子组件的占位设置，占据整行为24个单位。如果设置为8表示该组件占8个单位，即一行放3个子组件。以此类推"
+      }
+    },
     "new_bar":{
       "id": "该组件的id，系统默认生成，无需配置",
       "type":"该组件的类型，系统默认生成，无需配置",
@@ -617,28 +663,6 @@ function getWidgetConfigExplain (){
   }
 }
 
-//获取canvas配置
-function getCanvasDefaultConfig (){
-  return {
-    "canvas":{
-      "width": 1202,
-      "height": 800,
-      "background": "#142a41",
-      "zoom-type":0,
-      "grid":10,
-      "refreshTime":"600000",
-      "linkScreen":{
-        "linkScreenCode":"",
-        "waitTime":-1,
-        "eventWidgetName":""
-      },
-      "formFormat":{
-        "labelPosition":"top",
-        "colSpan":8
-      }
-    }
-  }
-}
 
 
 export {
