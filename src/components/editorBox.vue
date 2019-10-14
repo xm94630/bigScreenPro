@@ -55,7 +55,7 @@
                 <!-- 删除某类组件的全部实例 -->
                 <el-menu-item>
                   <el-button type="primary" size="mini" style="width:100%;" @click="deleteAllWidgetByTypeElementFun(key)">
-                    删除全部“{{key}}”组件
+                    删除全部“{{widgets[0].alias?widgets[0].alias:key}}”组件
                   </el-button>
                 </el-menu-item>
 
