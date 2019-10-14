@@ -31,7 +31,7 @@
             <template v-for="(widgets,key) in json">
 
               <el-submenu :index="key" :key="key">
-                <template slot="title">{{key}} {{widgets[0].alias}}</template>
+                <template slot="title">{{widgets[0].alias?widgets[0].alias:key}}</template>
                 <template v-for="(myWidget) in widgets">
                   <el-menu-item :key="myWidget.id" :index="myWidget.id" @click="selectWidget(myWidget)" :ref="myWidget.id">
                     <!-- 菜单名称 -->
@@ -205,7 +205,7 @@
 //             </template>
 import bee from "@/src/tools/bee";
 import bus from "@/src/tools/bus";
-import {getWidgetConfig,getWidgetConfigExplain} from "./bee/widget.config"
+import {getWidgetConfig,getCanvasDefaultConfig,getWidgetConfigExplain} from "./bee/widget.config"
 import getWidgetPartConfig from "./bee/widgetPart.config"
 import store from '@/src/store';
 import getMultipleTemplate from "./getMultipleTemplate"
@@ -223,23 +223,7 @@ export default {
   },
   data(){
     return{
-      "canvas":{
-        "width": 1200,
-        "height": 800,
-        "background": "#142a41",
-        "zoom-type":0,
-        "grid":10,
-        "refreshTime":"600000",
-        "linkScreen":{
-          "linkScreenCode":"",
-          "waitTime":-1,
-          "eventWidgetName":""
-        },
-        "formFormat":{
-          "labelPosition":"top",
-          "colSpan":8
-        }
-      },
+      "canvas":getCanvasDefaultConfig().canvas,//canvas配置
       json:{
         //"new_bar":[{id:"111"},{id:"222"}],"new_pie":[{id:"333"},{id:"444"}],
       },

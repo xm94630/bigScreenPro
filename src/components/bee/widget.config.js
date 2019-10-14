@@ -573,7 +573,8 @@ function getWidgetConfig (){
   }
 }
 
- function getWidgetConfigExplain (){
+//编辑面板中，对组件的属性配置的一些说明
+function getWidgetConfigExplain (){
   return {
     "new_bar":{
       "id": "该组件的id，系统默认生成，无需配置",
@@ -614,10 +615,35 @@ function getWidgetConfig (){
       "diyCoreCode":"数据源code，系统会用此码获取对应图标的数据，请联系数据方。"
     }
   }
- }
+}
 
- export {
+//获取canvas配置
+function getCanvasDefaultConfig (){
+  return {
+    "canvas":{
+      "width": 1202,
+      "height": 800,
+      "background": "#142a41",
+      "zoom-type":0,
+      "grid":10,
+      "refreshTime":"600000",
+      "linkScreen":{
+        "linkScreenCode":"",
+        "waitTime":-1,
+        "eventWidgetName":""
+      },
+      "formFormat":{
+        "labelPosition":"top",
+        "colSpan":8
+      }
+    }
+  }
+}
+
+
+export {
   getWidgetConfig,
+  getCanvasDefaultConfig,
   getWidgetConfigExplain,
   allWidgets,
- }
+}
