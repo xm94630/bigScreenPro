@@ -31,7 +31,7 @@
             <template v-for="(widgets,key) in json">
 
               <el-submenu :index="key" :key="key">
-                <template slot="title">{{widgets[0].alias}}</template>
+                <template slot="title">{{key}} {{widgets[0].alias}}</template>
                 <template v-for="(myWidget) in widgets">
                   <el-menu-item :key="myWidget.id" :index="myWidget.id" @click="selectWidget(myWidget)" :ref="myWidget.id">
                     <!-- 菜单名称 -->
