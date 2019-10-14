@@ -26,6 +26,7 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="/index/bigscreen">我的大屏</el-menu-item>
+              <el-menu-item index="/index/widgetInstructions">组件指南</el-menu-item>
               <el-menu-item index="/index/dashboard">我的面板</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
