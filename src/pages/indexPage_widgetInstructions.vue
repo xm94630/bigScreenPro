@@ -18,26 +18,35 @@
     </el-table>
   </template>
   123
+  <xuming>
+    
+  </xuming>
+
   </div>
 </template>
 
 <script>
+import xuming from "@/src/components/xuming.vue"
+
 export default {
-    data() {
-      return {
-        tableData: [{
-          xxx: '2016-05-02',
-          yyy: '王小虎',
-        },{
-          xxx: '2016-05-02',
-          yyy: '王小虎',
-        },{
-          xxx: '2016-05-02',
-          yyy: '王小虎',
-        }]
-      }
+  components: {
+    xuming
+  },
+  data() {
+    return {
+      tableData: [{
+        xxx: '2016-05-02',
+        yyy: '王小虎',
+      },{
+        xxx: '2016-05-02',
+        yyy: '王小虎',
+      },{
+        xxx: '2016-05-02',
+        yyy: '王小虎',
+      }]
     }
   }
+}
 </script>
 
 <style scoped>
