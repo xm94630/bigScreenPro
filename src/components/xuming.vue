@@ -1,23 +1,32 @@
 <template>
   <div class="box">
-    <template v-for="(one,key) in xxxxxx">
-      <div :key="key" class="fish">
-        <div class="fish1">{{key}}</div>
-        <div class="fish2">{{one}}</div>
-      </div>
-    </template>
+    <div class="xxxBox">
+      <template v-for="(one,key) in myConfig">
+        <div :key="key" class="yyyBox">
+          <div class="fish fish1">{{key}}</div>
+            <template v-if="bee.isObject(one)">
+              <!-- 递归 -->
+              <xuming :key="key" :myConfig="one"></xuming>
+          </template>
+          <template v-else>
+            <div class="fish fish2">{{one}}</div>
+          </template>
+        </div>
+      </template>
+    </div>
   </div>
 </template>
 
 
 <script>
 import bee from "@/src/tools/bee";
-import {getWidgetConfigExplain} from "@/src/components/bee/widget.config";
+
 
 
 export default {
   name: "xuming",
   props: {
+    myConfig:null,
     widget: null,
     index: Number,
     widgetConfigExplain:Object,
@@ -26,7 +35,6 @@ export default {
     return{
       bee,
       n:this.index+1,
-      xxxxxx:JSON.parse(JSON.stringify(getWidgetConfigExplain())),
     }
   },
   computed:{
@@ -49,18 +57,30 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style  lang="scss">
 .box{
-  .fish{
-    display: -webkit-box;
-    .fish1{
-      width:100px;
-      border-right:solid 5px red;
-      border-bottom:solid 5px red;
-    }
-    .fish2{
-      border-right:solid 5px red;
-      border-bottom:solid 5px red;
+  width: 100%;
+  .xxxBox{
+    overflow: hidden;
+    .yyyBox{
+      width: 100%;
+      display: -webkit-box;
+      .fish1{
+        width:200px;
+        border-right:solid 1px red;
+        border-bottom:solid 1px red;
+        padding:5px;
+        box-sizing: border-box;
+        font-size: 20px;
+        color:red;
+        word-wrap:break-word;
+      }
+      .fish2{
+        width:100%;
+        border-bottom:solid 1px red;
+        padding:5px;
+        box-sizing: border-box;
+      }
     }
   }
 }
