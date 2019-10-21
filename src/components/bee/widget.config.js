@@ -619,10 +619,11 @@ function getWidgetConfigExplain (){
       },
       "formFormat":{
         "labelPosition":"form组件的label显示的位置，left表示显示在左侧，top表示显示在上方",
-        "colSpan":"form组件的子组件的占位设置，占据整行为24个单位。如果设置为8表示该组件占8个单位，即一行放3个子组件。以此类推"
+        "colSpan":"form组件的子组件的占位设置，占据整行为24个单位。如果设置为8表示该组件占8个单位，即一行放3个子组件。以此类推。"
       }
     },
     "new_bar":{
+      "-":"",
       "id": "该组件的id，系统默认生成，无需配置",
       "type":"该组件的类型，系统默认生成，无需配置",
       "css":{

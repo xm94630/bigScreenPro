@@ -1,40 +1,32 @@
 <template>
-  <div class="box">
-    <div class="xxxBox">
-      <template v-for="(one,key) in myConfig">
-        <div :key="key" class="yyyBox">
-          <div class="fish fish1">{{key}}</div>
-            <template v-if="bee.isObject(one)">
-              <!-- 递归 -->
-              <xuming :key="key" :myConfig="one"></xuming>
-          </template>
-          <template v-else>
-            <div class="fish fish2">{{one}}</div>
-          </template>
-        </div>
-      </template>
-    </div>
+  <div class="xxxBox">
+    <template v-for="(one,key) in myData">
+      <div :key="key" class="yyyBox">
+        <div class="fish fish1">{{key}}</div>
+          <template v-if="bee.isObject(one)">
+            <!-- 递归 -->
+            <xuming :key="key" :myData="one" :level="myLevel" ></xuming>
+        </template>
+        <template v-else>
+          <div class="fish fish2" :style="{'width':'calc(100% - '+200*myLevel+'px)'}">{{one}}</div>
+        </template>
+      </div>
+    </template>
   </div>
 </template>
 
-
 <script>
 import bee from "@/src/tools/bee";
-
-
-
 export default {
   name: "xuming",
   props: {
-    myConfig:null,
-    widget: null,
-    index: Number,
-    widgetConfigExplain:Object,
+    myData:null,
+    level:Number,
   },  
   data(){
     return{
       bee,
-      n:this.index+1,
+      myLevel:this.level?Number(this.level+1):1,
     }
   },
   computed:{
@@ -58,31 +50,36 @@ export default {
 </script>
 
 <style  lang="scss">
-.box{
-  width: 100%;
+
+  $borderColor: rgba(55, 224, 255, 0.8);
+  $FontColor: rgba(55, 224, 255, 0.8);
+  $FontColor2: #999;
+
   .xxxBox{
+    width: 100%;
     overflow: hidden;
+    color: $FontColor2;
     .yyyBox{
       width: 100%;
       display: -webkit-box;
       .fish1{
         width:200px;
-        border-right:solid 1px red;
-        border-bottom:solid 1px red;
+        border-right:solid 1px $borderColor;
+        border-bottom:solid 1px $borderColor;
         padding:5px;
         box-sizing: border-box;
         font-size: 20px;
-        color:red;
+        color:$FontColor;
         word-wrap:break-word;
       }
       .fish2{
-        width:100%;
-        border-bottom:solid 1px red;
+        width:calc(100% - 200px);
+        border-bottom:solid 1px $borderColor;
         padding:5px;
         box-sizing: border-box;
       }
     }
   }
-}
+
 
 </style>

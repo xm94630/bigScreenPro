@@ -1,7 +1,6 @@
 <template>
   <div>
-    组件使用指南
-    <xuming :myConfig="haha"></xuming>
+    <xuming :myData="haha" style="border:solid 2px rgba(55, 224, 255, 0.8);"></xuming>
   </div>
 </template>
 
