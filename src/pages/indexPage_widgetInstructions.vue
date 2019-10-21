@@ -1,5 +1,6 @@
 <template>
   <div>
+    <img src="../assets/logo.png">
     <hierarchyTable :myData="myData" :myConfig="myConfig" style="border:solid 2px gray;"></hierarchyTable>
   </div>
 </template>
@@ -20,7 +21,7 @@ export default {
         titleWidth:"200px",
         border:"solid 1px gray",
         titleCss:{
-          "color":"#00baff",
+          "color":"#1c5492",
           "font-size":"12px",
           "font-weight":"bold",
         },

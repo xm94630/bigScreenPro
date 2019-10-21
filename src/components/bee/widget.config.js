@@ -623,7 +623,7 @@ function getWidgetConfigExplain (){
       }
     },
     "new_bar":{
-      "-":"",
+      "-":"../assets/widgetImg/new_bar.png",
       "id": "该组件的id，系统默认生成，无需配置",
       "type":"该组件的类型，系统默认生成，无需配置",
       "css":{
