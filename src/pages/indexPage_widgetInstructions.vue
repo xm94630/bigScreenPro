@@ -1,20 +1,35 @@
 <template>
   <div>
-    <xuming :myData="haha" style="border:solid 2px rgba(55, 224, 255, 0.8);"></xuming>
+    <hierarchyTable :myData="myData" :myConfig="myConfig" style="border:solid 2px gray;"></hierarchyTable>
   </div>
 </template>
 
 <script>
-import xuming from "@/src/components/xuming.vue";
+import hierarchyTable from "@/src/components/hierarchyTable.vue";
 import {getWidgetConfigExplain} from "@/src/components/bee/widget.config";
 
 export default {
   components: {
-    xuming
+    hierarchyTable
   },
   data() {
     return {
-      haha:JSON.parse(JSON.stringify(getWidgetConfigExplain()))
+      myData:JSON.parse(JSON.stringify(getWidgetConfigExplain())),
+      myConfig:{
+        tableBg:"#25292d",
+        titleWidth:"200px",
+        border:"solid 1px gray",
+        titleCss:{
+          "color":"#00baff",
+          "font-size":"12px",
+          "font-weight":"bold",
+        },
+        textCss:{
+          "color":"gray",
+          "font-size":"12px",
+          "font-weight":"normal",
+        },
+      }
     }
   }
 }
