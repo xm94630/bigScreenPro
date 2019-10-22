@@ -1,6 +1,6 @@
 <template>
   <div class="hierarchyTableBox" :style="{'background':myConfig.tableBg}">
-    <template v-for="(one,key) in myData">
+    <template v-for="(one,key) in newData">
       <div :key="key" class="hierarchyTableLine">
         <div class="leftCon" :style="{'width':myConfig.titleWidth,'color':myConfig.titleCss.color,'fontSize':myConfig.titleCss['font-size'],'fontWeight':myConfig.titleCss['font-weight'],'border-right':myConfig.border,'border-bottom':myConfig.border}">{{key}}</div>
           <template v-if="bee.isObject(one)">
@@ -8,7 +8,14 @@
             <hierarchyTable :key="key" :myData="one" :myConfig="myConfig" :level="myLevel" ></hierarchyTable>
         </template>
         <template v-else>
-          <div class="rightCon" :style="{'width':'calc(100% - '+200*myLevel+'px)','color':myConfig.textCss.color,'fontSize':myConfig.textCss['font-size'],'fontWeight':myConfig.textCss['font-weight'],'border-right':myConfig.border,'border-bottom':myConfig.border}">{{one}}</div>
+          <div class="rightCon" :style="{'width':'calc(100% - '+200*myLevel+'px)','color':myConfig.textCss.color,'fontSize':myConfig.textCss['font-size'],'fontWeight':myConfig.textCss['font-weight'],'border-right':myConfig.border,'border-bottom':myConfig.border}">
+            <template v-if="key==='-'">
+              <img :src="one">
+            </template>
+            <template v-else>
+              {{one}}
+            </template>
+          </div>
         </template>
       </div>
     </template>
@@ -45,11 +52,10 @@ export default {
     return{
       bee,
       myLevel:this.level?Number(this.level+1):1,
+      newData:this.myData,
     }
   },
-  computed:{
-    titleCss() {return bee.objToCSS(bee.replaceKey(this.myConfig.titleCss,{}));},
-    textCss() {return bee.objToCSS(bee.replaceKey(this.myConfig.textCss,{}));},
+  computed:{    
   },
   methods:{
   },
