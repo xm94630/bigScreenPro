@@ -7,7 +7,7 @@
     <div class="conBox">
       <template v-for="(one,index) in apiData">
         <div class="oneLine" :key="index">
-          <div class="lineName">线路{{101-one['线路']}}</div>
+          <div class="lineName" :style="{'color':myConfig.css.color}">线路{{101-one['线路']}}</div>
           <div class="lineCon">
             <div class="lineConT">
               <div>
