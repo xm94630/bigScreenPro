@@ -42,8 +42,13 @@ module.exports={
         },
 
 
-    },
 
+    },
+    // "eslintConfig": {
+    //     "rules": {
+    //        "no-console":"off"
+    //     }
+    //  },
     // chainWebpack: config => {
     //     config
     //       .plugin('webpack-bundle-analyzer')
