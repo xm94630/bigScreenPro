@@ -19,7 +19,7 @@
           <el-table-column
             :key = "key"
             :prop = "value"
-            :label="key"
+            :label= "value"
           >
             <!-- 自定义模板 -->
             <template slot-scope="scope">
