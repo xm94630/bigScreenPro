@@ -110,6 +110,23 @@ export default function(){
         "label":"多选下拉搜索"
       },
 
+      "24":{
+        "template":{
+          "type": "24",
+          "label": "普通下拉(本地静态)",
+          "keyName": "love20",
+          "placeholder": "请选择",
+          "defaultValue": "",
+          "staticData": '[{"playerNameValue":20,"playerName":"海象拳王"},{"playerNameValue":21,"playerName":"独角兽"}]',
+          "referenceColumn": "playerNameValue",
+          "referenceDisplayColumn": "playerName",
+          "queryIndex": 2,
+          //"typeScribe": "beeSelect",
+          //"rule": "",
+        },
+        "label":"普通下拉(本地静态)"
+      },
+
       "30":{
         "template":{
           "type": "30",

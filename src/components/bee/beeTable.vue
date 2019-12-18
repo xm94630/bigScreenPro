@@ -135,6 +135,7 @@ export default {
         "21":"beeSelectSearch",
         "22":"beeSelectMultiple",
         "23":"beeSelectSearchMultiple",
+        "24":"beeSelectStatic",
         "30":"beeDatePicker",
         "31":"beeDatePickerRange",
         "40":"beeDateTimePicker",
