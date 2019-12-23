@@ -363,7 +363,7 @@
                 "type":"beeCard",
                 "css":{
                     "x":950,
-                    "y":390,
+                    "y":320,
                     "width":410,
                     "height":70,
                     "z-index":12,
@@ -396,7 +396,7 @@
                 "type":"beeCard",
                 "css":{
                     "x":950,
-                    "y":320,
+                    "y":390,
                     "width":410,
                     "height":70,
                     "z-index":13,
@@ -429,7 +429,7 @@
                 "type":"beeCard",
                 "css":{
                     "x":1400,
-                    "y":320,
+                    "y":390,
                     "width":410,
                     "height":70,
                     "z-index":13,
@@ -462,7 +462,7 @@
                 "type":"beeCard",
                 "css":{
                     "x":1400,
-                    "y":390,
+                    "y":320,
                     "width":410,
                     "height":70,
                     "z-index":14,
