@@ -168,6 +168,7 @@ export default {
           for(let i=0;i<myTableData.length;i++){
             myTableData[i].bee_number = i+1;
           }
+          this.myTableData = myTableData;
         });
       }else{
         //根据点击分页，更新数据
@@ -177,12 +178,9 @@ export default {
           for(let i=0;i<myTableData.length;i++){
             myTableData[i].bee_number = i+1;
           }
+          this.myTableData = myTableData;
         });
       }
-
-
-      
-
 
     },
     downLoadFun(rowData){
