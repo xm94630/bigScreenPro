@@ -1,0 +1,876 @@
+{
+    "canvas": {
+        "width": "1920",
+        "height": "1080",
+        "background": "url(http://www.avba.info/images/2020/01/13/pWvP958db11ba76dff660.jpg) center center / cover",
+        "zoom-type": 0,
+        "grid": 10,
+        "refreshTime": "600000",
+        "linkScreen": {
+            "linkScreenCode": "",
+            "waitTime": -1,
+            "eventWidgetName": ""
+        },
+        "formFormat": {
+            "labelPosition": "top",
+            "colSpan": 8
+        }
+    },
+    "components": {
+        "DKN_beeCard": [{
+            "id": "5b66-e8e3",
+            "type": "DKN_beeCard",
+            "title": "单",
+            "css": {
+                "x": 50,
+                "y": 190,
+                "width": 500,
+                "height": 300,
+                "z-index": 9,
+                "border": "",
+                "border-radius": 0,
+                "padding": 5,
+                "font-size": 12,
+                "text-align": "left",
+                "color": "#f8f4a0",
+                "background": "rgba(255,255,255,0.1)"
+            },
+            "widgetOption": {
+                "keyCss": {
+                    "font-size": "50",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "50",
+                    "text-align": "",
+                    "padding": "0",
+                    "margin": "-15px 0 0 5px"
+                },
+                "valueCss": {
+                    "font-size": "130",
+                    "line-height": 14,
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "center",
+                    "padding": "0",
+                    "margin": "0"
+                },
+                "titleCss": {
+                    "font-size": "50",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "right",
+                    "padding": "20",
+                    "margin": "0"
+                },
+                "arrawCss": {
+                    "width": "20",
+                    "height": "20",
+                    "border-top": "none",
+                    "border-right": "none",
+                    "border-bottom": "solid 5px #fff",
+                    "border-left": "solid 5px #fff",
+                    "position": "absolute",
+                    "top": "",
+                    "right": "",
+                    "bottom": "20",
+                    "left": "20"
+                }
+            },
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "diyCoreCode": "CQSW-total"
+        }, {
+            "id": "2a75-a70d",
+            "type": "DKN_beeCard",
+            "title": "单",
+            "css": {
+                "x": 570,
+                "y": 190,
+                "width": 500,
+                "height": 300,
+                "z-index": 10,
+                "border": "",
+                "border-radius": 0,
+                "padding": 5,
+                "font-size": 12,
+                "text-align": "left",
+                "color": "#f8f4a0",
+                "background": "rgba(255,255,255,0.1)"
+            },
+            "widgetOption": {
+                "keyCss": {
+                    "font-size": "50",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "50",
+                    "text-align": "",
+                    "padding": "0",
+                    "margin": "-15px 0 0 5px"
+                },
+                "valueCss": {
+                    "font-size": "130",
+                    "line-height": 14,
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "center",
+                    "padding": "0",
+                    "margin": "0"
+                },
+                "titleCss": {
+                    "font-size": "50",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "right",
+                    "padding": "20",
+                    "margin": "0"
+                },
+                "arrawCss": {
+                    "width": "20",
+                    "height": "20",
+                    "border-top": "none",
+                    "border-right": "none",
+                    "border-bottom": "solid 5px #fff",
+                    "border-left": "solid 5px #fff",
+                    "position": "absolute",
+                    "top": "",
+                    "right": "",
+                    "bottom": "20",
+                    "left": "20"
+                }
+            },
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "diyCoreCode": "CQSW-pick"
+        }, {
+            "id": "dc18-e710",
+            "type": "DKN_beeCard",
+            "title": "单",
+            "css": {
+                "x": 1090,
+                "y": 190,
+                "width": 500,
+                "height": 300,
+                "z-index": 11,
+                "border": "",
+                "border-radius": 0,
+                "padding": 5,
+                "font-size": 12,
+                "text-align": "left",
+                "color": "#f8f4a0",
+                "background": "rgba(255,255,255,0.1)"
+            },
+            "widgetOption": {
+                "keyCss": {
+                    "font-size": "50",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "50",
+                    "text-align": "",
+                    "padding": "0",
+                    "margin": "-15px 0 0 5px"
+                },
+                "valueCss": {
+                    "font-size": "130",
+                    "line-height": 14,
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "center",
+                    "padding": "0",
+                    "margin": "0"
+                },
+                "titleCss": {
+                    "font-size": "50",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "right",
+                    "padding": "20",
+                    "margin": "0"
+                },
+                "arrawCss": {
+                    "width": "20",
+                    "height": "20",
+                    "border-top": "none",
+                    "border-right": "none",
+                    "border-bottom": "solid 5px #fff",
+                    "border-left": "solid 5px #fff",
+                    "position": "absolute",
+                    "top": "",
+                    "right": "",
+                    "bottom": "20",
+                    "left": "20"
+                }
+            },
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "diyCoreCode": "CQSW-outorder"
+        }, {
+            "id": "db6f-b95c",
+            "type": "DKN_beeCard",
+            "title": "单",
+            "css": {
+                "x": 1610,
+                "y": 190,
+                "width": 230,
+                "height": 570,
+                "z-index": 12,
+                "border": "",
+                "border-radius": 0,
+                "padding": 5,
+                "font-size": 12,
+                "text-align": "left",
+                "color": "#f8f4a0",
+                "background": "rgba(255,255,255,0.1)"
+            },
+            "widgetOption": {
+                "keyCss": {
+                    "font-size": "50",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "50",
+                    "text-align": "",
+                    "padding": "0",
+                    "margin": "-170px 0 0 5px"
+                },
+                "valueCss": {
+                    "font-size": "80",
+                    "line-height": 14,
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "center",
+                    "padding": "0",
+                    "margin": "-200px 0 0 5px"
+                },
+                "titleCss": {
+                    "font-size": "50",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "right",
+                    "padding": "20",
+                    "margin": "0"
+                },
+                "arrawCss": {
+                    "width": "20",
+                    "height": "20",
+                    "border-top": "none",
+                    "border-right": "none",
+                    "border-bottom": "solid 5px #fff",
+                    "border-left": "solid 5px #fff",
+                    "position": "absolute",
+                    "top": "",
+                    "right": "",
+                    "bottom": "20",
+                    "left": "20"
+                }
+            },
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "diyCoreCode": "CQSW-toCancel"
+        }, {
+            "id": "0da6-c5c1",
+            "type": "DKN_beeCard",
+            "title": "单",
+            "css": {
+                "x": 50,
+                "y": 510,
+                "width": 160,
+                "height": 250,
+                "z-index": 13,
+                "border": "",
+                "border-radius": 0,
+                "padding": 5,
+                "font-size": 12,
+                "text-align": "left",
+                "color": "#f8f4a0",
+                "background": "rgba(255,255,255,0.1)"
+            },
+            "widgetOption": {
+                "keyCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "60",
+                    "text-align": "",
+                    "padding": "0",
+                    "margin": "-15px 0 0 5px"
+                },
+                "valueCss": {
+                    "font-size": "40",
+                    "line-height": 14,
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "center",
+                    "padding": "0",
+                    "margin": "0"
+                },
+                "titleCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "right",
+                    "padding": "20",
+                    "margin": "0"
+                },
+                "arrawCss": {
+                    "width": "20",
+                    "height": "20",
+                    "border-top": "none",
+                    "border-right": "none",
+                    "border-bottom": "solid 5px #fff",
+                    "border-left": "solid 5px #fff",
+                    "position": "absolute",
+                    "top": "",
+                    "right": "",
+                    "bottom": "20",
+                    "left": "20"
+                }
+            },
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "diyCoreCode": "CQSW-lastOrder"
+        }, {
+            "id": "166b-5dd6",
+            "type": "DKN_beeCard",
+            "title": "单",
+            "css": {
+                "x": 220,
+                "y": 510,
+                "width": 160,
+                "height": 250,
+                "z-index": 14,
+                "border": "",
+                "border-radius": 0,
+                "padding": 5,
+                "font-size": 12,
+                "text-align": "left",
+                "color": "#f8f4a0",
+                "background": "rgba(255,255,255,0.1)"
+            },
+            "widgetOption": {
+                "keyCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "60",
+                    "text-align": "",
+                    "padding": "0",
+                    "margin": "-15px 0 0 5px"
+                },
+                "valueCss": {
+                    "font-size": "40",
+                    "line-height": 14,
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "center",
+                    "padding": "0",
+                    "margin": "0"
+                },
+                "titleCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "right",
+                    "padding": "20",
+                    "margin": "0"
+                },
+                "arrawCss": {
+                    "width": "20",
+                    "height": "20",
+                    "border-top": "none",
+                    "border-right": "none",
+                    "border-bottom": "solid 5px #fff",
+                    "border-left": "solid 5px #fff",
+                    "position": "absolute",
+                    "top": "",
+                    "right": "",
+                    "bottom": "20",
+                    "left": "20"
+                }
+            },
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "diyCoreCode": "CQSW-dayOrder"
+        }, {
+            "id": "224a-bcb6",
+            "type": "DKN_beeCard",
+            "title": "单",
+            "css": {
+                "x": 390,
+                "y": 510,
+                "width": 160,
+                "height": 250,
+                "z-index": 15,
+                "border": "",
+                "border-radius": 0,
+                "padding": 5,
+                "font-size": 12,
+                "text-align": "left",
+                "color": "#f8f4a0",
+                "background": "rgba(255,255,255,0.1)"
+            },
+            "widgetOption": {
+                "keyCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "60",
+                    "text-align": "",
+                    "padding": "0",
+                    "margin": "-15px 0 0 5px"
+                },
+                "valueCss": {
+                    "font-size": "40",
+                    "line-height": 14,
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "center",
+                    "padding": "0",
+                    "margin": "0"
+                },
+                "titleCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "right",
+                    "padding": "20",
+                    "margin": "0"
+                },
+                "arrawCss": {
+                    "width": "20",
+                    "height": "20",
+                    "border-top": "none",
+                    "border-right": "none",
+                    "border-bottom": "solid 5px #fff",
+                    "border-left": "solid 5px #fff",
+                    "position": "absolute",
+                    "top": "",
+                    "right": "",
+                    "bottom": "20",
+                    "left": "20"
+                }
+            },
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "diyCoreCode": "CQSW-ShortOrder"
+        }, {
+            "id": "f35a-d090",
+            "type": "DKN_beeCard",
+            "title": "单",
+            "css": {
+                "x": 570,
+                "y": 510,
+                "width": 160,
+                "height": 250,
+                "z-index": 16,
+                "border": "",
+                "border-radius": 0,
+                "padding": 5,
+                "font-size": 12,
+                "text-align": "left",
+                "color": "#f8f4a0",
+                "background": "rgba(255,255,255,0.1)"
+            },
+            "widgetOption": {
+                "keyCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "60",
+                    "text-align": "",
+                    "padding": "0",
+                    "margin": "-15px 0 0 5px"
+                },
+                "valueCss": {
+                    "font-size": "40",
+                    "line-height": 14,
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "center",
+                    "padding": "0",
+                    "margin": "0"
+                },
+                "titleCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "right",
+                    "padding": "20",
+                    "margin": "0"
+                },
+                "arrawCss": {
+                    "width": "20",
+                    "height": "20",
+                    "border-top": "none",
+                    "border-right": "none",
+                    "border-bottom": "solid 5px #fff",
+                    "border-left": "solid 5px #fff",
+                    "position": "absolute",
+                    "top": "",
+                    "right": "",
+                    "bottom": "20",
+                    "left": "20"
+                }
+            },
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "diyCoreCode": "CQSW-collectOrder"
+        }, {
+            "id": "21fa-c38f",
+            "type": "DKN_beeCard",
+            "title": "单",
+            "css": {
+                "x": 740,
+                "y": 510,
+                "width": 160,
+                "height": 250,
+                "z-index": 17,
+                "border": "",
+                "border-radius": 0,
+                "padding": 5,
+                "font-size": 12,
+                "text-align": "left",
+                "color": "#f8f4a0",
+                "background": "rgba(255,255,255,0.1)"
+            },
+            "widgetOption": {
+                "keyCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "60",
+                    "text-align": "",
+                    "padding": "0",
+                    "margin": "-15px 0 0 5px"
+                },
+                "valueCss": {
+                    "font-size": "40",
+                    "line-height": 14,
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "center",
+                    "padding": "0",
+                    "margin": "0"
+                },
+                "titleCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "right",
+                    "padding": "20",
+                    "margin": "0"
+                },
+                "arrawCss": {
+                    "width": "20",
+                    "height": "20",
+                    "border-top": "none",
+                    "border-right": "none",
+                    "border-bottom": "solid 5px #fff",
+                    "border-left": "solid 5px #fff",
+                    "position": "absolute",
+                    "top": "",
+                    "right": "",
+                    "bottom": "20",
+                    "left": "20"
+                }
+            },
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "diyCoreCode": "CQSW-toPickOrder"
+        }, {
+            "id": "aa32-865a",
+            "type": "DKN_beeCard",
+            "title": "单",
+            "css": {
+                "x": 910,
+                "y": 510,
+                "width": 160,
+                "height": 250,
+                "z-index": 18,
+                "border": "",
+                "border-radius": 0,
+                "padding": 5,
+                "font-size": 12,
+                "text-align": "left",
+                "color": "#f8f4a0",
+                "background": "rgba(255,255,255,0.1)"
+            },
+            "widgetOption": {
+                "keyCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "60",
+                    "text-align": "",
+                    "padding": "0",
+                    "margin": "-15px 0 0 5px"
+                },
+                "valueCss": {
+                    "font-size": "40",
+                    "line-height": 14,
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "center",
+                    "padding": "0",
+                    "margin": "0"
+                },
+                "titleCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "right",
+                    "padding": "20",
+                    "margin": "0"
+                },
+                "arrawCss": {
+                    "width": "20",
+                    "height": "20",
+                    "border-top": "none",
+                    "border-right": "none",
+                    "border-bottom": "solid 5px #fff",
+                    "border-left": "solid 5px #fff",
+                    "position": "absolute",
+                    "top": "",
+                    "right": "",
+                    "bottom": "20",
+                    "left": "20"
+                }
+            },
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "diyCoreCode": "CQSW-toPack"
+        }, {
+            "id": "b31f-481b",
+            "type": "DKN_beeCard",
+            "title": "单",
+            "css": {
+                "x": 1090,
+                "y": 510,
+                "width": 240,
+                "height": 250,
+                "z-index": 19,
+                "border": "",
+                "border-radius": 0,
+                "padding": 5,
+                "font-size": 12,
+                "text-align": "left",
+                "color": "#f8f4a0",
+                "background": "rgba(255,255,255,0.1)"
+            },
+            "widgetOption": {
+                "keyCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "60",
+                    "text-align": "",
+                    "padding": "0",
+                    "margin": "-15px 0 0 5px"
+                },
+                "valueCss": {
+                    "font-size": "40",
+                    "line-height": 14,
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "center",
+                    "padding": "0",
+                    "margin": "0"
+                },
+                "titleCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "right",
+                    "padding": "20",
+                    "margin": "0"
+                },
+                "arrawCss": {
+                    "width": "20",
+                    "height": "20",
+                    "border-top": "none",
+                    "border-right": "none",
+                    "border-bottom": "solid 5px #fff",
+                    "border-left": "solid 5px #fff",
+                    "position": "absolute",
+                    "top": "",
+                    "right": "",
+                    "bottom": "20",
+                    "left": "20"
+                }
+            },
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "diyCoreCode": "CQSW-DictpOrder"
+        }, {
+            "id": "7602-db3e",
+            "type": "DKN_beeCard",
+            "title": "单",
+            "css": {
+                "x": 1350,
+                "y": 510,
+                "width": 240,
+                "height": 250,
+                "z-index": 20,
+                "border": "",
+                "border-radius": 0,
+                "padding": 5,
+                "font-size": 12,
+                "text-align": "left",
+                "color": "#f8f4a0",
+                "background": "rgba(255,255,255,0.1)"
+            },
+            "widgetOption": {
+                "keyCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "60",
+                    "text-align": "",
+                    "padding": "0",
+                    "margin": "-15px 0 0 5px"
+                },
+                "valueCss": {
+                    "font-size": "40",
+                    "line-height": 14,
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "center",
+                    "padding": "0",
+                    "margin": "0"
+                },
+                "titleCss": {
+                    "font-size": "30",
+                    "line-height": "50",
+                    "font-weight": "bold",
+                    "color": "#ffffff",
+                    "width": "",
+                    "height": "",
+                    "text-align": "right",
+                    "padding": "20",
+                    "margin": "0"
+                },
+                "arrawCss": {
+                    "width": "20",
+                    "height": "20",
+                    "border-top": "none",
+                    "border-right": "none",
+                    "border-bottom": "solid 5px #fff",
+                    "border-left": "solid 5px #fff",
+                    "position": "absolute",
+                    "top": "",
+                    "right": "",
+                    "bottom": "20",
+                    "left": "20"
+                }
+            },
+            "dataUrl": "/epimetheus/api/diy/report/selectData",
+            "diyCoreCode": "CQSW-onDict"
+        }],
+        "beeTitle": [{
+            "id": "df40-b637",
+            "type": "beeTitle",
+            "css": {
+                "x": "50",
+                "y": "890",
+                "width": "1920",
+                "height": "100",
+                "z-index": 9,
+                "padding": 0,
+                "font-size": "70",
+                "font-weight": "normal",
+                "color": "#fff",
+                "border": "",
+                "border-radius": 0,
+                "background": "",
+                "text-align": ""
+            },
+            "text": "订单数据展示中心"
+        }],
+        "dater": [{
+            "id": "80e7-5825",
+            "type": "dater",
+            "css": {
+                "x": "50",
+                "y": "990",
+                "width": "500",
+                "height": "100",
+                "z-index": 9,
+                "padding": 0,
+                "font-size": "40",
+                "color": "red",
+                "border": "",
+                "border-radius": 0,
+                "background": "",
+                "text-align": "left"
+            }
+        }]
+    }
+}
