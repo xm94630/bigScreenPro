@@ -670,7 +670,7 @@ function getEventConfig (){
     "eventConfig":{
       "0":{
         "template":{
-          "type":"0",
+          "type":"load",
           "eventName": "模块加载完成事件",
           "eventFunction": "",
         },
@@ -678,7 +678,7 @@ function getEventConfig (){
       },
       "1":{
         "template":{
-          "type":"1",
+          "type":"click",
           "eventName": "模块被点击事件",
           "eventFunction": "",
         },

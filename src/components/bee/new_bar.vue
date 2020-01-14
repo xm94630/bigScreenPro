@@ -148,6 +148,7 @@ export default {
   props: {
     myConfig: Object,
     canvasConfig: Object,
+    allWidgetsCofig:Object,
   },
   data() {
     return {
@@ -242,8 +243,21 @@ export default {
     }
   },
   mounted: function() {
-    console.log('mounted!')
+    //console.log('mounted!')
     this.initWidget(this.myConfig);
+
+    //解析事件配置
+    try{
+      let eventConfig = this.myConfig.eventConfig && JSON.parse(this.myConfig.eventConfig);
+      //获取事件发布者
+      this.eventPublisher = bee.eventFactory(eventConfig);
+    }catch(e){
+      //不处理
+    }
+
+    //发布事件
+    this.eventPublisher && this.eventPublisher.trigger('load',this.canvasConfig,this.allWidgetsCofig);
+
   },
   updated(){
   }

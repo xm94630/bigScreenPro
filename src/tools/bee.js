@@ -89,6 +89,31 @@ var bee = (function(bee){
         return obj[key];
     }
 
+    // 事件工厂
+    // 该方法通过一个事件的配置，生成一个事件对象，此对象可以发布事件。
+    // eventConfig格式如下
+    // '[{"type":"load","eventName":"模块加载完成事件","eventFunction":"function(){\n  alert(123);\n}","id":"ba3a-864c"},{"type":"click","eventName":"模块被点击事件","eventFunction":"function(){\n  alert(222)\n}","id":"4040-584b"}]'
+    bee.eventFactory = function(eventConfigArr){
+        let obj = {};
+        eventConfigArr.forEach((one)=>{
+            if(obj[one.type]){
+                obj[one.type].push( eval("("+one.eventFunction+")") );
+            }else{
+                obj[one.type] = [ eval("("+one.eventFunction+")") ];
+            }
+        });
+        return {
+            trigger(eventName,...args){
+                let list = obj[eventName];
+                if(list && list.length>0){
+                    for(let i=0;i<list.length;i++){
+                        list[i](args[0],args[1]);
+                    }
+                }
+            }
+        };
+    }
+
 
 
 

@@ -15,6 +15,7 @@
                   :is = "key"
                   :myConfig= "item"
                   :canvasConfig = "canvasConfig"
+                  :allWidgetsCofig = "$refs.editorBox.json"
                 ></component>
               </template>
             </template>
