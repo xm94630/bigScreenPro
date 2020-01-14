@@ -574,7 +574,7 @@ function getWidgetConfig (){
   }
 }
 
-//配置模板:canva组件
+//配置模板:canvas组件
 function getCanvasDefaultConfig (){
   return {
     "canvas":{
@@ -664,6 +664,30 @@ function getWidgetConfigExplain (){
   }
 }
 
+//编辑中，事件配置
+function getEventConfig (){
+  return {
+    "eventConfig":{
+      "0":{
+        "template":{
+          "type":"0",
+          "eventName": "模块加载完成事件",
+          "eventFunction": "",
+        },
+        "label":"模块加载完成事件"
+      },
+      "1":{
+        "template":{
+          "type":"1",
+          "eventName": "模块被点击事件",
+          "eventFunction": "",
+        },
+        "label":"模块被点击事件"
+      }
+    }
+  }
+}
+
 
 
 export {
@@ -671,4 +695,5 @@ export {
   getCanvasDefaultConfig,
   getWidgetConfigExplain,
   allWidgets,
+  getEventConfig,
 }

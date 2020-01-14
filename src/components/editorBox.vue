@@ -7,12 +7,11 @@
       <template v-for="(one,key) in widgetBtn">
         <el-button :key="key" size="mini" type="primary" round @click="createWidgetFun(key)">{{one.alias}}</el-button>
       </template>
-
     </div>
+
     <el-row :gutter="0">
       <!--左侧-->
       <el-col :span="8">
-
         <div class="leftBox">
           
           <!--画布按钮-->
@@ -112,6 +111,18 @@
             @changeData = "changeDataFun2"
           />
 
+          <!--事件 高级配置-->
+          <eventBox
+            v-if="widget.type && widget.type!=='canvas'"
+            title="事件配置"
+            :templateAllData="eventConfig"
+            :templateName="templateName3"
+            defaultOptionValue="0"
+            :defaultList="widget.eventConfig"
+            @changeData = "changeDataFun3"
+          />
+
+
         </div>
       </el-col>
 
@@ -203,12 +214,15 @@
 
 //               </div>
 //             </template>
+import Vue from "vue";
 import bee from "@/src/tools/bee";
 import bus from "@/src/tools/bus";
 import {getWidgetConfig,getCanvasDefaultConfig,getWidgetConfigExplain} from "./bee/widget.config"
 import getWidgetPartConfig from "./bee/widgetPart.config"
+import {getEventConfig} from "./bee/widget.config"
 import store from '@/src/store';
 import getMultipleTemplate from "./getMultipleTemplate"
+import eventBox from "@/src/components/eventBox"
 //let barWidgetConfig = widgetConfig['new_bar']
 
 import list from "./itermList";
@@ -218,6 +232,7 @@ export default {
   components: {
     getMultipleTemplate,
     list,
+    eventBox,
   },
   props: {
   },
@@ -234,8 +249,10 @@ export default {
       //这个被坑了很久，文档中居然没有这个！！有个比较混淆的default-active，这个似乎不支持动态控制！
       defaultOpeneds:[], 
       widgetPartConfig:getWidgetPartConfig(), //配置（针对于数组类型的组件）
-      templateName:'conditionInput', //配置的名字（针对于数组类型的组件）
-      templateName2:'searchBtns', //配置的名字（针对于数组类型的组件）
+      eventConfig:getEventConfig(),           //配置（针对于数组类型的组件）
+      templateName:'conditionInput',          //配置的名字（针对于数组类型的组件）
+      templateName2:'searchBtns',             //配置的名字（针对于数组类型的组件）
+      templateName3:'eventConfig',            //配置的名字（针对于数组类型的组件）
 
       widgetBtn:getWidgetConfig(), //用于显示工具栏的按钮
     }
@@ -328,6 +345,9 @@ export default {
     },
     changeDataFun2(data){
       this.widget.searchBtns=JSON.stringify(data)
+    },
+    changeDataFun3(data){
+      Vue.set(this.widget, 'eventConfig', JSON.stringify(data))
     },
     configPlusFun(){
       console.log('点击了')
