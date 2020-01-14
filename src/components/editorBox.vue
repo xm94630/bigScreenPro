@@ -113,7 +113,7 @@
 
           <!--事件 高级配置-->
           <eventBox
-            v-if="widget.type && widget.type!=='canvas'"
+            v-if="(widget.type && widget.type!=='canvas') && hackReset"
             title="事件配置"
             :templateAllData="eventConfig"
             :templateName="templateName3"
@@ -255,6 +255,8 @@ export default {
       templateName3:'eventConfig',            //配置的名字（针对于数组类型的组件）
 
       widgetBtn:getWidgetConfig(), //用于显示工具栏的按钮
+      
+      hackReset:true,//事件配置组件 刷新用的
     }
   },
   watch:{
@@ -330,6 +332,12 @@ export default {
       this.widget = widget;
       //全局保存选中的那个组件id
       store.dispatch("setSelectWidgetId",widget.id );
+
+      //刷新事件配置组件
+      this.hackReset = false;
+      this.$nextTick(() => {
+        this.hackReset = true
+      })
     },
     //父菜单中处理select事件，控制菜单的展开收拢
     selectFun(index,indexPath){
