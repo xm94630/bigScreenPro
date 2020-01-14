@@ -261,7 +261,10 @@ export default {
     //因为我们使用component标签的形式异步的加载各个组件，如果在该组件mounted之后，要交互的那个组件还没有动态加载完毕
     //那么这个时候改变配置是不会对那个组件产生影响。所以要走一个异步的延迟，确保组件们都加载完毕
     window.setTimeout(()=>{
-      this.eventPublisher && this.eventPublisher.trigger('load',this.canvasConfig,this.allWidgetsCofig);
+      //这里的事件，我们不期待在编辑的时候发生！只有在大屏展示的时候才生效
+      if(this.$el.parentElement.id!=="editCanvas"){
+        this.eventPublisher && this.eventPublisher.trigger('load',this.canvasConfig,this.allWidgetsCofig);
+      }
     },0)
     
   },
