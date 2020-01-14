@@ -186,11 +186,12 @@ export default {
       let diyCoreCode = myConfig.diyCoreCode;
       this.diyCoreCode = diyCoreCode;
       let params = Object.assign({},{diyCoreCode:diyCoreCode},store.state.store_globalContion);
+      
+      this.myEchart = echarts.init(document.getElementById(myConfig.id));
       //获取数据源
       axios.post(baseUrl + dataUrl,params).then(response => {
         let apiData = response.data.data;
         this.apiData = apiData;
-        this.myEchart = echarts.init(document.getElementById(myConfig.id))
         this.myEchart.setOption(getNewOption(myConfig,apiData));
       });
     },
@@ -209,7 +210,7 @@ export default {
           this.myEchart.setOption(getNewOption(val,apiData),true);//这个true参数很重要，否则会有残留数据
         });
       }else{
-        this.myEchart.setOption(getNewOption(val,this.apiData));
+        this.myEchart.setOption(getNewOption(val,this.apiData),true);
       }
 
       //必须异步，随着外容器的改变，调整size
@@ -256,8 +257,13 @@ export default {
     }
 
     //发布事件
-    this.eventPublisher && this.eventPublisher.trigger('load',this.canvasConfig,this.allWidgetsCofig);
-
+    //这里为什么要走一个异步的延时的流程呢
+    //因为我们使用component标签的形式异步的加载各个组件，如果在该组件mounted之后，要交互的那个组件还没有动态加载完毕
+    //那么这个时候改变配置是不会对那个组件产生影响。所以要走一个异步的延迟，确保组件们都加载完毕
+    window.setTimeout(()=>{
+      this.eventPublisher && this.eventPublisher.trigger('load',this.canvasConfig,this.allWidgetsCofig);
+    },0)
+    
   },
   updated(){
   }

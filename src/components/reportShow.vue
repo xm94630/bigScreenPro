@@ -10,6 +10,8 @@
               :key = "item.id"
               :is = "key"
               :myConfig= "item"
+              :canvasConfig = "reportConfig.canvas"
+              :allWidgetsCofig = "reportConfig.components"
             ></component>
           </template>
         </template>
