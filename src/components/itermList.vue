@@ -1,7 +1,7 @@
 <template>
   <div class="itermListBox">
     <template v-for="(value,key) in widget">
-      <div :key="key" v-if="key!=='alias'"><!-- 不显示“别名” -->
+      <div :key="key" v-if="(key!=='alias')&&(key!=='customEventForUse')"><!-- 不显示“别名”、“可用事件” -->
 
         <template v-if="bee.isObject(value)">
           <div  :class="style">

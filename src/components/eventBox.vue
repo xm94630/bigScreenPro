@@ -50,6 +50,7 @@ export default {
     templateName:String,
     defaultOptionValue:String,
     defaultList:null,
+    widget:null,
   },
   data(){
     return{
@@ -60,6 +61,7 @@ export default {
   computed:{
     "templateData":function(){
       let obj = this.templateAllData[this.templateName];
+      obj = Object.assign(obj,this.widget.customEventForUse)
       let option = [];
       for(let key in obj){
         option.push({

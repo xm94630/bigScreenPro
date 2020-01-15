@@ -188,6 +188,8 @@ export default {
         //这里的事件，我们不期待在编辑的时候发生！只有在大屏展示的时候才生效
         if(this.$el.parentElement.id!=="editCanvas"){
           this.eventPublisher && this.eventPublisher.trigger('load',this.canvasConfig,this.allWidgetsCofig);
+          //这里假装有一个属于bar的自定义事件。
+          this.eventPublisher && this.eventPublisher.trigger('barEvent',this.canvasConfig,this.allWidgetsCofig);
         }
       },0)
     },

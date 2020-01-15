@@ -85,7 +85,17 @@ function getWidgetConfig (){
         }
       },
       "dataUrl": "/epimetheus/api/diy/report/selectData",
-      "diyCoreCode":"lifeng-HistogramOutOrder"
+      "diyCoreCode":"lifeng-HistogramOutOrder",
+      "customEventForUse":{
+        "11":{
+          "template":{
+            "type":"barEvent",
+            "eventName": "bar组件特有事件",
+            "eventFunction": "",
+          },
+          "label":"bar组件特有事件"
+        }
+      }
     },
     "new_barLine":{
       "id": bee.guidGenerator(),

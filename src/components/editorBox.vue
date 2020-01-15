@@ -120,6 +120,7 @@
             defaultOptionValue="0"
             :defaultList="widget.eventConfig"
             @changeData = "changeDataFun3"
+            :widget="widget"
           />
 
 
