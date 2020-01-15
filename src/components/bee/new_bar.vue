@@ -245,6 +245,8 @@ export default {
       if(this.$el.parentElement.id==="editCanvas"){
         store.dispatch("setSelectWidgetId",widgetId);
         bus.$emit("widgetClick",widgetId);
+      }else{
+        this.eventPublisher && this.eventPublisher.trigger('click',this.canvasConfig,this.allWidgetsCofig);
       }
     }
   },
