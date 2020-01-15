@@ -170,6 +170,27 @@ export default {
     myCss() {return bee.objToCSS( bee.replaceKey(this.myConfig.css,{"x":"left","y":"top"}));}
   },
   methods:{
+    loadEvent(){
+      //解析事件配置
+      try{
+        let eventConfig = this.myConfig.eventConfig && JSON.parse(this.myConfig.eventConfig);
+        //获取事件发布者
+        this.eventPublisher = bee.eventFactory(eventConfig);
+      }catch(e){
+        //不处理
+      }
+      /* 发布事件
+       * 这里为什么要走一个异步的延时的流程呢
+       * 因为我们使用component标签的形式异步的加载各个组件，如果在该组件mounted之后，要交互的那个组件还没有动态加载完毕
+       * 那么这个时候改变配置是不会对那个组件产生影响。所以要走一个异步的延迟，确保组件们都加载完毕
+       */
+      window.setTimeout(()=>{
+        //这里的事件，我们不期待在编辑的时候发生！只有在大屏展示的时候才生效
+        if(this.$el.parentElement.id!=="editCanvas"){
+          this.eventPublisher && this.eventPublisher.trigger('load',this.canvasConfig,this.allWidgetsCofig);
+        }
+      },0)
+    },
     onResize: function (x, y, width, height) {
       this.myConfig.css.x = this.x = x
       this.myConfig.css.y = this.y = y
@@ -246,27 +267,7 @@ export default {
   mounted: function() {
     //console.log('mounted!')
     this.initWidget(this.myConfig);
-
-    //解析事件配置
-    try{
-      let eventConfig = this.myConfig.eventConfig && JSON.parse(this.myConfig.eventConfig);
-      //获取事件发布者
-      this.eventPublisher = bee.eventFactory(eventConfig);
-    }catch(e){
-      //不处理
-    }
-
-    //发布事件
-    //这里为什么要走一个异步的延时的流程呢
-    //因为我们使用component标签的形式异步的加载各个组件，如果在该组件mounted之后，要交互的那个组件还没有动态加载完毕
-    //那么这个时候改变配置是不会对那个组件产生影响。所以要走一个异步的延迟，确保组件们都加载完毕
-    window.setTimeout(()=>{
-      //这里的事件，我们不期待在编辑的时候发生！只有在大屏展示的时候才生效
-      if(this.$el.parentElement.id!=="editCanvas"){
-        this.eventPublisher && this.eventPublisher.trigger('load',this.canvasConfig,this.allWidgetsCofig);
-      }
-    },0)
-    
+    this.loadEvent();
   },
   updated(){
   }
