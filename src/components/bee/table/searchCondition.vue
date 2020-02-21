@@ -123,7 +123,10 @@ export default {
 
       //如果需要显示分页，要带上这两个参数
       if(this.showPage){
-        body.currentPage = store.state.store_currentPage || this.currentPage;
+        //body.currentPage = store.state.store_currentPage || this.currentPage;
+
+        //bug修复：每次查询都要从1开始，否者有个bug：60页的数据，翻页到第二页，然后加了条件查询，只有1条的数据的。就出问题了。
+        body.currentPage = 1;
         body.pageSize = this.pageSize
         //获取数据源
         axios.post(url,body).then(response => {
